@@ -59,8 +59,12 @@
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
+    const seenPaths = new Set();
+
     groups.forEach(group => {
         group.entries.forEach(([path, linkTitle]) => {
+            if (seenPaths.has(path)) return;
+            seenPaths.add(path);
             const a = document.createElement("a");
             a.href = path;
             a.textContent = linkTitle;
@@ -88,7 +92,7 @@ window.addEventListener("load", function () {
         } catch (e) { return; }
 
         const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-        const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
+        const mainNode = nodes.find((n) => n["@type"] === "BlogPosting");
         if (!mainNode) return;
 
         const postsContainer = document.getElementById("latest-posts");
