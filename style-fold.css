@@ -1,0 +1,463 @@
+/* Critical CSS for LCP Optimization */
+:root {
+  --text: #222222;
+  --bg-color: #FFFDF7;
+  --link: #222222;
+  --accent-color: #444;
+  --button: #333;
+  --verse-color: #000000;
+  
+  --img-filter: invert(0) brightness(1) contrast(1.1);
+  --img-blend: multiply;
+
+  --key-icon-filter: invert(0);
+  --key-icon-blend: normal;
+}
+
+:root.light {
+  --bg-color: #FFFDF7;
+  --text: #222222;
+  --link: #222222;
+  --accent-color: #444;
+  --button: #333;
+  --verse-color: #000000;
+  
+  --img-filter: invert(0) brightness(1) contrast(1.1);
+  --img-blend: multiply;
+
+  --key-icon-filter: invert(0);
+  --key-icon-blend: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  opacity: 0.85;
+  font-family: 'Inter', sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  color: var(--text);
+  width: 100%;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+  background: var(--bg-color);
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-optical-sizing: auto;
+}
+.container {
+  max-width: 800px;
+  width: 87%;
+  margin: 0 auto;
+  display: block;
+  color: var(--text);
+}
+
+
+/* =======================
+   HEADER
+   ======================= */
+
+/* AMENDED: This rule now mirrors the general 'img' rule */
+
+.header a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8em;
+  text-transform: uppercase;
+}
+.header h1 {
+	display:block;
+	margin:3.5em auto 1em;
+	width:90%;
+	text-align:center;
+	padding-right:17px;
+	font-size:1.4em;
+	}
+	
+h1.index-h1	{
+	font-size:1em !important;
+	}
+	
+.site-title {
+	display:block;
+	margin: 4em auto 1em;
+	width:90%;
+	text-align:center;
+	padding-right:17px;
+	
+	}
+.site-title a {
+	font-weight:800;
+	font-size:1.8em;
+	border-left: 2px solid var(--text);
+	padding-left:10px
+	}
+.site-title-span {
+	font-weight:200;
+	text-transform:none;
+	}
+
+/* =======================
+   HEADINGS
+   ======================= */
+.seo-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+h1 {
+  color: var(--text);
+  margin: 1.5em 0 1em 0.7em;
+  font-weight: 600;
+  text-align: left;
+  opacity:0.9;
+  line-height:1.1;
+  border-left: 0;
+  padding-left: 0rem;
+  padding-right: 1.25rem;
+}
+
+h2 {
+	margin: 2em 0 1em 0em;
+	}
+	
+h2, h3, h4 {
+	color: var(--text);
+	font-weight:400;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #333;
+    padding-left: 0.75rem;
+}
+h1 a, h2 a, h3 a, h4 a {
+  font-weight: 400;
+  color: var(--text);
+  text-decoration-color: var(--text);
+  text-decoration: underline solid;
+  text-decoration-thickness: 0.6px;
+}
+h2.def {
+	font-weight: 700;
+	margin-top:4em;
+	}
+.read-more-link {
+	font-weight: 600;
+	text-transform: uppercase;
+	}
+h3 {
+  text-align: left;
+  font-size: 1.4em;
+  margin: 45px 0 5px;
+  border-left: 4px solid #333;
+}
+h3 strong {
+   font-style: normal
+}
+
+h3.teach {
+	font-style: italic;
+	font-size: 1em;
+	margin:0
+	}
+	
+h4 {
+   font-style: normal;
+   font-weight:400;
+   font-size: 1.3em;
+   margin: 50px 0 10px 0;
+   border-left: 4px solid #333;
+}
+/* Header & Logo - Critical for LCP as it's often the first visual element */
+header {
+  width: 100%;
+}
+
+header img {
+  display: block;
+  margin: 1em auto 0;
+  text-align: center;
+  width: 90%;
+  max-width: 250px;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  height: auto;
+  padding: 30px 5px 0 0;
+  //filter: hue-rotate(180deg);
+  mix-blend-mode: multiply;
+}
+.hero-description {
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    margin: 1.3em auto 1.5em;
+    width: 90%;
+    padding-left: 0.7em;
+    font-size: 0.9em;
+    color: var(--accent-color);
+  }
+ 
+.btn-wrap {
+  margin: 1em auto 1.5em;
+  text-align:center
+  }
+  
+.btn-dark,
+.btn-outline {
+  font-size: 0.45rem;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  width: fit-content;
+  border-radius:3px
+}
+
+.btn-dark
+background:#111 !important;
+}
+
+.btn-outline {
+  border: 1px solid var(--button);
+  color: var(--button);
+}
+
+
+a.redA {
+  text-decoration-color: #f25757 !important;
+	}
+	
+a, a b {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: underline solid;
+  text-decoration-color: rgba(0, 0, 0, 1.7);
+  text-decoration-thickness: 0.6px;
+  font-style: normal !important;
+  
+}
+
+a:hover {
+  text-decoration-style: solid;
+}
+
+.page-nav{
+display:flex;
+justify-content:space-between;
+margin:40px 0;
+font-size:16px;
+}
+
+.page-nav a{
+padding:10px 18px;
+border:1px solid #ccc;
+text-decoration:none;
+border-radius:4px;
+}
+
+.page-nav a:hover{
+background:#f3f3f3;
+}
+
+.breadcrumb {
+  font-size: 0.75em;
+  margin-bottom: 2em;
+  min-height:50px;
+}
+
+p {
+  margin: 1.2em 0;
+  text-indent: 0;
+}
+dfn {
+	font-style:normal;
+	}
+
+blockquote cite
+ {
+font-size: 0.7em;
+  text-decoration: none;
+  line-height: 1.8;
+  font-style: normal 
+	}
+
+img {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+  min-height:auto;
+  max-height:auto;
+  opacity: 0.8;
+  padding: 0;
+  mix-blend-mode: multiply;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  h1 { border-left-color: #999; }
+}
+
+/* Article Intro Styles */
+.content article p:first-of-type {
+  margin: 1.2em 0;
+}
+
+blockquote {
+  font-size: 1.05rem;
+  margin: 1em auto;
+  padding: 10px 5%;
+  width: 82%;
+  letter-spacing: -0.02em;
+}
+
+/* Hamburger remains visible but non-functional until JS/Main CSS loads */
+.hamburger {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: 15px;
+  font-size: 25px;
+  z-index: 2000;
+}
+
+/* =======================
+   NAV + HAMBURGER
+   ======================= */
+.navig {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 0 20px 200px 10px;
+}
+
+.hamburger {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 15px;   /* increases clickable area */
+  z-index: 2000;
+  /* optional: keep it visually centered */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.close-btn {
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+}
+
+#sidebar-toggle {
+  display: none;
+}
+
+#sidebar-toggle:checked ~ .container .sidebar {
+  right: 0;
+}
+
+#theme-toggle {
+	display: none;
+	background:transparent;
+	border:0;
+	color:#3E2D18;
+	font-size: 2em;
+	vertical-align: baseline;
+    padding: 0 0 0 10px ;
+    opacity:0.6;
+	}
+	
+	#Verse-Link-Container {
+  min-height:50px !important;
+  font-size: 0.9em;
+  display: flex;         
+  align-items: center;      
+  gap: 10px;    
+  flex-wrap: wrap;
+  margin: 1em auto;
+  padding: 0.5em 0.5em;
+  width: 80%;
+  text-align: center;
+  line-height: 1;
+  font-size: 1em;
+  color: #F2E5BD;
+  background: var(--bg-color);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;     
+}
+
+#VerseLinkBox {
+    font-size: 1em;
+    flex: 1;                  
+    min-width: 0;          
+}
+
+#VerseLinkBox a:link,
+#VerseLinkBox a:visited {
+color: var(--text) !important;
+	}
+	
+#Verse-Link-Container a:link,
+#Verse-Link-Container a:visited {
+text-decoration: none;
+font-weight: 600;
+color: var(--text) !important;	
+	}
+#Verse-Link-Container:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.share-button a, .like-btn a {
+color: var(--text);	
+	}
+	
+#custom-search-results,
+#custom-search-results a,
+.gs-title a,
+.gsc-webResult,
+.gsc-result,
+.gs-webResult,
+.gs-result,
+.gsc-control-cse,
+.gsc-control-cse-en,
+.gsc-control-wrapper-cse,
+.gsc-control-wrapper-cse b,
+.gsc-webResult gsc-result,
+.gs-snippet,
+.gs-visibleUrl,
+.gcsc-find-more-on-google,
+#searchBox,
+#custom-search-input {
+	background: var(--bg-color) !important;
+	
+	}
+
+
+/* Desktop Width Constraint */
+@media (min-width: 900px) {
+  body {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

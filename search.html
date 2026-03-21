@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://linguadivina.uk/search.html" rel="canonical">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="/style-fold.css" rel="stylesheet">
+<link href="/favicon.png" rel="icon" type="image/png">
+<link rel="manifest" href="/manifest.json">
+<link href="/style.css" rel="stylesheet">
+<link rel="stylesheet" href="/style-fonts.css" media="print" onload="this.media='all'">
+
+<script src="script.js"></script>
+
+<title>Search</title>
+<meta name="description" content="Discover new content, explore updated articles, and browse article catalogues and series.">
+</head>
+<body>
+<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div><p class="hero-description">A Psychological Reading of Scripture</p><button id="theme-toggle">◐</button><script src="script-dark-light.js"></script>
+</header>
+
+<h1>Search</h1>
+<div class="container">
+
+<!-- Google CSE Search Box -->
+<div id="custom-search-container">
+  <input type="text" id="custom-search-input" placeholder="Search All With Google">
+  <button id="custom-search-button">Search</button>
+</div>
+
+<div id="custom-search-results">
+	
+<script async src="https://cse.google.com/cse.js?cx=62434d5e426ae403f">
+</script>
+<div class="gcse-searchresults-only"></div>
+</div>
+
+<script>
+// Google CSE search with GA tracking
+function performSearch() {
+  var query = document.getElementById("custom-search-input").value.trim();
+  if (!query) return;
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'custom_search', {
+      'search_term': query,
+      'event_category': 'Site Search',
+      'event_label': 'Custom Search Box'
+    });
+  }
+
+  if (window.google && google.search && google.search.cse && google.search.cse.element) {
+    var element = google.search.cse.element.getElement('searchresults-only0');
+    if (element) element.execute(query);
+  }
+}
+
+document.getElementById("custom-search-button").addEventListener("click", performSearch);
+document.getElementById("custom-search-input").addEventListener("keypress", function(e) {
+  if (e.key === 'Enter') performSearch();
+});
+</script>
+
+<!-- Local Site Search Box -->
+<input type="text" id="searchBox" placeholder="Site Search...">
+
+<ul id="results"></ul>
+
+<div class="srch-series-link">
+<h2><a href="series-links.html">Series and Collections</a></h2> 
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const containerSelectors = ['#results', '#latest-posts'];
+
+  function addNoTagToElement(el) {
+    if (!el) return;
+    if (el.tagName === 'A') el.classList.add('noTag');
+    if (el.querySelectorAll) el.querySelectorAll('a').forEach(a => a.classList.add('noTag'));
+  }
+
+  containerSelectors.forEach(sel => {
+    const c = document.querySelector(sel);
+    if (c) addNoTagToElement(c);
+  });
+
+  containerSelectors.forEach(sel => {
+    const c = document.querySelector(sel);
+    if (!c) return;
+    const observer = new MutationObserver(mutations => {
+      for (const m of mutations) {
+        for (const node of m.addedNodes) {
+          if (node.nodeType !== Node.ELEMENT_NODE) continue;
+          addNoTagToElement(node);
+        }
+      }
+    });
+    observer.observe(c, { childList: true, subtree: true });
+  });
+
+  async function loadIndex() {
+    try {
+      const response = await fetch('searchIndex.json');
+      if (!response.ok) throw new Error('Failed to fetch searchIndex.json: ' + response.status);
+      return await response.json();
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
+  }
+
+  const searchBox = document.getElementById('searchBox');
+  const resultsList = document.getElementById('results');
+
+  if (searchBox && resultsList) {
+    let debounceTimer;
+    searchBox.addEventListener('input', async function () {
+      const query = this.value.trim().toLowerCase();
+      resultsList.innerHTML = '';
+      if (!query) return;
+
+      // Debounce GA event
+      if (typeof gtag === 'function') {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          gtag('event', 'search', {
+            'search_term': query,
+            'event_category': 'Site Search',
+            'event_label': 'Local Search Box'
+          });
+        }, 700); // Wait 700ms after last keystroke
+      }
+
+      const index = await loadIndex();
+      const results = index.filter(page =>
+        page.title.toLowerCase().includes(query) ||
+        page.content.toLowerCase().includes(query)
+      );
+
+      results.forEach(page => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = page.url;
+        a.textContent = page.title;
+        a.classList.add('noTag');
+        li.appendChild(a);
+        resultsList.appendChild(li);
+      });
+
+      addNoTagToElement(resultsList);
+    });
+  }
+});
+</script>
+
+</div>
+<div class="footer">© 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/el/terms-of-use.html">See Terms of Use</a></div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5M83Q78Z0"></script><script src="script-ga.js" defer></script>
+</body>
+</html>

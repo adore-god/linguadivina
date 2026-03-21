@@ -1,0 +1,168 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Layout */
+body {
+    font-family: Inter, "Serif", serif;
+    line-height: 1.7;
+    background-color: #ffffff;
+    color: #222;
+    padding: 1rem;
+    opacity:0.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  body, article, p, header, header p {
+    background: #000000 !important;
+    color: #e0e0e0 !important;
+  }
+  
+  a, a:link, a:visited {
+  	color: #e0e0e0;
+  }
+}
+
+/* Article Container */
+article {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2.5rem 1.5rem; 
+}
+
+.article-nav {
+  margin: 20px 0;
+  padding: 0;
+  background: transparent;
+  line-height: 1;
+}
+
+.article-nav a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.article-nav a:hover {
+  text-decoration: underline;
+}
+
+.article-nav .sep {
+  color: #888;
+  margin: 0 10px;
+}
+
+/* Header */
+header {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+header p {
+    font-style: italic;
+}
+
+/* Section Spacing */
+section {
+    margin-bottom: 2rem;
+}
+
+/* Headings */
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid #333;
+    padding-left: 0.75rem;
+}
+
+blockquote {
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  font-style: italic;
+  font-size: 1.1em;
+  line-height: 1.6;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Paragraphs */
+
+dfn {
+	font-style:normal;
+	}
+p {
+    margin-bottom: 1rem;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Emphasis lines at bottom */
+section:last-of-type p:last-of-type {
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+img.lingua-divina2 {
+    width: 100%;
+    display: block;
+    margin: 0em auto 2em;
+    max-width: 400px;
+    border-radius:10px;
+}
+.footer-img {
+	margin:1em auto;
+	}
+.footer-img img {
+	height:auto;
+	width: 100px;
+	max-width:100px;
+	filter:invert(1) brightness(1.3) contrast(1.23);
+	}
+	
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem; /* Tighter padding for mobile edges */
+    }
+
+    article {
+        /* 1.5rem Top/Bottom | 0.75rem Left/Right */
+        padding: 1.5rem 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+}
+
+.footer {
+  margin: 2em auto 30px;
+  text-align: center;
+  max-width: 800px;
+  width: 95%; /* Increased width to match new article feel */
+  font-size: 0.8em; 
+  display: block;
+}
+
+
