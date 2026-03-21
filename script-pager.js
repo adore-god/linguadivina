@@ -1,8 +1,9 @@
-
 (function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
     
+    // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
@@ -50,6 +51,7 @@
 
     if (groups.length === 0) return;
 
+    // --- TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
     
@@ -57,6 +59,7 @@
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
 
+    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
@@ -74,8 +77,9 @@
         container.appendChild(divider);
     });
 
-    target.after(titleContainer);
-    titleContainer.after(container);
+    // --- PLACEMENT ---
+    target.after(titleContainer);       
+    titleContainer.after(container);    
 })();
 
 window.addEventListener("load", function () {
@@ -102,7 +106,7 @@ window.addEventListener("load", function () {
           "itemListElement": postLinks.map((a, index) => ({
             "@type": "ListItem",
             "position": index + 1,
-            "url": a.getAttribute("href") || a.href,
+            "url": a.href,
             "name": a.textContent.trim()
           }))
         };
@@ -121,7 +125,7 @@ window.addEventListener("load", function () {
             "itemListElement": seriesLinks.map((a, index) => ({
               "@type": "ListItem",
               "position": index + 1,
-              "url": a.getAttribute("href") || a.href,
+              "url": a.href,
               "name": a.textContent.trim()
             }))
           };
@@ -130,7 +134,7 @@ window.addEventListener("load", function () {
           mainNode.mentions = seriesLinks.map((a) => ({
             "@type": "CreativeWorkSeries",
             "name": a.textContent.trim(),
-            "url": a.getAttribute("href") || a.href
+            "url": a.href
           }));
         }
       }
