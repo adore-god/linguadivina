@@ -88,24 +88,22 @@ window.addEventListener("load", function () {
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
     const currentUrl = window.location.href.split('#')[0].split('?')[0];
 
-    // --- TARGETING THE CORRECT NODE ---
+    // 1. Target the correct node by URL (Strictly avoiding the Bible source)
     const mainNode = nodes.find((n) => {
         const id = n["@id"] || "";
         const meId = (n.mainEntityOfPage && n.mainEntityOfPage["@id"]) || "";
-        // Match current URL but explicitly avoid the Bible source ID
         return (id.includes(currentUrl) || meId.includes(currentUrl)) && 
                id !== "https://linguadivina.uk/source/holy-bible";
     });
     
     if (!mainNode) return;
 
-    // --- 1. INJECT SERIES LIST (The one you need on Article Pages) ---
+    // 2. SERIES LIST (Related Articles)
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      // FIX: Only inject if links exist AND ensure we use the correct structure
       if (seriesLinks.length > 0) {
-        // Articles use 'hasPart' for structured lists
-        if (mainNode["@type"] === "BlogPosting") {
           mainNode.hasPart = {
             "@type": "ItemList",
             "name": "Related Series Articles",
@@ -116,18 +114,10 @@ window.addEventListener("load", function () {
               "name": a.textContent.trim()
             }))
           };
-        } else {
-          // Fallback for WebPage/Index
-          mainNode.mentions = seriesLinks.map((a) => ({
-            "@type": "CreativeWorkSeries",
-            "name": a.textContent.trim(),
-            "url": a.href
-          }));
-        }
       }
     }
 
-    // --- 2. INJECT LATEST ARTICLES (Index/Everywhere if exists) ---
+    // 3. LATEST UPDATES (Only if container exists)
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
