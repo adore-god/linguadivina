@@ -1,11 +1,7 @@
 (function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
-    
-    // Simple Index Check: If the path is empty, just a slash, or index.html
-    const path = window.location.pathname.replace(/\/$/, ""); 
-    const isIndexPage = path === "" || path === "/index.html";
-
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
@@ -92,20 +88,46 @@ window.addEventListener("load", function () {
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
     const currentUrl = window.location.href.split('#')[0].split('?')[0];
 
-    // FIND THE MAIN NODE BY URL MATCH ONLY (Skips the Bible source node)
+    // --- TARGETING THE CORRECT NODE ---
     const mainNode = nodes.find((n) => {
         const id = n["@id"] || "";
         const meId = (n.mainEntityOfPage && n.mainEntityOfPage["@id"]) || "";
-        return id.includes(currentUrl) || meId.includes(currentUrl);
+        // Match current URL but explicitly avoid the Bible source ID
+        return (id.includes(currentUrl) || meId.includes(currentUrl)) && 
+               id !== "https://linguadivina.uk/source/holy-bible";
     });
     
     if (!mainNode) return;
 
-    // RE-CHECK INDEX STATUS
-    const path = window.location.pathname.replace(/\/$/, "");
-    const isIndexPage = path === "" || path === "/index.html";
+    // --- 1. INJECT SERIES LIST (The one you need on Article Pages) ---
+    const seriesWrapper = document.getElementById("series-links-wrapper");
+    if (seriesWrapper) {
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      if (seriesLinks.length > 0) {
+        // Articles use 'hasPart' for structured lists
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } else {
+          // Fallback for WebPage/Index
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
+        }
+      }
+    }
 
-    // 1. ALWAYS INJECT LATEST ARTICLES (if the box exists)
+    // --- 2. INJECT LATEST ARTICLES (Index/Everywhere if exists) ---
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
@@ -120,26 +142,6 @@ window.addEventListener("load", function () {
             "name": a.textContent.trim()
           }))
         };
-      }
-    }
-
-    // 2. ONLY INJECT SERIES LIST IF IT'S THE INDEX PAGE
-    if (isIndexPage) {
-      const seriesWrapper = document.getElementById("series-links-wrapper");
-      if (seriesWrapper) {
-        const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-        if (seriesLinks.length > 0) {
-          mainNode.hasPart = {
-            "@type": "ItemList",
-            "name": "Related Series Articles",
-            "itemListElement": seriesLinks.map((a, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "url": a.href,
-              "name": a.textContent.trim()
-            }))
-          };
-        }
       }
     }
 
