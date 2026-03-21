@@ -1,19 +1,22 @@
 (function seriesAndSchemaManager() {
+    // Prevent the script from running twice
+    if (window.schemaManagerRan) return;
+    window.schemaManagerRan = true;
+
     const map = window.labelMap;
     const labelContainer = document.querySelector('.label-links');
-    
-    // 1. STRICT PAGE DETECTION
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    
+    // 1. DOM PLACEMENT LOGIC
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
-    // If critical elements aren't there, wait and retry
     if (!map || !target) {
         setTimeout(seriesAndSchemaManager, 200);
         return;
     }
 
-    // 2. DOM GENERATION (Only if labelContainer exists)
+    // Only build the "More Reading" list if we are on an article or the index has labels
     if (labelContainer) {
         const currentPage = window.location.href;
         const matchedScrollUrls = [];
@@ -38,7 +41,7 @@
                 for (let articlePath in map) {
                     if (articlePath === currentPage || articlePath.includes(window.location.pathname) && window.location.pathname !== "/") continue;
                     const entry = map[articlePath];
-                    if (entry && entry.title) {
+                    if (entry && entry.title && entry.title.trim() !== "") {
                         const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
                         if (seriesList.includes(scrollUrl)) {
                             groupEntries.push([articlePath, entry.title.trim()]);
@@ -77,7 +80,7 @@
         }
     }
 
-    // 3. SEPARATED SCHEMA INJECTION
+    // 2. SCHEMA RECONSTRUCTION (The fix for the blank data)
     setTimeout(function() {
         const schemaScript = document.querySelector('script[type="application/ld+json"]');
         if (!schemaScript) return;
@@ -89,17 +92,22 @@
 
         if (!graphObj["@graph"]) return;
 
-        // Find the main node and ignore the Bible
+        // TARGETING: We only want the BlogPosting (Article) or the main WebPage (Home)
+        // We EXPLICITLY ignore anything with "holy-bible" in the ID
         const mainNode = graphObj["@graph"].find(n => 
             (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-            n["@id"] !== "https://linguadivina.uk/source/holy-bible"
+            (!n["@id"] || !n["@id"].includes("holy-bible"))
         );
 
         if (!mainNode) return;
 
-        // --- THE "EITHER/OR" GATE ---
+        // CRITICAL: Wipe out any accidental injections before starting
+        delete mainNode.hasPart;
+        delete mainNode.mentions;
+        delete mainNode.mainEntity;
+
         if (isIndexPage) {
-            // ONLY RUN INDEX LOGIC
+            // INDEX PAGE ONLY: Inject "Latest Articles"
             const postsContainer = document.querySelector('.latest-posts, #latest-posts');
             if (postsContainer) {
                 const links = Array.from(postsContainer.querySelectorAll("a")).filter(a => a.innerText.trim().length > 0);
@@ -114,12 +122,11 @@
                 }
             }
         } else {
-            // ONLY RUN ARTICLE LOGIC
+            // ARTICLE PAGE ONLY: Inject "Related Series"
             const seriesWrapper = document.getElementById("series-links-wrapper");
             if (seriesWrapper) {
                 const sLinks = Array.from(seriesWrapper.querySelectorAll("a")).filter(a => a.innerText.trim().length > 0);
                 if (sLinks.length > 0) {
-                    // Use hasPart for Articles
                     mainNode.hasPart = {
                         "@type": "ItemList",
                         "name": "Related Series Articles",
@@ -131,10 +138,9 @@
             }
         }
 
-        // 4. THE CLEANUP FILTER
-        // This removes any accidental empty objects or "nulls" from the graph array
-        graphObj["@graph"] = graphObj["@graph"].filter(n => n && typeof n === 'object' && Object.keys(n).length > 2);
+        // FINAL POLISH: Filter the graph to remove any empty objects that shouldn't be there
+        graphObj["@graph"] = graphObj["@graph"].filter(n => n && Object.keys(n).length > 2);
 
         schemaScript.textContent = JSON.stringify(graphObj, null, 2);
-    }, 2000);
+    }, 1500);
 })();
