@@ -3,7 +3,8 @@
     const map = window.labelMap;
     
     // --- DETERMINING TARGET BASED ON PAGE ---
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
+    // Checks if the path is empty or just "/"
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
@@ -92,19 +93,9 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    
-    // --- BIBLE EXCLUSION FIX ---
-    // Specifically ignore the Bible node so lists don't end up inside it
-    const mainNode = nodes.find((n) => 
-        (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-        n["@id"] !== "https://linguadivina.uk/source/holy-bible"
-    );
-    
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
-
-    // 1. LATEST UPDATED ARTICLES (Injects wherever #latest-posts is found)
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
@@ -122,9 +113,8 @@ window.addEventListener("load", function () {
       }
     }
 
-    // 2. RELATED SERIES ARTICLES (Injects ONLY on the Index Page)
     const seriesWrapper = document.getElementById("series-links-wrapper");
-    if (seriesWrapper && isIndexPage) {
+    if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
       
       if (seriesLinks.length) {
