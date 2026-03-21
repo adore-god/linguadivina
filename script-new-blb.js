@@ -74,7 +74,7 @@ span.className = "bibleref";
 span.style.cssText = "cursor:help; border-bottom:1px dotted #888; text-decoration:none; font-style:normal;";
 span.setAttribute("itemscope", "");
 span.setAttribute("itemtype", "https://schema.org/CreativeWork");
-span.setAttribute("itemid", "https://god.thway.uk/source/holy-bible");
+span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
 
 
         span.dataset.book = match[1];

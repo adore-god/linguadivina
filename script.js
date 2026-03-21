@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
 
   // 1. Home
-  breadcrumb.appendChild(createCrumb('https://god.thway.uk/', 'Home'));
+  breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
   addSeparator();
 
   // 2. Genesis Foundational Principles
@@ -227,9 +227,9 @@ document.addEventListener("DOMContentLoaded", function () {
         footer.insertAdjacentHTML(
             "afterend",
             '<div id="Verse-Link-Container" style="position:relative; z-index:9999;">' +
-                '<a id="translator-link" href="https://god.thway.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="688" height="384" class="key-icon" alt="Logo" src="../images/icons/bible-key-lingua-divina-logo.webp"></a>' +
+                '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="688" height="384" class="key-icon" alt="Logo" src="../images/icons/bible-key-lingua-divina-logo.webp"></a>' +
                 '<div id="VerseLinkBox">' +
-                    '<a id="translator-link" href="https://god.thway.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:10000;">Bible Passage And Verse Translator</a>' +
+                    '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:10000;">Bible Passage And Verse Translator</a>' +
                 '</div>' +
             '</div>'
         );

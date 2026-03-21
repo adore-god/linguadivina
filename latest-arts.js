@@ -3,7 +3,7 @@ async function loadLatestPosts() {
     const container = document.getElementById('latest-posts');
 
     try {
-        const response = await fetch('https://god.thway.uk/sitemap_latest.xml');
+        const response = await fetch('https://linguadivina.uk/sitemap_latest.xml');
         const text = await response.text();
 
         const parser = new DOMParser();
