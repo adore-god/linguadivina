@@ -1,140 +1,115 @@
-(function waitForLabels() {
-    const labelContainer = document.querySelector('.label-links');
-    const map = window.labelMap;
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
-    const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
-    const target = document.querySelector(targetSelector);
+(function() {
+    // 1. UI INJECTION (The "More Reading" section on the page)
+    function runUI() {
+        const labelContainer = document.querySelector('.label-links');
+        const map = window.labelMap;
+        if (!labelContainer || !map) return;
 
-    if (!labelContainer || !map || !target) {
-        setTimeout(waitForLabels, 100);
-        return;
-    }
+        const isIndex = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
+        const target = isIndex ? document.querySelector('.latest-posts') : document.querySelector('.share-dropdown');
+        if (!target) return;
 
-    const currentPage = window.location.href;
-    const allLinks = labelContainer.querySelectorAll("a");
-    const matchedScrollUrls = [];
-
-    allLinks.forEach(link => {
-        const linkSlug = link.href.split("/").pop();
-        for (let path in map) {
-            const seriesList = map[path].series;
-            if (Array.isArray(seriesList)) {
-                seriesList.forEach(s => {
-                    if (s.split("/").pop() === linkSlug && !matchedScrollUrls.includes(s)) {
-                        matchedScrollUrls.push(s);
-                    }
+        const currentPage = window.location.href;
+        const matchedScrollUrls = [];
+        labelContainer.querySelectorAll("a").forEach(link => {
+            const linkSlug = link.href.split("/").pop();
+            for (let path in map) {
+                const series = Array.isArray(map[path].series) ? map[path].series : [map[path].series];
+                series.forEach(s => {
+                    if (s.split("/").pop() === linkSlug && !matchedScrollUrls.includes(s)) matchedScrollUrls.push(s);
                 });
             }
-        }
-    });
+        });
 
-    if (matchedScrollUrls.length === 0) return;
+        const groups = matchedScrollUrls.map(scrollUrl => {
+            const entries = Object.entries(map)
+                .filter(([path, entry]) => path !== currentPage && (Array.isArray(entry.series) ? entry.series : [entry.series]).includes(scrollUrl))
+                .map(([path, entry]) => ({ path, title: entry.title }))
+                .sort((a, b) => a.title.localeCompare(b.title));
+            return entries;
+        }).flat().filter((v, i, a) => a.findIndex(t => t.path === v.path) === i); // Unique entries
 
-    const groups = [];
-    matchedScrollUrls.forEach(scrollUrl => {
-        const groupEntries = [];
-        for (let articlePath in map) {
-            if (articlePath === currentPage) continue;
-            const entry = map[articlePath];
-            const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
-            if (seriesList.includes(scrollUrl)) {
-                groupEntries.push([articlePath, entry.title]);
+        if (groups.length === 0) return;
+
+        const wrapper = document.createElement("div");
+        wrapper.id = "series-links-wrapper";
+        wrapper.innerHTML = `<div class="series-links-title"><h2>More Reading</h2></div>`;
+        groups.forEach(entry => {
+            const div = document.createElement("div");
+            div.innerHTML = `<a href="${entry.path}">${entry.title}</a>`;
+            wrapper.appendChild(div);
+        });
+        target.after(wrapper);
+    }
+
+    // 2. SCHEMA INJECTION
+    function runSchema() {
+        const schemaScript = document.querySelector('script[type="application/ld+json"]');
+        if (!schemaScript) return;
+
+        let graph;
+        try { graph = JSON.parse(schemaScript.textContent); } catch (e) { return; }
+
+        const nodes = graph["@graph"] || [graph];
+        
+        // TARGET ONLY THE ACTUAL ARTICLE OR INDEX PAGE
+        // We explicitly skip the Bible node by checking for its specific ID or Author
+        const mainNode = nodes.find(n => 
+            (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
+            n["@id"] !== "https://linguadivina.uk/source/holy-bible" &&
+            n.name !== "The Holy Bible"
+        );
+
+        if (!mainNode) return;
+
+        // A. Handle "Latest Updates" (On any page where the list exists)
+        const postsBox = document.getElementById("latest-posts");
+        if (postsBox) {
+            const links = Array.from(postsBox.querySelectorAll("a")).filter(a => a.textContent.trim() !== "");
+            if (links.length > 0) {
+                mainNode.mainEntity = {
+                    "@type": "ItemList",
+                    "name": "Latest Updated Articles",
+                    "itemListElement": links.map((a, i) => ({
+                        "@type": "ListItem",
+                        "position": i + 1,
+                        "url": a.href,
+                        "name": a.textContent.trim()
+                    }))
+                };
             }
         }
-        if (groupEntries.length === 0) return;
-        groupEntries.sort((a, b) => a[1].localeCompare(b[1]));
-        groups.push({ scrollUrl, entries: groupEntries });
-    });
 
-    if (groups.length === 0) return;
+        // B. Handle "Series Links" (The More Reading List)
+        const seriesBox = document.getElementById("series-links-wrapper");
+        if (seriesBox) {
+            const links = Array.from(seriesBox.querySelectorAll("a")).filter(a => a.textContent.trim() !== "");
+            if (links.length > 0) {
+                // We use 'relatedLink' as it's cleaner for BlogPosting lists
+                mainNode.hasPart = {
+                    "@type": "ItemList",
+                    "name": "Related Series Articles",
+                    "itemListElement": links.map((a, i) => ({
+                        "@type": "ListItem",
+                        "position": i + 1,
+                        "url": a.href,
+                        "name": a.textContent.trim()
+                    }))
+                };
+            }
+        }
 
-    const titleContainer = document.createElement("div");
-    titleContainer.className = "series-links-title";
-    const h2Title = document.createElement("h2");
-    h2Title.textContent = "More Reading";
-    titleContainer.appendChild(h2Title);
+        schemaScript.textContent = JSON.stringify(graph, null, 2);
+    }
 
-    const container = document.createElement("div");
-    container.id = "series-links-wrapper";
-
-    groups.forEach(group => {
-        group.entries.forEach(([path, linkTitle]) => {
-            const a = document.createElement("a");
-            a.href = path;
-            a.textContent = linkTitle;
-            const div = document.createElement("div");
-            div.appendChild(a);
-            container.appendChild(div);
+    // Run UI immediately, wait for Schema
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', () => {
+            runUI();
+            setTimeout(runSchema, 2000);
         });
-        const divider = document.createElement("div");
-        divider.className = "series-group-divider";
-        container.appendChild(divider);
-    });
-
-    target.after(titleContainer);       
-    titleContainer.after(container);    
+    } else {
+        runUI();
+        setTimeout(runSchema, 2000);
+    }
 })();
-
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    const schemaScript = document.querySelector('script[type="application/ld+json"]');
-    if (!schemaScript) return;
-
-    let graph;
-    try {
-      graph = JSON.parse(schemaScript.textContent);
-    } catch (e) { return; }
-
-    const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    const currentUrl = window.location.href.split('#')[0].split('?')[0];
-
-    // 1. Target the correct node by URL (Strictly avoiding the Bible source)
-    const mainNode = nodes.find((n) => {
-        const id = n["@id"] || "";
-        const meId = (n.mainEntityOfPage && n.mainEntityOfPage["@id"]) || "";
-        return (id.includes(currentUrl) || meId.includes(currentUrl)) && 
-               id !== "https://linguadivina.uk/source/holy-bible";
-    });
-    
-    if (!mainNode) return;
-
-    // 2. SERIES LIST (Related Articles)
-    const seriesWrapper = document.getElementById("series-links-wrapper");
-    if (seriesWrapper) {
-      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-      // FIX: Only inject if links exist AND ensure we use the correct structure
-      if (seriesLinks.length > 0) {
-          mainNode.hasPart = {
-            "@type": "ItemList",
-            "name": "Related Series Articles",
-            "itemListElement": seriesLinks.map((a, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "url": a.href,
-              "name": a.textContent.trim()
-            }))
-          };
-      }
-    }
-
-    // 3. LATEST UPDATES (Only if container exists)
-    const postsContainer = document.getElementById("latest-posts");
-    if (postsContainer) {
-      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-      if (postLinks.length > 0) {
-        mainNode.mainEntity = {
-          "@type": "ItemList",
-          "name": "Latest Updated Articles",
-          "itemListElement": postLinks.map((a, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "url": a.href,
-            "name": a.textContent.trim()
-          }))
-        };
-      }
-    }
-
-    schemaScript.textContent = JSON.stringify(graph, null, 2);
-  }, 2000);
-});
