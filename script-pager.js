@@ -141,5 +141,5 @@ window.addEventListener("load", function () {
     }
 
     schemaScript.textContent = JSON.stringify(graph, null, 2);
-  }, 3000);
+  }, 2000);
 });
