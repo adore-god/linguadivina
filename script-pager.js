@@ -1,12 +1,7 @@
 (function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
-    
-    // --- DETERMINING TARGET BASED ON PAGE ---
-    // Checks if the path is empty or just "/"
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
-    const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
-    const target = document.querySelector(targetSelector);
+    const target = document.querySelector('.share-dropdown');
 
     if (!labelContainer || !map || !target) {
         setTimeout(waitForLabels, 100);
@@ -51,15 +46,15 @@
 
     if (groups.length === 0) return;
 
-    // --- TITLE SECTION ---
+    // --- UPDATED TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
     
     const h2Title = document.createElement("h2");
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
+    // -----------------------------
 
-    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
@@ -77,9 +72,9 @@
         container.appendChild(divider);
     });
 
-    // --- PLACEMENT ---
-    target.after(titleContainer);       
-    titleContainer.after(container);    
+    // We use titleContainer now instead of 'title'
+    target.before(titleContainer);
+    target.before(container);
 })();
 
 window.addEventListener("load", function () {
