@@ -90,34 +90,31 @@ window.addEventListener("load", function () {
     const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    // --- STRONGER PAGE CHECK ---
+    // --- REVISED STRICT LOGIC ---
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
+    const postsContainer = document.getElementById("latest-posts");
+    // Only attempt to find links if the container exists
+    const postLinks = postsContainer ? Array.from(postsContainer.querySelectorAll("a")) : [];
 
-    if (isIndexPage) {
-      // ONLY run this on Index Page
-      const postsContainer = document.getElementById("latest-posts");
-      if (postsContainer) {
-        const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-        if (postLinks.length > 0) {
-          mainNode.mainEntity = {
-            "@type": "ItemList",
-            "name": "Latest Updated Articles",
-            "itemListElement": postLinks.map((a, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "url": a.href,
-              "name": a.textContent.trim()
-            }))
-          };
-        }
-      }
+    // VALIDATION: We only inject if we are on index AND we actually found links
+    if (isIndexPage && postLinks.length > 0) {
+      mainNode.mainEntity = {
+        "@type": "ItemList",
+        "name": "Latest Updated Articles",
+        "itemListElement": postLinks.map((a, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "url": a.href,
+          "name": a.textContent.trim()
+        }))
+      };
     } else {
-      // ON ARTICLE PAGES: Explicitly remove mainEntity if it exists 
-      // This prevents the "blanks" you saw in the Google test.
+      // If we aren't on the index page, OR if the container is empty, 
+      // we MUST remove the mainEntity to prevent Google errors.
       delete mainNode.mainEntity;
     }
 
-    // --- SERIES LINKS (Always runs if the wrapper exists) ---
+    // --- SERIES LINKS ---
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
