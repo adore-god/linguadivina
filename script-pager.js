@@ -1,8 +1,9 @@
-
 (function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
-
+    
+    // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
@@ -12,19 +13,14 @@
         return;
     }
 
-    function toPath(url) {
-        try { return new URL(url).pathname; }
-        catch { return url; }
-    }
-
-    const currentPath = window.location.pathname;
+    const currentPage = window.location.href;
     const allLinks = labelContainer.querySelectorAll("a");
     const matchedScrollUrls = [];
 
     allLinks.forEach(link => {
         const linkSlug = link.href.split("/").pop();
-        for (let articlePath in map) {
-            const seriesList = map[articlePath].series;
+        for (let path in map) {
+            const seriesList = map[path].series;
             if (Array.isArray(seriesList)) {
                 seriesList.forEach(s => {
                     if (s.split("/").pop() === linkSlug && !matchedScrollUrls.includes(s)) {
@@ -41,10 +37,10 @@
     matchedScrollUrls.forEach(scrollUrl => {
         const groupEntries = [];
         for (let articlePath in map) {
-            if (toPath(articlePath) === currentPath) continue;
+            if (articlePath === currentPage) continue;
             const entry = map[articlePath];
             const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
-            if (seriesList.some(s => toPath(s) === toPath(scrollUrl))) {
+            if (seriesList.includes(scrollUrl)) {
                 groupEntries.push([articlePath, entry.title]);
             }
         }
@@ -55,12 +51,15 @@
 
     if (groups.length === 0) return;
 
+    // --- TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
+    
     const h2Title = document.createElement("h2");
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
 
+    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
@@ -78,76 +77,69 @@
         container.appendChild(divider);
     });
 
-    target.after(titleContainer);
-    titleContainer.after(container);
-
-    // ---- Schema update fires HERE, after links are fully built ----
-    updateSchema(container);
+    // --- PLACEMENT ---
+    target.after(titleContainer);       
+    titleContainer.after(container);    
 })();
 
-function updateSchema(seriesWrapper) {
+window.addEventListener("load", function () {
+  setTimeout(function () {
     const schemaScript = document.querySelector('script[type="application/ld+json"]');
     if (!schemaScript) return;
 
     let graph;
     try {
-        graph = JSON.parse(schemaScript.textContent);
+      graph = JSON.parse(schemaScript.textContent);
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    const mainNode = nodes.find(n =>
-        n["@type"] === "BlogPosting" ||
-        n["@type"] === "Article" ||
-        n["@type"] === "WebPage"
-    );
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
-        const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-        if (postLinks.length) {
-            mainNode.mainEntity = {
-                "@type": "ItemList",
-                "name": "Latest Updated Articles",
-                "itemListElement": postLinks.map((a, index) => ({
-                    "@type": "ListItem",
-                    "position": index + 1,
-                    "url": a.href,
-                    "name": a.textContent.trim()
-                }))
-            };
-        }
+      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+      if (postLinks.length) {
+        mainNode.mainEntity = {
+          "@type": "ItemList",
+          "name": "Latest Updated Articles",
+          "itemListElement": postLinks.map((a, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": a.href,
+            "name": a.textContent.trim()
+          }))
+        };
+      }
     }
 
+    const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
-        const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-        if (seriesLinks.length) {
-            if (mainNode["@type"] === "BlogPosting" || mainNode["@type"] === "Article") {
-                mainNode.hasPart = {
-                    "@type": "ItemList",
-                    "name": "Related Series Articles",
-                    "itemListElement": seriesLinks.map((a, index) => ({
-                        "@type": "ListItem",
-                        "position": index + 1,
-                        "url": a.href,
-                        "name": a.textContent.trim()
-                    }))
-                };
-            } else {
-                mainNode.mentions = seriesLinks.map(a => ({
-                    "@type": "CreativeWorkSeries",
-                    "name": a.textContent.trim(),
-                    "url": a.href
-                }));
-            }
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      
+      if (seriesLinks.length) {
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } 
+        else {
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
         }
+      }
     }
 
     schemaScript.textContent = JSON.stringify(graph, null, 2);
-}
-
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        updateSchema(null);
-    }, 2000);
+  }, 2000);
 });
