@@ -2,7 +2,6 @@
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
     
-    // --- DETERMINING TARGET BASED ON PAGE ---
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
@@ -50,15 +49,12 @@
 
     if (groups.length === 0) return;
 
-    // --- TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
-    
     const h2Title = document.createElement("h2");
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
 
-    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
@@ -76,13 +72,15 @@
         container.appendChild(divider);
     });
 
-    // --- PLACEMENT (Restored to your original placement) ---
     target.after(titleContainer);       
     titleContainer.after(container);    
 })();
 
 window.addEventListener("load", function () {
   setTimeout(function () {
+    // 1. Determine exactly where we are
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    
     const schemaScript = document.querySelector('script[type="application/ld+json"]');
     if (!schemaScript) return;
 
@@ -92,56 +90,52 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    
-    // FIX: We now look for the node that matches the CURRENT URL.
-    // This prevents it from messing with the "Holy Bible" citation node.
-    const mainNode = nodes.find((n) => 
-        (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-        (n.mainEntityOfPage?.["@id"] === window.location.href || n["@id"] === window.location.href)
-    );
-
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    const postsContainer = document.getElementById("latest-posts");
-    if (postsContainer) {
-      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-      if (postLinks.length) {
-        mainNode.mainEntity = {
-          "@type": "ItemList",
-          "name": "Latest Updated Articles",
-          "itemListElement": postLinks.map((a, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "url": a.href,
-            "name": a.textContent.trim()
-          }))
-        };
-      }
-    }
-
-    const seriesWrapper = document.getElementById("series-links-wrapper");
-    if (seriesWrapper) {
-      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-      
-      if (seriesLinks.length) {
-        if (mainNode["@type"] === "BlogPosting") {
-          mainNode.hasPart = {
+    // 2. ONLY inject Latest Posts if we are on the Index Page
+    if (isIndexPage) {
+      const postsContainer = document.getElementById("latest-posts");
+      if (postsContainer) {
+        const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+        if (postLinks.length) {
+          mainNode.mainEntity = {
             "@type": "ItemList",
-            "name": "Related Series Articles",
-            "itemListElement": seriesLinks.map((a, index) => ({
+            "name": "Latest Updated Articles",
+            "itemListElement": postLinks.map((a, index) => ({
               "@type": "ListItem",
               "position": index + 1,
               "url": a.href,
               "name": a.textContent.trim()
             }))
           };
-        } 
-        else {
-          mainNode.mentions = seriesLinks.map((a) => ({
-            "@type": "CreativeWorkSeries",
-            "name": a.textContent.trim(),
-            "url": a.href
-          }));
+        }
+      }
+    } 
+    // 3. ONLY inject Series Links if we are NOT on the Index Page
+    else {
+      const seriesWrapper = document.getElementById("series-links-wrapper");
+      if (seriesWrapper) {
+        const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+        if (seriesLinks.length) {
+          if (mainNode["@type"] === "BlogPosting") {
+            mainNode.hasPart = {
+              "@type": "ItemList",
+              "name": "Related Series Articles",
+              "itemListElement": seriesLinks.map((a, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": a.href,
+                "name": a.textContent.trim()
+              }))
+            };
+          } else {
+            mainNode.mentions = seriesLinks.map((a) => ({
+              "@type": "CreativeWorkSeries",
+              "name": a.textContent.trim(),
+              "url": a.href
+            }));
+          }
         }
       }
     }
