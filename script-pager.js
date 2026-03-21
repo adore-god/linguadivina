@@ -3,8 +3,7 @@
     const map = window.labelMap;
     
     // --- DETERMINING TARGET BASED ON PAGE ---
-    // Checks if the path is empty or just "/"
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
@@ -96,10 +95,13 @@ window.addEventListener("load", function () {
     const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
+    // --- LOGIC FOR INDEX PAGE ONLY (Latest Posts) ---
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname === "";
     const postsContainer = document.getElementById("latest-posts");
-    if (postsContainer) {
+
+    if (isIndexPage && postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-      if (postLinks.length) {
+      if (postLinks.length > 0) {
         mainNode.mainEntity = {
           "@type": "ItemList",
           "name": "Latest Updated Articles",
@@ -113,11 +115,12 @@ window.addEventListener("load", function () {
       }
     }
 
+    // --- LOGIC FOR SERIES LINKS (Works on both Index and Articles) ---
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
       
-      if (seriesLinks.length) {
+      if (seriesLinks.length > 0) {
         if (mainNode["@type"] === "BlogPosting") {
           mainNode.hasPart = {
             "@type": "ItemList",
