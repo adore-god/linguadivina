@@ -49,6 +49,7 @@
 
     if (groups.length === 0) return;
 
+    // --- STEP 1: GENERATE THE VISUAL LIST ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
     const h2Title = document.createElement("h2");
@@ -56,7 +57,7 @@
     titleContainer.appendChild(h2Title);
 
     const container = document.createElement("div");
-    container.id = "series-links-wrapper";
+    container.id = "series-links-wrapper"; // THIS IS THE ID THE SCHEMA SCRIPT LOOKS FOR
 
     groups.forEach(group => {
         group.entries.forEach(([path, linkTitle]) => {
@@ -78,9 +79,7 @@
 
 window.addEventListener("load", function () {
   setTimeout(function () {
-    // 1. Determine exactly where we are
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
-    
     const schemaScript = document.querySelector('script[type="application/ld+json"]');
     if (!schemaScript) return;
 
@@ -90,10 +89,37 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
+    
+    // ENSURE we only touch the node matching the current URL
+    // This protects the Bible citation node (https://linguadivina.uk/source/holy-bible)
+    const mainNode = nodes.find((n) => 
+        (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
+        (n.mainEntityOfPage?.["@id"] === window.location.href || n["@id"] === window.location.href)
+    );
+
     if (!mainNode) return;
 
-    // 2. ONLY inject Latest Posts if we are on the Index Page
+    // --- STEP 2: INJECT SCHEMA BASED ON WHAT WAS GENERATED ---
+
+    // 1. Series Links Injection (Works on Index and Articles)
+    const seriesWrapper = document.getElementById("series-links-wrapper");
+    if (seriesWrapper) {
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      if (seriesLinks.length) {
+        mainNode.hasPart = {
+          "@type": "ItemList",
+          "name": "Related Series Articles",
+          "itemListElement": seriesLinks.map((a, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": a.href,
+            "name": a.textContent.trim()
+          }))
+        };
+      }
+    }
+
+    // 2. Latest Posts Injection (ONLY if on Index Page)
     if (isIndexPage) {
       const postsContainer = document.getElementById("latest-posts");
       if (postsContainer) {
@@ -109,33 +135,6 @@ window.addEventListener("load", function () {
               "name": a.textContent.trim()
             }))
           };
-        }
-      }
-    } 
-    // 3. ONLY inject Series Links if we are NOT on the Index Page
-    else {
-      const seriesWrapper = document.getElementById("series-links-wrapper");
-      if (seriesWrapper) {
-        const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-        if (seriesLinks.length) {
-          if (mainNode["@type"] === "BlogPosting") {
-            mainNode.hasPart = {
-              "@type": "ItemList",
-              "name": "Related Series Articles",
-              "itemListElement": seriesLinks.map((a, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "url": a.href,
-                "name": a.textContent.trim()
-              }))
-            };
-          } else {
-            mainNode.mentions = seriesLinks.map((a) => ({
-              "@type": "CreativeWorkSeries",
-              "name": a.textContent.trim(),
-              "url": a.href
-            }));
-          }
         }
       }
     }
