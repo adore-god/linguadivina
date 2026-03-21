@@ -1,146 +1,145 @@
-(function seriesAndSchemaManager() {
-    // Prevent the script from running twice
-    if (window.schemaManagerRan) return;
-    window.schemaManagerRan = true;
-
-    const map = window.labelMap;
+(function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
-    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    const map = window.labelMap;
     
-    // 1. DOM PLACEMENT LOGIC
+    // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
-    if (!map || !target) {
-        setTimeout(seriesAndSchemaManager, 200);
+    if (!labelContainer || !map || !target) {
+        setTimeout(waitForLabels, 100);
         return;
     }
 
-    // Only build the "More Reading" list if we are on an article or the index has labels
-    if (labelContainer) {
-        const currentPage = window.location.href;
-        const matchedScrollUrls = [];
-        const allLinks = labelContainer.querySelectorAll("a");
+    const currentPage = window.location.href;
+    const allLinks = labelContainer.querySelectorAll("a");
+    const matchedScrollUrls = [];
 
-        allLinks.forEach(link => {
-            const linkSlug = link.href.split("/").pop();
-            for (let path in map) {
-                const seriesList = Array.isArray(map[path].series) ? map[path].series : [map[path].series];
+    allLinks.forEach(link => {
+        const linkSlug = link.href.split("/").pop();
+        for (let path in map) {
+            const seriesList = map[path].series;
+            if (Array.isArray(seriesList)) {
                 seriesList.forEach(s => {
-                    if (s && s.split("/").pop() === linkSlug && !matchedScrollUrls.includes(s)) {
+                    if (s.split("/").pop() === linkSlug && !matchedScrollUrls.includes(s)) {
                         matchedScrollUrls.push(s);
                     }
                 });
             }
-        });
+        }
+    });
 
-        if (matchedScrollUrls.length > 0) {
-            const groups = [];
-            matchedScrollUrls.forEach(scrollUrl => {
-                const groupEntries = [];
-                for (let articlePath in map) {
-                    if (articlePath === currentPage || articlePath.includes(window.location.pathname) && window.location.pathname !== "/") continue;
-                    const entry = map[articlePath];
-                    if (entry && entry.title && entry.title.trim() !== "") {
-                        const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
-                        if (seriesList.includes(scrollUrl)) {
-                            groupEntries.push([articlePath, entry.title.trim()]);
-                        }
-                    }
-                }
-                if (groupEntries.length > 0) {
-                    groupEntries.sort((a, b) => a[1].localeCompare(b[1]));
-                    groups.push({ scrollUrl, entries: groupEntries });
-                }
-            });
+    if (matchedScrollUrls.length === 0) return;
 
-            if (groups.length > 0) {
-                const titleContainer = document.createElement("div");
-                titleContainer.className = "series-links-title";
-                titleContainer.innerHTML = "<h2>More Reading</h2>";
-                const container = document.createElement("div");
-                container.id = "series-links-wrapper";
-
-                groups.forEach(group => {
-                    group.entries.forEach(([path, linkTitle]) => {
-                        const div = document.createElement("div");
-                        const a = document.createElement("a");
-                        a.href = path;
-                        a.textContent = linkTitle;
-                        div.appendChild(a);
-                        container.appendChild(div);
-                    });
-                    const divider = document.createElement("div");
-                    divider.className = "series-group-divider";
-                    container.appendChild(divider);
-                });
-                target.after(titleContainer);       
-                titleContainer.after(container);
+    const groups = [];
+    matchedScrollUrls.forEach(scrollUrl => {
+        const groupEntries = [];
+        for (let articlePath in map) {
+            if (articlePath === currentPage) continue;
+            const entry = map[articlePath];
+            const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
+            if (seriesList.includes(scrollUrl)) {
+                groupEntries.push([articlePath, entry.title]);
             }
         }
+        if (groupEntries.length === 0) return;
+        groupEntries.sort((a, b) => a[1].localeCompare(b[1]));
+        groups.push({ scrollUrl, entries: groupEntries });
+    });
+
+    if (groups.length === 0) return;
+
+    // --- TITLE SECTION ---
+    const titleContainer = document.createElement("div");
+    titleContainer.className = "series-links-title";
+    
+    const h2Title = document.createElement("h2");
+    h2Title.textContent = "More Reading";
+    titleContainer.appendChild(h2Title);
+
+    // --- LINKS CONTAINER ---
+    const container = document.createElement("div");
+    container.id = "series-links-wrapper";
+
+    groups.forEach(group => {
+        group.entries.forEach(([path, linkTitle]) => {
+            const a = document.createElement("a");
+            a.href = path;
+            a.textContent = linkTitle;
+            const div = document.createElement("div");
+            div.appendChild(a);
+            container.appendChild(div);
+        });
+        const divider = document.createElement("div");
+        divider.className = "series-group-divider";
+        container.appendChild(divider);
+    });
+
+    // --- PLACEMENT ---
+    target.after(titleContainer);       
+    titleContainer.after(container);    
+})();
+
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (!schemaScript) return;
+
+    let graph;
+    try {
+      graph = JSON.parse(schemaScript.textContent);
+    } catch (e) { return; }
+
+    const nodes = graph["@graph"] ? graph["@graph"] : [graph];
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
+    if (!mainNode) return;
+
+    const postsContainer = document.getElementById("latest-posts");
+    if (postsContainer) {
+      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+      if (postLinks.length) {
+        mainNode.mainEntity = {
+          "@type": "ItemList",
+          "name": "Latest Updated Articles",
+          "itemListElement": postLinks.map((a, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": a.href,
+            "name": a.textContent.trim()
+          }))
+        };
+      }
     }
 
-    // 2. SCHEMA RECONSTRUCTION (The fix for the blank data)
-    setTimeout(function() {
-        const schemaScript = document.querySelector('script[type="application/ld+json"]');
-        if (!schemaScript) return;
-
-        let graphObj;
-        try {
-            graphObj = JSON.parse(schemaScript.textContent);
-        } catch (e) { return; }
-
-        if (!graphObj["@graph"]) return;
-
-        // TARGETING: We only want the BlogPosting (Article) or the main WebPage (Home)
-        // We EXPLICITLY ignore anything with "holy-bible" in the ID
-        const mainNode = graphObj["@graph"].find(n => 
-            (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-            (!n["@id"] || !n["@id"].includes("holy-bible"))
-        );
-
-        if (!mainNode) return;
-
-        // CRITICAL: Wipe out any accidental injections before starting
-        delete mainNode.hasPart;
-        delete mainNode.mentions;
-        delete mainNode.mainEntity;
-
-        if (isIndexPage) {
-            // INDEX PAGE ONLY: Inject "Latest Articles"
-            const postsContainer = document.querySelector('.latest-posts, #latest-posts');
-            if (postsContainer) {
-                const links = Array.from(postsContainer.querySelectorAll("a")).filter(a => a.innerText.trim().length > 0);
-                if (links.length > 0) {
-                    mainNode.mainEntity = {
-                        "@type": "ItemList",
-                        "name": "Latest Updated Articles",
-                        "itemListElement": links.map((a, i) => ({
-                            "@type": "ListItem", "position": i + 1, "url": a.href, "name": a.innerText.trim()
-                        }))
-                    };
-                }
-            }
-        } else {
-            // ARTICLE PAGE ONLY: Inject "Related Series"
-            const seriesWrapper = document.getElementById("series-links-wrapper");
-            if (seriesWrapper) {
-                const sLinks = Array.from(seriesWrapper.querySelectorAll("a")).filter(a => a.innerText.trim().length > 0);
-                if (sLinks.length > 0) {
-                    mainNode.hasPart = {
-                        "@type": "ItemList",
-                        "name": "Related Series Articles",
-                        "itemListElement": sLinks.map((a, i) => ({
-                            "@type": "ListItem", "position": i + 1, "url": a.href, "name": a.innerText.trim()
-                        }))
-                    };
-                }
-            }
+    const seriesWrapper = document.getElementById("series-links-wrapper");
+    if (seriesWrapper) {
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      
+      if (seriesLinks.length) {
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } 
+        else {
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
         }
+      }
+    }
 
-        // FINAL POLISH: Filter the graph to remove any empty objects that shouldn't be there
-        graphObj["@graph"] = graphObj["@graph"].filter(n => n && Object.keys(n).length > 2);
-
-        schemaScript.textContent = JSON.stringify(graphObj, null, 2);
-    }, 1500);
-})();
+    schemaScript.textContent = JSON.stringify(graph, null, 2);
+  }, 2000);
+});
