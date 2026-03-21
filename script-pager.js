@@ -2,8 +2,11 @@
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
     
-    // We only care about the article placement here
-    const target = document.querySelector('.share-dropdown');
+    // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
+    const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
         setTimeout(waitForLabels, 100);
@@ -48,13 +51,15 @@
 
     if (groups.length === 0) return;
 
-    // --- GENERATE THE LIST ---
+    // --- TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
+    
     const h2Title = document.createElement("h2");
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
 
+    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
@@ -72,15 +77,13 @@
         container.appendChild(divider);
     });
 
+    // --- PLACEMENT ---
     target.after(titleContainer);       
     titleContainer.after(container);    
 })();
 
 window.addEventListener("load", function () {
   setTimeout(function () {
-    // Only run this on non-index pages
-    if (window.location.pathname === "/" || window.location.pathname === "/index.html") return;
-
     const schemaScript = document.querySelector('script[type="application/ld+json"]');
     if (!schemaScript) return;
 
@@ -90,30 +93,50 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    
-    // Find the actual article node (ignoring the Bible citation by checking the URL)
-    const mainNode = nodes.find((n) => 
-        (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-        (n.mainEntityOfPage?.["@id"] === window.location.href || n["@id"] === window.location.href)
-    );
-
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    // --- INJECT THE ONLY LIST (Series Links) ---
-    const seriesWrapper = document.getElementById("series-links-wrapper");
-    if (seriesWrapper) {
-      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-      if (seriesLinks.length) {
-        mainNode.hasPart = {
+    const postsContainer = document.getElementById("latest-posts");
+    if (postsContainer) {
+      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+      if (postLinks.length) {
+        mainNode.mainEntity = {
           "@type": "ItemList",
-          "name": "Related Series Articles",
-          "itemListElement": seriesLinks.map((a, index) => ({
+          "name": "Latest Updated Articles",
+          "itemListElement": postLinks.map((a, index) => ({
             "@type": "ListItem",
             "position": index + 1,
             "url": a.href,
             "name": a.textContent.trim()
           }))
         };
+      }
+    }
+
+    const seriesWrapper = document.getElementById("series-links-wrapper");
+    if (seriesWrapper) {
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      
+      if (seriesLinks.length) {
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } 
+        else {
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
+        }
       }
     }
 
