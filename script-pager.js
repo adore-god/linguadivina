@@ -2,9 +2,9 @@
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
     
-    // Improved targeting: On posts, we target the article or a specific footer area
+    // --- DETERMINING TARGET BASED ON PAGE ---
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
-    const targetSelector = isIndexPage ? '.latest-posts' : 'article'; // Target the end of the article
+    const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
@@ -50,18 +50,25 @@
 
     if (groups.length === 0) return;
 
-    // --- CONSTRUCTION ---
-    const injectionWrapper = document.createElement("div");
-    injectionWrapper.id = "injected-series-content";
-    injectionWrapper.innerHTML = `<div class="series-links-title"><h2>More Reading</h2></div>`;
+    // --- TITLE SECTION ---
+    const titleContainer = document.createElement("div");
+    titleContainer.className = "series-links-title";
+    
+    const h2Title = document.createElement("h2");
+    h2Title.textContent = "More Reading";
+    titleContainer.appendChild(h2Title);
 
+    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
     groups.forEach(group => {
         group.entries.forEach(([path, linkTitle]) => {
+            const a = document.createElement("a");
+            a.href = path;
+            a.textContent = linkTitle;
             const div = document.createElement("div");
-            div.innerHTML = `<a href="${path}">${linkTitle}</a>`;
+            div.appendChild(a);
             container.appendChild(div);
         });
         const divider = document.createElement("div");
@@ -69,11 +76,9 @@
         container.appendChild(divider);
     });
 
-    injectionWrapper.appendChild(container);
-
-    // --- PLACEMENT ---
-    // Instead of .after() which creates siblings, we append to the bottom of the target
-    target.appendChild(injectionWrapper);       
+    // --- PLACEMENT (Restored to your original placement) ---
+    target.after(titleContainer);       
+    titleContainer.after(container);    
 })();
 
 window.addEventListener("load", function () {
@@ -88,15 +93,15 @@ window.addEventListener("load", function () {
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
     
-    // SPECIFIC TARGETING: Ensure we only touch the BlogPosting that matches the current URL
+    // FIX: We now look for the node that matches the CURRENT URL.
+    // This prevents it from messing with the "Holy Bible" citation node.
     const mainNode = nodes.find((n) => 
         (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
-        n.mainEntityOfPage?.["@id"] === window.location.href
+        (n.mainEntityOfPage?.["@id"] === window.location.href || n["@id"] === window.location.href)
     );
 
     if (!mainNode) return;
 
-    // Latest Posts Logic
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
@@ -114,10 +119,10 @@ window.addEventListener("load", function () {
       }
     }
 
-    // Series Links Logic
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      
       if (seriesLinks.length) {
         if (mainNode["@type"] === "BlogPosting") {
           mainNode.hasPart = {
@@ -130,7 +135,8 @@ window.addEventListener("load", function () {
               "name": a.textContent.trim()
             }))
           };
-        } else {
+        } 
+        else {
           mainNode.mentions = seriesLinks.map((a) => ({
             "@type": "CreativeWorkSeries",
             "name": a.textContent.trim(),
