@@ -1,19 +1,19 @@
 (function seriesAndSchemaManager() {
-    // --- 1. GENERATE SERIES LINKS (DOM) ---
-    const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
+    const labelContainer = document.querySelector('.label-links');
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
-        setTimeout(seriesAndSchemaManager, 100);
+        setTimeout(seriesAndSchemaManager, 200);
         return;
     }
 
+    // 1. DOM GENERATION
     const currentPage = window.location.href;
-    const allLinks = labelContainer.querySelectorAll("a");
     const matchedScrollUrls = [];
+    const allLinks = labelContainer.querySelectorAll("a");
 
     allLinks.forEach(link => {
         const linkSlug = link.href.split("/").pop();
@@ -32,11 +32,16 @@
         matchedScrollUrls.forEach(scrollUrl => {
             const groupEntries = [];
             for (let articlePath in map) {
-                if (articlePath === currentPage) continue;
+                // EXCLUDE CURRENT PAGE
+                if (articlePath === currentPage || articlePath === window.location.pathname) continue;
+                
                 const entry = map[articlePath];
-                const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
-                if (seriesList.includes(scrollUrl)) {
-                    groupEntries.push([articlePath, entry.title]);
+                // ONLY add if there is a valid title
+                if (entry && entry.title && entry.title.trim() !== "") {
+                    const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
+                    if (seriesList.includes(scrollUrl)) {
+                        groupEntries.push([articlePath, entry.title.trim()]);
+                    }
                 }
             }
             if (groupEntries.length > 0) {
@@ -49,7 +54,6 @@
             const titleContainer = document.createElement("div");
             titleContainer.className = "series-links-title";
             titleContainer.innerHTML = "<h2>More Reading</h2>";
-
             const container = document.createElement("div");
             container.id = "series-links-wrapper";
 
@@ -72,7 +76,7 @@
         }
     }
 
-    // --- 2. SCHEMA INJECTION (STRICT VERSION) ---
+    // 2. SCHEMA FIX (STRICT INJECTION)
     setTimeout(function() {
         const schemaScript = document.querySelector('script[type="application/ld+json"]');
         if (!schemaScript) return;
@@ -84,7 +88,8 @@
 
         if (!graphObj["@graph"]) return;
 
-        // FIND THE MAIN NODE (The one that IS NOT the Bible or Org)
+        // TARGET the main Article/WebPage node ONLY.
+        // We explicitly avoid anything with the Holy Bible ID.
         const mainNode = graphObj["@graph"].find(n => 
             (n["@type"] === "BlogPosting" || n["@type"] === "WebPage") && 
             n["@id"] !== "https://linguadivina.uk/source/holy-bible"
@@ -92,10 +97,15 @@
 
         if (!mainNode) return;
 
-        // Update Latest Posts (Index Only)
+        // CLEANUP: Remove any existing hasPart or mentions to prevent duplicates/blanks
+        delete mainNode.hasPart;
+        delete mainNode.mentions;
+
+        // Handle Home Page
         const postsContainer = document.querySelector('.latest-posts, #latest-posts');
         if (postsContainer) {
-            const links = Array.from(postsContainer.querySelectorAll("a")).filter(a => a.innerText.trim() !== "");
+            const links = Array.from(postsContainer.querySelectorAll("a"))
+                               .filter(a => a.innerText.trim().length > 0);
             if (links.length > 0) {
                 mainNode.mainEntity = {
                     "@type": "ItemList",
@@ -110,10 +120,12 @@
             }
         }
 
-        // Update Series Links (Article Only)
+        // Handle Article Page
         const seriesWrapper = document.getElementById("series-links-wrapper");
         if (seriesWrapper) {
-            const sLinks = Array.from(seriesWrapper.querySelectorAll("a")).filter(a => a.innerText.trim() !== "");
+            const sLinks = Array.from(seriesWrapper.querySelectorAll("a"))
+                                .filter(a => a.innerText.trim().length > 0);
+            
             if (sLinks.length > 0) {
                 if (mainNode["@type"] === "BlogPosting") {
                     mainNode.hasPart = {
@@ -136,6 +148,9 @@
             }
         }
 
+        // Final Filter: Rebuild @graph array to ensure no "null" or "empty" objects exist
+        graphObj["@graph"] = graphObj["@graph"].filter(n => n && Object.keys(n).length > 1);
+
         schemaScript.textContent = JSON.stringify(graphObj, null, 2);
-    }, 2500); // Slightly longer delay to ensure DOM is fully painted
+    }, 2000);
 })();
