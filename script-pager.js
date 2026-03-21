@@ -1,8 +1,9 @@
-
 (function waitForLabels() {
     const labelContainer = document.querySelector('.label-links');
     const map = window.labelMap;
     
+    // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
@@ -50,21 +51,20 @@
 
     if (groups.length === 0) return;
 
+    // --- TITLE SECTION ---
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
+    
     const h2Title = document.createElement("h2");
     h2Title.textContent = "More Reading";
     titleContainer.appendChild(h2Title);
 
+    // --- LINKS CONTAINER ---
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
-    const seenPaths = new Set();
-
     groups.forEach(group => {
         group.entries.forEach(([path, linkTitle]) => {
-            if (seenPaths.has(path)) return;
-            seenPaths.add(path);
             const a = document.createElement("a");
             a.href = path;
             a.textContent = linkTitle;
@@ -77,58 +77,69 @@
         container.appendChild(divider);
     });
 
-    target.after(titleContainer);
-    titleContainer.after(container);
+    // --- PLACEMENT ---
+    target.after(titleContainer);       
+    titleContainer.after(container);    
 })();
 
 window.addEventListener("load", function () {
-    setTimeout(function () {
-        const schemaScript = document.querySelector('script[type="application/ld+json"]');
-        if (!schemaScript) return;
+  setTimeout(function () {
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (!schemaScript) return;
 
-        let graph;
-        try {
-            graph = JSON.parse(schemaScript.textContent);
-        } catch (e) { return; }
+    let graph;
+    try {
+      graph = JSON.parse(schemaScript.textContent);
+    } catch (e) { return; }
 
-        const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-        const mainNode = nodes.find((n) => n["@type"] === "BlogPosting");
-        if (!mainNode) return;
+    const nodes = graph["@graph"] ? graph["@graph"] : [graph];
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
+    if (!mainNode) return;
 
-        const postsContainer = document.getElementById("latest-posts");
-        if (postsContainer) {
-            const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-            if (postLinks.length) {
-                mainNode.mainEntity = {
-                    "@type": "ItemList",
-                    "name": "Latest Updated Articles",
-                    "itemListElement": postLinks.map((a, index) => ({
-                        "@type": "ListItem",
-                        "position": index + 1,
-                        "url": a.href,
-                        "name": a.textContent.trim()
-                    }))
-                };
-            }
+    const postsContainer = document.getElementById("latest-posts");
+    if (postsContainer) {
+      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+      if (postLinks.length) {
+        mainNode.mainEntity = {
+          "@type": "ItemList",
+          "name": "Latest Updated Articles",
+          "itemListElement": postLinks.map((a, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": a.href,
+            "name": a.textContent.trim()
+          }))
+        };
+      }
+    }
+
+    const seriesWrapper = document.getElementById("series-links-wrapper");
+    if (seriesWrapper) {
+      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+      
+      if (seriesLinks.length) {
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } 
+        else {
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
         }
+      }
+    }
 
-        const seriesWrapper = document.getElementById("series-links-wrapper");
-        if (seriesWrapper) {
-            const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-            if (seriesLinks.length) {
-                mainNode.hasPart = {
-                    "@type": "ItemList",
-                    "name": "Related Series Articles",
-                    "itemListElement": seriesLinks.map((a, index) => ({
-                        "@type": "ListItem",
-                        "position": index + 1,
-                        "url": a.href,
-                        "name": a.textContent.trim()
-                    }))
-                };
-            }
-        }
-
-        schemaScript.textContent = JSON.stringify(graph, null, 2);
-    }, 2000);
+    schemaScript.textContent = JSON.stringify(graph, null, 2);
+  }, 2000);
 });
