@@ -46,14 +46,9 @@
 
     if (groups.length === 0) return;
 
-    // --- UPDATED TITLE SECTION ---
-    const titleContainer = document.createElement("div");
-    titleContainer.className = "series-links-title";
-    
-    const h2Title = document.createElement("h2");
-    h2Title.textContent = "More Reading";
-    titleContainer.appendChild(h2Title);
-    // -----------------------------
+    const title = document.createElement("div");
+    title.className = "series-links-title";
+    title.textContent = "More Reading";
 
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
@@ -72,8 +67,7 @@
         container.appendChild(divider);
     });
 
-    // We use titleContainer now instead of 'title'
-    target.before(titleContainer);
+    target.before(title);
     target.before(container);
 })();
 
@@ -88,9 +82,11 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
+    // Find the main node (BlogPosting for articles, WebPage for index)
     const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
+    // 1. MARKUP FOR LATEST POSTS (Typically on Index Page)
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
@@ -108,11 +104,13 @@ window.addEventListener("load", function () {
       }
     }
 
+    // 2. MARKUP FOR SERIES/MORE READING (Adaptive Logic)
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
       
       if (seriesLinks.length) {
+        // IF ON ARTICLE PAGE: Mark as a structured list of related items
         if (mainNode["@type"] === "BlogPosting") {
           mainNode.hasPart = {
             "@type": "ItemList",
@@ -125,6 +123,7 @@ window.addEventListener("load", function () {
             }))
           };
         } 
+        // IF ON INDEX PAGE: Mark as broad topic series mentions
         else {
           mainNode.mentions = seriesLinks.map((a) => ({
             "@type": "CreativeWorkSeries",
