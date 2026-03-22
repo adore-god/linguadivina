@@ -9,7 +9,7 @@
     const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
-        setTimeout(waitForLabels, 2000);
+        setTimeout(waitForLabels, 100);
         return;
     }
 
@@ -96,50 +96,53 @@ window.addEventListener("load", function () {
     const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    const postsContainer = document.getElementById("latest-posts");
-    if (postsContainer) {
-      const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-      if (postLinks.length) {
-        mainNode.mainEntity = {
-          "@type": "ItemList",
-          "name": "Latest Updated Articles",
-          "itemListElement": postLinks.map((a, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "url": a.href,
-            "name": a.textContent.trim()
-          }))
-        };
-      }
-    }
+    const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
 
-    const seriesWrapper = document.getElementById("series-links-wrapper");
-    if (seriesWrapper) {
-      const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
-      
-      if (seriesLinks.length) {
-        if (mainNode["@type"] === "BlogPosting") {
-          mainNode.hasPart = {
+    // --- ONLY RUN THIS ON INDEX PAGE ---
+    if (isIndexPage) {
+      const postsContainer = document.getElementById("latest-posts") || document.querySelector(".latest-posts");
+      if (postsContainer) {
+        const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+        if (postLinks.length) {
+          mainNode.mainEntity = {
             "@type": "ItemList",
-            "name": "Related Series Articles",
-            "itemListElement": seriesLinks.map((a, index) => ({
+            "name": "Latest Updated Articles",
+            "itemListElement": postLinks.map((a, index) => ({
               "@type": "ListItem",
               "position": index + 1,
               "url": a.href,
               "name": a.textContent.trim()
             }))
           };
-        } 
-        else {
-          mainNode.mentions = seriesLinks.map((a) => ({
-            "@type": "CreativeWorkSeries",
-            "name": a.textContent.trim(),
-            "url": a.href
-          }));
+        }
+      }
+    }
+
+    // --- ONLY RUN THIS ON ARTICLE PAGES ---
+    if (!isIndexPage) {
+      const seriesWrapper = document.getElementById("series-links-wrapper");
+      if (seriesWrapper) {
+        const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
+        if (seriesLinks.length) {
+          // Explicitly target BlogPosting for hasPart
+          if (mainNode["@type"] === "BlogPosting") {
+            mainNode.hasPart = {
+              "@type": "ItemList",
+              "name": "Related Series Articles",
+              "itemListElement": seriesLinks.map((a, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": a.href,
+                "name": a.textContent.trim()
+              }))
+            };
+            // Remove any accidental "mentions" if they were created by previous bugs
+            delete mainNode.mentions;
+          } 
         }
       }
     }
 
     schemaScript.textContent = JSON.stringify(graph, null, 2);
-  }, 3000);
+  }, 2000);
 });
