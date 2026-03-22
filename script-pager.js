@@ -3,6 +3,7 @@
     const map = window.labelMap;
     
     // --- DETERMINING TARGET BASED ON PAGE ---
+    // Checks if the path is empty or just "/"
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
     const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
     const target = document.querySelector(targetSelector);
@@ -92,12 +93,9 @@ window.addEventListener("load", function () {
     } catch (e) { return; }
 
     const nodes = graph["@graph"] ? graph["@graph"] : [graph];
-    
-    // --- TARGET ONLY BLOGPOSTING ---
-    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting");
+    const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
     if (!mainNode) return;
 
-    // --- LATEST POSTS SECTION ---
     const postsContainer = document.getElementById("latest-posts");
     if (postsContainer) {
       const postLinks = Array.from(postsContainer.querySelectorAll("a"));
@@ -115,26 +113,34 @@ window.addEventListener("load", function () {
       }
     }
 
-    // --- SERIES LINKS SECTION ---
     const seriesWrapper = document.getElementById("series-links-wrapper");
     if (seriesWrapper) {
       const seriesLinks = Array.from(seriesWrapper.querySelectorAll("a"));
       
       if (seriesLinks.length) {
-        // Since we only found BlogPosting, we only use hasPart
-        mainNode.hasPart = {
-          "@type": "ItemList",
-          "name": "Related Series Articles",
-          "itemListElement": seriesLinks.map((a, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "url": a.href,
-            "name": a.textContent.trim()
-          }))
-        };
+        if (mainNode["@type"] === "BlogPosting") {
+          mainNode.hasPart = {
+            "@type": "ItemList",
+            "name": "Related Series Articles",
+            "itemListElement": seriesLinks.map((a, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": a.href,
+              "name": a.textContent.trim()
+            }))
+          };
+        } 
+        else {
+          mainNode.mentions = seriesLinks.map((a) => ({
+            "@type": "CreativeWorkSeries",
+            "name": a.textContent.trim(),
+            "url": a.href
+          }));
+        }
       }
     }
 
     schemaScript.textContent = JSON.stringify(graph, null, 2);
   }, 2000);
 });
+
