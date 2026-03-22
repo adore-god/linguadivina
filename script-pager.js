@@ -9,7 +9,7 @@
     const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
-        setTimeout(waitForLabels, 200);
+        setTimeout(waitForLabels, 2000);
         return;
     }
 
@@ -141,5 +141,5 @@ window.addEventListener("load", function () {
     }
 
     schemaScript.textContent = JSON.stringify(graph, null, 2);
-  }, 2000);
+  }, 3000);
 });
