@@ -73,16 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
         span.className = "bibleref";
         span.style.cssText = "cursor:help; border-bottom:1px dotted #888; text-decoration:none; font-style:normal;";
         
-        // --- FIXED SCHEMA: REMOVED ITEMSCOPE TO PREVENT BLANK ENTRIES ---
         span.setAttribute("itemprop", "citation");
         span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
 
-        // Strong's Schema Metadata stays as a mention
         const strongsMeta = document.createElement("meta");
         strongsMeta.setAttribute("itemprop", "mentions");
         strongsMeta.setAttribute("itemid", "https://linguadivina.uk/source/strongs-concordance");
         span.appendChild(strongsMeta);
-        // ---------------------------------------------------------------
 
         span.dataset.book = match[1];
         span.dataset.chapter = match[2];
@@ -116,16 +113,25 @@ document.addEventListener("DOMContentLoaded", function () {
   wrapBibleReferences(mainEl);
 
   const tooltip = document.createElement("div");
+  // Set fixed width and hide initially
   Object.assign(tooltip.style, {
-    position: "absolute", display: "none", zIndex: "10000",
-    padding: "14px", fontSize: "16px", lineHeight: "1.3em",
+    position: "absolute", 
+    display: "none", 
+    zIndex: "10000",
+    padding: "14px", 
+    fontSize: "16px", 
+    lineHeight: "1.4em",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-    borderRadius: "7px", pointerEvents: "auto",
+    borderRadius: "7px", 
+    pointerEvents: "auto",
+    width: "350px", // Standardized width
+    maxWidth: "90vw", // Responsive for mobile
+    boxSizing: "border-box"
   });
 
   const themes = {
-    light: { background: "#fff", color: "#000", border: "1px solid #ccc", linkColor: "#82adff" },
-    dark: { background: "#111", color: "#eee", border: "1px solid #555", linkColor: "#82adff" }
+    light: { background: "#fff", color: "#000", border: "1px solid #ccc" },
+    dark: { background: "#111", color: "#eee", border: "1px solid #555" }
   };
 
   function applyTheme(isDark) {
@@ -142,11 +148,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const ref = e.target.closest(".bibleref");
     if (!ref) return;
 
-    const rect = ref.getBoundingClientRect();
-    tooltip.style.left = (window.scrollX + rect.left) + "px";
-    tooltip.style.top = (window.scrollY + rect.bottom + 8) + "px";
+    // Show and reset content
     tooltip.style.display = "block";
     tooltip.innerHTML = "Loading...";
+
+    const rect = ref.getBoundingClientRect();
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const viewportWidth = window.innerWidth;
+    const tooltipWidth = tooltip.offsetWidth || 350; 
+
+    // Initial positioning: Default to left-aligned with the link
+    let leftPos = scrollX + rect.left;
+    let topPos = scrollY + rect.bottom + 8;
+
+    // SHIFT LOGIC: If tooltip would go off the right edge, align it to the right of the link
+    if (rect.left + tooltipWidth > viewportWidth) {
+      leftPos = (scrollX + rect.right) - tooltipWidth;
+      
+      // Safety check for narrow screens: don't let it go off the left edge either
+      if (leftPos < 10) leftPos = 10; 
+    }
+
+    tooltip.style.left = leftPos + "px";
+    tooltip.style.top = topPos + "px";
 
     const { book, chapter, verse, startVerse } = ref.dataset;
     const query = verse ? `${book} ${chapter}:${verse}` : `${book} ${chapter}`;
@@ -157,16 +182,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
 
       const blbCode = bookBLBMap[book] || book.replace(/\s+/g, "");
-      
       const blbVerseLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/`;
       const blbToolsLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/t_conc_1`;
 
       tooltip.innerHTML = data.text
-        ? `<span style="font-weight:bold;text-decoration:none;">${data.reference}</span><br>${data.text.replace(/\n/g, "<br>")}<br>
-           <div style="border:0;border-top:1px solid #555;margin:8px 0;"></div>
-           <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">View Verse</a>
-           <span style="margin: 0 5px; color:#555;">|</span>
-           <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>`
+        ? `<span style="font-weight:bold; font-size: 1.1em;">${data.reference}</span><br><div style="margin-top:6px;">${data.text.replace(/\n/g, "<br>")}</div>
+           <div style="border:0;border-top:1px solid #555;margin:10px 0;"></div>
+           <div style="display:flex; justify-content: space-between; align-items:center;">
+             <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">View Verse</a>
+             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
+           </div>`
         : "Not found";
     } catch {
       tooltip.innerHTML = "Error loading preview.";
