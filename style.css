@@ -913,6 +913,10 @@ table, td, th {
 
   --key-icon-filter: invert(0);
   --key-icon-blend: normal;
+  
+  --grad-one: #9e9888;
+  --grad-two: #cac4ae;
+  --grad-three: #efebd8;
   }
 
   body {
@@ -920,6 +924,13 @@ table, td, th {
     color: var(--accent-color);
   }
 
+.site-title{
+	background: linear-gradient(270deg, var(--grad-one) 10%, var(--grad-two) 50%, var(--grad-three) 90%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+	}
+	
 .hero-description {
     font-weight: 500;
     }
@@ -965,6 +976,10 @@ table, td, th {
    
   h1, h2, h3, h4 {
     border-left-color: var(--text);
+    background: linear-gradient(270deg, var(--grad-one) 10%, var(--grad-two) 50%, var(--grad-three) 90%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
   }
 	.stand-out img {
     filter: invert(0) brightness(1.1) contrast(1.1);
