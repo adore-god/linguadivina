@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Strong's Schema Metadata stays as a mention
         const strongsMeta = document.createElement("meta");
         strongsMeta.setAttribute("itemprop", "mentions");
-        strongsMeta.setAttribute("content", "Strong's Exhaustive Concordance");
+        strongsMeta.setAttribute("itemid", "https://linguadivina.uk/source/strongs-concordance");
         span.appendChild(strongsMeta);
         // ---------------------------------------------------------------
 
