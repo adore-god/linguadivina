@@ -64,6 +64,7 @@ body{
   margin: 0 auto;
   display: block;
   color: var(--text);
+  
 }
 
 
@@ -98,10 +99,7 @@ h1.index-h1	{
 	width:90%;
 	text-align:center;
 	padding-right:17px;
-	background: linear-gradient(135deg, var(--grad-one) 10%, var(--grad-two) 50%, var(--grad-three) 90%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+	
 	}
 .site-title a {
 	font-weight:800;
@@ -153,10 +151,7 @@ h2, h3, h4 {
     margin-bottom: 0.75rem;
     border-left: 4px solid #333;
     padding-left: 0.75rem;
-   background: linear-gradient(135deg, var(--grad-one) 10%, var(--grad-two) 50%, var(--grad-three) 90%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+   
 }
 h1 a, h2 a, h3 a, h4 a {
   font-weight: 400;
