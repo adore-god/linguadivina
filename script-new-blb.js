@@ -73,17 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
         span.className = "bibleref";
         span.style.cssText = "cursor:help; border-bottom:1px dotted #888; text-decoration:none; font-style:normal;";
         
-        // Schema Setup
+        // --- FIXED SCHEMA: REMOVED ITEMSCOPE TO PREVENT BLANK ENTRIES ---
         span.setAttribute("itemprop", "citation");
-        span.setAttribute("itemscope", "");
-        span.setAttribute("itemtype", "https://schema.org/CreativeWork");
         span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
 
-        // Strong's Schema Metadata
+        // Strong's Schema Metadata stays as a mention
         const strongsMeta = document.createElement("meta");
         strongsMeta.setAttribute("itemprop", "mentions");
         strongsMeta.setAttribute("content", "Strong's Exhaustive Concordance");
         span.appendChild(strongsMeta);
+        // ---------------------------------------------------------------
 
         span.dataset.book = match[1];
         span.dataset.chapter = match[2];
@@ -159,9 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const blbCode = bookBLBMap[book] || book.replace(/\s+/g, "");
       
-      // Original Blue Letter Bible Verse Link
       const blbVerseLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/`;
-      // Deep Link to Concordance (Strong's Mechanics)
       const blbToolsLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/t_conc_1`;
 
       tooltip.innerHTML = data.text
