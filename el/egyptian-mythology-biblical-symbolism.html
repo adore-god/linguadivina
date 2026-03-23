@@ -10,14 +10,15 @@
   "@graph": [
     {
       "@type": "Organization",
-      "name": "Lingua Divina","@id": "https://linguadivina.uk/#org",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
       "url": "https://linguadivina.uk/",
       "logo": {
         "@type": "ImageObject",
         "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
       },
       "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
-       "sameAs": [
+      "sameAs": [
         "https://linguadivina.uk/key-interpretations/about-author.html"
       ],
       "founder": {
@@ -35,7 +36,10 @@
     {
       "@type": "WebSite",
       "url": "https://linguadivina.uk/",
-      "publisher": { "@id": "https://linguadivina.uk/#org" },"potentialAction": {
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
         "@type": "SearchAction",
         "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
         "query-input": "required name=search_term_string"
@@ -53,12 +57,24 @@
       "description": "The foundational text used as the primary source for all teaching on this site."
     },
     {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
       "@type": "BlogPosting",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://linguadivina.uk/el/egyptian-mythology-biblical-symbolism.html"
       },
-       "headline": "Egyptian Mythology and Biblical Symbolism as Psychological States",
+      "headline": "Egyptian Mythology and Biblical Symbolism as Psychological States",
       "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
       "about": {
         "@type": [
@@ -68,12 +84,22 @@
         "name": "Biblical Symbolism",
         "description": "Exploring Egyptian mythology and the Bible through the inner psychological symbolism taught by Neville Goddard."
       },
-      "isBasedOn": {
-        "@id": "https://linguadivina.uk/source/holy-bible"
-      },
-      "citation": {
-        "@id": "https://linguadivina.uk/source/holy-bible"
-      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
       "author": {
         "@type": "Person",
         "name": "HNNH",
@@ -81,27 +107,28 @@
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Lingua Divina","@id": "https://linguadivina.uk/#org",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
         "url": "https://linguadivina.uk/",
         "logo": {
           "@type": "ImageObject",
           "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
         },
         "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
-         "sameAs": [
-        "https://linguadivina.uk/key-interpretations/about-author.html"
-      ],
-      "founder": {
-        "@type": "Person",
-        "@id": "https://linguadivina.uk/key-interpretations/about-author.html#person",
-        "name": "HNNH",
-        "url": "https://linguadivina.uk/key-interpretations/about-author.html",
         "sameAs": [
-          "https://www.reddit.com/user/GoldStudio2653/",
-          "https://www.tiktok.com/@hn_nh___",
-          "https://hnnh.studio/"
-        ]
-      }
+          "https://linguadivina.uk/key-interpretations/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/key-interpretations/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/key-interpretations/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://www.tiktok.com/@hn_nh___",
+            "https://hnnh.studio/"
+          ]
+        }
       }
     }
   ]

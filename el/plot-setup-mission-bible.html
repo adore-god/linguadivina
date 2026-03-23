@@ -7,14 +7,15 @@
   "@graph": [
     {
       "@type": "Organization",
-      "name": "Lingua Divina","@id": "https://linguadivina.uk/#org",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
       "url": "https://linguadivina.uk/",
       "logo": {
         "@type": "ImageObject",
         "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
       },
       "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
-       "sameAs": [
+      "sameAs": [
         "https://linguadivina.uk/key-interpretations/about-author.html"
       ],
       "founder": {
@@ -32,7 +33,10 @@
     {
       "@type": "WebSite",
       "url": "https://linguadivina.uk/",
-      "publisher": { "@id": "https://linguadivina.uk/#org" },"potentialAction": {
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
         "@type": "SearchAction",
         "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
         "query-input": "required name=search_term_string"
@@ -50,12 +54,24 @@
       "description": "The foundational text used as the primary source for all teaching on this site."
     },
     {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
       "@type": "BlogPosting",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://linguadivina.uk/plot-setup-mission-bible.html"
       },
-       "headline": "The Bible's Plot and Mission - The Law of Assumption",
+      "headline": "The Bible's Plot and Mission - The Law of Assumption",
       "image": "https://linguadivina.uk/images/wp/I-AM-exodus-quote.webp",
       "about": {
         "@type": [
@@ -65,12 +81,22 @@
         "name": "Law of Assumption",
         "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework."
       },
-      "isBasedOn": {
-        "@id": "https://linguadivina.uk/source/holy-bible"
-      },
-      "citation": {
-        "@id": "https://linguadivina.uk/source/holy-bible"
-      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
       "author": {
         "@type": "Person",
         "name": "HNNH",
@@ -78,27 +104,28 @@
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Lingua Divina","@id": "https://linguadivina.uk/#org",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
         "url": "https://linguadivina.uk/",
         "logo": {
           "@type": "ImageObject",
           "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
         },
         "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
-         "sameAs": [
-        "https://linguadivina.uk/key-interpretations/about-author.html"
-      ],
-      "founder": {
-        "@type": "Person",
-        "@id": "https://linguadivina.uk/key-interpretations/about-author.html#person",
-        "name": "HNNH",
-        "url": "https://linguadivina.uk/key-interpretations/about-author.html",
         "sameAs": [
-          "https://www.reddit.com/user/GoldStudio2653/",
-          "https://www.tiktok.com/@hn_nh___",
-          "https://hnnh.studio/"
-        ]
-      }
+          "https://linguadivina.uk/key-interpretations/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/key-interpretations/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/key-interpretations/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://www.tiktok.com/@hn_nh___",
+            "https://hnnh.studio/"
+          ]
+        }
       }
     }
   ]
@@ -234,8 +261,7 @@
 <div class="footer">
 © 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/el/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
 </div>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -248,8 +274,14 @@
       "license": "https://linguadivina.uk/license.html",
       "acquireLicensePage": "https://linguadivina.uk/license.html",
       "copyrightNotice": "© God —The Way. All rights reserved.",
-      "copyrightHolder": { "@type": "Person", "name": "HNNH" },
-      "creator": { "@type": "Person", "name": "HNNH" }
+      "copyrightHolder": {
+        "@type": "Person",
+        "name": "HNNH"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "HNNH"
+      }
     },
     {
       "@type": "ImageObject",
@@ -261,11 +293,28 @@
       "license": "https://linguadivina.uk/license.html",
       "acquireLicensePage": "https://linguadivina.uk/license.html",
       "copyrightNotice": "© God —The Way. All rights reserved.",
-      "copyrightHolder": { "@type": "Person", "name": "HNNH" },
-      "creator": { "@type": "Person", "name": "HNNH" }
+      "copyrightHolder": {
+        "@type": "Person",
+        "name": "HNNH"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "HNNH"
+      }
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
     }
   ]
-}
-</script>
+}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
 </html>
