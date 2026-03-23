@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const bookBLBMap = {
     "Genesis":"Gen","Gen":"Gen","Exodus":"Exo","Ex":"Exo","Leviticus":"Lev","Lev":"Lev",
-    "Numbers":"Num","Num":"Num","Deuteronomy":"Deu","Deut":"Deu","Deu":"Deu",
+    "Numbers":"Num","Num":"Num","Deuteronomy":"Deu","Deu":"Deu","Deut":"Deu",
     "Joshua":"Jos","Jos":"Jos","Judges":"Jdg","Jdg":"Jdg","Ruth":"Rth","Rut":"Rth",
     "1 Samuel":"1Sa","1 Sam":"1Sa","2 Samuel":"2Sa","2 Sam":"2Sa",
     "1 Kings":"1Ki","1 Kgs":"1Ki","2 Kings":"2Ki","2 Kgs":"2Ki",
@@ -70,12 +70,20 @@ document.addEventListener("DOMContentLoaded", function () {
         frag.appendChild(document.createTextNode(content.slice(lastIndex, match.index)));
 
         const span = document.createElement("cite");
-span.className = "bibleref";
-span.style.cssText = "cursor:help; border-bottom:1px dotted #888; text-decoration:none; font-style:normal;";
-span.setAttribute("itemscope", "");
-span.setAttribute("itemtype", "https://schema.org/CreativeWork");
-span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
+        span.className = "bibleref";
+        span.style.cssText = "cursor:help; border-bottom:1px dotted #888; text-decoration:none; font-style:normal;";
+        
+        // Schema Setup
+        span.setAttribute("itemprop", "citation");
+        span.setAttribute("itemscope", "");
+        span.setAttribute("itemtype", "https://schema.org/CreativeWork");
+        span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
 
+        // Strong's Schema Metadata
+        const strongsMeta = document.createElement("meta");
+        strongsMeta.setAttribute("itemprop", "mentions");
+        strongsMeta.setAttribute("content", "Strong's Exhaustive Concordance");
+        span.appendChild(strongsMeta);
 
         span.dataset.book = match[1];
         span.dataset.chapter = match[2];
@@ -88,7 +96,8 @@ span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
           span.dataset.startVerse = "1";
         }
 
-        span.textContent = match[0];
+        const textNode = document.createTextNode(match[0]);
+        span.appendChild(textNode);
         frag.appendChild(span);
         lastIndex = pattern.lastIndex;
       }
@@ -116,18 +125,8 @@ span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
   });
 
   const themes = {
-    light: {
-      background: "#fff",
-      color: "#000",
-      border: "1px solid #ccc",
-      linkColor: "#82adff"
-    },
-    dark: {
-      background: "#111",
-      color: "#eee",
-      border: "1px solid #555",
-      linkColor: "#82adff"
-    }
+    light: { background: "#fff", color: "#000", border: "1px solid #ccc", linkColor: "#82adff" },
+    dark: { background: "#111", color: "#eee", border: "1px solid #555", linkColor: "#82adff" }
   };
 
   function applyTheme(isDark) {
@@ -159,10 +158,18 @@ span.setAttribute("itemid", "https://linguadivina.uk/source/holy-bible");
       const data = await response.json();
 
       const blbCode = bookBLBMap[book] || book.replace(/\s+/g, "");
-      const blbLink = `https://www.blueletterbible.org/esv/${blbCode}/${chapter}/${startVerse}/`;
+      
+      // Original Blue Letter Bible Verse Link
+      const blbVerseLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/`;
+      // Deep Link to Concordance (Strong's Mechanics)
+      const blbToolsLink = `https://www.blueletterbible.org/bbe/${blbCode}/${chapter}/${startVerse}/t_conc_1`;
 
       tooltip.innerHTML = data.text
-        ? `<span style="font-weight:bold;text-decoration:none;">${data.reference}</span><br>${data.text.replace(/\n/g, "<br>")}<br><div style="border:0;border-top:1px solid #000;margin:8px 0;"></div><a href="${blbLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">View on Blue Letter Bible →</a>`
+        ? `<span style="font-weight:bold;text-decoration:none;">${data.reference}</span><br>${data.text.replace(/\n/g, "<br>")}<br>
+           <div style="border:0;border-top:1px solid #555;margin:8px 0;"></div>
+           <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">View Verse</a>
+           <span style="margin: 0 5px; color:#555;">|</span>
+           <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>`
         : "Not found";
     } catch {
       tooltip.innerHTML = "Error loading preview.";
