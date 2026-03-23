@@ -570,6 +570,7 @@ font-weight:500;
 }
 .sidebar h2 a {
 	font-weight:700;
+	text-transform: uppercase;
 	}
 
 ul.series-links li a {
