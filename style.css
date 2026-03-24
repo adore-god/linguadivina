@@ -1089,7 +1089,7 @@ color: var(--text);
 }
 
 .like-btn {
-  color: var(--red) !important;
+  color: var(--red);
   }
   
 .share-menu {
