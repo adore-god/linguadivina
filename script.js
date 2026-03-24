@@ -97,138 +97,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.querySelector(".share-button");
-  const menu = document.getElementById("share-menu");
-
-  if (!button || !menu) return; // Exit if the main button or menu is missing
-
-  const pageUrl = encodeURIComponent(window.location.href);
-  const pageTitle = encodeURIComponent(document.title);
-
-  // Assign share links safely
-  const twitter = document.getElementById("share-twitter");
-  if (twitter) {
-    twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-  }
-
-  const facebook = document.getElementById("share-facebook");
-  if (facebook) {
-    facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-  }
-
-  // Copy link safely
-  const copyButton = document.getElementById("share-copy");
-  if (copyButton) {
-    copyButton.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Link copied to clipboard!");
-      } catch (err) {
-        console.error("Failed to copy:", err);
-      }
-      menu.style.display = "none";
-    });
-  }
-
-  // Toggle dropdown
-  button.addEventListener("click", () => {
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  });
-
-  // Close if clicked outside
- // Replace your current toggle logic with this:
-button.addEventListener("click", (e) => {
-  e.stopPropagation(); // Prevents the "click outside" logic from firing immediately
-  const isVisible = window.getComputedStyle(menu).display === "block";
-  menu.style.display = isVisible ? "none" : "block";
-});
-
-  
-    // Open sidebar from inline links
-  document.querySelectorAll('.open-sidebar').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation(); // 🔑 THIS is the missing piece
-      const sidebarToggle = document.getElementById('sidebar-toggle');
-      if (sidebarToggle) sidebarToggle.checked = true;
-    });
-  });
-  
-});
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
+  // --- 1. SETTINGS ---
   const workerUrl = "https://like-button-worker.linguadivina.workers.dev";
   const localStorageKey = 'hasLiked_project';
-
-  // 1. Check if user has already liked (Universal check for this session)
   const userHasLiked = localStorage.getItem(localStorageKey);
 
-  // 2. Find all .share-dropdown containers
+  // --- 2. THE LIKE BUTTON INJECTION ---
   document.querySelectorAll('.share-dropdown').forEach(linkContainer => {
-
-    // Prevent adding multiple buttons
     if (linkContainer.previousElementSibling && linkContainer.previousElementSibling.classList.contains('like-btn')) return;
 
-    // Create the New Like Button
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
-    // Initial State
     likeBtn.innerHTML = ` <span class="like-count">...</span>`;
 
-    // 3. Apply "Already Liked" styling if needed
     if (userHasLiked) {
       likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
-      likeBtn.style.cursor = "default";
+      likeBtn.innerHTML = ` <span class="like-count">Loaded</span>`;
     }
 
-    // Insert button before the .share-dropdown container
+    // Insert safely
     linkContainer.insertAdjacentElement('beforebegin', likeBtn);
-
     const countSpan = likeBtn.querySelector('.like-count');
 
-    // 4. Fetch the current count from Cloudflare
-    fetch(workerUrl)
-      .then(res => res.text())
-      .then(data => {
-        countSpan.innerText = data;
-      })
-      .catch(() => {
-        countSpan.innerText = "0";
-      });
+    // Fetch Count
+    fetch(workerUrl).then(res => res.text()).then(data => {
+      countSpan.innerText = data;
+    }).catch(() => { countSpan.innerText = "0"; });
 
-    // 5. Click Handler
-    likeBtn.onclick = async () => {
+    // Like Logic
+    likeBtn.onclick = async (e) => {
+      e.preventDefault();
       if (localStorage.getItem(localStorageKey)) return;
-
-      // Lock button immediately
       localStorage.setItem(localStorageKey, 'true');
       likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
-      countSpan.innerText = "...";
-
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        countSpan.innerText = newVal;
-        // Optional: Trigger a little animation or change icon
         likeBtn.innerHTML = ` ${newVal}`;
       } catch (err) {
-        console.error("Like failed:", err);
-        countSpan.innerText = "!";
         localStorage.removeItem(localStorageKey);
         likeBtn.disabled = false;
-        likeBtn.style.opacity = "1";
       }
     };
   });
+
+  // --- 3. THE SHARE MENU LOGIC ---
+  const shareButton = document.querySelector(".share-button");
+  const shareMenu = document.getElementById("share-menu");
+
+  if (shareButton && shareMenu) {
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    // Setup Links
+    const twitter = document.getElementById("share-twitter");
+    if (twitter) twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+
+    const facebook = document.getElementById("share-facebook");
+    if (facebook) facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+    // Copy Link Logic
+    const copyButton = document.getElementById("share-copy");
+    if (copyButton) {
+      copyButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied!");
+        shareMenu.style.display = "none";
+      });
+    }
+
+    // Toggle Dropdown (Fixed for Mobile)
+    shareButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isVisible = shareMenu.style.display === "block";
+      shareMenu.style.display = isVisible ? "none" : "block";
+    });
+
+    // Global Click-to-Close
+    document.addEventListener("click", (e) => {
+      if (!shareMenu.contains(e.target) && e.target !== shareButton) {
+        shareMenu.style.display = "none";
+      }
+    });
+  }
 });
-
-
-
 
 
 
