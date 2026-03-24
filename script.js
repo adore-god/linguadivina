@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (userHasLiked) {
       likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
-      likeBtn.innerHTML = ` <span class="like-count">Loaded</span>`;
+      likeBtn.innerHTML = ` <div class="like-count">Loaded</div>`;
     }
 
     // Insert safely
