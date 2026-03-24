@@ -108,12 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
  
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = `<div class="like-btn">&#x2661; </div><div class="like-count">...</div>`;
+    likeBtn.innerHTML = `<div class="">&#x2661; <div class="like-count">...</div></div>`;
 
     if (userHasLiked) {
       likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
-      likeBtn.innerHTML = `<div class="like-btn gold-card">&#9829;</div><div class="like-count">Loaded</div>`;
+      likeBtn.innerHTML = `<div class="like-btn">&#9829;</div><div class="like-count">Loaded</div>`;
     }
 
     // Insert safely

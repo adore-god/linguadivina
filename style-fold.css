@@ -68,18 +68,6 @@ body{
     
 }
 
-.gold-card {
-  background: transparent !important; 
-  border: 0px solid #ffd700;
-  border-radius: 8px;
-  /* x | y | blur | spread | color */
-  box-shadow: 
-    0 0 10px #bf953f, 
-    0 0 20px #fcf6ba, 
-    0 0 30px #b38728;
-}
-
-
 /* =======================
    HEADER
    ======================= */
