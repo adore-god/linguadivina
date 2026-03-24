@@ -758,10 +758,11 @@ table {
 .share-button {
   background: none;
   cursor: pointer;
-  padding: 0em 0.4em 0 0;
-  font-weight: 600;
+  padding: 0em 0.4em 0 10px;
+  font-weight: 700;
   border: none; 
   line-height: 1.4;
+  font-size: 0.85em;
 }
 
 	
@@ -808,16 +809,17 @@ text-transform: uppercase
   cursor: pointer;
   margin:0 2px 0 0; 
   display: inline;
-  color:red;
+  color: #7d0b0b !important;
   font-weight: 800;
   border: none; 
   line-height: 1.4;
-   
+  font-size: 0.85em;
 }
 .like-count {
-	margin:0 5px 0 0;
+	margin:0 0px 0 0;
     display: inline;
 	}
+	
 .like-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -1079,12 +1081,16 @@ color: var(--text) !important;
 	padding:20px;
 color: var(--text);
 	}
-.share-button, .like-btn  {
+.share-button  {
   background: var(--bg-color);
   color: var(--text);
   border: none
 }
 
+.like-btn {
+  color: #f26868 !important;
+  }
+  
 .share-menu {
   background: #1c1c1c;
   color:#e0e0e0;
