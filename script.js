@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = ` <span class="like-count">...</span>`;
+    likeBtn.innerHTML = `<div class="like-btn">&#x2661; </div><div class="like-count" style="">...</div>`;
 
     if (userHasLiked) {
       likeBtn.disabled = true;
@@ -142,6 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   });
+  
+  
+  
+  
+  
 
   // --- 3. THE SHARE MENU LOGIC ---
   const shareButton = document.querySelector(".share-button");
@@ -184,6 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+
 
 
 
