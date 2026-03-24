@@ -9,7 +9,7 @@
   --grad-one: #555;
   --grad-two: #333;
   --grad-three: #111;
-  
+  --red: #f26868;
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
 
@@ -23,6 +23,7 @@
   --link: #222222;
   --accent-color: #444;
   --button: #333;
+  --red: #f26868;
   --verse-color: #000000;
   --grad-one: #555;
   --grad-two: #333;
