@@ -805,13 +805,13 @@ text-transform: uppercase
 }
 
 .like-btn {
-  background: none;
+  background: transparent;
   cursor: pointer;
   margin:0 4px 0 0; 
   display: inline;
   color: var(--red);
   font-weight: 800;
-  border: none; 
+  border: 0; 
   line-height: 1.4;
   font-size: 1em;
 }
@@ -821,8 +821,7 @@ text-transform: uppercase
 	}
 	
 .like-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  
 }
 
 
@@ -877,7 +876,7 @@ table, td, th {
     --text: #EFEBD8;
     --link: #EFEBD8;
     --button: #EFEBD8;
-    --red: #ff8a8a;
+    --red: gold;
     --accent-color: #EFEBD8;
     --img-filter: invert(1) brightness(1.3) contrast(1.23);
   --img-blend: normal;
@@ -1088,8 +1087,9 @@ color: var(--text);
   border: none
 }
 
-.like-btn {
+.like-btn, .like-btn a {
   color: var(--red);
+  background: transparent;
   }
   
 .share-menu {

@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (userHasLiked) {
       likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
-      likeBtn.innerHTML = `<div class="like-btn">&#9829;</div><div class="like-count">Loaded</div>`;
+      likeBtn.innerHTML = `<div class="like-btn gold-card">&#9829;</div><div class="like-count">Loaded</div>`;
     }
 
     // Insert safely
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        likeBtn.innerHTML = `<div class="like-btn">&#9829;</div> <div class="like-count">${newVal} </div>`;
+        likeBtn.innerHTML = `<div class="like-btn gold-card">&#9829;</div> <div class="like-count">${newVal} </div>`;
       } catch (err) {
         localStorage.removeItem(localStorageKey);
         likeBtn.disabled = false;
