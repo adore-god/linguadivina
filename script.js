@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = `<div class="">&#x2661; <div class="like-count">...</div></div>`;
+    likeBtn.innerHTML = `<div class="">&#x2661; </div><div class="like-count">...</div>`;
 
     if (userHasLiked) {
       likeBtn.disabled = true;
