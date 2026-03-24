@@ -806,7 +806,6 @@ text-transform: uppercase
 
 .like-btn {
   background-color: var(--bg-color-two);
-  opacity:1;
   padding: 4px 5px;
   cursor: pointer;
   margin:0 0 4px 0; 
@@ -1095,7 +1094,7 @@ color: var(--text);
 
 .like-btn {
   color: var(--bg-color);
-  background: var(--bg-color-two)
+  background: var(--text)
 
   }
   
