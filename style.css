@@ -1089,8 +1089,9 @@ color: var(--text);
 }
 
 .like-btn {
-  color: var(--gold);
+  color: var(--red);
   background: transparent;
+  
   }
   
 .share-menu {
