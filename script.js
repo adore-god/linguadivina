@@ -106,14 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.share-dropdown').forEach(linkContainer => {
     if (linkContainer.previousElementSibling && linkContainer.previousElementSibling.classList.contains('like-btn')) return;
  
-    const likeBtn = document.createElement('button');
+    const likeBtn = document.createElement('div');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = `<div class="like-btn">&#x2661; </div><div class="like-count">...</div>`;
+    likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span> <span class="like-count">...</span></div>`;
 
     if (userHasLiked) {
-      likeBtn.disabled = true;
+      likeBtn.disabled = false;
       likeBtn.style.opacity = "0.6";
-      likeBtn.innerHTML = `<div class="like-btn">&#9829;</div><div class="like-count">Loaded</div>`;
+      likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span> <span class="like-count">...</span></div>`;
     }
 
     // Insert safely
@@ -135,18 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        likeBtn.innerHTML = `<div class="like-btn">&#x2661;</div> <div class="like-count">${newVal} </div>`;
+        likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span<span class="like-count">${newVal} </span></div>`;
       } catch (err) {
         localStorage.removeItem(localStorageKey);
         likeBtn.disabled = false;
       }
     };
   });
-  
-  
-  
-  
-  
+ 
 
   // --- 3. THE SHARE MENU LOGIC ---
   const shareButton = document.querySelector(".share-button");

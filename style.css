@@ -805,19 +805,23 @@ text-transform: uppercase
 }
 
 .like-btn {
-  background: transparent;
+  background-color: var(--bg-color-two);
+  opacity:1;
+  padding: 5px 5px;
   cursor: pointer;
-  margin:0 4px 0 0; 
+  margin:0 0px 0 0; 
   display: inline;
   color: var(--red);
   font-weight: 800;
   border: 0; 
   line-height: 1.4;
   font-size: 1em;
+  border-radius:3px
 }
-.like-count {
+.like-count, .heart {
 	margin:0 0px 0 0;
     display: inline;
+    
 	}
 	
 .like-btn:hover {
@@ -873,6 +877,7 @@ table, td, th {
 @media (prefers-color-scheme: dark) {
 	:root {
     --bg-color: #000000;
+    --bg-color-two: #ffffff;
     --text: #EFEBD8;
     --link: #EFEBD8;
     --button: #EFEBD8;
@@ -1083,15 +1088,15 @@ color: var(--text) !important;
 color: var(--text);
 	}
 .share-button  {
-  background: var(--bg-);
+  background: var(--bg-color);
   color: var(--text);
   border: none
 }
 
 .like-btn {
   color: var(--red);
-  background: transparent;
-  
+  background: var(--bg-color-two)
+
   }
   
 .share-menu {

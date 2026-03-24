@@ -2,6 +2,7 @@
 :root {
   --text: #222222;
   --bg-color: #FFFDF7;
+  --bg-color-two: #111;
   --link: #222222;
   --accent-color: #444;
   --button: #333;
@@ -20,6 +21,7 @@
 
 :root.light {
   --bg-color: #FFFDF7;
+  --bg-color-two: #111;
   --text: #222222;
   --link: #222222;
   --accent-color: #444;
