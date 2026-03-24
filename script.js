@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = `<div class="">&#x2661; </div><div class="like-count">...</div>`;
+    likeBtn.innerHTML = `<div class="like-btn">&#x2661; </div><div class="like-count">...</div>`;
 
     if (userHasLiked) {
       likeBtn.disabled = true;
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        likeBtn.innerHTML = `<div class="like-btn gold-card">&#9829;</div> <div class="like-count">${newVal} </div>`;
+        likeBtn.innerHTML = `<div class="like-btn">&#x2661;</div> <div class="like-count">${newVal} </div>`;
       } catch (err) {
         localStorage.removeItem(localStorageKey);
         likeBtn.disabled = false;

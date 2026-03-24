@@ -249,14 +249,14 @@ background:#111 !important;
 
 
 a.redA {
-  text-decoration-color: #f25757 !important;
+  text-decoration-color: var(--red) !important;
 	}
 	
 a, a b {
   color: var(--text);
   font-weight: 500;
   text-decoration: underline solid;
-  text-decoration-color: rgba(0, 0, 0, 1.7);
+  text-decoration-color: var(--text);
   text-decoration-thickness: 0.6px;
   font-style: normal !important;
   
