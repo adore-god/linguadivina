@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 2. THE LIKE BUTTON INJECTION ---
   document.querySelectorAll('.share-dropdown').forEach(linkContainer => {
     if (linkContainer.previousElementSibling && linkContainer.previousElementSibling.classList.contains('like-btn')) return;
-
+ 
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn';
     likeBtn.innerHTML = `<div class="like-btn">&#x2661; </div><div class="like-count">...</div>`;
