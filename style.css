@@ -807,7 +807,7 @@ text-transform: uppercase
 .like-btn {
   background: none;
   cursor: pointer;
-  margin:0 2px 0 0; 
+  margin:0 4px 0 0; 
   display: inline;
   color: var(--red);
   font-weight: 800;
