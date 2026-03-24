@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        likeBtn.innerHTML = ` ${newVal}`;
+        likeBtn.innerHTML = `<div class="like-btn">&#x2661;</div> <div class="like-count">${newVal} </div>`;
       } catch (err) {
         localStorage.removeItem(localStorageKey);
         likeBtn.disabled = false;
