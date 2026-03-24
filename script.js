@@ -96,53 +96,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. SETTINGS ---
-  const workerUrl = "https://like-button-worker.linguadivina.workers.dev";
-  const localStorageKey = 'hasLiked_project';
+  const workerBase = "https://like-button-worker.linguadivina.workers.dev";
+
+  // Derive a unique key from the current page path
+  // e.g. "/blog/my-post/"  "hasLiked_/blog/my-post/"
+  const pageKey = window.location.pathname;
+  const localStorageKey = `hasLiked_${pageKey}`;
+
+  // Pass the page slug as a query param so the worker knows which counter to use
+  const workerUrl = `${workerBase}?page=${encodeURIComponent(pageKey)}`;
+
   const userHasLiked = localStorage.getItem(localStorageKey);
 
   // --- 2. THE LIKE BUTTON INJECTION ---
   document.querySelectorAll('.share-dropdown').forEach(linkContainer => {
-    if (linkContainer.previousElementSibling && linkContainer.previousElementSibling.classList.contains('like-btn')) return;
- 
+    if (
+      linkContainer.previousElementSibling &&
+      linkContainer.previousElementSibling.classList.contains('like-btn')
+    ) return;
+
     const likeBtn = document.createElement('div');
     likeBtn.className = 'like-btn';
-    likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span> <span class="like-count">...</span></div>`;
+
+    const heartHTML = (count) =>
+      `<span class="heart">&#9829;</span> <span class="like-count">${count}</span>`;
+
+    likeBtn.innerHTML = heartHTML('...');
 
     if (userHasLiked) {
-      likeBtn.disabled = false;
       likeBtn.style.opacity = "0.6";
-      likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span> <span class="like-count">...</span></div>`;
+      likeBtn.style.pointerEvents = "none";
     }
 
-    // Insert safely
     linkContainer.insertAdjacentElement('beforebegin', likeBtn);
     const countSpan = likeBtn.querySelector('.like-count');
 
-    // Fetch Count
-    fetch(workerUrl).then(res => res.text()).then(data => {
-      countSpan.innerText = data;
-    }).catch(() => { countSpan.innerText = "0"; });
+    // Fetch count for THIS page
+    fetch(workerUrl)
+      .then(res => res.text())
+      .then(data => { countSpan.innerText = data; })
+      .catch(() => { countSpan.innerText = "0"; });
 
     // Like Logic
-    likeBtn.onclick = async (e) => {
+    likeBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       if (localStorage.getItem(localStorageKey)) return;
+
       localStorage.setItem(localStorageKey, 'true');
-      likeBtn.disabled = true;
       likeBtn.style.opacity = "0.6";
+      likeBtn.style.pointerEvents = "none";
+
       try {
         const res = await fetch(workerUrl, { method: 'POST' });
         const newVal = await res.text();
-        likeBtn.innerHTML = `<div class="like-btn"><span class="heart">&#9829;</span<span class="like-count"> ${newVal}</span></div>`;
+        countSpan.innerText = newVal;
       } catch (err) {
+        // Rollback if request failed
         localStorage.removeItem(localStorageKey);
-        likeBtn.disabled = false;
+        likeBtn.style.opacity = "1";
+        likeBtn.style.pointerEvents = "auto";
       }
-    };
+    });
   });
- 
 
   // --- 3. THE SHARE MENU LOGIC ---
   const shareButton = document.querySelector(".share-button");
@@ -152,14 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageUrl = encodeURIComponent(window.location.href);
     const pageTitle = encodeURIComponent(document.title);
 
-    // Setup Links
     const twitter = document.getElementById("share-twitter");
     if (twitter) twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
 
     const facebook = document.getElementById("share-facebook");
     if (facebook) facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 
-    // Copy Link Logic
     const copyButton = document.getElementById("share-copy");
     if (copyButton) {
       copyButton.addEventListener("click", async (e) => {
@@ -170,14 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Toggle Dropdown (Fixed for Mobile)
     shareButton.addEventListener("click", (e) => {
       e.stopPropagation();
       const isVisible = shareMenu.style.display === "block";
       shareMenu.style.display = isVisible ? "none" : "block";
     });
 
-    // Global Click-to-Close
     document.addEventListener("click", (e) => {
       if (!shareMenu.contains(e.target) && e.target !== shareButton) {
         shareMenu.style.display = "none";
