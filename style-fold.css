@@ -438,7 +438,7 @@ color: var(--text) !important;
   cursor: pointer;
 }
 
-.share-button a, .like-btn a {
+.share-button a {
 color: var(--text);	
 	}
 	

@@ -809,7 +809,7 @@ text-transform: uppercase
   cursor: pointer;
   margin:0 2px 0 0; 
   display: inline;
-  color: #7d0b0b !important;
+  color: #7d0b0b;
   font-weight: 800;
   border: none; 
   line-height: 1.4;
@@ -1088,7 +1088,7 @@ color: var(--text);
 }
 
 .like-btn {
-  color: #f26868 !important;
+  color: #f26868;
   }
   
 .share-menu {
