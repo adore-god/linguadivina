@@ -159,62 +159,77 @@ button.addEventListener("click", (e) => {
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Find all .label-links containers
+  const workerUrl = "https://like-button-worker.linguadivina.workers.dev";
+  const localStorageKey = 'hasLiked_project';
+
+  // 1. Check if user has already liked (Universal check for this session)
+  const userHasLiked = localStorage.getItem(localStorageKey);
+
+  // 2. Find all .share-dropdown containers
   document.querySelectorAll('.share-dropdown').forEach(linkContainer => {
 
-    // Prevent adding multiple buttons/modals
+    // Prevent adding multiple buttons
     if (linkContainer.previousElementSibling && linkContainer.previousElementSibling.classList.contains('like-btn')) return;
 
-    // Create Like Button
+    // Create the New Like Button
     const likeBtn = document.createElement('button');
-    likeBtn.id = 'openLikeModal';
     likeBtn.className = 'like-btn';
-    likeBtn.textContent = 'Like';
+    // Initial State
+    likeBtn.innerHTML = ` <span class="like-count">...</span>`;
 
-    // Insert button before the .label-links container
+    // 3. Apply "Already Liked" styling if needed
+    if (userHasLiked) {
+      likeBtn.disabled = true;
+      likeBtn.style.opacity = "0.6";
+      likeBtn.style.cursor = "default";
+    }
+
+    // Insert button before the .share-dropdown container
     linkContainer.insertAdjacentElement('beforebegin', likeBtn);
 
-    // Create Modal Overlay
-    const modal = document.createElement('div');
-    modal.id = 'likeModal';
-    modal.className = 'modal';
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close-btn" id="closeLikeModal">&times;</span>
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfKjCBylt6GboFAnEPqZmfH3PmB3yEJqN87RTsBs2_WTxvfBw/viewform?usp=pp_url&entry.1015073811=Like"
-          width="100%" 
-          height="380" 
-          style="border:none; overflow:hidden; border-radius:8px;"
-          scrolling="yes"
-          loading="lazy">
-        </iframe>
-      </div>
-    `;
-    linkContainer.insertAdjacentElement('beforebegin', modal);
+    const countSpan = likeBtn.querySelector('.like-count');
 
-    // Grab references for event handlers
-    const openBtn = likeBtn;
-    const closeBtn = modal.querySelector('.close-btn');
+    // 4. Fetch the current count from Cloudflare
+    fetch(workerUrl)
+      .then(res => res.text())
+      .then(data => {
+        countSpan.innerText = data;
+      })
+      .catch(() => {
+        countSpan.innerText = "0";
+      });
 
-    openBtn.onclick = () => {
-      modal.style.display = 'block';
-    };
+    // 5. Click Handler
+    likeBtn.onclick = async () => {
+      if (localStorage.getItem(localStorageKey)) return;
 
-    closeBtn.onclick = () => {
-      modal.style.display = 'none';
-    };
+      // Lock button immediately
+      localStorage.setItem(localStorageKey, 'true');
+      likeBtn.disabled = true;
+      likeBtn.style.opacity = "0.6";
+      countSpan.innerText = "...";
 
-    // Close modal if clicking outside content
-    window.onclick = (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
+      try {
+        const res = await fetch(workerUrl, { method: 'POST' });
+        const newVal = await res.text();
+        countSpan.innerText = newVal;
+        // Optional: Trigger a little animation or change icon
+        likeBtn.innerHTML = ` ${newVal}`;
+      } catch (err) {
+        console.error("Like failed:", err);
+        countSpan.innerText = "!";
+        localStorage.removeItem(localStorageKey);
+        likeBtn.disabled = false;
+        likeBtn.style.opacity = "1";
       }
     };
   });
 });
+
+
+
+
 
 
 
