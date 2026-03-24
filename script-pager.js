@@ -5,7 +5,7 @@
     // --- DETERMINING TARGET BASED ON PAGE ---
     // Checks if the path is empty or just "/"
     const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
-    const targetSelector = isIndexPage ? '.latest-posts' : '.share-dropdown';
+    const targetSelector = isIndexPage ? '.latest-posts' : '.label-links';
     const target = document.querySelector(targetSelector);
 
     if (!labelContainer || !map || !target) {
