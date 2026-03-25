@@ -467,7 +467,10 @@ color: var(--text);
 	
 	}
 
-
+#mainVideo {
+	margin:2em 0;
+	}
+	
 /* Desktop Width Constraint */
 @media (min-width: 900px) {
   body {
@@ -477,72 +480,7 @@ color: var(--text);
 }
 
 
-/* Thumbnail Styling */
-.video-thumbnail {
-  position: relative;
-  width: 100%;
-  max-width: 600px; /* Adjust to your liking */
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.video-thumbnail img {
-  width: 100%;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.video-thumbnail:hover img {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Play Button Overlay */
-.play-overlay {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  width: 70px; height: 70px;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.play-triangle {
-  width: 0; height: 0; 
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 25px solid white;
-  margin-left: 5px;
-}
-
-/* Lightbox Background */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-}
-
-/* Video Container */
-.lightbox-content {
-  position: relative;
-  width: 90%;
-  max-width: 1000px;
-}
-
-.lightbox-content video {
-  width: 100%;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.close-btn {
-  position: absolute;
-  top: -40px; right: 0;
-  background: none; border: none;
-  color: white; font-size: 30px; cursor: pointer;
+#mainVideo {
+  aspect-ratio: 9 / 16; /* Use 9 / 16 if it's a TikTok-style vertical video */
+  background: #000;    /* Shows a black box while loading */
 }
