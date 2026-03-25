@@ -132,12 +132,12 @@
 }</script>
 <link href="https://linguadivina.uk" rel="canonical"/>
 <meta content="index, follow" name="robots"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="/style-fold.css" rel="stylesheet"/><script src="script-dark-light.js"></script><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="style-fold.css" rel="stylesheet"/><script src="script-dark-light.js"></script><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
 <link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect"/>
 <link href="https://www.blueletterbible.org" rel="dns-prefetch"/>
 <link href="/favicon.ico" rel="icon" type="image/png"/><link href="/favicon.png" rel="icon" type="image/png"/>
 <link href="/manifest.json" rel="manifest"/>
-<link href="/style.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<link href="style.css" media="print" onload="this.media='all'" rel="stylesheet"/>
 <link href="/style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet"/>
 <script defer="" src="script.js"></script>
 <script defer="" src="latest-arts.js"></script>
@@ -167,6 +167,7 @@
 <div class="container">
 <main class="content"><article>
 <p><dfn>A comprehensive Bible reference and interpretation site</dfn> that explores the Bible as a psychological drama set in the kingdom of the mind.</p>
+
 <p class="lead">
       God, the Lord, and the forces of the mind—<a href="exodus-314-i-am.html">judges</a>, kings, and rulers—are revealed in a story of imagination, love, and the unfolding of consciousness. 
       This is the greatest love story ever told: the <a href="el/bible-kingdom-structure.html">kingdom within you</a>, guided by faith, delight, and assumption.
@@ -206,6 +207,45 @@ for behold<br/>the kingdom of God<br/> is within you.” <br/> Luke 17:21
 <p>
 <a href="genesis-foundational-principles.html">Begin with Genesis →</a>
 </p>
+
+<div class="video-thumbnail" onclick="openLightbox()">
+  <img style="filter: invert(0) brightness(1.1) contrast(1.1);
+    mix-blend-mode: normal;"  src="images/videos/bible-trailer-thumbnail.webp" alt="Intro Video Preview">
+  <div class="play-overlay">
+    <div class="play-triangle"></div>
+  </div>
+</div>
+
+<div id="videoLightbox" class="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content">
+    <video id="mainVideo" controls>
+      <source src="images/videos/bible-trailer-intro-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button class="close-btn" onclick="closeLightbox(event)">&times;</button>
+  </div>
+</div>
+
+<script>
+const lightbox = document.getElementById('videoLightbox');
+const video = document.getElementById('mainVideo');
+
+function openLightbox() {
+  lightbox.style.display = 'flex';
+  video.play();
+}
+
+function closeLightbox(event) {
+  // Only close if clicking the background or the 'X' button
+  if (event.target === lightbox || event.target.className === 'close-btn') {
+    lightbox.style.display = 'none';
+    video.pause();
+    video.currentTime = 0; // Reset video to start
+  }
+}
+</script>
+
+
 <h2>Bible Interpretation Key</h2>
 <div id="Verse-Link-Container"><a class="release" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img alt="Lingua Divina Bible Interpreter Key Logo" class="key-icon" height="384" src="images/icons/bible-key-lingua-divina-logo.webp" width="688"/></a>
 <div id="VerseLinkBox"><p><a class="release" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></p></div></div>
