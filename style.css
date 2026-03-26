@@ -1080,6 +1080,10 @@ color: var(--text) !important;
   #results a {
     color: var(--blue);
   }
+  
+  input[type="text"]:focus {
+  color: var(--blue)
+}
   #theme-toggle {
     position: absolute;
     top: -15px; 
