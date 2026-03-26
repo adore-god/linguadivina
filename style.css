@@ -1082,7 +1082,7 @@ color: var(--text) !important;
   }
   
   input[type="text"]:focus {
-  color: var(--blue)
+  color: var(--blue);
 }
   #theme-toggle {
     position: absolute;
