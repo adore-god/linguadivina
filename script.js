@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '<div id="Verse-Link-Container" style="position:relative; z-index:9999;">' +
                 '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="688" height="384" class="key-icon" alt="Logo" src="../images/icons/bible-key-lingua-divina-logo.webp"></a>' +
                 '<div id="VerseLinkBox">' +
-                    '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:10000;">Bible Passage And Verse Translator</a>' +
+                    '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:1000;">Bible Passage And Verse Translator</a>' +
                 '</div>' +
             '</div>'
         );
