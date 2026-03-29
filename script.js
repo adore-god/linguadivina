@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // We add inline CSS to ensure it stays on top of other elements
         footer.insertAdjacentHTML(
             "afterend",
-            '<div id="Verse-Link-Container" style="position:relative; z-index:9999;">' +
+            '<div id="Verse-Link-Container" style="position:relative; z-index:1000;">' +
                 '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="688" height="384" class="key-icon" alt="Logo" src="../images/icons/bible-key-lingua-divina-logo.webp"></a>' +
                 '<div id="VerseLinkBox">' +
                     '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:1000;">Bible Passage And Verse Translator</a>' +
