@@ -182,7 +182,7 @@ h2 {
 	}
 	
 h2, h3, h4 {
-	color: var(--text);
+	color: var(--ink);
 	font-weight:400;
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
@@ -192,7 +192,7 @@ h2, h3, h4 {
 }
 h1 a, h2 a, h3 a, h4 a {
   font-weight: 400;
-  color: var(--text);
+  color: var(--ink);
   text-decoration-color: var(--text);
   text-decoration: underline solid;
   text-decoration-thickness: 0.6px;
