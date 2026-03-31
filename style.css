@@ -823,6 +823,9 @@ table, td, th {
     margin: 0 auto;
   }
   
+.hero-description {
+  text-align:center;
+  margin:0 auto;
   
 }
 
