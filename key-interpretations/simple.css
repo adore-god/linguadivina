@@ -125,6 +125,7 @@ img.lingua-divina2 {
     margin: 0em auto 2em;
     max-width: 400px;
     border-radius:10px;
+    mix-blend-mode: screen
 }
 .footer-img {
 	margin:1em auto;
