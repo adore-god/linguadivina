@@ -920,6 +920,10 @@ table, td, th {
     color: var(--accent-color);
   }
 
+.container {
+  background: var(--bg-color);
+}
+
 .hero-description {
     font-weight: 500;
     color: bar(--gold-light)
