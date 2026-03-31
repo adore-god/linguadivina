@@ -262,6 +262,7 @@ blockquote {
   padding: 10px 5%;
   width: 82%;
   letter-spacing: -0.02em;
+  background: var(--parchment);
 }
 
 blockquote p {
