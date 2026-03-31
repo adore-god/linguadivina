@@ -255,7 +255,7 @@ strong {
 
 /* Blockquotes */
 blockquote {
-  font-weight:500;
+  font-weight:400;
   font-size: 1.05rem;
   margin: 1em auto 1.2em;
   text-align: left;
@@ -901,7 +901,7 @@ table, td, th {
     --gold-dim: #7a6030;
     --ink: #1a1208;
     --parchment: #f5eedc;
-    --parchment-dark: #e8ddc8;
+    --parchment-dark: #0e0b06;
     --cream: #faf6ec;
     --thread1: #8b2e2e;
     --thread2: #2e5c8b;
@@ -1009,6 +1009,17 @@ color: var(--text) !important;
   a:hover {
     text-decoration-style: solid;
   }
+
+blockquote {
+  font-weight:400;
+  font-size: 1.05rem;
+  margin: 1em auto 1.2em;
+  text-align: left;
+  padding: 10px 5%;
+  width: 82%;
+  letter-spacing: -0.02em;
+  background: var(--parchment-dark);
+}
 
   .sidebar {
     background: var(--bg-color);
