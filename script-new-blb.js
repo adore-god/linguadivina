@@ -116,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set fixed width and hide initially
   Object.assign(tooltip.style, {
     position: "absolute", 
+    background: "#1A1815",
+    color: "#D3DAD9",
     display: "none", 
     zIndex: "10000",
     padding: "14px", 
@@ -130,8 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const themes = {
-    light: { background: "#fff", color: "#000", border: "1px solid #ccc" },
-    dark: { background: "#111", color: "#eee", border: "1px solid #555" }
+    light: { background: "#1A1815", color: "#D3DAD9", border: "1px solid #ccc" },
+    dark: { background: "#1A1815", color: "#D3DAD9", border: "1px solid #D3DAD9" }
   };
 
   function applyTheme(isDark) {
@@ -189,8 +191,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ? `<span style="font-weight:bold; font-size: 1.1em;">${data.reference}</span><br><div style="margin-top:6px;">${data.text.replace(/\n/g, "<br>")}</div>
            <div style="border:0;border-top:1px solid #555;margin:10px 0;"></div>
            <div style="display:flex; justify-content: space-between; align-items:center;">
-             <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">View Verse</a>
-             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#82adff !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
+             <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#D7D3BF !important;text-decoration:none;font-weight:bold;">View Verse</a>
+             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#D7D3BF !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
            </div>`
         : "Not found";
     } catch {
