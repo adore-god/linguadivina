@@ -1,7 +1,8 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #222222;
-  --bg-color: #FFFDF7;
+  --ink: #1a1208;
+  --bg-color: #faf6ec;
   --bg-color-two: #111;
   --link: #222222;
   --accent-color: #444;
@@ -15,15 +16,31 @@
   --gold: #F6E5B9;
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
-
   --key-icon-filter: invert(0);
   --key-icon-blend: normal;
+  
+  --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --gold-dim: #7a6030;
+    --ink: #1a1208;
+    --parchment: #f5eedc;
+    --parchment-dark: #e8ddc8;
+    --cream: #faf6ec;
+    --thread1: #8b2e2e;
+    --thread2: #2e5c8b;
+    --thread3: #3d7a4f;
+    --thread4: #7a4f2e;
+    --thread5: #6b2e7a;
+    --thread6: #2e7a6b;
+    --thread7: #8b5e2e;
+    --thread8: #2e3d8b;
 }
 
 :root.light {
-  --bg-color: #FFFDF7;
+  --bg-color: #faf6ec;
   --bg-color-two: #111;
   --text: #222222;
+  --ink: #1a1208;
   --link: #222222;
   --accent-color: #444;
   --button: #333;
@@ -34,12 +51,26 @@
   --grad-one: #555;
   --grad-two: #333;
   --grad-three: #111;
-  
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
-
   --key-icon-filter: invert(0);
   --key-icon-blend: normal;
+  
+  --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --gold-dim: #7a6030;
+    --ink: #1a1208;
+    --parchment: #f5eedc;
+    --parchment-dark: #e8ddc8;
+    --cream: #faf6ec;
+    --thread1: #8b2e2e;
+    --thread2: #2e5c8b;
+    --thread3: #3d7a4f;
+    --thread4: #7a4f2e;
+    --thread5: #6b2e7a;
+    --thread6: #2e7a6b;
+    --thread7: #8b5e2e;
+    --thread8: #2e3d8b;
 }
 
 * {
@@ -108,9 +139,9 @@ h1.index-h1	{
 	
 	}
 .site-title a {
-	font-weight:800;
+	font-weight:700;
 	font-size:1.8em;
-	border-left: 2px solid var(--text);
+	border-left: 2px solid var(--ink);
 	padding-left:10px
 	}
 .site-title-span {
@@ -155,7 +186,7 @@ h2, h3, h4 {
 	font-weight:400;
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
-    border-left: 4px solid #333;
+    border-left: 4px solid var(--gold-dim) !important;
     padding-left: 0.75rem;
    
 }
@@ -223,7 +254,7 @@ header img {
     width: 90%;
     padding-left: 0.7em;
     font-size: 0.9em;
-    color: var(--accent-color);
+    color: var(--gold-dim);
   }
  
 .btn-wrap {

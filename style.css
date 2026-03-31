@@ -889,13 +889,27 @@ table, td, th {
     --accent-color: #EFEBD8;
     --img-filter: invert(1) brightness(1.3) contrast(1.23);
   --img-blend: normal;
-
   --key-icon-filter: invert(0);
   --key-icon-blend: normal;
-  
   --grad-one: #9e9888;
   --grad-two: #cac4ae;
   --grad-three: #efebd8;
+  
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --gold-dim: #7a6030;
+    --ink: #1a1208;
+    --parchment: #f5eedc;
+    --parchment-dark: #e8ddc8;
+    --cream: #faf6ec;
+    --thread1: #8b2e2e;
+    --thread2: #2e5c8b;
+    --thread3: #3d7a4f;
+    --thread4: #7a4f2e;
+    --thread5: #6b2e7a;
+    --thread6: #2e7a6b;
+    --thread7: #8b5e2e;
+    --thread8: #2e3d8b;
   }
 
   body {
@@ -905,6 +919,7 @@ table, td, th {
 
 .hero-description {
     font-weight: 500;
+    color: bar(--gold-light)
     }
     
 .btn-outline {
