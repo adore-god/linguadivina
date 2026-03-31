@@ -994,6 +994,7 @@ color: var(--text) !important;
   
 .aforce {
 	text-decoration-color: rgb(245, 245, 245) !important;
+	color: var(--text) 
 	}
 	
 .spec-undline {
