@@ -1,7 +1,7 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #222222;
-  --ink: #1a1208;
+  --ink: #111;
   --bg-color: #faf6ec;
   --bg-color-two: #111;
   --link: #222222;
@@ -41,7 +41,7 @@
   --bg-color: #faf6ec;
   --bg-color-two: #111;
   --text: #222222;
-  --ink: #1a1208;
+  --ink: #111;
   --link: #222222;
   --accent-color: #444;
   --button: #333;
@@ -140,8 +140,9 @@ h1.index-h1	{
 	
 	}
 .site-title a {
-	font-weight:700;
-	font-size:1.8em;
+	color: var(--ink);
+	font-weight:600;
+	font-size:1.5em;
 	border-left: 2px solid var(--ink);
 	padding-left:10px
 	}
@@ -185,7 +186,7 @@ h2 {
 h2, h3, h4 {
 	color: var(--ink);
 	font-weight:400;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     margin-bottom: 0.75rem;
     border-left: 4px solid var(--gold-dim) !important;
     padding-left: 0.75rem;
