@@ -461,11 +461,12 @@ font-weight:500;
   max-height: 220px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 8px;
+  padding: 1em 2em;
   border: 0px solid #ddd;
   margin: 0em auto 1.6em;
-  background: transparent;
-  width:90%
+  background: var(--gold-bq);
+  width:100%;
+  border-radius: 10px;
 }
 
 #series-links-wrapper a,
