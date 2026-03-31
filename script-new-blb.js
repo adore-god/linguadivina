@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     zIndex: "10000",
     padding: "14px", 
     fontSize: "16px", 
-    lineHeight: "1.4em",
+    lineHeight: "1.5em",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
     borderRadius: "7px", 
     pointerEvents: "auto",
