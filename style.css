@@ -156,6 +156,7 @@ small {
   font-size: 10px;
 }
 
+
 small.blockquote-cap {
   display: block;
   font-size: 0.8em;
@@ -871,7 +872,7 @@ table, td, th {
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
-    --ink-light: #222;
+    --gold-bq: #222222;
     --cream: #faf6ec;
     --thread1: #8b2e2e;
     --thread2: #2e5c8b;
@@ -995,8 +996,8 @@ color: var(--text) !important;
   }
 
 blockquote { 
-  background-color: var(--ink-light);
-  border-left-color: 2px solid var(--gold-dim) !important;
+  background-color: var(--gold-bq);
+  border-left: 2px solid var(--gold-dim) !important;
 }
 
   .sidebar {

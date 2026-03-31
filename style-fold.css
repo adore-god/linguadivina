@@ -22,6 +22,7 @@
   --gold: #c9a84c;
     --gold-light: #e8d08a;
     --gold-dim: #7a6030;
+    --gold-bq: green;
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
@@ -59,6 +60,7 @@
   --gold: #c9a84c;
     --gold-light: #e8d08a;
     --gold-dim: #7a6030;
+    --gold-bq: #f5eedc;
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
@@ -331,7 +333,6 @@ dfn {
 	font-style:normal;
 	}
 
-/* Blockquotes */
 blockquote {
   font-weight:400;
   font-size: 1.05rem;
@@ -340,8 +341,8 @@ blockquote {
   padding: 1.2em;
   width: 82%;
   letter-spacing: -0.02em;
-  background-color: var(--cream);
-  border-left: 2px solid var(--gold-dim);
+  background-color: var(--parchment);
+  border-left: 2px solid var(--gold-bq);
   border-radius:5px;
   
 }
@@ -390,9 +391,6 @@ img {
   mix-blend-mode: multiply;
 }
 
-@media (prefers-color-scheme: dark) {
-  h1 { border-left-color: #999; }
-}
 
 /* Article Intro Styles */
 .content article p:first-of-type {
