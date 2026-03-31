@@ -924,8 +924,13 @@ table, td, th {
   background: var(--bg-color);
 }
 
-.site-title a {
-	border-left: 2px solid var(--text);
+.reddit-container-feed, 
+.reddit-container-feed a {
+	color: var(--text);
+	}
+	.site-title, .site-title a {
+	color: var(--text);
+	border-left-color: var(--text);
 	}
 
 .hero-description {
