@@ -407,11 +407,11 @@ ol, ul {
   .reddit-container-feed { 	margin: 0em 0 2em;
     max-height: 400px;       
     overflow-y: auto;     
-    padding: 15px;
+    padding: 1em 1em;
     border: 0px solid #ccc;
     border-radius: 8px;
-    background: transparent;
-    width:90%;
+    background-color: var(--gold-bq);
+    width:100%;
     font-weight:800;
   } 
 
@@ -427,7 +427,7 @@ ol, ul {
   
   .reddit-container-feed h2,
   .reddit-container-feed h3 {
-  border:0;
+  border:0 !important;
   }
 
   /* Remaining posts smaller */
@@ -697,7 +697,9 @@ table {
 	height:400px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	width:90%
+	width:100%;
+	background-color: var(--gold-bq);
+	padding: 1em 1em
 	}
 	
 .latest-posts a, .latest-posts a:visited {
