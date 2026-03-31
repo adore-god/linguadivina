@@ -341,7 +341,7 @@ blockquote {
   padding: 1.2em;
   width: 82%;
   letter-spacing: -0.02em;
-  background-color: var(--parchment);
+  background-color: var(--gold-bq);
   border-left: 2px solid var(--gold-bq);
   border-radius:5px;
   

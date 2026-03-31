@@ -822,10 +822,9 @@ table, td, th {
     width: 60%;
     margin: 0 auto;
   }
-  
 .hero-description {
-  text-align:center;
-  margin:0 auto;
+    text-align:center;
+    }
   
 }
 
@@ -1000,7 +999,7 @@ color: var(--text) !important;
 
 blockquote { 
   background-color: var(--gold-bq);
-  border-left: 2px solid var(--gold-dim) !important;
+  border-left: 2px solid var(--gold-bq);
 }
 
   .sidebar {
