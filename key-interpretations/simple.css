@@ -17,8 +17,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body, article, p, header, header p {
-    background: #000000 !important;
-    color: #e0e0e0 !important;
+    background: #1A1815 !important;
+    color: #D3DAD9 !important;
   }
   
   a, a:link, a:visited {
