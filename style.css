@@ -924,9 +924,13 @@ table, td, th {
   background: var(--bg-color);
 }
 
+.site-title a {
+	border-left: 2px solid var(--text);
+	}
+
 .hero-description {
     font-weight: 500;
-    color: bar(--gold-light)
+    color: var(--gold-light)
     }
     
 .btn-outline {
@@ -975,6 +979,7 @@ table, td, th {
   
   h2, h3, h4 {
     border-left-color: var(--text);
+    color: var(--text);
     
   }
 	.stand-out img {
