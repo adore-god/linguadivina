@@ -253,40 +253,7 @@ strong {
   font-weight: 600;
 	}
 
-/* Blockquotes */
-blockquote {
-  font-weight:400;
-  font-size: 1.05rem;
-  margin: 2em auto 2em;
-  text-align: left;
-  padding: 1.2em;
-  width: 82%;
-  letter-spacing: -0.02em;
-  background: var(--parchment);
-  border-left: 2px solid var(--gold-dim) !important;
-  border-radius:5px;
-}
 
-blockquote p {
-padding: 0;
-margin:0
-}
-blockquote em,
-blockquote i,
-blockquote b,
-blockquote a {
-  font-style: normal;
-  font-weight: inherit;
-}
-blockquote.relaxed {
-  font-weight:400;
-  font-size: 1rem;
-  margin: 0em auto;
-  text-align: left;
-  padding: 10px 1%;
-  width: 89%;
-  letter-spacing: -0.02em;
-}
 .red,
 .red a,
 .red a:visited {
@@ -345,11 +312,11 @@ pre code {
 .button2:hover {
   background: linear-gradient(
     145deg,
-    #F8F8FF9d6 0%,
+    #F8F8FF 0%,
     #f7e089 25%,
     #e0bd45 50%,
     #c49a32 75%,
-    #F8F8FF4ba 100%
+    #F8F8FF 100%
   );
 }
   
@@ -716,7 +683,7 @@ table {
 
 #results a {
   font-weight: 500;
-  color: car(--blue);
+  color: var(--blue);
   text-decoration:none;
 }
  
@@ -855,7 +822,7 @@ table, td, th {
     margin: 0 auto;
   }
   
-  }
+  
 }
 
 @media (max-width: 1168px) {
@@ -904,6 +871,7 @@ table, td, th {
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #0e0b06;
+    --ink-light: #222;
     --cream: #faf6ec;
     --thread1: #8b2e2e;
     --thread2: #2e5c8b;
@@ -935,7 +903,7 @@ table, td, th {
 
 .hero-description {
     font-weight: 500;
-    color: var(--gold-light)
+    color: var(--gold-dim)
     }
     
 .btn-outline {
@@ -1027,8 +995,8 @@ color: var(--text) !important;
   }
 
 blockquote { 
-  background: var(--parchment-dark);
-  border-left: 2px solid var(--gold-dim) !important;
+  background-color: var(--ink-light);
+  border-left-color: 2px solid var(--gold-dim) !important;
 }
 
   .sidebar {

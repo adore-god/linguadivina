@@ -94,7 +94,6 @@ body{
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  font-optical-sizing: auto;
 }
 .container {
   max-width: 800px;
@@ -243,7 +242,6 @@ header img {
   mix-blend-mode: multiply;
   height: auto;
   padding: 30px 5px 0 0;
-  //filter: hue-rotate(180deg);
   mix-blend-mode: multiply;
 }
 .hero-description {
@@ -273,7 +271,7 @@ header img {
   border-radius:3px
 }
 
-.btn-dark
+.btn-dark {
 background:#111 !important;
 }
 
@@ -333,6 +331,42 @@ dfn {
 	font-style:normal;
 	}
 
+/* Blockquotes */
+blockquote {
+  font-weight:400;
+  font-size: 1.05rem;
+  margin: 2em auto 2em;
+  text-align: left;
+  padding: 1.2em;
+  width: 82%;
+  letter-spacing: -0.02em;
+  background-color: var(--cream);
+  border-left: 2px solid var(--gold-dim);
+  border-radius:5px;
+  
+}
+
+blockquote p {
+padding: 0;
+margin:0
+}
+blockquote em,
+blockquote i,
+blockquote b,
+blockquote a {
+  font-style: normal;
+  font-weight: inherit;
+}
+blockquote.relaxed {
+  font-weight:400;
+  font-size: 1rem;
+  margin: 0em auto;
+  text-align: left;
+  padding: 10px 1%;
+  width: 89%;
+  letter-spacing: -0.02em;
+}
+
 blockquote cite
  {
 font-size: 0.7em;
@@ -349,7 +383,7 @@ img {
   max-width: 200px;
   height: auto;
   min-height:auto;
-  max-height:auto;
+  height:auto;
   opacity: 0.8;
   padding: 0;
   overflow: hidden;
@@ -363,14 +397,6 @@ img {
 /* Article Intro Styles */
 .content article p:first-of-type {
   margin: 1.2em 0;
-}
-
-blockquote {
-  font-size: 1.05rem;
-  margin: 1em auto;
-  padding: 10px 5%;
-  width: 82%;
-  letter-spacing: -0.02em;
 }
 
 /* Hamburger remains visible but non-functional until JS/Main CSS loads */
