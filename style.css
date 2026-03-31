@@ -263,6 +263,7 @@ blockquote {
   width: 82%;
   letter-spacing: -0.02em;
   background: var(--parchment);
+  border-left: 2px solid var(--gold-dim) !important;
 }
 
 blockquote p {
@@ -274,7 +275,7 @@ blockquote i,
 blockquote b,
 blockquote a {
   font-style: normal;
-  font-weight: 400 !important;
+  font-weight: inherit;
 }
 blockquote.relaxed {
   font-weight:400;
@@ -1019,6 +1020,7 @@ blockquote {
   width: 82%;
   letter-spacing: -0.02em;
   background: var(--parchment-dark);
+  border-left: 2px solid var(--gold-dim) !important;
 }
 
   .sidebar {
