@@ -257,13 +257,14 @@ strong {
 blockquote {
   font-weight:400;
   font-size: 1.05rem;
-  margin: 1em auto 1.2em;
+  margin: 2em auto 2em;
   text-align: left;
-  padding: 10px 5%;
+  padding: 1.2em;
   width: 82%;
   letter-spacing: -0.02em;
   background: var(--parchment);
   border-left: 2px solid var(--gold-dim) !important;
+  border-radius:5px;
 }
 
 blockquote p {
@@ -1011,14 +1012,7 @@ color: var(--text) !important;
     text-decoration-style: solid;
   }
 
-blockquote {
-  font-weight:400;
-  font-size: 1.05rem;
-  margin: 1em auto 1.2em;
-  text-align: left;
-  padding: 10px 5%;
-  width: 82%;
-  letter-spacing: -0.02em;
+blockquote { 
   background: var(--parchment-dark);
   border-left: 2px solid var(--gold-dim) !important;
 }
