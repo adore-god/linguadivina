@@ -959,7 +959,10 @@ table, td, th {
   h2, h3, h4 {
     border-left-color: var(--text);
     color: var(--text);
-    
+  }
+  
+.srch-series-link h2 a {
+  	color: var(--text);
   }
 	.stand-out img {
     filter: invert(0) brightness(1.1) contrast(1.1);
