@@ -133,7 +133,7 @@ img.key-icon {
     max-width: 100% !important;
     height: auto;
     flex-shrink: 0; 
-    
+    mix-blend-mode: screen;
     opacity: 0.95;
     border-radius:20px;
     margin-bottom:1em;
