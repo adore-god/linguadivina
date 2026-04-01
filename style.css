@@ -947,8 +947,7 @@ table, td, th {
  .lingua-divina2   {
   filter: var(--key-icon-filter);
   mix-blend-mode: var(--key-icon-blend);
-  position:relative;
-  z-index:30000
+
   }
   
   img.reddit {
