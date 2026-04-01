@@ -927,6 +927,11 @@ table, td, th {
   color: #000 !important;
 }
   
+  header::before {
+  	filter: var(--img-filter);
+    mix-blend-mode: var(--img-blend);
+  }
+  
  header img {
     filter: var(--img-filter);
     mix-blend-mode: var(--img-blend);
