@@ -961,7 +961,7 @@ table, td, th {
     
   }
   
-  h2, h3, h4 {
+  h2, h2 a, h3, h3 a, h4, h4 a {
     border-left-color: var(--text);
     color: var(--text);
   }
