@@ -133,7 +133,7 @@ img.key-icon {
     max-width: 100% !important;
     height: auto;
     flex-shrink: 0; 
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
     opacity: 0.95;
     border-radius:20px;
     margin-bottom:1em;
@@ -941,10 +941,16 @@ table, td, th {
     filter: var(--img-filter);
     mix-blend-mode: var(--img-blend);
   }
+ 
+.key-icon,
+ .lingua-divina2   {
+  filter: invert(0);
+  mix-blend-mode: screen;
+  position:relative;
+  z-index:30000
+  }
   
-  img.reddit,
-  .key-icon,
-  .lingua-divina2  {
+  img.reddit {
     filter: var(--key-icon-filter);
      
 	}
