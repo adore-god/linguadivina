@@ -246,6 +246,7 @@ header::before {
   left: 0;
   width: 100%;
   height: 25%;
+  min-height: 200px;
   background-image: url('https://linguadivina.uk/images/wp/ld-bg.webp');
   background-size: cover;
   background-position: center;
