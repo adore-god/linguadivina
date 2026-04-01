@@ -55,7 +55,7 @@
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
   --key-icon-filter: invert(0);
-  --key-icon-blend: normal;
+  --key-icon-blend: multiply;
   
   --gold: #c9a84c;
     --gold-light: #e8d08a;
