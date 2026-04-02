@@ -23,6 +23,8 @@
     --gold-light: #e8d08a;
     --gold-dim: #AD8B73;
     --gold-bq: #fde7d8;
+    --gold-bq-two: #fae8db;
+    --gold-bq-thr: #fee7d7;
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
@@ -207,8 +209,25 @@ h1 a, h2 a, h3 a, h4 a {
 }
 h2.def {
 	font-weight: 700;
-	margin-top:4em;
+	padding-top: 0;
+	margin-top: 1em;
 	}
+	
+.gen-fnd-entry {
+  font-weight:400;
+  font-size: 1.05rem;
+  margin: 3em -0.7em 3em;
+  text-align: left;
+  padding: 0.7em 1.3em 1.5em 1.5em;
+  letter-spacing: -0.02em;
+  background-color: var(--gold-bq-thr);
+  border-left: 2px solid var(--gold-bq);
+  border-radius: 10px;	
+	}
+	
+.gen-fnd-entry blockquote {
+
+		}
 .read-more-link {
 	font-weight: 600;
 	text-transform: uppercase;
