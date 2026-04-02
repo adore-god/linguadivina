@@ -943,6 +943,10 @@ table, td, th {
     filter: var(--img-filter);
     mix-blend-mode: var(--img-blend);
   }
+
+.gen-fnd-entry {
+    background-color: var(--gold-bq);
+ }
  
 .key-icon,
  .lingua-divina2   {
