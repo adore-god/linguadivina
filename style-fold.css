@@ -317,13 +317,7 @@ header img {
   
 .btn-dark,
 .btn-outline {
-  font-size: 0.45rem;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  display: inline-block;
-  white-space: nowrap;
-  width: fit-content;
-  border-radius:3px
+  
 }
 
 .btn-dark {
@@ -331,10 +325,18 @@ background:#111 !important;
 }
 
 .btn-outline {
-  border: 1px solid var(--button);
+	font-size: 0.45rem;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  width: fit-content;
+  border-radius:3px;
+  
+  border: 1px solid var(--gold-dim);
   color: var(--button);
+  background: var(--bg-color)
 }
-
 
 a.redA {
   text-decoration-color: var(--red) !important;

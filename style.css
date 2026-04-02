@@ -915,7 +915,7 @@ table, td, th {
     }
     
 .btn-outline {
-  border: 1px solid var(--button);
+  border: 1px solid var(--gold-dim);
   color: var(--button);
 }
 .btn-outline a {
