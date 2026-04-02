@@ -211,6 +211,7 @@ h2.def {
 	font-weight: 700;
 	padding-top: 0;
 	margin-top: 1em;
+	margin-left:-0.5em
 	}
 	
 .gen-fnd-entry {
@@ -226,7 +227,10 @@ h2.def {
 	}
 	
 .gen-fnd-entry blockquote {
-
+  text-align: center;
+  width: 100%;
+  padding: 0.6em;
+  margin:0 auto
 		}
 .read-more-link {
 	font-weight: 600;
