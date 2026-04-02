@@ -130,7 +130,7 @@ figure figcaption {
 
 img.key-icon {
     width: 100%;
-    max-width: 100% !important;
+    max-width: 300px;
     height: auto;
     flex-shrink: 0; 
     mix-blend-mode: var(--key-icon-blend);
