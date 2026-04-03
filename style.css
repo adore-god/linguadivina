@@ -413,6 +413,7 @@ ol, ul {
     border: 0px solid #ccc;
     border-radius: 8px;
     background-color: var(--gold-bq);
+    border-radius:10px;
     width:100%;
     font-weight:800;
   } 
@@ -459,7 +460,7 @@ font-weight:500;
   font-weight:600;
   }
   
-  #series-links-wrapper {
+#series-links-wrapper {
   max-height: 220px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -701,6 +702,7 @@ table {
 	overflow-x: hidden;
 	width:100%;
 	background-color: var(--gold-bq);
+	border-radius: 10px;
 	padding: 1em 1em
 	}
 	
