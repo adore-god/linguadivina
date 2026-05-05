@@ -2,7 +2,7 @@
 :root {
   --text: #222222;
   --ink: #111;
-  --bg-color: #faf6ec;
+  --bg-color: #fff;
   --bg-color-two: #111;
   --link: #222222;
   --accent-color: #444;
@@ -40,7 +40,7 @@
 }
 
 :root.light {
-  --bg-color: #faf6ec;
+  --bg-color: #fff;
   --bg-color-two: #111;
   --text: #222222;
   --ink: #111;
@@ -335,6 +335,15 @@ a:hover {
   text-decoration-style: solid;
 }
 
+.quick {
+  font-weight:bold; 
+  font-size:18px; 
+  border:2px solid black;
+  padding:8px 12px; 
+  display:inline-block; 
+  text-decoration:none;
+	}
+	
 .page-nav{
 display:flex;
 justify-content:space-between;
