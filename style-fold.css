@@ -305,14 +305,13 @@ background:#111 !important;
 
 .btn-outline {
 	font-size: 0.45rem;
-  padding: 0.5em 1em;
+  padding: 0.7em 1.2em;
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
   width: fit-content;
-  border-radius:3px;
-  
-  border: 1px solid var(--gold-dim);
+  border-radius:1px;
+  border: 1.7px solid var(--button);
   color: var(--button);
   background: var(--bg-color)
 }
@@ -338,7 +337,7 @@ a:hover {
 .quick {
   font-weight:bold; 
   font-size:18px; 
-  border:2px solid black;
+  border: 1.7px solid var(--button);
   padding:8px 12px; 
   display:inline-block; 
   text-decoration:none;
