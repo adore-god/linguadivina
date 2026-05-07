@@ -147,7 +147,7 @@ h1.index-h1	{
 	color: var(--ink);
 	font-weight:600;
 	font-size:1.5em;
-	border-left: 2px solid var(--ink);
+	border-left: 0px solid var(--ink);
 	padding-left:10px
 	}
 .site-title-span {
