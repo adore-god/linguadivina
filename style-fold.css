@@ -304,18 +304,13 @@ header img {
   margin: 1em auto 1.5em;
   text-align:center;
   }
-  
-.btn-dark,
-.btn-outline {
-  
-}
 
 .btn-dark {
 background:#111 !important;
 }
 
 .btn-outline {
-	font-size: 0.45rem;
+  font-size: 0.45rem;
   padding: 0.7em 1.2em;
   text-decoration: none;
   display: inline-block;
@@ -327,6 +322,13 @@ background:#111 !important;
   background: var(--bg-color)
 }
 
+.btn-left {
+	margin-right:5px;
+	}
+.btn-right {
+	margin-left:5px;
+	}
+	
 a.redA {
   text-decoration-color: var(--red) !important;
 	}
