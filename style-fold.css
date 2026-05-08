@@ -347,11 +347,12 @@ a:hover {
 
 .quick {
   font-weight:bold; 
-  font-size:18px; 
+  font-size: 1.1em; 
   border: 1.7px solid var(--button);
-  padding:8px 12px; 
+  padding:8px 14px; 
   display:inline-block; 
   text-decoration:none;
+  white-space: nowrap;
 	}
 	
 .page-nav{
