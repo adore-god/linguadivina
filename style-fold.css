@@ -298,6 +298,7 @@ header img {
     padding-left: 0.7em;
     font-size: 0.9em;
     color: var(--gold-dim);
+    text-align: center;
   }
  
 .btn-wrap {
@@ -323,10 +324,10 @@ background:#111 !important;
 }
 
 .btn-left {
-	margin-right:5px;
+	margin-right:7px;
 	}
 .btn-right {
-	margin-left:5px;
+	margin-left:7px;
 	}
 	
 a.redA {
