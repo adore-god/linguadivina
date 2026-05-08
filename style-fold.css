@@ -347,9 +347,9 @@ a:hover {
 
 .quick {
   font-weight:bold; 
-  font-size:18px; 
+  font-size: 16px; 
   border: 1.7px solid var(--button);
-  padding:8px 12px; 
+  padding:8px 8px; 
   display:inline-block; 
   text-decoration:none;
 	}
