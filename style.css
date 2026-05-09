@@ -686,7 +686,7 @@ table {
   color: var(--text);
 }
 
-.creation-section a, .other-section a {
+#creation-results a, #other-results a {
 	font-weight: 500;
   color: var(--blue);
   text-decoration:none;
