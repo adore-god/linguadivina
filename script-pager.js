@@ -56,7 +56,7 @@
     titleContainer.className = "series-links-title";
     
     const h2Title = document.createElement("h2");
-    h2Title.textContent = "More Reading";
+    h2Title.textContent = "More In This Series";
     titleContainer.appendChild(h2Title);
 
     // --- LINKS CONTAINER ---

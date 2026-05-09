@@ -461,7 +461,7 @@ font-weight:500;
   }
   
 #series-links-wrapper {
-  max-height: 220px;
+  max-height: 270px;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1em 2em;
@@ -476,7 +476,7 @@ font-weight:500;
 #series-links-wrapper a:link {
   text-decoration:none;
   display: block;
-  padding: 2px 0; 
+  padding: 5px 0; 
 	}
 
 /* =======================
