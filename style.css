@@ -1100,6 +1100,7 @@ blockquote {
 
 #custom-search-input:focus {
     box-shadow: 0 0 8px rgba(144, 202, 249, 0.4);
+    border: 1px solid #888;
   }
 
 #custom-search-button {
@@ -1114,9 +1115,11 @@ blockquote {
     color: var(--text);
     border: 1px solid #888;
   }
+  
 
   #searchBox:focus {
     box-shadow: 0 0 8px rgba(144, 202, 249, 0.4);
+    border: 1px solid #888;
   }
 
   #results a {
@@ -1125,6 +1128,7 @@ blockquote {
   
   input[type="text"]:focus {
   color: var(--blue);
+  border: 1px solid #888;
 }
   #theme-toggle {
     position: absolute;
