@@ -2,139 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link href="https://linguadivina.uk/search.html" rel="canonical">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<link href="/style-fold.css" rel="stylesheet">
-<link href="/favicon.png" rel="icon" type="image/png">
-<link rel="manifest" href="/manifest.json">
 <link href="/style.css" rel="stylesheet">
-<link rel="stylesheet" href="/style-fonts.css" media="print" onload="this.media='all'">
-
-<script src="script.js"></script>
-
 <title>Search</title>
-<meta name="description" content="Discover new content, explore updated articles, and browse article catalogues and series.">
 </head>
 <body>
-<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://god.thway.uk">Lingua Divina</a></div><p class="hero-description">A Psychological Reading of Scripture</p><button id="theme-toggle">◐</button><script src="script-dark-light.js"></script>
-</header>
-
-<h1>Search</h1>
 <div class="container">
-
-<div id="custom-search-container">
-  <input type="text" id="custom-search-input" placeholder="Search All With Google">
-  <button id="custom-search-button">Search</button>
-</div>
-
-<div id="custom-search-results">
-<script async src="https://cse.google.com/cse.js?cx=62434d5e426ae403f"></script>
-<div class="gcse-searchresults-only"></div>
-</div>
-
-<script>
-function performSearch() {
-  var query = document.getElementById("custom-search-input").value.trim();
-  if (!query) return;
-  if (typeof gtag === 'function') {
-    gtag('event', 'custom_search', { 'search_term': query, 'event_category': 'Site Search' });
-  }
-  if (window.google && google.search && google.search.cse && google.search.cse.element) {
-    var element = google.search.cse.element.getElement('searchresults-only0');
-    if (element) element.execute(query);
-  }
-}
-document.getElementById("custom-search-button").addEventListener("click", performSearch);
-document.getElementById("custom-search-input").addEventListener("keypress", (e) => { if (e.key === 'Enter') performSearch(); });
-</script>
-
-<input type="text" id="searchBox" placeholder="Site Search...">
-
-<ul id="results"></ul>
-
-<div class="srch-series-link">
-<h2><a href="series-links.html">Series and Collections</a></h2> 
+    <h1>Search</h1>
+    <input type="text" id="searchBox" placeholder="Start typing to search...">
+    
+    <div id="results-container">
+        <div id="creation-section" style="display:none;">
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #eee;">The Creation Series</h2>
+            <ul id="creation-results"></ul>
+        </div>
+        
+        <div id="general-section" style="display:none;">
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #eee;">General Results</h2>
+            <ul id="general-results"></ul>
+        </div>
+    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const containerSelectors = ['#results', '#latest-posts'];
+    const searchBox = document.getElementById('searchBox');
+    const creationSection = document.getElementById('creation-section');
+    const generalSection = document.getElementById('general-section');
+    const creationList = document.getElementById('creation-results');
+    const generalList = document.getElementById('general-results');
 
-  function addNoTagToElement(el) {
-    if (!el) return;
-    if (el.tagName === 'A') el.classList.add('noTag');
-    if (el.querySelectorAll) el.querySelectorAll('a').forEach(a => a.classList.add('noTag'));
-  }
-
-  async function loadIndex() {
-    try {
-      const response = await fetch('searchIndex.json');
-      if (!response.ok) throw new Error('Failed to fetch searchIndex.json');
-      return await response.json();
-    } catch (e) {
-      console.error(e);
-      return [];
+    async function loadIndex() {
+        const response = await fetch('searchIndex.json');
+        return await response.json();
     }
-  }
 
-  const searchBox = document.getElementById('searchBox');
-  const resultsList = document.getElementById('results');
-
-  if (searchBox && resultsList) {
-    let debounceTimer;
     searchBox.addEventListener('input', async function () {
-      const query = this.value.trim().toLowerCase();
-      resultsList.innerHTML = '';
-      if (!query) return;
-
-      if (typeof gtag === 'function') {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          gtag('event', 'search', { 'search_term': query, 'event_category': 'Site Search' });
-        }, 700);
-      }
-
-      const index = await loadIndex();
-      const filtered = index.filter(page =>
-        page.title.toLowerCase().includes(query) ||
-        page.content.toLowerCase().includes(query)
-      );
-
-      // Grouping Logic
-      const creationResults = filtered.filter(p => p.category === 'The Creation');
-      const generalResults = filtered.filter(p => p.category === 'General');
-
-      const renderSection = (title, items) => {
-        if (items.length === 0) return;
+        const query = this.value.trim().toLowerCase();
         
-        const header = document.createElement('h3');
-        header.textContent = title;
-        header.style.borderBottom = "1px solid #ccc";
-        header.style.marginTop = "20px";
-        resultsList.appendChild(header);
+        // Clear previous results
+        creationList.innerHTML = '';
+        generalList.innerHTML = '';
+        creationSection.style.display = 'none';
+        generalSection.style.display = 'none';
 
-        items.forEach(page => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = page.url;
-          a.textContent = page.title;
-          a.classList.add('noTag');
-          li.appendChild(a);
-          resultsList.appendChild(li);
+        if (!query) return;
+
+        const index = await loadIndex();
+        
+        const matches = index.filter(page => 
+            page.title.toLowerCase().includes(query) || 
+            page.content.toLowerCase().includes(query)
+        );
+
+        matches.forEach(page => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = page.url;
+            a.textContent = page.title;
+            li.appendChild(a);
+
+            // Logic to put the result in the right bucket based on the JSON category
+            if (page.category === 'Creation') {
+                creationList.appendChild(li);
+                creationSection.style.display = 'block';
+            } else {
+                generalList.appendChild(li);
+                generalSection.style.display = 'block';
+            }
         });
-      };
-
-      renderSection('The Creation Series', creationResults);
-      renderSection('General Results', generalResults);
-
-      addNoTagToElement(resultsList);
     });
-  }
 });
 </script>
-
-</div>
-<div class="footer">© 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/el/terms-of-use.html">See Terms of Use</a></div>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="script-ga.js" defer></script>
 </body>
 </html>
