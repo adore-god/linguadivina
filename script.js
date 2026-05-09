@@ -50,17 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
   addSeparator();
 
-  // 2. Genesis Foundational Principles
-  const gfp = document.createElement('span');
-  gfp.textContent = 'Genesis Foundational Principles';
-  gfp.classList.add('gfp');
-  gfp.style.cursor = 'pointer';
-  gfp.addEventListener('click', () => {
-    const sidebarToggle = document.getElementById('sidebar-toggle');
-    if (sidebarToggle) sidebarToggle.checked = true;
-  });
-  breadcrumb.appendChild(gfp);
-  addSeparator();
+// 2. Genesis Foundational Principles
+const gfp = document.createElement('a');
+gfp.textContent = 'Genesis Foundational Principles';
+gfp.href = 'https://linguadivina.uk/genesis-foundational-principles.html'; // replace with your actual URL
+gfp.classList.add('gfp');
+
+breadcrumb.appendChild(gfp);
+addSeparator();
 
   // 3. Current Page
   const pageTitle = document.querySelector('h1')?.textContent || document.title;
