@@ -22,45 +22,6 @@
 <h1>Search</h1>
 <div class="container">
 
-<!-- Google CSE Search Box -->
-<div id="custom-search-container">
-  <input type="text" id="custom-search-input" placeholder="Search All With Google">
-  <button id="custom-search-button">Search</button>
-</div>
-
-<div id="custom-search-results">
-	
-<script async src="https://cse.google.com/cse.js?cx=62434d5e426ae403f">
-</script>
-<div class="gcse-searchresults-only"></div>
-</div>
-
-<script>
-// Google CSE search with GA tracking
-function performSearch() {
-  var query = document.getElementById("custom-search-input").value.trim();
-  if (!query) return;
-
-  if (typeof gtag === 'function') {
-    gtag('event', 'custom_search', {
-      'search_term': query,
-      'event_category': 'Site Search',
-      'event_label': 'Custom Search Box'
-    });
-  }
-
-  if (window.google && google.search && google.search.cse && google.search.cse.element) {
-    var element = google.search.cse.element.getElement('searchresults-only0');
-    if (element) element.execute(query);
-  }
-}
-
-document.getElementById("custom-search-button").addEventListener("click", performSearch);
-document.getElementById("custom-search-input").addEventListener("keypress", function(e) {
-  if (e.key === 'Enter') performSearch();
-});
-</script>
-
 <!-- Local Site Search Box -->
 <input type="text" id="searchBox" placeholder="Site Search...">
 
