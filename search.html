@@ -9,40 +9,99 @@
 <link rel="manifest" href="/manifest.json">
 <link href="/style.css" rel="stylesheet">
 <link rel="stylesheet" href="/style-fonts.css" media="print" onload="this.media='all'">
-
 <script src="script.js"></script>
-
 <title>Search</title>
-<meta name="description" content="Discover new content, explore updated articles, and browse article catalogues and series.">
 </head>
 <body>
-<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://god.thway.uk">Lingua Divina</a></div><p class="hero-description">A Psychological Reading of Scripture</p><button id="theme-toggle">◐</button><script src="script-dark-light.js"></script>
+<header class="header">
+    <div class="site-title" role="heading" aria-level="1"><a href="https://god.thway.uk">Lingua Divina</a></div>
+    <p class="hero-description">A Psychological Reading of Scripture</p>
+    <button id="theme-toggle">◐</button>
+    <script src="script-dark-light.js"></script>
 </header>
 
 <h1>Search</h1>
 <div class="container">
+    <input type="text" id="searchBox" placeholder="Site Search...">
 
-<!-- Local Site Search Box -->
-<input type="text" id="searchBox" placeholder="Site Search...">
+    <div id="creation-section" style="display:none">
+      <h2>Creation Vocabulary</h2>
+      <ul id="creation-results"></ul>
+    </div>
 
-<!-- Results split by section -->
-<div id="creation-section" style="display:none">
-  <h2>Creation Vocabulary</h2>
-  <ul id="creation-results"></ul>
+    <div id="other-section" style="display:none">
+      <h2>Other Articles</h2>
+      <ul id="other-results"></ul>
+    </div>
+
+    <div class="srch-series-link">
+        <h2><a href="series-links.html">Articles A — Z</a></h2> 
+    </div>
 </div>
 
-<div id="other-section" style="display:none">
-  <h2>Other Articles</h2>
-  <ul id="other-results"></ul>
-</div>
+<div class="footer">© 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved.</div>
 
-<div class="srch-series-link">
-<h2><a href="series-links.html">Articles A — Z</a></h2> 
-</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBox = document.getElementById('searchBox');
+  const creationSection = document.getElementById('creation-section');
+  const otherSection = document.getElementById('other-section');
+  const creationList = document.getElementById('creation-results');
+  const otherList = document.getElementById('other-results');
+  const CREATION_SUBFOLDER = 'creation';
 
+  async function loadIndex() {
+    const response = await fetch('searchIndex.json');
+    return await response.json();
+  }
 
-</div>
-<div class="footer">© 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/el/terms-of-use.html">See Terms of Use</a></div>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN></script><script src="script-ga.js" defer></script><script src="script-search.js" defer></script>
+  searchBox.addEventListener('input', async function () {
+    const query = this.value.trim().toLowerCase();
+    creationList.innerHTML = '';
+    otherList.innerHTML = '';
+    
+    if (!query) {
+      creationSection.style.display = 'none';
+      otherSection.style.display = 'none';
+      return;
+    }
+
+    const index = await loadIndex();
+    const results = index.filter(page =>
+      page.title.toLowerCase().includes(query) ||
+      page.content.toLowerCase().includes(query)
+    );
+
+    const creationResults = results.filter(p => p.subfolder === CREATION_SUBFOLDER);
+    const otherResults = results.filter(p => p.subfolder !== CREATION_SUBFOLDER);
+
+    function appendResults(list, items) {
+      items.forEach(page => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        // Ensure link is treated as a relative path
+        a.href = page.url; 
+        a.textContent = page.title;
+        a.classList.add('noTag');
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    }
+
+    if (creationResults.length > 0) {
+      appendResults(creationList, creationResults);
+      creationSection.style.display = 'block';
+    } else { creationSection.style.display = 'none'; }
+
+    if (otherResults.length > 0) {
+      appendResults(otherList, otherResults);
+      otherSection.style.display = 'block';
+    } else { otherSection.style.display = 'none'; }
+  });
+});
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
+<script src="script-ga.js" defer></script>
 </body>
 </html>
