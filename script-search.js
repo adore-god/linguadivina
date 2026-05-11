@@ -1,8 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const allResultContainers = ['#creation-results', '#other-results'];
-  
-  // Define your base URL here
   const BASE_URL = 'https://linguadivina.uk/';
+  const CREATION_SUBFOLDER = 'creation';
+
+  // --- NEW: CACHE VARIABLE ---
+  let searchIndex = null; 
 
   function addNoTagToElement(el) {
     if (!el) return;
@@ -24,11 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(c, { childList: true, subtree: true });
   });
 
-  async function loadIndex() {
+  // Simplified loadIndex to fetch once
+  async function getIndex() {
+    if (searchIndex) return searchIndex; // Return cached if available
     try {
       const response = await fetch(`${BASE_URL}searchIndex.json`);
-      if (!response.ok) throw new Error('Failed to fetch searchIndex.json: ' + response.status);
-      return await response.json();
+      if (!response.ok) throw new Error('Failed to fetch: ' + response.status);
+      searchIndex = await response.json();
+      return searchIndex;
     } catch (e) {
       console.error(e);
       return [];
@@ -41,13 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const creationList = document.getElementById('creation-results');
   const otherList = document.getElementById('other-results');
 
-  const CREATION_SUBFOLDER = 'creation';
-
   if (searchBox) {
+    // Pre-load the index immediately so it's ready when they start typing
+    getIndex();
+
     let debounceTimer;
     searchBox.addEventListener('input', async function () {
       const query = this.value.trim().toLowerCase();
 
+      // Clear everything immediately to prevent "ghost" results
       creationList.innerHTML = '';
       otherList.innerHTML = '';
       creationSection.style.display = 'none';
@@ -66,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 700);
       }
 
-      const index = await loadIndex();
+      // Use the cached index
+      const index = await getIndex();
       const results = index.filter(page =>
         page.title.toLowerCase().includes(query) ||
         page.content.toLowerCase().includes(query)
@@ -76,19 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const otherResults = results.filter(p => p.subfolder !== CREATION_SUBFOLDER);
 
       function appendResults(list, items) {
+        // Double-check to ensure we don't append if the query changed while we were waiting
+        if (searchBox.value.trim().toLowerCase() === '') return;
+
         items.forEach(page => {
           const li = document.createElement('li');
           const a = document.createElement('a');
           
-          // --- URL LOGIC START ---
           try {
-            // This handles both absolute (http://...) and relative (/page.html) URLs
             a.href = new URL(page.url, BASE_URL).href;
           } catch (e) {
-            // Fallback to the raw URL if the constructor fails
             a.href = page.url;
           }
-          // --- URL LOGIC END ---
 
           a.textContent = page.title;
           a.classList.add('noTag');
