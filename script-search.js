@@ -1,6 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const allResultContainers = ['#creation-results', '#other-results'];
+  
+  // Define your base URL here
+  const BASE_URL = 'https://linguadivina.uk/';
 
   function addNoTagToElement(el) {
     if (!el) return;
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadIndex() {
     try {
-      const response = await fetch('https://linguadivina.uk/searchIndex.json');
+      const response = await fetch(`${BASE_URL}searchIndex.json`);
       if (!response.ok) throw new Error('Failed to fetch searchIndex.json: ' + response.status);
       return await response.json();
     } catch (e) {
@@ -39,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const creationList = document.getElementById('creation-results');
   const otherList = document.getElementById('other-results');
 
-  // The subfolder name to separate out — adjust if your folder name differs
   const CREATION_SUBFOLDER = 'creation';
 
   if (searchBox) {
@@ -47,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBox.addEventListener('input', async function () {
       const query = this.value.trim().toLowerCase();
 
-      // Clear results
       creationList.innerHTML = '';
       otherList.innerHTML = '';
       creationSection.style.display = 'none';
@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!query) return;
 
-      // Debounce GA event
       if (typeof gtag === 'function') {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
@@ -80,7 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach(page => {
           const li = document.createElement('li');
           const a = document.createElement('a');
-          a.href = page.url;
+          
+          // --- URL LOGIC START ---
+          try {
+            // This handles both absolute (http://...) and relative (/page.html) URLs
+            a.href = new URL(page.url, BASE_URL).href;
+          } catch (e) {
+            // Fallback to the raw URL if the constructor fails
+            a.href = page.url;
+          }
+          // --- URL LOGIC END ---
+
           a.textContent = page.title;
           a.classList.add('noTag');
           li.appendChild(a);
