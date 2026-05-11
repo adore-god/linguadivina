@@ -42,7 +42,7 @@
 <div class="footer">© 2025 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved.</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.getElementById('searchBox');
   const creationSection = document.getElementById('creation-section');
   const otherSection = document.getElementById('other-section');
@@ -50,24 +50,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const otherList = document.getElementById('other-results');
   const CREATION_SUBFOLDER = 'creation';
 
-  async function loadIndex() {
+  let searchIndex = [];
+
+  // Load the index ONCE on page load
+  try {
     const response = await fetch('searchIndex.json');
-    return await response.json();
+    searchIndex = await response.json();
+  } catch (err) {
+    console.error("Error loading search index:", err);
   }
 
-  searchBox.addEventListener('input', async function () {
+  searchBox.addEventListener('input', function () {
     const query = this.value.trim().toLowerCase();
+    
+    // Reset lists on every keystroke to keep it clean
     creationList.innerHTML = '';
     otherList.innerHTML = '';
     
-    if (!query) {
+    if (!query || searchIndex.length === 0) {
       creationSection.style.display = 'none';
       otherSection.style.display = 'none';
       return;
     }
 
-    const index = await loadIndex();
-    const results = index.filter(page =>
+    // Filter the index we already have in memory
+    const results = searchIndex.filter(page =>
       page.title.toLowerCase().includes(query) ||
       page.content.toLowerCase().includes(query)
     );
@@ -79,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
       items.forEach(page => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        // Ensure link is treated as a relative path
         a.href = page.url; 
         a.textContent = page.title;
         a.classList.add('noTag');
@@ -91,12 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (creationResults.length > 0) {
       appendResults(creationList, creationResults);
       creationSection.style.display = 'block';
-    } else { creationSection.style.display = 'none'; }
+    } else { 
+      creationSection.style.display = 'none'; 
+    }
 
     if (otherResults.length > 0) {
       appendResults(otherList, otherResults);
       otherSection.style.display = 'block';
-    } else { otherSection.style.display = 'none'; }
+    } else { 
+      otherSection.style.display = 'none'; 
+    }
   });
 });
 </script>
