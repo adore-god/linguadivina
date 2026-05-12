@@ -395,6 +395,7 @@ p {
   margin: 1.2em 0;
   text-indent: 0;
   text-align:justify;
+  hyphens: auto;
 }
 dfn {
 	font-style:normal;
