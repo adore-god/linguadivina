@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "Jude":"Jud","Revelation":"Rev","Rev":"Rev"
   };
 
+  
+
   function wrapBibleReferences(node) {
     if (node.nodeType === Node.TEXT_NODE) {
       const pattern = new RegExp(
@@ -113,11 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
   wrapBibleReferences(mainEl);
 
   const tooltip = document.createElement("div");
-  // Set fixed width and hide initially
+  // Basic layout styles
   Object.assign(tooltip.style, {
     position: "absolute", 
-    background: "#1A1815",
-    color: "#D3DAD9",
     display: "none", 
     zIndex: "10000",
     padding: "14px", 
@@ -126,23 +126,35 @@ document.addEventListener("DOMContentLoaded", function () {
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
     borderRadius: "7px", 
     pointerEvents: "auto",
-    width: "350px", // Standardized width
-    maxWidth: "90vw", // Responsive for mobile
+    width: "350px", 
+    maxWidth: "90vw", 
     boxSizing: "border-box"
   });
 
   const themes = {
-    light: { background: "red", color: "#D3DAD9", border: "1px solid #ccc" },
-    dark: { background: "#fff", color: "#111", border: "1px solid #D3DAD9" }
+    light: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid #ccc" },
+    dark: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid #D3DAD9" }
   };
 
-  function applyTheme(isDark) {
-    Object.assign(tooltip.style, isDark ? themes.dark : themes.light);
+  // --- Theme Logic Linked to your HTML Class System ---
+  function applyTheme() {
+    // Check if your manual toggle has added the .light class to the <html> tag
+    const isLightMode = document.documentElement.classList.contains("light");
+    const activeTheme = isLightMode ? themes.light : themes.dark;
+    
+    tooltip.style.backgroundColor = activeTheme.background;
+    tooltip.style.color = activeTheme.color;
+    tooltip.style.border = activeTheme.border;
   }
 
-  const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  applyTheme(darkModeMediaQuery.matches);
-  darkModeMediaQuery.addEventListener("change", (e) => applyTheme(e.matches));
+  // 1. Run initially
+  applyTheme();
+
+  // 2. Watch for changes to the <html> class (when toggleDarkMode runs)
+  const observer = new MutationObserver(() => {
+    applyTheme();
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
   document.body.appendChild(tooltip);
 
@@ -150,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const ref = e.target.closest(".bibleref");
     if (!ref) return;
 
-    // Show and reset content
     tooltip.style.display = "block";
     tooltip.innerHTML = "Loading...";
 
@@ -160,15 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const viewportWidth = window.innerWidth;
     const tooltipWidth = tooltip.offsetWidth || 350; 
 
-    // Initial positioning: Default to left-aligned with the link
     let leftPos = scrollX + rect.left;
     let topPos = scrollY + rect.bottom + 8;
 
-    // SHIFT LOGIC: If tooltip would go off the right edge, align it to the right of the link
     if (rect.left + tooltipWidth > viewportWidth) {
       leftPos = (scrollX + rect.right) - tooltipWidth;
-      
-      // Safety check for narrow screens: don't let it go off the left edge either
       if (leftPos < 10) leftPos = 10; 
     }
 
@@ -191,8 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ? `<span style="font-weight:bold; font-size: 1.1em;">${data.reference}</span><br><div style="margin-top:6px;">${data.text.replace(/\n/g, "<br>")}</div>
            <div style="border:0;border-top:1px solid #555;margin:10px 0;"></div>
            <div style="display:flex; justify-content: space-between; align-items:center;">
-             <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:#D7D3BF !important;text-decoration:none;font-weight:bold;">View Verse</a>
-             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:#D7D3BF !important;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
+             <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-weight:bold;">View Verse</a>
+             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
            </div>`
         : "Not found";
     } catch {
