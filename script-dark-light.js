@@ -63,9 +63,10 @@
         
         notice.style.cssText = `
           background-color: transparent;
+          width:85%;
           border-left: 4px solid #dcdcdc;
           padding: 1rem;
-          margin: 1.5rem 0;
+          margin: 1.5rem auto;
           font-family: sans-serif;
           line-height: 1.5;
         `;
@@ -105,6 +106,9 @@
     injectDisclaimer();
   }
 })();
+
+
+
 
 
 // --- Top Nav/Breadcrumb ---
