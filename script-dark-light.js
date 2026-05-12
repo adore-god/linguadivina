@@ -6,63 +6,83 @@
 (function() {
   /**
    * Stand-alone Archive Disclaimer Script
-   * Specifically for pages outside the 'creation' subfolder.
+   * Watches for the first H1 and injects the notice directly ABOVE it.
    */
   const CONFIG = {
     baseUrl: 'https://linguadivina.uk/',
     creationFolder: 'creation',
-    // The CSS selector where the message will be inserted (usually <main> or article container)
-    containerSelector: 'main', 
+    // The specific page you want to exclude
+    excludeUrl: 'https://linguadivina.uk/scrolls/label-from-creation-story.html'
   };
 
   function injectDisclaimer() {
     const path = window.location.pathname;
+    const currentFullUrl = window.location.href;
     
-    // 1. Identify if we are on the homepage or in the creation folder
+    // 1. Identify exclusions
     const isHome = path === '/' || path === '/index.html' || path === '';
     const isCreationPage = path.includes(`/${CONFIG.creationFolder}/`);
+    const isExcludedPage = currentFullUrl === CONFIG.excludeUrl;
 
-    // 2. If it's a content page but NOT part of the creation story, inject the notice
-    if (!isHome && !isCreationPage) {
-      const targetContainer = document.querySelector(CONFIG.containerSelector) || document.body;
+    if (isHome || isCreationPage || isExcludedPage) return;
+
+    // 2. Injection Logic
+    const attemptInjection = () => {
+      // Prevent double injection
+      if (document.getElementById('archive-disclaimer')) return true;
+
+      // Find the first H1 on the page
+      const firstH1 = document.querySelector('h1');
       
-      const notice = document.createElement('div');
-      notice.id = 'archive-disclaimer';
-      
-      // Inline styles to ensure it works without external CSS
-      notice.style.cssText = `
-        background-color: transparent;
-        border-left: 4px solid #dcdcdc;
-        padding: 1rem;
-        margin: 1.5rem 0;
-        font-family: sans-serif;
-        line-height: 1.5;
+      if (firstH1) {
+        const notice = document.createElement('div');
+        notice.id = 'archive-disclaimer';
         
-      `;
+        notice.style.cssText = `
+          background-color: transparent;
+          border-left: 4px solid #dcdcdc;
+          padding: 1rem;
+          margin: 1.5rem 0;
+          font-family: sans-serif;
+          line-height: 1.5;
+        `;
 
-      notice.innerHTML = `
-        <p style="margin: 0;">
-          <strong>Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
-          <a href="${CONFIG.baseUrl}" style="text-decoration: underline;">Home Page</a>, or the <a href="https://linguadivina.uk/scrolls/label-from-creation-story.html" style="text-decoration: underline;">Creation Story index</a>.
-        </p>
-      `;
+        notice.innerHTML = `
+          <p style="margin: 0;">
+            <strong>Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
+            <a href="${CONFIG.baseUrl}" style="text-decoration: underline;">Home Page</a>, or the <a href="${CONFIG.excludeUrl}" style="text-decoration: underline;">Creation Story index</a>.
+          </p>
+        `;
 
-      // Insert at the top of the main content
-      if (targetContainer.firstChild) {
-        targetContainer.insertBefore(notice, targetContainer.firstChild);
-      } else {
-        targetContainer.appendChild(notice);
+        // 'beforebegin' places it immediately ABOVE the <h1> tag
+        firstH1.insertAdjacentElement('afterend', notice);
+        return true;
       }
+      return false;
+    };
+
+    // 3. Mutation Observer: Watch the body for the H1 to appear
+    if (!attemptInjection()) {
+      const observer = new MutationObserver((mutations, obs) => {
+        if (attemptInjection()) {
+          obs.disconnect(); 
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
     }
   }
 
-  // Run as soon as the DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectDisclaimer);
   } else {
     injectDisclaimer();
   }
 })();
+
 
 
 // --- Top Nav/breadcrumb ---
