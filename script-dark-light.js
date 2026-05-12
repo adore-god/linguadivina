@@ -1,18 +1,40 @@
 
 
 
-// --- add warning note ---
+
+
+// --- ADD WARNING NOTE ---
 
 (function() {
   /**
    * Stand-alone Archive Disclaimer Script
-   * Watches for the first H1 and injects the notice directly ABOVE it.
+   * Watches for the first H1 and injects the notice directly AFTER it.
    */
   const CONFIG = {
     baseUrl: 'https://linguadivina.uk/',
     creationFolder: 'creation',
-    // The specific page you want to exclude
-    excludeUrl: 'https://linguadivina.uk/scrolls/label-from-creation-story.html'
+    excludeIndexUrl: 'https://linguadivina.uk/scrolls/label-from-creation-story.html',
+    
+    // List of specific filenames/paths to exclude from showing the warning
+    forbiddenPaths: [
+      'search.html',
+      'about_13.html',
+      'elohim-god.html',
+      'the-law-timeline.html',
+      'genesis-1-creation.html',
+      'genesis-111-seed.html',
+      'genesis-126-man.html',
+      'genesis-223-woman.html',
+      'genesis-224-love.html',
+      'genesis-47-sin.html',
+      'exodus-314-i-am.html',
+      'jesus-christ-salvation.html',
+      'ask-believe-receive-catalyst-for-love.html',
+      'teachers-fathers-of-law-assumption.html',
+      'genesis-foundational-principles.html',
+      'series-links.html',
+      'yhvh-ehyeh-linguistic-framework.html'
+    ]
   };
 
   function injectDisclaimer() {
@@ -22,16 +44,17 @@
     // 1. Identify exclusions
     const isHome = path === '/' || path === '/index.html' || path === '';
     const isCreationPage = path.includes(`/${CONFIG.creationFolder}/`);
-    const isExcludedPage = currentFullUrl === CONFIG.excludeUrl;
+    const isExcludedIndex = currentFullUrl === CONFIG.excludeIndexUrl;
+    
+    // Check if the current path ends with any of our forbidden filenames
+    const isForbiddenPath = CONFIG.forbiddenPaths.some(p => path.endsWith(p));
 
-    if (isHome || isCreationPage || isExcludedPage) return;
+    if (isHome || isCreationPage || isExcludedIndex || isForbiddenPath) return;
 
     // 2. Injection Logic
     const attemptInjection = () => {
-      // Prevent double injection
       if (document.getElementById('archive-disclaimer')) return true;
 
-      // Find the first H1 on the page
       const firstH1 = document.querySelector('h1');
       
       if (firstH1) {
@@ -50,18 +73,18 @@
         notice.innerHTML = `
           <p style="margin: 0;">
             <strong>Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
-            <a href="${CONFIG.baseUrl}" style="text-decoration: underline;">Home Page</a>, or the <a href="${CONFIG.excludeUrl}" style="text-decoration: underline;">Creation Story index</a>.
+            <a href="${CONFIG.baseUrl}" style="text-decoration: underline;">Home Page</a>, or the <a href="${CONFIG.excludeIndexUrl}" style="text-decoration: underline;">Creation Story index</a>.
           </p>
         `;
 
-        // 'beforebegin' places it immediately ABOVE the <h1> tag
+        // Places it immediately AFTER the <h1> tag
         firstH1.insertAdjacentElement('afterend', notice);
         return true;
       }
       return false;
     };
 
-    // 3. Mutation Observer: Watch the body for the H1 to appear
+    // 3. Mutation Observer: Watch for the H1 to appear
     if (!attemptInjection()) {
       const observer = new MutationObserver((mutations, obs) => {
         if (attemptInjection()) {
@@ -84,8 +107,7 @@
 })();
 
 
-
-// --- Top Nav/breadcrumb ---
+// --- Top Nav/Breadcrumb ---
 
 document.addEventListener('DOMContentLoaded', () => {
 
