@@ -63,6 +63,8 @@
         
         notice.style.cssText = `
           background-color: transparent;
+          text-align:justify;
+          hyphens: auto;
           width:85%;
           border-left: 4px solid #dcdcdc;
           padding: 1rem;
