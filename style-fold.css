@@ -323,6 +323,13 @@ background:#111 !important;
   background: var(--bg-color)
 }
 
+
+ #bible-tooltip {
+    color: var(--button);
+  background: var(--bg-color)
+    border: 1px solid #ccc;
+}
+
 .btn-left {
 	margin-right:7px;
 	}

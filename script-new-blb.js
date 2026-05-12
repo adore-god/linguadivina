@@ -132,8 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const themes = {
-    light: { background: "#1A1815", color: "#D3DAD9", border: "1px solid #ccc" },
-    dark: { background: "#1A1815", color: "#D3DAD9", border: "1px solid #D3DAD9" }
+    light: { background: "red", color: "#D3DAD9", border: "1px solid #ccc" },
+    dark: { background: "#fff", color: "#111", border: "1px solid #D3DAD9" }
   };
 
   function applyTheme(isDark) {

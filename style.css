@@ -1028,6 +1028,13 @@ color: var(--text) !important;
     text-decoration-style: solid;
   }
 
+
+#bible-tooltip {
+    color: var(--button);
+  background: var(--bg-color)
+  }
+
+
 blockquote { 
   background-color: var(--gold-bq);
   border-left: 2px solid var(--gold-bq);
