@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const themes = {
-    light: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid #ccc" },
+    light: { background: "var(--bg-color-thr)", color: "var(--text)", border: "1px solid #ccc" },
     dark: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid #D3DAD9" }
   };
 

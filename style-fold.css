@@ -4,6 +4,7 @@
   --ink: #111;
   --bg-color: #fff;
   --bg-color-two: #111;
+  --bg-color-thr: #F0F0F0;
   --link: #222222;
   --accent-color: #444;
   --button: #333;
@@ -42,6 +43,7 @@
 :root.light {
   --bg-color: #fff;
   --bg-color-two: #111;
+  --bg-color-thr: #F0F0F0;
   --text: #222222;
   --ink: #111;
   --link: #222222;
@@ -392,6 +394,7 @@ background:#f3f3f3;
 p {
   margin: 1.2em 0;
   text-indent: 0;
+  text-align:justify;
 }
 dfn {
 	font-style:normal;
