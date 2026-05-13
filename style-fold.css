@@ -392,7 +392,7 @@ background:#f3f3f3;
 }
 
 .breadcrumb a, .breadcrumb-current {
-  font-size: 1.1em;     
+  font-size: 1em;     
   padding: 1.125em 0.5em 1.125em 0 ; 
   display: inline;  
   text-decoration: none;
