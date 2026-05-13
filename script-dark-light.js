@@ -71,7 +71,7 @@
 
         notice.innerHTML = `
           <p style="margin: 0;">
-            <strong>Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
+            <strong>&#9755;&#xFE0E; Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
             <a href="${CONFIG.baseUrl}" style="text-decoration: underline;">Home Page</a>, or the <a href="${CONFIG.excludeIndexUrl}" style="text-decoration: underline;">Creation Story index</a>.
           </p>
         `;
