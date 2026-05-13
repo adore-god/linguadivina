@@ -395,13 +395,12 @@ background:#f3f3f3;
   font-size: 1em;     
   padding: 1.125em 0.5em 1.125em 0 ; 
   display: inline;  
-  text-decoration: none;
+  text-decoration: none !important;
   line-height: 1.7;  
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;       
 }
-
 
 p {
   margin: 1.2em 0;
