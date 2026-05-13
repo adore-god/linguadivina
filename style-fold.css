@@ -227,6 +227,31 @@ h2.def {
 	margin-left:-0.5em
 	}
 	
+#archive-disclaimer, .archive-disclaimer {
+	      background-color: transparent;
+          text-align:justify;
+          word-spacing: -0.2ch;
+          hyphens: auto;
+          width:85%;
+          border-left: 4px solid #dcdcdc;
+          padding: 1rem;
+          margin: 1.5rem auto;
+          font-family: sans-serif;
+          line-height: 1.5;
+        `}
+        
+#archive-disclaimer p {
+ margin:0;
+	}
+	
+.archive-disclaimer {
+	width:95%;
+	}
+
+#archive-disclaimer a {
+  text-decoration: underline;
+		}
+		
 .gen-fnd-entry {
   font-weight:400;
   font-size: 1.05rem;
