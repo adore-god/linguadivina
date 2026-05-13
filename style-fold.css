@@ -376,7 +376,7 @@ a.redA {
 	
 a, a b {
   color: var(--text);
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: underline solid;
   text-decoration-color: var(--text);
   text-decoration-thickness: 0.6px;
