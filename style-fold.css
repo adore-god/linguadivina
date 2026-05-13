@@ -377,10 +377,11 @@ a.redA {
 a, a b {
   color: var(--text);
   font-weight: 400;
-  text-decoration: underline solid;
+  text-decoration: underline dotted;
   text-decoration-color: var(--text);
-  text-decoration-thickness: 0.6px;
-  font-style: normal !important;
+  text-decoration-thickness: 0.8px;
+  font-style: normal;
+  
   
 }
 
