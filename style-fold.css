@@ -381,8 +381,6 @@ a, a b {
   text-decoration-color: var(--text);
   text-decoration-thickness: 0.8px;
   font-style: normal;
-  
-  
 }
 
 a:hover {
