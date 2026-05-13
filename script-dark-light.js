@@ -1,8 +1,4 @@
 
-
-
-
-
 // --- ADD WARNING NOTE ---
 
 (function() {
@@ -130,14 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
     '/el/terms-of-use.html'
   ];
 
-  if (excludePaths.includes(path)) return;
-
-  if (isIndex) return;
+  if (excludePaths.includes(path) || isIndex) return;
 
   const mainContent = document.querySelector('main.content');
-  if (!mainContent) return;
-
-  if (document.querySelector('.breadcrumb')) return;
+  if (!mainContent || document.querySelector('.breadcrumb')) return;
 
   const breadcrumb = document.createElement('nav');
   breadcrumb.className = 'breadcrumb';
@@ -158,53 +150,58 @@ document.addEventListener('DOMContentLoaded', () => {
     breadcrumb.appendChild(sep);
   }
 
-  // All other pages  existing logic unchanged
-  const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
-
   // 1. Home
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
   addSeparator();
 
-// 2. Genesis Foundational Principles
-const gfp = document.createElement('a');
-gfp.textContent = 'Genesis Foundational Principles';
-gfp.href = 'https://linguadivina.uk/genesis-foundational-principles.html'; // replace with your actual URL
-gfp.classList.add('gfp');
+  // 2. Genesis Foundational Principles
+  const gfp = createCrumb('https://linguadivina.uk/genesis-foundational-principles.html', 'Genesis Foundational Principles');
+  gfp.classList.add('gfp');
+  breadcrumb.appendChild(gfp);
 
-breadcrumb.appendChild(gfp);
-addSeparator();
+  // Collect the existing links from the page
+  const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
 
-  // 3. Current Page
+  // Handle "Articles A — Z" check
+  const creationIndex = labelLinks.findIndex(l => l.href.includes('label-from-creation-story.html'));
+  if (creationIndex > -1) {
+    labelLinks.splice(creationIndex, 1);
+    addSeparator();
+    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/scrolls/label-from-creation-story.html', 'Articles A — Z'));
+  }
+
+  // Handle Author link extraction
+  const authorIndex = labelLinks.findIndex(l => l.href.includes('about-author.html'));
+  let authorLink = (authorIndex > -1) ? labelLinks.splice(authorIndex, 1)[0] : null;
+
+  addSeparator();
+
+  // 3. Current Page Title
   const pageTitle = document.querySelector('h1')?.textContent || document.title;
   const currentPage = document.createElement('span');
   currentPage.textContent = pageTitle;
   currentPage.classList.add('breadcrumb-current', 'noTag');
   breadcrumb.appendChild(currentPage);
 
-  const authorIndex = labelLinks.findIndex(link =>
-    link.href.includes('about-author.html')
-  );
-
-  let authorLink = null;
-  if (authorIndex > -1) {
-    [authorLink] = labelLinks.splice(authorIndex, 1);
-  }
-
-  // 4. Page Links
+  // 4. Add any other remaining label links
   labelLinks.forEach(link => {
     addSeparator();
     breadcrumb.appendChild(createCrumb(link.href, link.textContent));
   });
 
-  // 5. About The Author
+  // 5. About The Author (Always last)
   if (authorLink) {
     addSeparator();
     breadcrumb.appendChild(createCrumb(authorLink.href, authorLink.textContent));
   }
 
   mainContent.insertBefore(breadcrumb, mainContent.firstChild);
-
 });
+ 
+  
+
+
+
 
 
 // --- Cookie helpers ---

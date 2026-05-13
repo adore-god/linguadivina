@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. SETTINGS ---
   const workerBase = "https://like-button-worker.linguadivina.workers.dev";
