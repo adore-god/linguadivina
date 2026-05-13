@@ -252,6 +252,12 @@ h2.def {
   text-decoration: underline;
 		}
 		
+.key-symbol {
+    display: inline;
+    font-size: 1.3rem;
+}
+
+		
 .gen-fnd-entry {
   font-weight:400;
   font-size: 1.05rem;
