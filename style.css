@@ -542,11 +542,12 @@ font-weight:500;
   margin: 1.6em 0 1em 8px;
   padding: 0 0 0 0.4em;
   font-size: 1.1em;
-  border-left: 0; 
+  border-left: 0 !important; 
 }
 .sidebar h2 a {
 	font-weight:700;
 	text-transform: uppercase;
+	border-left: 0 !important; 
 	}
 
 ul.series-links li a {
