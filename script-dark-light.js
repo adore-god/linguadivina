@@ -57,7 +57,7 @@
         const notice = document.createElement('div');
         notice.id = 'archive-disclaimer';
         notice.innerHTML = `
-          <p><strong>&#9755;&#xFE0E; Archive Note:</strong> These are earlier notes that have not yet been integrated into the creation story. For the most developed interpretations, please visit the 
+          <p><strong>&#9755;&#xFE0E; Archive Note:</strong>  These are earlier notes that have not yet been integrated into the creation story.  For the most developed interpretations, please visit the 
             <a href="${CONFIG.baseUrl}">Home Page</a>, or the <a href="${CONFIG.excludeIndexUrl}">Creation Story index</a>.
           </p>
         `;
