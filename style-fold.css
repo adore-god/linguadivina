@@ -228,7 +228,7 @@ h2.def {
 	}
 	
 #archive-disclaimer, .archive-disclaimer {
-	      background-color: transparent;
+	      background-color: var(--gold-bq);
           text-align:justify;
           word-spacing: -0.2ch;
           hyphens: auto;
