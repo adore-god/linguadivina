@@ -14,7 +14,7 @@
     // List of specific filenames/paths to exclude from showing the warning
     forbiddenPaths: [
       'search.html',
-      'about_13.html',
+      'key-interpretations/about-author.html',
       'elohim-god.html',
       'the-law-timeline.html',
       'genesis-1-creation.html',
