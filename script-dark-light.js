@@ -29,7 +29,8 @@
       'teachers-fathers-of-law-assumption.html',
       'genesis-foundational-principles.html',
       'series-links.html',
-      'yhvh-ehyeh-linguistic-framework.html'
+      'yhvh-ehyeh-linguistic-framework.html',
+      'about_13.html'
     ]
   };
 
