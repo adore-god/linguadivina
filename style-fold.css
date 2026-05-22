@@ -377,7 +377,7 @@ a.redA {
 a, a b {
   color: var(--link);
   font-weight: 400;
-  text-decoration: underline dotted;
+  text-decoration: none;
   text-decoration-color: var(--text);
   text-decoration-thickness: 0.8px;
   font-style: normal;
