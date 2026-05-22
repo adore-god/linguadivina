@@ -5,7 +5,7 @@
   --bg-color: #fff;
   --bg-color-two: #111;
   --bg-color-thr: #F0F0F0;
-  --link: #222222;
+  --link: #3e84f4;
   --accent-color: #444;
   --button: #333;
   --verse-color: #000000;
@@ -22,8 +22,8 @@
   
   --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #AD8B73;
-    --gold-bq: #fde7d8;
+    --gold-dim: #999
+    --gold-bq: #eee;
     --gold-bq-two: #fae8db;
     --gold-bq-thr: #fee7d7;
     --ink: #1a1208;
@@ -46,7 +46,7 @@
   --bg-color-thr: #F0F0F0;
   --text: #222222;
   --ink: #111;
-  --link: #222222;
+  --link: #3e84f4;
   --accent-color: #444;
   --button: #333;
   --red: #f26868;
@@ -63,8 +63,8 @@
   
   --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #AD8B73;
-    --gold-bq: #fde7d8; 
+    --gold-dim: #999;
+    --gold-bq: #eee; 
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
@@ -375,7 +375,7 @@ a.redA {
 	}
 	
 a, a b {
-  color: var(--text);
+  color: var(--link);
   font-weight: 400;
   text-decoration: underline dotted;
   text-decoration-color: var(--text);
@@ -429,9 +429,13 @@ background:#f3f3f3;
   line-height: 1.7;  
   overflow-wrap: break-word;
   word-break: break-word;
-  hyphens: auto;       
+  hyphens: auto;   
+  
 }
-
+.breadcrumb a {
+	color: var--(text);  
+	}
+	
 p {
   margin: 1.2em 0;
   text-indent: 0;

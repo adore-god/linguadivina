@@ -477,6 +477,7 @@ font-weight:500;
   text-decoration:none;
   display: block;
   padding: 5px 0; 
+  color: var(--text);
 	}
 
 /* =======================
@@ -505,6 +506,7 @@ font-weight:500;
 
 .sidebar a {
   text-decoration: none;
+  color:var(--text);
 }
 
 .sidebar .nav li:nth-child(3) {
@@ -868,7 +870,7 @@ table, td, th {
     --bg-color: #1A1815;
     --bg-color-two: #ffffff;
     --text: #D3DAD9;
-    --link: #D3DAD9;
+    --link: #3e84f4;
     --button: #D3DAD9;
     --red: #f26868;
     --blue: #8ab4f8;
@@ -884,7 +886,7 @@ table, td, th {
   
     --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #D7D3BF;
+    --gold-dim: #D3DAD9;
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
@@ -1046,7 +1048,7 @@ blockquote {
     border-left:0.2px solid #111
   }
 .sidebar h2 a {
-	color: var(--link);
+	color: var(--text);
 	}
 	
   .sidebar .nav li:nth-of-type(n+0):nth-of-type(-n+2),
