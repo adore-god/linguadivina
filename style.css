@@ -477,7 +477,7 @@ font-weight:500;
   text-decoration:none;
   display: block;
   padding: 5px 0; 
-  color: var(--text);
+  color: var(--text) !important;
 	}
 
 /* =======================
