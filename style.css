@@ -477,7 +477,7 @@ font-weight:500;
   text-decoration:none;
   display: block;
   padding: 5px 0; 
-  color: var(--text) !important;
+  color: var(--text);
 	}
 
 /* =======================
@@ -716,6 +716,7 @@ table {
 	}
 	
 .latest-posts a, .latest-posts a:visited {
+  color: var(--text);
   width: 90%;
   margin: 0 auto;
   white-space: normal !important;
