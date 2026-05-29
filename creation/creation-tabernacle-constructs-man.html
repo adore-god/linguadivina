@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -23,7 +22,8 @@
       "url": "https://linguadivina.uk/",
       "publisher": {
         "@id": "https://linguadivina.uk/#org"
-      }
+      },
+      "@id": "https://linguadivina.uk/"
     },
     {
       "@type": "CreativeWork",
@@ -52,7 +52,10 @@
       "@type": "BlogPosting",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://linguadivina.uk/creation/tabernacle-constructs-man.html"
+        "@id": "https://linguadivina.uk/creation/tabernacle-constructs-man.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
       },
       "headline": "Exodus 25 And The Tabernacle — The Court Constructs a Man",
       "description": "The Tabernacle assembles light, washing, bread, names, garments, separation, and judgement into a living enclosure patterned after Genesis creation. Elohim constructs an organised man capable of sustaining the ruling I AM.",
@@ -61,8 +64,12 @@
       "keywords": "Tabernacle, Sanctuary, breastpiece, Elohim, YHVH, Genesis creation, I AM, Ark, consciousness, identity, enclosure, Genesis 1:26, man",
       "inLanguage": "en",
       "isBasedOn": [
-        { "@id": "https://linguadivina.uk/source/holy-bible" },
-        { "@id": "https://linguadivina.uk/source/strongs-concordance" }
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
       ],
       "citation": [
         {
@@ -108,8 +115,7 @@
       }
     }
   ]
-}
-</script>
+}</script>
 
 <meta content="The Tabernacle assembles light, washing, bread, names, garments, separation, and judgement into a living enclosure patterned after Genesis creation. Elohim constructs an organised man capable of sustaining the ruling I AM." name="description">
 
