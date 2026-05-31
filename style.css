@@ -1041,7 +1041,6 @@ color: var(--text) !important;
 
 blockquote { 
   background-color: var(--gold-bq);
-  border-left: 2px solid var(--gold-bq);
 }
 
   .sidebar {

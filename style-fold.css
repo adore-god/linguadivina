@@ -454,7 +454,6 @@ blockquote {
   width: 82%;
   letter-spacing: -0.02em;
   background-color: var(--gold-bq);
-  border-left: 2px solid var(--gold-bq);
   border-radius: 10px;
   
 }
