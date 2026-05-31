@@ -401,9 +401,9 @@ a:hover {
 
 .book {
   float: right; 
-  width: 150px; 
+  width: 50%; 
   margin: 0 0 10px 15px; 
-  padding: 15px; 
+  padding: 10px; 
   border: 1px solid #dcdcdc;
   background-color: transparent;   
   font-size: 0.8em; 
@@ -413,8 +413,8 @@ a:hover {
    filter: invert(0);
    mix-blend-mode: normal;
    display: block; 
-   width: 60px; 
-   margin: 0 auto 10px auto; 
+   width: 90%; 
+   margin: 5px auto 10px auto; 
    box-shadow: 0px 0px 5px var(--shadow);
 	}
 	
