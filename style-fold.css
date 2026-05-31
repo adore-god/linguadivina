@@ -30,6 +30,7 @@
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
     --cream: #faf6ec;
+    --shadow: #999;
     --thread1: #8b2e2e;
     --thread2: #2e5c8b;
     --thread3: #3d7a4f;
@@ -69,6 +70,7 @@
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
     --cream: #faf6ec;
+    --shadow: #999;
     --thread1: #8b2e2e;
     --thread2: #2e5c8b;
     --thread3: #3d7a4f;
@@ -395,6 +397,33 @@ a:hover {
   display:inline-block; 
   text-decoration:none;
   white-space: nowrap;
+	}
+
+.book {
+  float: right; 
+  width: 150px; 
+  margin: 0 0 10px 15px; 
+  padding: 15px; 
+  border: 1px solid #dcdcdc;
+  background-color: transparent;   
+  font-size: 0.8em; 
+  box-shadow: 0px 0px 13px var(--shadow);
+}
+.book img {
+   filter: invert(0);
+   mix-blend-mode: normal;
+   display: block; 
+   width: 60px; 
+   margin: 0 auto 10px auto; 
+   box-shadow: 0px 0px 5px var(--shadow);
+	}
+	
+.book p {
+	font-size: 1em; 
+    line-height: 1.4; 
+    margin: 0; 
+    font-style: italic; 
+    text-align: center;
 	}
 	
 .page-nav{
