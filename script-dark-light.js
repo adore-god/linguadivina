@@ -27,6 +27,7 @@
       'jesus-christ-salvation.html',
       'ask-believe-receive-catalyst-for-love.html',
       'creation-cain-abel.html',
+      'creation-patriarchs.html',
       'creation-elohim-god.html',
       'teachers-fathers-of-law-assumption.html',
       'genesis-foundational-principles.html',
