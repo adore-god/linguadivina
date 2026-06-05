@@ -405,7 +405,7 @@ a:hover {
   margin: 0 0 10px 15px; 
   padding: 10px; 
   border: 1px solid #dcdcdc;
-  background-color: transparent;   
+  background-color: var(--gold-bq) !important; 
   font-size: 0.8em; 
   box-shadow: 0px 0px 13px var(--shadow);
 }
