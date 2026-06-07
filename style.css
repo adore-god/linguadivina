@@ -956,6 +956,10 @@ table, td, th {
     filter: var(--img-filter);
     mix-blend-mode: var(--img-blend);
   }
+  .no-invert {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
 
 .gen-fnd-entry {
     background-color: var(--gold-bq);
