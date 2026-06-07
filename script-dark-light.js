@@ -18,6 +18,7 @@
       'elohim-god.html',
       'the-law-timeline.html',
       'genesis-1-creation.html',
+      'creation-meaning-of-lord-god-elohim-yhvh.html',
       'genesis-111-seed.html',
       'genesis-126-man.html',
       'genesis-223-woman.html',

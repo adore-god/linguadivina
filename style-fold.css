@@ -426,6 +426,31 @@ a:hover {
     text-align: center;
 	}
 	
+	.amazon-block {
+  
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  opacity: 0.85;
+}
+.amazon-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.amazon-review {
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+.amazon-reviewer {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.amazon-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 .page-nav{
 display:flex;
 justify-content:space-between;
