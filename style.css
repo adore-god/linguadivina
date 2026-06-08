@@ -959,7 +959,7 @@ table, td, th {
   }
   img.cover-small {
 	border: 0.5px solid var(--ink);
-	box-shadow: 0px 0px 5px var(--gold-bq) ;
+	box-shadow: 0px 0px 15px var(--shadow) ;
 	}
   img {
     filter: var(--img-filter);

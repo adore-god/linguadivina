@@ -426,11 +426,12 @@ a:hover {
     font-style: italic; 
     text-align: center;
 	}
+
 .cover-small {
 	max-width: 50%;
 	margin: 1.4em auto;
 	border: 0.5px solid var(--ink);
-	box-shadow: 0px 0px 5px var(--shadow);
+	box-shadow: 0px 0px 8px var(--shadow) !important;
 	}
 	
 	.amazon-block {
