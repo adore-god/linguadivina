@@ -957,7 +957,10 @@ table, td, th {
     mix-blend-mode: normal !important;
     opacity: 1 !important; 
   }
-  
+  .cover-small {
+	border: 0.5px solid var(--ink);
+	box-shadow: 0px 0px 5px var(--gold-bq) ;
+	}
   img {
     filter: var(--img-filter);
     mix-blend-mode: var(--img-blend);
