@@ -426,7 +426,7 @@ a:hover {
     font-style: italic; 
     text-align: center;
 	}
-img.cover-small {
+.cover-small {
 	max-width: 50%;
 	margin: 1.4em auto;
 	border: 0.5px solid var(--ink);
