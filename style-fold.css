@@ -237,7 +237,7 @@ h2.def {
           width:85%;
           padding: 1rem;
           margin: 1.5rem auto;
-          font-family: sans-serif;
+          font-size: 1.4em;
           line-height: 1.5;
         `}
         
@@ -252,6 +252,7 @@ h2.def {
 #archive-disclaimer a {
   text-decoration: underline;
   word-spacing: normal;
+
 		}
 		
 .key-symbol {
