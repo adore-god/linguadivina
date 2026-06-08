@@ -429,7 +429,7 @@ a:hover {
 
 .cover-small {
 	max-width: 50%;
-	margin: 1.4em auto;
+	margin: 1.6em auto;
 	border: 0.5px solid var(--ink);
 	box-shadow: 0px 0px 8px var(--shadow) !important;
 	}
