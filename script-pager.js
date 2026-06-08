@@ -84,7 +84,7 @@
 
 window.addEventListener("load", function () {
   setTimeout(function () {
-    const schemaScript = document.querySelector('#main-schema');
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
     if (!schemaScript) return;
 
     let graph;
