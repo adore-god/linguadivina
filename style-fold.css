@@ -476,7 +476,8 @@ a:hover {
 	}
 
 .cover-small {
-	max-width: 50%;
+	width: 100%;
+	max-width: 188px;
 	margin: 1.6em auto;
 	border: 0.5px solid var(--ink);
 	box-shadow: 0px 0px 8px var(--shadow) !important;
@@ -506,6 +507,7 @@ a:hover {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+
 .page-nav{
 display:flex;
 justify-content:space-between;
