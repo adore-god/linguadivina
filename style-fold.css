@@ -400,6 +400,54 @@ a:hover {
   white-space: nowrap;
 	}
 
+.amazon-promo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 1.25rem 0;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  /* opacity removed from here */
+}
+
+.promo-covers {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+}
+
+.amazon-promo__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.5; /* only the label is dimmed */
+  margin: 0;
+}
+
+.amazon-promo__text {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.amazon-promo__btn {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid currentColor;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+.amazon-promo__btn:hover {
+  opacity: 1;
+}
+
 .book {
   float: right; 
   width: 50%; 
@@ -437,7 +485,7 @@ a:hover {
 	.amazon-block {
   padding: 1.2rem 1.5rem;
   margin: 2rem 0;
-  opacity: 0.85;
+  opacity: 1;
 }
 .amazon-label {
   font-size: 0.75rem;
