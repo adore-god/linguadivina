@@ -450,8 +450,9 @@ a:hover {
 
 .book {
   float: right; 
-  width: 50%; 
-  margin: 0 0 10px 15px; 
+  width: 45%; 
+  max-width: 45%; 
+  margin: 0 0 10px 20px; 
   padding: 10px; 
   border: 1px solid #dcdcdc;
   background-color: var(--gold-bq) !important; 
