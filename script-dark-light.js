@@ -26,7 +26,7 @@
       'genesis-47-sin.html',
       'creation-exodus-314-i-am.html',
       'jesus-christ-salvation.html',
-      'ask-believe-receive-catalyst-for-love.html',
+      'creation-ask-believe-receive.html',
       'creation-cain-abel.html',
       'creation-patriarchs.html',
       'el/terms-of-use.html',
