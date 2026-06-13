@@ -336,6 +336,17 @@ header img {
     color: var(--gold-dim);
     text-align: center;
   }
+  .hero-description-two {
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    margin: 1.3em auto 1.5em;
+    width: 90%;
+    padding-left: 0em;
+    font-size: 0.9em;
+    color: var(--gold-dim);
+    text-align: center;
+  }
  
 .btn-wrap {
   margin: 1em auto 1.5em;
