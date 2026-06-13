@@ -24,7 +24,7 @@
       'genesis-223-woman.html',
       'creation-genesis-224-love.html',
       'genesis-47-sin.html',
-      'exodus-314-i-am.html',
+      'creation-exodus-314-i-am.html',
       'jesus-christ-salvation.html',
       'ask-believe-receive-catalyst-for-love.html',
       'creation-cain-abel.html',
