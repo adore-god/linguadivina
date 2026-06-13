@@ -331,7 +331,7 @@ header img {
     text-transform: uppercase;
     margin: 1.3em auto 1.5em;
     width: 90%;
-    padding-left: 0.7em;
+    padding-left: -1em;
     font-size: 0.9em;
     color: var(--gold-dim);
     text-align: center;
@@ -342,7 +342,7 @@ header img {
     text-transform: uppercase;
     margin: 1.3em auto 1.5em;
     width: 90%;
-    padding-left: 0em;
+    padding-left: -1em;
     font-size: 0.9em;
     color: var(--gold-dim);
     text-align: center;
