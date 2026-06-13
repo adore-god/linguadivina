@@ -17,7 +17,7 @@
       'key-interpretations/about-author.html',
       'elohim-god.html',
       'the-law-timeline.html',
-      'creation-.genesis-1-creation.html',
+      'creation-genesis-1-creation.html',
       'creation-meaning-of-lord-god-elohim-yhvh.html',
       'genesis-111-seed.html',
       'genesis-126-man.html',
