@@ -144,12 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Home
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
-  addSeparator();
-
-  // 2. Genesis Foundational Principles
-  const gfp = createCrumb('https://linguadivina.uk/genesis-foundational-principles.html', 'Genesis Foundational Principles');
-  gfp.classList.add('gfp');
-  breadcrumb.appendChild(gfp);
 
   // Collect the existing links from the page
   const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
@@ -168,20 +162,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addSeparator();
 
-  // 3. Current Page Title
+  // 2. Current Page Title
   const pageTitle = document.querySelector('h1')?.textContent || document.title;
   const currentPage = document.createElement('span');
   currentPage.textContent = pageTitle;
   currentPage.classList.add('breadcrumb-current', 'noTag');
   breadcrumb.appendChild(currentPage);
 
-  // 4. Add any other remaining label links
+  // 3. Add any other remaining label links
   labelLinks.forEach(link => {
     addSeparator();
     breadcrumb.appendChild(createCrumb(link.href, link.textContent));
   });
 
-  // 5. About The Author (Always last)
+  // 4. About The Author (Always last)
   if (authorLink) {
     addSeparator();
     breadcrumb.appendChild(createCrumb(authorLink.href, authorLink.textContent));
@@ -189,9 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   mainContent.insertBefore(breadcrumb, mainContent.firstChild);
 });
- 
-  
-
 
 
 
