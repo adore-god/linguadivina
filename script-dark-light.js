@@ -21,7 +21,7 @@
       'creation-meaning-of-lord-god-elohim-yhvh.html',
       'creation-genesis-1-11-seed.html',
       'creation-genesis-1-26-man.html',
-      'genesis-223-woman.html',
+      'creation-genesis-2-23-woman.html',
       'creation-genesis-224-love.html',
       'genesis-47-sin.html',
       'creation-exodus-314-i-am.html',
