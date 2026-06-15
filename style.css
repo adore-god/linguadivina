@@ -335,15 +335,15 @@ small {
 
 .start-here {
   padding: 1rem 0 1rem 1.25rem;
-  border-left: 4px solid #eee;
   background: transparent;
   border-radius: 4px;
   font-size: 0.95rem;
-  font-weight: 600; 
-  font-size: 1em;
-  margin: 2em auto;
+  font-weight: 400; 
+  font-size: 1.1em;
+  margin: 2.2em auto;
   text-align: left;
   width: 85%;
+  font-style:italic;
 }
 
 .start-here a {
