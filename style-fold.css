@@ -1,6 +1,7 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #222222;
+  --text-light: #eee;
   --ink: #111;
   --bg-color: #fff;
   --bg-color-two: #111;
@@ -46,6 +47,7 @@
   --bg-color-two: #111;
   --bg-color-thr: #F0F0F0;
   --text: #222222;
+  --text-light: #eee;
   --ink: #111;
   --link: #1e90ff;
   --accent-color: #444;
@@ -416,10 +418,11 @@ a:hover {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.45rem;
-  padding: 1.25rem 0;
+  padding: 1.25rem;
   max-width: 100%;
   margin: 1.5rem 0;
-  /* opacity removed from here */
+  background-color:#ddd;
+  color: var(--text-light);
 }
 
 .promo-covers {
@@ -433,7 +436,7 @@ a:hover {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.5; /* only the label is dimmed */
+  color: var(--text-light);
   margin: 0;
 }
 
@@ -451,7 +454,7 @@ a:hover {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid currentColor;
-  opacity: 0.75;
+ color: var(--ink);
   transition: opacity 0.15s ease;
 }
 

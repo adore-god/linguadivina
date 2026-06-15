@@ -863,6 +863,7 @@ table, td, th {
     --bg-color: #1A1815;
     --bg-color-two: #ffffff;
     --text: #D3DAD9;
+    --text-light: #D3DAD9;
     --link: #80bfff;
     --button: #D3DAD9;
     --red: #f26868;
@@ -972,9 +973,22 @@ background-color: var(--bg-color)
   
   img.reddit {
     filter: var(--key-icon-filter);
-     
 	}
 	
+	.amazon-promo {
+  background-color: #333;
+  color: var(--text-light);
+}
+
+.amazon-promo__btn {
+  color: var(--text-light);
+}
+
+.amazon-promo__label {
+  color: var(--text-light);
+ 
+}
+
 .book {
   border: 1px solid var(--shadow);
   background-color: var(--gold-bq);   
