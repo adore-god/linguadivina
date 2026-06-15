@@ -831,6 +831,10 @@ table, td, th {
 .hero-description {
     text-align:center;
     }
+  #verse-link-container {
+  	max-width: 30vw;
+  }
+  
   
 }
 
