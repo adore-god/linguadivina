@@ -862,6 +862,7 @@ table, td, th {
 	:root {
     --bg-color: #1A1815;
     --bg-color-two: #ffffff;
+    --promo-bg: #333;
     --text: #D3DAD9;
     --text-light: #D3DAD9;
     --link: #80bfff;
@@ -976,7 +977,7 @@ background-color: var(--bg-color)
 	}
 	
 	.amazon-promo {
-  background-color: #333;
+  background-color:  var(--promo-bg);
   color: var(--text-light);
 }
 

@@ -1,9 +1,10 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #222222;
-  --text-light: #eee;
+  --text-light: #222;
   --ink: #111;
   --bg-color: #fff;
+  --promo-bg: #ddd;
   --bg-color-two: #111;
   --bg-color-thr: #F0F0F0;
   --link: #1e90ff;
@@ -46,8 +47,9 @@
   --bg-color: #fff;
   --bg-color-two: #111;
   --bg-color-thr: #F0F0F0;
+  --promo-bg: #ddd;
   --text: #222222;
-  --text-light: #eee;
+  --text-light: #222;
   --ink: #111;
   --link: #1e90ff;
   --accent-color: #444;
@@ -421,7 +423,7 @@ a:hover {
   padding: 1.25rem;
   max-width: 100%;
   margin: 1.5rem 0;
-  background-color:#ddd;
+  background-color:  var(--promo-bg);
   color: var(--text-light);
 }
 
