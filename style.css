@@ -128,17 +128,6 @@ figure figcaption {
 	display:block;
 	}
 
-img.key-icon {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    flex-shrink: 0; 
-    mix-blend-mode: var(--key-icon-blend);
-    filter: var(--key-icon-filter);
-    opacity: 0.95;
-    border-radius:10px;
-    margin-bottom:1em;
-	}
 
 img.reddit {
     width: 70px;

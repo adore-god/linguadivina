@@ -117,10 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // We add inline CSS to ensure it stays on top of other elements
         footer.insertAdjacentHTML(
             "afterend",
-            '<div id="Verse-Link-Container" style="position:relative; z-index:1000;">' +
-                '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="688" height="384" class="key-icon" alt="Logo" src="../images/icons/bible-key-lingua-divina-logo.webp"></a>' +
-                '<div id="VerseLinkBox">' +
-                    '<a id="translator-link" href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html" style="display:inline-block; position:relative; z-index:1000;">Bible Passage And Verse Translator</a>' +
+            '<div id="verse-link-container">' +
+                '<div id="verse-left"><a href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="346" height="345" class="key-icon" alt="Logo" src="../images/icons/lingua-divina-bible-key-logo.webp"></a></div>' +
+                '<div id="verse-right">' +
+                    '<a href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html">Lingua Divina — <small>Bible passage and verse translator using Genesis logic.</small></a>' +
                 '</div>' +
             '</div>'
         );

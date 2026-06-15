@@ -692,29 +692,41 @@ img {
     opacity:0.6;
 	}
 	
-	#Verse-Link-Container {
-  min-height:50px !important;
-  font-size: 0.9em;
-  display: flex;         
-  align-items: center;      
-  gap: 10px;    
-  flex-wrap: wrap;
+	img.key-icon {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    mix-blend-mode: var(--key-icon-blend);
+    filter: var(--key-icon-filter);
+    opacity: 0.95;
+    border-radius:10px;
+    margin-bottom:1em;
+    display:inline;
+	}
+	
+#verse-link-container {
   margin: 1em auto;
-  padding: 0.5em 0.5em;
-  width: 80%;
-  text-align: center;
   line-height: 1;
-  font-size: 1em;
-  color: #F2E5BD;
   background: var(--bg-color);
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;     
+  display: block;
+  text-align:center;
+}
+	
+#verse-left, #verse-right {
+    display: inline-block;
+    margin: 0.5em;
+    overflow: hidden 
 }
 
-#VerseLinkBox {
-    font-size: 1em;
-    flex: 1;                  
-    min-width: 0;          
+#verse-right {
+	width:60%;
+    font-size :1.4em;
+    margin-left: 0.5em;
+    vertical-align:top;
+    text-align: left;
+}
+#verse-left {
+    width:25%;
 }
 
 #VerseLinkBox a:link,
@@ -728,10 +740,7 @@ text-decoration: none;
 font-weight: 600;
 color: var(--text) !important;	
 	}
-#Verse-Link-Container:hover {
-  transform: translateY(-3px);
-  cursor: pointer;
-}
+
 
 .share-button a {
 color: var(--text);	
