@@ -33,7 +33,10 @@
       'about_13.html',
       'source/law-of-assumption.html',
       'source/holy-bible.html',
-      'source/strongs-concordance.html'
+      'source/strongs-concordance.html',
+      'source/law-of-assumption',
+      'source/holy-bible',
+      'source/strongs-concordance
     ]
   };
 
