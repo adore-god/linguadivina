@@ -36,7 +36,7 @@
       'source/strongs-concordance.html',
       'source/law-of-assumption',
       'source/holy-bible',
-      'source/strongs-concordance
+      'source/strongs-concordance'
     ]
   };
 
