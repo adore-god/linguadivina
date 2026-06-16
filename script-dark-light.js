@@ -30,7 +30,10 @@
       'teachers-fathers-of-law-assumption.html',
       'series-links.html',
       'yhvh-ehyeh-linguistic-framework.html',
-      'about_13.html'
+      'about_13.html',
+      'law-of-assumption.html',
+      'holy-bible.html',
+      'strongs-concordance.html'
     ]
   };
 
