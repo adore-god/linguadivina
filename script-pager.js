@@ -45,7 +45,14 @@
             }
         }
         if (groupEntries.length === 0) return;
-        groupEntries.sort((a, b) => a[1].localeCompare(b[1]));
+const hubEntry = groupEntries.find(([path]) => path.includes('#hub-pages'));
+const restEntries = groupEntries.filter(([path]) => !path.includes('#hub-pages'));
+
+restEntries.sort((a, b) => a[1].localeCompare(b[1]));
+
+const orderedEntries = hubEntry ? [hubEntry, ...restEntries] : restEntries;
+
+groups.push({ scrollUrl, entries: orderedEntries });
         groups.push({ scrollUrl, entries: groupEntries });
     });
 
