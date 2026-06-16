@@ -31,9 +31,9 @@
       'series-links.html',
       'yhvh-ehyeh-linguistic-framework.html',
       'about_13.html',
-      'source/law-of-assumption',
-      'source/holy-bible',
-      'source/strongs-concordance'
+      'source/law-of-assumption.html',
+      'source/holy-bible.html',
+      'source/strongs-concordance.html'
     ]
   };
 
