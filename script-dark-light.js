@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const isIndex = path === '/' || path === '/index.html' || path === '/index.htm';
 
   const excludePaths = [
-    '/about_13.html',
+    '/about.html',
     '/series-links.html',
     '/search.html',
     '/404.html',
-    '/key-interpretations/about-author.html',
-    '/el/terms-of-use.html'
+    '/about-author.html',
+    '/terms-of-use.html'
   ];
 
   if (excludePaths.includes(path) || isIndex) return;
