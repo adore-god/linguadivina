@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         footer.insertAdjacentHTML(
             "afterend",
             '<div id="verse-link-container">' +
-                '<div id="verse-left"><a href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="346" height="345" class="key-icon" alt="Logo" src="../images/icons/lingua-divina-bible-key-logo.webp"></a></div>' +
+                '<div id="verse-left"><a href="https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="346" height="345" class="key-icon" alt="Logo" src="../images/icons/lingua-divina-bible-key-logo.webp"></a></div>' +
                 '<div id="verse-right">' +
                     '<a href="https://linguadivina.uk/el/yhvh-ehyeh-linguistic-framework.html">Lingua Divina — <small>Bible passage and verse translator using Genesis logic.</small></a>' +
                 '</div>' +
