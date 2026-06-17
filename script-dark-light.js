@@ -28,6 +28,8 @@
       'el/terms-of-use.html',
       'creation-elohim-god.html',
       'teachers-fathers-of-law-assumption.html',
+      'scrolls/label-from-creation-story.html',
+      'label-from-creation-story.html',
       'series-links.html',
       'yhvh-ehyeh-linguistic-framework.html',
       'about_13.html',
