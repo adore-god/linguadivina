@@ -405,6 +405,13 @@ a:hover {
   text-decoration-style: solid;
 }
 
+.az-nav {
+   margin-bottom: 20px;
+   letter-spacing: 1px; 
+   font-size:1.2em;
+   line-height:2;
+	}
+	
 .quick {
   font-weight:bold; 
   font-size: 1.1em; 
