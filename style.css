@@ -760,6 +760,8 @@ padding: 2.5em 0 3em;
   z-index: 1000;
   padding:0em 0em;
   box-shadow: none;
+  width: 150px;
+  overflow: hidden;
 }
 
 #share-copy {
