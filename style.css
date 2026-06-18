@@ -732,13 +732,18 @@ padding: 2.5em 0 3em;
   display: inline;
 }
 
-.share-button {
-  background: none;
-  cursor: pointer;
-  padding: 0em 0.4em 0 10px;
-  font-weight: 700;
-  border: none; 
-  line-height: 1.4;
+.share-button.share {
+    font-size: 1.1em; 
+    background: transparent !important;      
+    cursor: pointer;
+    padding: 10px 7px;
+    font-weight: 500;
+    color: var(--link) 
+}
+
+.share-button.share:hover {
+    background: var(--text) !important;
+    color: var(--bg-color) !important;
 }
 
 	
@@ -746,7 +751,7 @@ padding: 2.5em 0 3em;
   display: none;
   position: absolute;
   background-color: var(--gold-bq);
-  border: 0.2px solid #666;
+  border: 0.5px solid var(--button);
   border-radius: 0.05em;
   margin-top: 0.5em;
   min-width: 150px;
@@ -1184,7 +1189,7 @@ color: var(--text);
 .share-menu {
   background-color: var(--gold-bq);
   color: var(--text);
-  border: 0.2px solid #ccc;
+  border: 0.5px solid var(--button);
   box-shadow: none;
   position: absolute;
   top:20%;
