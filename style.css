@@ -792,6 +792,7 @@ text-transform: uppercase
   font-weight: 800;
   border: 0; 
   line-height: 1.4;
+  font-size: 0.85em;
   border-radius:3px
 }
 .like-count, .heart {
@@ -799,7 +800,6 @@ text-transform: uppercase
     display: inline;
     
 	}
-	
 .like-btn:hover {
   
 }
