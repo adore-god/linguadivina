@@ -724,7 +724,7 @@ padding: 2.5em 0 3em;
   font-weight: 600;
   letter-spacing: 0em;
   text-decoration: none;
-  display: inline;
+  display: inline-block;
 }
 
 .share-dropdown {
@@ -739,7 +739,8 @@ padding: 2.5em 0 3em;
     padding: 10px 7px;
     font-weight: 500;
     color: var(--link) ;
-    overflow:hidden 
+    overflow:hidden;
+    line-height: 1.4;
 }
 
 .share-button.share:hover {
@@ -785,7 +786,7 @@ text-transform: uppercase
 
 .like-btn {
   position: relative;
-  z-index: 15000;
+  z-index: 1001;
   min-width: 130px;
   background-color: transparent;
   padding: 4px 5px;
