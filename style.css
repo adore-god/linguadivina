@@ -738,7 +738,8 @@ padding: 2.5em 0 3em;
     cursor: pointer;
     padding: 10px 7px;
     font-weight: 500;
-    color: var(--link) 
+    color: var(--link) ;
+    overflow:hidden 
 }
 
 .share-button.share:hover {
@@ -783,6 +784,9 @@ text-transform: uppercase
 }
 
 .like-btn {
+  position: relative;
+  z-index: 15000;
+  min-width: 130px;
   background-color: transparent;
   padding: 4px 5px;
   cursor: pointer;
@@ -792,7 +796,6 @@ text-transform: uppercase
   font-weight: 800;
   border: 0; 
   line-height: 1.4;
-  font-size: 0.85em;
   border-radius:3px
 }
 .like-count, .heart {
@@ -800,6 +803,7 @@ text-transform: uppercase
     display: inline;
     
 	}
+	
 .like-btn:hover {
   
 }
