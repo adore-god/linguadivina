@@ -1,14 +1,11 @@
 
 
+// --- Top Nav/Breadcrumb ---
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Explicitly check for the 404 page by its title
-  const is404 = document.title.includes('Page Not Found');
-  
-  // 2. Fail-safe: If it's not a 404 and doesn't have labels, we stop
-  const labelLinksContainer = document.querySelector('.label-links');
-  if (is404 || !labelLinksContainer) return;
 
   let path = window.location.pathname.toLowerCase();
+
   const isIndex = path === '/' || path === '/index.html' || path === '/index.htm';
 
   const excludePaths = [
@@ -48,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Home
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
 
-  // Collect the existing links
-  const labelLinks = Array.from(labelLinksContainer.querySelectorAll('a'));
+  // Collect the existing links from the page
+  const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
 
-  // Handle "Articles A — Z"
+  // Handle "Articles A — Z" check
   const creationIndex = labelLinks.findIndex(l => l.href.includes('label-from-creation-story.html'));
   if (creationIndex > -1) {
     labelLinks.splice(creationIndex, 1);
@@ -59,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     breadcrumb.appendChild(createCrumb('https://linguadivina.uk/scrolls/label-from-creation-story.html', 'Articles A — Z'));
   }
 
-  // Handle Author link
+  // Handle Author link extraction
   const authorIndex = labelLinks.findIndex(l => l.href.includes('about-author.html'));
   let authorLink = (authorIndex > -1) ? labelLinks.splice(authorIndex, 1)[0] : null;
 
@@ -72,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   currentPage.classList.add('breadcrumb-current', 'noTag');
   breadcrumb.appendChild(currentPage);
 
-  // 3. Add remaining label links
+  // 3. Add any other remaining label links
   labelLinks.forEach(link => {
     addSeparator();
     breadcrumb.appendChild(createCrumb(link.href, link.textContent));
@@ -86,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   mainContent.insertBefore(breadcrumb, mainContent.firstChild);
 });
-
 
 
 
