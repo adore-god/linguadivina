@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '/search.html',
     '/404.html',
     '/about-author.html',
-    '/terms-of-use.html'
+    '/terms-of-use.html',
+    '/scrolls/label-from-creation-story.html'
   ];
 
   if (excludePaths.includes(path) || isIndex) return;
