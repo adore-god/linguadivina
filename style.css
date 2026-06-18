@@ -545,22 +545,6 @@ ul.series-links li a {
   text-decoration: none;
 }
 
-
-
-.label-links  {
-display: block;
-vertical-align: baseline;
-line-height: 1.4;
-padding: 1.5em 0 0em;
-}
-	
-.label-links a {
-  font-weight: 600;
-  letter-spacing: 0em;
-  text-decoration: none;
-  display: inline;
-}
-
 table {
     background: #F8F8FF !important;
     border: 0px;
@@ -729,10 +713,23 @@ table {
 	font-weight:500	
 		}
 		
+.label-links  {
+display: inline;
+vertical-align: baseline;
+line-height: 1.4;
+padding: 2.5em 0 3em;
+}
+	
+.label-links a {
+  font-weight: 600;
+  letter-spacing: 0em;
+  text-decoration: none;
+  display: inline;
+}
+
 .share-dropdown {
   position: relative;
-  display: inline-block;
-
+  display: inline;
 }
 
 .share-button {
@@ -742,27 +739,24 @@ table {
   font-weight: 700;
   border: none; 
   line-height: 1.4;
-  font-size: 0.85em;
 }
 
 	
 .share-menu {
   display: none;
   position: absolute;
-  background: #3E2D18;
+  background-color: var(--gold-bq);
   border: 0.2px solid #666;
   border-radius: 0.05em;
   margin-top: 0.5em;
   min-width: 150px;
   z-index: 1000;
-  font-family: Inter;
   padding:0em 0em;
   box-shadow: none;
 }
 
 #share-copy {
 padding:20px 1em 0 1em;
-font-family: Inter;
 text-transform: uppercase
 }
 	
@@ -773,9 +767,8 @@ text-transform: uppercase
   text-align: left;
   padding: 0.2em 1em;
   text-decoration: none;
-  background: #F8F8FF;
+  background-color: var(--gold-bq);
   border: none;
-  color: #3E2D18;
   cursor: pointer;
 }
 
@@ -794,7 +787,6 @@ text-transform: uppercase
   font-weight: 800;
   border: 0; 
   line-height: 1.4;
-  font-size: 0.85em;
   border-radius:3px
 }
 .like-count, .heart {
@@ -1190,8 +1182,8 @@ color: var(--text);
   }
   
 .share-menu {
-  background: #1c1c1c;
-  color:#e0e0e0;
+  background-color: var(--gold-bq);
+  color: var(--text);
   border: 0.2px solid #ccc;
   box-shadow: none;
   position: absolute;
@@ -1206,14 +1198,12 @@ color: var(--text);
   text-decoration: none;
   background: none;
   border: none;
-  color: #e0e0e0;
-  font-size: 1rem;
+  color: var(--text);
 }
 
 .share-menu a:hover,
 .share-menu button:hover {
   background: #000000;
-  color: #F8F8FF;
 }
 table, td, th {
     background-color: transparent !important;
