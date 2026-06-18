@@ -724,6 +724,8 @@ img {
   background: var(--bg-color);
   display: block;
   text-align:center;
+  overflow:hidden;
+  max-height: 200px;
 }
 	
 #verse-left, #verse-right {
