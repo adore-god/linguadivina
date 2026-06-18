@@ -1,9 +1,12 @@
-// --- bread---
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Fail-safe: If the page doesn't have the labels container, 
-  // it's not a content page, so we stop here (covers 404s, search, etc.)
+  // 1. Explicitly check for the 404 page by its title
+  const is404 = document.title.includes('Page Not Found');
+  
+  // 2. Fail-safe: If it's not a 404 and doesn't have labels, we stop
   const labelLinksContainer = document.querySelector('.label-links');
-  if (!labelLinksContainer) return;
+  if (is404 || !labelLinksContainer) return;
 
   let path = window.location.pathname.toLowerCase();
   const isIndex = path === '/' || path === '/index.html' || path === '/index.htm';
