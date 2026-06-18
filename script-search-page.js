@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.getElementById('searchBox');
   const creationSection = document.getElementById('creation-section');
@@ -66,4 +66,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 });
-</script>
