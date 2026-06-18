@@ -548,16 +548,17 @@ ul.series-links li a {
 
 
 .label-links  {
-display: inline;
+display: block;
 vertical-align: baseline;
 line-height: 1.4;
-font-size: 0.85em;
+padding: 1.5em 0 0em;
 }
 	
 .label-links a {
   font-weight: 600;
   letter-spacing: 0em;
   text-decoration: none;
+  display: inline;
 }
 
 table {
