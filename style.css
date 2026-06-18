@@ -716,20 +716,21 @@ table {
 .label-links  {
 display: inline;
 vertical-align: baseline;
-line-height: 1.4;
-padding: 2.5em 0 3em;
+padding: 0em 0 0em;
 }
 	
 .label-links a {
   font-weight: 600;
   letter-spacing: 0em;
   text-decoration: none;
-  display: inline-block;
+  overflow:hidden
 }
 
 .share-dropdown {
   position: relative;
   display: inline;
+  z-index: 1;
+  overflow:hidden;
 }
 
 .share-button.share {
