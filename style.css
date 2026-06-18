@@ -760,7 +760,8 @@ padding: 2.5em 0 3em;
   z-index: 1000;
   padding:0em 0em;
   box-shadow: none;
-  width: 150px;
+  min-width: 45vw;
+  max-width: 250px;
   overflow: hidden;
 }
 
@@ -783,7 +784,7 @@ text-transform: uppercase
 
 .share-menu a:hover,
 .share-menu button:hover {
-  background: #f2f2f2;
+  font-weight:700;
 }
 
 .like-btn {
@@ -1201,7 +1202,6 @@ color: var(--text);
   position: absolute;
   top:20%;
   left: 0%;
-  min-width: 85vw;
   padding:1.3em 1.1em;
 }
 
@@ -1215,7 +1215,6 @@ color: var(--text);
 
 .share-menu a:hover,
 .share-menu button:hover {
-  background: #000000;
 }
 table, td, th {
     background-color: transparent !important;
