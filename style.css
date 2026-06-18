@@ -745,8 +745,7 @@ padding: 0em 0 0em;
 }
 
 .share-button.share:hover {
-    background: var(--text) !important;
-    color: var(--bg-color) !important;
+    
 }
 
 	
