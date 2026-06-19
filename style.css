@@ -294,7 +294,7 @@ pre code {
   top: 10px;
   right: 10px;
   padding: 5px 10px;
-  background-color: #F2D479;
+  background-color: var (--link);
   color: black;
   border: none; 
   border-radius: 2px;
