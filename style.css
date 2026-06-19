@@ -643,7 +643,7 @@ table {
   max-width: 500px;
   margin: 3em auto 4em;
   padding: 10px 15px;
-  border: 1px solid #3E2D18;
+  border: 1.5px solid var(--text);
   border-radius: 5px;
   outline: none;
   transition: all 0.3s ease;
@@ -1156,7 +1156,7 @@ blockquote {
   #searchBox {
     background: #1e1e1e;
     color: var(--text);
-    border: 1px solid #888;
+    border: 1.5px solid var(--text);
   }
   
 
