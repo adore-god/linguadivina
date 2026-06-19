@@ -129,6 +129,7 @@ figure figcaption {
 
 
 img.reddit {
+	float:right;
     width: 70px;
     height: auto;
     flex-shrink: 0; 
