@@ -1230,6 +1230,20 @@ table, td, th {
     mix-blend-mode: normal !important;
   }
   
+  .footer-auth {
+  background-color:  var(----bg-color-two);
+  margin: 4em auto 30px;
+  text-align: center;
+  font-size: 0.8em; 
+  display: block;
+  font-weight:500;
+}
+.footer-auth img {
+  filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+  
   } /*Don't delete  */
   
   
