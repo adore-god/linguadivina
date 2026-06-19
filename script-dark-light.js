@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (creationIndex > -1) {
     labelLinks.splice(creationIndex, 1);
     addSeparator();
-    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/scrolls/label-from-creation-story.html', 'Articles A — Z'));
+    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/scrolls/label-from-creation-story.html', 'Framework & Articles A — Z'));
   }
 
   // Handle Author link extraction
