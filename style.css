@@ -861,6 +861,14 @@ table, td, th {
 	margin: 2em auto;
 	max-width:100px;
 	}
+	
+.auth-logo {
+margin-bottom:1em; 
+filter: invert(0) !important; 
+border-radius:10px; 
+width: 50% !important	
+	}
+	
 /* =======================
    DARK MODE (AUTO SWITCH)
    ======================= */
