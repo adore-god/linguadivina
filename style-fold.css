@@ -211,7 +211,6 @@ h2, h3, h4, .entry-ref {
 	font-weight:400;
     font-size: 1.4rem;
     margin-bottom: 0.75rem;
-    border-left: 4px solid var(--gold-dim) !important;
     padding-left: 0.75rem;
 }
 
