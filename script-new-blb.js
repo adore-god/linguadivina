@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
            <div style="border:0;border-top:1px solid #555;margin:10px 0;"></div>
            <div style="display:flex; justify-content: space-between; align-items:center;">
              <a href="${blbVerseLink}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-weight:bold;">View Verse</a>
-             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-weight:bold;">Strong's Mechanics →</a>
+             <a href="${blbToolsLink}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-weight:bold;">Strong's Concordance →</a>
            </div>`
         : "Not found";
     } catch {
