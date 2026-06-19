@@ -7,7 +7,7 @@
   --promo-bg: #ddd;
   --bg-color-two: #111;
   --bg-color-thr: #F0F0F0;
-  --link: #1e90ff;
+  --link: #0066CC;
   --accent-color: #444;
   --button: #333;
   --verse-color: #000000;
@@ -51,7 +51,7 @@
   --text: #111111;
   --text-light: #222;
   --ink: #111;
-  --link: #1e90ff;
+  --link: #0066CC;
   --accent-color: #444;
   --button: #333;
   --red: #f26868;
@@ -92,7 +92,6 @@
 }
 
 body{
-  opacity: 0.87;
   font-family: 'Inter', sans-serif;
   font-size: 100%;
   line-height: 1.5;
