@@ -752,6 +752,9 @@ font-weight: 600;
 color: var(--text) !important;	
 	}
 
+#search-results {
+	margin-bottom:2em;
+	}
 	
 #custom-search-results,
 #custom-search-results a,
