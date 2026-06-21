@@ -1,11 +1,7 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.getElementById('searchBox');
-  const creationSection = document.getElementById('creation-section');
-  const otherSection = document.getElementById('other-section');
-  const creationList = document.getElementById('creation-results');
-  const otherList = document.getElementById('other-results');
-  const CREATION_SUBFOLDER = 'creation';
+  const resultsSection = document.getElementById('results-section');
+  const resultsList = document.getElementById('search-results');
 
   let searchIndex = [];
 
@@ -19,14 +15,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   searchBox.addEventListener('input', function () {
     const query = this.value.trim().toLowerCase();
-    
-    // Reset lists on every keystroke to keep it clean
-    creationList.innerHTML = '';
-    otherList.innerHTML = '';
-    
+
+    // Reset list on every keystroke to keep it clean
+    resultsList.innerHTML = '';
+
     if (!query || searchIndex.length === 0) {
-      creationSection.style.display = 'none';
-      otherSection.style.display = 'none';
+      resultsSection.style.display = 'none';
       return;
     }
 
@@ -36,14 +30,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       page.content.toLowerCase().includes(query)
     );
 
-    const creationResults = results.filter(p => p.subfolder === CREATION_SUBFOLDER);
-    const otherResults = results.filter(p => p.subfolder !== CREATION_SUBFOLDER);
-
     function appendResults(list, items) {
       items.forEach(page => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = page.url; 
+        a.href = page.url;
         a.textContent = page.title;
         a.classList.add('noTag');
         li.appendChild(a);
@@ -51,18 +42,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    if (creationResults.length > 0) {
-      appendResults(creationList, creationResults);
-      creationSection.style.display = 'block';
-    } else { 
-      creationSection.style.display = 'none'; 
-    }
-
-    if (otherResults.length > 0) {
-      appendResults(otherList, otherResults);
-      otherSection.style.display = 'block';
-    } else { 
-      otherSection.style.display = 'none'; 
+    if (results.length > 0) {
+      appendResults(resultsList, results);
+      resultsSection.style.display = 'block';
+    } else {
+      resultsSection.style.display = 'none';
     }
   });
 });
