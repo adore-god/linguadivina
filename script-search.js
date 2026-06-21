@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function getIndex() {
     if (searchIndex) return searchIndex; // Return cached if available
     try {
-      const response = await fetch(`${BASE_URL}posts/searchIndex.json`);
+      const response = await fetch(`${BASE_URL}searchIndex.json`);
       if (!response.ok) throw new Error('Failed to fetch: ' + response.status);
       searchIndex = await response.json();
       return searchIndex;
