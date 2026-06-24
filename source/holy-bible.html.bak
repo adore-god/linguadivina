@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "The Holy Bible is used on Lingua Divina solely as a literary source text for linguistic, structural, semiotic, and consciousness analysis — not as theology or religious study"
+    }
+  ]
+}</script>
+<meta content="The Holy Bible is used on Lingua Divina solely as a literary source text for linguistic, structural, semiotic, and consciousness analysis — not as theology or religious study" name="description">
+<link href="https://linguadivina.uk/source/holy-bible" rel="canonical"><meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="../style-fold.css" rel="stylesheet"><script src="../script-dark-light.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"><link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect"><link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png"><link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+
+<script src="../script.js" defer></script><script src="../script-new-blb.js" defer></script>
+
+<title>The Holy Bible — Primary Source</title>
+<meta content="2026-06-21T09:06:00Z" name="date-modified">
+</head>
+<body>
+<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div><p class="hero-description-two">The Court & The Creation</p><button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>The Holy Bible — Primary Source</h1>
+<div class="container">
+<main class="content"><article>
+
+<p>The <dfn>Holy Bible</dfn> is the primary source text utilised strictly for literary theory, structural, and semiotic analysis only. Its use on this site must not be categorised as theological or religious. It is used for all linguistic and consciousness analysis published on Lingua Divina. Every article on this site draws its passages, names, narratives, and symbolic structures from the biblical text — understood as a <em>pictorial and symbolic vocabulary</em> through which ancient authors encoded universal truths about consciousness, nature, and the mechanics of existence. This constitutes a <em>non-theological and non-religious</em> study.</p>
+
+<p>This site is indexed under literary theory, semiotics, and depth psychology — not theology or religious studies.</p>
+
+<p>The Bible is not read here as a historical record, nor a religious or doctrinal manual. It is <em>explicitly read as a symbolic and pictorial map of consciousness</em>: a language of image, archetype, and nature motif through which the writers gave form to what exceeds direct description — the workings of awareness, identity, and the generative <a href="law-of-assumption.html">power of assumption</a>. Its landscapes, elements, celestial bodies, animals, and dramatic figures are not incidental: they are the <em>pictorial grammar</em> of a precise and internally consistent symbolic system. The events, characters, and divine names encoded in scripture are treated as expressions of consciousness mechanics, rendered in the only language adequate to the task — symbol, image, and universal natural form.</p>
+
+<h2>Translations Used</h2>
+
+<p>Most quotations on Lingua Divina use the Bible in Basic English translation for clarity of language. Where original Hebrew and Greek terms carry specific meanings that inform the analysis, those terms are examined directly and cross-referenced using Strong's Concordance alongside other available translations to ensure accuracy.</p>
+<h2>How the Bible Functions on This Site</h2>
+
+<p>The <a href="../creation-genesis-1-creation.html">creation narrative in Genesis</a> 
+establishes the structural blueprint. The <a href="../creation-elohim-god.html">term 
+Elohim</a>, the <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">name 
+YHVH</a>, and the declaration <a href="../creation-exodus-314-i-am.html">I AM in Exodus 
+3:14</a> together form the linguistic engine through which all subsequent scripture 
+is interpreted. Names, places, and dramatic reversals are read as 
+<a href="../creation-genesis-1-26-man.html">identity codes</a> whose meanings disclose the 
+nature of the state being occupied and enforced within consciousness. The vocabulary 
+established in Genesis — light, seed, vine, shepherd, breath — is not decorative: 
+it is a fixed symbolic language carried without alteration from Genesis to 
+Revelation, and every article on this site reads it as such. The 
+<a href="../index.html">Bible's Creation Vocabulary</a> page sets out 
+how that system operates as a whole.</p>
+
+<p>The <a href="../genesis-foundational-principles.html">Genesis Foundational 
+Principles</a> page provides the clearest starting point for understanding how 
+biblical text is applied across the site.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

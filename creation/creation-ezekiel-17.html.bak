@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-ezekiel-17.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Ezekiel 17 — The Riddle the Court Encodes in Its Own Creation",
+      "description": "Ezekiel 17 is a riddle built from Genesis categories: day five eagle, day three cedar, seed, vine, and abundant waters. The names encode the mechanism before the parable begins — Ezekiel means El strengthens, Israel means he shall prevail, Lebanon means whiteness, Babylon means confusion. The court transplants an identity, watches it cleave toward the wrong enclosure, and then plants its own tender twig on the mountain of the prevailing one — the I AM the court assumes directly.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Ezekiel 17, Genesis categories, Elohim, I AM, eagle, cedar, seed, vine, tender twig, day five, day three, vegetation, leave and cleave, Lebanon, Babylon, Israel, name meanings, identity codes, consciousness, court mechanism, enclosure",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:2–3",
+          "description": "The court instructs Ezekiel to give a riddle and a parable — the Genesis categories are the code. A great eagle comes to Lebanon and takes the top of the cedar."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:5–6",
+          "description": "The eagle takes seed of the land and plants it in fertile soil beside abundant waters. The seed becomes a spreading vine — Genesis day three seed and vegetation category operating."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:7–8",
+          "description": "The vine bends its roots toward a second eagle — leave and cleave mechanics inverted. The vine seeks water from outside its planted enclosure."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:9–10",
+          "description": "The court declares the vine will be pulled up and wither. Elohim enforces after its kind — a vine that cleaves away from its planting does not flourish."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:22–23",
+          "description": "The court takes a tender twig from the top of the cedar and plants it on the high mountain of Israel. The twig becomes a stately cedar where birds of every kind nest — day five creatures dwelling in day three vegetation."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Ezekiel 17:24",
+          "description": "All the trees of the field know that the court brings down the high tree and raises the low — the I AM declared by the court holds regardless of external conditions."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="Ezekiel 17 is a riddle built from Genesis categories: day five eagle, day three cedar, seed, vine, and abundant waters. The names encode the mechanism before the parable begins — Ezekiel means El strengthens, Israel means he shall prevail, Lebanon means whiteness, Babylon means confusion. The court transplants an identity, watches it cleave toward the wrong enclosure, and then plants its own tender twig on the mountain of the prevailing one." name="description">
+<link href="https://linguadivina.uk/creation/creation-ezekiel-17.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Ezekiel 17 — The Riddle the Court Encodes in Its Own Creation</title>
+<meta content="2026-05-24T22:55:00Z" name="date-modified">
+<meta name="date" content="2026-05-24">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Ezekiel 17 — The Riddle the Court Encodes in Its Own Creation</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+Son of man, put forth a riddle, and speak a parable to the house of Israel; and say, Thus says the Lord God: A great eagle, great-winged, long-feathered, full of feathers of different colours, came to Lebanon, and took the top branch of the cedar.
+— Ezekiel 17:2–3
+</blockquote>
+
+<p>Ezekiel 17 is not delivered as a straightforward address. The court instructs Ezekiel to give a riddle first, and a parable second. <a href="../creation-genesis-1-26-man.html">Ezekiel — Yechezkel — means El strengthens</a>: the state of consciousness chosen to carry this message is one the court has already fortified for the task. His name declares the I AM he occupies before a word of the parable is spoken. The riddle is addressed to the house of <a href="../creation-patriarchs.html">Israel</a> — He shall prevail — the internal state that has already passed through the wrestling and whose name encodes the outcome as its nature. The court does not give a riddle to a state that cannot hold it. This is the court declaring that what follows is encoded — that the <a href="../creation-genesis-1-creation.html">Genesis creation categories</a> are the cipher, and only those who know the framework can read the mechanism operating beneath the surface. A great eagle, a cedar, a seed, abundant waters, a spreading vine, and finally a tender twig planted on the high mountain: every element belongs to a category the court fixed at creation. The instrument the court uses throughout is its own <a href="../creation-genesis-1-11-seed.html">botanical and creaturely vocabulary</a> — and the riddle resolves only when every Genesis thread is named.</p>
+
+<h2>The Cedar — Genesis Day Three Vegetation</h2>
+
+<p>The eagle comes to Lebanon and takes the topmost branch of the cedar. Lebanon — from the Hebrew <em>laban</em>, meaning white or whiteness — is not an incidental location. It names the prior state of the identity before the court acts on it: cleared, luminous, open. The cedar stands in the white place because the highest assumed I AM always originates in a condition of prior clarity. <a href="../creation-genesis-1-11-seed.html">Genesis day three — vegetation category</a>: the court brought forth trees yielding fruit after their kind, and the cedar is the commanding identity in that register — the tallest, the most established, the one whose top represents the highest assumed I AM within a given structure. The court does not begin the riddle with an abstraction. It begins with the most recognisable of its own botanical creations and names the identity in play: the top branch, the highest twig, is what the eagle takes. The summit of an existing I AM is what the court acts upon first. <a href="../creation-genesis-1-26-man.html">The name of the state defines what is carried and what is planted.</a></p>
+
+<h2>The Eagle — Genesis Day Five</h2>
+
+<p>Genesis 1:21 — the court created the great winged creatures on day five, every bird after its kind. The eagle in the riddle is not an incidental actor. It is a day five category operating on a day three category — the court's own creaturely instrument reaching into the court's own botanical order to move an identity from one location to another. <a href="../creation-elohim-god.html">Elohim</a>, the judges and rulers, does not need external tools. It uses what it made. The eagle carries the topmost twig to a land of merchants and sets it in a city of traders — Babylon, from <em>Babel</em>, meaning confusion or mixture. The enclosure into which the identity is transplanted is named by its nature: the place where every I AM has a competing price, where identities are traded rather than held. The court does not destroy what it moves. It repositions it inside the enclosure of mixture, and then watches what that identity does in its new soil.</p>
+
+<h2>The Seed — Genesis Day Three, Seed Category</h2>
+
+<p>After taking the top of the cedar, the same eagle takes some of the seed of the land and plants it in fertile soil beside abundant waters. <a href="../creation-genesis-1-11-seed.html">Genesis 1:11 — the earth bringing forth seed after its kind</a>. The seed is not the cedar. It is a separate identity — taken from the land itself, placed in the best possible conditions: good soil, abundant water, set like a willow. The court provides everything the seed requires for the assumed I AM to grow and bear. This is <a href="../creation-ask-believe-receive.html">the enclosure fully prepared</a>: fertile ground, water present, the planting deliberate. The seed does not earn its conditions. The conditions are what the court assigns to an identity it intends to use.</p>
+
+<h2>The Waters — Genesis Days One Through Three</h2>
+
+<p>Abundant waters appear twice in the riddle — first as the condition beside which the seed is planted, and again as what the vine reaches toward when it bends to the second eagle. <a href="../creation-genesis-1-creation.html">Genesis 1:2 — the waters over which the court moved before any category was fixed</a>. Water in the <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> framework is the prior formless state: potential before identity, resource before form. When the court plants the seed beside abundant waters, it is placing the new I AM at the source of all becoming. The vine that later bends its roots away from its planting and reaches toward a second water source is YHVH abandoning the assigned enclosure and reaching for a different prior state — a different formation — than the one the court selected. The waters the court provides are sufficient. Reaching toward other waters is the jurisdictional error.</p>
+
+<h2>The Vine and the Second Eagle — Leave and Cleave Inverted</h2>
+
+<blockquote>
+But there was another great eagle, great-winged and full of feathers: and see, this vine sent its roots in his direction, stretching out its branches to him, from the beds where it was planted.
+— Ezekiel 17:7
+</blockquote>
+
+<p>The seed grows and becomes a low, spreading vine. Its branches had turned toward the first eagle. Then a second eagle appears and the vine bends its roots in that direction — reaching for water from outside the enclosure in which it was planted. <a href="../creation-genesis-224-love.html">Leave and cleave</a>: the court's mechanism for sustained identity requires that YHVH leave the old familiar state and cleave fully to the newly assumed I AM. Here the movement is inverted. The vine does not leave its old formation and cleave to the new — it remains rooted in its planted ground while its branches reach elsewhere. It attempts to cleave to a second enclosure without leaving the first. <a href="../creation-elohim-god.html">Elohim</a> enforces after its kind. A vine that cleaves toward what the court did not plant it toward cannot flourish. The roots remain under it, but the reaching branches find no water. The court declares: will it not be cut off, pulled up at the roots, its fruit stripped away, its leaves withered?</p>
+
+<h2>The Withering — Elohim Enforces the Planting</h2>
+
+<p>The court's verdict on the vine is mechanical, not punitive. The vine was planted in good soil by abundant waters, with every condition for the assumed I AM to bear fruit. When YHVH bends the identity toward a second enclosure — another eagle, another water source, another formation — <a href="../creation-elohim-god.html">Elohim</a> enforces what was actually planted, not what the vine reaches toward. The branches that stretched toward the second eagle find no water there. The roots that remain in the first bed cannot sustain a vine that has given its branches to a different direction. This is not judgement imposed from outside. It is the statute of the <a href="../creation-genesis-1-11-seed.html">seed category</a> operating: after its kind. A vine bears after the conditions in which it was established. Identity split between two enclosures produces the outcome of neither.</p>
+
+<h2>The Tender Twig — Genesis Day Three, I AM Assumed by the Court Itself</h2>
+
+<blockquote>
+Thus says the Lord God: I myself will take of the highest branch of the high cedar, and will put it out; I will take a young branch from the top of its young shoots, and plant it on a high and lifted-up mountain.
+— Ezekiel 17:22
+</blockquote>
+
+<p>After the riddle and its verdict, the court speaks in the first person directly: I myself will take. Not the eagle. Not an instrument. <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> — present consciousness — assumes the I AM of planter and acts. A tender twig is taken from the very top of the high cedar: not the full branch, not the established identity, but the youngest, most latent shoot — the one with the most potential for a new form. It is planted on the high mountain of Israel. Israel — He shall prevail — names the ground into which the tender shoot is placed: the identity state in which struggle has already resolved into prevailing, where the outcome is embedded in the nature of the terrain itself. <a href="../creation-genesis-1-11-seed.html">The botanical thread</a> that runs from the Garden of Eden through the stump of Jesse and the mustard seed arrives here: the court takes the most tender expression of the day three vegetation category and places it at the highest available ground, in soil whose very name declares the verdict in advance. This is the court itself filing the I AM. <a href="../creation-patriarchs.html">As with Abraham — father of many — Jacob — he who prevails — and Joseph — he shall add</a> — the identity planted by the court in conditions the court selects bears the fruit the court has declared, without the planting's effort or understanding of its own mechanism.</p>
+
+<h2>The Cedar on the Mountain — Genesis Day Five Birds Nesting in Day Three Vegetation</h2>
+
+<blockquote>
+On the high mountain of Israel will I put it; and it will put out branches and give fruit, and be a great cedar: and under it will be living every sort of bird; in the shade of its branches will they make their resting-places.
+— Ezekiel 17:23
+</blockquote>
+
+<p>The tender twig becomes a stately cedar. Under it every sort of bird nests — <a href="../creation-genesis-1-creation.html">Genesis day five, the winged creatures after their kind</a>, dwelling inside the shade of <a href="../creation-genesis-1-11-seed.html">the day three botanical category</a>. This is the full creation structure resolved: day three vegetation grown to its largest form becomes the enclosure for day five creatures. The two categories the court fixed in the first week of creation now appear together in the closing image of the parable — the twig that was too small to shelter anything has become the tree in which every kind of living thing rests. The court closes the riddle by naming the outcome in the same vocabulary it used when it mde the world. All the trees of the field — every competing I AM in the landscape of consciousness — will know that <a href="../creation-elohim-god.html">Elohim</a> brings down the tall tree and raises the low, dries the green tree and makes the dry tree flourish. <a href="../creation-exodus-314-i-am.html">I AM the Lord: I have spoken, and I will perform it.</a> The vocabulary was set on the days of creation. Ezekiel 17 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

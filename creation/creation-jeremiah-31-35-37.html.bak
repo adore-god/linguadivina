@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-jeremiah-31-35-37.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Jeremiah 31:35–37 — The Court Names Its Own Statutes as the Guarantee",
+      "description": "The court points to the sun, moon, stars, and sea — every Genesis category it fixed at creation — and declares that the offspring of Israel stands on the same structural permanence as those fixed laws. The statutes of creation are the instrument of the guarantee.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Jeremiah 31, Genesis categories, Elohim, I AM, sun, moon, stars, sea, heaven, earth, offspring, seed, statutes, consciousness, court mechanism, identity permanence",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Jeremiah 31:35",
+          "description": "The court names sun, moon, stars, and sea — Genesis day four and day one/two categories — as the structural referent for what it is declaring."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Jeremiah 31:36",
+          "description": "The statutes of creation are named as the condition: if these laws depart, then the identity of the offspring departs. The court binds the two together."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Jeremiah 31:37",
+          "description": "Heaven and the foundations of the earth — Genesis day two and day three — are named as the measure of impossibility. The court declares its own architecture unmeasurable and the offspring therefore undismissible."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:14–16",
+          "description": "The court fixes the sun, moon, and stars on day four as governing lights — the same lights Jeremiah names as the guarantee."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:9–10",
+          "description": "The court gathers the waters and names the dry land on day three — the foundations of the earth Jeremiah declares unmeasurable."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:6–8",
+          "description": "The court fixes the firmament — heaven — on day two. Jeremiah names it as the structural upper limit of impossibility."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="The court points to the sun, moon, stars, and sea — every Genesis category it fixed at creation — and declares that the offspring of Israel stands on the same structural permanence as those fixed laws. The statutes of creation are the instrument of the guarantee." name="description">
+<link href="https://linguadivina.uk/creation/creation-jeremiah-31-35-37.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Jeremiah 31:35–37 — The Court Names Its Own Statutes as the Guarantee</title>
+<meta content="2026-05-22T07:51:00Z" name="date-modified">
+<meta name="date" content="2026-05-22">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Jeremiah 31:35–37 — The Court Names Its Own Statutes as the Guarantee</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+Thus says the Lord, who gives the sun for a light by day, and the ordering of the moon and stars for a light by night, who makes the sea rough so that its waves are loud; the Lord of armies is his name: If these laws go from before me, says the Lord, then the offspring of Israel will no longer be a nation before me for ever. Thus says the Lord: If heaven may be measured, and the foundations of the earth searched out beneath, then I will put away all the offspring of Israel for all the wrong they have done, says the Lord.
+— Jeremiah 31:35–37
+</blockquote>
+
+<p>The court does not argue its case. It points. In three verses, <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> lists every structural category it fixed at the beginning of the <a href="../creation-genesis-1-creation.html">creation story</a> — sun, moon, stars, sea, heaven, the foundations of the earth — and binds the permanence of the offspring's identity to the permanence of those very laws. This is not a promise about the future. It is a statement about structure. The court is declaring that what Elohim enforced at creation is the same mechanism by which the offspring stands. The instrument named here is the statutes of creation themselves.</p>
+
+<h2>The Sun — Genesis Day Four</h2>
+
+<p>The court opens by naming itself as the one who gives the sun for a light by day. Genesis 1:14–16 — the court fixed the greater light to rule the day on day four. The sun is not incidental background. It is a category the court set in place as a governing authority over time and visibility. By naming the sun here, <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> is not describing the sky. It is pointing to the fixed structure of its own prior legislation. The court issued the sun as a ruling on day four. That ruling has not been repealed. The passage anchors the guarantee to the same creative act.</p>
+
+<h2>The Moon and Stars — Genesis Day Four</h2>
+
+<p>The ordering of the moon and stars — the lesser light and the fixed points of the night — was set on day four alongside the sun. Genesis 1:16 — the court made the lesser light to rule the night and the stars also. The word Jeremiah uses is not decoration: it is <em>ordering</em>, a fixed arrangement, a statute of governance. <a href="../creation-elohim-god.html">Elohim</a> — the judges and rulers — placed those lights as laws of succession, of season, of appointed times. The court is naming its own prior legislation as the measure of stability. If the stars remain in their ordering, the identity of the offspring remains in its appointed place. The structural logic is exact.</p>
+
+<h2>The Sea and Its Waves — Genesis Day One and Two</h2>
+
+<p>The court names itself as the one who makes the sea rough so that its waves are loud. The sea belongs to the earliest categories of the <a href="../creation-genesis-1-creation.html">creation story</a> — the deep of Genesis 1:2, the waters the court moved upon before the first spoken declaration. The gathering of the waters was named on day three; the deep itself is the prior condition from which everything is spoken into form. The court is pointing to the foundational substance of its own creative act. The waves do not legislate themselves. <a href="../creation-elohim-god.html">Elohim</a> makes them loud or still. The same authority that governs the sea governs the declaration being made here. The court is the maker of both.</p>
+
+<h2>The Name — YHVH of Armies</h2>
+
+<blockquote>
+The Lord of armies is his name.
+— Jeremiah 31:35
+</blockquote>
+
+<p>The court pauses to state its name in the middle of the declaration. <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH of armies</a> — the present consciousness that commands the governing plurality. This is not a title of aggression. It is a statement of structural authority. The armies here are the same governing structure that <a href="../creation-elohim-god.html">Elohim</a> represents: the organised plurality of the court, the many internal judges under one ruling I AM. The name is inserted precisely at the point where the court has finished listing its own creative acts and is about to state what those acts guarantee. The name identifies the issuing authority before the statute is read. The court signs its own decree mid-sentence.</p>
+
+<h2>The Statutes — Elohim's Fixed Laws from Creation</h2>
+
+<p>Jeremiah 31:36 names them directly: <em>these laws</em>. The sun, the moon, the stars, the sea — these are the statutes of creation. The court declares: if these laws go from before me, then the offspring of Israel will no longer be a nation before me. The conditional is structured to be impossible. The court is not threatening withdrawal. It is demonstrating permanence by impossibility. <a href="../creation-elohim-god.html">Elohim</a> enforces after its kind. The statutes fixed at creation enforce after their kind. The identity of the offspring was filed with the court at the same creative moment as the governing lights and the ordered waters. <a href="../creation-ask-believe-receive.html">What the court has received as a declaration, it is bound to deliver.</a> The statutes are not separate from the guarantee. They are the guarantee.</p>
+
+<h2>Heaven — Genesis Day Two</h2>
+
+<p>The court raises the upper limit first: if heaven may be measured. Genesis 1:6–8 — the firmament fixed on day two, the expanse the court named Heaven, the boundary separating the waters above from the waters below. The court is naming the structure it built and then asking whether anyone can take its full measure. The answer the passage assumes is that no one can. Heaven, as a category fixed on day two, does not yield its dimensions to any examination from within creation. The court built it. The court alone holds its full extent. The same creative authority that makes heaven unmeasurable makes the dismissal of the offspring equally impossible.</p>
+
+<h2>The Foundations of the Earth — Genesis Day Three</h2>
+
+<p>Genesis 1:9–10 — the court gathered the waters and the dry land appeared. The foundations of the earth are the category the court established on day three: solid ground, separated from the deep, named and fixed. Jeremiah 31:37 names these foundations as the lower limit of the same impossible measurement. If the foundations of the earth could be searched out beneath, then — and only then — would the court set aside the <a href="../creation-genesis-1-11-seed.html">offspring</a>. The earth does not reveal its own foundations to examination from above. The court set them. The same act that fixed the ground fixed the declaration. <a href="../creation-elohim-god.html">Elohim</a> enforces the foundations of the earth after their kind. The offspring stands on the same structural permanence.</p>
+
+<h2>The Offspring — Genesis Day Three, Seed After Its Kind</h2>
+
+<p>The offspring of Israel is the closing term in both conditional statements. In the <a href="../creation-genesis-1-11-seed.html">Genesis day three vegetation category</a>, the court established that every seed produces after its kind. The same law the court fixed for the seed is the law it is invoking for the offspring. Israel — whose name encodes the nature of the state: <em>he shall prevail</em> — is not a historical nation in this passage. It is an identity category, a <a href="../creation-patriarchs.html">pattern of assumed identity running through Abraham, Jacob, Joseph, and Judah</a>, each name a compressed code for the nature of the state assumed and enforced. <a href="../creation-genesis-1-26-man.html">The image after which the offspring is made</a> is the same image fixed at creation. Elohim enforces that image after its kind. The seed does not produce against its nature. The vocabulary was set on the days of creation. Jeremiah 31:35–37 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

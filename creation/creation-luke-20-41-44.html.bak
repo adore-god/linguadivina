@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-luke-20-41-44.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Luke 20:41–44 — The Court Names the Identity Above the Line",
+      "description": "Luke 20:41–44 presents the court posing a question about names and lineage. David calls his own son Lord — the higher identity overriding the lower one. The passage demonstrates the Genesis framework of names as identity codes and the court enforcing the assumed I AM above inherited category.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Luke 20:41-44, Psalm 110:1, David, Lord, son of David, Elohim, I AM, YHVH, names as identity, Genesis categories, consciousness, court mechanism, assumed identity, seat of authority",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Luke 20:41",
+          "description": "The court poses the question — how is the Christ the son of David? Identity is declared before lineage can settle the matter."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Luke 20:42–43",
+          "description": "David himself cites Psalm 110:1 — the Lord said to my lord, be seated at my right hand. YHVH addresses a higher I AM than bloodline permits."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Luke 20:44",
+          "description": "David gives him the name of Lord — names as identity codes. The court's question: how can the lower category (son) contain the higher (Lord)?"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 110:1",
+          "description": "The Lord said to my lord, Be seated at my right hand, till I put all those who are against you under your feet. The Genesis authority structure invoked within David's own Psalms."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="Luke 20:41–44 presents the court posing a question about names and lineage. David calls his own son Lord — the higher identity overriding the lower one. The passage demonstrates the Genesis framework of names as identity codes and the court enforcing the assumed I AM above inherited category." name="description">
+<link href="https://linguadivina.uk/creation/creation-luke-20-41-44.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Luke 20:41–44 — The Court Names the Identity Above the Line</title>
+<meta content="2026-05-10T12:50:00Z" name="date-modified">
+<meta name="date" content="2026-05-10">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Luke 20:41–44 — The Court Names the Identity Above the Line</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And he said to them, Why do they say that the Christ is the son of David? For David himself says in the book of Psalms, The Lord said to my Lord, Take your seat at my right hand, Till I put under your feet all those who are against you. David then gives him the name of Lord, so how is it possible for him to be his son?
+— Luke 20:41–44
+</blockquote>
+
+<p>The court poses a question it has no intention of leaving unanswered. It is not asking for information. It is demonstrating a jurisdictional principle using the <a href="../creation-genesis-1-creation.html">mechanics of the creation framework</a> — specifically the law that a name discloses the nature of the identity being occupied, and that the assumed I AM outranks every inherited category. <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> addressing a higher Lord within the same man's lineage is the court showing that what YHVH assumes as I AM cannot be bounded by bloodline. The instrument the court runs in this passage is the <a href="../creation-genesis-1-26-man.html">name as identity code</a>.</p>
+
+<h2>The Question — Genesis 1:26 Identity as Primary Unit</h2>
+
+<p>The court opens with a question: why is it said that the Christ is the son of David? This is not genealogical dispute. <a href="../creation-genesis-1-26-man.html">Genesis 1:26</a> establishes identity — not heredity — as the primary creative unit. <a href="../creation-elohim-god.html">Elohim, the judges and rulers</a>, does not enforce what a man inherits from his father's house. It enforces the I AM that YHVH dominantly assumes. The court is exposing a category error: those who reduce the assumed identity to its biological container have misread the mechanism. What a man is called by others is not what Elohim is bound to deliver. What YHVH assumes as <a href="../creation-exodus-314-i-am.html">I AM</a> is what the court must uphold.</p>
+
+<h2>David's Own Words — Genesis Names as Identity Codes</h2>
+
+<p>The court does not argue from outside the tradition. It reaches into David's own record — the book of Psalms — and lets the text disclose itself. David himself writes: the Lord said to my Lord. In doing so David names a state above his own present consciousness. <a href="../creation-genesis-1-26-man.html">In Scripture, names are not labels.</a> They encode the nature and function of the identity being occupied. <a href="../creation-elohim-god.html">Elohim</a> enforces after its kind — and the kind is determined by the name assumed, not the name inherited. David, as YHVH, recognises and names a Lord above himself. The court records it. Whatever David names Lord, <a href="../creation-elohim-god.html">Elohim</a> is bound to seat at the right hand.</p>
+
+<h2>Be Seated at My Right Hand — Genesis Day Six Authority</h2>
+
+<blockquote>
+The Lord said to my lord, Be seated at my right hand, till I put all those who are against you under your feet.
+— Psalm 110:1
+</blockquote>
+
+<p>The right hand is the position of ruling authority — the seat from which dominion is exercised. <a href="../creation-genesis-1-26-man.html">Genesis 1:26 gives man dominion</a>: the court, on the sixth day, confers governing authority as the nature of the identity assumed in the image of <a href="../creation-elohim-god.html">Elohim</a>. To be seated at the right hand is not a location. It is a state of assumed rulership. YHVH occupying the I AM of dominion is what the court enforces. The enclosure of opposition — all those who are against you — is placed beneath that assumed identity by the action of <a href="../creation-elohim-god.html">Elohim</a>, not by the striving of the petitioner. The court does not ask the one at the right hand to fight. It delivers the footstool.</p>
+
+<h2>Enemies as Footstool — Genesis Judgement and "It Was Good"</h2>
+
+<p>The court declares: till I put all those who are against you under your feet. This is the Genesis pattern of judgement running through the passage. <a href="../creation-elohim-god.html">Elohim</a> evaluated each day of creation and declared it good — a judicial ruling, not an aesthetic observation. Whatever opposes the assumed I AM is not an obstacle to the outcome. It is material the court is already processing into alignment. The enemies do not prevent the footstool. They become it. <a href="../creation-cain-abel.html">The jurisdictional error — presenting a fragmented or contested I AM</a> — is what gives apparent opposition its weight. When YHVH assumes the seat of authority, the court's ruling converts resistance into confirmation.</p>
+
+<h2>David Calls Him Lord — Genesis Names Enforced After Their Kind</h2>
+
+<p>The court's question lands precisely here: David then gives him the name of Lord — so how is it possible for him to be his son? The answer the court is demonstrating is that <a href="../creation-genesis-1-11-seed.html">Elohim enforces after its kind.</a> A son reproduces the nature of the father. But when David names the one who follows him Lord — a state of higher authority than his own present identity — he is not describing a son. He is filing the identity of a governing I AM that exceeds the category of lineage entirely. <a href="../creation-patriarchs.html">The pattern visible through Abraham, Jacob, Joseph, and Judah</a> is the same: the name encodes the outcome. David naming his successor Lord is the court recording an I AM that <a href="../creation-elohim-god.html">Elohim</a> must enforce above and beyond the inherited line.</p>
+
+<h2>The Unanswered Question — The Court's Instrument Disclosed</h2>
+
+<p>The court does not provide the resolution. It leaves the question standing: how is it possible for him to be his son? This is not evasion. It is the court's instrument made visible. The passage is not about reconciling two categories — son and Lord — within a single man's biography. It is demonstrating that the assumed I AM supersedes inherited identity at every level. <a href="../creation-exodus-314-i-am.html">I AM</a> is not bounded by what YHVH was born into. The moment YHVH assumes the higher name, <a href="../creation-elohim-god.html">Elohim — the judges and rulers</a> — is no longer looking at the bloodline. It is enforcing the filing. The unanswered question is the court's way of leaving the mechanism open: take your seat, and the court handles the rest. The vocabulary was set on the days of creation. Luke 20:41–44 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

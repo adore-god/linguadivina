@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/creation/creation-nabal-abigail.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-nabal-abigail.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "1 Samuel 25:2 — Nabal and Abigail — The Name Already the Verdict",
+      "description": "Nabal's field at Carmel brings forth after its kind on Genesis day three while his own name files the verdict before the narrative unfolds. David girds a sword to assume a bench that is not his. Abigail leaves Nabal's house and cleaves to the assumed I AM that Elohim is bound to enforce. Nabal's heart returns to the day one deep he never truly left.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Nabal, Abigail, David, Carmel, Maon, Paran, Genesis categories, Elohim, I AM, names as identity codes, leave and cleave, after its kind, consciousness, jurisdictional error, 1 Samuel 25",
+      "inLanguage": "en",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Nabal",
+          "description": "A name meaning senseless, foolish — the verdict the court enforces before a single deed of the narrative is performed. The name discloses the state; the account only confirms it."
+        },
+        {
+          "@type": "Thing",
+          "name": "Abigail",
+          "description": "Source of joy. The petitioner who leaves the house and identity of Nabal and cleaves to the assumed I AM of David before Elohim, intercepting a wrongful filing of vengeance."
+        },
+        {
+          "@type": "Thing",
+          "name": "Carmel and Maon",
+          "description": "Carmel — fruitful field, garden-land, Genesis day three producing after its kind. Maon — dwelling place, habitation, the enclosure Nabal occupies without ever filing an identity inside it."
+        },
+        {
+          "@type": "Thing",
+          "name": "Genesis Creation Categories",
+          "description": "Day three dry land and field, day six cattle and living creature after its kind, day one the formless deep — the vocabulary fixed at creation that the Nabal narrative draws on in sequence.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        },
+        {
+          "@type": "Thing",
+          "name": "Law of Assumption",
+          "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:2-3",
+          "description": "Nabal's possessions are at Carmel, the fruitful field — Genesis day three producing after its kind regardless of the man's own identity."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:10-11",
+          "description": "Nabal refuses David's messengers — the jurisdictional error, a name's nature disclosed in its own first recorded act."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:13",
+          "description": "David girds the sword — present consciousness assuming the bench rather than presenting the petition to it."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:18-23",
+          "description": "Abigail leaves without telling Nabal and meets David — leaving one house, cleaving toward another assumed identity, before the court."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:25",
+          "description": "Abigail names the verdict already contained in Nabal's name. As his name is, so is he."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:37-38",
+          "description": "Nabal's heart becomes as a stone and the court requires it ten days later — the day one deep returning where no I AM was ever filed."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 25:39-42",
+          "description": "David blesses the court for returning Nabal's own wrongdoing on his own head, then takes Abigail — the cleaving completed under Elohim's enforcement."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta content="Nabal's field at Carmel brings forth after its kind on Genesis day three while his own name files the verdict before the narrative unfolds. David girds a sword to assume a bench that is not his. Abigail leaves Nabal's house and cleaves to the assumed I AM that Elohim is bound to enforce. Nabal's heart returns to the day one deep he never truly left." name="description">
+<link href="https://linguadivina.uk/creation/creation-nabal-abigail.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>1 Samuel 25:2 — Nabal and Abigail — The Name Already the Verdict</title>
+<meta content="2026-06-21T14:03:00Z" name="date-modified">
+<meta name="date" content="2026-06-21">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>1 Samuel 25:2 — Nabal and Abigail — The Name Already the Verdict</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+Let my lord give no attention to Nabal, that good-for-nothing: for as his name is, so is he, a man without sense.
+— 1 Samuel 25:25
+</blockquote>
+
+<p>Samuel is dead and David has gone down to the wilderness of Paran (H6290), a name of uncertain root commonly carried as a place of caverns — ground hollowed out, exactly where present consciousness sits while no court case is yet filed. There a man named Nabal possesses a fruitful field at Carmel, his flocks are sheared, and his wife Abigail intercepts a vengeance David never had legal grounds to take. This is not a story about a rude rich man and a wise wife. It is a demonstration of what the court already holds before a single event occurs: a name (H5037, Nabal, senseless, without sense, foolish) that pre-files the entire verdict, a field that runs Elohim's botanical statute regardless of the man inside it, and a petitioner — David — who nearly assumes the bench instead of presenting his case to it. The instrument the court uses throughout is the name itself, filed before the narrative ever begins.</p>
+
+<h2>Carmel — Genesis Day Three</h2>
+
+<p>"There was a man in Maon whose business was in Carmel" (1 Samuel 25:2). Carmel (H3760) carries the sense of a planted field, garden-land, a fruitful place — the same <a href="../creation-genesis-1-11-seed.html">seed and harvest category</a> the court fixed on Genesis day three, dry ground appearing and bringing forth after its kind. Three thousand sheep, a thousand goats, sheared in season: the increase runs whether or not the man occupying the field has assumed anything as his own identity. Maon (H4584) — habitation, dwelling place — names the wider enclosure Nabal lives inside, a structure as empty of filed identity as the barns of the rich fool. The field does its work. The man does not do his.</p>
+
+<h2>The Flock — Genesis Day Six</h2>
+
+<p>David's young men had kept Nabal's shepherds and flocks safe in the wilderness — "they were a wall to us both by night and by day" (1 Samuel 25:16). Cattle, sheep, and every living creature <a href="../creation-genesis-1-11-seed.html">after its kind</a> belong to Genesis day six, the category of living things given into the keeping of the one who assumes dominion over them. David's men guarded this category without wage, without contract, purely as the wall around another man's increase. The request David sends — bread, water, and flesh in season — is not extortion. It is a petition that the court of ordinary exchange be honoured: protection rendered, provision returned. <a href="../creation-elohim-god.html">Elohim</a>, the judges and rulers of whatever state is occupied, expects reciprocity after its kind. Nabal's household received a wall. The wall asked only for water.</p>
+
+<h2>Nabal — The Name Already the Verdict</h2>
+
+<p>"Who is David? and who is the son of Jesse?" (1 Samuel 25:10). Before this reply, nothing in the text has shown Nabal to be churlish. The name has already disclosed it. <a href="../creation-genesis-1-26-man.html">Names function as identity codes</a>: the word reveals the state occupied, and the narrative that follows only confirms what the name declared in advance. Nabal (H5037) means senseless, foolish, without moral or rational capacity — and Abigail later names this plainly: "as his name is, so is he, a man without sense" (1 Samuel 25:25). This is Thread 7, the jurisdictional error, in its purest form. Nabal does not commit a single act of <a href="../creation-cain-abel.html">sin</a> that creates his nature; his nature was already on file the moment his name was given, and the refusal merely executes what Elohim was always bound to enforce after its kind.</p>
+
+<h2>The Sword — A Bench That Was Not His</h2>
+
+<p>"Gird ye on every man his sword" (1 Samuel 25:13). David, still YHVH — present consciousness reacting to an insult — moves to assume a verdict that belongs to Elohim alone: judge, jury, and executioner over an entire household, including those who never spoke against him. This is the danger of Thread 7 doubling back on the one wronged. To answer a false filing with an unauthorised one is still to file outside the court's jurisdiction. Four hundred men gird their swords before a single word reaches the bench. The <a href="../creation-exodus-314-i-am.html">I AM</a> about to be assumed here is not David's appointed identity. It is borrowed authority, and the court has not signed off on it.</p>
+
+<h2>Abigail — Leaving and Cleaving</h2>
+
+<p>Abigail (H26), a name carrying the sense of father's joy or source of joy, "made haste" and "told not her husband Nabal" (1 Samuel 25:18-19). This is <a href="../creation-genesis-224-love.html">the leave before the cleave</a>: she departs the house and authority of Nabal's identity without his knowledge or consent, descending by the covert of the hill to meet David directly. She does not defend Nabal's name; she surrenders it entirely — "let this iniquity be on me" — and offers herself instead as the petitioner who reaches the bench in his place. <a href="../creation-genesis-2-23-woman.html">The woman</a> here is the assumed identity that intercepts a wrongful filing before it is enforced, precisely the mechanism of <a href="../creation-ask-believe-receive.html">Ask, Believe, Receive</a> run on someone else's behalf: she asks for restraint, believes the court will honour it, and receives David's withdrawal of the sword before a drop of blood is shed. David later confirms it: "blessed be thy advice... which hast kept me this day from coming to shed blood" (1 Samuel 25:33). Cleaving completes only at the chapter's close, when David sends for her and she becomes his wife — the union finalised once both the wrongful filing and the empty house are behind her.</p>
+
+<h2>The Stone — Genesis Day One Returns</h2>
+
+<p>Abigail tells Nabal nothing while he feasts "like the feast of a king," drunk past hearing (1 Samuel 25:36). In the morning, sober, he is told everything: "all the heart went out of him, and he became like stone" (1 Samuel 25:37). This is Genesis day one returning — the deep, the formless and void state that precedes any declaration of light — arriving not as a fresh punishment but as the absence finally catching up with present consciousness. Nabal had filed nothing as his own I AM beyond the field's produce and his own name's contempt. <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH/LORD</a> presented no claim Elohim could enforce on his behalf, so when the props of feast and wine are removed, what is left is the formless state his name described from the start. Ten days later, "the Lord struck Nabal, that he died" (1 Samuel 25:38) — Elohim enforcing, at last and without further delay, exactly what the name had been filing the entire time.</p>
+
+<h2>The Verdict — Nabal's Own Head</h2>
+
+<p>"Blessed be the Lord, that hath pleaded the cause of my reproach from the hand of Nabal... for the Lord hath returned the wickedness of Nabal upon his own head" (1 Samuel 25:39). David did not need the sword he girded; the court required no help executing a verdict it had already filed at the naming of Nabal. <a href="../creation-elohim-god.html">Elohim</a> judges and rules without needing present consciousness to seize the bench for itself. Abigail, having left one house and cleaved to another assumed identity, completes the union the chapter has been building toward — and what remains on record is the field at Carmel still producing after its kind, the name Nabal still meaning exactly what it always meant, and the sword that was never needed once the true petitioner reached the bench. The vocabulary was set on the days of creation. Nabal runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

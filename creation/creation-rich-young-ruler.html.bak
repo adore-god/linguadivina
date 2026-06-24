@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-rich-young-ruler.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Mark 10:25 — The Rich Young Ruler: The Court Cannot Fit the Old I AM Through the Needle",
+      "description": "The rich young ruler cannot enter the kingdom because he presents his possessions as his I AM. Elohim — judges and rulers — enforces the identity on file. The camel is a Genesis day six creature. The needle's eye is the aperture of identity shift. The court names the mechanism plainly.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "rich young ruler, eye of the needle, camel, Genesis day six, Elohim, I AM, identity shift, kingdom, cleaving, consciousness, courtroom mechanics, YHVH, leave and cleave",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Mark 10:17–22",
+          "description": "The rich young ruler asks how to inherit eternal life and goes away sorrowful — YHVH unable to release the current I AM."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Mark 10:25",
+          "description": "It is easier for a camel to go through the eye of a needle than for a rich man to enter the kingdom — Genesis day six creature named as the instrument of the court's demonstration."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Mark 10:27",
+          "description": "With men it is impossible but not with the court — Elohim enforces after kind; the mechanism is not effort but identity."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:24–25",
+          "description": "The court creates land animals on day six — the category from which the camel is drawn into the needle passage."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 2:24",
+          "description": "Leave and cleave — the structural law the young ruler fails to execute."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="The rich young ruler cannot enter the kingdom because he presents his possessions as his I AM. Elohim — judges and rulers — enforces the identity on file. The camel is a Genesis day six creature. The needle's eye is the aperture of identity shift. The court names the mechanism plainly." name="description">
+<link href="https://linguadivina.uk/creation/creation-rich-young-ruler.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Mark 10:25 — The Rich Young Ruler: The Court Cannot Fit the Old I AM Through the Needle</title>
+<meta content="2026-05-14T21:46:00Z" name="date-modified">
+<meta name="date" content="2026-05-14">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Mark 10:25 — The Rich Young Ruler: The Court Cannot Fit the Old I AM Through the Needle</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And a certain ruler put a question to him, saying, Good Master, what have I to do to get eternal life? And Jesus said to him, Why do you say I am good? No one is good but God. You have the knowledge of the laws: Do not be untrue in marriage; Do not put anyone to death; Do not take what is not yours; Do not say what is false; Give honour to your father and mother. And he said, All these things I have done from the time I was a child. And when Jesus saw this, he had pity on him, and said, One thing is needed: go and get money for all you have and give it to the poor, and you will have wealth in heaven: and come after me. But his face fell at these words, and he went away sorrowful; for he had much property.
+— Mark 10:17–22
+</blockquote>
+
+<p>A ruler comes to the court with a question and leaves with an answer he cannot accept. This is not a story about wealth or poverty. It is a demonstration of what happens when YHVH — present consciousness — attempts to claim a new identity while remaining fused to the one already on file. The court does not argue with the young ruler. It names the precise mechanical obstruction. The instrument the court reaches for is a <a href="../creation-genesis-1-creation.html">Genesis creation</a> category: a day six land animal, the largest in that world, set against the smallest possible aperture. The court always speaks in the vocabulary it established at the beginning.</p>
+
+<h2>The Name — Genesis Identity Code</h2>
+
+<p>The passage calls him a ruler. In the framework of <a href="../creation-genesis-1-26-man.html">Genesis 1:26</a>, man is made in the image of <a href="../creation-elohim-god.html">Elohim — judges and rulers</a>. The young man already occupies a governing identity by name and position. But a title of external governance means nothing inside the courtroom of consciousness if the I AM being presented is still the old state. His name in the narrative is his function: he rules outwardly while remaining subject to his possessions inwardly. <a href="../creation-patriarchs.html">As with Abraham, Jacob, and Joseph</a>, the nature of the state a person occupies is disclosed before the story resolves. This ruler's state is defined not by his title but by what he cannot release.</p>
+
+<h2>The Possessions — Genesis Day Six and After Its Kind</h2>
+
+<p>On day six of <a href="../creation-genesis-1-creation.html">the creation account</a>, Elohim creates land creatures after their kind. The statute of day six is reproduction and enforcement after the nature of what is presented. The young ruler's possessions are not incidental detail. They are his assumed I AM. He has built his identity around what he holds, and <a href="../creation-elohim-god.html">Elohim — the judges and rulers</a> — enforces identity after its kind without partiality. The court cannot deliver a kingdom verdict while the identity on file reads possession and lack. It enforces what is presented. The ruler presents his wealth as himself, and the court rules accordingly.</p>
+
+<h2>The Camel — Genesis Day Six in the Court's Demonstration</h2>
+
+<blockquote>
+It is easier for a camel to go through the eye of a needle, than for a man with much money to go into the kingdom of God.
+— Mark 10:25
+</blockquote>
+
+<p>The camel is a Genesis day six creature — land animal, created under Elohim's statutes, <a href="../creation-genesis-1-11-seed.html">reproducing after its kind</a>. It is the largest animal in the cultural world of this passage. The court does not reach for a random image. It reaches for the category it established at creation and uses it as the demonstration. The camel represents the full accumulated mass of an old identity: every possession, every familiar state, every habitual assumption that YHVH has fused to as I AM. The needle's eye is the aperture of identity shift. It is not small because the court is cruel. It is small because only the thread passes through — the pure assumed identity, stripped of everything attached to the former state. The animal cannot compress itself. The old I AM cannot be dragged into the new enclosure. It must be left.</p>
+
+<h2>The Leaving — Genesis 2:24 and the Cleaving Statute</h2>
+
+<p>The instruction Jesus gives is precise: go, sell, give, come. This is the <a href="../creation-genesis-224-love.html">leave and cleave</a> statute running in the open. Genesis 2:24 establishes that a man must leave his father's house — his familiar state, his inherited identity, the accumulated structure of what he has always known himself to be — before he can cleave to the new. The young ruler is being asked to execute the same mechanical operation that <a href="../creation-patriarchs.html">Abraham executed when he left his father's house</a>, that Israel executed when it left Egypt. The leaving is not moral instruction. It is the prerequisite of the court. YHVH cannot occupy two I AM states simultaneously. The enclosure of the new identity only opens once the old one is vacated.</p>
+
+<h2>The Sorrow — Thread Seven, the Jurisdictional Error</h2>
+
+<p>He goes away sorrowful. Sorrow here is the precise signal of Thread Seven from the framework: the jurisdictional error. The young ruler wants the kingdom verdict but he is filing the possessions identity. <a href="../creation-elohim-god.html">Elohim</a> enforces impartially. If YHVH presents lack of willingness to release, the court rules in favour of that state. The sorrow is not punishment. It is the mechanical result of a contradictory filing — asking the court to deliver a ruling that contradicts the identity presented at the bench. The court cannot and does not override the identity YHVH is holding. It enforces after its kind.</p>
+
+<h2>With the Court — The Mechanism Is Not Effort</h2>
+
+<blockquote>
+The things which are not possible with men are possible with God.
+— Mark 10:27
+</blockquote>
+
+<p>The disciples ask who then can be saved, and the answer names the court directly. With men — meaning with YHVH operating from the present state, trying to force the old identity through the aperture — it is impossible. With <a href="../creation-elohim-god.html">Elohim — the judges and rulers of I AM</a> — all things are possible. The mechanism is not effort. It is identity. The moment YHVH releases the grip on the old I AM and assumes the new one as already true, <a href="../creation-ask-believe-receive.html">the court receives the filing and enforces accordingly</a>. The camel does not shrink. The needle does not widen. The identity shifts, and what was presented to the court changes. Elohim delivers after the kind of what is now on file.</p>
+
+<h2>The Kingdom — Thread Six, Garden to Enclosure</h2>
+
+<p>The kingdom the young ruler is asking about is Thread Six: the fully realised identity, the enclosure of the assumed I AM enforced by Elohim into lived experience. <a href="../creation-genesis-1-creation.html">The creation story</a> moves from garden to city, from seed to harvest, from present consciousness to realised state. The kingdom is not a location. It is the condition that results when YHVH assumes the appointed I AM and Elohim enforces it. The ruler already has the external title. What he does not have is the internal identity shift that the court requires before it can deliver the verdict. The <a href="../creation-genesis-1-26-man.html">image of Elohim</a> in which man is made is the governing structure available to every YHVH who assumes it. The court holds it open. The young ruler turns away.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

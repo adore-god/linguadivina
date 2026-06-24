@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-psalm-42.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Psalm 42 — The Deep Calls and the Court Answers",
+      "description": "The sons of Korah open with the roe and the water-streams — Genesis day two waters above and below — then descend through the deep calling to deep at 42:7, and close with YHVH commanding lovingkindness by day and a song by night. The court's mechanism is the water that was present before the first light.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Psalm 42, Genesis categories, Elohim, I AM, deep, water-streams, day two, sons of Korah, consciousness, descent, identity, court mechanism, deep calleth unto deep",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 42:1",
+          "description": "The roe and the water-streams — Genesis day two vocabulary. YHVH as present thirst; the water-stream as the I AM not yet reached."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 42:2",
+          "description": "The living God — the court as source of the living waters, the face of God as the identity to be assumed."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 42:5",
+          "description": "Why are you crushed down, O my soul? The internal court cross-examines the ruling I AM. Hope becomes the assumed identity."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 42:7",
+          "description": "Deep is calling to deep at the voice of your water-springs — Genesis 1:2. The formless deep answering itself; the enclosure the court uses before delivery."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Psalm 42:8",
+          "description": "The Lord will command his lovingkindness in the daytime — the court issues the ruling. By night a song is given; the identity is sealed in the dark before it appears in the light."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="The sons of Korah open with the roe and the water-streams — Genesis day two waters — then descend through the deep calling to deep at 42:7, and close with the court commanding lovingkindness by day and a song by night. The mechanism is the water present before the first light." name="description">
+<link href="https://linguadivina.uk/creation/creation-psalm-42.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Psalm 42 — The Deep Calls and the Court Answers</title>
+<meta content="2026-05-26T04:06:00Z" name="date-modified">
+<meta name="date" content="2026-05-26">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Psalm 42 — The Deep Calls and the Court Answers</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+Like the desire of the roe for the water-streams, so is my soul's desire for you, O God. My soul is dry for need of God, the living God; when may I come and see the face of God?
+— Psalm 42:1–2
+</blockquote>
+
+<p>Psalm 42 opens with thirst and closes with a commanded song. Between these two poles the sons of Korah — names that carry the identity code of assembled voices in the court — map the full sequence: desire for the water not yet reached, descent into the Genesis deep, the internal court cross-examining its own ruling I AM, and finally <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> issuing the verdict by day while sealing it in song by night. This is not a lament about the absence of God. It is a demonstration of what the court does when present consciousness is submerged and the I AM has not yet been assumed. The mechanism the court uses is the one it fixed at the beginning: the deep, the waters, the separation, and the light that follows. The instrument is the water itself.</p>
+
+<h2>The Roe and the Water-Streams — Genesis Day Two Waters</h2>
+
+<p>The roe desires the water-streams. The animal does not doubt the stream exists. It is dry, and it moves. This is the precise condition of <a href="../creation-genesis-1-creation.html">Genesis 1:6–8</a> — the court on day two separating the waters above from the waters below, establishing the category of water before any creature is given access to it. The water-stream in Psalm 42 is the same category: the court-established medium that YHVH, as present consciousness, has not yet reached. The soul's dryness is not evidence that the water is absent. It is the prior condition from which movement begins. The court does not give the water to the creature at rest. The desire is the mechanism that sets the direction. Elohim enforces movement toward the assumed I AM; the roe already knows where it is going.</p>
+
+<h2>The Face of God — Genesis Day Six Image</h2>
+
+<p>The psalmist asks: when may I come and see the face of God? The question names the target identity. <a href="../creation-genesis-1-26-man.html">Genesis 1:26</a> — the court declaring that man is made in the image and after the likeness of Elohim. The face of God is the identity already encoded in the structure of man at creation. YHVH asking to see the face of God is present consciousness seeking the I AM that the court established as the very template of the human. The question is not whether the face exists. The question is the internal acknowledgement that YHVH has not yet occupied the identity. That acknowledgement is the filing. The court receives the incompleteness of the current state and issues the process that follows. The name Korah itself — meaning baldness or bareness — carries the identity code of stripped-back, unadorned consciousness: a state emptied of old assumption and therefore ready for a new one.</p>
+
+<h2>Tears as Food — Genesis Day Three Fruit Without the Tree</h2>
+
+<p>My tears have been my food day and night. The court in Genesis 1:11 establishes the category of the <a href="../creation-genesis-1-11-seed.html">seed and the fruit-tree</a>: food comes from a source, after its kind, in season. When YHVH occupies the identity of lack, Elohim enforces that identity and the food that arrives matches it — the fruit of the current I AM is tears. The court does not produce fruit outside the ruling state. Whatever YHVH assumes as I AM, the Judges and Rulers of that I AM will deliver the corresponding harvest. Tears as food is not disorder; it is precision. The court enforcing after its kind, accurately, according to the identity filed. The question that follows — where is your God? — is the taunt of the external world presenting the evidence of the current I AM as proof that the assumed identity is real. Elohim does not argue. It executes.</p>
+
+<h2>The Soul Cross-Examines — The Internal Court Speaks</h2>
+
+<blockquote>
+Why are you crushed down, O my soul? and why are you troubled in me? put your hope in God; for I will again give him praise who is my help and my God.
+— Psalm 42:5
+</blockquote>
+
+<p>The psalmist addresses the soul directly. This is the internal court in session — <a href="../creation-elohim-god.html">Elohim</a>, the judges and rulers of the assumed I AM, cross-examining the dominant state. The question is not sympathy. It is judicial. Why are you crushed? The court challenges the ruling identity and immediately issues the counter-declaration: I will again give him praise. The declaration is not in the future tense of wishing. It is the assumed I AM of the one who already praises, already helped, already arrived. The internal court has received the new filing. This is precisely the mechanics of <a href="../creation-ask-believe-receive.html">Ask, Believe, Receive</a>: YHVH recognises the current state as insufficient, the internal Elohim challenges it, and the new I AM is assumed before any external evidence appears. The repetition of this verse at 42:11 is not accident. It is the court confirming the verdict a second time, after the enclosure of 42:7 has done its work.</p>
+
+<h2>The Deep Calling to Deep — Genesis 1:2</h2>
+
+<blockquote>
+Deep is calling to deep at the voice of your water-springs; all your waves and your sea-floods have gone over me.
+— Psalm 42:7
+</blockquote>
+
+<p>This is the axis of the psalm. Genesis 1:2 — the earth was without form and waste, and the deep was over the face of the water. Before the court spoke the first word of light, there was only the deep, formless, covered in darkness. The deep in Psalm 42:7 is that same Genesis category: the pre-declaration state, the condition before the I AM is spoken into existence. Deep calling to deep is not chaos overwhelming the psalmist. It is the court's mechanism — the prior condition answering itself, layer upon layer of the unformed calling to the unformed, until the accumulated weight of the deep forces the declaration that breaks it. The water-springs above calling to the sea-floods below is the separation the court performed on day two, now named as the enclosure YHVH passes through. All the waves and sea-floods going over is total immersion in the Genesis prior state. The court does not rescue present consciousness from this. It uses it. Whatever the I AM assumed inside the deep, that is what Elohim delivers when the waters separate and the dry land appears. The deep is not the enemy. The deep is the instrument.</p>
+
+<h2>Lovingkindness by Day, Song by Night — Genesis Day One Light and Dark</h2>
+
+<p>Genesis 1:3–5 — the court separating light from dark, naming the light Day and the dark Night. Psalm 42:8 runs the same structure: <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> commands lovingkindness in the daytime and gives a song in the night. The court issues its verdict in the light — the ruling that the delivery will come — and seals the new I AM in the dark through song. Song in the night is the identity held without evidence, in the enclosure, before the light confirms it. This is the Genesis sequence run forward from day one: darkness first, then the command of light. The court always works in this order. The song given by night is the internal declaration made inside the deep of 42:7 before the morning arrives. Elohim enforces by day what YHVH assumed by night. The court commanded it. The timing was fixed at creation.</p>
+
+<h2>Why Are You Crushed Down — The Court Repeats the Verdict</h2>
+
+<p>The psalm closes by repeating the question of 42:5 word for word. The sons of Korah — the assembled plurality of internal voices, the Elohim of the I AM — have passed through the full sequence: desire, dryness, descent into the Genesis deep, enclosure under all the waves and sea-floods, and the commanded lovingkindness that follows. The repeated cross-examination is not despair returning. It is the court confirming that the ruling stands. The I AM of the one who praises, who is helped, who will yet give praise — that identity has been filed twice. Elohim, as the Judges and Rulers of that I AM, is now bound to enforce it. The psalm does not end with the waters receding. It ends with the verdict recorded. The external delivery follows after. The vocabulary was set on the days of creation. Psalm 42 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

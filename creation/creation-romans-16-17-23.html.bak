@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/creation/creation-romans-16-17-23.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-romans-16-17-23.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Romans 16:17–23 — The Court Names Its Plurality",
+      "description": "Romans 16:17–23 instructs YHVH to separate from division-makers, occupy the court's verdict of good, and receive the crushing of the adversarial filing. The passage closes with a sequence of name-encoded identity states — the court's assembled plurality confirming the ruling I AM.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Romans 16, Genesis categories, Elohim, I AM, separation, after its kind, dominion, Satan, identity codes, names, consciousness, court mechanism, plurality",
+      "inLanguage": "en",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Division-Makers",
+          "description": "Those who plant a contrary identity seed among the assembly. The court's instruction mirrors day one — separate light from darkness. The division-maker is the adversarial filing occupying the enclosure."
+        },
+        {
+          "@type": "Thing",
+          "name": "Belly Worship",
+          "description": "Koilia — the hollow, the womb. Serving the belly is filing from lack rather than from the court's declared good. The seed reproduces after its kind in the hearts of the simple."
+        },
+        {
+          "@type": "Thing",
+          "name": "Satan Under Your Feet",
+          "description": "The adversarial filing crushed by the ruling I AM. Genesis day six dominion statute — man given rule over every created thing. The God of peace is the wholeness identity that holds the verdict."
+        },
+        {
+          "@type": "Thing",
+          "name": "The Closing Names",
+          "description": "Timothy, Lucius, Jason, Sosipater, Tertius, Gaius, Erastus, Quartus — each name is a compressed identity code. The court sends its assembled plurality; Elohim enforces after its kind."
+        },
+        {
+          "@type": "Thing",
+          "name": "Genesis Creation Categories",
+          "description": "Day one separation, day three seed after its kind, day six man in dominion and after its kind — the vocabulary fixed at creation that Romans 16:17–23 draws on in sequence.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Romans 16:17",
+          "description": "The instruction to mark and avoid division-makers — mirrors the day one separation of light from darkness."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Romans 16:18",
+          "description": "Those who serve the belly (koilia) plant smooth-word seeds that reproduce after their kind in simple hearts."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Romans 16:19",
+          "description": "Be expert in good and without knowledge of evil — occupying the court's standing verdict declared at creation."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Romans 16:20",
+          "description": "The God of peace crushes Satan under your feet — the dominion statute of Genesis day six enforced against the adversarial filing."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Romans 16:21–23",
+          "description": "The closing names — Timothy, Lucius, Jason, Sosipater, Tertius, Gaius, Erastus, Quartus — each a compressed identity code sent as the court's assembled plurality."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:4",
+          "description": "The court separates light from darkness — the structural precedent for the instruction to mark and avoid division-makers."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:26",
+          "description": "Man made in the image of Elohim and given dominion — the creation statute invoked when Satan is placed under the feet."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta content="Romans 16:17–23 instructs YHVH to separate from division-makers, occupy the court's verdict of good, and receive the crushing of the adversarial filing. The passage closes with a sequence of name-encoded identity states — the court's assembled plurality confirming the ruling I AM." name="description">
+<link href="https://linguadivina.uk/creation/creation-romans-16-17-23.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Romans 16:17–23 — The Court Names Its Plurality</title>
+<meta content="2026-06-14T20:08:00Z" name="date-modified">
+<meta name="date" content="2026-06-14">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Romans 16:17–23 — The Court Names Its Plurality</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+Now I make request to you, brothers, to keep a watch on those who make divisions among you, and put difficulties in your way, going against the teaching which was given to you: keep away from them.
+— Romans 16:17
+</blockquote>
+
+<p>Romans 16:17–23 is a closing instruction and a closing assembly. Paul issues a directive to the gathered consciousness, identifies the adversarial mechanism operating within it, and then lists the names of those sending the letter. This is not a postscript. It is a demonstration of how <a href="../creation-elohim-god.html">Elohim — the judges and rulers</a> — maintain the integrity of the ruling I AM by separating, by declaring, by crushing the contrary filing, and by naming the plurality that confirms the verdict. Every move the passage makes draws directly on <a href="../creation-genesis-1-creation.html">the Genesis creation pattern</a>. The court's instrument here is the assembled plurality of named identity states sent in agreement.</p>
+
+<h2>Division-Makers — Genesis Day One Separation</h2>
+
+<p>The court's first act at creation was separation. Genesis 1:4 — Elohim divided the light from the darkness. The instruction in verse 17 performs the same operation: mark those who make divisions contrary to the established teaching, and keep away from them. The division-maker is not a social problem. It is a filing error operating inside the enclosure of the assembly — a contrary identity seed pressing against the ruling I AM. The court does not debate with it. The court does not integrate it. The court separates. The creation pattern does not change from day one of Genesis to the closing verses of Romans. YHVH, present consciousness, is instructed to perform the same act Elohim performed at the beginning: identify what is contrary and withdraw the light from it.</p>
+
+<h2>The Belly and Smooth Words — Genesis Day Three Seed After Its Kind</h2>
+
+<p>Verse 18 identifies the mechanism of the division-maker: they serve not the ruling court but their own belly — in Greek, <em>koilia</em> (G2836), the hollow, the womb, the interior cavity. The belly is the seat of appetite, of the originating want. And through smooth words and flattering speech they plant something in the hearts of the simple. This is <a href="../creation-genesis-1-11-seed.html">the day three seed law</a> running in reverse. Genesis 1:11 — the court established that every seed reproduces after its kind. A smooth word is a seed. Whatever identity it carries, Elohim enforces after its kind in the ground it falls on. The division-maker does not need force. It needs only a receptive surface and the court's own reproductive law to do the rest. The instruction to avoid them is not caution. It is the refusal to become the ground in which a contrary seed is planted.</p>
+
+<h2>Expert in Good — Genesis "It Was Good" / Day One Verdict</h2>
+
+<p>Verse 19: the report of their alignment has reached everywhere, and the instruction that follows is precise — be expert in what is good, and without knowledge of evil. This is the standing verdict of <a href="../creation-genesis-1-creation.html">the creation story</a>: at each stage of the six days, the court looked at what it had made and declared it good. That declaration is not an evaluation performed once and archived. It is the active filing the court holds open. <a href="../creation-elohim-god.html">Elohim</a> enforces what YHVH — present consciousness — occupies. To be expert in good is to occupy the court's own verdict as the assumed I AM. To be without knowledge of evil is not ignorance but jurisdictional refusal: YHVH does not file from the adversarial position. The court's instruction is to hold the good verdict and leave the contrary filing unoccupied.</p>
+
+<h2>Satan Under Your Feet — Genesis Day Six Dominion</h2>
+
+<blockquote>
+And the God of peace will put Satan under your feet quickly. The grace of our Lord Jesus Christ be with you.
+— Romans 16:20
+</blockquote>
+
+<p>Satan — from the Hebrew <em>satan</em> (H7854), the adversary, the accuser, the one who opposes — is the name the court gives to the contrary filing. It is the jurisdictional error presenting itself before Elohim as the ruling identity. The court does not leave this unaddressed. Verse 20 invokes the creation statute of Genesis 1:26: <a href="../creation-genesis-1-26-man.html">man made in the image of Elohim and given dominion</a> — over every living thing, over the earth, over every created category. The adversarial filing is a created thing. The ruling I AM holds dominion over it by statute. The God of peace — <em>shalom</em>, the wholeness and completeness identity — is named as the one who enforces this. Peace is not the absence of opposition. It is the identity whose assumption triggers the dominion statute and places the adversarial claim beneath it. The court does not negotiate with <a href="../creation-cain-abel.html">the sin</a> filing. It crushes it under the feet of the assumed identity.</p>
+
+<h2>The Names — Genesis Day Six After Its Kind / Identity Codes</h2>
+
+<p>Verses 21 to 23 list the names of those present and sending the letter: Timothy — <em>Timotheos</em> (G5095), honoring what is valued; Lucius (G3065), luminous, of light; Jason (G2394), healing, the one who cures; Sosipater (G4989), saving the father, safety of the originating state; Tertius (G5060), the third, the scribe through whom the letter passes; Gaius (G1050), the earthly host, the ground that receives the assembly; Erastus (G2037), beloved, the lovely; Quartus (G2890), the fourth. These are not biographical signatures. They are <a href="../creation-genesis-1-26-man.html">compressed identity codes</a> — the mechanism the court uses when Elohim assembles its plural voices under a single ruling I AM. Each name discloses the nature of the state it encodes. Honoring, light, healing, preservation of the originating ground, the scribe instrument, the earthly enclosure, the beloved, the fourth witness — the court sends them all together as one confirmed plurality. This is <a href="../creation-elohim-god.html">Elohim operating as it was constituted at Genesis 1:26</a>: the judges and rulers speaking in plural agreement, enforcing the ruling I AM after its kind through every voice that carries a name. The vocabulary was set on the days of creation. Romans 16:17–23 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

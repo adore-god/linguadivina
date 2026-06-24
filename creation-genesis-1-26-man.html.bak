@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/creation-genesis-1-26-man.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation-genesis-1-26-man.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Genesis 1:26 and Man — The Court Declares Its Primary Instrument",
+      "description": "Genesis 1:26 is not a historical creation event. It is the court's declaration of its primary instrument: man as assumed identity, formed in the image of the governing I AM, and given dominion over every category the court fixed at creation. Elohim enforces after its kind.",
+      "image": "https://linguadivina.uk/images/wp/man.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Genesis 1:26, man, adam, image, likeness, Elohim, YHVH, I AM, dominion, male, female, consciousness, creation categories, day six, identity, courtroom of consciousness",
+      "inLanguage": "en",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Man as Assumed Identity",
+          "description": "Adam — from adamah, ground — is the identity the court forms in its own image on day six. Not a physical body but the assumed I AM that YHVH occupies, which Elohim is bound to enforce as outer likeness."
+        },
+        {
+          "@type": "Thing",
+          "name": "Image and Likeness",
+          "description": "Two stages of enforcement within one verse. Image is the inner assumed identity. Likeness is the outer reality Elohim enforces from it. The sequence never reverses."
+        },
+        {
+          "@type": "Thing",
+          "name": "The Plural Us",
+          "description": "Let us make man — Elohim as the inner government of consciousness, the organised plurality deliberating on the identity to be formed. The us is the court convening before the verdict is enforced."
+        },
+        {
+          "@type": "Thing",
+          "name": "Male and Female — Genesis Day Six",
+          "description": "The court forms both male and female in the same image on the same day. YHVH as the petitioning consciousness; the female as the assumed I AM that YHVH must cleave to for the identity to be enforced.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        },
+        {
+          "@type": "Thing",
+          "name": "Dominion over Day Five and Day Three Categories",
+          "description": "Fish of the sea, birds of the heavens, every living thing — the court gives man authority over every prior creation category. The assumed identity governs the depths, the surface, and the earth.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        },
+        {
+          "@type": "Thing",
+          "name": "Law of Assumption",
+          "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:26",
+          "description": "Let us make man in our image, after our likeness — the court declares the primary instrument: the assumed identity formed in the image of the governing I AM."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:27",
+          "description": "Male and female created in the same image — both are identity states within the one consciousness the court is forming."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:28",
+          "description": "The court gives dominion over fish, birds, and every living thing — the assumed identity is given authority over every creation category fixed before day six."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Exodus 3:14",
+          "description": "Ehyeh/I AM Asher Ehyeh/I AM — the governing name Genesis 1:26 enacts. What YHVH assumes as I AM, Elohim must enforce."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:21",
+          "description": "Day five sea creatures — the category over which dominion is given in Genesis 1:28. The court forms the instrument of enclosure before it forms the identity that governs it."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:11",
+          "description": "After its kind — the enforcement law visible throughout creation that governs man identically: the assumed identity reproduces its own nature in outer experience."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta name="description" content="Genesis 1:26 is the court's declaration of its primary instrument: man as assumed identity, formed in the image of the governing I AM and given dominion over every creation category. Elohim enforces after its kind.">
+<link href="https://linguadivina.uk/creation-genesis-1-26-man.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="/style-fold.css" rel="stylesheet">
+<script src="script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="/favicon.ico" rel="icon" type="image/png">
+<link href="/favicon.png" rel="icon" type="image/png">
+<link href="/manifest.json" rel="manifest">
+<link href="/style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="script.js" defer></script>
+<script src="script-new-blb.js" defer></script>
+
+<title>Genesis 1:26 and Man — The Court Declares Its Primary Instrument</title>
+<meta content="2026-06-14T14:40:00Z" name="date-modified">
+<meta name="date" content="2026-06-14">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description-two">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Genesis 1:26 and Man — The Court Declares Its Primary Instrument</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And God said, Let us make man in our image, after our likeness: and let them have rule over the fish of the sea and over the birds of the air and over the cattle and over all the earth and over every living thing which goes flat on the earth.
+— Genesis 1:26
+</blockquote>
+
+<p>Five days of creation have already run. Light has been separated from darkness. Dry land has been gathered from the deep. Vegetation has been fixed after its kind. Sea creatures and birds have been formed. Then the court pauses before day six and declares something it has not declared over any prior category: let us make man in our image, after our likeness. This is not a description of physical biology. It is the court naming its primary instrument — the category through which every prior creation category will be governed. The instrument is <a href="creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> as the assumed identity: man, formed in the image of the governing I AM, given dominion over the court's own creation. <a href="creation-elohim-god.html">Elohim</a> — the judges and rulers of that I AM — enforces accordingly.</p>
+
+<h2>Man — Genesis Day Six Ground</h2>
+
+<p>The word translated "man" is <em>adam</em> (Strong's H120), drawn directly from <em>adamah</em> (H127) — ground, earth, the substance from which formed things arise. The court does not call this category by a personal name. It calls it by the substance it comes from: ground. <a href="creation-genesis-1-creation.html">By day six</a>, every prior category has been fixed — deep, light, dry land, vegetation, sea creatures, birds. Man is what the court forms from that ground to govern all of it. Not the physical body, but the assumed identity: the self-concept that YHVH, present consciousness, occupies as I AM. The ground is the field; the assumed identity is what grows from it when the court speaks. Elohim enforces what grows after its kind.</p>
+
+<h2>Our Image — Genesis Day One Light Inward</h2>
+
+<p>The court says: in our image. <em>Tselem</em> (Strong's H6754) — image, likeness, shadow, representation. On day one the court separated light from darkness; the first act of the court was to produce the inner form from which outer reality is distinguished. Image here carries the same logic: the inner form precedes the outer reality. <a href="creation-exodus-314-i-am.html">Exodus 3:14</a> names what that inner form is — <em>Ehyeh/I AM Asher Ehyeh/I AM</em>. The image of Elohim is not a shape. It is the I AM: the governing identity the court holds, and into which YHVH is now invited to step. The court does not form man as a separate being. It forms man as the assumed I AM — the identity that mirrors the governing structure of Elohim itself.</p>
+
+<h2>After Our Likeness — Genesis Day Six Outer Enforcement</h2>
+
+<p>The court adds a second word: after our likeness. <em>Demuth</em> (Strong's H1823) — resemblance, model, similitude. Where image is the inner form, likeness is the outer expression that follows from it. The court encodes a sequence into a single verse: image first, likeness second. Inner assumption precedes outer enforcement. This is the same law the court fixed on day three — <a href="genesis-111-seed.html">after its kind</a>. Every seed produces fruit that matches its inner nature. Man formed in the image of I AM produces a likeness — a lived outer reality — that matches the identity assumed inwardly. <a href="creation-elohim-god.html">Elohim</a> does not enforce the circumstance. It enforces the image. The likeness is what the outer world becomes when the image is held.</p>
+
+<h2>Let Us — Elohim as the Convened Court</h2>
+
+<p>The court does not say: I will make man. It says: let <em>us</em> make man. Elohim is grammatically plural throughout <a href="creation-genesis-1-creation.html">Genesis 1</a> — judges, rulers, the assembled government of consciousness. The "us" is the inner plurality convening before the verdict is issued. This is not a council of external beings. It is the organised structure of the inner Elohim — every judge, every ruling faculty — arriving at agreement before the identity is decreed. Once that agreement is reached, the court is bound by its own statute. Whatever identity is declared in image and likeness, the plurality of Elohim must enforce in full. The "us" is the court committing to the enforcement before man is even formed.</p>
+
+<h2>Male and Female — Genesis Day Six Identity and Its Counterpart</h2>
+
+<blockquote>
+And God made man in his image, in the image of God he made him: male and female he made them.
+— Genesis 1:27
+</blockquote>
+
+<p>The court forms male and female together, in the same image, on the same day. Within the framework, every male and <a href="creation-genesis-2-23-woman.html">female character in Scripture is a state of consciousness</a>, not a separate external being. The male here is YHVH — present consciousness, the petitioner, the one who will occupy the assumed identity. The female is the I AM assumed — the identity state that YHVH must <a href="creation-genesis-224-love.html">cleave to</a> for the enforcement to run. The court forms both in the same image because they are two aspects of one mechanism: YHVH presents the I AM, Elohim enforces it. The image of Elohim is not complete in the male alone. It requires both — the consciousness that assumes and the identity that is assumed — formed together, in the same image, on the same day.</p>
+
+<h2>Dominion over Fish — Genesis Day Five Enclosed</h2>
+
+<p>The court gives man dominion over the fish of the sea. On day five the court created the great sea creatures — <em>tanniyn</em>, the creatures of the deep. The deep itself appeared on day one: formless, dark, the condition that precedes all form. Fish in Scripture are consistently states that move through the depths of consciousness without being governed. The court fixed that category on day five, and on day six it gives the assumed identity authority over it. <a href="creation-exodus-314-i-am.html">The I AM assumed by YHVH</a> governs the depths. Whatever operates below the surface of conscious awareness — the unexamined states, the automatic impulses — is subject to the ruling identity once it is occupied and held. Elohim enforces the dominion the image declares.</p>
+
+<h2>Dominion over Birds — Genesis Day Five Surface Thoughts</h2>
+
+<p>The same day five declaration produced the birds of the heavens alongside the sea creatures. Birds in Scripture move through the air — the surface of consciousness, the transient impression, the thought that passes without being fixed or named. The court formed that category and then, on day six, placed the assumed identity above it as well. Man is given dominion over what passes through awareness without governance. The assumed I AM does not merely sit within consciousness. It governs the whole field — depths and surface, sea and air, the fixed and the fleeting. <a href="creation-elohim-god.html">Elohim</a> enforces this dominion after its kind: the identity that is assumed and held is the identity that governs every thought and impulse that moves through the inner court.</p>
+
+<h2>Dominion over Every Living Thing — Genesis Day Six Governed</h2>
+
+<blockquote>
+And God gave his blessing to them, saying, Be fruitful, and have increase, and make the earth full, and be masters of it; be rulers over the fish of the sea and over the birds of the air and over every living thing moving on the earth.
+— Genesis 1:28
+</blockquote>
+
+<p>The court does not stop at sea and air. It extends the dominion to every living thing that moves on the earth — the whole animated plurality of the inner government. Every faculty, every voice, every impulse that moves through the courtroom of consciousness is subject to the ruling identity once man — the assumed I AM — is formed in the image of Elohim and held. This is why Genesis 1:26 is the primary instrument: it does not govern one category. It governs all of them. Every thread the court fixed from day one through day five is placed beneath the identity the court forms on day six. <a href="creation-ask-believe-receive.html">The court's instruction that follows</a> is fruitfulness and increase — not because the outer world has changed, but because the assumed identity reproduces after its kind. Be fruitful, the court says. Elohim enforces what the image is. The vocabulary was set on the days of creation. Genesis 1:26 runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="search.html">Search</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="script-ga.js" defer></script><script src="label-map.js" defer></script><script src="script-pager.js" defer></script></body>
+</html>

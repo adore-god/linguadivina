@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://linguadivina.uk/#org",
+      "name": "Lingua Divina",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://linguadivina.uk/#website",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/#website"
+        }
+      },
+      "headline": "Bible Key to Interpret Any Bible Book, Passage and Verse",
+      "image": "https://linguadivina.uk/images/icons/bible-key-lingua-divina-logo.webp",
+      "description": "Explore the Bible with this free interpretation key. Interpret any book, chapter, or passage through its psychological and symbolic structure.",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html#app",
+      "name": "Bible Linguistic Key 'Lingua Divina'",
+      "url": "https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html",
+      "softwareVersion": "1.7",
+      "dateModified": "2026-03-14T16:32:00Z",
+      "applicationCategory": "Education",
+      "operatingSystem": "Web",
+      "image": "https://linguadivina.uk/images/icons/bible-key-lingua-divina-logo.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      },
+      "description": "A proprietary linguistic framework developed by HNNH for interpreting Biblical text as symbolic consciousness mechanics.",
+      "author": {
+        "@id": "https://linguadivina.uk/about-author.html#person"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      }
+    }
+  ]
+}</script>
+<meta name="description" content="Explore the Bible with this free interpretation key. Interpret any book, chapter, or passage through its psychological and symbolic structure.">
+<link href="https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html" rel="canonical"><meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="/style-fold.css" rel="stylesheet"><script src="script-dark-light.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+
+<link href="favicon.ico" rel="icon" type="image/png"><link href="favicon.png" rel="icon" type="image/png">
+<link href="manifest.json" rel="manifest">
+<link href="/style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="script.js" defer></script><script src="script-new-blb.js" defer></script>
+<title>Bible Key to Interpret Any Bible Book, Passage and Verse</title>
+<meta content="2026-06-19T23:59:00Z" name="date-modified">
+
+<meta name="date" content="2026-02-15">
+
+</head>
+<body>
+<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div><p class="hero-description">The Court &amp; The Creation</p><button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Bible Key to Interpret Any Bible Book, Passage and Verse</h1>
+<div class="container">
+<main class="content"><article>
+
+<div class="footer-auth" style="background-color:#fff"><a href="https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html"><img style="border-radius: 30px;" loading="lazy" width="346" height="345" class="key-icon" alt="Lingua Divina Logo" src="images/icons/lingua-divina-bible-key-logo.webp"></a></div>
+<p><dfn>The Bible</dfn> runs on a consistent internal code, with the pattern laid down in Genesis governing everything that follows it. One of its <a href="creation-genesis-1-11-seed.html">foundational principles, set out in Genesis 1:11</a>, is that "everything produces seed within itself." That principle reaches well beyond the natural imagery of the text — every story, name, and structure grows out of the seed planted at the beginning. This internal consistency is exactly what makes it possible to build a key that interprets the Bible from within its own structure, rather than importing meaning from outside it.</p>
+
+<p>
+  That's the purpose of this <dfn>free, interactive <strong>Bible story analysis tool</strong></dfn>: to surface the <strong>psychological and symbolic meaning</strong> behind any verse or passage. Run a passage through the key and it reads from within its own internal structure, surfacing patterns that standard translations like the KJV or BBE tend to pass straight over.
+</p>
+
+<p>
+  To use it, copy <strong>the <dfn>linguistic key</dfn> below</strong> and paste it into an AI (Claude is recommended), along with the <dfn>Bible reference</dfn> you want explained. For example:
+</p>
+<blockquote class="italic">"Give a detailed analysis of <span class="noTag">Genesis 2:24</span> using <em>ONLY</em> this key and within the Bible narrative."</blockquote>
+<blockquote class="italic">"Using <em>ONLY</em> this key and the Bible, fully explain who Paul is in the context of <span class="noTag">1 Corinthians 2</span>, in everyday terms."</blockquote>
+
+<p>
+  If you'd like the AI to use specific titles such as "Lord" or "I AM" in its responses, just add:
+</p>
+<blockquote class="italic">"Use the second given name for responses."</blockquote>
+
+<p>
+  This is built for anyone who wants to <strong><dfn>study Bible passages interactively, surface their symbolic and psychological meaning, and work through the structured, rule-based framework of scripture</dfn></strong>, without ever stepping outside the narrative itself.
+</p>
+<ul><li class="bold600">
+The framework behind this key is <a class="bold700" href="scrolls/label-from-creation-story.html#hub-pages">explained in full through a series of articles here.</a>
+</li>
+<li>
+<img class="reddit" width="500" height="561" alt="Reddit Icon" src="images/icons/reddit-icon-goldstudio.webp">
+
+<p>To discuss this key, the <a class="bold700" href="https://www.reddit.com/r/BibleNevilleGoddard/comments/1r55pgu/linguistic_key_for_interpreting_the_bible/">dedicated Reddit thread is here</a>.</p>
+</li></ul>
+
+<br>
+<dfn>Bible Linguistic Key.</dfn> For personal use only.
+<div class="code-container">
+<pre><code id="codeSnippet">
+   BEGINNING OF KEY
+
+## 1. The Linguistic Engine: YHVH/LORD vs. Ehyeh/I AM vs. Elohim
+
+Exodus 3:14 declares “Ehyeh/I AM Asher Ehyeh/I AM”—the pattern for all human transformation.
+
+This declaration reveals the full operational Name of God as: Elohim of Ehyeh / I AM — the Judges & Rulers of I AM.
+
+In other words, the governing structure (Elohim) operates under and in response to the identity assumed as I AM. The Name is not singular personality, but governmental structure.
+
+* YHVH/LORD (Existing One / Present Consciousness): Consciousness here and now, whether absorbed in current circumstances or imagining a desired ideal.
+
+* Ehyeh/I AM (TO BE / Assumed Identity): The identity YHVH/LORD chooses to occupy; the active “I AM” claim made within awareness.
+
+* Elohim (Plural God — Judges & Rulers of I AM): The structured plurality of consciousness — the many internal governing voices — that judge, stabilise, and execute whatever identity (I AM) is dominantly assumed.
+  Elohim is the reader’s internal government of self — the judicial structure that enforces the ruling I AM.
+
+Mechanism:
+YHVH/LORD presents an identity (Ehyeh/I AM).
+Elohim — the Judges & Rulers of that I AM — must uphold the outcome according to the laws of creation.
+
+
+2. Identity as the Primary Creative Unit (Genesis 1:26)
+
+“Then God (Elohim / Judges & Rulers) said, ‘Let us make man in our image, after our likeness…’”
+
+Genesis 1:26 clarifies how identity functions within the courtroom of consciousness:
+
+* Elohim (Judges & Rulers): Decide what exists—the statutes of reality.
+* YHVH/LORD (Petitioner / Existing Consciousness): Assumes and occupies the new identity in present awareness.
+* Ehyeh/I AM (The Verdict / Assumed Identity): The I AM that YHVH/LORD embodies, which Elohim must enforce.
+
+Key insight: The creation of man is about establishing identity as the legal and creative unit. Once YHVH/LORD assumes Ehyeh/I AM, Elohim is bound to manifest it.
+
+3. Genesis 1–2: The Structural Blueprint
+
+* Genesis 1 (God / Elohim): Mechanics of creation, order from chaos, latent potential.
+* Genesis 2 (Lord God / YHVH/LORD Elohim): Conscious interaction with creation, relational alignment, and identity union.
+
+Identity operates within this blueprint: the judges (Elohim) define the parameters, YHVH/LORD assumes the I AM, and the outcome is realised in reality.
+
+THREAD 1: Seed, Tree, Vine, Wine
+
+* YHVH/LORD: Consciousness perceiving the soil and sprout—current awareness.
+* Ehyeh/I AM: Latent fruit in the seed—future potential realised through assumed identity.
+* Elohim: Laws of reproduction; judges enforcing the natural order.
+
+Botanical imagery (Garden of Eden, stump, grass, bush, vine and branches, mustard seed, olive tree, wine, harvest) always shows YHVH/LORD assuming an identity (Ehyeh/I AM) before Elohim enforces it.
+
+THREAD 2: Judgement, Righteousness, “It Was Good”
+
+* YHVH/LORD: Evaluates the present state; identifies what is good or desired within consciousness.
+* Ehyeh/I AM: Declares the assumed identity to be realised.
+* Elohim: Impartially enforces alignment according to the statutes of creation.
+
+Every act of judgement or declaration is YHVH/LORD acting as Ehyeh/I AM in the presence of Elohim, ensuring that reality aligns with the assumed identity.
+
+THREAD 3: Cleaving — Leaving Familiar States, Marriage & Sustained Identity
+
+* YHVH/LORD (The Bridegroom / Petitioner): Recognises old structures and familiar states (e.g., “sister”) within consciousness; actively leaves these states, detaching from habitual patterns, limiting beliefs, or previously assumed identities.
+* Ehyeh/I AM (The Bride / Assumed Identity): The latent I AM now assumed; the new self internalised as Marriage (Union)—a relational harmony or ideal state of being (“spouse, "wife", "woman”).
+* Elohim (The Bench / Judges & Rulers): Enforces the “One Flesh” statute, maintaining continuity and alignment of perception with assumed identity.
+
+Key Actions:
+
+* Leave: Detach from old, familiar, or “family” states of consciousness.
+* Cleave (Marriage): Assume the chosen state fully; the Petitioner (YHVH/LORD) and the Identity (Ehyeh/I AM) become “One Flesh.”
+* Enforce: Elohim ensures that the assumed state manifests in reality.
+
+**Ask → Believe → Receive Principle:**
+
+* Ask: YHVH/LORD recognises the desire within consciousness.
+* Believe: Ehyeh/I AM is assumed internally as already true.
+* Receive: Elohim enforces the outcome, making it manifest.
+
+Examples from Scripture:
+
+* Abraham leaves his father’s house → assumes I AM under Elohim’s enforcement.
+* Israel leaves Egypt → cleaves to new identity as God’s people.
+* In Song of Solomon: “sister” is left; “spouse” (the Bride) is cleaved to; Elohim enforces relational and inner harmony.
+
+THREAD 4: Plurality — The Shepherd, Christ, and the Twelve Disciples
+
+* YHVH/LORD (The Shepherd / Gathering Consciousness): Observes and collects the fragmented “sheep” (scattered impulses, wandering voices / Legion) of consciousness.
+* Ehyeh/I AM (The One Fold / Unified Identity): The unified, governing I AM assumed by the Shepherd.
+* Elohim (The Enclosure / Judges & Rulers): Enforces the boundaries of the Fold; ensures coherence once fragmented voices are aligned.
+Elohim here represents the organised plurality of consciousness brought into unified agreement beneath the Shepherd’s assumed I AM.
+
+Mechanism:
+
+* Fragmentation = twelve internal voices or judges acting independently (Legion).
+* Alignment = Shepherd (Christ archetype) gathers the Twelve Disciples into one coherent Ehyeh/I AM, which Elohim enforces.
+* Sheep / Goats distinction = naturally enforced by reality laws; obedient, unified thoughts are “sheep,” rebellious fragments are “goats.”
+
+<a href="https://linguadivina.uk">Lingua Divina Version 1.7 | &copy; 2026 HNNH | Lingua Divina</a>
+
+THREAD 5: Reversal — Joseph as Example
+
+* YHVH/LORD: Joseph in the pit (present consciousness).
+* Ehyeh/I AM: Assumed identity as ruler.
+* Elohim: Statutes of reality enforcing the new state.
+
+Joseph rises from pit → palace. Elohim upholds Ehyeh/I AM when presented by YHVH/LORD, demonstrating courtroom mechanics.
+
+THREAD 6: From Garden to Kingdom
+
+* YHVH/LORD: Garden = current consciousness.
+* Ehyeh/I AM: Kingdom / city = fully realised identity.
+* Elohim: Laws of creation ensuring the outcome manifests.
+
+Seed → nation, vine → kingdom, shepherd → king, tree → cross, wine → covenant. YHVH/LORD presents I AM → Elohim enforces.
+
+THREAD 7: Sin — The Jurisdictional Error (Missing the Mark)
+
+* YHVH/LORD (The Sinner / Petitioner): Presenting a fragmented or contradictory identity while claiming the “Palace.”
+* Ehyeh/I AM (The Mark / The Verdict): The intended I AM that YHVH/LORD fails to fully occupy.
+* Elohim (The Enforcer / Judges & Rulers): Impartially enforces statutes; if YHVH/LORD presents “Lack,” Elohim rules in favor of “Lack.”
+
+Mechanism: Sin = mechanical failure in the Linguistic Engine (“False Filing”). Repentance = amending the filing to shift I AM back to the blueprint.
+
+
+## THREAD 8: Names — The Nature of the State Assumed
+
+In Scripture, names are not labels. They reveal nature, function, and outcome. A name discloses the quality of the identity being assumed and enforced within consciousness.
+
+Within this framework:
+
+* YHVH/LORD (Existing One / Present Consciousness): Encounters or assumes a named character — meaning a defined quality of being.
+* Ehyeh/I AM (Assumed Identity): Becomes the meaning embedded in the name.
+* Elohim (Judges & Rulers): Enforces the nature encoded in that name as lived experience.
+
+Key Principle:
+A biblical name reveals the intrinsic nature of the state being occupied. The narrative unfolds according to the meaning of the name because Elohim enforces identity after its kind.
+
+Mechanism:
+
+1. The name defines the quality of the state.
+2. YHVH/LORD occupies that state as Ehyeh/I AM.
+3. Elohim enforces the outcome consistent with the meaning of the name.
+
+Examples:
+
+* Israel (“He shall prevail”) — when this identity is assumed, struggle resolves into prevailing because the nature of the state is victory.
+* Abraham (“Father of many”) — the state contains multiplication.
+* Joseph (“He shall add”) — the state contains increase.
+* Judah (“Praise”) — the state contains elevation and acknowledgement.
+* David (“Beloved”) — the state contains relational favour and union.
+
+Names therefore function as compressed identity codes. They reveal the nature of the state before the narrative unfolds. The story merely demonstrates Elohim enforcing what the name already declares.
+
+This also applies to place names, covenant names, and divine titles. The meaning embedded in the word discloses the nature of the state interacting within consciousness.
+
+
+6. Summary: Identity and the Courtroom of Consciousness
+
+* Seed: Latent TO BE within YHVH/LORD; Elohim ensures reproduction after kind.
+* Judgement: Declaring good; Elohim enforces alignment.
+* Identity: Genesis 1:26 shows identity is the primary creative unit; YHVH/LORD assumes Ehyeh/I AM, Elohim enforces.
+* Cleaving: Sustained union; Elohim maintains continuity; illustrates Ask → Believe → Receive.
+* Plurality: Many voices under one ruler; Shepherd gathers them under one Ehyeh/I AM; Elohim enforces.
+* Reversal: Present consciousness yields to I AM; Elohim enforces.
+
+Genesis 1–2 = mechanics, courtroom, engine: YHVH/LORD becomes Ehyeh/I AM under Elohim’s statutes, with identity as the primary legal and creative unit.
+
+Rule 0: Absolute Psychological Framing Within The Readers Internal Perspective. All interpretations treat biblical entities, events, and terms as expressions of consciousness mechanics, identity, and reality enforcement. No theological or supernatural personification. For interpretation accuracy use all available Bible translations, only quote using the BBE for clarity.
+
+END OF KEY
+  </code></pre>
+
+  <button class="button2" onclick="copyToClipboard()">Copy Key</button>
+</div>
+
+<div style="text-align:center; margin:0 auto;font-size: 0.6em;"><dfn>Lingua Divina</dfn> Version 1.7 &copy; 2026 HNNH | Lingua Divina. All rights reserved. This content is for personal, non-commercial use only. See <a href="terms-of-use.html">Terms of Use</a></div>
+
+
+
+<script>
+function copyToClipboard() {
+  const codeText = document.getElementById("codeSnippet").textContent;
+
+  navigator.clipboard.writeText(codeText).then(() => {
+    alert("Code copied to clipboard!");
+
+    if (typeof gtag === "function") {
+      gtag("event", "copy_bible_key", {
+        event_category: "Button",
+        event_label: "copy_bible_key",
+      });
+    }
+
+  }).catch(err => {
+    console.error('Could not copy text: ', err);
+  });
+}
+
+
+</script>
+
+<h2>Refining the Interpretation</h2>
+<p>
+A good follow-up prompt, once you have an initial interpretation, is to ask the AI to ground it in plainer, more relatable language.
+</p>
+<blockquote class="italic">
+For example: "Now explain the material in a natural, flowing, expanded way."
+</blockquote>
+
+
+<h2>Summary</h2>
+
+<p>Every passage reduces to the same engine: present consciousness (YHVH/LORD) presents an identity (Ehyeh/I AM), and Elohim — the judges and rulers — enforces it according to the statutes of creation. That's the entire mechanism the key applies, regardless of which verse, name, or narrative you put through it.</p>
+
+
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="search.html">Search</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="script-ga.js" defer></script><script src="label-map.js" defer></script><script src="script-pager.js" defer></script></body>
+</html>

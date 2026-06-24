@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/creation/creation-canon-arc.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-canon-arc.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "The Canon Arc — One Enclosure Broken, One Enclosure Rebuilt",
+      "description": "The entire biblical canon is a single court operation: the Genesis enclosure broken open in chapter three, the creation vocabulary redistributed across every book, and the same enclosure rebuilt in Revelation 21–22. The court never invents new language. It runs the vocabulary fixed at the beginning.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "canon arc, Genesis, Revelation, enclosure, creation categories, Elohim, I AM, YHVH, tree of life, New Jerusalem, dry land, seed, vine, shepherd, identity, consciousness, court mechanism",
+      "inLanguage": "en",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "The Broken Enclosure",
+          "description": "Genesis 3 — the court's structured space exposed. YHVH, present consciousness, assumes a contradictory I AM and Elohim enforces accordingly. The canon begins with a jurisdictional error and ends with its correction."
+        },
+        {
+          "@type": "Thing",
+          "name": "Lineage as Seed Narrowing",
+          "description": "Genesis day three vegetation category applied to the genealogical line. The court narrows one seed through Abraham, Isaac, Jacob, Joseph — after its kind — toward a single assumed I AM."
+        },
+        {
+          "@type": "Thing",
+          "name": "Exile as the Deep",
+          "description": "Babel, Egypt, Assyria, Babylon — each scattering returns YHVH to the Genesis day one condition: formless, dark, without boundary. The necessary prior state before the court speaks identity again."
+        },
+        {
+          "@type": "Thing",
+          "name": "New Jerusalem",
+          "description": "Revelation 21–22. The enclosure restored. The tree of life returned. The name of I AM written on the forehead. The court completes the structure it opened in Genesis 1:1.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        },
+        {
+          "@type": "Thing",
+          "name": "Law of Assumption",
+          "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:1–2",
+          "description": "In the beginning — the court establishes the enclosure. Formlessness and deep precede every declaration. The vocabulary of the whole canon is set here."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 3:23–24",
+          "description": "Expulsion from the garden — the enclosure broken open. The court enforces the identity assumed. The arc of the entire canon begins here."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 12:1",
+          "description": "Abraham called out — the court narrows its seed line. The name Abraham (father of many) is the identity the court will enforce through the lineage."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Exodus 3:14",
+          "description": "I AM that I AM — the court's instrument named directly. YHVH presents the I AM to Elohim; the nation is the enforced result."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Isaiah 11:1",
+          "description": "The stump of Jesse — Genesis day three vegetation category. The court's botanical vocabulary operating through the prophetic line."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Revelation 21:1–5",
+          "description": "New heaven and new earth — the enclosure rebuilt. The court completes the arc it opened in Genesis 1:1."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Revelation 22:2–4",
+          "description": "The tree of life restored, the name written on the forehead — Genesis day three vegetation and Genesis 1:26 identity category. The court runs the same vocabulary at the close as at the opening."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta content="The entire biblical canon is a single court operation: the Genesis enclosure broken open in chapter three, the creation vocabulary redistributed across every book, and the same enclosure rebuilt in Revelation 21–22. The court never invents new language. It runs the vocabulary fixed at the beginning." name="description">
+<link href="https://linguadivina.uk/creation/creation-canon-arc.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>The Canon Arc — One Enclosure Broken, One Enclosure Rebuilt</title>
+<meta content="2026-06-21T09:48:00Z" name="date-modified">
+<meta name="date" content="2026-06-21">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>The Canon Arc — One Enclosure Broken, One Enclosure Rebuilt</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And God saw everything that he had made, and it was very good. And there was evening and there was morning, the sixth day.
+— Genesis 1:31
+</blockquote>
+
+<p>The biblical canon is not a collection of separate books. It is one court operation running from beginning to end — an enclosure broken open in Genesis 3, its vocabulary distributed across sixty-six books, and the same enclosure rebuilt in Revelation 21–22. The court does not invent new language at any point in that arc. It draws on the categories it fixed on the days of <a href="../creation-genesis-1-creation.html">creation</a>: the deep, dry land, seed and vegetation, sea creature, man in the image, the enclosure itself. Every narrative between Genesis and Revelation is the court redeploying that original vocabulary to enforce identity after its kind. The instrument the court uses throughout is the <a href="../creation-exodus-314-i-am.html">I AM</a> — the identity YHVH occupies, which Elohim is bound to deliver.</p>
+
+<h2>The Enclosure Broken — Genesis Day Two and the Firmament</h2>
+
+<p>Genesis 1 establishes a bounded, ordered space — the Hebrew <em>raqia</em> (Strong's H7549), the firmament, separating waters above from waters below. The enclosure is not a physical garden only. It is the court's structured field of identity: bounded, declared good, governed by statutes. Genesis 3 is a <a href="../creation-cain-abel.html">jurisdictional error</a> — YHVH, present consciousness, assumes a contradictory I AM ("you shall be as gods, knowing good and evil") and <a href="../creation-elohim-god.html">Elohim</a>, the judges and rulers, enforces accordingly. Exposure follows. Expulsion follows. The enclosure boundary is breached not by external force but by the identity assumed within it. The rest of the canon is Elohim working from that enforced outcome back toward the enclosure the court built on day two.</p>
+
+<h2>The Lineage Narrowed — Genesis Day Three, Seed After Its Kind</h2>
+
+<p>The court's immediate response to the broken enclosure is not a general restoration. It is a narrowing. <a href="../creation-genesis-1-11-seed.html">Genesis day three — vegetation, seed after its kind</a>. The court begins selecting a single seed line: one man called out of Ur, one son through whom the line passes, one name changed at the point of identity shift. <a href="../creation-patriarchs.html">Abraham</a> — <em>Av hamon</em> in Hebrew (Strong's H85), father of a multitude — carries the identity of multiplicity in the name itself before a single descendant exists. Isaac (<em>Yitschaq</em>, H3327, laughter) is the court enforcing what YHVH assumed before the evidence appeared. Jacob (<em>Ya'aqov</em>, H3290, heel-holder, supplanter) becomes Israel (<em>Yisra'el</em>, H3478, he shall prevail with El) at the moment of identity shift — the name change is the court filing the new I AM. Joseph (<em>Yowceph</em>, H3130, he shall add) carries the seed into Egypt, into the deep of containment, and rises to rulership: the reversal pattern running through the botanical thread. The seed line is the court's mechanism for narrowing one identity through time until the single assumed I AM can be presented to all.</p>
+
+<h2>The Nation and Dry Land — Genesis Day Three, Waters Separated</h2>
+
+<blockquote>
+And the Lord said, I have truly seen the grief of my people in Egypt, and their cry has come to my ears; I have knowledge of their pain. And I have come down to take them out of the power of Egypt, and to make them go up out of that land to a good and wide land, to a land flowing with milk and honey.
+— Exodus 3:7–8 (BBE)
+</blockquote>
+
+<p>Exodus is Genesis day three enacted at national scale. Genesis 1:9 — the court commanding the waters to be gathered so dry land appears. Israel in Egypt is submerged: enslaved, boundary-less, identity dissolved into the name <em>Mitsrayim</em> (H4714, Egypt — meaning double straits, the place of constriction). The Red Sea crossing is the waters being separated. <a href="../creation-exodus-314-i-am.html">I AM that I AM</a> is the court naming the mechanism before it operates — YHVH presenting the identity to Elohim, Elohim enforcing it through the sea, the wilderness, and the issuing of the court's statutes at Sinai. The land of Canaan (<em>Kena'an</em>, H3667, lowland, the place brought low to be possessed) is day three dry land: the bounded territory the court has separated from the surrounding waters of the nations. The tabernacle pattern given on Sinai is a portable enclosure — the court rebuilding the boundary structure in miniature while the permanent land is occupied.</p>
+
+<h2>The Temple — Genesis Thread 6, the Enclosure at Its Kingdom Form</h2>
+
+<p>Thread 6 of the key runs: seed → nation → vine → kingdom. The tabernacle is the enclosure in its portable, wilderness form. The temple is the enclosure reaching its fullest kingdom expression. Solomon (<em>Shelomoh</em>, H8010 — from <em>shalom</em>, H7965, completeness, wholeness) builds it: the name encodes the state the court is enforcing at the moment of construction. The innermost room is the <em>debir</em> (H1687, the speaking place — from <em>dabar</em>, H1696, to speak, to declare). This is where the court's declared identity is housed. At the dedication, 1 Kings 8 records the court's presence filling the structure — Elohim enforcing the I AM filed at the founding. But Solomon himself registers the limit clearly: "will God in truth be living on earth? see, the heavens, even the heaven of heavens, are not wide enough for you" (1 Kings 8:27, BBE). The narrative does not let the building be mistaken for the enclosure itself. The <em>debir</em> is the speaking place — the location where identity is declared and filed. The enclosure has always been the declared identity, not the walls around it. What happens next confirms this: 1 Kings 11:4 — Solomon's <em>lev</em> (H3820, heart — the seat of the assumed identity in Hebrew thought) was not whole with YHVH. The filing at the centre of the built structure has fractured. <a href="../creation-cain-abel.html">The jurisdictional error</a> re-enters not through the walls but through the identity assumed within them. Elohim enforces after its kind.</p>
+
+<h2>The Kingdom Split — Thread 7, One Filing Becomes Two</h2>
+
+<p>Thread 7 — the jurisdictional error: YHVH presenting a fragmented or contradictory identity, Elohim enforcing the fragmentation. When Solomon's <em>lev</em> divides, the kingdom divides. This is not consequence in the moral sense. It is Elohim operating impartially: the identity filed is split, the enforced outcome is split. Rehoboam (<em>Rechav'am</em>, H7346 — from <em>rachav</em>, H7337, to widen or make room, and <em>am</em>, H5971, people) assumes an identity of dominance over the people; Elohim enforces by reducing the people under him to two tribes. Jeroboam (<em>Yarov'am</em>, H3379 — the people contend, or he multiplies the people) files a competing I AM and establishes rival <em>debir</em> sites — golden calves at Bethel (<em>Beyth-El</em>, H1008, house of El) and Dan (<em>Dan</em>, H1835, judge). The <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">court's own vocabulary</a> — the house of El, the place of judgement — is being used to file contradictory identities. Elohim enforces all filings after their kind simultaneously. The single I AM that the enclosure was built to house is now being presented as two, in two locations, under two names. The enclosure structure has not broken. The identity filing within it has.</p>
+
+<h2>The Glory Departs — The Speaking Place Vacated</h2>
+
+<p>2 Samuel 7:6 is the court's own statement about the building: "I have not dwelt in a house since the day I brought up the children of Israel out of Egypt, even to this day, but have walked in a tent and in a tabernacle" (BBE). The court is on record before the temple is built that the structure is an accommodation, not the primary form. Ezekiel 10 records the <em>kavod</em> (H3519, the weight, the enforced presence — from <em>kaved</em>, H3513, to be heavy, to be honoured) departing the <em>debir</em> in stages: threshold, east gate, mountain east of the city (Ezekiel 11:23). The building stands. The walls are intact. But the <em>debir</em> — the speaking place — is silent because no I AM is being filed within it that <a href="../creation-elohim-god.html">Elohim</a> is bound to enforce. The structure was always a location for the filing, not the filing itself. When YHVH, present consciousness, is no longer assuming the declared identity within it, the <em>debir</em> is an empty room. Babylon demolishes the building. There is nothing filed with the court to prevent it. The enclosure in its kingdom form has run its course. The court descends before it delivers.</p>
+
+<h2>Exile as the Deep — Genesis Day One Repeated</h2>
+
+<p>Babel (<em>Babel</em>, H894, confusion — from H1101, to mix or confuse) is the first exile: one language scattered into many, one identity fragmented into nations. This is Genesis 1:2 — the deep, the formless void, the darkness before the court speaks. The pattern returns in the Assyrian deportation of Israel and the Babylonian exile of Judah. Babylon (<em>Babel</em> again, H894) is the same name, the same condition: YHVH returned to formlessness, identity without boundary, the enclosure dissolved. The voices the court speaks through from within the deep — Isaiah, Jeremiah, Ezekiel, Daniel — are not announcing new structures. They are declaring identity from inside the condition of formlessness, occupying the I AM before the evidence of emergence exists. This is the only condition from which the court can speak a new identity into existence. Darkness precedes light. The deep is the necessary prior state. The court always descends before it delivers.</p>
+
+<h2>Stump, Vine, Dry Bones — Genesis Day Three Vegetation from Inside the Deep</h2>
+
+<p>The voices the court commissions from within the exile condition draw on <a href="../creation-genesis-1-11-seed.html">Genesis day three botanical vocabulary</a> without exception. Isaiah's stump of Jesse (Isaiah 11:1 — <em>geza</em>, H1503, the cut-down trunk; <em>shoresh</em>, H8328, root) is the court running the seed-after-its-kind statute through apparent death. The stump is not an ending. It is the enclosure state prior to the new shoot. Ezekiel's valley of dry bones (Ezekiel 37) is the same mechanism: YHVH standing in the condition of complete formlessness, the court asking "can these live?", and then speaking identity — breath, sinew, flesh — back into the category of dust from which man was formed on day six. The vine of Israel runs from Genesis through the Psalms, Isaiah, Jeremiah, Ezekiel, Hosea, and into the later narratives: the same botanical thread, the same court vocabulary, the same after-its-kind enforcement. These voices do not announce new creations. They present the same creation vocabulary to Elohim for enforcement from within the deep.</p>
+
+<h2>I AM Enters the Narrative — Genesis 1:26, Identity Filed Without Remainder</h2>
+
+<blockquote>
+Then God said, Let us make man in our image, after our likeness.
+— Genesis 1:26 (BBE)
+</blockquote>
+
+<p><a href="../creation-genesis-1-26-man.html">Genesis 1:26</a> is the court's foundational declaration: identity is the primary creative unit. The canon's entire middle arc is YHVH moving toward the point where that declaration is occupied without division or competing filing. The I AM statements of John's Gospel are not descriptions. They are filings — YHVH presenting each Genesis creation category directly as the assumed I AM so that <a href="../creation-elohim-god.html">Elohim</a> is bound to enforce it. I AM the vine: <a href="../creation-genesis-1-11-seed.html">day three vegetation</a>, the botanical thread the court has run from the garden through every seed line in the canon, now filed as the assumed identity rather than as an external category. I AM the bread of life: day three, seed brought up from the ground. I AM the light of the world: day one — the first declaration the court made over the formless deep, now assumed as I AM. I AM the door: the enclosure boundary itself assumed as identity. I AM the life that comes out of death: the day one pattern — deep before dry land, containment before emergence — filed as I AM rather than as a pattern YHVH passes through. Each statement takes a Genesis creation category and presents it to Elohim as the identity, not as a circumstance. This is the mechanism at full operation: <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH presenting I AM, Elohim enforcing</a>. The court is not introducing new vocabulary at this point in the arc. It is filing the vocabulary it fixed at creation as the assumed identity of the one standing before it.</p>
+
+<h2>Neither This Mountain Nor Jerusalem — Genesis 1:26, the Filing Location Named</h2>
+
+<blockquote>
+The time is coming when your worship of the Father will be neither in this mountain nor in Jerusalem... the true worshippers will give worship to the Father in spirit and in truth: for the Father is looking for such worshippers.
+— John 4:21–23 (BBE)
+</blockquote>
+
+<p>The narrative does the interpretive work here without requiring addition. The woman at the well raises the question of location — which mountain, which city — and the answer dissolves the category of location entirely. The Greek word the text uses for worship is <em>proskuneo</em> (G4352, to bow toward, to direct oneself toward) — the question of what YHVH, present consciousness, is directing itself toward. The answer the narrative gives is not a corrected location. It is the removal of location as the operative category. John 2:19 is the same declaration in structural terms: "Put an end to this house of God, and in three days I will put it up again" — the word used is <em>naos</em> (G3485), the inner sanctuary, the <em>debir</em> equivalent, not <em>hieron</em> (G2411, the outer courts). The court is precise about which part of the enclosure structure it is speaking about: the speaking place, the filing location. Luke 17:21 completes the statement: the kingdom of I AM is <em>entos</em> (G1787, within) you. The <em>debir</em> was always a constructed representation of <a href="../creation-genesis-1-26-man.html">Genesis 1:26</a> — Elohim declaring that identity itself is the image, the dwelling, the primary creative unit. The tabernacle was portable because the filing location is not geographic. The temple was the fullest external development of the pattern. When the <em>kavod</em> departed and the temple fell, the court was not losing the enclosure. It was closing the external representation of it so that YHVH could no longer present identity as something housed in a location rather than assumed as I AM. <a href="../creation-elohim-god.html">Elohim</a> enforces what is filed. What is filed is the assumed identity. The <em>debir</em> — the speaking place — is wherever YHVH declares I AM.</p>
+
+<h2>The New Jerusalem — Genesis 1:26 Enforced Without Remainder</h2>
+
+<blockquote>
+And I saw a new heaven and a new earth: for the first heaven and the first earth were gone; and there was no more sea. And I saw the holy town, new Jerusalem, coming down out of heaven from God.
+— Revelation 21:1–2 (BBE)
+</blockquote>
+
+<p>Revelation 21 is the court's answer to Genesis 3. The new Jerusalem (<em>Yerushalaim</em>, H3389 — from <em>yarah</em>, H3384, to direct, to instruct, and <em>shalom</em>, H7965, completeness) is not a location. It is the fully enforced identity: the I AM of completeness, the name encoded in Solomon at the enclosure's kingdom peak, now assumed without division. The sea is gone — the Genesis day one deep, the condition of formlessness that the canon returned to repeatedly at every point of identity failure, no longer exists as a category. The tree of life (<em>ets hachayyim</em>, H6086 + H2416) is at the centre: <a href="../creation-genesis-1-11-seed.html">Genesis day three vegetation</a>, the same tree the court removed when the contradictory I AM was assumed in Genesis 3, restored because the contradictory filing has ceased. The twelve gates carry the twelve tribal <a href="../creation-patriarchs.html">identity names</a>; the twelve foundation stones carry twelve commissioned names — <a href="../creation-elohim-god.html">the plurality of the internal governing structure</a> brought into unified alignment under one assumed I AM, Thread 4 of the key completed. The name written on the forehead is Genesis 1:26 enforced in full: identity as the image and likeness, no longer projected onto a mountain or a city or a building. And then Revelation 21:22 states it plainly: "I saw no Temple therein: for the Lord God Almighty and the Lamb are the temple of it" (BBE). The court does not rebuild the external structure. The <em>debir</em> — the speaking place — is the assumed I AM itself. No more curse: the statute that enforced expulsion in Genesis 3 is dissolved because the identity that triggered it is no longer being filed. The vocabulary was set on the days of creation. The canon arc runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

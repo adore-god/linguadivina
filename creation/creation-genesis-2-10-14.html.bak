@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-genesis-2-10-14.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Genesis 2:10–14 — The River Goes Out to Water the Garden",
+      "description": "Genesis 2:10–14 maps a single river parting into four heads through named lands. Each name is an identity code. The court fixes the direction of flow at creation and the four rivers enforce the boundary of the assumed I AM — the enclosure Elohim maintains around the garden state.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Genesis 2:10-14, four rivers, Pishon, Gihon, Hiddekel, Euphrates, Eden, garden, Elohim, I AM, identity, enclosure, creation, consciousness, names as identity codes, YHVH",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 2:10",
+          "description": "A river goes out of Eden to water the garden, then parts into four heads — the court's single source multiplying into bounded direction."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 2:11–12",
+          "description": "The first river Pishon encircles Havilah where gold is — identity encoded in the name and confirmed by what the territory contains."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 2:13",
+          "description": "The second river Gihon encircles the land of Cush — enclosure as court-defined boundary around the assumed state."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 2:14",
+          "description": "The third river Hiddekel goes east of Assyria; the fourth is Euphrates — directional flow establishing the borders of the garden identity."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:9–10",
+          "description": "Day three: the court gathers the waters and the dry land appears — the same geography Genesis 2:10–14 elaborates."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:26",
+          "description": "Elohim decrees man in the image and likeness — identity as the primary creative unit that the four rivers enclose and water."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="Genesis 2:10–14 maps a single river parting into four heads through named lands. Each name is an identity code. The court fixes the direction of flow at creation and the four rivers enforce the boundary of the assumed I AM — the enclosure Elohim maintains around the garden state." name="description">
+<link href="https://linguadivina.uk/creation/creation-genesis-2-10-14.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Genesis 2:10–14 — The River Goes Out to Water the Garden</title>
+<meta content="2026-05-12T07:47:00Z" name="date-modified">
+<meta name="date" content="2026-05-12">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Genesis 2:10–14 — The River Goes Out to Water the Garden</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And a river went out of Eden to give water to the garden; and from there it was parted and became four streams.
+— Genesis 2:10
+</blockquote>
+
+<p>Genesis 2:10–14 does not describe geography. It describes the court's enclosure structure. A single source — one identity, one assumed I AM — flows out from the garden state and divides into four named heads, each encircling a named land. This is the <a href="../creation-genesis-1-creation.html">creation story</a> operating at the level of YHVH Elohim: <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH LORD</a> in conscious interaction with the garden already planted, naming the territory the assumed identity waters and bounds. What the passage is demonstrating mechanically is that the garden state requires enclosure — and the court's instrument for that enclosure is the river that parts after its kind.</p>
+
+<h2>Eden and the Garden — Genesis Day Three Dry Land</h2>
+
+<p>The river originates in Eden and waters the garden. <a href="../creation-genesis-1-creation.html">Genesis 1:9–10</a> — day three, the court gathering the waters so dry land appears. The garden is the day three category made specific: a bounded territory of vegetation and ground, the place where YHVH Elohim places the <a href="../creation-genesis-1-26-man.html">man</a> formed from the dust. Eden as a place name is not incidental. In the names framework, the name discloses the quality of the state. Eden carries the sense of pleasure, delight, and presence — the condition of the assumed I AM before fragmentation. The river that waters it flows from within that state, not toward it. The source is already the garden. What the passage maps is how that source maintains and encloses its own territory through the four heads.</p>
+
+<h2>The Single River Parting — Genesis Day Two Waters Above and Below</h2>
+
+<p>Genesis 1:6–7 — day two, the court dividing the waters from the waters, the firmament separating what is above from what is below. The single river in Genesis 2:10 performs the same division in the garden register: one source, one assumed <a href="../creation-exodus-314-i-am.html">I AM</a>, parting into four expressions. <a href="../creation-elohim-god.html">Elohim — judges and rulers</a> — does not create four separate rivers. The court divides the one. The plurality that follows is always downstream from the singular identity assumed. This is the same structural logic as Genesis 1:26: Elohim speaks in the plural — let us make — because the judges and rulers are the plural enforcement of the one I AM YHVH occupies. Four heads, one source. Many voices, one ruling identity.</p>
+
+<h2>Pishon and Havilah — Names as Identity Codes</h2>
+
+<blockquote>
+The name of the first is Pishon: it goes round about all the land of Havilah where there is gold. And the gold of that land is good: there is bdellium and the onyx stone.
+— Genesis 2:11–12
+</blockquote>
+
+<p>Pishon — the name encodes the quality of the state: spreading, increase, full flow. Havilah — the name encodes the territory as one of bringing forth, of travail resolved into abundance. The court does not describe these lands by accident. <a href="../creation-patriarchs.html">As with Abraham, Jacob, Joseph, and Judah</a>, the name declares the nature of the state before the narrative unfolds. Gold, bdellium, and onyx are the contents of the territory — Elohim enforcing the nature coded into the name. Where YHVH assumes the I AM of Pishon-state, the territory the identity encircles contains increase and refined substance. The name is the compressed identity code. The contents are Elohim enforcing after its kind.</p>
+
+<h2>Gihon and Cush — The Enclosure Enforced</h2>
+
+<p>The second river is Gihon, which encircles the whole land of Cush. Gihon — bursting forth, a gushing out. Cush — the name of a state carrying the sense of darkness and fire together, the place where one is tried and proven. The court uses the verb encircle deliberately. This is not flow past a boundary. This is enclosure — the river as the perimeter of the assumed identity. <a href="../creation-elohim-god.html">Elohim</a> does not leave the garden state open on all sides. The river that goes out from the single source is also the boundary drawn around what the court intends to sustain. The <a href="../creation-genesis-224-love.html">cleaving</a> principle operates here at the territorial level: the identity assumed is enclosed, held, and maintained by the very energy that flows from its source.</p>
+
+<h2>Hiddekel and Assyria — Direction as Court Instruction</h2>
+
+<p>The third river Hiddekel goes east of Assyria. Direction matters in Genesis. East in the creation vocabulary is the direction of emergence, of the sun rising, of the court's instruction moving toward manifestation. <a href="../creation-elohim-god.html">Elohim</a> does not send the river in an arbitrary direction. Hiddekel — the name carries swiftness, the sharp blade of a quick-moving current. Assyria — a territory whose name encodes the quality of a step taken, a level advanced. The swift river moves east of the advancing state. This is the court mapping the trajectory of the assumed I AM: the identity in motion, pressing eastward, the enclosure moving with it. YHVH does not stay still once the I AM is occupied. The river goes. Elohim enforces the direction.</p>
+
+<h2>The Euphrates — The Fourth Head and the Boundary Complete</h2>
+
+<blockquote>
+And the fourth river is the Euphrates.
+— Genesis 2:14
+</blockquote>
+
+<p>The passage names the Euphrates without additional description. No land encircled, no contents listed. The name alone is the statement. Euphrates carries the meaning of fruitfulness, of breaking forth, of the good and the sweet — the state of abundance that needs no further qualification. In the <a href="../creation-genesis-1-11-seed.html">seed and vegetation thread</a>, the fruit declares its own kind by what it produces. The Euphrates is the fourth head: the enclosure is complete. Four rivers, four boundaries, one garden enclosed by the single source that flows from Eden. <a href="../creation-elohim-god.html">Elohim — judges and rulers</a> — has enforced the boundary of the assumed I AM on every side. The court does not leave the garden identity partially defined. It maps the full perimeter through the vocabulary of the names it fixed at creation. <a href="../creation-ask-believe-receive.html">The identity assumed is the identity received</a> — and the river enforces its enclosure after its kind.</p>
+
+<h2>The Four Heads — Genesis 1:26 Identity as the Primary Creative Unit</h2>
+
+<p>Genesis 1:26 — <a href="../creation-elohim-god.html">Elohim</a> decrees <a href="../creation-genesis-1-26-man.html">man</a> in image and likeness. The primary creative unit is identity. Genesis 2:10–14 shows what that identity looks like once assumed and planted in the garden: it generates a river. The river is not separate from the man placed in the garden. YHVH Elohim — <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">the LORD present consciousness interacting with creation</a> — occupies the garden state as the <a href="../creation-exodus-314-i-am.html">I AM</a>, and the river that flows from that state encircles, names, and sustains the entire territory the identity has been given to inhabit. Four heads are the plural enforcement of the one ruling I AM. Elohim — judges and rulers — executes the decree. The <a href="../creation-genesis-1-11-seed.html">seed of the river is already in Eden</a>. It reproduces after its kind in every direction the court has named.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

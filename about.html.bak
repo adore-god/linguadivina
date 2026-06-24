@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/about_13.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/about_13.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "About Lingua Divina",
+      "description": "Lingua Divina traces the Bible's fixed creation vocabulary from Genesis through the whole of Scripture, and traces Law of Attraction, Law of Assumption, and manifestation teaching back to that same source text.",
+      "image": "https://linguadivina.uk/images/wp/head-imagining.webp",
+      "articleSection": "Site Information",
+      "inLanguage": "en",
+      "keywords": "Law of Attraction, Law of Assumption, manifestation, Neville Goddard, I AM THAT I AM, Exodus 3:14, New Thought, Genesis vocabulary, consciousness",
+      "about": [
+        {
+          "@type": [
+            "CreativeWork",
+            "Thing"
+          ],
+          "name": "Law of Assumption",
+          "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        },
+        {
+          "@type": "Thing",
+          "name": "Law of Attraction",
+          "description": "Popular modern manifestation teaching descended from Neville Goddard's law of assumption and earlier Christian metaphysics, generally taught today without its biblical source vocabulary."
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta content="Lingua Divina traces the Bible's fixed creation vocabulary from Genesis through the whole of Scripture, and traces Law of Attraction, Law of Assumption, and manifestation teaching back to that same source text. A structural and linguistic analysis — psychological and non-theological." name="description">
+<link href="https://linguadivina.uk/about.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="/style-fold.css" rel="stylesheet"><script src="script-dark-light.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+<link href="/favicon.ico" rel="icon" type="image/png"><link href="/favicon.png" rel="icon" type="image/png">
+<link href="/manifest.json" rel="manifest">
+<link href="/style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+
+<script src="script.js" defer></script>
+
+<title>About Lingua Divina</title>
+<meta content="2026-06-23T07:25:00Z" name="date-modified">
+<meta name="date" content="2026-06-23">
+</head>
+<body>
+<header class="header"><div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div><p class="hero-description">The Court &amp; The Creation</p><button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>About Lingua Divina</h1>
+<div class="container">
+<main class="content"><article>
+
+<h2>What This Site Is</h2>
+
+<p>The <a href="source/holy-bible.html">Bible</a> is written with a fixed vocabulary. The words that appear in the <a href="creation-genesis-1-creation.html">opening chapter of Genesis</a> — light, seed, vine, shepherd, breath, deep, dry land — do not change across the text. They reappear in the same way, carrying the same meaning, from the first page to the last. This site traces that vocabulary.</p>
+
+<p>Once you see it, the Bible reads differently. Isaiah's stump, the mustard seed, the lost sheep, the vine and branches, the heart of the earth — these are not independent images. They are the creation story's own words being used again. The whole of Scripture is written in the language Genesis established. Every narrative draws from the same source.</p>
+
+<p>From that starting point, the three names the Bible uses for God also come into focus. <a href="creation-elohim-god.html">Elohim</a> — the first word in Genesis 1:1 — is plural. It means judges and rulers. <a href="creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> is the existing one, the present state of the person in the narrative. <a href="creation-exodus-314-i-am.html">Ehyeh — I AM</a> — is what Exodus 3:14 names as the operative declaration: I AM that I AM. When those three terms are read as they actually appear in the Hebrew, the structure of every story becomes legible. Characters, names, and events follow from that structure consistently.</p>
+
+<p>No doctrine is imposed. No denomination is represented. The interpretations stay inside the text.</p>
+
+<p>The overall aim is always to produce the most accurate interpretation of a given Bible passage — but only according to what the narrative itself supplies, tied into the creation story, and read through the fixed linguistic key the Hebrew establishes. This moves in the opposite direction to most Bible commentary, which typically brings a theological conclusion to a passage and locates it there. Here the passage leads. The creation vocabulary and the key only name what the text has already demonstrated. When the interpretation is working correctly, the reader could almost derive the framework themselves simply by following the narrative carefully.</p>
+
+<h2>Law of Attraction, Law of Assumption, and Manifestation</h2>
+
+<p>What circulates today as Law of Attraction, <a href="source/law-of-assumption.html">Law of Assumption</a>, or manifestation is not a recent invention. Neville Goddard, the writer most responsible for popularising the term law of assumption, built his teaching directly on biblical text — Exodus 3:14, I AM THAT I AM, is the verse he returns to again and again. The wider tradition behind it goes back further still, into nineteenth-century Christian metaphysics. What has happened since is that the scripture has quietly been removed. The technique survived; the source text it came from did not. This site traces the vocabulary back to where it originates — the fixed language of Genesis — so the connection is visible again.</p>
+
+<h2>The Book</h2>
+
+<p>The methodology and underlying structure are documented in the first book, available on Amazon. If you want to understand how the interpretations on this site are constructed, the book explains the framework from the ground up.</p>
+
+<div class="book" style="float:none;margin:0 auto;width:80%;"><a href="https://www.amazon.com/dp/B0H3465JSG">
+        <img width="317" height="505" src="images/book-1-cover-v2.webp" alt="Book Cover of 'The Court and the Creation: How the Bible speaks in Genesis language'"></a>
+        <p>
+            If you're wondering how these interpretations are being constructed, the <a href="https://www.amazon.com/dp/B0H2YDBFJ4">first book explains the underlying structure and methodology.</a>
+        </p>
+    </div>
+<h2>Where to Begin</h2>
+
+<p>The foundational concepts are documented individually:</p>
+
+<ul>
+  <li><a href="scrolls/label-from-creation-story.html#hub-pages">Main Framework Articles</a></li>
+</ul>
+
+<p>Following that, a series of passage-lesd articles offer a full demonstration of how the Genesis creation vocabulary operates across the whole of Scripture, from Genesis to Revelation.</p>
+
+<ul>
+  <li><a href="scrolls/label-from-creation-story.html#az-articles">Articles A — Z</a></li>
+</ul>
+
+<p>Beyond those, the site runs to around 145 pages — the framework itself, plus passage-by-passage demonstrations of it applied to individual books, names, and characters.</p>
+
+<h2>About the Author</h2>
+
+<p>This site was built by <a href="about-author.html">HNNH</a>. More illustrative work connected to this framework is at <a href="https://hnnh.studio">hnnh.studio</a>. Additional material and discussion is in the <a href="https://www.reddit.com/r/BibleNevilleGoddard/">r/BibleNevilleGoddard</a> subreddit.</p>
+
+<p>Clicking on Bible verse references within articles opens a pop-up showing the passage, with a link to <a href="https://www.blueletterbible.org/">Blue Letter Bible</a> where Hebrew name meanings can be found using the integrated <a href="source/strongs-concordance.html">Strong's Exhaustive Concordance</a>. Blue Letter Bible also provides multiple translations and interlinear views.</p>
+
+<figure>
+  <img width="720" height="1335" style="filter: invert(1);max-width:200px; height:auto"
+    src="images/wp/blb-demo-name-meaning.webp" 
+    alt="Example of name meaning search in the Blue Letter Bible app">
+  <figcaption>
+    Example of a name-meaning lookup using the <a href="https://www.blueletterbible.org/">Blue Letter Bible</a> app.
+  </figcaption>
+</figure>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+
+<div id="disqus_thread"></div>
+
+<script>
+(function() {
+    var d = document;
+    var disqusLoaded = false;
+
+    function loadDisqus() {
+        if (disqusLoaded) return;
+        disqusLoaded = true;
+
+        var s = d.createElement('script');
+        s.src = 'https://lingua-divina.disqus.com/embed.js';
+        s.id = 'dsq-embed';
+        s.setAttribute('data-timestamp', +new Date());
+        s.async = true;
+        (d.head || d.body).appendChild(s);
+
+        var c = d.createElement('script');
+        c.src = 'https://lingua-divina.disqus.com/count.js';
+        c.id = 'dsq-count-scr';
+        c.async = true;
+        d.body.appendChild(c);
+    }
+
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                loadDisqus();
+                observer.disconnect();
+            }
+        }, { rootMargin: '200px' });
+
+        observer.observe(d.getElementById('disqus_thread'));
+    } else {
+        setTimeout(loadDisqus, 3000);
+    }
+})();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the 
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="search.html">Search</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+<div class="footer">
+© 2025 -2026 <a href="https://linguadivina.uk">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async="" id="dsq-count-scr" src="//lingua-divina.disqus.com/count.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="script-ga.js" defer></script><script src="label-map.js" defer></script><script src="script-pager.js" defer></script></body>
+</html>

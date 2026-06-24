@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-david.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "1 Samuel 16 and David — The Beloved the Court Draws from the Field",
+      "description": "In 1 Samuel 16 the court sends Samuel to Jesse's house. Seven sons are presented and refused. The eighth is in the field with the flock. Every element of the selection — the interior heart, the dry ground of the field, the living creature enclosure of the flock, the botanical oil, the light on the face — maps to a Genesis creation day category the court fixed at the beginning. The name David, the Beloved, is the image Elohim is bound to enforce.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "David, Beloved, 1 Samuel 16, Genesis creation days, anointing oil, shepherd, flock, field, heart, Elohim, I AM, YHVH, names as identity codes, day one light, day three dry land, day three vegetation, day six living creatures, day six man in the image, consciousness, identity, court mechanism",
+      "inLanguage": "en",
+      "about": {
+        "@type": [
+          "CreativeWork",
+          "Thing"
+        ],
+        "name": "Law of Assumption",
+        "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+        "@id": "https://linguadivina.uk/source/law-of-assumption"
+      },
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 16:1",
+          "description": "The court commissions Samuel before David is named — the identity is appointed before any evidence appears."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 16:7",
+          "description": "The court looks on the heart, not the outward form — the inward I AM is the only filing Elohim reads. Genesis day one: the interior before the visible."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 16:11",
+          "description": "David is in the field keeping sheep — Genesis day three dry land and day six living creature categories. The prior enclosure before selection."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 16:12",
+          "description": "David is brought in — fair to look upon, ruddy, beautiful eyes. The court sees and calls it good. Genesis day one light category running through the selection."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "1 Samuel 16:13",
+          "description": "Samuel anoints David with oil — Genesis day three botanical category. The Spirit of YHVH comes upon him from that day. Elohim enforces."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 1:26",
+          "description": "Man made in the image of Elohim — the name as the image held before the form appears. Day six identity as the primary creative unit."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Acts 13:22",
+          "description": "A man after my heart — the court names the inward correspondence that preceded all outward enforcement."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lingua Divina",
+        "@id": "https://linguadivina.uk/#org",
+        "url": "https://linguadivina.uk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+        },
+        "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+        "sameAs": [
+          "https://linguadivina.uk/about-author.html"
+        ],
+        "founder": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+          "sameAs": [
+            "https://www.reddit.com/user/GoldStudio2653/",
+            "https://amazon.com/author/hnnhbible",
+            "https://hnnh.studio/"
+          ]
+        }
+      }
+    }
+  ]
+}</script>
+<meta content="In 1 Samuel 16 the court sends Samuel to Jesse's house. Seven sons are presented and refused. The eighth is in the field with the flock. Every element of the selection — the interior heart, the dry ground of the field, the living creature enclosure of the flock, the botanical oil, the light on the face — maps to a Genesis creation day category the court fixed at the beginning. The name David, the Beloved, is the image Elohim is bound to enforce." name="description">
+<link href="https://linguadivina.uk/creation/creation-david.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>1 Samuel 16 and David — The Beloved the Court Draws from the Field</title>
+<meta content="2026-05-18T19:57:00Z" name="date-modified">
+<meta name="date" content="2026-05-18">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>1 Samuel 16 and David — The Beloved the Court Draws from the Field</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And the Lord said to Samuel, How long will you go on weeping for Saul? I have given him up and he will be king no longer. Fill your horn with oil and go; I will send you to Jesse the Beth-lehemite: for I have seen among his sons one who is to be king.
+— 1 Samuel 16:1
+</blockquote>
+
+<p>The court issues the commission before David appears. The identity is already fixed. Samuel is sent to Jesse's house in Bethlehem and <a href="../creation-genesis-1-creation.html">seven</a> sons pass before the inner judge one by one, each refused. The one <a href="../creation-elohim-god.html">the court</a> has selected is not in the house. He is in the field with the flock. This is not a search for a worthy candidate. It is the <a href="../creation-genesis-1-creation.html">Genesis creation pattern</a> running through a single selection: the court's own creation categories — the interior ground before light, the dry land, the living creatures, the botanical oil — each operating in sequence to bring the appointed identity forward. The name encodes the verdict before the first son is presented. David is the Beloved. The court's instrument of enforcement is the oil already prepared in Samuel's horn.</p>
+
+<h2>The Name — Genesis Day Six, Man in the Image</h2>
+
+<p><a class="noTag" href="../creation-genesis-1-creation.html">Genesis 1:26</a> — on day six <a href="../creation-elohim-god.html">Elohim</a> declares: let us make man in our image, after our likeness. The image is not physical form. It is the identity the court holds before the form appears. <a href="../creation-genesis-1-26-man.html">The name is the image</a>. David is the Hebrew <em>Dawid</em> — the Beloved, the cherished one, the one held in relational favour and union. In this framework a name is a compressed identity code: it declares the nature of the state that Elohim, the judges and rulers, is bound to enforce after its kind. The same pattern carries through every name the court appoints — <a href="../creation-patriarchs.html">Abraham contains multiplication, Joseph contains increase, Judah contains elevation</a>. David contains favour. The narrative of 1 Samuel 16 does not build toward that conclusion. It opens from it. Elohim enforces the image the name already holds.</p>
+
+<h2>The Heart — Genesis Day One, the Interior Before the Visible</h2>
+
+<blockquote>
+But the Lord said to Samuel, Do not let his tall form or his good looks give you a high opinion of him: I have not okayed him; for the Lord does not see as man sees; for man looks at the outer form, but the Lord sees the heart.
+— 1 Samuel 16:7
+</blockquote>
+
+<p>Genesis 1:2 — before the first word of the court, everything is formless and dark. The first act of <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> is to speak light into that interior darkness. The heart named in 1 Samuel 16:7 is the same prior interior space — it is what exists before any outward form is assessed or presented. Seven sons stand before Samuel in sequence and each is refused, not because of outward deficiency but because the inward filing does not match the image the court already holds. The court is looking for the correspondence between its held image and the interior state of the one before it. This is day one running through the selection: YHVH looks into the interior darkness, reads the <a href="../creation-exodus-314-i-am.html">I AM</a> present there, and either sees the appointed light or does not. The outer form is irrelevant until the inward declaration is in place. Seven sons present outward form. The court sees none of the interior light it is looking for.</p>
+
+<h2>The Field — Genesis Day Three, Dry Land</h2>
+
+<p>Genesis 1:9 — on day three the court gathers the waters and the dry land appears. The dry land is the category of ground from which things are drawn up into visibility after the prior covered state. When Samuel asks Jesse whether all his sons are present, the answer is that the youngest remains: he is in the field keeping the sheep. The field is the day three category — the dry ground, the prior holding state, the place where the appointed identity waits before the court draws it forward. <a href="../creation-genesis-1-11-seed.html">The seed is in the ground before it rises.</a> The court does not bring the Beloved forward until every other candidate has passed and been refused. The field is not absence from the selection. It is the necessary ground-state from which the court lifts the appointed identity into the open. Jesse did not think to send for him. The court already knew exactly where he was.</p>
+
+<h2>The Flock — Genesis Day Six, Living Creatures</h2>
+
+<p>Genesis 1:24 — on day six the court brings forth living creatures after their kind: cattle, creeping things, beasts of the earth. The flock David tends in the field is the day six living creature category. The court places the appointed identity as shepherd over the living creatures before it places him over the nation. This is the <a href="../creation-genesis-1-creation.html">creation sequence</a> running in the passage: day six man — made in the image of Elohim and given dominion over the living creatures — occupies the creature enclosure first. The nature of that occupation matters. David keeps, gathers, and tends. The shepherd does not scatter. The court reads that interior correspondence in the flock before Samuel ever sees the face. What <a href="../creation-elohim-god.html">Elohim</a> enforces at the scale of the kingdom is what YHVH already demonstrated at the scale of the field. After its kind.</p>
+
+<h2>The Oil — Genesis Day Three, Vegetation</h2>
+
+<blockquote>
+Then Samuel took the horn of oil, and put it on him before his brothers: and the Spirit of the Lord came on David from that day forward.
+— 1 Samuel 16:13
+</blockquote>
+
+<p>Genesis 1:11 — on day three the court brings forth vegetation: grass, herb yielding seed, fruit tree yielding fruit after its kind. The anointing oil is pressed from the olive — the day three botanical category, the same thread that carries from the <a href="../creation-genesis-1-11-seed.html">garden to the vine to the stump of Jesse</a> and runs all the way through to the branch that rises from it. Samuel fills the horn with oil before he goes to Jesse's house. The botanical instrument of enforcement is prepared before the selection begins. When Samuel pours it over David in the presence of his brothers, the Spirit of <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a> comes upon him from that day forward. This is the <a href="../creation-ask-believe-receive.html">Ask, Believe, Receive</a> sequence completing outwardly: the inward filing the court already held — Beloved, the man after the heart — is now declared through the day three botanical vocabulary fixed at creation. Elohim enforces after its kind.</p>
+
+<h2>The Light on the Face — Genesis Day One, the Court Sees and It Is Good</h2>
+
+<p>When David is brought in from the field, the passage states what the court sees through Samuel: he is ruddy, with beautiful eyes, and fair to look upon. Genesis 1:3 — the court speaks light into the interior darkness. Genesis 1:4 — the court sees the light and it is good. The description of David as he stands before Samuel is the day one declaration running through the selection. The seven refused sons were each seen and found to carry no correspondence to the image the court held. When the Beloved stands in the room, the court sees the light it was looking for — the inward and outward correspondence between the image held since before the narrative began and the identity now present before it. The court calls it good. The oil follows immediately. Day one and day three run together in the same moment of selection.</p>
+
+<h2>Acts 13:22 — The Court States the Mechanic</h2>
+
+<blockquote>
+And when he had put him on one side, he made David their king; of whom he said in witness, I have seen in David, the son of Jesse, a man after my heart, who will do all I desire.
+— Acts 13:22
+</blockquote>
+
+<p>The court's own summary of the selection names the mechanic without concealment: a man after my heart. Not after the law as outwardly performed. Not after the visible standing or the birth order. After the heart — the inward correspondence, the interior alignment between the I AM the court holds as its image and the I AM present within the one it selects. This is the Genesis day one interior reading carrying forward into the full account of David's life and kingdom. The name Beloved declares it from the beginning. The field holds it. The flock demonstrates it. The oil seals it. The Spirit of YHVH enforces it from that day forward. The vocabulary was set on the days of creation. David runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>

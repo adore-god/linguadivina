@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="application/ld+json" id="main-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "sameAs": [
+        "https://linguadivina.uk/about-author.html"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://linguadivina.uk/about-author.html#person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html",
+        "sameAs": [
+          "https://www.reddit.com/user/GoldStudio2653/",
+          "https://amazon.com/author/hnnhbible",
+          "https://hnnh.studio/"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://linguadivina.uk/",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cse.google.com/cse?cx=62434d5e426ae403f&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "@id": "https://linguadivina.uk/"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/holy-bible",
+      "name": "The Holy Bible",
+      "author": {
+        "@type": "Person",
+        "name": "Various Prophets and Apostles"
+      },
+      "inLanguage": "en",
+      "description": "Primary source text utilised for structural and semiotic analysis within the Lingua Divina framework."
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://linguadivina.uk/source/strongs-concordance",
+      "name": "Strong's Exhaustive Concordance of the Bible",
+      "author": {
+        "@type": "Person",
+        "name": "James Strong"
+      },
+      "datePublished": "1890",
+      "inLanguage": "en",
+      "description": "Exhaustive index of every word in the King James Bible, with Hebrew and Greek lexicon entries used to support linguistic analysis on this site."
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://linguadivina.uk/creation/creation-jacob-wrestling.html#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://linguadivina.uk/creation/creation-jacob-wrestling.html",
+        "isPartOf": {
+          "@id": "https://linguadivina.uk/"
+        }
+      },
+      "headline": "Genesis 32:22 And Jacob at the Jabbok — The Court Empties Before It Prevails",
+      "description": "Jacob crosses the Jabbok alone, wrestles until daybreak, is marked at the hollow of the thigh, and receives the name Israel. The passage runs the Genesis pattern: darkness before light, the wound that relocates identity, and the name that the court enforces after its kind.",
+      "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+      "articleSection": "Biblical Analysis",
+      "keywords": "Jacob, Israel, Jabbok, wrestling, Peniel, Genesis categories, Elohim, I AM, darkness, daybreak, name change, identity, consciousness, court mechanism, heel-catcher, prevail",
+      "inLanguage": "en",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Jacob",
+          "description": "Present consciousness operating as the heel-catcher — striving from behind, supplanting, grasping. The identity YHVH carries before the court enforces the new name."
+        },
+        {
+          "@type": "Thing",
+          "name": "Israel",
+          "description": "The new I AM declared by the court at the Jabbok. He who prevails with the governing structure. Elohim enforces after its kind — prevailing is the nature of the state."
+        },
+        {
+          "@type": "Thing",
+          "name": "The Jabbok",
+          "description": "From yabaq — to empty out. The place-name encodes the mechanism: consciousness must be emptied of the striving identity before the new one can be filed."
+        },
+        {
+          "@type": "Thing",
+          "name": "Darkness and Daybreak",
+          "description": "Genesis Day One. The wrestling begins in darkness and resolves at the breaking of light. The court runs the creation sequence — darkness before the declaration, night before the new name."
+        },
+        {
+          "@type": "Thing",
+          "name": "Peniel",
+          "description": "Face of God — the place where the identity confrontation completes. YHVH sees the face of the governing structure and the new I AM is confirmed."
+        },
+        {
+          "@type": "Thing",
+          "name": "Law of Assumption",
+          "description": "Originating influence whose insights into Biblical symbolism and consciousness provided the starting point for the Lingua Divina framework.",
+          "@id": "https://linguadivina.uk/source/law-of-assumption"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        }
+      ],
+      "citation": [
+        {
+          "@id": "https://linguadivina.uk/source/holy-bible"
+        },
+        {
+          "@id": "https://linguadivina.uk/source/strongs-concordance"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 32:22–24",
+          "description": "Jacob crosses the Jabbok alone — the emptying place. The wrestling begins in darkness with a man. Present consciousness confronting the I AM the court requires."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 32:25",
+          "description": "The hollow of the thigh is struck — the old striving mechanism is disabled. YHVH cannot prevail as Jacob. The wound is the court's instrument."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 32:26–27",
+          "description": "Jacob holds until the blessing comes. The man asks his name — Jacob must state the old identity before the new one can be declared."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 32:28",
+          "description": "The name is changed to Israel — he shall prevail. The court files the new I AM. Elohim is bound to enforce after its kind."
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Genesis 32:30",
+          "description": "Jacob names the place Peniel — face of God. The identity confrontation is complete. He passes over into the new name as the sun rises."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "HNNH",
+        "url": "https://linguadivina.uk/about-author.html"
+      },
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      }
+    }
+  ]
+}</script>
+<meta content="Jacob crosses the Jabbok alone, wrestles until daybreak, is marked at the hollow of the thigh, and receives the name Israel. The passage runs the Genesis pattern: darkness before light, the wound that relocates identity, and the name that the court enforces after its kind." name="description">
+<link href="https://linguadivina.uk/creation/creation-jacob-wrestling.html" rel="canonical">
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="../style-fold.css" rel="stylesheet">
+<script src="../script-dark-light.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link crossorigin="" href="https://www.blueletterbible.org" rel="preconnect">
+<link href="https://www.blueletterbible.org" rel="dns-prefetch">
+<link href="../favicon.ico" rel="icon" type="image/png">
+<link href="../favicon.png" rel="icon" type="image/png">
+<link href="../manifest.json" rel="manifest">
+<link href="../style.css" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="../style-fonts.css" media="print" onload="this.media='all'" rel="stylesheet">
+<script src="../script.js" defer></script>
+<script src="../script-new-blb.js" defer></script>
+
+<title>Genesis 32:22 And Jacob at the Jabbok — The Court Empties Before It Prevails</title>
+<meta content="2026-06-23T10:46:00Z" name="date-modified">
+<meta name="date" content="2026-06-23">
+</head>
+<body>
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+<input id="sidebar-toggle" type="checkbox" aria-label="Toggle navigation menu">
+<label class="hamburger" for="sidebar-toggle"><span aria-hidden="true">☰</span></label>
+<h1>Genesis 32:22 And Jacob at the Jabbok — The Court Empties Before It Prevails</h1>
+<div class="container">
+<main class="content"><article>
+
+<blockquote>
+And he got up that night, and took his two wives and his two women-servants and his eleven children, and went over the ford of Jabbok. And he took them and sent them over the stream, and sent over what he had. And Jacob was left by himself; and a man was fighting with him till the coming of dawn.
+— Genesis 32:22–24
+</blockquote>
+
+<p>Jacob sends everything across the Jabbok and remains alone. This is not a story about physical endurance or spiritual courage. It is a demonstration of what the court requires before a new identity can be filed: the old one must be named, confronted, and displaced. The mechanism that follows runs the <a href="../creation-genesis-1-creation.html">Genesis creation pattern</a> — darkness before light, the wound before the name, the emptying before the prevailing. The court's instrument in this passage is the hollow of the thigh.</p>
+
+<h2>The Jabbok — Genesis Deep, The Place of Emptying</h2>
+
+<p>Jabbok (H2999) derives from <em>yabaq</em> — to empty out, to pour forth, to wrestle. The name of the place encodes the mechanism before a single action occurs. This is the same pattern as Genesis 1:2 — the deep, the void, the condition of formlessness from which the court speaks a new order into being. Jacob does not cross the Jabbok full. He sends his household and his possessions over and remains alone on the far side, stripped of every external structure that had defined him. <a href="../creation-meaning-of-lord-god-elohim-yhvh.html">YHVH</a>, present consciousness, stands emptied at the ford. The court does not begin the identity work until the emptying is complete.</p>
+
+<h2>Darkness and the Man — Genesis Day One</h2>
+
+<p>The wrestling begins at night. A man comes and engages Jacob in the dark. Genesis 1:2 — darkness precedes the first declaration. Genesis 1:3 — light comes only after the court speaks. The sequence is fixed at creation and the court does not alter it. The <em>ish</em> — the man — is not an external opponent. Within the framework, this is the I AM the court requires Jacob to occupy confronting the I AM Jacob has been presenting. <a href="../creation-elohim-god.html">Elohim — the judges and rulers</a> — cannot enforce two identities simultaneously. The striving identity and the prevailing identity cannot coexist. The darkness is the necessary condition. The court holds Jacob in the confrontation until daybreak because the declaration requires the night first.</p>
+
+<h2>The Hollow of the Thigh — The Wound That Relocates Identity</h2>
+
+<p>When the man sees that Jacob cannot be prevailed against, he touches the hollow of his thigh and it goes out of joint. Jacob is not defeated. He is marked. The thigh in Hebrew anatomy is the seat of generative power — the place from which offspring and continuity are sworn (Genesis 24:2). <a href="../creation-genesis-1-26-man.html">The man as identity structure</a> does not break Jacob's will. It disables the mechanism by which Jacob had been striving — the heel-catching, the supplanting, the grasping from behind that his name (H3290, <em>ya'aqob</em>) encodes. The court does not destroy the old identity violently. It renders the old striving mechanism unable to carry the new name. The wound is precise. Elohim enforces after its kind — the heel-catcher cannot limp into the role of one who prevails without the old gait being altered.</p>
+
+<h2>The Name Asked — Genesis Identity Mechanics</h2>
+
+<blockquote>
+And he said to him, What is your name? And he said, Jacob.
+— Genesis 32:27
+</blockquote>
+
+<p>The man asks for the name. This is not an inquiry. It is a filing requirement. <a href="../creation-genesis-1-26-man.html">Within the court's mechanics</a>, the old I AM must be declared before the new one can replace it. Jacob states the name — heel-catcher, supplanter — and in stating it, places it before the court for the last time. This is the precise structure of <a href="../creation-patriarchs.html">the patriarchal identity pattern</a>: Abram declared before Abraham was filed, Sarai named before Sarah was enforced. The court requires the petitioner to present the current identity explicitly. YHVH must state what it has been occupying. Only then can Elohim rule in favour of the new filing.</p>
+
+<h2>Israel — The New I AM Filed by the Court</h2>
+
+<blockquote>
+And he said, Your name will no longer be Jacob, but Israel: for in your fight with God and with men you have overcome.
+— Genesis 32:28
+</blockquote>
+
+<p>Israel (H3478 — <em>yisra'el</em>): he shall prevail, he who strives with the governing structure and overcomes. The name is not a reward. It is a verdict. <a href="../creation-elohim-god.html">Elohim</a> — the judges and rulers — has heard the declaration of the new identity and is now bound to enforce it after its kind. The nature of the state called Israel is prevailing. Whatever YHVH presents to the court under this name, Elohim must uphold the outcome that prevailing produces. The key framework principle is visible here without addition: <a href="../creation-ask-believe-receive.html">the identity assumed is the identity delivered</a>. Jacob held through the darkness, through the wound, through the naming, and the court filed Israel. The old name was the jurisdictional error. The new name is the corrected filing.</p>
+
+<h2>Peniel — Genesis Day One, Light After the Declaration</h2>
+
+<blockquote>
+And Jacob gave that place the name Peniel, saying, I have seen God face to face, and still I am living.
+— Genesis 32:30
+</blockquote>
+
+<p>Peniel (H6439 — <em>peni'el</em>): face of God, face of the governing structure. Jacob names the place after the encounter completes. The sun rises as he passes over — Genesis Day One closing: darkness gave way to light the moment the declaration was made and received. The <a href="../creation-exodus-314-i-am.html">I AM</a> confrontation is not survived by the old identity. It is survived by the new one. Jacob does not walk out of Peniel. Israel does. The limping gait carries the mark of the transition — the old striving mechanism altered, the new name operative, the court's instruction to Elohim already filed. <a href="../creation-genesis-224-love.html">The old state is left; the new identity is cleaved to.</a> Elohim enforces what the name already declares. The vocabulary was set on the days of creation. Jacob at the Jabbok runs every thread.</p>
+
+<div class="share-dropdown">
+<button class="share-button share">Share</button>
+<div class="share-menu" id="share-menu">
+<a href="#" id="share-twitter" target="_blank">Twitter</a>
+<a href="#" id="share-facebook" target="_blank">Facebook</a>
+<button id="share-copy">Copy Link</button>
+</div>
+</div>
+<p class="label-links"> | <a href="https://linguadivina.uk/about-author.html">About The Author</a> | <a class="noTag" href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></p>
+
+</article></main>
+<aside class="sidebar">
+<div class="navig">
+<label class="close-btn" for="sidebar-toggle">×</label>
+<h2><a href="https://linguadivina.uk">Lingua Divina</a></h2>
+<nav>
+<ul class="nav">
+<li class="search"><a href="../search.html">Search</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a></li>
+<li><a href="../yhvh-ehyeh-linguistic-framework.html">Bible Passage And Verse Translator</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+
+<div class="start-here">
+ⓘ It's important to understand some concepts from the beginning. Please check out:
+<a href="../scrolls/label-from-creation-story.html">Framework & Articles A — Z</a>
+</div>
+<div class="footer">
+  © 2025 -2026 <a href="https://linguadivina.uk/">Lingua Divina</a>. All rights reserved. <a href="https://linguadivina.uk/terms-of-use.html">See Terms of Use</a><div class="footer-img"><a href="https://linguadivina.uk"><img loading="lazy" alt="Lingua Divina" height="210" sizes="(max-width: 1024px) 500px, 1200px" src="https://linguadivina.uk/images/wp/lingua-divina-uk.webp" srcset="https://linguadivina.uk/images/wp/lingua-divina-uk-200w.webp 200w, https://linguadivina.uk/images/wp/lingua-divina-uk-500w.webp 500w, https://linguadivina.uk/images/wp/lingua-divina-uk.webp 1200w" width="1168"></a></div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="../script-ga.js" defer></script><script src="../label-map.js" defer></script><script src="../script-pager.js" defer></script></body>
+</html>
