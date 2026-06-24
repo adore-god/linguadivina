@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '/search.html',
     '/404.html',
     '/about-author.html',
-    '/terms-of-use.html',
+    '/terms-of-use.html',,
+    '/bible-reference/bible-index.html',
     '/scrolls/label-from-creation-story.html'
   ];
 
@@ -49,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
 
   // Handle "Articles A — Z" check
-  const creationIndex = labelLinks.findIndex(l => l.href.includes('label-from-creation-story.html'));
+  const creationIndex = labelLinks.findIndex(l => l.href.includes('bible-index.html'));
   if (creationIndex > -1) {
     labelLinks.splice(creationIndex, 1);
     addSeparator();
-    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/scrolls/label-from-creation-story.html', 'Framework & Articles A — Z'));
+    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/bible-reference/bible-index.html', 'Framework & Articles A — Z'));
   }
 
   // Handle Author link extraction
