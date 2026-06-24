@@ -207,7 +207,7 @@ h2.main-hd {
 	
 h2, h3, h4, .entry-ref {
 	color: var(--ink);
-	font-weight:400;
+	font-weight:600;
     font-size: 1.4rem;
     margin-bottom: 0.75rem;
 }
@@ -217,7 +217,6 @@ h2, h3, h4, .entry-ref {
 	}
 	
 h1 a, h2 a, h3 a, h4 a {
-  font-weight: 400;
   color: var(--ink);
   text-decoration-color: var(--text);
   text-decoration: underline solid;
@@ -297,6 +296,10 @@ h3.teach {
 	font-style: italic;
 	font-size: 1em;
 	margin:0
+	}
+	
+h3.hub-group-label {
+	font-size: 1.1em;
 	}
 	
 h4 {
