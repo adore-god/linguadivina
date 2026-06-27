@@ -252,7 +252,6 @@ h2.def {
 #archive-disclaimer a {
   text-decoration: underline;
   word-spacing: normal;
-
 		}
 		
 .key-symbol {
@@ -260,7 +259,6 @@ h2.def {
     font-size: 1.3rem;
 }
 
-		
 .gen-fnd-entry {
   font-weight:400;
   font-size: 1.05rem;
@@ -636,6 +634,13 @@ img {
   mix-blend-mode: multiply;
 }
 
+.bible-key-icon {
+	margin:0 auto;
+    background-color:#fff;
+    border-radius: 190px !important;
+   width:80%; 
+   max-width:300px
+	}
 
 /* Article Intro Styles */
 .content article p:first-of-type {
