@@ -568,6 +568,10 @@ background:#f3f3f3;
 	color: var--(text);  
 	}
 	
+i {
+	font-style: italic !important;
+	}
+	
 p {
   margin: 1.2em 0;
   text-indent: 0;
