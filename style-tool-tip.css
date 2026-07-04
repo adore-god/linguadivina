@@ -1,0 +1,67 @@
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--bg-color-thr); 
+  color: var(--accent-color); 
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 0.8em;
+}
+.info-tip::before {
+  content: "i";
+  color: var(--accent-color); 
+}
+.info-tip .tip-text {
+  display: none;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  font-size: 0.8em;
+  padding: 8px 10px;
+  background: var(--bg-color-thr);
+  color: var(--accent-color); 
+  border-radius: 6px;
+  border 0.5px solid var(--ink);
+  box-shadow: 0px 0px 8px var(--shadow);
+  z-index: 20;
+  text-align: left;
+}
+.info-tip:hover .tip-text,
+.info-tip.active .tip-text {
+  display: block;
+}
+
+li.hub-group-label { 
+   list-style: none; 
+   margin-left: -1.5em; 
+   font-weight: 700; 
+   margin-top: 1em; 
+   pointer-events: none; 
+}
+
+/* =======================
+   DARK MODE (AUTO SWITCH)
+   ======================= */
+
+@media (prefers-color-scheme: dark) {
+	
+	.info-tip {
+  background: var(--gold-bq); 
+  color: var(--text);
+  }
+	.info-tip .tip-text {
+  background: var(--gold-bq);
+  color: var(--text);
+  }
+	
+	}
