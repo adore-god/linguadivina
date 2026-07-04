@@ -364,7 +364,7 @@ background:#111 !important;
   display: inline-block;
   white-space: nowrap;
   width: fit-content;
-  border-radius:1px;
+  border-radius:100px;
   border: 1.7px solid var(--button);
   color: var(--button);
   background: var(--bg-color)
