@@ -11,7 +11,7 @@
   color: var(--accent-color); 
   border 1px solid var(--text);
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   vertical-align: middle;
   font-size: 0.9em;
@@ -36,6 +36,7 @@
   box-shadow: 0px 0px 8px var(--shadow);
   z-index: 20;
   text-align: left;
+  opacity: 0.93;
 }
 .info-tip:hover .tip-text,
 .info-tip.active .tip-text {
