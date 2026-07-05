@@ -14,7 +14,7 @@
   font-weight: 500;
   cursor: pointer;
   vertical-align: middle;
-  font-size: 0.9em;
+  font-size: 12px;
 }
 .info-tip::before {
   content: "i";
@@ -27,7 +27,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 220px;
-  font-size: 0.9em;
+  font-size: 12px;
   padding:  2em 1.5em;
   background: var(--bg-color-thr);
   color: var(--ink); 
