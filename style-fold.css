@@ -211,10 +211,13 @@ h2, h3, h4, .entry-ref {
     font-size: 1.8rem;
     margin-bottom: 0.75rem;
 }
-
+.left {
+text-align: left !important;
+	}
+	
 h2:nth-of-type(odd) {
   text-align: left;
-  margin-left:0;
+  margin-left: -0.3em;
   padding-left:0;
 }
 h2:nth-of-type(even) {
@@ -225,7 +228,7 @@ h2:nth-of-type(even) {
 
 h3:nth-of-type(odd) {
   text-align: left;
-  margin-left:0;
+  margin-left: -0.3em;
   padding-left:0;
 }
 h3:nth-of-type(even) {
