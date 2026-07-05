@@ -210,7 +210,6 @@ h2, h3, h4, .entry-ref {
 	font-weight:600;
     font-size: 1.8rem;
     margin-bottom: 0.75rem;
-    max-width: 80%;
 }
 
 h2:nth-of-type(odd) {
@@ -305,7 +304,6 @@ h2.def {
 	text-transform: uppercase;
 	}
 h3 {
-  text-align: left;
   margin: 45px 0 5px;
 }
 h3 strong {
