@@ -983,9 +983,7 @@ width: 50% !important
     mix-blend-mode: var(--img-blend);
   }
   
-/* Dark mode — adjust selector to match your existing dark/light toggle class */
 .toc-jump-nav {
-  border-color: rgba(255, 255, 255, 0.15);
   background: var(--promo-bg); 
 }
 .toc-jump-sublist {
