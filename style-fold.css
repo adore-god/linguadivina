@@ -775,8 +775,6 @@ text-decoration: none;
 font-weight: 600;
 color: var(--text) !important;	
 	}
-	
-	/* Collapsible "Jump to a section" nav — pair with script-toc.js */
 
 .toc-jump-nav {
   font-size: 0.85rem;
@@ -785,7 +783,7 @@ color: var(--text) !important;
   padding: 0.6rem 0.9rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.02);
+  background-color: var(--bg-color);
 }
 
 .toc-jump-heading {
@@ -793,11 +791,10 @@ color: var(--text) !important;
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-  list-style: none;       /* hide default marker in most browsers */
+  list-style: none; 
   outline: none;
 }
 
-/* custom collapse/expand arrow instead of the default triangle */
 .toc-jump-heading::-webkit-details-marker {
   display: none;
 }
@@ -829,21 +826,12 @@ color: var(--text) !important;
 }
 
 .toc-jump-sublist {
+background-color: var(--bg-color);
   margin: 0.15rem 0 0.15rem 1rem;
   padding-left: 0.9rem;
   font-size: 0.78rem;
   border-left: 2px solid rgba(0, 0, 0, 0.08);
 }
-
-/* Dark mode — adjust selector to match your existing dark/light toggle class */
-body.dark .toc-jump-nav {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.03);
-}
-body.dark .toc-jump-sublist {
-  border-left-color: rgba(255, 255, 255, 0.1);
-}
-
 
 #search-results {
 	margin-bottom: 4em;
