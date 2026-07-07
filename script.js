@@ -152,8 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
  
  
  
- 
- 
  /**
  * script-toc.js
  * Scans an article for H2/H3 headings, assigns slug IDs (if missing),
@@ -266,3 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
     buildTOC();
   }
 })();
+
+
+ 
+ 

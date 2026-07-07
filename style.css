@@ -824,6 +824,67 @@ table, td, th {
     filter: none !important;
     mix-blend-mode: normal !important;
 }
+
+
+
+.toc-jump-nav {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 1.25rem 0;
+  padding: 0.6rem 0.9rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--bg-color) !important ;
+}
+
+.toc-jump-heading {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  list-style: none; 
+  outline: none;
+}
+
+.toc-jump-heading::-webkit-details-marker {
+  display: none;
+}
+.toc-jump-heading::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4em;
+  transition: transform 0.15s ease;
+}
+.toc-jump-nav[open] > .toc-jump-heading::before {
+  transform: rotate(90deg);
+}
+
+.toc-jump-links {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.toc-jump-links li {
+  margin: 0.15rem 0;
+}
+
+.toc-jump-links a {
+  text-decoration: none;
+}
+.toc-jump-links a:hover {
+  text-decoration: underline;
+}
+
+.toc-jump-sublist {
+background: var(--bg-color);
+  margin: 0.15rem 0 0.15rem 1rem;
+  padding-left: 0.9rem;
+  font-size: 0.78rem;
+  border-left: 2px solid var(--bg-color);
+}
+
+
 		
 /* =======================
    RESPONSIVE
@@ -987,7 +1048,7 @@ width: 50% !important
   background: var(--promo-bg); 
 }
 .toc-jump-sublist {
-  border-left-color: var(--promo-bg);
+  border-left-color: var(--promo-bg;
 }
 
 .gen-fnd-entry {
