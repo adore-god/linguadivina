@@ -152,13 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
  
  
  
- /**
+/**
  * script-toc.js
  * Scans an article for H2/H3 headings, assigns slug IDs (if missing),
  * and inserts a nested "Jump to" navigation list at the top of the article.
- *
- * Usage: <script src="script-toc.js" defer></script>
- * Expects headings inside: article  (falls back to main.content, then body)
  */
 (function () {
   "use strict";
@@ -177,9 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return text
       .toLowerCase()
       .trim()
-      .replace(/[^\w\s-]/g, "")   // strip punctuation
-      .replace(/\s+/g, "-")       // spaces -> hyphens
-      .replace(/-+/g, "-");       // collapse repeats
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
   }
 
   function uniqueId(base, used) {
@@ -213,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentSubList = null;
 
     headings.forEach((heading) => {
-      // Assign an ID only if one doesn't already exist
       if (!heading.id) {
         const base = slugify(heading.textContent);
         heading.id = uniqueId(base, usedIds);
@@ -233,7 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
         currentSubList = null;
       } else if (heading.tagName === "H3") {
         if (!currentH2Item) {
-          // Orphan H3 with no preceding H2 — just add at top level
           tocList.appendChild(li);
           return;
         }
@@ -249,8 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const nav = document.createElement("details");
     nav.className = "toc-jump-nav";
     nav.setAttribute("aria-label", "Jump to section");
-    // Add the line below (uncommented) if you want it expanded by default:
-    // nav.open = true;
 
     const summary = document.createElement("summary");
     summary.className = "toc-jump-heading";
@@ -259,10 +252,13 @@ document.addEventListener("DOMContentLoaded", function () {
     nav.appendChild(summary);
     nav.appendChild(tocList);
 
-    // Insert right after the opening blockquote if present, else at top of article
-    const firstBlockquote = root.querySelector("blockquote");
-    if (firstBlockquote) {
-      firstBlockquote.insertAdjacentElement("afterend", nav);
+    // Insert directly above the first direct-child <p> of root; else at top of root.
+    const firstParagraph = Array.from(root.children).find(
+      (el) => el.tagName === "P"
+    );
+
+    if (firstParagraph) {
+      firstParagraph.insertAdjacentElement("beforebegin", nav);
     } else {
       root.insertAdjacentElement("afterbegin", nav);
     }
@@ -274,7 +270,5 @@ document.addEventListener("DOMContentLoaded", function () {
     buildTOC();
   }
 })();
-
-
  
  
