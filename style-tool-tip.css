@@ -33,7 +33,6 @@
   color: var(--ink); 
   border-radius: 6px;
   border 1px solid var(--text);
-  box-shadow: 0px 0px 8px var(--shadow);
   z-index: 20;
   text-align: left;
   opacity: 0.93;
