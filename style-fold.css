@@ -238,6 +238,11 @@ h3:nth-of-type(odd) {
   padding-right:0 !important;
 }
 
+.toc-jump-heading {
+  text-align: center;
+  margin-left: -0.6em;
+  padding-left: 0;
+}
 .entry-ref {
 	border-left:0 !important;
 	}
