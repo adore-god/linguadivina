@@ -1,10 +1,10 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #111111;
-  --text-light: #222;
-  --ink: #111;
+  --text-light: #222222;
+  --ink: #111111;
   --bg-color: #ffffff;
-  --promo-bg: #ddd;
+  --promo-bg: #dddddd;
   --bg-color-two: #111111;
   --bg-color-thr: #F5F5F5;
   --link: #0066CC;
@@ -578,7 +578,7 @@ background:#f3f3f3;
   
 }
 .breadcrumb a {
-	color: var(--text);  
+	color: var(--link);  
 	}
 	
 i {
