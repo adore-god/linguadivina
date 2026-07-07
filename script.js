@@ -163,7 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
 (function () {
   "use strict";
 
+  // Skip the TOC on the homepage/index page
+  const path = window.location.pathname;
+  const isIndex = path === "/" || /\/index\.html?$/i.test(path);
+  if (isIndex) return;
+
   function slugify(text) {
+   
     return text
       .toLowerCase()
       .trim()
