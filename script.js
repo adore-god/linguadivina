@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "/",
     "/index.html",
     "/index.htm",
+    "/search.html",
     "/bible-reference/bible-index.html"
   ];
   if (skipPaths.includes(path)) return;
