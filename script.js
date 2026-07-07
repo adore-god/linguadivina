@@ -163,13 +163,17 @@ document.addEventListener("DOMContentLoaded", function () {
 (function () {
   "use strict";
 
-  // Skip the TOC on the homepage/index page
+  // Skip the TOC on the homepage and the bible index page
   const path = window.location.pathname;
-  const isIndex = path === "/" || /\/index\.html?$/i.test(path);
-  if (isIndex) return;
+  const skipPaths = [
+    "/",
+    "/index.html",
+    "/index.htm",
+    "/bible-reference/bible-index.html"
+  ];
+  if (skipPaths.includes(path)) return;
 
   function slugify(text) {
-   
     return text
       .toLowerCase()
       .trim()
