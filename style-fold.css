@@ -215,23 +215,23 @@ h2, h3, h4, .entry-ref {
 text-align: left !important;
 	}
 	
-h2:nth-of-type(odd) {
+h2:nth-of-type(even) {
   text-align: left;
   margin-left: -0.3em;
   padding-left:0;
 }
-h2:nth-of-type(even) {
+h2:nth-of-type(odd) {
   text-align: right;
   margin-right:0 !important;
   padding-right:0 !important;
 }
 
-h3:nth-of-type(odd) {
+h3:nth-of-type(even) {
   text-align: left;
   margin-left: -0.3em;
   padding-left:0;
 }
-h3:nth-of-type(even) {
+h3:nth-of-type(odd) {
   text-align: right;
   margin-right:0 !important;
   padding-right:0 !important;
