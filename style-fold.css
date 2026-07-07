@@ -775,6 +775,75 @@ text-decoration: none;
 font-weight: 600;
 color: var(--text) !important;	
 	}
+	
+	/* Collapsible "Jump to a section" nav — pair with script-toc.js */
+
+.toc-jump-nav {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 1.25rem 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.toc-jump-heading {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  list-style: none;       /* hide default marker in most browsers */
+  outline: none;
+}
+
+/* custom collapse/expand arrow instead of the default triangle */
+.toc-jump-heading::-webkit-details-marker {
+  display: none;
+}
+.toc-jump-heading::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4em;
+  transition: transform 0.15s ease;
+}
+.toc-jump-nav[open] > .toc-jump-heading::before {
+  transform: rotate(90deg);
+}
+
+.toc-jump-links {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.toc-jump-links li {
+  margin: 0.15rem 0;
+}
+
+.toc-jump-links a {
+  text-decoration: none;
+}
+.toc-jump-links a:hover {
+  text-decoration: underline;
+}
+
+.toc-jump-sublist {
+  margin: 0.15rem 0 0.15rem 1rem;
+  padding-left: 0.9rem;
+  font-size: 0.78rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode — adjust selector to match your existing dark/light toggle class */
+body.dark .toc-jump-nav {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+body.dark .toc-jump-sublist {
+  border-left-color: rgba(255, 255, 255, 0.1);
+}
+
 
 #search-results {
 	margin-bottom: 4em;
@@ -798,12 +867,8 @@ color: var(--text) !important;
 #searchBox,
 #custom-search-input {
 	background: var(--bg-color) !important;
-	
 	}
 
-#mainVideo {
-	margin:2em 0;
-	}
 	
 /* Desktop Width Constraint */
 @media (min-width: 900px) {
@@ -814,8 +879,5 @@ color: var(--text) !important;
 }
 
 
-#mainVideo {
-  aspect-ratio: 9 / 16; /* Use 9 / 16 if it's a TikTok-style vertical video */
-  background: #000;    /* Shows a black box while loading */
-}
+
  
