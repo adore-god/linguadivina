@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '/search.html',
     '/404.html',
     '/about-author.html',
-    '/terms-of-use.html',,
+    '/terms-of-use.html', 
     '/bible-reference/bible-index.html',
     '/scrolls/label-from-creation-story.html'
   ];
@@ -43,6 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     breadcrumb.appendChild(sep);
   }
 
+function createInfoIcon() {
+    const icon = document.createElement('span');
+    icon.className = 'info-icon-i';
+    icon.textContent = 'i';
+    return icon;
+}
+
   // 1. Home
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
 
@@ -54,8 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (creationIndex > -1) {
     labelLinks.splice(creationIndex, 1);
     addSeparator();
-    breadcrumb.appendChild(createCrumb('https://linguadivina.uk/bible-reference/bible-index.html', 'Framework & Articles A — Z'));
-  }
+    const frameworkCrumb = createCrumb('https://linguadivina.uk/bible-reference/bible-index.html', 'Framework & Articles A — Z');
+    frameworkCrumb.insertBefore(createInfoIcon(), frameworkCrumb.firstChild);
+    breadcrumb.appendChild(frameworkCrumb);
+}
 
   // Handle Author link extraction
   const authorIndex = labelLinks.findIndex(l => l.href.includes('about-author.html'));
