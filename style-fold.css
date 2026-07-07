@@ -428,15 +428,15 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: 1.5px solid currentColor;
-  font-size: 11px;
+  font-size: 10px;
   font-style: italic;
   position: relative;
   top: -2px; 
-  margin-right: 3px;
+  margin-right: 5px;
 }
 
 .az-nav {
