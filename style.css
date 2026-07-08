@@ -340,8 +340,8 @@ small {
   font-weight: 400; 
   font-size: 1.1em;
   margin:  3em auto 2.5em;
-  text-align: left;
-  width: 85%;
+  text-align: justify;
+  width: 80%;
   font-style:italic;
 }
 
