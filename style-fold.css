@@ -204,6 +204,9 @@ h2.main-hd {
   border-left: 0 !important;
   font-size:1.8em;
 }
+h2.lat-up {
+	margin: 1em 0 1em 0em;
+	}
 	
 h2, h3, h4, .entry-ref {
 	color: var(--ink);
