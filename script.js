@@ -103,6 +103,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// --- 4. LAST UPDATED DATE ---
+  const dateMeta = document.querySelector('meta[name="date-modified"]');
+  const shareDropdown = document.querySelector('.share-dropdown');
+
+  if (dateMeta && shareDropdown) {
+    const date = new Date(dateMeta.content);
+    const formatted = date.toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    const dateEl = document.createElement('p');
+    dateEl.className = 'date-modified-display';
+    dateEl.textContent = `Last updated: ${formatted}`;
+
+    shareDropdown.insertAdjacentElement('beforebegin', dateEl);
+  }
+
 
 
 
@@ -272,5 +289,8 @@ document.addEventListener("DOMContentLoaded", function () {
     buildTOC();
   }
 })();
+ 
+ 
+ 
  
  

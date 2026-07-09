@@ -726,6 +726,12 @@ padding: 0em 0 0em;
   overflow:hidden
 }
 
+.date-modified-display {
+  font-size: 0.85rem;
+  color: var(--muted-text, #888);
+  margin: 0.5rem 0;
+}
+
 .share-dropdown {
   position: relative;
   display: inline;
