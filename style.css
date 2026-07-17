@@ -897,7 +897,6 @@ background: var(--bg-color);
    ======================= */
 @media (min-width: 900px) {
   body {
-    width: 60%;
     margin: 0 auto;
   }
   

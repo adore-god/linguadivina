@@ -96,7 +96,7 @@ body{
   font-size: 100%;
   line-height: 1.5;
   color: var(--text);
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   letter-spacing: 0.01em;
   background: var(--bg-color);
@@ -108,13 +108,13 @@ body{
   
 }
 .container {
-  max-width: 800px;
-  width: 100%;
+
+  width: 100vw;
   margin: 0 auto;
   display: block;
   color: var(--text);
   background: var(--bg-color);
-  padding: 0em 1.7em;
+  padding: 0em 1.3em;
 }
 
 /* =======================
@@ -815,7 +815,7 @@ color: var(--text) !important;
 /* Desktop Width Constraint */
 @media (min-width: 900px) {
   body {
-    width: 60%;
+    
     margin: 0 auto;
   }
 }
