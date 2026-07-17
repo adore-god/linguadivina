@@ -125,6 +125,19 @@ body{
 .hero-description::after {
   content: "";
   display: block; /* or inline-block if you want text to wrap next to it */
+  background-image: url('https://linguadivina.uk/images/gavel-seed.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 140px;  
+  height: 90px;
+  position: relative;
+  z-index:2000;
+  margin: 1em auto 0;
+}
+
+.breadcrumb::after {
+  content: "";
+  display: block; /* or inline-block if you want text to wrap next to it */
   background-image: url('https://linguadivina.uk/images/book-logo-comp.png');
   background-repeat: no-repeat;
   background-size: contain;
