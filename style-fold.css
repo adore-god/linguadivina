@@ -143,7 +143,7 @@ h1.index-h1	{
 	
 .site-title {
 	display:block;
-	margin: 4em auto 1em;
+	margin: 4em auto 0.5em;
 	width:90%;
 	text-align:center;
 	padding-right:17px;
@@ -335,7 +335,7 @@ header img {
     font-weight: 500;
     letter-spacing: 0em;
     text-transform: uppercase;
-    margin: 1em auto 2em;
+    margin: 0em auto 2em;
     width: 90%;
     padding-left: -1em;
     font-size: 0.9em;
