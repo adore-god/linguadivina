@@ -128,8 +128,8 @@ body{
   background-image: url('https://linguadivina.uk/images/gavel-seed.png');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 140px;  
-  height: 90px;
+  width: 160px;  
+  height: 119px;
   position: relative;
   z-index:2000;
   margin: 1em auto 0;
@@ -142,7 +142,7 @@ blockquote::after {
   background-repeat: no-repeat;
   background-size: contain;
   width: 190px;  
-  height: 130px;
+  height: 146px;
   position: relative;
   z-index:2000;
   margin: 1em auto 0;
@@ -631,7 +631,7 @@ dfn {
 	}
 
 blockquote {
-  font-weight:400;
+  font-weight:500;
   margin: 2.75em auto 2.5em;
   text-align: left;
   padding: 1.2em;
@@ -640,6 +640,7 @@ blockquote {
   background-color: var(--gold-bq);
   border-radius: 10px;
   display:block;
+  color: var(--ink);
 }
 
 blockquote p {
