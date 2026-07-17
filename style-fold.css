@@ -641,6 +641,7 @@ blockquote {
   border-radius: 10px;
   display:block;
   color: var(--ink);
+  font-size: 1.1em;
 }
 
 blockquote p {
