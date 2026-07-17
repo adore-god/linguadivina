@@ -582,8 +582,10 @@ background:#f3f3f3;
 
 .breadcrumb {
   font-size: 0.875em;
+  margin-top: 3em;
   margin-bottom: 2em;
   min-height:50px;
+  display:block;
 }
 
 .breadcrumb a, .breadcrumb-current {
@@ -616,14 +618,14 @@ dfn {
 
 blockquote {
   font-weight:400;
-  margin: 2em auto 2em;
+  margin: 2.5em auto 2.5em;
   text-align: left;
   padding: 1.2em;
   width: 82%;
   letter-spacing: -0.02em;
   background-color: var(--gold-bq);
   border-radius: 10px;
-  
+  display:block;
 }
 
 blockquote p {
