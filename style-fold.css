@@ -122,7 +122,7 @@ body{
 .header {
 	}
 	
-	.hero-description::after {
+.hero-description::after {
   content: "";
   display: block; /* or inline-block if you want text to wrap next to it */
   background-image: url('https://linguadivina.uk/images/book-logo-comp.png');
@@ -837,6 +837,11 @@ color: var(--text) !important;
     margin: 0 auto;
     font-size: 1.25rem;
   }
+  
+  .hero-description::after {  
+  width: 280px;  
+  height: 230px;
+}
   
  .container {
   padding: 0em 1.6em 0 1.4em;
