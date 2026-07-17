@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. SETTINGS ---
-  const workerBase = "https://like-button-worker.lingua-divina.workers.dev";
+  const workerBase = "https://like-button-worker.hnnh.workers.dev";
 
   // Derive a unique key from the current page path
   // e.g. "/blog/my-post/"  "hasLiked_/blog/my-post/"
