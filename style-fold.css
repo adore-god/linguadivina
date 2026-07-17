@@ -737,11 +737,10 @@ img {
 	display: none;
 	background:transparent;
 	border:0;
-	color:#3E2D18;
+	color: car(--text);;
 	font-size: 2em;
 	vertical-align: baseline;
     padding: 0 0 0 10px ;
-    opacity:0.6;
 	}
 	
 	img.key-icon {
