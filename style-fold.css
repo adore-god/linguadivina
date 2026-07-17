@@ -125,7 +125,7 @@ body{
 	.hero-description::after {
   content: "";
   display: block; /* or inline-block if you want text to wrap next to it */
-  background-image: url('https://linguadivina.uk/images/book-logo.png');
+  background-image: url('https://linguadivina.uk/images/book-logo-comp.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 140px;  
