@@ -93,7 +93,7 @@
 
 body{
   font-family: 'Inter', sans-serif;
-  font-size: 100%;
+  font-size: ;
   line-height: 1.5;
   color: var(--text);
   width: 100vw;
@@ -211,7 +211,7 @@ h2.lat-up {
 h2, h3, h4, .entry-ref {
 	color: var(--ink);
 	font-weight:600;
-    font-size: 1.8rem;
+    font-size: 1.8em;
     margin-bottom: 0.75rem;
     padding-top: 0.7em;
 }
@@ -812,14 +812,61 @@ color: var(--text) !important;
 	}
 
 	
-/* Desktop Width Constraint */
+
+
+
+/* =======================
+   RESPONSIVE
+   ======================= */
+
+
 @media (min-width: 900px) {
   body {
-    
     margin: 0 auto;
   }
+  
+  .header h1, h1 {
+font-size: 3em;
+max-width: 70vw;
+}
+  
+  h2, h3, h4, .entry-ref {
+	font-size: 2.8em;
+	max-width: 70vw;
 }
 
+
+  .hero-description {
+    font-size:  1.5em;
+    text-align:center;
+    }
+    
+.site-title a {
+	font-size: 3em;
+	}
+
+  #verse-link-container {
+  	max-width: 30vw;
+  }
+  
+  
+}
+
+@media (max-width: 1168px) {
+
+	
+  .hamburger {
+    display: block;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-right: 0;
+  }
+}
 
 
  

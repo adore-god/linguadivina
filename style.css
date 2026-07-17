@@ -892,45 +892,7 @@ background: var(--bg-color);
 
 
 		
-/* =======================
-   RESPONSIVE
-   ======================= */
-@media (min-width: 900px) {
-  body {
-    margin: 0 auto;
-  }
-  
-  .hero-description {
-    font-size:  1.5em;
-    text-align:center;
-    }
-    
-.site-title a {
-	font-size: 3em;
-	}
 
-  #verse-link-container {
-  	max-width: 30vw;
-  }
-  
-  
-}
-
-@media (max-width: 1168px) {
-
-	
-  .hamburger {
-    display: block;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .content {
-    margin-right: 0;
-  }
-}
 
 .footer-img {
 	margin: 2em auto;
