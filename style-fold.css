@@ -6,7 +6,6 @@
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --bg-color-thr: #F5F5F5;
   --link: #010252;
   --accent-color: #444444;
   --accent-primary: #010252;
@@ -21,21 +20,17 @@
   
   --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #444444;
-    --gold-bq: #eee;
-    --gold-bq-two: #fae8db;
-    --gold-bq-thr: #fee7d7;
+    --grey-dim: #444444;
+    --navy-bq: #eee;
+    --navy-bq-two: #fae8db;
+    --navy-bq-thr: #fee7d7;
     --ink: #1a1208;
-    --parchment: #f5eedc;
-    --parchment-dark: #e8ddc8;
-    --cream: #faf6ec;
     --shadow: #999;
 }
 
 :root.light {
   --bg-color: #ffffff;
   --bg-color-two: #111111;
-  --bg-color-thr: #F5F5F5;
   --promo-bg: #dddddd;
   --text: #111111;
   --text-light: #222222;
@@ -53,12 +48,9 @@
   --key-icon-blend: multiply;
   --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #444444;
-    --gold-bq: #eee; 
+    --grey-dim: #444444;
+    --navy-bq: #eee; 
     --ink: #1a1208;
-    --parchment: #f5eedc;
-    --parchment-dark: #e8ddc8;
-    --cream: #faf6ec;
     --shadow: #999;
    --icon-filter: brightness(1);
 }
@@ -280,8 +272,8 @@ h2.def {
   text-align: left;
   padding: 0.7em 1.3em 1.5em 1.5em;
   letter-spacing: -0.02em;
-  background-color: var(--gold-bq-thr);
-  border-left: 2px solid var(--gold-bq);
+  background-color: var(--navy-bq-thr);
+  border-left: 2px solid var(--navy-bq);
   border-radius: 10px;	
 	}
 	
@@ -345,7 +337,7 @@ header img {
     width: 90%;
     padding-left: -1em;
     font-size: 0.9em;
-    color: var(--gold-dim);
+    color: var(--grey-dim);
     text-align: center;
   }
   .hero-description-two {
@@ -356,7 +348,7 @@ header img {
     width: 90%;
     padding-left: -1em;
     font-size: 0.9em;
-    color: var(--gold-dim);
+    color: var(--grey-dim);
     text-align: center;
   }
  
@@ -502,7 +494,7 @@ a:hover {
   margin: 0 0 10px 20px; 
   padding: 10px; 
   border: 0;
-  background-color: var(--gold-bq) !important; 
+  background-color: var(--navy-bq) !important; 
   font-size: 0.8em; 
 }
 .book img {
@@ -616,7 +608,7 @@ blockquote {
   padding: 1.2em;
   width: 82%;
   letter-spacing: -0.02em;
-  background-color: var(--gold-bq);
+  background-color: var(--navy-bq);
   border-radius: 10px;
   display:block;
   color: var(--ink);

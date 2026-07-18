@@ -400,7 +400,7 @@ ol, ul {
     padding: 1em 1em;
     border: 0px solid #ccc;
     border-radius: 8px;
-    background-color: var(--gold-bq);
+    background-color: var(--navy-bq);
     border-radius:10px;
     width:100%;
     font-weight:800;
@@ -455,7 +455,7 @@ font-weight:500;
   padding: 1em 2em;
   border: 0px solid #ddd;
   margin: 0em auto 1.6em;
-  background: var(--gold-bq);
+  background: var(--navy-bq);
   width:100%;
   border-radius: 10px;
 }
@@ -683,7 +683,7 @@ table {
 	overflow-y: auto;
 	overflow-x: hidden;
 	width:100%;
-	background-color: var(--gold-bq);
+	background-color: var(--navy-bq);
 	border-radius: 10px;
 	padding: 1em 1em
 	}
@@ -758,7 +758,7 @@ padding: 0em 0 0em;
 .share-menu {
   display: none;
   position: absolute;
-  background-color: var(--gold-bq);
+  background-color: var(--navy-bq);
   border: 0.5px solid var(--button);
   border-radius: 0.05em;
   margin-top: 0.5em;
@@ -783,7 +783,7 @@ text-transform: uppercase
   text-align: left;
   padding: 0.2em 1em;
   text-decoration: none;
-  background-color: var(--gold-bq);
+  background-color: var(--navy-bq);
   border: none;
   cursor: pointer;
 }
@@ -920,8 +920,6 @@ width: 50% !important
     --text-light: #D3DAD9;
     --link: #7779bf;
     --button: #D3DAD9;
-    --red: #f26868;
-    --blue: #8ab4f8;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
     --img-filter: invert(1) brightness(1.3) contrast(1.23);
@@ -930,12 +928,9 @@ width: 50% !important
   --key-icon-blend: screen;
     --gold: #c9a84c;
     --gold-light: #e8d08a;
-    --gold-dim: #D3DAD9;
+    --grey-dim: #D3DAD9;
     --ink: #1a1208;
-    --parchment: #f5eedc;
-    --parchment-dark: #e8ddc8;
-    --gold-bq: #222;
-    --cream: #faf6ec;
+    --navy-bq: #222;
     --shadow: #666;
     --icon-filter: brightness(1.5);
   }
@@ -960,7 +955,7 @@ width: 50% !important
 
 .hero-description {
     font-weight: 500;
-    color: var(--gold-dim)
+    color: var(--grey-dim)
     }
 
 .hero-description::after {
@@ -1014,7 +1009,7 @@ width: 50% !important
 }
 
 .gen-fnd-entry {
-    background-color: var(--gold-bq);
+    background-color: var(--navy-bq);
  }
  
 .key-icon,
@@ -1042,7 +1037,7 @@ background-color: var(--bg-color)
 }
 
 .book {
-  background-color: var(--gold-bq); 
+  background-color: var(--navy-bq); 
 }
 .book img {
    box-shadow: 0px 0px 7px var(--shadow);
@@ -1118,7 +1113,7 @@ color: var(--text) !important;
 
 
 blockquote { 
-  background-color: var(--gold-bq);
+  background-color: var(--navy-bq);
   color: var(--text);
 }
 
@@ -1245,7 +1240,7 @@ color: var(--text);
   }
   
 .share-menu {
-  background-color: var(--gold-bq);
+  background-color: var(--navy-bq);
   color: var(--text);
   border: 0.5px solid var(--button);
   box-shadow: none;
