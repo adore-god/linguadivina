@@ -911,10 +911,12 @@ width: 50% !important
    ======================= */
 @media (prefers-color-scheme: dark) {
 	:root {
-    --bg-color: #1A1815;
+    --bg-color: #00010f;
     --bg-color-two: #ffffff;
     --promo-bg: #333;
-    --text: #D3DAD9;
+    --text: #dedffc;
+    --accent-primary: #00010f;
+    --text-color-light: #D3DAD9;
     --text-light: #D3DAD9;
     --link: #6699FF;
     --button: #D3DAD9;
@@ -936,17 +938,9 @@ width: 50% !important
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
-    --gold-bq: #2E2D29;
+    --gold-bq: #020329;
     --cream: #faf6ec;
     --shadow: #666;
-    --thread1: #8b2e2e;
-    --thread2: #2e5c8b;
-    --thread3: #3d7a4f;
-    --thread4: #7a4f2e;
-    --thread5: #6b2e7a;
-    --thread6: #2e7a6b;
-    --thread7: #8b5e2e;
-    --thread8: #2e3d8b;
   }
 
   body {
@@ -1062,6 +1056,8 @@ background-color: var(--bg-color)
    
   h1 {
     border-left-color: var(--text);
+    color: var(--text);
+    background: var(--accent-primary);
     
   }
   

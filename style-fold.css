@@ -7,8 +7,10 @@
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
   --bg-color-thr: #F5F5F5;
-  --link: #0066CC;
+  --link: #010252;
   --accent-color: #444444;
+  --accent-primary: #010252;
+    --text-color-light: #dedffc;
   --button: #333333;
   --verse-color: #000000;
   --grad-one: #555555;
@@ -33,14 +35,6 @@
     --parchment-dark: #e8ddc8;
     --cream: #faf6ec;
     --shadow: #999;
-    --thread1: #8b2e2e;
-    --thread2: #2e5c8b;
-    --thread3: #3d7a4f;
-    --thread4: #7a4f2e;
-    --thread5: #6b2e7a;
-    --thread6: #2e7a6b;
-    --thread7: #8b5e2e;
-    --thread8: #2e3d8b;
 }
 
 :root.light {
@@ -50,9 +44,11 @@
   --promo-bg: #dddddd;
   --text: #111111;
   --text-light: #222222;
+ --text-color-light: #dedffc;
   --ink: #111111;
-  --link: #0066CC;
+  --link: #010252;
   --accent-color: #444444;
+  --accent-primary: #010252;
   --button: #333333;
   --red: #f26868;
   --blue: #3e84f4;
@@ -75,14 +71,7 @@
     --parchment-dark: #e8ddc8;
     --cream: #faf6ec;
     --shadow: #999;
-    --thread1: #8b2e2e;
-    --thread2: #2e5c8b;
-    --thread3: #3d7a4f;
-    --thread4: #7a4f2e;
-    --thread5: #6b2e7a;
-    --thread6: #2e7a6b;
-    --thread7: #8b5e2e;
-    --thread8: #2e3d8b;
+   
 }
 
 * {
@@ -204,15 +193,15 @@ h1.index-h1	{
 
 
 h1 {
-  color: var(--text);
-  margin: 0.5em 0 1em 0.7em;
+  color: var(--text-color-light) !important;
+  margin: 0.5em 0 1em 0em;
   font-weight: 600;
   text-align: left;
-  opacity:0.9;
   line-height:1.1;
   border-left: 0;
-  padding-left: 0rem;
-  padding-right: 1.25rem;
+  padding: 1em;
+  background: var(--accent-primary) ;
+  
 }
 
 h2 {
