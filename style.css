@@ -918,7 +918,7 @@ width: 50% !important
     --accent-primary: #00010f;
     --text-color-light: #dedffc;
     --text-light: #D3DAD9;
-    --link: #dedffc;
+    --link: #7779bf;
     --button: #D3DAD9;
     --red: #f26868;
     --blue: #8ab4f8;
@@ -938,7 +938,7 @@ width: 50% !important
     --ink: #1a1208;
     --parchment: #f5eedc;
     --parchment-dark: #e8ddc8;
-    --gold-bq: #020329;
+    --gold-bq: #222;
     --cream: #faf6ec;
     --shadow: #666;
   }
