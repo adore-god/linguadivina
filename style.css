@@ -928,10 +928,6 @@ width: 50% !important
   --img-blend: screen;
   --key-icon-filter: invert(0);
   --key-icon-blend: screen;
-  --grad-one: #9e9888;
-  --grad-two: #cac4ae;
-  --grad-three: #efebd8;
-  
     --gold: #c9a84c;
     --gold-light: #e8d08a;
     --gold-dim: #D3DAD9;
@@ -941,6 +937,7 @@ width: 50% !important
     --gold-bq: #222;
     --cream: #faf6ec;
     --shadow: #666;
+    --icon-filter: brightness(1.5);
   }
 
   body {
@@ -964,6 +961,10 @@ width: 50% !important
 .hero-description {
     font-weight: 500;
     color: var(--gold-dim)
+    }
+
+.hero-description::after {
+  filter: var(--icon-filter);
     }
     
 .btn-outline {

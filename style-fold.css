@@ -13,11 +13,6 @@
     --text-color-light: #dedffc;
   --button: #333333;
   --verse-color: #000000;
-  --grad-one: #555555;
-  --grad-two: #333333;
-  --grad-three: #111111;
-  --red: #f26868;
-  --blue: #3e84f4;
   --gold: #F6E5B9;
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
@@ -50,18 +45,12 @@
   --accent-color: #444444;
   --accent-primary: #010252;
   --button: #333333;
-  --red: #f26868;
-  --blue: #3e84f4;
   --gold: #F6E5B9;
   --verse-color: #000000;
-  --grad-one: #555555;
-  --grad-two: #333333;
-  --grad-three: #111111;
   --img-filter: invert(0) brightness(1) contrast(1.1);
   --img-blend: multiply;
   --key-icon-filter: invert(0);
   --key-icon-blend: multiply;
-  
   --gold: #c9a84c;
     --gold-light: #e8d08a;
     --gold-dim: #444444;
@@ -71,7 +60,7 @@
     --parchment-dark: #e8ddc8;
     --cream: #faf6ec;
     --shadow: #999;
-   
+   --icon-filter: brightness(1);
 }
 
 * {
@@ -113,7 +102,7 @@ body{
 	
 .hero-description::after {
   content: "";
-  display: block; /* or inline-block if you want text to wrap next to it */
+  display: block; 
   background-image: url('https://linguadivina.uk/images/gavel-seed.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -122,6 +111,7 @@ body{
   position: relative;
   z-index:2000;
   margin: 1em auto 0;
+  filter: var(--icon-filter);
 }
 
 blockquote::after {
