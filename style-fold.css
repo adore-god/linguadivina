@@ -353,6 +353,9 @@ header img {
     text-align: center;
   }
  
+.btn-dark {
+background:#111;
+}
 .btn-wrap {
   margin: 1em auto 3.5em;
   text-align:center;
@@ -405,6 +408,24 @@ header img {
 .btn-wrap.drop-in .btn-left  { animation-delay: 0s; }
 .btn-wrap.drop-in .btn-c     { animation-delay: 0.15s; }
 .btn-wrap.drop-in .btn-right { animation-delay: 0.3s; } 
+
+.btn-outline {
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: var(--accent-primary);
+  color: var(--bg-color);
+}
+.btn-outline {
+  -webkit-tap-highlight-color: transparent; 
+  outline: none; 
+}
+
+.btn-outline:focus-visible {
+  outline: 2px solid var(--button);
+  outline-offset: 3px;
+}
 	
 a.redA {
   text-decoration-color: var(--red) !important;
@@ -436,12 +457,6 @@ a:hover {
   position: relative;
   top: -2px; 
   margin-right: 5px;
-}
-
-#bible-tooltip {
-    color: var(--button);
-  background: var(--bg-color)
-    border: 1px solid #ccc;
 }
  
 .az-nav {

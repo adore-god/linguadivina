@@ -971,12 +971,20 @@ width: 50% !important
   color: var(--button);
 }
 
-.btn-dark,
-.btn-dark a:link,
-.btn-dark a:visited {
-  background: #F8F8FF;
-  color: #000 !important;
+.btn-outline:hover {
+  background: var(--accent-primary);
+  color: var(--text);
 }
+.btn-outline {
+  -webkit-tap-highlight-color: transparent; 
+  outline: none; 
+}
+
+.btn-outline:focus-visible {
+  outline: 2px solid var(--button);
+  outline-offset: 3px;
+}
+	
   
   header::before {
   	filter: var(--img-filter);
