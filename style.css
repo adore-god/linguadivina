@@ -1283,7 +1283,7 @@ table, td, th {
 
 .date-modified-display {
   font-size: 0.85rem;
-  color: var(--text-light, #999);
+  color: var(--text, #999);
   margin: 0.5rem 0;
 }
 
