@@ -415,7 +415,9 @@ background:#111;
 
 .btn-outline:hover {
   background: var(--accent-primary);
-  color: var(--bg-color);
+}
+.btn-outline:hover a {
+  color: var(--text);
 }
 
 .btn-outline {
