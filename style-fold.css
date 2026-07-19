@@ -1,4 +1,4 @@
-/* Critical CSS for LCP Optimization */
+
 :root {
   --green-bq: #010252;
   --accent-primary: #010252;
@@ -417,6 +417,7 @@ background:#111;
   background: var(--accent-primary);
   color: var(--bg-color);
 }
+
 .btn-outline {
   -webkit-tap-highlight-color: transparent; 
   outline: none; 
