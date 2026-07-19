@@ -462,7 +462,7 @@ background:#111;
   margin-top: 0.5em;
   min-width: 180px;
   background-color: var(--accent-primary);
-  border: 1px solid var(--button);
+  border: 0;
   border-radius: 6px;
   padding: 1em;
 }
@@ -478,6 +478,8 @@ background:#111;
   color: var(--text);
   font-weight: 500;
   white-space: nowrap;
+  text-transform: none;
+  font-size: 2.1em;
 }
 
 .link-dropdown-menu a:hover {
