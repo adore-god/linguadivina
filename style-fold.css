@@ -677,6 +677,17 @@ blockquote {
   font-size: 1.1em;
 }
 
+blockquote {
+  opacity: 1; /* default: always visible */
+}
+
+/* Animate every blockquote EXCEPT the first one on each page */
+blockquote:not(:first-of-type) {
+  animation: bqIn linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
 @keyframes bqIn {
   0% {
     opacity: 0;
@@ -687,12 +698,6 @@ blockquote {
     transform: translateY(0);
   }
 }
-
-blockquote {
-  animation: bqIn linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 70%;
-} 
 
 blockquote p {
 padding: 0;
