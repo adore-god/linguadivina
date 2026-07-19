@@ -455,7 +455,7 @@ background:#111;
 }
 
 .link-dropdown-menu {
-  display: none;
+  display: block;              /* changed from none */
   position: absolute;
   top: 100%;
   right: 0;
@@ -466,6 +466,18 @@ background:#111;
   border: 0.2px solid var(--text);
   border-radius: 6px;
   padding: 1em;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none;    
+}
+
+.link-dropdown.open .link-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .link-dropdown.open .link-dropdown-menu {
