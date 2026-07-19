@@ -385,19 +385,17 @@ header img {
 	
 	@keyframes dropIn {
   0% {
-    transform: translateY(-120px);
+    transform: translateY(-60px);
     opacity: 0;
-  }
-  60% {
-    transform: translateY(15px);
-    opacity: 1;
-  }
-  80% {
-    transform: translateY(-8px);
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
+}
+
+.btn-wrap.drop-in .btn-outline {
+  animation: dropIn 0.5s ease-out both;
 }
 
 .btn-wrap.drop-in .btn-outline {
