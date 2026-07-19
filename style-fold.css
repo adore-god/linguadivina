@@ -189,7 +189,7 @@ h1 {
 @keyframes h1FadeIn {
   0% {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-0px);
   }
   100% {
     opacity: 1;
@@ -678,10 +678,9 @@ blockquote {
 }
 
 blockquote {
-  opacity: 1; /* default: always visible */
+  opacity: 1; 
 }
 
-/* Animate every blockquote EXCEPT the first one on each page */
 blockquote:not(:first-of-type) {
   animation: bqIn linear both;
   animation-timeline: view();
