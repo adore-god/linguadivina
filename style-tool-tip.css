@@ -7,8 +7,8 @@
   height: 20px;
   margin-left: 6px;
   border-radius: 50%;
-  background: var(--green-bq); 
-  color: var(--text-light); 
+  background: var(--text-light); 
+  color: var(--ink); 
   border 1px solid var(--text);
   font-style: normal;
   font-weight: 500;
@@ -30,7 +30,7 @@
   font-size: 12px;
   padding:  2em 1.5em;
   background: var(--text-light); 
-  color: var(--text); 
+  color: var(--ink); 
   border-radius: 6px;
   border: 1px solid var(--text);
   z-index: 2001;
@@ -64,8 +64,8 @@ li.hub-group-label {
   color: var(--text);
   }
 	.info-tip .tip-text {
-  background: var(--accent-primary);
-  color: var(--text);
+  background: var(--text);
+  color: var(--bg-color);
   }
 	
 	}
