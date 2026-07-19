@@ -496,7 +496,13 @@ a:hover {
   border: 0;
   background-color: var(--green-bq) !important; 
   font-size: 0.8em; 
+  color: var(--text-light);
 }
+
+.book a {
+	color: var(--text-light);
+	}
+	
 .book img {
    filter: invert(0);
    mix-blend-mode: normal;
@@ -653,10 +659,9 @@ img {
   height: auto;
   min-height:auto;
   height:auto;
-  opacity: 0.8;
   padding: 0;
   overflow: hidden;
-  mix-blend-mode: multiply;
+  //mix-blend-mode: multiply;
 }
 
 .bible-key-icon {

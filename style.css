@@ -670,7 +670,7 @@ table {
 	
 #results a {
   font-weight: 500;
-  color: var(--blue);
+  color: var(--text);
   text-decoration:none;
 }
  
@@ -685,11 +685,12 @@ table {
 	width:100%;
 	background-color: var(--green-bq);
 	border-radius: 10px;
-	padding: 1em 1em
+	padding: 1em 1em;
+	color: var(--text-light);
 	}
 	
 .latest-posts a, .latest-posts a:visited {
-  color: var(--text);
+  color: var(--text-light);
   width: 90%;
   margin: 0 auto;
   white-space: normal !important;
