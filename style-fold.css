@@ -63,6 +63,8 @@
 
 body{
   font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text);
