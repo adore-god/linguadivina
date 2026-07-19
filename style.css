@@ -256,7 +256,7 @@ strong {
 }
 .center, .center-marg-auto {
   text-align: center !important;
-  margin:0 auto
+  margin:0 auto;
 }
 .aforce {
   text-decoration: underline dotted !important;
@@ -956,7 +956,7 @@ width: 50% !important
 
 .hero-description {
     font-weight: 500;
-    color: var(--text)
+    color: var(--text);
     }
 
 .hero-description::after {
@@ -1027,7 +1027,7 @@ width: 50% !important
  .lingua-divina2   {
   filter: var(--key-icon-filter);
   mix-blend-mode: var(--key-icon-blend);
-background-color: var(--bg-color)
+background-color: var(--bg-color);
   }
   
   img.reddit {
@@ -1076,10 +1076,7 @@ background-color: var(--bg-color)
 .srch-series-link h2 a {
   	color: var(--text);
   }
-	.stand-out img {
-    filter: invert(0) brightness(1.1) contrast(1.1);
-    mix-blend-mode: normal;
-  }
+
 	.stand-out img {
     filter: invert(0) brightness(1.1) contrast(1.1);
     mix-blend-mode: normal;
@@ -1106,7 +1103,7 @@ color: var(--text) !important;
   
 .aforce {
 	text-decoration-color: rgb(245, 245, 245) !important;
-	color: var(--text) 
+	color: var(--text);
 	}
 	
 .spec-undline {
@@ -1119,7 +1116,7 @@ color: var(--text) !important;
 
 #bible-tooltip {
     color: var(--button);
-  background: var(--bg-color)
+  background: var(--bg-color);
   }
 
 
@@ -1164,7 +1161,6 @@ blockquote {
 .gs-snippet,
 .gs-visibleUrl,
 .gcsc-find-more-on-google {
- 	background-color: var(--bg);
  	border:0 !important;
  }
  
@@ -1194,7 +1190,6 @@ blockquote {
 	
  #custom-search-input {
     border: 0.7px solid #888;
-    background: var(--bg);
 }
 
 #custom-search-input:focus {
@@ -1279,7 +1274,7 @@ table, td, th {
   }
   
   .footer-auth {
-  background-color:  var(----bg-color-two);
+  background-color:  var(--bg-color-two);
   margin: 4em auto 30px;
   text-align: center;
   font-size: 0.8em; 

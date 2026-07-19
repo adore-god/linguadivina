@@ -3,8 +3,8 @@
   --green-bq: #010252;
   --accent-primary: #010252;
   --ink: #F2FFF6;
-  --text-light: #F2FFF6;
-  --text-color-light: #F2FFF6;
+  --text-light: #dedffc;
+  --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
@@ -736,7 +736,6 @@ img {
   height:auto;
   padding: 0;
   overflow: hidden;
-  //mix-blend-mode: multiply;
 }
 
 .bible-key-icon {
@@ -806,7 +805,7 @@ img {
 	display: none;
 	background:transparent;
 	border:0;
-	color: car(--text);;
+	color: car(--text);
 	font-size: 2em;
 	vertical-align: baseline;
     padding: 0 0 0 10px ;
