@@ -465,7 +465,7 @@ font-weight:500;
   text-decoration:none;
   display: block;
   padding: 5px 0; 
-  color: var(--text);
+  color: var(--ink);
 	}
 
 /* =======================
@@ -929,7 +929,7 @@ width: 50% !important
     --gold: #c9a84c;
     --gold-light: #e8d08a;
     --grey-dim: #D3DAD9;
-    --ink: #1a1208;
+    --ink: #dedffc;
     --navy-bq: #222;
     --shadow: #666;
     --icon-filter: brightness(1.5);
@@ -1114,7 +1114,7 @@ color: var(--text) !important;
 
 blockquote { 
   background-color: var(--navy-bq);
-  color: var(--text);
+  color: var(--ink);
 }
 
   .sidebar {

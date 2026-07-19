@@ -1,8 +1,7 @@
 /* Critical CSS for LCP Optimization */
 :root {
   --text: #111111;
-  --text-light: #222222;
-  --ink: #111111;
+  --text-light: #dedffc;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
@@ -21,10 +20,10 @@
   --gold: #c9a84c;
     --gold-light: #e8d08a;
     --grey-dim: #444444;
-    --navy-bq: #eee;
+    --navy-bq: #010252;
     --navy-bq-two: #fae8db;
     --navy-bq-thr: #fee7d7;
-    --ink: #1a1208;
+    --ink: #dedffc;
     --shadow: #999;
 }
 
@@ -33,9 +32,9 @@
   --bg-color-two: #111111;
   --promo-bg: #dddddd;
   --text: #111111;
-  --text-light: #222222;
+  --text-light: #dedffc;
  --text-color-light: #dedffc;
-  --ink: #111111;
+  --ink: #dedffc;
   --link: #010252;
   --accent-color: #444444;
   --accent-primary: #010252;
@@ -49,8 +48,8 @@
   --gold: #c9a84c;
     --gold-light: #e8d08a;
     --grey-dim: #444444;
-    --navy-bq: #eee; 
-    --ink: #1a1208;
+    --navy-bq: #010252; 
+
     --shadow: #999;
    --icon-filter: brightness(1);
 }
