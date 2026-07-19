@@ -911,10 +911,10 @@ width: 50% !important
    ======================= */
 @media (prefers-color-scheme: dark) {
 	:root {
-    --text: #787D79;
-	--text-color-light: #787D79;
-	--ink: #787D79;
-	--link: #787D79;
+    --text: #C4CCC4;
+	--text-color-light: #C4CCC4;
+	--ink: #C4CCC4;
+	--link: #5B8262;
     --bg-color: #000;
     --accent-primary: #011204;
     --green-bq: #011204;
