@@ -1,7 +1,7 @@
 /* Critical CSS for LCP Optimization */
 :root {
-  --green-bq: #003610;
-  --accent-primary: #003610;
+  --green-bq: #010252;
+  --accent-primary: #010252;
   --ink: #F2FFF6;
   --text-light: #F2FFF6;
   --text-color-light: #F2FFF6;
@@ -28,16 +28,16 @@
 }
 
 :root.light {
---green-bq: #003610;
-  --accent-primary: #003610;
+--green-bq: #010252;
+  --accent-primary: #010252;
   --ink: #F2FFF6;
-  --text-light: #F2FFF6;
-  --text-color-light: #F2FFF6;
+  --text-light: #dedffc;
+  --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --link: #052902;
+  --link: #010252;
   --accent-color: #444444;
   --button: #333333;
   --verse-color: #000000;
@@ -60,7 +60,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body{
   font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;

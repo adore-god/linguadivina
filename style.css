@@ -912,13 +912,13 @@ width: 50% !important
    ======================= */
 @media (prefers-color-scheme: dark) {
 	:root {
-    --text: #C4CCC4;
-	--text-color-light: #C4CCC4;
-	--ink: #C4CCC4;
-	--link: #9BC9A4;
+    --text: #dedffc;
+	--text-color-light: #dedffc;
+	--ink: #dedffc;
+	--link: #dedffc;
     --bg-color: #000;
-    --accent-primary: #011204;
-    --green-bq: #011204;
+    --accent-primary: #010252;
+    --green-bq: #010252;
     --bg-color-two: #ffffff;
     --promo-bg: #333;
     --text-light: #D3DAD9;
