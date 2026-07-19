@@ -132,8 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const themes = {
-    light: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid var(--text)" },
-    dark: { background: "var(--bg-color)", color: "var(--text)", border: "1px solid var(--text)" }
+    light: { background: "var(--text-light)", color: "var(--text)", border: "1px solid var(--text)" },
+    dark: { background: "var(--text)", color: "var(--bg-color)", border: "1px solid var(--text)" }
   };
 
   // --- Theme Logic Linked to your HTML Class System ---

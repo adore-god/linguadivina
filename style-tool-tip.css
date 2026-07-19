@@ -7,9 +7,9 @@
   height: 20px;
   margin-left: 6px;
   border-radius: 50%;
-  background: var(--text-light); 
-  color: var(--ink); 
-  border 1px solid var(--text);
+  background: var(--green-bq);  
+  color: var(--ink);
+  border: 1px solid var(--text-light); 
   font-style: normal;
   font-weight: 500;
   cursor: pointer;
@@ -18,7 +18,7 @@
 }
 .info-tip::before {
   content: "i";
-  color: var(--accent-primary); 
+  color: var(--ink);              /* was --text-light — matched the invisible bg before */
 }
 .info-tip .tip-text {
   display: none;
@@ -28,14 +28,13 @@
   transform: translateX(-50%);
   width: 220px;
   font-size: 12px;
-  padding:  2em 1.5em;
+  padding: 2em 1.5em;
   background: var(--text-light); 
-  color: var(--ink); 
+  color: var(--ink);
   border-radius: 6px;
   border: 1px solid var(--text);
   z-index: 2001;
   text-align: left;
-  
 }
 .info-tip:hover .tip-text,
 .info-tip.active .tip-text {
@@ -57,11 +56,11 @@ li.hub-group-label {
 @media (prefers-color-scheme: dark) {
 	.info-tip::before {
   content: "i";
-  color: var(--text); 
+  color: var(--bg-color); 
 }
 	.info-tip {
-  background: var(--gold-bq); 
-  color: var(--text);
+  background: var(--text); 
+  color: var(--bg-color);
   }
 	.info-tip .tip-text {
   background: var(--text);
