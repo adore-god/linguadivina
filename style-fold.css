@@ -184,13 +184,12 @@ h1 {
   border-left: 0;
   padding: 1em;
   background: var(--accent-primary) ;
-  font-family: Oswald;
 }
 
 @keyframes h1FadeIn {
   0% {
     opacity: 0;
-    transform: translateY(-70px);
+    transform: translateY(-40px);
   }
   100% {
     opacity: 1;
@@ -199,7 +198,7 @@ h1 {
 } 
 
 h1 {
-  animation: h1FadeIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation: h1FadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 h2 {
@@ -692,7 +691,7 @@ blockquote {
 blockquote {
   animation: bqIn linear both;
   animation-timeline: view();
-  animation-range: entry 0% entry 60%;
+  animation-range: entry 0% entry 70%;
 } 
 
 blockquote p {
