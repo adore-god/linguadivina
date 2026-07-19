@@ -7,8 +7,8 @@
   height: 20px;
   margin-left: 6px;
   border-radius: 50%;
-  background: var(--bg-color-thr); 
-  color: var(--accent-color); 
+  background: var(--green-bq); 
+  color: var(--text-light); 
   border 1px solid var(--text);
   font-style: normal;
   font-weight: 500;
@@ -18,7 +18,7 @@
 }
 .info-tip::before {
   content: "i";
-  color: var(--accent-color); 
+  color: var(--accent-primary); 
 }
 .info-tip .tip-text {
   display: none;
@@ -29,13 +29,13 @@
   width: 220px;
   font-size: 12px;
   padding:  2em 1.5em;
-  background: var(--bg-color-thr);
-  color: var(--ink); 
+  background: var(--text-light); 
+  color: var(--text); 
   border-radius: 6px;
-  border 1px solid var(--text);
-  z-index: 20;
+  border: 1px solid var(--text);
+  z-index: 2001;
   text-align: left;
-  opacity: 0.93;
+  
 }
 .info-tip:hover .tip-text,
 .info-tip.active .tip-text {
@@ -55,13 +55,16 @@ li.hub-group-label {
    ======================= */
 
 @media (prefers-color-scheme: dark) {
-	
+	.info-tip::before {
+  content: "i";
+  color: var(--text); 
+}
 	.info-tip {
   background: var(--gold-bq); 
   color: var(--text);
   }
 	.info-tip .tip-text {
-  background: var(--gold-bq);
+  background: var(--accent-primary);
   color: var(--text);
   }
 	
