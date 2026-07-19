@@ -2,9 +2,9 @@
 :root {
   --green-bq: #003610;
   --accent-primary: #003610;
-  --ink: #dcf5da;
-  --text-light: #dcf5da;
-  --text-color-light: #f1fcf0;
+  --ink: #F2FFF6;
+  --text-light: #F2FFF6;
+  --text-color-light: #F2FFF6;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
@@ -30,9 +30,9 @@
 :root.light {
 --green-bq: #003610;
   --accent-primary: #003610;
-  --ink: #f1fcf0;
-  --text-light: #f1fcf0;
-  --text-color-light: #f1fcf0;
+  --ink: #F2FFF6;
+  --text-light: #F2FFF6;
+  --text-color-light: #F2FFF6;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
