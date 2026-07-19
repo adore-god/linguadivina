@@ -911,10 +911,10 @@ width: 50% !important
    ======================= */
 @media (prefers-color-scheme: dark) {
 	:root {
-    --text: #dcf5da;
-	--text-color-light: #dcf5da;
-	--ink: #dcf5da;
-	--link: #dcf5da;
+    --text: #787D79;
+	--text-color-light: #787D79;
+	--ink: #787D79;
+	--link: #787D79;
     --bg-color: #000;
     --accent-primary: #011204;
     --green-bq: #011204;
@@ -932,7 +932,7 @@ width: 50% !important
     --gold-light: #e8d08a;
     --grey-dim: #D3DAD9;
     --shadow: #666;
-    --icon-filter: brightness(1.5);
+    --icon-filter: brightness(1);
   }
 
   body {
@@ -955,7 +955,7 @@ width: 50% !important
 
 .hero-description {
     font-weight: 500;
-    color: var(--grey-dim)
+    color: var(--text)
     }
 
 .hero-description::after {
