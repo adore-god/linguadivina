@@ -173,17 +173,16 @@ h1.index-h1	{
   border: 0 !important;
 }
 
-
 h1 {
   color: var(--text-color-light);
   margin: 0.5em 0 1em 0em;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;
   line-height:1.1;
   border-left: 0;
   padding: 1em;
   background: var(--accent-primary) ;
-  
+  font-family: Oswald;
 }
 
 h2 {
