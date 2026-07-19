@@ -1,4 +1,10 @@
-
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.link-dropdown.open').forEach(dropdown => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+}); 
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. SETTINGS ---

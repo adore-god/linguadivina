@@ -10,3 +10,6 @@ document.querySelectorAll('.info-tip').forEach(tip => {
 document.addEventListener('click', () => {
   document.querySelectorAll('.info-tip.active').forEach(t => t.classList.remove('active'));
 });
+
+
+
