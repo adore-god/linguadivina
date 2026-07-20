@@ -172,14 +172,13 @@ input[type="text"]:focus {
   font-weight:500;
 }
 
+.sclPage {
+   margin-left: 1.2em;
+	}
 .sclPage li a {
    text-decoration: none;
    font-weight: 500;
 	}
-
-
-/* External links */
-
 
 em, i {
   font-style: normal;
