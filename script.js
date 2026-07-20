@@ -186,6 +186,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Skip the TOC on the homepage and the bible index page
   const path = window.location.pathname;
   const skipPaths = [
+    "/",
+    "/index.html",
+    "/index.htm",
     "/search.html",
     "/404.html",
     "/bible-reference/bible-index.html"
