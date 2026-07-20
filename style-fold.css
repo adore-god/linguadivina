@@ -455,7 +455,7 @@ background:#111;
 }
 
 .link-dropdown-menu {
-  display: block;              /* changed from none */
+  display: block;   
   position: absolute;
   top: 100%;
   right: 0;
@@ -488,13 +488,13 @@ background:#111;
 .link-dropdown-menu a:link,
 .link-dropdown-menu a:visited {
   display: block;
-  padding: 0.6em 1em;
+  padding: 1em 1.3em;
   text-decoration: none;
   color: var(--text) !important;
   font-weight: 500;
   white-space: nowrap;
   text-transform: none;
-  font-size: 2.1em;
+  font-size: 2.3em;
 }
 
 .link-dropdown-menu a:hover {
