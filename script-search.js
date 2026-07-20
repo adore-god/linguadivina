@@ -57,7 +57,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (typeof gtag === 'function') {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
-          gtag('event', query, {
+          // 1. Sanitize: Replace spaces/special chars with underscores, keep alphanumeric only
+          let sanitizedQuery = query.replace(/[^a-z0-9]/g, '_');
+          
+          // 2. Clean up multiple consecutive underscores
+          sanitizedQuery = sanitizedQuery.replace(/_+/g, '_');
+
+          // 3. Prevent GA4 40-character rejection (Leaves room for "search_")
+          const safeEventName = ('search_' + sanitizedQuery).substring(0, 40);
+
+          // Send the clean, validated data to analytics
+          gtag('event', safeEventName, {
             'search_term': query,
             'event_category': 'Site Search',
             'event_label': 'Local Search Box'
