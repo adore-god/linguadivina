@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (typeof gtag === 'function') {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
-          gtag('event', 'search', {
+          gtag('event', query, {
             'search_term': query,
             'event_category': 'Site Search',
             'event_label': 'Local Search Box'
