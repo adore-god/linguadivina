@@ -23,9 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     observer.observe(resultsList, { childList: true, subtree: true });
   }
 
-  // Simplified loadIndex to fetch once
   async function getIndex() {
-    if (searchIndex) return searchIndex; // Return cached if available
+    if (searchIndex) return searchIndex; 
     try {
       const response = await fetch(`${BASE_URL}searchIndex.json`);
       if (!response.ok) throw new Error('Failed to fetch: ' + response.status);
@@ -40,33 +39,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.getElementById('searchBox');
   const resultsSection = document.getElementById('results-section');
 
+  // Move the timer variable here so it persists safely across all inputs
+  let debounceTimer = null;
+
   if (searchBox) {
-    // Pre-load the index immediately so it's ready when they start typing
     getIndex();
 
-    let debounceTimer;
     searchBox.addEventListener('input', async function () {
       const query = this.value.trim().toLowerCase();
 
-      // Clear everything immediately to prevent "ghost" results
+      // Clear layout elements instantly
       resultsList.innerHTML = '';
       resultsSection.style.display = 'none';
 
+      // Always clear the previous timer first so old keystrokes don't stack up
+      clearTimeout(debounceTimer);
+
       if (!query) return;
 
+      // Track the event after the user stops typing for 700ms
       if (typeof gtag === 'function') {
-        clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
-          // 1. Sanitize: Replace spaces/special chars with underscores, keep alphanumeric only
-          let sanitizedQuery = query.replace(/[^a-z0-9]/g, '_');
-          
-          // 2. Clean up multiple consecutive underscores
-          sanitizedQuery = sanitizedQuery.replace(/_+/g, '_');
-
-          // 3. Prevent GA4 40-character rejection (Leaves room for "search_")
+          let sanitizedQuery = query.replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_');
           const safeEventName = ('search_' + sanitizedQuery).substring(0, 40);
 
-          // Send the clean, validated data to analytics
           gtag('event', safeEventName, {
             'search_term': query,
             'event_category': 'Site Search',
@@ -75,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 700);
       }
 
-      // Use the cached index
+      // Handle displaying UI results right away
       const index = await getIndex();
       const results = index.filter(page =>
         page.title.toLowerCase().includes(query) ||
@@ -83,19 +79,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       );
 
       function appendResults(list, items) {
-        // Double-check to ensure we don't append if the query changed while we were waiting
         if (searchBox.value.trim().toLowerCase() === '') return;
 
         items.forEach(page => {
           const li = document.createElement('li');
           const a = document.createElement('a');
-
           try {
             a.href = new URL(page.url, BASE_URL).href;
           } catch (e) {
             a.href = page.url;
           }
-
           a.textContent = page.title;
           a.classList.add('noTag');
           li.appendChild(a);
