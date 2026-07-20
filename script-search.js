@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const safeEventName = ('search_' + sanitizedQuery).substring(0, 40);
 
           gtag('event', safeEventName, {
-            'search_term': query,
+            'typed_term': query,
             'event_category': 'Site Search',
             'event_label': 'Local Search Box'
           });
