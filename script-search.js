@@ -59,17 +59,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Track the event after the user stops typing for 700ms
       if (typeof gtag === 'function') {
-        debounceTimer = setTimeout(() => {
-          let sanitizedQuery = query.replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_');
-          const safeEventName = ('search_' + sanitizedQuery).substring(0, 40);
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    // Keep the event name static as 'search'
+    gtag('event', 'search', {
+      'search_term': query, // Use the standard GA4 parameter name
+      'event_category': 'Site Search',
+      'event_label': 'Local Search Box'
+    });
+  }, 700);
+}
 
-          gtag('event', safeEventName, {
-            'typed_term': query,
-            'event_category': 'Site Search',
-            'event_label': 'Local Search Box'
-          });
-        }, 700);
-      }
 
       // Handle displaying UI results right away
       const index = await getIndex();

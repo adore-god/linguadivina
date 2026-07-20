@@ -235,9 +235,9 @@ Then the cloud came down covering the Tent of meeting, and the house was full of
 <button class="share-button share">Share</button>
 
 <div class="share-menu" id="share-menu">
-<a href="#" id="share-twitter" target="_blank">Twitter</a>
-<a href="#" id="share-facebook" target="_blank">Facebook</a>
-<button id="share-copy">Copy Link</button>
+<a onclick="gtag('event', 'twitter_click');" href="#" id="share-twitter" target="_blank">Twitter</a>
+<a onclick="gtag('event', 'facebook_share_click');" href="#" id="share-facebook" target="_blank">Facebook</a>
+<button onclick="gtag('event', 'copy_share_url');" id="share-copy">Copy Link</button>
 </div>
 </div>
 
