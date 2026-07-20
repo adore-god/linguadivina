@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const footer = document.querySelector(".start-here");
 
     if (footer) {
-        // We add inline CSS to ensure it stays on top of other elements
+      
         footer.insertAdjacentHTML(
             "afterend",
             '<div id="verse-link-container">' +
@@ -186,9 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Skip the TOC on the homepage and the bible index page
   const path = window.location.pathname;
   const skipPaths = [
-    "/",
-    "/index.html",
-    "/index.htm",
     "/search.html",
     "/404.html",
     "/bible-reference/bible-index.html"
