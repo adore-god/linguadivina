@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (typeof gtag === 'function') {
         debounceTimer = setTimeout(() => {
           let sanitizedQuery = query.replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_');
-          const safeEventName = ('lookup_' + sanitizedQuery).substring(0, 40);
+          const safeEventName = ('search_' + sanitizedQuery).substring(0, 40);
 
           gtag('event', safeEventName, {
             'typed_term': query,
