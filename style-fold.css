@@ -97,7 +97,7 @@ body{
 .hero-description::after {
   content: "";
   display: block; 
-  background-image: url('https://linguadivina.uk/images/gavel-seed.webp');
+  background-image: url('https://linguadivina.uk/images/gavel-seed-reduced.webp');
   background-repeat: no-repeat;
   background-size: contain;
   width: 160px;  
