@@ -869,13 +869,14 @@ table, td, th {
 }
 
 .toc-jump-links {
-  margin: 0.5rem 0 0;
+  margin: 0.5rem auto 0;
   padding-left: 1.1rem;
   font-size: 0.8rem;
+  width: 100%;
 }
 
 .toc-jump-links li {
-  margin: 0.15rem 0;
+  margin: 0.5rem 0;
 }
 
 .toc-jump-links a {
@@ -892,10 +893,6 @@ background: var(--bg-color);
   font-size: 0.78rem;
   border-left: 2px solid var(--bg-color);
 }
-
-
-		
-
 
 .footer-img {
 	margin: 2em auto;
