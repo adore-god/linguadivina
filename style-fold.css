@@ -842,13 +842,20 @@ img {
 }
 
 #theme-toggle {
-	display: none;
+	position: absolute;
+    top: -15px; 
+    left: 3px;
+    display: inline;
+	background:transparent;
+	border:0;
+	padding:20px;
+	z-index:4000;
 	background:transparent;
 	border:0;
 	color: var(--text);
 	font-size: 2em;
 	vertical-align: baseline;
-    padding: 0 0 0 10px ;
+     
 
 	}
 	
