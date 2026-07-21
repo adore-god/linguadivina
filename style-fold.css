@@ -525,6 +525,11 @@ a, a:link {
   text-decoration-color: var(--text-lighter);
   text-decoration-thickness: 0.8px;
   font-style: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus {
+  -webkit-tap-highlight-color: transparent;
 }
 
 b {
