@@ -1238,7 +1238,7 @@ color: var(--text);
 	
 .share-button {
 	background: var(--bg-color);
-	color: var(--bg-color-two);
+	color: var(--link);
 	}
 	
 .share-menu {
