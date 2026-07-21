@@ -927,6 +927,7 @@ width: 50% !important
     --bg-color-two: #ffffff;
     --promo-bg: #333;
     --text-light: #D3DAD9;
+    --text-lighter: #f5f5fc;
     --button: #D3DAD9;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
@@ -1087,8 +1088,8 @@ background-color: var(--bg-color);
   }
 	
   a, a b {
-    text-decoration-color: var(--link);
-    color: var(--link);
+    text-decoration-color: var(--text-lighter);
+    color: var(--text-lighter);
   }
   
 #Verse-Link-Container,

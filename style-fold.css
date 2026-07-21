@@ -4,6 +4,7 @@
   --accent-primary: #010252;
   --ink: #F2FFF6;
   --text-light: #dedffc;
+  --text-lighter: #0e22a1;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
@@ -32,6 +33,7 @@
   --accent-primary: #010252;
   --ink: #F2FFF6;
   --text-light: #dedffc;
+  --text-lighter: #0e22a1;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
@@ -506,10 +508,10 @@ a.redA {
 	}
 	
 a, a b {
-  color: var(--link);
+  color: var(--text-lighter);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--link);
+  text-decoration-color: var(--text-lighter);
   text-decoration-thickness: 0.8px;
   font-style: normal;
 }
