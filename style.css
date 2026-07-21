@@ -915,8 +915,8 @@ width: 50% !important
 /* =======================
    DARK MODE (AUTO SWITCH)
    ======================= */
-@media (prefers-color-scheme: dark) {
-	:root {
+
+	:root.dark {
     --text: #dedffc;
 	--text-color-light: #dedffc;
 	--ink: #dedffc;
@@ -941,6 +941,8 @@ width: 50% !important
     --shadow: #666;
     --icon-filter: brightness(1);
   }
+  
+  @media (prefers-color-scheme: dark) {
 
   body {
     background: var(--bg-color);
@@ -1237,6 +1239,7 @@ blockquote {
 	padding:20px;
 color: var(--text);
 	}
+	
 .share-button  {
   background: var(--bg-color);
   color: var(--text);

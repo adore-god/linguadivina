@@ -2,7 +2,7 @@
 function setCookie(name, value, days) {
     const d = new Date();
     d.setTime(d.getTime() + (days*24*60*60*1000));
-    document.cookie = name + "=" + encodeURIComponent(value) + 
+    document.cookie = name + "=" + encodeURIComponent(value) +
         ";expires=" + d.toUTCString() + ";path=/";
 }
 
@@ -13,12 +13,11 @@ function getCookie(name) {
         ?.split("=")[1] || null;
 }
 
-// --- Apply saved preference immediately ---
+// --- Apply saved/detected preference immediately ---
 (function() {
     const html = document.documentElement;
     let darkDisabled = getCookie("darkModeDisabled");
 
-    // First-ever visit — no cookie yet. Detect browser mode and store it.
     if (darkDisabled === null) {
         const systemPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
         darkDisabled = systemPrefersLight ? "true" : "false";
@@ -27,7 +26,9 @@ function getCookie(name) {
 
     if (darkDisabled === "true") {
         html.classList.add("light");
+        html.classList.remove("dark");
     } else {
+        html.classList.add("dark");
         html.classList.remove("light");
     }
 })();
@@ -39,14 +40,15 @@ function toggleDarkMode() {
 
     if (darkDisabled === "true") {
         html.classList.remove("light");
+        html.classList.add("dark");
         setCookie("darkModeDisabled", "false", 30);
     } else {
+        html.classList.remove("dark");
         html.classList.add("light");
         setCookie("darkModeDisabled", "true", 30);
     }
 }
 
-// --- Button event ---
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById("theme-toggle");
     if (btn) btn.addEventListener("click", toggleDarkMode);
