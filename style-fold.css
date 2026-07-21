@@ -507,17 +507,21 @@ a.redA {
   text-decoration-color: var(--red) !important;
 	}
 	
-a, a b {
+a, a:link, a b {
   color: var(--text-lighter);
-  font-weight: 500;
-  text-decoration: underline;
+  font-weight: 600;
+  text-decoration: none;
   text-decoration-color: var(--text-lighter);
   text-decoration-thickness: 0.8px;
   font-style: normal;
 }
 
 a:hover {
-  text-decoration-style: solid;
+  font-weight: 800;
+}
+
+a: visited {
+  color: #444;
 }
 
 .info-icon-i {
