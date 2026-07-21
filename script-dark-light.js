@@ -16,29 +16,28 @@ function getCookie(name) {
 // --- Apply saved preference immediately ---
 (function() {
     const html = document.documentElement;
-    const darkDisabled = getCookie("darkModeDisabled");
+    let darkDisabled = getCookie("darkModeDisabled");
+
+    // First-ever visit — no cookie yet. Detect browser mode and store it.
+    if (darkDisabled === null) {
+        const systemPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        darkDisabled = systemPrefersLight ? "true" : "false";
+        setCookie("darkModeDisabled", darkDisabled, 30);
+    }
 
     if (darkDisabled === "true") {
         html.classList.add("light");
-    } else if (darkDisabled === "false") {
-        html.classList.remove("light");
     } else {
-        // No cookie yet — this visitor has never toggled anything.
-        // Check what their browser actually prefers and set the class to match,
-        // so the toggle has an accurate starting point.
-        const systemPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-        if (systemPrefersLight) {
-            html.classList.add("light");
-        }
+        html.classList.remove("light");
     }
 })();
 
-// --- Toggle function (identical to your original) ---
+// --- Toggle function ---
 function toggleDarkMode() {
     const html = document.documentElement;
-    const isLight = html.classList.contains("light");
+    const darkDisabled = getCookie("darkModeDisabled");
 
-    if (isLight) {
+    if (darkDisabled === "true") {
         html.classList.remove("light");
         setCookie("darkModeDisabled", "false", 30);
     } else {
