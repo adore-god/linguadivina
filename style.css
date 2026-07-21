@@ -930,15 +930,15 @@ width: 50% !important
     --text: #dedffc;
 	--text-color-light: #dedffc;
 	--ink: #dedffc;
-	--link: #88b6fc; 
+	--link: #5d75c2; 
     --bg-color: #000;
     --accent-primary: #010233;
     --green-bq: #010233;
     --bg-color-two: #ffffff;
     --promo-bg: #333;
     --text-light: #D3DAD9;
-    --text-lighter: #88b6fc; 
-    --text-lighter-dim: #fcfcfc;
+    --text-lighter: #5d75c2; 
+    --text-lighter-dim: #5d75c2;
     --button: #D3DAD9;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
@@ -1101,8 +1101,8 @@ background-color: var(--bg-color);
   }
 	
   a, a:link {
-    text-decoration-color: var(--text-lighter);
-    color: var(--text-lighter);
+    text-decoration-color: var(--link);
+    color: var(--link);
   }
   
   a:hover {
