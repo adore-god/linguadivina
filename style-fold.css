@@ -191,8 +191,9 @@ h1.index-h1	{
 	padding-right:17px;
 	color: var(--text);
 	}
-.site-title a {
-	color: var(--ink);
+.site-title a,
+.site-title a:link,
+.site-title a:visited {
 	font-weight:600;
 	font-size:1.5em;
 	color: var(--text);
@@ -428,6 +429,13 @@ background:#111;
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 
+.btn-outline a,
+.btn-outline a:link,
+.btn-outline a:visited {
+color: var(--text);	
+font-weight: 500;
+	}
+
 .btn-outline:hover {
   background: var(--accent-primary);
 }
@@ -507,13 +515,17 @@ a.redA {
   text-decoration-color: var(--red) !important;
 	}
 	
-a, a:link, b {
+a, a:link {
   color: var(--text-lighter);
   font-weight: 600;
   text-decoration: none;
   text-decoration-color: var(--text-lighter);
   text-decoration-thickness: 0.8px;
   font-style: normal;
+}
+
+b {
+  font-weight: 600;
 }
 
 a:hover {
@@ -523,6 +535,10 @@ a:hover {
 a:visited {
   color: var(--text-lighter);
 }
+
+p a:visited {
+opacity:0.6;	
+	}
 
 .info-icon-i {
   display: inline-flex;
