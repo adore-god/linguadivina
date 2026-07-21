@@ -710,7 +710,6 @@ table {
 .latest-posts a:link,
 .latest-posts {
   color: var(--text-light);
-  width: 90%;
   margin: 0 auto;
   white-space: normal !important;
   word-wrap: break-word !important;
@@ -1332,6 +1331,27 @@ border: 0.2px solid var(--button);
   background: var(--text-lighter);
   color: var(--green-bq);
 }
+
+.latest-posts {
+	background-color: var(--green-bq);
+	color: var(--text);
+	}
+	
+.latest-posts a,
+.latest-posts a:link,
+.latest-posts {
+  color: var(--text);
+ 
+}
+
+.latest-posts a:visited {
+  color: var(--text-lighter-dim);
+}
+
+.latest-posts a:hover {
+  color: var(--text-lighter);
+}
+
   
   } /*Don't delete  */
   
