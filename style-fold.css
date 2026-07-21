@@ -9,7 +9,7 @@
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --link: #052902;
+  --link: #0e22a1;
   --accent-color: #444444;
   --button: #333333;
   --verse-color: #000000;
@@ -37,7 +37,7 @@
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --link: #010252;
+  --link: #0e22a1;
   --accent-color: #444444;
   --button: #333333;
   --verse-color: #000000;
@@ -508,8 +508,8 @@ a.redA {
 a, a b {
   color: var(--link);
   font-weight: 500;
-  text-decoration: none;
-  text-decoration-color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--link);
   text-decoration-thickness: 0.8px;
   font-style: normal;
 }
