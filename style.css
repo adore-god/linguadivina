@@ -497,9 +497,11 @@ font-weight:500;
   margin: 10px 10px;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color:var(--text);
+.sidebar a,
+.sidebar a:link,
+.sidebar a:visited {
+  font-weight: 500;
+  color: var(--text);
 }
 
 .sidebar .nav li:nth-child(3) {
@@ -534,12 +536,14 @@ font-weight:500;
 }
 
 .sidebar h2 {
-  margin: 1.6em 0 1em 8px;
+  margin: 1.6em 0 3em 8px;
   padding: 0 0 0 0.4em;
   font-size: 1.1em;
   border-left: 0 !important; 
 }
-.sidebar h2 a {
+.sidebar h2 a,
+.sidebar h2 a:link,
+.sidebar h2 a:visited{
 	font-weight:700;
 	text-transform: uppercase;
 	border-left: 0 !important; 
