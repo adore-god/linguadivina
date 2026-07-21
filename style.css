@@ -1085,13 +1085,14 @@ background-color: var(--bg-color);
     mix-blend-mode: normal;
   }
 	
-  a, a:link, b {
+  a, a:link {
     text-decoration-color: var(--text-lighter);
     color: var(--text-lighter);
   }
   
   a:hover {
   font-weight: 800;
+  color: var(--text-lighter);
 }
 
 a:visited {
@@ -1293,8 +1294,7 @@ border: 0.2px solid var(--button);
 
 .code-container {
   color: var(--text-light);
-  background-color: var(--accent-primary);
- 
+  background-color: var(--green-bq);
 }
 
 .button2 {
@@ -1304,8 +1304,8 @@ border: 0.2px solid var(--button);
 }
 
 .button2:hover {
-  background: var(--accent-primary);
-  color: var(--text-light);
+  background: var(--text);
+  color: var(--green-bq);
 }
   
   } /*Don't delete  */
