@@ -722,7 +722,7 @@ background:#f3f3f3;
 
 .breadcrumb a, .breadcrumb-current {
   font-size: 1em;     
-  padding: 1.125em 0.5em 1.125em 0 ; 
+  padding: 1.5em 0.5em 1.5em 0 ;  
   display: inline;  
   text-decoration: none !important;
   line-height: 1.7;  
@@ -734,7 +734,7 @@ background:#f3f3f3;
 .breadcrumb a,
 .breadcrumb a:link,
 .breadcrumb a:visited {
-	color: var(--link);  
+	color: var(--link); 
 	}
 	
 .breadcrumb a:hover {
