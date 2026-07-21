@@ -782,6 +782,7 @@ padding: 0em 0 0em;
   padding: 2em;
   color: var(--text);
   text-decoration:none;
+  
 }
 
 .share-menu a,
@@ -1079,7 +1080,7 @@ background-color: var(--bg-color);
     mix-blend-mode: normal;
   }
 	
-  a, a:link, a b {
+  a, a:link, b {
     text-decoration-color: var(--text-lighter);
     color: var(--text-lighter);
   }
