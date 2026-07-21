@@ -5,6 +5,7 @@
   --ink: #F2FFF6;
   --text-light: #dedffc;
   --text-lighter: #0e22a1;
+  --text-lighter-dim: #222c6e;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
@@ -34,6 +35,7 @@
   --ink: #F2FFF6;
   --text-light: #dedffc;
   --text-lighter: #0e22a1;
+   --text-lighter-dim: #222c6e;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
@@ -88,6 +90,7 @@ body{
   background: var(--bg-color);
   padding: 0em 1.2em 0 1em;
 }
+
 
 /* =======================
    HEADER
@@ -530,15 +533,15 @@ b {
 
 a:hover {
   font-weight: 800;
-}
-
-a:visited {
   color: var(--text-lighter);
 }
 
-article p a:visited {
-opacity:0.3;	
-	}
+a:visited {
+  color: var(--text-lighter-dim);
+}
+
+main a:visited {
+		}
 
 .info-icon-i {
   display: inline-flex;
