@@ -1313,13 +1313,13 @@ border: 0.2px solid var(--button);
 }
 
 .button2 {
-  background-color: var(--text-light);
+  background-color: var(--text);
   color: var(--accent-primary);
   border: 0.5px solid var(--text-light); 
 }
 
 .button2:hover {
-  background: var(--text);
+  background: var(--text-lighter);
   color: var(--green-bq);
 }
   
