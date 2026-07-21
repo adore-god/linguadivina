@@ -539,6 +539,8 @@ b {
 a:hover {
   font-weight: 800;
   color: var(--text-lighter);
+  font-size: 1.3em;
+  
 }
 
 a:visited {
