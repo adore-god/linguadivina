@@ -747,6 +747,7 @@ background:#f3f3f3;
 	
 .breadcrumb a:hover {
 	font-weight:800;
+	text-decoration:underline !important;
 	}
 	
 i {
