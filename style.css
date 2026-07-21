@@ -706,7 +706,9 @@ table {
 	color: var(--text-light);
 	}
 	
-.latest-posts a, .latest-posts a:visited {
+.latest-posts a,
+.latest-posts a:link,
+.latest-posts {
   color: var(--text-light);
   width: 90%;
   margin: 0 auto;
@@ -714,6 +716,14 @@ table {
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
   text-decoration: none;
+}
+
+.latest-posts a:visited {
+  color: var(--text-lighter-dim);
+}
+
+.latest-posts a:hover {
+  color: var(--text-light);
 }
 
 #disqus_thread {
