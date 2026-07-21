@@ -477,6 +477,16 @@ font-weight:500;
   padding: 5px 0; 
   color: var(--ink);
 	}
+	
+#series-links-wrapper a:visited 
+{
+color: var(--text-lighter-dim-on-dark);
+}	
+
+#series-links-wrapper a:hover
+{
+color: var(--ink);
+}	
 
 /* =======================
    SIDEBAR
@@ -716,7 +726,7 @@ table {
 }
 
 .latest-posts a:visited {
-  color: text-lighter-dim;
+  color: var(--text-lighter-dim-on-dark);
 }
 
 .latest-posts a:hover {
@@ -946,6 +956,7 @@ width: 50% !important
     --text-light: #D3DAD9;
     --text-lighter: #5d75c2; 
     --text-lighter-dim: #5d75c2;
+    --text-lighter-dim-on-dark: aaa;
     --button: #D3DAD9;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
@@ -1342,7 +1353,7 @@ border: 0.2px solid var(--button);
 }
 
 .latest-posts a:visited {
-  color: var(--text-lighter-dim);
+  color: var(--text-lighter-dim-on-dark);
 }
 
 .latest-posts a:hover {

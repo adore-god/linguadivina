@@ -6,6 +6,7 @@
   --text-light: #dedffc;
   --text-lighter: #024db0;
   --text-lighter-dim: #222c6e;
+  --text-lighter-dim-on-dark: #999;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
@@ -36,6 +37,7 @@
   --text-light: #dedffc;
   --text-lighter: #024db0;
    --text-lighter-dim: #222c6e;
+   --text-lighter-dim-on-dark: #999;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
