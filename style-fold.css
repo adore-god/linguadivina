@@ -4,14 +4,14 @@
   --accent-primary: #010252;
   --ink: #F2FFF6;
   --text-light: #dedffc;
-  --text-lighter: #0e22a1;
+  --text-lighter: #024db0;
   --text-lighter-dim: #222c6e;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --link: #0e22a1;
+  --link: #024db0;
   --accent-color: #444444;
   --button: #333333;
   --verse-color: #000000;
@@ -34,14 +34,14 @@
   --accent-primary: #010252;
   --ink: #F2FFF6;
   --text-light: #dedffc;
-  --text-lighter: #0e22a1;
+  --text-lighter: #024db0;
    --text-lighter-dim: #222c6e;
   --text-color-light: #dedffc;
   --text: #111111;
   --bg-color: #ffffff;
   --promo-bg: #dddddd;
   --bg-color-two: #111111;
-  --link: #0e22a1;
+  --link: #024db0;
   --accent-color: #444444;
   --button: #333333;
   --verse-color: #000000;
@@ -737,6 +737,7 @@ background:#f3f3f3;
   hyphens: auto;   
   
 }
+
 .breadcrumb a,
 .breadcrumb a:link,
 .breadcrumb a:visited {
