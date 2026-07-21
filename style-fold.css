@@ -507,7 +507,7 @@ a.redA {
   text-decoration-color: var(--red) !important;
 	}
 	
-a, a:link, a b {
+a, a:link, b {
   color: var(--text-lighter);
   font-weight: 600;
   text-decoration: none;
