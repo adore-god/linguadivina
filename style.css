@@ -1080,10 +1080,18 @@ background-color: var(--bg-color);
     mix-blend-mode: normal;
   }
 	
-  a, a b {
+  a, a:link, a b {
     text-decoration-color: var(--text-lighter);
     color: var(--text-lighter);
   }
+  
+  a:hover {
+  font-weight: 800;
+}
+
+a:visited {
+  color: #444;
+}
   
 #Verse-Link-Container,
 #VerseLinkBox {
@@ -1107,10 +1115,7 @@ color: var(--text) !important;
 .spec-undline {
   text-decoration-color: var(--link) !important;
 }
-  a:hover {
-    text-decoration-style: solid;
-  }
-
+  
 #bible-tooltip {
     color: var(--button);
   background: var(--bg-color);
