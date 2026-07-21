@@ -7,8 +7,8 @@
   height: 20px;
   margin-left: 6px;
   border-radius: 50%;
-  background: var(--green-bq);  
-  color: var(--ink);
+  background: var(--accent-primary);  
+  color: var(--text-light);
   border: 1px solid var(--text-light); 
   font-style: normal;
   font-weight: 500;
@@ -29,8 +29,8 @@
   width: 220px;
   font-size: 12px;
   padding: 2em 1.5em;
-  background: var(--text-light); 
-  color: var(--ink);
+  background-color: var(--accent-primary); 
+  color: var(--text-light);
   border-radius: 6px;
   border: 1px solid var(--text);
   z-index: 2001;
