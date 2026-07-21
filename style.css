@@ -923,7 +923,7 @@ width: 50% !important
     --promo-bg: #333;
     --text-light: #D3DAD9;
     --text-lighter: #f5f5fc;
-    --text-lighter-dim: #3f4b99;
+    --text-lighter-dim: #fcfcfc;
     --button: #D3DAD9;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
@@ -1095,7 +1095,7 @@ background-color: var(--bg-color);
 }
 
 a:visited {
-  color: var(--text-lighter);
+  color: var(--text-lighter-dim);
 }
   
 #Verse-Link-Container,
