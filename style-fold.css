@@ -539,7 +539,7 @@ b {
 a:hover {
   font-weight: 800;
   color: var(--text-lighter);
-  font-size: 1.3em;
+  text-decoration:underline;
   
 }
 
@@ -728,22 +728,22 @@ background:#f3f3f3;
   display:block;
 }
 
-.breadcrumb a, .breadcrumb-current {
+.breadcrumb a, 
+.breadcrumb-current,
+.breadcrumb a:link,
+.breadcrumb a:visited {
   font-size: 1em;     
-  padding: 1.5em 0.5em 1.5em 0 ;  
   display: inline;  
   text-decoration: none !important;
-  line-height: 1.7;  
+  line-height: 2;  
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;   
-  
+  color: var(--link); 
 }
 
-.breadcrumb a,
-.breadcrumb a:link,
-.breadcrumb a:visited {
-	color: var(--link); 
+.breadcrumb-current {
+	color: var(--text); 
 	}
 	
 .breadcrumb a:hover {
