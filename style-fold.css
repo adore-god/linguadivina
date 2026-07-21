@@ -640,9 +640,15 @@ a:visited {
   color: var(--text-light);
 }
 
-.book a {
+.book a,
+.book a:link,
+.book a:visited {
 	color: var(--text-light);
 	}
+	
+.book a:hover {
+font-weight:800;
+}	
 	
 .book img {
    filter: invert(0);
