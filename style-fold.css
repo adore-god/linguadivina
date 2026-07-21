@@ -728,8 +728,14 @@ background:#f3f3f3;
   hyphens: auto;   
   
 }
-.breadcrumb a {
+.breadcrumb a,
+.breadcrumb a:link,
+.breadcrumb a:visited {
 	color: var(--link);  
+	}
+	
+.breadcrumb a:hover {
+	font-weight:800;
 	}
 	
 i {

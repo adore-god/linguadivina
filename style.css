@@ -729,12 +729,18 @@ vertical-align: baseline;
 padding: 0em 0 0em;
 }
 	
-.label-links a {
+.label-links a,
+.label-links a:link,
+.label-links a:visited {
   font-weight: 600;
   letter-spacing: 0em;
   text-decoration: none;
   overflow:hidden
 }
+
+.label-links a:hover {
+	font-weight:800;
+	}
 
 .date-modified-display {
   font-size: 0.85rem;
