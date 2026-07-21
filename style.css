@@ -734,8 +734,8 @@ padding: 0em 0 0em;
 
 .date-modified-display {
   font-size: 0.85rem;
-  color: var(--muted-text, #222);
-  margin: 0.5rem 0;
+  color: #333;
+  margin: 1.5rem 0;
 }
 
 .share-button {
@@ -1279,9 +1279,7 @@ table, td, th {
 }
 
 .date-modified-display {
-  font-size: 0.85rem;
-  color: var(--text, #999);
-  margin: 2rem  0 2em; 
+  color: var(#999);
 }
 
 .link-dropdown-menu {
