@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- 3. SHARE MENU: now handled entirely by CSS (:hover). ---
-  // Twitter/Facebook links are set here since they depend on page URL/title at runtime.
+  // --- 3. SHARE MENU
+  
   const pageUrl = encodeURIComponent(window.location.href);
   const pageTitle = encodeURIComponent(document.title);
 
