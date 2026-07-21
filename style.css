@@ -175,9 +175,14 @@ input[type="text"]:focus {
 .sclPage {
    margin-left: 1.2em;
 	}
+	
 .sclPage li a {
    text-decoration: none;
    font-weight: 500;
+	}
+	
+.sclPage li a:hover {
+	font-weight:800;
 	}
 
 em, i {
