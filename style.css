@@ -703,13 +703,11 @@ table {
 	background-color: var(--green-bq);
 	border-radius: 10px;
 	padding: 1em 1em;
-	color: var(--text-light);
 	}
 	
 .latest-posts a,
-.latest-posts a:link,
-.latest-posts {
-  color: var(--text-light);
+.latest-posts a:link {
+  color: var(--ink);
   margin: 0 auto;
   white-space: normal !important;
   word-wrap: break-word !important;
@@ -718,11 +716,11 @@ table {
 }
 
 .latest-posts a:visited {
-  color: var(--text-lighter-dim);
+  color: text-lighter-dim;
 }
 
 .latest-posts a:hover {
-  color: var(--text-light);
+color: var(--ink);
 }
 
 #disqus_thread {
@@ -1338,9 +1336,8 @@ border: 0.2px solid var(--button);
 	}
 	
 .latest-posts a,
-.latest-posts a:link,
-.latest-posts {
-  color: var(--text);
+.latest-posts a:link {
+  color: var(--ink);
  
 }
 
@@ -1349,7 +1346,7 @@ border: 0.2px solid var(--button);
 }
 
 .latest-posts a:hover {
-  color: var(--text-lighter);
+  color: var(--ink);
 }
 
   
