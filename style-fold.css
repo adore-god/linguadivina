@@ -540,8 +540,6 @@ a:visited {
   color: var(--text-lighter-dim);
 }
 
-main a:visited {
-		}
 
 .info-icon-i {
   display: inline-flex;
