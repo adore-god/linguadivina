@@ -521,7 +521,7 @@ a:hover {
 }
 
 a:visited {
-  color: #444;
+  color: var(--text-lighter);
 }
 
 .info-icon-i {

@@ -1090,7 +1090,7 @@ background-color: var(--bg-color);
 }
 
 a:visited {
-  color: #444;
+  color: var(--text-lighter);
 }
   
 #Verse-Link-Container,
