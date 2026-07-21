@@ -17,14 +17,23 @@ function getCookie(name) {
 (function() {
     const html = document.documentElement;
     const darkDisabled = getCookie("darkModeDisabled");
+
     if (darkDisabled === "true") {
         html.classList.add("light");
-    } else {
+    } else if (darkDisabled === "false") {
         html.classList.remove("light");
+    } else {
+        // No cookie yet — this visitor has never toggled anything.
+        // Check what their browser actually prefers and set the class to match,
+        // so the toggle has an accurate starting point.
+        const systemPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        if (systemPrefersLight) {
+            html.classList.add("light");
+        }
     }
 })();
 
-// --- Toggle function ---
+// --- Toggle function (identical to your original) ---
 function toggleDarkMode() {
     const html = document.documentElement;
     const isLight = html.classList.contains("light");
@@ -43,9 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById("theme-toggle");
     if (btn) btn.addEventListener("click", toggleDarkMode);
 });
-
-
-
 
 
 
