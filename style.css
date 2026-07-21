@@ -738,68 +738,65 @@ padding: 0em 0 0em;
   margin: 0.5rem 0;
 }
 
+.share-button {
+	font-size:1.1em;
+	font-weight:700;
+	border:0;
+	background: var(--bg-color);
+	color: var(--link);
+	margin-left: 3px;
+	}
+
+#share-copy {
+	font-size:1.1em;
+	font-weight:700;
+	border:0;
+	background: var(--bg-color);
+	color: var(--text);
+	padding:0;
+	margin:0;
+	text-decoration:none;
+    padding: 0;
+	}
+	
 .share-dropdown {
   position: relative;
-  display: inline;
-  z-index: 1;
-  overflow:hidden;
+  display: inline-block;
 }
 
-.share-button.share {
-    font-size: 1.1em; 
-    background: transparent !important;      
-    cursor: pointer;
-    padding: 10px 7px;
-    font-weight: 500;
-    color: var(--link) ;
-    overflow:hidden;
-    line-height: 1.4;
-}
-
-.share-button.share:hover {
-    
-}
-
-	
 .share-menu {
   display: none;
   position: absolute;
-  background-color: var(--green-bq);
-  border: 0;
-  border-radius: 0.05em;
+  top: 100%;
+  left: 0;
+  background-color: var(--bg-color);
+  border: 0.8px solid var(--text);
+  border-radius: 20px;
   margin-top: 0.5em;
-  min-width: 150px;
+  min-width:  200px;
+  max-width: 300px;
   z-index: 1000;
-  padding:0em 0em;
-  box-shadow: none;
-  min-width: 45vw;
-  max-width: 250px;
-  overflow: hidden;
+  padding: 2em;
+  color: var(--text);
+  text-decoration:none;
 }
 
-#share-copy {
-padding:20px 1em 0 1em;
-text-transform: uppercase;
-color: var(--text-light);
-}
-	
-.share-menu a, .share-menu a:link, 
-.share-menu a:visited,
-.share-menu button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.2em 1em;
-  text-decoration: none;
-  background-color: var(--green-bq);
-  border: none;
-  cursor: pointer;
-  color: var(--text-light);
+.share-menu #share-copy {
+
+
 }
 
-.share-menu a:hover,
-.share-menu button:hover {
-  font-weight:700;
+.share-menu a,
+.share-menu  a:link,
+.share-link a:visited {
+color: var(--text);
+text-decoration:none;
+padding: 5px 0;
+}
+ 
+.share-dropdown:hover .share-menu {
+  display: flex;
+  flex-direction: column;
 }
 
 .like-btn {
@@ -820,13 +817,8 @@ color: var(--text-light);
 .like-count, .heart {
 	margin:0 0px 0 0;
     display: inline;
-    
 	}
 	
-.like-btn:hover {
-  
-}
-
 
 /* =======================
    TABLE RESET
@@ -1240,39 +1232,29 @@ blockquote {
 color: var(--text);
 	}
 	
-.share-button  {
-  background: var(--bg-color);
-  color: var(--text);
-  border: none
+.share-button {
+	background: var(--bg-color);
+	color: var(--text);
+	}
+	
+.share-menu {
+  background-color: var(--bg-color);
+  border: 0.8px solid var(--text);
+}
+
+.share-dropdown:hover .share-menu {
+  
 }
 
 .like-btn {
-  color: var(--text);
-  background: transparent 
-  }
-  
-.share-menu {
-  background-color: var(--green-bq);
-  color: var(--text);
-  border: 0.5px solid var(--button);
-  box-shadow: none;
-  position: absolute;
-  top:20%;
-  left: 0%;
-  padding:1.3em 1.1em;
-}
-
-.share-menu a,
-.share-menu button {
-  text-decoration: none;
-  background: none;
-  border: none;
+  background-color: transparent;
   color: var(--text);
 }
-
-.share-menu a:hover,
-.share-menu button:hover {
-}
+.like-count, .heart {
+	color: var(--text);
+  background: transparent;
+	}
+	
 table, td, th {
     background-color: transparent !important;
     filter: none !important;

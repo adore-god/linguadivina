@@ -10,12 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 1. SETTINGS ---
   const workerBase = "https://like-button-worker.hnnh.workers.dev";
 
-  // Derive a unique key from the current page path
-  // e.g. "/blog/my-post/"  "hasLiked_/blog/my-post/"
+ 
   const pageKey = window.location.pathname;
   const localStorageKey = `hasLiked_${pageKey}`;
 
-  // Pass the page slug as a query param so the worker knows which counter to use
+
   const workerUrl = `${workerBase}?page=${encodeURIComponent(pageKey)}`;
 
   const userHasLiked = localStorage.getItem(localStorageKey);
@@ -71,43 +70,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- 3. THE SHARE MENU LOGIC ---
-  const shareButton = document.querySelector(".share-button");
-  const shareMenu = document.getElementById("share-menu");
+  // --- 3. SHARE MENU: now handled entirely by CSS (:hover). ---
+  // Twitter/Facebook links are set here since they depend on page URL/title at runtime.
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
 
-  if (shareButton && shareMenu) {
-    const pageUrl = encodeURIComponent(window.location.href);
-    const pageTitle = encodeURIComponent(document.title);
+  const twitter = document.getElementById("share-twitter");
+  if (twitter) twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
 
-    const twitter = document.getElementById("share-twitter");
-    if (twitter) twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+  const facebook = document.getElementById("share-facebook");
+  if (facebook) facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 
-    const facebook = document.getElementById("share-facebook");
-    if (facebook) facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-
-    const copyButton = document.getElementById("share-copy");
-    if (copyButton) {
-      copyButton.addEventListener("click", async (e) => {
-        e.preventDefault();
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Link copied!");
-        shareMenu.style.display = "none";
-      });
-    }
-
-    shareButton.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isVisible = shareMenu.style.display === "block";
-      shareMenu.style.display = isVisible ? "none" : "block";
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!shareMenu.contains(e.target) && e.target !== shareButton) {
-        shareMenu.style.display = "none";
-      }
+  const copyButton = document.getElementById("share-copy");
+  if (copyButton) {
+    copyButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Link copied!");
     });
   }
 });
+
+
+
 
 // --- 4. LAST UPDATED DATE ---
   const dateMeta = document.querySelector('meta[name="date-modified"]');
@@ -295,8 +280,3 @@ document.addEventListener("DOMContentLoaded", function () {
     buildTOC();
   }
 })();
- 
- 
- 
- 
- 
