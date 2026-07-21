@@ -508,7 +508,10 @@ font-weight:500;
   font-weight: 500;
   color: var(--text);
 }
-
+.sidebar a:hover {
+	font-weight: 800;
+	}
+	
 .sidebar .nav li:nth-child(3) {
   padding-top: 10px;
 }
