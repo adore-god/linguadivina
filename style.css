@@ -735,7 +735,8 @@ padding: 0em 0 0em;
   font-weight: 600;
   letter-spacing: 0em;
   text-decoration: none;
-  overflow:hidden
+  overflow:hidden;
+  color: var(--text-lighter);
 }
 
 .label-links a:hover {
@@ -750,7 +751,7 @@ padding: 0em 0 0em;
 
 .share-button {
 	font-size:1.1em;
-	font-weight:700;
+	font-weight: 600;
 	border:0;
 	background: var(--bg-color);
 	color: var(--link);
