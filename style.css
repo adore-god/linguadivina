@@ -59,37 +59,12 @@
   font-size: 1em;
 }
 
-
-/* =======================
-   BREADCRUMB
-   ======================= */
 .gfp {
 text-decoration: underline solid;
   text-decoration-thickness: 0.6px;
   font-weight: 600 ! important;
   font-style: normal !important;
 	}
-
-.breadcrumb a {
-  text-decoration: underline solid;
-  text-decoration-thickness: 0.6px;
-font-weight: 600; 
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb-separator {
-  margin: 0 0.25em;
-  font-size: 0.75em;
-  font-style: normal;
-  font-weight: 800;
-}
-
-.breadcrumb-current {
-  font-style: italic;
-}
 
 
 /* =======================
@@ -277,7 +252,7 @@ strong {
 .code-container {
  max-height:150px;
   position: relative;
-  color: var(--text-light);
+  color: var(--light-on-dark);
   border: 1px solid #EFEBD8;
   padding: 0px;
   border-radius: 5px;
@@ -303,17 +278,17 @@ pre code {
   top: 10px;
   right: 10px;
   padding: 5px 10px;
-  background-color: var(--text-light);
+  background-color: var(--light-on-dark);
   color: var(--text);
-  border: 0.5px solid var(--text-light); 
+  border: 0.5px solid var(--light-on-dark); 
   border-radius: 2px;
   cursor: pointer;
   font-size: 1.6em;
 }
 
 .button2:hover {
-  background: var(--accent-primary);
-  color: var(--text-light);
+  background: var(--dark-navy);
+  color: var(--bright-navy);
 }
   
 .spec-undline {
@@ -410,7 +385,7 @@ list-style-type: "- ";
     padding: 1em 1em;
     border: 0px solid #ccc;
     border-radius: 8px;
-    background-color: var(--green-bq);
+    background-color: var(--dark-navy);
     border-radius:10px;
     width:100%;
     font-weight:800;
@@ -430,28 +405,6 @@ list-style-type: "- ";
   .reddit-container-feed h3 {
   border:0 !important;
   }
-
-  /* Remaining posts smaller */
-  .reddit-container-feed > div:nth-child(n+4) h3 {
-    font-size: 0.9em;
-    margin: 0 0 3px 0;
-    opacity: 0.8;
-  }
-
-  .reddit-container-feed a {
-    text-decoration: none;
-font-weight:500;
-  }
-
-  .reddit-container-feed a:hover {
-    text-decoration: underline;
-  }
-
-  .reddit-container-feed p {
-    font-size: 0.8em;
- 
-    margin: 0;
-  }
   
   .series-links-title {
   margin-top:1em; 
@@ -465,7 +418,7 @@ font-weight:500;
   padding: 1em 2em;
   border: 0px solid #ddd;
   margin: 0em auto 1.6em;
-  background: var(--green-bq);
+  background: var(--dark-navy);
   width:100%;
   border-radius: 10px;
 }
@@ -475,17 +428,17 @@ font-weight:500;
   text-decoration:none;
   display: block;
   padding: 5px 0; 
-  color: var(--ink);
+  color: var(--light-on-dark);
 	}
 	
 #series-links-wrapper a:visited 
 {
-color: var(--text-lighter-dim-on-dark);
+color: var(--text-dim-on-dark);
 }	
 
 #series-links-wrapper a:hover
 {
-color: var(--ink);
+color: var(--bright-navy);
 }	
 
 /* =======================
@@ -497,7 +450,7 @@ color: var(--ink);
   right: -400px;
   width: 280px;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color: var(--white);
   transition: right 0.3s ease;
   z-index: 3010;
   padding: 0 0 200px;
@@ -710,14 +663,14 @@ table {
 	overflow-y: auto;
 	overflow-x: hidden;
 	width:100%;
-	background-color: var(--green-bq);
+	background-color: var(--dark-navy);
 	border-radius: 10px;
 	padding: 1em 1em;
 	}
 	
 .latest-posts a,
 .latest-posts a:link {
-  color: var(--ink);
+  color: var(--light-on-dark);
   margin: 0 auto;
   white-space: normal !important;
   word-wrap: break-word !important;
@@ -726,11 +679,11 @@ table {
 }
 
 .latest-posts a:visited {
-  color: var(--text-lighter-dim-on-dark);
+  color: var(--text-dim-on-dark);
 }
 
 .latest-posts a:hover {
-color: var(--ink);
+color: var(--bright-navy);
 }
 
 #disqus_thread {
@@ -761,11 +714,12 @@ padding: 0em 0 0em;
   letter-spacing: 0em;
   text-decoration: none;
   overflow:hidden;
-  color: var(--text-lighter);
+  color: var(--link);
 }
 
 .label-links a:hover {
 	font-weight:800;
+	color: var(--bright-navy);
 	}
 
 .date-modified-display {
@@ -778,11 +732,14 @@ padding: 0em 0 0em;
 	font-size:1.1em;
 	font-weight: 600;
 	border:0;
-	background: var(--bg-color);
+	background: var(--white);
 	color: var(--link);
 	margin-left: 3px;
 	}
 
+.share-button:hover {
+	color: var(--bright-navy);
+	}
 #share-copy {
  font-size: 1.1rem;
   padding: 0.7em 0.4em;
@@ -793,14 +750,14 @@ padding: 0em 0 0em;
   border-radius: 10px;
   border: 1.7px solid var(--button);
   color: var(--button);
-  background: var(--bg-color);
+  background: var(--white);
   margin-top:5px;
 	}
 	
 .share-dropdown {
   position: relative;
   display: inline-block;
-  color: var(--link);
+  color: var(--dark-navy);
 }
 
 .share-menu {
@@ -808,7 +765,7 @@ padding: 0em 0 0em;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--bg-color);
+  background-color: var(--white);
   border: 0.8px solid var(--text);
   border-radius: 20px;
   margin-top: 0.5em;
@@ -876,7 +833,7 @@ table, td, th {
   padding: 0.6rem 0.9rem;
   border: 0;
   border-radius: 6px;
-  background: var(--bg-color) !important ;
+  background: var(--white) !important ;
 }
 
 .toc-jump-heading {
@@ -920,11 +877,11 @@ table, td, th {
 }
 
 .toc-jump-sublist {
-background: var(--bg-color);
+background: var(--white);
   margin: 0.15rem 0 0.15rem 1rem;
   padding-left: 0.9rem;
   font-size: 0.78rem;
-  border-left: 2px solid var(--bg-color);
+  border-left: 2px solid var(--white);
 }
 
 .footer-img {
@@ -945,27 +902,21 @@ width: 50% !important
 
 	:root.dark {
     --text: #dedffc;
-	--text-color-light: #dedffc;
-	--ink: #dedffc;
-	--link: #537af5; 
-    --bg-color: #000;
-    --accent-primary: #010233;
-    --green-bq: #010233;
-    --bg-color-two: #ffffff;
-    --promo-bg: #333;
-    --text-light: #D3DAD9;
-    --text-lighter: #537af5; 
-    --text-lighter-dim: #9eb2f0;
-    --text-lighter-dim-on-dark: #aaa;
+    --link: #6568eb;
+	--light-on-dark: #dedffc;
+    --white: #000;
+    --dark-navy: #010233;
+    --bright-navy: blue;
+    --grey-bg: #333;
+    --light-on-dark: #D3DAD9;
+    --light-on-darker: #537af5; 
+    --text-dim-on-light: #b366ff;
+    --text-dim-on-dark: #aaa;
     --button: #D3DAD9;
-    --gold: #F6E5B9;
-    --accent-color: #D3DAD9;
     --img-filter: invert(1) brightness(1.3) contrast(1.23);
   --img-blend: screen;
   --key-icon-filter: invert(0);
   --key-icon-blend: screen;
-    --gold: #c9a84c;
-    --gold-light: #e8d08a;
     --grey-dim: #D3DAD9;
     --shadow: #666;
     --icon-filter: brightness(1);
@@ -974,18 +925,14 @@ width: 50% !important
   @media (prefers-color-scheme: dark) {
 
   body {
-    background: var(--bg-color);
-    color: var(--accent-color);
+    background: var(--white);
+    color: var(--text);
   }
 
 .container {
-  background: var(--bg-color);
+  background: var(--white);
 }
 
-.reddit-container-feed, 
-.reddit-container-feed a {
-	color: var(--text);
-	}
 	.site-title, .site-title a {
 	color: var(--text);
 	border-left-color: var(--text);
@@ -1009,10 +956,10 @@ width: 50% !important
 }
 
 .btn-outline:hover {
-  background: var(--accent-primary);
+  background: var(--dark-navy);
 }
 .btn-outline:hover  a {
-  color: var(--text-light);
+  color: var(--bright-navy);
 }
 .btn-outline {
   -webkit-tap-highlight-color: transparent; 
@@ -1040,7 +987,7 @@ width: 50% !important
     opacity: 1 !important; 
   }
   img.cover-small {
-	border: 0.5px solid var(--ink);
+	border: 0.5px solid var(--light-on-dark);
 	box-shadow: 0px 0px 15px var(--shadow) ;
 	}
   img {
@@ -1049,21 +996,17 @@ width: 50% !important
   }
   
 .toc-jump-nav {
-  background: var(--promo-bg); 
+  background: var(--grey-bg); 
 }
 .toc-jump-sublist {
-  border-left-color: var(--promo-bg);
+  border-left-color: var(--grey-bg);
 }
-
-.gen-fnd-entry {
-    background-color: var(--green-bq);
- }
  
 .key-icon,
  .lingua-divina2   {
   filter: var(--key-icon-filter);
   mix-blend-mode: var(--key-icon-blend);
-background-color: var(--bg-color);
+background-color: var(--white);
   }
   
   img.reddit {
@@ -1071,20 +1014,20 @@ background-color: var(--bg-color);
 	}
 	
 	.amazon-promo {
-  background-color:  var(--promo-bg);
-  color: var(--text-light);
+  background-color:  var(--grey-bg);
+  color: var(--light-on-dark);
 }
 
 .amazon-promo__btn {
-  color: var(--text-light);
+  color: var(--light-on-dark);
 }
 
 .amazon-promo__label {
-  color: var(--text-light);
+  color: var(--light-on-dark);
 }
 
 .book {
-  background-color: var(--green-bq); 
+  background-color: var(--dark-navy); 
 }
 .book img {
    box-shadow: 0px 0px 7px var(--shadow);
@@ -1099,8 +1042,8 @@ background-color: var(--bg-color);
    
   h1 {
     border-left-color: var(--text);
-    color: var(--text-color-light);
-    background: var(--accent-primary);
+    color: var(--light-on-dark);
+    background: var(--dark-navy);
     
   }
   
@@ -1119,17 +1062,17 @@ background-color: var(--bg-color);
   }
 	
   a, a:link {
-    text-decoration-color: var(--link);
+    text-decoration-color: var(--dark-navy);
     color: var(--link);
   }
   
   a:hover {
   font-weight: 800;
-  color: var(--text-lighter);
+  color: var(--bright-navy);
 }
 
 a:visited {
-  color: var(--text-lighter-dim);
+  color: var(--text-dim-on-light);
 }
   
 #Verse-Link-Container,
@@ -1152,21 +1095,21 @@ color: var(--text) !important;
 	}
 	
 .spec-undline {
-  text-decoration-color: var(--link) !important;
+  text-decoration-color: var(--dark-navy) !important;
 }
   
 #bible-tooltip {
     color: var(--button);
-  background: var(--bg-color);
+  background: var(--white);
   }
 
 blockquote { 
-  background-color: var(--green-bq);
-  color: var(--ink);
+  background-color: var(--dark-navy);
+  color: var(--light-on-dark);
 }
 
   .sidebar {
-    background: var(--bg-color);
+    background: var(--white);
     border-left:0.2px solid #111
   }
   .sidebar h2 {
@@ -1276,12 +1219,16 @@ color: var(--text);
 	}
 	
 .share-button {
-	background: var(--bg-color);
+	background: var(--white);
 	color: var(--link);
 	}
 	
+	.share-button:hover {
+	color: var(--bright-navy);
+	}
+	
 .share-menu {
-  background-color: var(--bg-color);
+  background-color: var(--white);
   border: 0.8px solid var(--text);
 }
 
@@ -1305,7 +1252,7 @@ table, td, th {
   }
   
   .footer-auth {
-  background-color:  var(--bg-color-two);
+  background-color:  var(--text);
   margin: 4em auto 30px;
   text-align: center;
   font-size: 0.8em; 
@@ -1326,39 +1273,43 @@ border: 0.2px solid var(--button);
 	}
 
 .code-container {
-  color: var(--text-light);
-  background-color: var(--green-bq);
+  color: var(--light-on-dark);
+  background-color: var(--dark-navy);
 }
 
 .button2 {
   background-color: var(--text);
-  color: var(--accent-primary);
-  border: 0.5px solid var(--text-light); 
+  color: var(--dark-navy);
+  border: 0.5px solid var(--light-on-dark); 
 }
 
 .button2:hover {
-  background: var(--text-lighter);
-  color: var(--green-bq);
+  background: var(--light-on-darker);
+  color: var(--bright-navy);
 }
 
 .latest-posts {
-	background-color: var(--green-bq);
+	background-color: var(--dark-navy);
 	color: var(--text);
 	}
 	
 .latest-posts a,
 .latest-posts a:link {
-  color: var(--ink);
+  color: var(--light-on-dark);
  
 }
 
 .latest-posts a:visited {
-  color: var(--text-lighter-dim-on-dark);
+  color: var(--text-dim-on-dark);
 }
 
 .latest-posts a:hover {
-  color: var(--ink);
+  color: var(--bright-navy);
 }
+
+.breadcrumb a:hover {
+	color: var(--bright-navy);
+	}
 
   
   } /*Don't delete  */

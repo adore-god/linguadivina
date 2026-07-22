@@ -7,9 +7,9 @@
   height: 20px;
   margin-left: 6px;
   border-radius: 50%;
-  background: var(--accent-primary);  
-  color: var(--text-light);
-  border: 1px solid var(--text-light); 
+  background: var(--dark-navy);
+  color: var(--light-on-dark);
+  border: 1px solid var(--light-on-dark);
   font-style: normal;
   font-weight: 500;
   cursor: pointer;
@@ -18,7 +18,7 @@
 }
 .info-tip::before {
   content: "i";
-  color: var(--ink);              /* was --text-light — matched the invisible bg before */
+  color: var(--light-on-dark);
 }
 .info-tip .tip-text {
   display: none;
@@ -29,10 +29,10 @@
   width: 220px;
   font-size: 12px;
   padding: 2em 1.5em;
-  background-color: var(--accent-primary); 
-  color: var(--text-light);
+  background-color: var(--dark-navy);
+  color: var(--light-on-dark);
   border-radius: 6px;
-  border: 1px solid var(--text);
+  border: 1px solid var(--light-on-dark);
   z-index: 2001;
   text-align: left;
 }
@@ -40,31 +40,3 @@
 .info-tip.active .tip-text {
   display: block;
 }
-
-li.hub-group-label { 
-   list-style: none; 
-   margin-left: -1.5em; 
-   font-weight: 700; 
-   margin-top: 1em; 
-   pointer-events: none; 
-}
-
-/* =======================
-   DARK MODE (AUTO SWITCH)
-   ======================= */
-
-@media (prefers-color-scheme: dark) {
-	.info-tip::before {
-  content: "i";
-  color: var(--bg-color); 
-}
-	.info-tip {
-  background: var(--text); 
-  color: var(--bg-color);
-  }
-	.info-tip .tip-text {
-  background: var(--text);
-  color: var(--bg-color);
-  }
-	
-	}
