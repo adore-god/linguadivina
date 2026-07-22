@@ -956,10 +956,9 @@ width: 50% !important
 }
 
 .btn-outline:hover {
-  background: var(--dark-navy);
 }
 .btn-outline:hover  a {
-  color: var(--bright-navy);
+  
 }
 .btn-outline {
   -webkit-tap-highlight-color: transparent; 
