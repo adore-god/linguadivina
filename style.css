@@ -956,7 +956,7 @@ width: 50% !important
     --text-light: #D3DAD9;
     --text-lighter: #5d75c2; 
     --text-lighter-dim: #5d75c2;
-    --text-lighter-dim-on-dark: aaa;
+    --text-lighter-dim-on-dark: #aaa;
     --button: #D3DAD9;
     --gold: #F6E5B9;
     --accent-color: #D3DAD9;
