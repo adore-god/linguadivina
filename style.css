@@ -904,7 +904,7 @@ width: 50% !important
     --text: #dedffc;
     --link: #6568eb;
 	--light-on-dark: #dedffc;
-	--light-on-dark-link: #aeaff5;
+	--light-on-dark-link: #c0d3fa;
     --white: #000;
     --dark-navy: #010233;
     --bright-navy: blue;
@@ -912,7 +912,7 @@ width: 50% !important
     --light-on-dark: #D3DAD9;
     --light-on-darker: #537af5; 
     --text-dim-on-light: #b366ff;
-    --text-dim-on-dark: #b366ff;
+    --text-dim-on-dark: #e1c0fa;
     --button: #D3DAD9;
     --img-filter: invert(1) brightness(1.3) contrast(1.23);
   --img-blend: screen;
