@@ -4,11 +4,12 @@
   --dark-navy: #010252;
   --bright-navy: blue;
   --light-on-dark: #dedffc;
+  --light-on-dark-link: #aeaff5;
   --link: #2325cf;
   --light-on-dark: #dedffc;
   --light-on-darker: #010252;
   --text-dim-on-light: #500699;
-  --text-dim-on-dark: #999;
+  --text-dim-on-dark: #9954de;
   --white: #ffffff;
   --grey-bg: #dddddd;
   --button: #333333;
@@ -26,9 +27,11 @@
   --dark-navy: #010252;
   --bright-navy: blue;
   --light-on-dark: #dedffc;
+  --light-on-dark-link: #aeaff5;
   --link: #2325cf;
   --light-on-darker: #010252;
   --text-dim-on-light: #500699;
+  --text-dim-on-dark: #9954de;
   --white: #ffffff;
   --grey-bg: #dddddd;
   --button: #333333;
