@@ -191,17 +191,6 @@ blockquote::after {
 }
 
 
-
-/* Header & Logo - Critical for LCP as it's often the first visual element */
-
-header {
-
-  
-
-}
-
-
-
 header img {
 
   display: block;
@@ -248,32 +237,7 @@ header img {
 
   }
 
-  .hero-description-two {
-
-    font-weight: 500;
-
-    letter-spacing: 0em;
-
-    text-transform: uppercase;
-
-    margin: 1.3em auto 1.5em;
-
-    width: 90%;
-
-    padding-left: -1em;
-
-    font-size: 0.9em;
-
-    color: var(--grey-dim);
-
-    text-align: center;
-
-  }
-
- 
-
-
-
+  
 .header a {
 
   text-decoration: none;
@@ -343,6 +307,15 @@ h1.index-h1	{
 	padding-left:10px
 
 	}
+	
+	
+.site-title a:hover {
+
+   text-decoration: none;
+
+   font-weight: 800;
+
+	}
 
 .site-title-span {
 
@@ -359,29 +332,6 @@ h1.index-h1	{
    HEADINGS
 
    ======================= */
-
-.seo-hidden {
-
-  position: absolute !important;
-
-  width: 1px !important;
-
-  height: 1px !important;
-
-  padding: 0 !important;
-
-  margin: -1px !important;
-
-  overflow: hidden !important;
-
-  clip: rect(0,0,0,0) !important;
-
-  white-space: nowrap !important;
-
-  border: 0 !important;
-
-}
-
 
 
 h1 {
@@ -931,15 +881,6 @@ font-weight: 500;
   font-weight: 800;
 
 }
-
-	
-
-a.redA {
-
-  text-decoration-color: var(--red) !important;
-
-	}
-
 	
 
 a, a:link {
@@ -986,8 +927,9 @@ a:hover {
 
   color: var(--bright-navy);
 
-  text-decoration:underline !important;
+  text-decoration: underline dotted;
 
+  text-decoration-thickness: 0.9px;
 }
 
 
@@ -1382,7 +1324,7 @@ background:#f3f3f3;
 
   display: inline;  
 
-  text-decoration: none !important;
+  text-decoration: none;
 
   line-height: 2;  
 
@@ -1393,6 +1335,8 @@ background:#f3f3f3;
   hyphens: auto;   
 
   color: var(--link); 
+  
+  padding:2px 0;
 
 }
 
@@ -1414,7 +1358,9 @@ background:#f3f3f3;
 
 	font-weight:800;
 
-	text-decoration:underline !important;
+	text-decoration: underline dotted;
+
+    text-decoration-thickness: 0.9px;
 
 	}
 

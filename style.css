@@ -471,6 +471,8 @@ color: var(--bright-navy);
 }
 .sidebar a:hover {
 	font-weight: 800;
+	text-decoration: underline dotted;
+    text-decoration-thickness: 0.9px;
 	}
 	
 .sidebar .nav li:nth-child(3) {
@@ -718,6 +720,9 @@ padding: 0em 0 0em;
 .label-links a:hover {
 	font-weight:800;
 	color: var(--bright-navy);
+	text-decoration: underline dotted;
+
+    text-decoration-thickness: 0.9px;
 	}
 
 .date-modified-display {
