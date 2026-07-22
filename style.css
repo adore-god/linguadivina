@@ -724,7 +724,7 @@ padding: 0em 0 0em;
 
 .date-modified-display {
   font-size: 0.85rem;
-  color: #333;
+  color: var(--text);
   margin: 2.5rem 0;
 }
 
