@@ -901,28 +901,27 @@ width: 50% !important
    ======================= */
 
 	:root.dark {
-    --text: #dedffc;
-    --link: #6568eb;
-	--light-on-dark: #dedffc;
-	--light-on-dark-link: #c0d3fa;
-    --white: #000;
-    --dark-navy: #010233;
-    --bright-navy: blue;
-    --grey-bg: #333;
-    --light-on-dark: #D3DAD9;
-    --light-on-darker: #537af5; 
-    --text-dim-on-light: #b366ff;
-    --text-dim-on-dark: #e1c0fa;
-    --button: #D3DAD9;
-    --img-filter: invert(1) brightness(1.3) contrast(1.23);
+  --text: #dedffc;
+  --dark-navy: #010233;
+  --bright-navy: blue;
+  --light-on-dark: #D3DAD9;
+  --light-on-dark-link: #c0d3fa;
+  --link: #8ea1ff;
+  --visited: #c99bfa;
+  --white: #000;
+  --grey-bg: #333;
+  --light-on-darker: #537af5;
+  --text-dim-on-light: #b366ff;
+  --text-dim-on-dark: #e1c0fa;
+  --button: #D3DAD9;
+  --img-filter: invert(1) brightness(1.3) contrast(1.23);
   --img-blend: screen;
   --key-icon-filter: invert(0);
   --key-icon-blend: screen;
-    --grey-dim: #D3DAD9;
-    --shadow: #666;
-    --icon-filter: brightness(1);
-  }
-  
+  --grey-dim: #D3DAD9;
+  --shadow: #666;
+  --icon-filter: brightness(1);
+}
   @media (prefers-color-scheme: dark) {
 
   body {
@@ -1062,7 +1061,7 @@ background-color: var(--white);
   }
 	
   a, a:link {
-    text-decoration-color: var(--dark-navy);
+    text-decoration-color: var(--link);
     color: var(--link);
   }
   
@@ -1072,7 +1071,7 @@ background-color: var(--white);
 }
 
 a:visited {
-  color: var(--text-dim-on-light);
+  color: var(--visited);
 }
   
 #Verse-Link-Container,

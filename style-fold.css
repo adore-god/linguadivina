@@ -1,12 +1,12 @@
 
-:root {
+:root, :root.light {
   --text: #111111;
   --dark-navy: #010252;
   --bright-navy: blue;
   --light-on-dark: #dedffc;
   --light-on-dark-link: #c0d3fa;
-  --link: #2325cf;
-  --light-on-dark: #dedffc;
+  --link: #2b3aa8;
+  --visited: #6d2fad;
   --light-on-darker: #010252;
   --text-dim-on-light: #500699;
   --text-dim-on-dark: #e1c0fa;
@@ -17,32 +17,12 @@
   --img-blend: multiply;
   --key-icon-filter: invert(0);
   --key-icon-blend: multiply;
-    --grey-dim: #444444;
-    --shadow: #999;
-    --icon-filter: brightness(1);
+  --grey-dim: #444444;
+  --shadow: #999;
+  --icon-filter: brightness(1);
 }
 
-:root.light {
-  --text: #111111;
-  --dark-navy: #010252;
-  --bright-navy: blue;
-  --light-on-dark: #dedffc;
-  --light-on-dark-link: #c0d3fa;
-  --link: #2325cf;
-  --light-on-darker: #010252;
-  --text-dim-on-light: #500699;
-  --text-dim-on-dark: #e1c0fa;
-  --white: #ffffff;
-  --grey-bg: #dddddd;
-  --button: #333333;
-  --img-filter: invert(0) brightness(1) contrast(1.1);
-  --img-blend: multiply;
-  --key-icon-filter: invert(0);
-  --key-icon-blend: multiply;
-    --grey-dim: #444444;
-    --shadow: #999;
-   --icon-filter: brightness(1);
-}
+
 
 * {
   margin: 0;
@@ -512,7 +492,7 @@ a:hover {
 }
 
 a:visited {
-  color: var(--text-dim-on-light);
+  color: var(--visited);
 }
 
 
