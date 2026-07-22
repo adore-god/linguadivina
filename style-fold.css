@@ -161,6 +161,9 @@ body{
   margin: 1em auto 0;
 
   filter: var(--icon-filter);
+  
+  mix-blend-mode: luminosity; 
+
 
 }
 

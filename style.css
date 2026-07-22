@@ -948,7 +948,7 @@ width: 50% !important
     }
 
 .hero-description::after {
-  filter: var(--icon-filter);
+  
     }
     
 .btn-outline {
