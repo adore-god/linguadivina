@@ -31,19 +31,15 @@
 
     if (matchedScrollUrls.length === 0) return;
 
-    // Collect all unique matching entries into a single array (no extra wrappers)
-    const allEntries = [];
-    const seenPaths = new Set();
-
+    const groups = [];
     matchedScrollUrls.forEach(scrollUrl => {
         const groupEntries = [];
         for (let articlePath in map) {
-            if (articlePath === currentPage || seenPaths.has(articlePath)) continue;
+            if (articlePath === currentPage) continue;
             const entry = map[articlePath];
             const seriesList = Array.isArray(entry.series) ? entry.series : [entry.series];
             if (seriesList.includes(scrollUrl)) {
                 groupEntries.push([articlePath, entry.title]);
-                seenPaths.add(articlePath);
             }
         }
         if (groupEntries.length === 0) return;
@@ -54,12 +50,12 @@
         restEntries.sort((a, b) => a[1].localeCompare(b[1]));
 
         const orderedEntries = hubEntry ? [hubEntry, ...restEntries] : restEntries;
-        allEntries.push(...orderedEntries);
+
+        groups.push({ scrollUrl, entries: orderedEntries });
     });
 
-    if (allEntries.length === 0) return;
+    if (groups.length === 0) return;
 
-    // Create Title Header
     const titleContainer = document.createElement("div");
     titleContainer.className = "series-links-title";
 
@@ -67,54 +63,23 @@
     h2Title.textContent = "More In This Series";
     titleContainer.appendChild(h2Title);
 
-    // Create Wrapper Container
     const container = document.createElement("div");
     container.id = "series-links-wrapper";
 
-    // Setup Batching Parameters
-    const BATCH_SIZE = 10;
-    let currentIndex = 0;
-
-    // Create "Load More" Button
-    const loadMoreBtn = document.createElement("button");
-    loadMoreBtn.id = "load-more-series-btn";
-    loadMoreBtn.textContent = "Load More Articles";
-    loadMoreBtn.type = "button";
-    loadMoreBtn.style.cssText = "display: block; margin: 15px 0; padding: 10px 15px; cursor: pointer;";
-
-    function renderNextBatch() {
-        const nextBatch = allEntries.slice(currentIndex, currentIndex + BATCH_SIZE);
-        const fragment = document.createDocumentFragment();
-
-        nextBatch.forEach(([path, linkTitle]) => {
+    groups.forEach(group => {
+        group.entries.forEach(([path, linkTitle]) => {
             const a = document.createElement("a");
             a.href = path;
             a.textContent = linkTitle;
-            a.className = "series-link-item";
-            
-            // Clean DOM node: simple block link without redundant <div> wrappers
-            const wrapper = document.createElement("div");
-            wrapper.appendChild(a);
-            fragment.appendChild(wrapper);
+            const div = document.createElement("div");
+            div.appendChild(a);
+            container.appendChild(div);
         });
+        const divider = document.createElement("div");
+        divider.className = "series-group-divider";
+        container.appendChild(divider);
+    });
 
-        // Insert new items right before the button
-        container.insertBefore(fragment, loadMoreBtn);
-        currentIndex += BATCH_SIZE;
-
-        // Hide the button once all items are rendered
-        if (currentIndex >= allEntries.length) {
-            loadMoreBtn.style.display = "none";
-        }
-    }
-
-    loadMoreBtn.addEventListener("click", renderNextBatch);
-    container.appendChild(loadMoreBtn);
-
-    // Initial load of the first 10 items
-    renderNextBatch();
-
-    // Inject into document
     target.after(titleContainer);
     titleContainer.after(container);
 })();
