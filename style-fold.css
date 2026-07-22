@@ -727,7 +727,7 @@ background:#111;
 .btn-outline a:visited {
 
 color: var(--text);	
-
+text-decoration: none;
 font-weight: 500;
 
 	}
@@ -735,15 +735,13 @@ font-weight: 500;
 
 
 .btn-outline:hover {
+background:  var(--dark-navy);
 
-  
 
 }
 
 .btn-outline:hover a {
-
-  
-
+color: var(--light-on-dark);
 }
 
 
