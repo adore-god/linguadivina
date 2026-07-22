@@ -315,13 +315,11 @@ small {
 .start-here {
   background: transparent;
   border-radius: 4px;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 400; 
   font-size: 1.1em;
-  margin:  3em auto 2.5em;
-  text-align: justify;
+  margin:  4em auto 3.5em;
   width: 80%;
-  font-style:italic;
 }
 
 .start-here a {
@@ -946,10 +944,6 @@ width: 50% !important
     font-weight: 500;
     color: var(--text);
     }
-
-.hero-description::after {
-  
-    }
     
 .btn-outline {
   border: 1.7px solid var(--button);
@@ -1078,28 +1072,6 @@ a:visited {
   color: var(--visited);
 }
   
-#Verse-Link-Container,
-#VerseLinkBox {
-	display:block;
-    clear:both;
-	}
-	
-#Verse-Link-Container a,
-#Verse-Link-Container a:link,
-#Verse-Link-Container a:visited {
-text-decoration: none;
-font-weight: 600;
-color: var(--text) !important;	
-	}
-  
-.aforce {
-	text-decoration-color: rgb(245, 245, 245) !important;
-	color: var(--text);
-	}
-	
-.spec-undline {
-  text-decoration-color: var(--dark-navy) !important;
-}
   
 #bible-tooltip {
     color: var(--button);

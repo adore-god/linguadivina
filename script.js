@@ -112,53 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const footer = document.querySelector(".start-here");
-
-    if (footer) {
-      
-        footer.insertAdjacentHTML(
-            "afterend",
-            '<div id="verse-link-container">' +
-                '<div id="verse-left"><a href="https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html"><img loading="lazy" width="346" height="345" class="key-icon" alt="Lingua Divina Logo" src="/images/icons/lingua-divina-bible-key-logo.webp"></a></div>' +
-                '<div id="verse-right">' +
-                    '<a href="https://linguadivina.uk/yhvh-ehyeh-linguistic-framework.html">Lingua Divina — <small>Bible passage and verse translator using Genesis logic.</small></a>' +
-                '</div>' +
-            '</div>'
-        );
-
-        const link = document.getElementById("translator-link");
-
-        if (link) {
-            link.addEventListener("click", function (e) {
-                e.preventDefault();
-                const targetUrl = this.href;
-
-                // Fire GA4 if it exists
-                if (typeof gtag === "function") {
-                    gtag("event", "Bible_Translator_Link", {
-                        event_category: "Button",
-                        event_label: "Bible_Translator_Link",
-                    });
-                }
-
-                // Just go. 100ms is plenty for the tag to fire.
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 50);
-            });
-        }
-    }
-});
- 
- 
- 
  
 /**
  * script-toc.js
