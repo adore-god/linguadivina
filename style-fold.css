@@ -930,6 +930,8 @@ a:hover {
   text-decoration: underline dotted;
 
   text-decoration-thickness: 0.9px;
+  
+   text-decoration-color: currentColor !important;
 }
 
 
