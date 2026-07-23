@@ -1736,22 +1736,86 @@ img {
   min-width: 260px;
   border: 1px solid rgba(128,128,128,0.25);
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 0em 1.2em 1.2em;
   box-sizing: border-box;
-  background: var(--dark-navy);
+  background: var(--dark-navy) !important;
   color: var(--light-on-dark)
 }
-.card-grid .card h3 {
-  margin-top: 0;
-  color: var(--light-on-dark);
-  text-align: center;
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
+
+.card h3 {
+  margin: 0.2em 0 1rem -0.5em;
+   text-align: center;
+  color: var(--light-on-dark)
+  }
+  
 .card-grid .card a.card-link {
   display: inline-block;
   margin-top: 0.75rem;
   font-weight: 600;
   color: var(--light-on-dark)
 }
+
+#series-cards .card {
+  margin-top: 2em;
+  max-height:300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#series-cards .card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#series-cards .card ul li {
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+#series-cards .card ul li  a {
+  color: var(--light-on-dark);
+  font-weight:400;
+}
+
+#series-cards .card ul li:last-child {
+  margin-bottom: 0;
+}
+
+#modi-posts .card {
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: red !important;
+  color: var(--light-on-dark);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#modi-posts .card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#modi-posts .card ul li {
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+#modi-posts .card ul li:last-child {
+  margin-bottom: 0;
+}
+
+
+
 @media (max-width: 640px) {
   .card-grid .card {
     flex: 1 1 100%;

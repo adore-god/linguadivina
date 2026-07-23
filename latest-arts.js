@@ -1,6 +1,6 @@
 
 async function loadLatestPosts() {
-    const container = document.getElementById('latest-posts');
+    const container = document.getElementById('modi-posts');
 
     try {
         const response = await fetch('https://linguadivina.uk/sitemap_latest.xml');

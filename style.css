@@ -655,38 +655,6 @@ table {
   text-decoration:none;
 }
  
-.latest-posts h2 {
- 	margin-top: 1em;
- }
- 
-.latest-posts {
-	height:400px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	width:100%;
-	background-color: var(--dark-navy);
-	border-radius: 10px;
-	padding: 1em 1em;
-	}
-	
-.latest-posts a,
-.latest-posts a:link {
-  color: var(--light-on-dark);
-  margin: 0 auto;
-  white-space: normal !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.latest-posts a:visited {
-  color: var(--text-dim-on-dark);
-}
-
-.latest-posts a:hover {
-color: var(--bright-navy);
-}
 
 #disqus_thread {
 	color:#111;
@@ -1273,24 +1241,6 @@ border: 0.2px solid var(--button);
 
 .button2:hover {
   background: var(--light-on-darker);
-  color: var(--bright-navy);
-}
-
-.latest-posts {
-	background-color: var(--dark-navy);
-	}
-	
-.latest-posts a,
-.latest-posts a:link {
-  color: var(--light-on-dark);
- 
-}
-
-.latest-posts a:visited {
-  color: var(--text-dim-on-dark);
-}
-
-.latest-posts a:hover {
   color: var(--bright-navy);
 }
 
