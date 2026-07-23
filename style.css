@@ -698,24 +698,29 @@ padding: 5px 0;
 .like-btn {
   position: relative;
   z-index: 1001;
-  width: 4em;
-  height:4em:
+  box-sizing: border-box;   
+  width: 2em;
+  height: 2em;            
+  display: inline-flex;    
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;        
   background-color: var(--bright-navy);
   padding: 14px 5px;
   cursor: pointer;
-  margin:0 1em 4px 0; 
-  display: inline;
+  margin: 0 0.3em 4px 0.5em;
   color: var(--text);
   font-weight: 800;
-  font-size:4em;
-  border: 1px solid var(--text);; 
+  font-size: 4em;
+  border: 1px solid var(--text);
   line-height: 1.4;
-  border-radius:3px
+  border-radius: 3px;
 }
+
 .like-count, .heart {
-	margin:0 0px 0 0;
-    display: inline;
-	}
+  display: inline-block;    /* was "inline" */
+  margin: 0;
+}
 	
 	.card-grid {
   display: flex;
