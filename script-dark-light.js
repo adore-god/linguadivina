@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // --- Top Nav/Breadcrumb ---
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,32 +98,28 @@ document.addEventListener('DOMContentLoaded', () => {
     breadcrumb.appendChild(sep);
   }
 
-function createInfoIcon() {
+  function createInfoIcon() {
     const icon = document.createElement('span');
     icon.className = 'info-icon-i';
     icon.textContent = 'i';
     return icon;
-}
+  }
 
   // 1. Home
   breadcrumb.appendChild(createCrumb('https://linguadivina.uk/', 'Home'));
 
-  // Collect the existing links from the page
-  const labelLinks = Array.from(document.querySelectorAll('.label-links a'));
+  // Look up the current page directly in labelMap (keyed by full URL, no hash/query)
+  const currentPageUrl = window.location.origin + window.location.pathname;
+  const currentEntry = window.labelMap ? window.labelMap[currentPageUrl] : null;
 
-  // Handle "Articles A — Z" check
-  const creationIndex = labelLinks.findIndex(l => l.href.includes('bible-index.html'));
-  if (creationIndex > -1) {
-    labelLinks.splice(creationIndex, 1);
-    addSeparator();
-    const frameworkCrumb = createCrumb('https://linguadivina.uk/bible-reference/bible-index.html', 'Framework & Articles A — Z');
-    frameworkCrumb.insertBefore(createInfoIcon(), frameworkCrumb.firstChild);
-    breadcrumb.appendChild(frameworkCrumb);
-}
+  const frameworkUrl = (currentEntry && currentEntry.series && currentEntry.series[0])
+    ? currentEntry.series[0]
+    : 'https://linguadivina.uk/bible-reference/bible-index.html#hub-pages';
 
-  // Handle Author link extraction
-  const authorIndex = labelLinks.findIndex(l => l.href.includes('about-author.html'));
-  let authorLink = (authorIndex > -1) ? labelLinks.splice(authorIndex, 1)[0] : null;
+  addSeparator();
+  const frameworkCrumb = createCrumb(frameworkUrl, 'Framework & Articles A — Z');
+  frameworkCrumb.insertBefore(createInfoIcon(), frameworkCrumb.firstChild);
+  breadcrumb.appendChild(frameworkCrumb);
 
   addSeparator();
 
@@ -135,21 +130,9 @@ function createInfoIcon() {
   currentPage.classList.add('breadcrumb-current', 'noTag');
   breadcrumb.appendChild(currentPage);
 
-  // 3. Add any other remaining label links
-  labelLinks.forEach(link => {
-    addSeparator();
-    breadcrumb.appendChild(createCrumb(link.href, link.textContent));
-  });
-
-  // 4. About The Author (Always last)
-  if (authorLink) {
-    addSeparator();
-    breadcrumb.appendChild(createCrumb(authorLink.href, authorLink.textContent));
-  }
+  // 3. About The Author (constant — always last, not sourced from labelMap)
+  addSeparator();
+  breadcrumb.appendChild(createCrumb('https://linguadivina.uk/about-author.html', 'About The Author'));
 
   mainContent.insertBefore(breadcrumb, mainContent.firstChild);
 });
-
-
-
-
