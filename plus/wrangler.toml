@@ -11,13 +11,13 @@ routes = [
 # KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS
 # and wrangler kv namespace create ARTICLES), then paste the ids below.
 kv_namespaces = [
-  { binding = "SUBSCRIBERS", id = "REPLACE_WITH_SUBSCRIBERS_NAMESPACE_ID" },
-  { binding = "ARTICLES", id = "REPLACE_WITH_ARTICLES_NAMESPACE_ID" }
+  { binding = "SUBSCRIBERS", id = "88b400a875094751afac46cfd28272f8" },
+  { binding = "ARTICLES", id = "591ca05207f64eb494f3963d6a0acece" }
 ]
 
 # Non-secret config
 [vars]
-STRIPE_PRICE_ID = "price_REPLACE_ME"
+STRIPE_PRICE_ID = "price_1TwUCY0AECUG2ECzlPggvdTb"
 SITE_URL = "https://linguadivina.uk"
 
 # Secrets are NOT set here. Run these once from your terminal instead:
