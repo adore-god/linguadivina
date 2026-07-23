@@ -369,77 +369,8 @@ ol, ul {
 list-style-type: "- "; 
 	}
 
-.reddit-container-feed p {
-  display: none;
-}
 
-.reddit-container-feed h1 {
-  display: none;
-}
   
-  .reddit-container-feed { 	margin: 0em 0 2em;
-    max-height: 400px;       
-    overflow-y: auto;     
-    padding: 1em 1em;
-    border: 0px solid #ccc;
-    border-radius: 8px;
-    background-color: var(--dark-navy);
-    border-radius:10px;
-    width:100%;
-    font-weight:800;
-  } 
-
-  .reddit-container-feed > div {
-    margin-bottom: 12px;
-  }
-
-  .reddit-container-feed > div:nth-child(-n+3) h3 {
-    font-size: 1em;
-    margin: 0 0 5px 0;
-    border:0;
-  }
-  
-  .reddit-container-feed h2,
-  .reddit-container-feed h3 {
-  border:0 !important;
-  }
-  
-  .series-links-title {
-  margin-top:1em; 
-  font-weight:600;
-  }
-  
-#series-links-wrapper {
-  max-height: 270px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 1em 2em;
-  border: 0px solid #ddd;
-  margin: 0em auto 1.6em;
-  background: var(--dark-navy);
-  width:100%;
-  border-radius: 10px;
-}
-
-#series-links-wrapper a,
-#series-links-wrapper a:link {
-  text-decoration:none;
-  display: block;
-  padding: 5px 0; 
-  color: var(--light-on-dark);
-  font-weight: 500;
-	}
-	
-#series-links-wrapper a:visited 
-{
-color: var(--text-dim-on-dark);
-}	
-
-#series-links-wrapper a:hover
-{
-color: var(--bright-navy);
-}	
-
 /* =======================
    SIDEBAR
    ======================= */
@@ -784,6 +715,118 @@ padding: 5px 0;
     display: inline;
 	}
 	
+	.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+	
+.card-grid .card {
+  flex: 1 1 calc(50% - 1.5rem);
+  min-width: 260px;
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 10px;
+  padding: 0em 1.2em 1.2em;
+  box-sizing: border-box;
+  background: var(--dark-navy);
+  color: var(--light-on-dark)
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.card h3 {
+  margin: 0 0 1.5rem -0.5em;
+   text-align: center;
+  color: var(--light-on-dark)
+  }
+  
+  .card ul {
+  margin: 0 2em;
+ list-style: none;
+  padding: 0;
+  font-size: 0.9em;
+  
+  }
+  
+.card-grid .card a.card-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--light-on-dark)
+}
+
+#series-cards .card {
+  margin-top: 2em;
+  max-height:300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#series-cards .card ul {
+  
+}
+
+#series-cards .card ul li {
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+#series-cards .card ul li  a,
+#modi-posts .card ul li  a {
+  color: var(--light-on-dark);
+  font-weight: 500;
+}
+
+#series-cards .card ul li a:hover,
+#modi-posts .card ul li a:hover {
+  font-weight: 800;
+  color: var(--bright-navy);
+}
+
+#series-cards .card ul li a:visited,
+#modi-posts .card ul li a:visited {
+  color: var(--visited);
+}
+
+#series-cards .card ul li:last-child {
+  margin-bottom: 0;
+}
+
+#modi-posts .card {
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: 2em;
+  color: var(--light-on-dark);
+}
+
+#modi-posts .card ul {
+  
+}
+
+#modi-posts .card ul li {
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+#modi-posts .card ul li:last-child {
+  margin-bottom: 0;
+}
+
+
+
+@media (max-width: 640px) {
+  .card-grid .card {
+    flex: 1 1 100%;
+  }
+}
+	
 
 /* =======================
    TABLE RESET
@@ -1028,11 +1071,7 @@ background-color: var(--white);
   	color: var(--text);
   }
   
-  #series-links-wrapper a,
-#series-links-wrapper a:link {
-  color: var(--light-on-dark);
-  font-weight: 500;
-	}
+ 
 
 	.stand-out img {
     filter: invert(0) brightness(1.1) contrast(1.1);

@@ -1,4 +1,3 @@
-
 async function loadLatestPosts() {
     const container = document.getElementById('modi-posts');
 
@@ -11,6 +10,13 @@ async function loadLatestPosts() {
         const urls = xmlDoc.getElementsByTagName('url');
 
         const latestPosts = Array.from(urls).slice(0, 30);
+
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = 'Latest Posts';
+        card.appendChild(h3);
 
         const ul = document.createElement('ul');
 
@@ -27,7 +33,8 @@ async function loadLatestPosts() {
             ul.appendChild(li);
         });
 
-        container.appendChild(ul);
+        card.appendChild(ul);
+        container.appendChild(card);
         document.dispatchEvent(new Event('latestPostsReady'));
 
     } catch (err) {
