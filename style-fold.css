@@ -1432,6 +1432,12 @@ blockquote {
 
 }
 
+blockquote a,
+blockquote a:link,
+blockquote a:visited {
+	color: var(--light-on-dark);
+	}
+
 
 
 blockquote p {
