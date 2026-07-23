@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // --- 4. LAST UPDATED DATE ---
   const dateMeta = document.querySelector('meta[name="date-modified"]');
-  const shareDropdown = document.querySelector('.share-dropdown');
+  const shareDropdown = document.querySelector('.footer');
 
   if (dateMeta && shareDropdown) {
     const date = new Date(dateMeta.content);
