@@ -1724,7 +1724,39 @@ img {
 
 
 
+	.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 	
+.card-grid .card {
+  flex: 1 1 calc(50% - 1.5rem);
+  min-width: 260px;
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: var(--dark-navy);
+  color: var(--light-on-dark)
+}
+.card-grid .card h3 {
+  margin-top: 0;
+  color: var(--light-on-dark);
+  text-align: center;
+}
+.card-grid .card a.card-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--light-on-dark)
+}
+@media (max-width: 640px) {
+  .card-grid .card {
+    flex: 1 1 100%;
+  }
+}
 
 
 

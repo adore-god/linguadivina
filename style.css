@@ -426,7 +426,8 @@ list-style-type: "- ";
   text-decoration:none;
   display: block;
   padding: 5px 0; 
-  color: var(--light-on-dark-link);
+  color: var(--light-on-dark);
+  font-weight: 500;
 	}
 	
 #series-links-wrapper a:visited 
@@ -670,12 +671,13 @@ table {
 	
 .latest-posts a,
 .latest-posts a:link {
-  color: var(--light-on-dark-link);
+  color: var(--light-on-dark);
   margin: 0 auto;
   white-space: normal !important;
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .latest-posts a:visited {
@@ -1057,6 +1059,12 @@ background-color: var(--white);
 .srch-series-link h2 a {
   	color: var(--text);
   }
+  
+  #series-links-wrapper a,
+#series-links-wrapper a:link {
+  color: var(--light-on-dark);
+  font-weight: 500;
+	}
 
 	.stand-out img {
     filter: invert(0) brightness(1.1) contrast(1.1);
@@ -1274,7 +1282,7 @@ border: 0.2px solid var(--button);
 	
 .latest-posts a,
 .latest-posts a:link {
-  color: var(--light-on-dark-link);
+  color: var(--light-on-dark);
  
 }
 
