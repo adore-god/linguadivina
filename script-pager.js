@@ -48,20 +48,23 @@ window.addEventListener("load", function () {
         const mainNode = nodes.find((n) => n["@type"] === "BlogPosting" || n["@type"] === "WebPage");
         if (!mainNode) return;
 
-        const postsContainer = document.getElementById("latest-posts");
-        if (postsContainer) {
-            const postLinks = Array.from(postsContainer.querySelectorAll("a"));
-            if (postLinks.length) {
-                mainNode.mainEntity = {
-                    "@type": "ItemList",
-                    "name": "Latest Updated Articles",
-                    "itemListElement": postLinks.map((a, index) => ({
-                        "@type": "ListItem",
-                        "position": index + 1,
-                        "url": a.href,
-                        "name": a.textContent.trim()
-                    }))
-                };
+        const isIndexPage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+        if (isIndexPage) {
+            const postsContainer = document.getElementById("modi-posts");
+            if (postsContainer) {
+                const postLinks = Array.from(postsContainer.querySelectorAll("a"));
+                if (postLinks.length) {
+                    mainNode.mainEntity = {
+                        "@type": "ItemList",
+                        "name": "Latest Updated Articles",
+                        "itemListElement": postLinks.map((a, index) => ({
+                            "@type": "ListItem",
+                            "position": index + 1,
+                            "url": a.href,
+                            "name": a.textContent.trim()
+                        }))
+                    };
+                }
             }
         }
 
