@@ -598,13 +598,14 @@ table {
 	font-weight: 600;
 	border:0;
 	background: var(--white);
-	color: var(--link);
+	color: var(--text);
 	margin-left: 3px;
 	}
 
 .share-button:hover {
 	color: var(--bright-navy);
 	}
+	
 #share-copy {
  font-size: 1.1rem;
   padding: 0.7em 0.4em;
@@ -629,11 +630,12 @@ table {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
-  background-color: var(--white);
+  right: 0;
+  background: var(--white);
   border: 0.8px solid var(--text);
   border-radius: 20px;
   margin-top: 0.5em;
+  margin-bottom: 0.5em;
   min-width:  200px;
   max-width: 300px;
   z-index: 1000;
@@ -1183,7 +1185,7 @@ color: var(--text);
 	
 .share-button {
 	background: var(--white);
-	color: var(--link);
+	color: var(--text);
 	}
 	
 	.share-button:hover {
