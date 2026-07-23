@@ -665,14 +665,14 @@ padding: 5px 0;
   position: relative;
   z-index: 1001;
   box-sizing: border-box;   
-  width: 2em;
-  height: 2em;            
+  width: 2.2em;
+  height: 2.3em;            
   display: inline-flex;    
   align-items: center;
   justify-content: center;
   overflow: hidden;        
   background-color: var(--bright-navy);
-  padding: 14px 5px;
+  padding: 14px 5px 14px 9px;
   cursor: pointer;
   margin: 0.6em 0.3em 0.6em 0.5em;
   color: var(--text);
@@ -685,11 +685,11 @@ padding: 5px 0;
 }
 
 .like-count, .heart {
-  display: inline-block;    /* was "inline" */
-  margin: 0;
+  display: inline-block;  
+  margin-right: 0.1em;
 }
 	
-	.card-grid {
+.card-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
