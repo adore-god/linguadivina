@@ -594,12 +594,13 @@ table {
 }
 
 .share-button {
-	font-size:1.1em;
+	font-size:1.2em;
 	font-weight: 600;
-	border:0;
+	border: 0;
 	background: var(--white);
 	color: var(--text);
 	margin-left: 3px;
+	vertical-align: middle; 
 	}
 
 .share-button:hover {
@@ -629,20 +630,20 @@ table {
 .share-menu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 70%;
   right: 0;
-  background: var(--white);
+  background: var(--white); 
   border: 0.8px solid var(--text);
   border-radius: 20px;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   min-width:  200px;
   max-width: 300px;
-  z-index: 1000;
+  z-index: 3004;
   padding: 2em;
   color: var(--text);
   text-decoration:none;
-  
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12); /* adds depth/separation too */ 
 }
 
 .share-menu a,
@@ -671,13 +672,14 @@ padding: 5px 0;
   background-color: var(--bright-navy);
   padding: 14px 5px;
   cursor: pointer;
-  margin: 0 0.3em 4px 0.5em;
+  margin: 0.6em 0.3em 0.6em 0.5em;
   color: var(--text);
   font-weight: 800;
   font-size: 4em;
   border: 1px solid var(--text);
   line-height: 1.4;
   border-radius: 3px;
+  vertical-align: middle; 
 }
 
 .like-count, .heart {
