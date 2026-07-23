@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const dateEl = document.createElement('p');
     dateEl.className = 'date-modified-display';
-    dateEl.textContent = `Last updated: ${formatted}`;
+    dateEl.textContent = `Page last updated: ${formatted}`;
 
     shareDropdown.insertAdjacentElement('beforebegin', dateEl);
   }
