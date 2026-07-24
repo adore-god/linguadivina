@@ -13,7 +13,7 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 { text-align-left;  padding-left:0.8em; padding-right:3em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   
-  h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-bottom: 1.5rem; line-height:1.4; }
+  h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
   p { width:90%; padding: 0;  margin: 3em auto}
