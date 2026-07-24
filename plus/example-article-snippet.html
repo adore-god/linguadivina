@@ -1,0 +1,38 @@
+<!-- Drop into each gated article page. Replace SLUG with the article's slug
+     (must match the key you stored in the ARTICLES KV namespace). -->
+<div id="article-teaser">
+  <!-- Your existing teaser / first paragraph goes here -->
+</div>
+<div id="article-full" style="display:none;"></div>
+<div id="article-paywall" style="display:none;">
+  <p>This article is for subscribers.</p>
+  <button id="subscribe-btn">Subscribe to read</button>
+</div>
+
+<script>
+  const SLUG = "REPLACE_WITH_ARTICLE_SLUG";
+
+  async function loadArticle() {
+    const res = await fetch(`/plus/api/article-content?slug=${SLUG}`);
+    if (res.ok) {
+      const data = await res.json();
+      document.getElementById("article-teaser").style.display = "none";
+      document.getElementById("article-full").innerHTML = data.html;
+      document.getElementById("article-full").style.display = "block";
+    } else {
+      document.getElementById("article-paywall").style.display = "block";
+    }
+  }
+
+  document.getElementById("subscribe-btn")?.addEventListener("click", async () => {
+    const res = await fetch("/plus/api/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ redirectSlug: window.location.pathname }),
+    });
+    const { url } = await res.json();
+    window.location.href = url;
+  });
+
+  loadArticle();
+</script>
