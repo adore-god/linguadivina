@@ -70,6 +70,9 @@ export default {
     if (path.endsWith("/api/verify-checkout") && request.method === "GET") {
       return verifyCheckout(request, env);
     }
+    if (path.endsWith("/api/login") && request.method === "GET") {
+      return restoreExistingSubscriber(request, env);
+    }
     if (path.endsWith("/api/article-content") && request.method === "GET") {
       return articleContent(request, env);
     }
@@ -181,7 +184,7 @@ async function createCheckoutSession(request, env) {
   } catch (_) {}
 
   const params = new URLSearchParams();
-  params.append("mode", "payment");
+  params.append("mode", "subscription");
   params.append("line_items[0][price]", env.STRIPE_PRICE_ID);
   params.append("line_items[0][quantity]", "1");
   params.append(
@@ -220,6 +223,8 @@ async function checkoutWebhook(request, env) {
   if (!valid) return new Response("Invalid signature", { status: 400 });
 
   const event = JSON.parse(payload);
+
+  // First-time subscribe — grants access.
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     const email = session.customer_details?.email;
@@ -229,13 +234,47 @@ async function checkoutWebhook(request, env) {
         JSON.stringify({
           status: "active",
           customerId: session.customer,
+          subscriptionId: session.subscription,
           purchasedAt: Math.floor(Date.now() / 1000),
-          expiresAt: null, // lifetime access — no expiration
+          expiresAt: null, // gated by live subscription status below, not a fixed date
         })
       );
     }
   }
+
+  // Ongoing subscription lifecycle — keeps SUBSCRIBERS in sync as billing
+  // status changes (renewed, past due, canceled, etc). These events don't
+  // include the email directly, only the Stripe customer ID, so we look it
+  // up via the API.
+  if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
+    const subscription = event.data.object;
+    const email = await getStripeCustomerEmail(subscription.customer, env);
+    if (email) {
+      const raw = await env.SUBSCRIBERS.get(email);
+      const existing = raw ? JSON.parse(raw) : {};
+      const isActive = ["active", "trialing"].includes(subscription.status);
+      await env.SUBSCRIBERS.put(
+        email,
+        JSON.stringify({
+          ...existing,
+          status: isActive ? "active" : "inactive",
+          customerId: subscription.customer,
+          subscriptionId: subscription.id,
+        })
+      );
+    }
+  }
+
   return new Response("ok");
+}
+
+async function getStripeCustomerEmail(customerId, env) {
+  const res = await fetch(`https://api.stripe.com/v1/customers/${customerId}`, {
+    headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+  });
+  if (!res.ok) return null;
+  const customer = await res.json();
+  return customer.email ? customer.email.toLowerCase() : null;
 }
 
 async function verifyCheckout(request, env) {
@@ -264,6 +303,42 @@ async function verifyCheckout(request, env) {
   });
 }
 
+// Handles Stripe's "customer already has a subscription" redirect (set up
+// via Dashboard → Checkout and Payment Links settings → "Limit customers to
+// one subscription" → redirect to your website). When someone who lost
+// their cookie clicks Subscribe again, Stripe recognizes their email
+// already has an active subscription and sends them here instead of
+// charging them twice, with a real Checkout Session ID. We verify that
+// session ID against Stripe's API — so this can't be spoofed just by typing
+// an email into the URL — then cross-check our own subscriber record before
+// granting a session cookie.
+async function restoreExistingSubscriber(request, env) {
+  const url = new URL(request.url);
+  const sessionId = url.searchParams.get("session_id");
+  if (!sessionId) return new Response("Missing session_id", { status: 400 });
+
+  const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
+    headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+  });
+  const session = await res.json();
+  const email = res.ok && session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  if (!email) return new Response("Could not verify session", { status: 400 });
+
+  const raw = await env.SUBSCRIBERS.get(email);
+  const subscriber = raw ? JSON.parse(raw) : null;
+  if (!subscriber || subscriber.status !== "active") {
+    return new Response("No active subscription found for this account", { status: 402 });
+  }
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: "/plus",
+      "Set-Cookie": await buildSessionCookie(email, env),
+    },
+  });
+}
+
 async function articleContent(request, env) {
   const url = new URL(request.url);
   const slug = url.searchParams.get("slug");
@@ -276,7 +351,7 @@ async function articleContent(request, env) {
   if (!articleHtml) return new Response(JSON.stringify({ error: "Not found" }), { status: 404 });
 
   const response = new Response(JSON.stringify({ html: articleHtml }), {
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
   });
   return withRefreshedSession(response, subscriber, env);
 }
@@ -404,7 +479,9 @@ ${FONT_LINK}
 </body>
 </html>`;
 
-  const response = new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+  const response = new Response(html, {
+    headers: { "Content-Type": "text/html; charset=UTF-8", "Cache-Control": "no-store" },
+  });
   return withRefreshedSession(response, subscriber, env);
 }
 

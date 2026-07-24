@@ -24,7 +24,7 @@ binding = "ARTICLES"
 
 # Non-secret config
 [vars]
-STRIPE_PRICE_ID = "price_1TwaBX0AECUG2ECzYKb3CQHF"
+STRIPE_PRICE_ID = "price_1TwcoI0AECUG2ECzOpZhqgvp"
 SITE_URL = "https://linguadivina.uk"
 
 # Secrets are NOT set here. Run these once from your terminal instead:
