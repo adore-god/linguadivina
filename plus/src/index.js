@@ -13,12 +13,12 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 { text-align-left;  padding-left:1.2em; padding-right:3em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
+  p { width:90%; padding: 0; }
 `;
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
-  p { width:90%; padding: 0; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; font-size: 1.05rem; }
