@@ -23,6 +23,12 @@ kv_namespaces = [
 [assets]
 directory = "./articles"
 binding = "ARTICLES"
+# Without this, Cloudflare serves any request that matches a file in
+# ./articles directly as a raw static file — BEFORE the Worker even runs.
+# That bypasses both the paywall check and the page template (styling,
+# header/footer). This forces every request through the Worker first,
+# which then fetches from ARTICLES itself when it needs to.
+run_worker_first = true
 
 # Non-secret config
 [vars]
