@@ -13,6 +13,14 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; }
 `;
 
+const SITE_HEADER = `
+<header class="header">
+  <div class="site-title" role="heading" aria-level="1"><a href="https://linguadivina.uk">Lingua Divina</a></div>
+  <p class="hero-description">The Court &amp; The Creation</p>
+  <button onclick="gtag('event', 'toggle_theme_click');" id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
+</header>
+`;
+
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { font-size: 1.6rem; margin-bottom: 1.5rem; }
