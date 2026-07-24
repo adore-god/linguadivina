@@ -107,7 +107,7 @@ async function createCheckoutSession(request, env) {
   } catch (_) {}
 
   const params = new URLSearchParams();
-  params.append("mode", "subscription");
+  params.append("mode", "payment");
   params.append("line_items[0][price]", env.STRIPE_PRICE_ID);
   params.append("line_items[0][quantity]", "1");
   params.append(
@@ -149,19 +149,14 @@ async function checkoutWebhook(request, env) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     const email = session.customer_details?.email;
-    const subscriptionId = session.subscription;
-    if (email && subscriptionId) {
-      const subRes = await fetch(`https://api.stripe.com/v1/subscriptions/${subscriptionId}`, {
-        headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
-      });
-      const subscription = await subRes.json();
+    if (email) {
       await env.SUBSCRIBERS.put(
         email.toLowerCase(),
         JSON.stringify({
           status: "active",
           customerId: session.customer,
-          subscriptionId,
-          currentPeriodEnd: subscription.current_period_end,
+          purchasedAt: Math.floor(Date.now() / 1000),
+          expiresAt: Math.floor(Date.now() / 1000) + 90 * 24 * 60 * 60,
         })
       );
     }
@@ -258,6 +253,7 @@ async function getActiveSubscriber(request, env) {
   const raw = await env.SUBSCRIBERS.get(session.email);
   const subscriber = raw ? JSON.parse(raw) : null;
   if (!subscriber || subscriber.status !== "active") return null;
+  if (subscriber.expiresAt && subscriber.expiresAt < Math.floor(Date.now() / 1000)) return null;
   return subscriber;
 }
 
