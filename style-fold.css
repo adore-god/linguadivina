@@ -348,9 +348,11 @@ h1 {
 
   border-left: 0;
 
-  padding: 1em;
+  padding: 1.3em;
 
   background: var(--dark-navy) ;
+  
+  font-size:2em;
 
 }
 
@@ -1762,7 +1764,7 @@ img {
 a.paywall-btn,
 a.paywall-btn:link,
 a.paywall-btn:visited {
-  color: var(--white);
+  color: var(--light-on-dark);
 }
 
 .paywall-btn a:hover {

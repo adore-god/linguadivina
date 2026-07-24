@@ -954,7 +954,7 @@ width: 50% !important
 a.paywall-btn,
 a.paywall-btn:link,
 a.paywall-btn:visited {
-  color: var(--text);
+  color: var(--light-on-dark);
 }
 
 .btn-outline {
