@@ -2,10 +2,12 @@ name = "plus"
 main = "src/index.js"
 compatibility_date = "2026-07-01"
 
-# This mounts the Worker on a subpath of your existing domain.
-# Requires linguadivina.uk's DNS to be on Cloudflare (it already is).
+# This mounts the Worker on the plus.linguadivina.uk subdomain itself
+# (root path), not as a subpath of the main linguadivina.uk site.
+# Requires linguadivina.uk's DNS to be on Cloudflare (it already is), and
+# a DNS record for the "plus" subdomain (proxied/orange-cloud).
 routes = [
-  { pattern = "linguadivina.uk/plus*", zone_name = "linguadivina.uk" }
+  { pattern = "plus.linguadivina.uk/*", zone_name = "linguadivina.uk" }
 ]
 
 # KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS),
@@ -25,7 +27,7 @@ binding = "ARTICLES"
 # Non-secret config
 [vars]
 STRIPE_PRICE_ID = "price_1TwcoI0AECUG2ECzOpZhqgvp"
-SITE_URL = "https://linguadivina.uk"
+SITE_URL = "https://plus.linguadivina.uk"
 
 # Secrets are NOT set here. Run these once from your terminal instead:
 #   npx wrangler secret put STRIPE_SECRET_KEY

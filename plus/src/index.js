@@ -147,8 +147,8 @@ async function buildSessionCookie(email, env) {
   // Domain=linguadivina.uk (no leading "plus.") makes this cookie valid on
   // linguadivina.uk AND every subdomain (plus.linguadivina.uk included).
   // Without this it's host-only to whichever exact host happens to set it,
-  // which is what caused the "logged in on linguadivina.uk/plus, logged out
-  // on plus.linguadivina.uk" bug.
+  // which is what originally caused sessions set on the apex domain to not
+  // be visible on the plus.linguadivina.uk subdomain.
   return `paywall_session=${cookieValue}; Path=/; Domain=linguadivina.uk; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
 }
 
@@ -197,7 +197,7 @@ async function sendMagicLink(request, env) {
     const sig = await hmac(env.COOKIE_SECRET, tokenPayload);
     const magicToken = `${tokenPayload}.${sig}`;
 
-    const magicLink = `${env.SITE_URL}/plus/api/verify-magic-link?token=${magicToken}`;
+    const magicLink = `${env.SITE_URL}/api/verify-magic-link?token=${magicToken}`;
 
     const emailRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -249,7 +249,7 @@ async function verifyMagicLink(request, env) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/plus",
+      Location: "/",
       "Set-Cookie": await buildSessionCookie(payload.email, env),
     },
   });
@@ -260,7 +260,7 @@ async function verifyMagicLink(request, env) {
 // ---------------------------------------------------------------------
 
 async function createCheckoutSession(request, env) {
-  let redirectSlug = "/plus";
+  let redirectSlug = "/";
   try {
     const body = await request.json();
     if (body?.redirectSlug) redirectSlug = body.redirectSlug;
@@ -272,7 +272,7 @@ async function createCheckoutSession(request, env) {
   params.append("line_items[0][quantity]", "1");
   params.append(
     "success_url",
-    `${env.SITE_URL}/plus/api/verify-checkout?session_id={CHECKOUT_SESSION_ID}&redirect=${encodeURIComponent(redirectSlug)}`
+    `${env.SITE_URL}/api/verify-checkout?session_id={CHECKOUT_SESSION_ID}&redirect=${encodeURIComponent(redirectSlug)}`
   );
   params.append("cancel_url", `${env.SITE_URL}${redirectSlug}`);
   params.append("managed_payments[enabled]", "true");
@@ -358,7 +358,7 @@ async function getStripeCustomerEmail(customerId, env) {
 async function verifyCheckout(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
-  const redirectPath = url.searchParams.get("redirect") || "/plus";
+  const redirectPath = url.searchParams.get("redirect") || "/";
   if (!sessionId) return new Response("Missing session_id", { status: 400 });
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
@@ -424,7 +424,7 @@ async function restoreExistingSubscriber(request, env) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/plus",
+      Location: "/",
       "Set-Cookie": await buildSessionCookie(email, env),
     },
   });
@@ -501,7 +501,7 @@ async function renderIndexPage(request, env) {
   const subscriber = await getActiveSubscriber(request, env);
   const manifest = await getArticleManifest(request, env);
   const items = manifest
-    .map((a) => `<li><a href="/plus/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a></li>`)
+    .map((a) => `<li><a href="/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a></li>`)
     .join("\n");
 
   const html = `<!DOCTYPE html>
@@ -551,7 +551,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <p><a href="/plus">&larr; All articles</a></p>
+  <p><a href="/">&larr; All articles</a></p>
   ${articleHtml}
   ${FOOTER_HTML}
 </body>
@@ -594,10 +594,10 @@ ${FONT_LINK}
   ${FOOTER_HTML}
   <script>
     document.getElementById('subscribe-btn').addEventListener('click', async () => {
-      const res = await fetch('/plus/api/create-checkout-session', {
+      const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ redirectSlug: '/plus/${slug}' }),
+        body: JSON.stringify({ redirectSlug: '/${slug}' }),
       });
       const data = await res.json();
       if (data.url) {
@@ -614,7 +614,7 @@ ${FONT_LINK}
       msg.textContent = 'Sending link...';
 
       try {
-        const res = await fetch('/plus/api/send-magic-link', {
+        const res = await fetch('/api/send-magic-link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
