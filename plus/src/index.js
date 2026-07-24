@@ -20,7 +20,7 @@ const INDEX_STYLE = `
   h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
-  a { color: ${BRAND_COLOR}; text-decoration: none; font-size: 1.05rem; }
+  a { color: ${BRAND_COLOR}; font-weight:500; text-decoration: none; font-size: 1.05rem; }
   a:hover { text-decoration: underline; }
 `;
 
