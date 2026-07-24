@@ -1,4 +1,3 @@
-
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
@@ -28,12 +27,13 @@ const PAYWALL_STYLE = `
   button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR}; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
   button:hover { background: ${BRAND_COLOR_DARK}; }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
+  .login-box { margin-top: 40px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; }
+  .login-box h2 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
+  .login-box p { font-size: 0.9rem; color: #666; margin-bottom: 16px; }
+  .login-box input { padding: 10px 14px; font-size: 0.95rem; width: 100%; max-width: 280px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+  .login-box button { margin-top: 10px; font-size: 0.9rem; padding: 10px 20px; }
+  #msg { margin-top: 12px; font-size: 0.9rem; color: ${BRAND_COLOR_DARK}; }
 `;
-
-// Shared site chrome — mirrors the header/footer used on the main
-// linguadivina.uk pages (see creation-amnon-tamar.html), simplified to not
-// depend on the main site's external stylesheets/scripts (dark-light
-// toggle, sidebar nav, etc.), which this Worker doesn't have access to.
 
 const SITE_HOME_URL = "https://linguadivina.uk";
 
@@ -76,10 +76,13 @@ export default {
     if (path.endsWith("/api/article-content") && request.method === "GET") {
       return articleContent(request, env);
     }
+    if (path.endsWith("/api/send-magic-link") && request.method === "POST") {
+      return sendMagicLink(request, env);
+    }
+    if (path.endsWith("/api/verify-magic-link") && request.method === "GET") {
+      return verifyMagicLink(request, env);
+    }
 
-    // Anything else under /plus/* that isn't an /api/ call is a page a
-    // human is trying to visit in their browser — e.g. /plus itself, or
-    // /plus/my-article-slug. Serve real HTML for those.
     if (request.method === "GET" && !path.includes("/api/")) {
       return renderPlusRoute(request, env);
     }
@@ -89,7 +92,7 @@ export default {
 };
 
 // ---------------------------------------------------------------------
-// Cookie / signature helpers (formerly cookie.js — now inlined here)
+// Cookie / signature helpers
 // ---------------------------------------------------------------------
 
 function toBase64Url(str) {
@@ -136,19 +139,12 @@ function getCookie(request, name) {
   return match ? match[1] : null;
 }
 
-// Browsers cap how long a cookie can live (Chrome enforces a hard ~400 day
-// ceiling on Set-Cookie Max-Age no matter what value is sent), so there's
-// no such thing as a literal "forever" cookie. Access itself is lifetime
-// (subscriber records have no expiresAt — see checkoutWebhook below), and
-// we slide this cookie's expiry forward on every authenticated page view
-// (see withRefreshedSession), so a subscriber who visits at least once
-// within any 400-day window never actually gets logged out.
 const SESSION_MAX_AGE = 400 * 24 * 60 * 60; // ~400 days, in seconds
 
 async function buildSessionCookie(email, env) {
   const expiresAt = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE;
   const cookieValue = await createSessionCookie(email, expiresAt, env.COOKIE_SECRET);
-  // Domain=linguadivina.uk (no leading www/plus) makes this cookie valid on
+  // Domain=linguadivina.uk (no leading "plus.") makes this cookie valid on
   // linguadivina.uk AND every subdomain (plus.linguadivina.uk included).
   // Without this it's host-only to whichever exact host happens to set it,
   // which is what caused the "logged in on linguadivina.uk/plus, logged out
@@ -156,9 +152,6 @@ async function buildSessionCookie(email, env) {
   return `paywall_session=${cookieValue}; Path=/; Domain=linguadivina.uk; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
 }
 
-// Attaches a freshly-dated session cookie to an outgoing Response when the
-// visitor has an active subscription, so the sliding window above actually
-// keeps sliding. No-op if there's no active subscriber to refresh.
 async function withRefreshedSession(response, subscriber, env) {
   if (!subscriber) return response;
   response.headers.append("Set-Cookie", await buildSessionCookie(subscriber.email, env));
@@ -175,6 +168,91 @@ async function verifyStripeSignature(payload, sigHeader, secret) {
   const sigBuffer = await crypto.subtle.sign("HMAC", key, enc.encode(signedPayload));
   const expectedSig = [...new Uint8Array(sigBuffer)].map((b) => b.toString(16).padStart(2, "0")).join("");
   return expectedSig === parts.v1;
+}
+
+// ---------------------------------------------------------------------
+// Magic Link Handlers
+// ---------------------------------------------------------------------
+
+async function sendMagicLink(request, env) {
+  try {
+    const { email } = await request.json();
+    if (!email) {
+      return new Response(JSON.stringify({ error: "Email is required." }), { status: 400 });
+    }
+
+    const cleanEmail = email.toLowerCase().trim();
+    const raw = await env.SUBSCRIBERS.get(cleanEmail);
+    const subscriber = raw ? JSON.parse(raw) : null;
+
+    if (!subscriber || subscriber.status !== "active") {
+      return new Response(JSON.stringify({ message: "If an active account exists, a link has been sent to your email." }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    // Token valid for 15 minutes
+    const expiresAt = Math.floor(Date.now() / 1000) + 15 * 60;
+    const tokenPayload = toBase64Url(JSON.stringify({ email: cleanEmail, exp: expiresAt }));
+    const sig = await hmac(env.COOKIE_SECRET, tokenPayload);
+    const magicToken = `${tokenPayload}.${sig}`;
+
+    const magicLink = `${env.SITE_URL}/plus/api/verify-magic-link?token=${magicToken}`;
+
+    const emailRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Lingua Divina <noreply@plus.linguadivina.uk>", // Use 'onboarding@resend.dev' if domain is unverified
+        to: [cleanEmail],
+        subject: "Sign in to Lingua Divina Plus",
+        html: `<p>Hello,</p>
+               <p>Click the link below to sign in to your Lingua Divina Plus account:</p>
+               <p><a href="${magicLink}"><strong>Sign in to Lingua Divina Plus</strong></a></p>
+               <p>This link will expire in 15 minutes.</p>`,
+      }),
+    });
+
+if (!emailRes.ok) {
+  const errDetails = await emailRes.text();
+  return new Response(JSON.stringify({ error: `Resend error: ${errDetails}` }), { status: 500 });
+}
+
+
+    return new Response(JSON.stringify({ message: "Check your email! We sent you a sign-in link." }), {
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (_) {
+    return new Response(JSON.stringify({ error: "Server error handling request." }), { status: 500 });
+  }
+}
+
+async function verifyMagicLink(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token");
+  if (!token) return new Response("Missing token", { status: 400 });
+
+  const payload = await verifySessionCookie(token, env.COOKIE_SECRET);
+  if (!payload || !payload.email) {
+    return new Response("Invalid or expired sign-in link.", { status: 401 });
+  }
+
+  const raw = await env.SUBSCRIBERS.get(payload.email);
+  const subscriber = raw ? JSON.parse(raw) : null;
+  if (!subscriber || subscriber.status !== "active") {
+    return new Response("No active subscription found.", { status: 403 });
+  }
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: "/plus",
+      "Set-Cookie": await buildSessionCookie(payload.email, env),
+    },
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -229,7 +307,6 @@ async function checkoutWebhook(request, env) {
 
   const event = JSON.parse(payload);
 
-  // First-time subscribe — grants access.
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     const email = session.customer_details?.email;
@@ -241,16 +318,12 @@ async function checkoutWebhook(request, env) {
           customerId: session.customer,
           subscriptionId: session.subscription,
           purchasedAt: Math.floor(Date.now() / 1000),
-          expiresAt: null, // gated by live subscription status below, not a fixed date
+          expiresAt: null,
         })
       );
     }
   }
 
-  // Ongoing subscription lifecycle — keeps SUBSCRIBERS in sync as billing
-  // status changes (renewed, past due, canceled, etc). These events don't
-  // include the email directly, only the Stripe customer ID, so we look it
-  // up via the API.
   if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
     const subscription = event.data.object;
     const email = await getStripeCustomerEmail(subscription.customer, env);
@@ -308,34 +381,42 @@ async function verifyCheckout(request, env) {
   });
 }
 
-// Handles Stripe's "customer already has a subscription" redirect (set up
-// via Dashboard → Checkout and Payment Links settings → "Limit customers to
-// one subscription" → redirect to your website). When someone who lost
-// their cookie clicks Subscribe again, Stripe recognizes their email
-// already has an active subscription and sends them here instead of
-// charging them twice, with a real Checkout Session ID. We verify that
-// session ID against Stripe's API — so this can't be spoofed just by typing
-// an email into the URL — then cross-check our own subscriber record before
-// granting a session cookie.
 async function restoreExistingSubscriber(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
-  if (!sessionId) return new Response("Missing session_id in redirect URL", { status: 400 });
+  if (!sessionId) {
+    return new Response("Missing session_id in redirect URL", { status: 400 });
+  }
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
     headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
   });
+
   const session = await res.json();
 
   if (!res.ok) {
-    return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
+    return new Response(
+      `Could not verify session: ${session.error?.message || "unknown Stripe error"}`,
+      { status: 400 }
+    );
   }
 
-  const email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
-  if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
+  let email =
+    session.customer_details?.email?.toLowerCase() ||
+    session.customer_email?.toLowerCase() ||
+    null;
+
+  if (!email && session.customer) {
+    email = await getStripeCustomerEmail(session.customer, env);
+  }
+
+  if (!email) {
+    return new Response("Could not determine subscriber email", { status: 400 });
+  }
 
   const raw = await env.SUBSCRIBERS.get(email);
   const subscriber = raw ? JSON.parse(raw) : null;
+
   if (!subscriber || subscriber.status !== "active") {
     return new Response("No active subscription found for this account", { status: 402 });
   }
@@ -367,15 +448,7 @@ async function articleContent(request, env) {
 }
 
 // ---------------------------------------------------------------------
-// Article storage — now a folder of static files (env.ARTICLES asset
-// binding, see wrangler.toml) instead of a KV namespace.
-//
-//   /articles/manifest.json      -> [{ "slug": "...", "title": "..." }, ...]
-//   /articles/<slug>.html        -> the article body HTML
-//
-// To add a new article: drop `<slug>.html` into the articles/ folder,
-// add a line for it in manifest.json, and push to GitHub — the
-// Cloudflare Workers Build will redeploy automatically.
+// Article storage helpers
 // ---------------------------------------------------------------------
 
 async function getArticleHtml(request, env, slug) {
@@ -400,9 +473,6 @@ async function getArticleManifest(request, env) {
 // Human-facing pages
 // ---------------------------------------------------------------------
 
-// Looks up the visitor's session cookie and checks SUBSCRIBERS in KV.
-// Returns the subscriber record if they have an active subscription,
-// otherwise null. This is the one place "are they allowed in" is decided.
 async function getActiveSubscriber(request, env) {
   const cookieValue = getCookie(request, "paywall_session");
   const session = await verifySessionCookie(cookieValue, env.COOKIE_SECRET);
@@ -417,7 +487,7 @@ async function getActiveSubscriber(request, env) {
 
 async function renderPlusRoute(request, env) {
   const url = new URL(request.url);
-  const parts = url.pathname.split("/").filter(Boolean); // e.g. ["plus", "some-slug"]
+  const parts = url.pathname.split("/").filter(Boolean);
   if (parts[0] === "plus") parts.shift();
   const slug = parts.join("/");
 
@@ -470,8 +540,6 @@ async function renderArticlePage(request, env, slug) {
     return new Response("Article not found", { status: 404 });
   }
 
-  // Your articles/<slug>.html file only needs to be the article body —
-  // this wraps it in the shared page template below (see ARTICLE_STYLE).
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -511,6 +579,18 @@ ${FONT_LINK}
   <p>Subscribe to read this and every other Plus article.</p>
   <button id="subscribe-btn">Subscribe</button>
   <p id="error"></p>
+
+  <div class="login-box">
+    <h2>Already subscribed?</h2>
+    <p>Enter your email to receive a sign-in link.</p>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="you@example.com" required />
+      <br>
+      <button type="submit">Send Sign-in Link</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
   ${FOOTER_HTML}
   <script>
     document.getElementById('subscribe-btn').addEventListener('click', async () => {
@@ -524,6 +604,25 @@ ${FONT_LINK}
         window.location.href = data.url;
       } else {
         document.getElementById('error').textContent = data.error || 'Something went wrong.';
+      }
+    });
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const msg = document.getElementById('msg');
+      msg.textContent = 'Sending link...';
+
+      try {
+        const res = await fetch('/plus/api/send-magic-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+        msg.textContent = data.message || data.error || 'Something went wrong.';
+      } catch (err) {
+        msg.textContent = 'Error sending request.';
       }
     });
   </script>
