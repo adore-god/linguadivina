@@ -1728,7 +1728,48 @@ img {
 
 	}
 
+ .paywall-cta {
+  border: 1.3px solid var(--text);
+  padding: 1em 1.5em 2em;
+  margin: 1.8rem auto;
+  font-size: 1.4em;
+  width: 80%;
+  border-radius:20px;
+  font-weight:500;
+}
 
+.paywall-cta p  {
+	line-height: 1.1;
+	padding: 0.2em 0;
+	
+	}
+
+.paywall-btn {
+  display: block;
+  margin: 0.8rem auto;
+  padding: 0.6rem 0.6rem;
+  border-radius: 5px;
+  background: var(--dark-navy);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+  height: 160px;
+  width: 160px;
+  
+}
+
+.paywall-btn a,
+.paywall-btn:link,
+.paywall-btn:visited {
+  color: var(--white);
+  vertical-align: baseline;
+  text-align:center;
+}
+
+.paywall-btn:hover {
+  opacity: 0.85;
+}
 
 /* =======================
 
