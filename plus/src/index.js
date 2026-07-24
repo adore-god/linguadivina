@@ -16,12 +16,12 @@
 // fails to load).
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">`;
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
 
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#7a4b2e";
-const BRAND_COLOR_DARK = "#603a22";
-const TEXT_COLOR = "red";
+const BRAND_COLOR_DARK = "#10214e";
+const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
