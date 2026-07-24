@@ -59,7 +59,7 @@ const HEADER_HTML = `<header class="site-header">
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
-  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="${SITE_HOME_URL}/terms-of-use.html">Terms of Use</a></p>
+  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a></p>
 
 </footer>`;
 
