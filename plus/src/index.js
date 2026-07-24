@@ -166,6 +166,7 @@ async function createCheckoutSession(request, env) {
 
   const params = new URLSearchParams();
   params.append("mode", "subscription");
+  params.append("customer_creation", "always"); // FORCES STRIPE TO CREATE/ATTACH CUSTOMER IMMEDIATELY
   params.append("line_items[0][price]", env.STRIPE_PRICE_ID);
   params.append("line_items[0][quantity]", "1");
   params.append(
