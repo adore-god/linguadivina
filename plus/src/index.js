@@ -515,7 +515,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <h1>Plus Articles</h1>
+  <h1>Lingua Divina Articles</h1>
   <ul>${items || "<li>No articles yet.</li>"}</ul>
   ${FOOTER_HTML}
 </body>
