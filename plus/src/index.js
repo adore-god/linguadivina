@@ -299,18 +299,36 @@ async function restoreExistingSubscriber(request, env) {
     return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
   }
 
-  // Look for email in session details; if empty, fetch directly from Customer ID
+  // 1. Check session details first
   let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+
+  // 2. If email is missing, query Stripe Customer API directly
+  let stripeCustomerError = null;
   if (!email && session.customer) {
-    email = await getStripeCustomerEmail(session.customer, env);
+    const custRes = await fetch(`https://api.stripe.com/v1/customers/${session.customer}`, {
+      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+    });
+    if (custRes.ok) {
+      const custData = await custRes.json();
+      email = custData.email ? custData.email.toLowerCase() : null;
+    } else {
+      const errData = await custRes.json();
+      stripeCustomerError = errData.error?.message || "Failed to fetch customer profile from Stripe";
+    }
   }
 
-  if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
+  if (!email) {
+    const details = stripeCustomerError 
+      ? `Stripe Error: ${stripeCustomerError}` 
+      : `No email address attached to Stripe Customer profile (${session.customer || 'No Customer ID'})`;
+    return new Response(`Session verified but no email was found. Diagnostic: ${details}`, { status: 400 });
+  }
 
+  // 3. Verify customer is active in Cloudflare KV
   const raw = await env.SUBSCRIBERS.get(email);
   const subscriber = raw ? JSON.parse(raw) : null;
   if (!subscriber || subscriber.status !== "active") {
-    return new Response("No active subscription found for this account", { status: 402 });
+    return new Response(`No active subscription found in KV database for email address: ${email}`, { status: 402 });
   }
 
   return new Response(null, {
