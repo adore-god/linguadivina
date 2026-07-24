@@ -42,10 +42,10 @@ const PAYWALL_STYLE = `
 const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
-  .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
+  .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
   .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8rem; }
-  .site-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.85rem; }
+  .site-footer { margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
   .site-footer img { display: block; margin: 16px auto 0; max-width: 200px; height: auto; }
 `;
