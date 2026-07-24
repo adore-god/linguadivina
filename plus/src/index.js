@@ -31,7 +31,7 @@ const INDEX_STYLE = `
 const PAYWALL_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 480px; margin: 100px auto; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
   h1 { font-size: 1.4rem; }
-  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR}; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
   button:hover { background: ${BRAND_COLOR_DARK}; }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
   .login-box { margin-top: 40px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; }
