@@ -4,7 +4,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
 
 const BRAND_FONT = "'Inter', serif";
-const BRAND_COLOR = "#7a4b2e";
+const BRAND_COLOR = "#445bad";
 const BRAND_COLOR_DARK = "#10214e";
 const TEXT_COLOR = "#111";
 
@@ -29,6 +29,32 @@ const PAYWALL_STYLE = `
   button:hover { background: ${BRAND_COLOR_DARK}; }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
 `;
+
+// Shared site chrome — mirrors the header/footer used on the main
+// linguadivina.uk pages (see creation-amnon-tamar.html), simplified to not
+// depend on the main site's external stylesheets/scripts (dark-light
+// toggle, sidebar nav, etc.), which this Worker doesn't have access to.
+
+const SITE_HOME_URL = "https://linguadivina.uk";
+
+const HEADER_FOOTER_STYLE = `
+  .site-header { text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
+  .site-header .site-title { font-size: 1.3rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-header .site-tagline { margin: 4px 0 0; color: #777; font-size: 0.9rem; }
+  .site-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.85rem; }
+  .site-footer a { color: ${BRAND_COLOR}; }
+  .site-footer img { display: block; margin: 16px auto 0; max-width: 200px; height: auto; }
+`;
+
+const HEADER_HTML = `<header class="site-header">
+  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina</a>
+  <p class="site-tagline">The Court &amp; The Creation</p>
+</header>`;
+
+const FOOTER_HTML = `<footer class="site-footer">
+  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="${SITE_HOME_URL}/terms-of-use.html">Terms of Use</a></p>
+  <a href="${SITE_HOME_URL}"><img src="${SITE_HOME_URL}/images/wp/lingua-divina-uk.webp" alt="Lingua Divina" width="200" height="35" loading="lazy"></a>
+</footer>`;
 
 export default {
   async fetch(request, env) {
@@ -107,6 +133,30 @@ function getCookie(request, name) {
   return match ? match[1] : null;
 }
 
+// Browsers cap how long a cookie can live (Chrome enforces a hard ~400 day
+// ceiling on Set-Cookie Max-Age no matter what value is sent), so there's
+// no such thing as a literal "forever" cookie. Access itself is lifetime
+// (subscriber records have no expiresAt — see checkoutWebhook below), and
+// we slide this cookie's expiry forward on every authenticated page view
+// (see withRefreshedSession), so a subscriber who visits at least once
+// within any 400-day window never actually gets logged out.
+const SESSION_MAX_AGE = 400 * 24 * 60 * 60; // ~400 days, in seconds
+
+async function buildSessionCookie(email, env) {
+  const expiresAt = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE;
+  const cookieValue = await createSessionCookie(email, expiresAt, env.COOKIE_SECRET);
+  return `paywall_session=${cookieValue}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
+}
+
+// Attaches a freshly-dated session cookie to an outgoing Response when the
+// visitor has an active subscription, so the sliding window above actually
+// keeps sliding. No-op if there's no active subscriber to refresh.
+async function withRefreshedSession(response, subscriber, env) {
+  if (!subscriber) return response;
+  response.headers.append("Set-Cookie", await buildSessionCookie(subscriber.email, env));
+  return response;
+}
+
 async function verifyStripeSignature(payload, sigHeader, secret) {
   const parts = Object.fromEntries(sigHeader.split(",").map((p) => p.split("=")));
   const signedPayload = `${parts.t}.${payload}`;
@@ -180,7 +230,7 @@ async function checkoutWebhook(request, env) {
           status: "active",
           customerId: session.customer,
           purchasedAt: Math.floor(Date.now() / 1000),
-          expiresAt: Math.floor(Date.now() / 1000) + 90 * 24 * 60 * 60,
+          expiresAt: null, // lifetime access — no expiration
         })
       );
     }
@@ -204,14 +254,12 @@ async function verifyCheckout(request, env) {
   }
 
   const email = session.customer_details.email.toLowerCase();
-  const expiresAt = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60;
-  const cookieValue = await createSessionCookie(email, expiresAt, env.COOKIE_SECRET);
 
   return new Response(null, {
     status: 302,
     headers: {
       Location: redirectPath,
-      "Set-Cookie": `paywall_session=${cookieValue}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${30 * 24 * 60 * 60}`,
+      "Set-Cookie": await buildSessionCookie(email, env),
     },
   });
 }
@@ -227,9 +275,10 @@ async function articleContent(request, env) {
   const articleHtml = await getArticleHtml(request, env, slug);
   if (!articleHtml) return new Response(JSON.stringify({ error: "Not found" }), { status: 404 });
 
-  return new Response(JSON.stringify({ html: articleHtml }), {
+  const response = new Response(JSON.stringify({ html: articleHtml }), {
     headers: { "Content-Type": "application/json" },
   });
+  return withRefreshedSession(response, subscriber, env);
 }
 
 // ---------------------------------------------------------------------
@@ -278,7 +327,7 @@ async function getActiveSubscriber(request, env) {
   const subscriber = raw ? JSON.parse(raw) : null;
   if (!subscriber || subscriber.status !== "active") return null;
   if (subscriber.expiresAt && subscriber.expiresAt < Math.floor(Date.now() / 1000)) return null;
-  return subscriber;
+  return { ...subscriber, email: session.email };
 }
 
 async function renderPlusRoute(request, env) {
@@ -294,6 +343,7 @@ async function renderPlusRoute(request, env) {
 }
 
 async function renderIndexPage(request, env) {
+  const subscriber = await getActiveSubscriber(request, env);
   const manifest = await getArticleManifest(request, env);
   const items = manifest
     .map((a) => `<li><a href="/plus/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a></li>`)
@@ -306,15 +356,18 @@ async function renderIndexPage(request, env) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plus Articles — LinguaDivina</title>
 ${FONT_LINK}
-<style>${INDEX_STYLE}</style>
+<style>${INDEX_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
 <body>
+  ${HEADER_HTML}
   <h1>Plus Articles</h1>
   <ul>${items || "<li>No articles yet.</li>"}</ul>
+  ${FOOTER_HTML}
 </body>
 </html>`;
 
-  return new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+  const response = new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+  return withRefreshedSession(response, subscriber, env);
 }
 
 async function renderArticlePage(request, env, slug) {
@@ -341,15 +394,18 @@ async function renderArticlePage(request, env, slug) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(slug)} — LinguaDivina Plus</title>
 ${FONT_LINK}
-<style>${ARTICLE_STYLE}</style>
+<style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
 <body>
+  ${HEADER_HTML}
   <p><a href="/plus">&larr; All articles</a></p>
   ${articleHtml}
+  ${FOOTER_HTML}
 </body>
 </html>`;
 
-  return new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+  const response = new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+  return withRefreshedSession(response, subscriber, env);
 }
 
 function renderPaywallHtml(slug) {
@@ -360,13 +416,15 @@ function renderPaywallHtml(slug) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subscribe — LinguaDivina Plus</title>
 ${FONT_LINK}
-<style>${PAYWALL_STYLE}</style>
+<style>${PAYWALL_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
 <body>
+  ${HEADER_HTML}
   <h1>This article is for Plus subscribers</h1>
   <p>Subscribe to read this and every other Plus article.</p>
   <button id="subscribe-btn">Subscribe</button>
   <p id="error"></p>
+  ${FOOTER_HTML}
   <script>
     document.getElementById('subscribe-btn').addEventListener('click', async () => {
       const res = await fetch('/plus/api/create-checkout-session', {
