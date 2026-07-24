@@ -53,8 +53,9 @@ const HEADER_FOOTER_STYLE = `
 `;
 
 const HEADER_HTML = `<header class="site-header">
-  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina <span style="display: inline-block;transform: rotate(-3deg);">Plus</span></a>
+  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
+  <span style="font-size:2em;display: inline-block;transform: rotate(-3deg);">Plus</span>
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
