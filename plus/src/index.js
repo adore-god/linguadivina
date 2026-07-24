@@ -7,13 +7,21 @@
 // needed, so this works cleanly in the Cloudflare dashboard's code editor.
 
 // ---------------------------------------------------------------------
-// Theme — edit these to restyle the article template + index page.
-// (The paywall page below has its own <style> block, since it also
-// needs a button and error text that don't apply elsewhere.)
+// Theme — edit these to restyle the article template, index page, and
+// paywall page. Everything pulls from the same font/color variables.
 // ---------------------------------------------------------------------
-const BRAND_FONT = "Georgia, serif";
+// Pick your font at https://fonts.google.com, click it, copy the
+// <link> tag it gives you, and paste the href here. Then set
+// BRAND_FONT to match the family name (plus a fallback, in case it
+// fails to load).
+const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">`;
+
+const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#7a4b2e";
-const TEXT_COLOR = "#222";
+const BRAND_COLOR_DARK = "#603a22";
+const TEXT_COLOR = "red";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
@@ -27,6 +35,14 @@ const INDEX_STYLE = `
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
   a { color: ${BRAND_COLOR}; text-decoration: none; font-size: 1.05rem; }
   a:hover { text-decoration: underline; }
+`;
+
+const PAYWALL_STYLE = `
+  body { font-family: ${BRAND_FONT}; max-width: 480px; margin: 100px auto; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
+  h1 { font-size: 1.4rem; }
+  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR}; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+  button:hover { background: ${BRAND_COLOR_DARK}; }
+  #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
 `;
 
 export default {
@@ -304,10 +320,11 @@ async function renderIndexPage(request, env) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plus Articles — LinguaDivina</title>
+${FONT_LINK}
 <style>${INDEX_STYLE}</style>
 </head>
 <body>
-  <h1>Lingua Divina Plus Articles</h1>
+  <h1>Plus Articles</h1>
   <ul>${items || "<li>No articles yet.</li>"}</ul>
 </body>
 </html>`;
@@ -338,6 +355,7 @@ async function renderArticlePage(request, env, slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(slug)} — LinguaDivina Plus</title>
+${FONT_LINK}
 <style>${ARTICLE_STYLE}</style>
 </head>
 <body>
@@ -356,16 +374,8 @@ function renderPaywallHtml(slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subscribe — LinguaDivina Plus</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">
-<style>
-  body { font-family: Inter, serif; max-width: 480px; margin: 100px auto; padding: 0 20px; color: #222; text-align: center; }
-  h1 { font-size: 1.4rem; }
-  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: #7a4b2e; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-  button:hover { background: #603a22; }
-  #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
-</style>
+${FONT_LINK}
+<style>${PAYWALL_STYLE}</style>
 </head>
 <body>
   <h1>This article is for Plus subscribers</h1>
