@@ -950,6 +950,13 @@ width: 50% !important
 .btn-outline:hover  a {
   
 }
+
+a.paywall-btn,
+a.paywall-btn:link,
+a.paywall-btn:visited {
+  color: var(--text);
+}
+
 .btn-outline {
   -webkit-tap-highlight-color: transparent; 
   outline: none; 
@@ -1025,9 +1032,7 @@ background-color: var(--white);
   figure img {
     mix-blend-mode: normal; 
 }
-  .red {
-     color: var(--red);
-   }
+  
    
   h1 {
     border-left-color: var(--text);

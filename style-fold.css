@@ -1759,15 +1759,13 @@ img {
   
 }
 
-.paywall-btn a,
-.paywall-btn:link,
-.paywall-btn:visited {
+a.paywall-btn,
+a.paywall-btn:link,
+a.paywall-btn:visited {
   color: var(--white);
-  vertical-align: baseline;
-  text-align:center;
 }
 
-.paywall-btn:hover {
+.paywall-btn a:hover {
   opacity: 0.85;
 }
 
