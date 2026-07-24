@@ -326,7 +326,14 @@ async function restoreExistingSubscriber(request, env) {
     return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
   }
 
-  const email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  // 1. Try customer_details.email first
+  let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+
+  // 2. Fallback: If Stripe didn't attach customer_details, retrieve the email via customer ID
+  if (!email && session.customer) {
+    email = await getStripeCustomerEmail(session.customer, env);
+  }
+
   if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
 
   const raw = await env.SUBSCRIBERS.get(email);
@@ -343,6 +350,7 @@ async function restoreExistingSubscriber(request, env) {
     },
   });
 }
+
 
 async function articleContent(request, env) {
   const url = new URL(request.url);
