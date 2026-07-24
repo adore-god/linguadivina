@@ -1,19 +1,4 @@
-// This Worker is deployed at a subpath of your main site (e.g.
-// linguadivina.uk/plus/*) via a Worker Route configured in the Cloudflare
-// dashboard (Websites > linguadivina.uk > Workers Routes). All the routes
-// below are relative to that mount point.
-//
-// Everything is in this one file on purpose — no separate cookie.js file
-// needed, so this works cleanly in the Cloudflare dashboard's code editor.
 
-// ---------------------------------------------------------------------
-// Theme — edit these to restyle the article template, index page, and
-// paywall page. Everything pulls from the same font/color variables.
-// ---------------------------------------------------------------------
-// Pick your font at https://fonts.google.com, click it, copy the
-// <link> tag it gives you, and paste the href here. Then set
-// BRAND_FONT to match the family name (plus a fallback, in case it
-// fails to load).
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
