@@ -14,7 +14,7 @@ const ARTICLE_STYLE = `
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
-  h1 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
   a { color: ${BRAND_COLOR}; text-decoration: none; font-size: 1.05rem; }
