@@ -11,7 +11,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; line-height: 1.6; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding:1.2em 0; font-size: 1.3rem; margin-bottom: 1.5rem; line-height:1.2; }
+  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding:1.2em 3em; font-size: 1.3rem; margin-bottom: 1.5rem; line-height:1.2; }
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
