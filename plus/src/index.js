@@ -548,7 +548,7 @@ async function renderArticlePage(request, env, slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://linguadivina.uk/script-new-blb.js" defer></script>
-<title>${escapeHtml(slug)} — Lingua Divina Plus</title>
+<title>${escapeHtml(slug)} — Lingua Divina <span style="transform: rotate(3deg);">Plus</span></title>
 ${FONT_LINK}
 <style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
