@@ -11,12 +11,12 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; line-height: 1.6; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 { text-align-left;  padding-left:1.2em; padding-right:3em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
+  h1 { text-align-left;  padding-left:0.8em; padding-right:3em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-bottom: 1.5rem; line-height:1.4; }
   
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
-  p { width:90%; padding: 0;  margin:0 auto}
+  p { width:90%; padding: 0;  margin: 0.7em auto}
 `;
 
 const INDEX_STYLE = `
