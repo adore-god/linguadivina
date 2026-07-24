@@ -53,7 +53,7 @@ const HEADER_FOOTER_STYLE = `
 `;
 
 const HEADER_HTML = `<header class="site-header">
-  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina Plus</a>
+  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina <span style="transform: rotate(3deg);">Plus</span></a>
   <p class="site-tagline">The Court &amp; The Creation</p>
 </header>`;
 
@@ -548,7 +548,7 @@ async function renderArticlePage(request, env, slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://linguadivina.uk/script-new-blb.js" defer></script>
-<title>${escapeHtml(slug)} — Lingua Divina <span style="transform: rotate(3deg);">Plus</span></title>
+<title>${escapeHtml(slug)} — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
