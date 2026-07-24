@@ -307,7 +307,7 @@ async function renderIndexPage(request, env) {
 <style>${INDEX_STYLE}</style>
 </head>
 <body>
-  <h1>Plus Articles</h1>
+  <h1>Lingua Divina Plus Articles</h1>
   <ul>${items || "<li>No articles yet.</li>"}</ul>
 </body>
 </html>`;
@@ -356,8 +356,11 @@ function renderPaywallHtml(slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subscribe — LinguaDivina Plus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">
 <style>
-  body { font-family: Georgia, serif; max-width: 480px; margin: 100px auto; padding: 0 20px; color: #222; text-align: center; }
+  body { font-family: Inter, serif; max-width: 480px; margin: 100px auto; padding: 0 20px; color: #222; text-align: center; }
   h1 { font-size: 1.4rem; }
   button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: #7a4b2e; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
   button:hover { background: #603a22; }
