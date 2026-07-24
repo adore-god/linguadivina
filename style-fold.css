@@ -1758,13 +1758,14 @@ img {
   line-height: 1;
   height: 160px;
   width: 160px;
-  
+  text-align:center;
 }
 
 a.paywall-btn,
 a.paywall-btn:link,
 a.paywall-btn:visited {
   color: var(--light-on-dark);
+  text-align:center;
 }
 
 .paywall-btn a:hover {
