@@ -144,11 +144,7 @@ const SESSION_MAX_AGE = 400 * 24 * 60 * 60; // ~400 days, in seconds
 async function buildSessionCookie(email, env) {
   const expiresAt = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE;
   const cookieValue = await createSessionCookie(email, expiresAt, env.COOKIE_SECRET);
-  // Domain=linguadivina.uk (no leading "plus.") makes this cookie valid on
-  // linguadivina.uk AND every subdomain (plus.linguadivina.uk included).
-  // Without this it's host-only to whichever exact host happens to set it,
-  // which is what originally caused sessions set on the apex domain to not
-  // be visible on the plus.linguadivina.uk subdomain.
+  
   return `paywall_session=${cookieValue}; Path=/; Domain=linguadivina.uk; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
 }
 
@@ -206,7 +202,7 @@ async function sendMagicLink(request, env) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Lingua Divina <noreply@plus.linguadivina.uk>", // Use 'onboarding@resend.dev' if domain is unverified
+        from: "Lingua Divina <noreply@plus.linguadivina.uk>", 
         to: [cleanEmail],
         subject: "Sign in to Lingua Divina Plus",
         html: `<p>Hello,</p>
