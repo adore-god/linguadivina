@@ -10,8 +10,8 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
   a { color: ${BRAND_COLOR}; }
-  h1 { font-size: 3.6rem; margin-bottom: 1.5rem; line-height:1; }
-  blockquote { font-weight:500}
+  h1 { background: ${BRAND_COLOR_DARK}; font-size: 2rem; margin-bottom: 1.5rem; line-height:1; }
+  blockquote { font-weight:500;background: ${BRAND_COLOR_DARK};}
 `;
 
 const INDEX_STYLE = `
