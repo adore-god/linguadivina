@@ -179,7 +179,7 @@ async function verifyStripeSignature(payload, sigHeader, secret) {
 
 async function sendMagicLink(request, env) {
   try {
-    const { email } = await request.json();
+    const { email, redirectSlug } = await request.json();
     if (!email) {
       return new Response(JSON.stringify({ error: "Email is required." }), { status: 400 });
     }
@@ -200,7 +200,8 @@ async function sendMagicLink(request, env) {
     const sig = await hmac(env.COOKIE_SECRET, tokenPayload);
     const magicToken = `${tokenPayload}.${sig}`;
 
-    const magicLink = `${env.SITE_URL}/api/verify-magic-link?token=${magicToken}`;
+    const safeRedirect = typeof redirectSlug === "string" && redirectSlug.startsWith("/") ? redirectSlug : "/";
+    const magicLink = `${env.SITE_URL}/api/verify-magic-link?token=${magicToken}&redirect=${encodeURIComponent(safeRedirect)}`;
 
     const emailRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -238,6 +239,9 @@ async function verifyMagicLink(request, env) {
   const token = url.searchParams.get("token");
   if (!token) return new Response("Missing token", { status: 400 });
 
+  const requestedRedirect = url.searchParams.get("redirect") || "/";
+  const redirectPath = requestedRedirect.startsWith("/") ? requestedRedirect : "/";
+
   const payload = await verifySessionCookie(token, env.COOKIE_SECRET);
   if (!payload || !payload.email) {
     return new Response("Invalid or expired sign-in link.", { status: 401 });
@@ -252,7 +256,7 @@ async function verifyMagicLink(request, env) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/",
+      Location: redirectPath,
       "Set-Cookie": await buildSessionCookie(payload.email, env),
     },
   });
@@ -621,7 +625,7 @@ ${FONT_LINK}
         const res = await fetch('/api/send-magic-link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email, redirectSlug: '/${slug}' }),
         });
         const data = await res.json();
         msg.textContent = data.message || data.error || 'Something went wrong.';
