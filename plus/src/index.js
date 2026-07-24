@@ -35,25 +35,25 @@ const PAYWALL_STYLE = `
   #msg { margin-top: 12px; font-size: 0.9rem; color: ${BRAND_COLOR_DARK}; }
 `;
 
-const SITE_HOME_URL = "https://linguadivina.uk";
+const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
   .site-header { text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
-  .site-header .site-title { font-size: 1.3rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
-  .site-header .site-tagline { margin: 4px 0 0; color: #777; font-size: 0.9rem; }
+  .site-header .site-title { font-size: 1.8rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-header .site-tagline { margin: 4px 0 0; color: #777; font-size: 1.1rem; }
   .site-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
   .site-footer img { display: block; margin: 16px auto 0; max-width: 200px; height: auto; }
 `;
 
 const HEADER_HTML = `<header class="site-header">
-  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina</a>
+  <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina Plus</a>
   <p class="site-tagline">The Court &amp; The Creation</p>
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
   <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="${SITE_HOME_URL}/terms-of-use.html">Terms of Use</a></p>
-  <a href="${SITE_HOME_URL}"><img src="${SITE_HOME_URL}/images/wp/lingua-divina-uk.webp" alt="Lingua Divina" width="200" height="35" loading="lazy"></a>
+
 </footer>`;
 
 export default {
@@ -545,7 +545,7 @@ async function renderArticlePage(request, env, slug) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(slug)} — LinguaDivina Plus</title>
+<title>${escapeHtml(slug)} — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
@@ -575,7 +575,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <h1>This article is for Plus subscribers</h1>
+  <h1>This article is for Lingua Divina Plus subscribers</h1>
   <p>Subscribe to read this and every other Plus article.</p>
   <button id="subscribe-btn">Subscribe</button>
   <p id="error"></p>
