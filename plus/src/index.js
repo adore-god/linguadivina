@@ -211,9 +211,11 @@ async function sendMagicLink(request, env) {
       }),
     });
 
-    if (!emailRes.ok) {
-      return new Response(JSON.stringify({ error: "Could not send email. Please try again later." }), { status: 500 });
-    }
+if (!emailRes.ok) {
+  const errDetails = await emailRes.text();
+  return new Response(JSON.stringify({ error: `Resend error: ${errDetails}` }), { status: 500 });
+}
+
 
     return new Response(JSON.stringify({ message: "Check your email! We sent you a sign-in link." }), {
       headers: { "Content-Type": "application/json" },
