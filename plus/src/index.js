@@ -70,9 +70,6 @@ export default {
     if (path.endsWith("/api/article-content") && request.method === "GET") {
       return articleContent(request, env);
     }
-    if (path.endsWith("/api/customer-portal") && request.method === "POST") {
-      return createCustomerPortalSession(request, env);
-    }
 
     if (request.method === "GET" && !path.includes("/api/")) {
       return renderPlusRoute(request, env);
@@ -288,7 +285,6 @@ async function verifyCheckout(request, env) {
   });
 }
 
-// FIXES "Session verified but no email was found on it"
 async function restoreExistingSubscriber(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
@@ -323,50 +319,6 @@ async function restoreExistingSubscriber(request, env) {
       Location: "/plus",
       "Set-Cookie": await buildSessionCookie(email, env),
     },
-  });
-}
-
-// Customer Management Portal Endpoint
-async function createCustomerPortalSession(request, env) {
-  const subscriber = await getActiveSubscriber(request, env);
-  if (!subscriber) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { "Content-Type": "application/json" } });
-  }
-
-  let customerId = subscriber.customerId;
-  if (!customerId) {
-    const res = await fetch(`https://api.stripe.com/v1/customers?email=${encodeURIComponent(subscriber.email)}`, {
-      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      customerId = data.data?.[0]?.id;
-    }
-  }
-
-  if (!customerId) {
-    return new Response(JSON.stringify({ error: "Customer not found in Stripe" }), { status: 404, headers: { "Content-Type": "application/json" } });
-  }
-
-  const portalRes = await fetch("https://api.stripe.com/v1/billing_portal/sessions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      customer: customerId,
-      return_url: `${env.SITE_URL}/plus`,
-    }).toString(),
-  });
-
-  const portalSession = await portalRes.json();
-  if (!portalRes.ok) {
-    return new Response(JSON.stringify({ error: portalSession.error?.message || "Stripe error" }), { status: 500, headers: { "Content-Type": "application/json" } });
-  }
-
-  return new Response(JSON.stringify({ url: portalSession.url }), {
-    headers: { "Content-Type": "application/json" },
   });
 }
 
