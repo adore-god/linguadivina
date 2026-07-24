@@ -11,7 +11,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; line-height: 1.6; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding:1.2em 0; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
+  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding:1.2em 0; font-size: 1.3rem; margin-bottom: 1.5rem; line-height:1.2; }
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
@@ -41,8 +41,8 @@ const PAYWALL_STYLE = `
 const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
-  .site-header { font-size: 2.2rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
-  .site-header .site-title { font-size: 1.8rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
+  .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #777; font-size: 1.1rem; }
   .site-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
