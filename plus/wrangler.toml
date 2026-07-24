@@ -5,7 +5,7 @@ compatibility_date = "2026-07-01"
 # This mounts the Worker on a subpath of your existing domain.
 # Requires linguadivina.uk's DNS to be on Cloudflare (it already is).
 routes = [
-  { pattern = "linguadivina.uk/plus/api/*", zone_name = "linguadivina.uk" }
+  { pattern = "linguadivina.uk/plus*", zone_name = "linguadivina.uk" }
 ]
 
 # KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS
