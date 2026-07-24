@@ -8,12 +8,19 @@ routes = [
   { pattern = "linguadivina.uk/plus*", zone_name = "linguadivina.uk" }
 ]
 
-# KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS
-# and wrangler kv namespace create ARTICLES), then paste the ids below.
+# KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS),
+# then paste the id below.
 kv_namespaces = [
-  { binding = "SUBSCRIBERS", id = "88b400a875094751afac46cfd28272f8" },
-  { binding = "ARTICLES", id = "591ca05207f64eb494f3963d6a0acece" }
+  { binding = "SUBSCRIBERS", id = "88b400a875094751afac46cfd28272f8" }
 ]
+
+# Articles now live as plain files in the articles/ folder of this repo
+# instead of KV. Add a new one by dropping in a <slug>.html file and a
+# matching entry in articles/manifest.json, then push — Cloudflare
+# Workers Builds will pick up the folder and redeploy automatically.
+[assets]
+directory = "./articles"
+binding = "ARTICLES"
 
 # Non-secret config
 [vars]
