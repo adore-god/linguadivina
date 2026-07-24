@@ -201,7 +201,7 @@ async function sendMagicLink(request, env) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Lingua Divina <noreply@linguadivina.uk>", // Use 'onboarding@resend.dev' if domain is unverified
+        from: "Lingua Divina <noreply@plus.linguadivina.uk>", // Use 'onboarding@resend.dev' if domain is unverified
         to: [cleanEmail],
         subject: "Sign in to Lingua Divina Plus",
         html: `<p>Hello,</p>
