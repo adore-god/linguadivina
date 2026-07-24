@@ -205,12 +205,42 @@ async function articleContent(request, env) {
   const subscriber = await getActiveSubscriber(request, env);
   if (!subscriber) return new Response(JSON.stringify({ error: "Not subscribed" }), { status: 401 });
 
-  const articleHtml = await env.ARTICLES.get(slug);
+  const articleHtml = await getArticleHtml(request, env, slug);
   if (!articleHtml) return new Response(JSON.stringify({ error: "Not found" }), { status: 404 });
 
   return new Response(JSON.stringify({ html: articleHtml }), {
     headers: { "Content-Type": "application/json" },
   });
+}
+
+// ---------------------------------------------------------------------
+// Article storage — now a folder of static files (env.ARTICLES asset
+// binding, see wrangler.toml) instead of a KV namespace.
+//
+//   /articles/manifest.json      -> [{ "slug": "...", "title": "..." }, ...]
+//   /articles/<slug>.html        -> the article body HTML
+//
+// To add a new article: drop `<slug>.html` into the articles/ folder,
+// add a line for it in manifest.json, and push to GitHub — the
+// Cloudflare Workers Build will redeploy automatically.
+// ---------------------------------------------------------------------
+
+async function getArticleHtml(request, env, slug) {
+  const assetUrl = new URL(`/${slug}.html`, request.url);
+  const res = await env.ARTICLES.fetch(new Request(assetUrl));
+  if (!res.ok) return null;
+  return res.text();
+}
+
+async function getArticleManifest(request, env) {
+  const assetUrl = new URL("/manifest.json", request.url);
+  const res = await env.ARTICLES.fetch(new Request(assetUrl));
+  if (!res.ok) return [];
+  try {
+    return await res.json();
+  } catch {
+    return [];
+  }
 }
 
 // ---------------------------------------------------------------------
@@ -238,15 +268,15 @@ async function renderPlusRoute(request, env) {
   const slug = parts.join("/");
 
   if (!slug) {
-    return renderIndexPage(env);
+    return renderIndexPage(request, env);
   }
   return renderArticlePage(request, env, slug);
 }
 
-async function renderIndexPage(env) {
-  const list = await env.ARTICLES.list();
-  const items = list.keys
-    .map((k) => `<li><a href="/plus/${encodeURIComponent(k.name)}">${escapeHtml(k.name)}</a></li>`)
+async function renderIndexPage(request, env) {
+  const manifest = await getArticleManifest(request, env);
+  const items = manifest
+    .map((a) => `<li><a href="/plus/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a></li>`)
     .join("\n");
 
   const html = `<!DOCTYPE html>
@@ -283,7 +313,7 @@ async function renderArticlePage(request, env, slug) {
     });
   }
 
-  const articleHtml = await env.ARTICLES.get(slug);
+  const articleHtml = await getArticleHtml(request, env, slug);
   if (!articleHtml) {
     return new Response("Article not found", { status: 404 });
   }
