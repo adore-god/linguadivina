@@ -6,6 +6,29 @@
 // Everything is in this one file on purpose — no separate cookie.js file
 // needed, so this works cleanly in the Cloudflare dashboard's code editor.
 
+// ---------------------------------------------------------------------
+// Theme — edit these to restyle the article template + index page.
+// (The paywall page below has its own <style> block, since it also
+// needs a button and error text that don't apply elsewhere.)
+// ---------------------------------------------------------------------
+const BRAND_FONT = "Georgia, serif";
+const BRAND_COLOR = "#7a4b2e";
+const TEXT_COLOR = "#222";
+
+const ARTICLE_STYLE = `
+  body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
+  a { color: ${BRAND_COLOR}; }
+`;
+
+const INDEX_STYLE = `
+  body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
+  h1 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  ul { list-style: none; padding: 0; }
+  li { padding: 12px 0; border-bottom: 1px solid #eee; }
+  a { color: ${BRAND_COLOR}; text-decoration: none; font-size: 1.05rem; }
+  a:hover { text-decoration: underline; }
+`;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -281,14 +304,7 @@ async function renderIndexPage(request, env) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plus Articles — LinguaDivina</title>
-<style>
-  body { font-family: Georgia, serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #222; }
-  h1 { font-size: 1.6rem; margin-bottom: 1.5rem; }
-  ul { list-style: none; padding: 0; }
-  li { padding: 12px 0; border-bottom: 1px solid #eee; }
-  a { color: #7a4b2e; text-decoration: none; font-size: 1.05rem; }
-  a:hover { text-decoration: underline; }
-</style>
+<style>${INDEX_STYLE}</style>
 </head>
 <body>
   <h1>Plus Articles</h1>
@@ -314,16 +330,15 @@ async function renderArticlePage(request, env, slug) {
     return new Response("Article not found", { status: 404 });
   }
 
+  // Your articles/<slug>.html file only needs to be the article body —
+  // this wraps it in the shared page template below (see ARTICLE_STYLE).
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(slug)} — LinguaDivina Plus</title>
-<style>
-  body { font-family: Georgia, serif; max-width: 680px; margin: 60px auto; padding: 0 20px; color: #222; line-height: 1.6; }
-  a { color: #7a4b2e; }
-</style>
+<style>${ARTICLE_STYLE}</style>
 </head>
 <body>
   <p><a href="/plus">&larr; All articles</a></p>
