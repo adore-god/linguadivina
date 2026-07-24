@@ -10,8 +10,8 @@ const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
-  a { color: ${BRAND_COLOR}; }
-  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border-radius:20px;padding:1.2em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1; }
+  a { color: ${BRAND_COLOR}; font-weight:500;}
+  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding:1.2em 0; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.1; }
   blockquote { padding:1em; border-radius:20px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
@@ -20,7 +20,7 @@ const INDEX_STYLE = `
   h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
-  a { color: ${BRAND_COLOR}; font-weight:500; text-decoration: none; font-size: 1.05rem; }
+  a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; font-size: 1.05rem; }
   a:hover { text-decoration: underline; }
 `;
 
