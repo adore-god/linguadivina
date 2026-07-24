@@ -48,9 +48,8 @@ const HEADER_FOOTER_STYLE = `
   .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
   .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8rem; text-align: center;}
-  .site-footer { margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85rem; }
+  .site-footer { font-weight:500; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
-  .site-footer img { display: block; margin: 16px auto 0; max-width: 200px; height: auto; }
 `;
 
 const HEADER_HTML = `<header class="site-header">
@@ -572,7 +571,7 @@ function renderPaywallHtml(slug) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Subscribe — LinguaDivina Plus</title>
+<title>Subscribe — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${PAYWALL_STYLE}${HEADER_FOOTER_STYLE}</style>
 </head>
