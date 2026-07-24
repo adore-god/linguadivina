@@ -1,14 +1,10 @@
-import {
-  createSessionCookie,
-  verifySessionCookie,
-  getCookie,
-  verifyStripeSignature,
-} from "./cookie.js";
-
 // This Worker is deployed at a subpath of your main site (e.g.
 // linguadivina.uk/plus/*) via a Worker Route configured in the Cloudflare
 // dashboard (Websites > linguadivina.uk > Workers Routes). All the routes
 // below are relative to that mount point.
+//
+// Everything is in this one file on purpose — no separate cookie.js file
+// needed, so this works cleanly in the Cloudflare dashboard's code editor.
 
 export default {
   async fetch(request, env) {
@@ -28,9 +24,80 @@ export default {
       return articleContent(request, env);
     }
 
+    // Anything else under /plus/* that isn't an /api/ call is a page a
+    // human is trying to visit in their browser — e.g. /plus itself, or
+    // /plus/my-article-slug. Serve real HTML for those.
+    if (request.method === "GET" && !path.includes("/api/")) {
+      return renderPlusRoute(request, env);
+    }
+
     return new Response("Not found", { status: 404 });
   },
 };
+
+// ---------------------------------------------------------------------
+// Cookie / signature helpers (formerly cookie.js — now inlined here)
+// ---------------------------------------------------------------------
+
+function toBase64Url(str) {
+  return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function fromBase64Url(str) {
+  str = str.replace(/-/g, "+").replace(/_/g, "/");
+  while (str.length % 4) str += "=";
+  return atob(str);
+}
+async function hmac(secret, data) {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
+  const sigBuffer = await crypto.subtle.sign("HMAC", key, enc.encode(data));
+  return toBase64Url(String.fromCharCode(...new Uint8Array(sigBuffer)));
+}
+
+async function createSessionCookie(email, expiresAt, secret) {
+  const encodedPayload = toBase64Url(JSON.stringify({ email, exp: expiresAt }));
+  const sig = await hmac(secret, encodedPayload);
+  return `${encodedPayload}.${sig}`;
+}
+
+async function verifySessionCookie(cookieValue, secret) {
+  if (!cookieValue) return null;
+  const [encodedPayload, sig] = cookieValue.split(".");
+  if (!encodedPayload || !sig) return null;
+  const expectedSig = await hmac(secret, encodedPayload);
+  if (expectedSig !== sig) return null;
+  try {
+    const payload = JSON.parse(fromBase64Url(encodedPayload));
+    if (payload.exp < Math.floor(Date.now() / 1000)) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get("Cookie") || "";
+  const match = cookieHeader.match(new RegExp(`${name}=([^;]+)`));
+  return match ? match[1] : null;
+}
+
+async function verifyStripeSignature(payload, sigHeader, secret) {
+  const parts = Object.fromEntries(sigHeader.split(",").map((p) => p.split("=")));
+  const signedPayload = `${parts.t}.${payload}`;
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
+  const sigBuffer = await crypto.subtle.sign("HMAC", key, enc.encode(signedPayload));
+  const expectedSig = [...new Uint8Array(sigBuffer)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return expectedSig === parts.v1;
+}
+
+// ---------------------------------------------------------------------
+// API routes
+// ---------------------------------------------------------------------
 
 async function createCheckoutSession(request, env) {
   let redirectSlug = "/plus";
@@ -135,15 +202,8 @@ async function articleContent(request, env) {
   const slug = url.searchParams.get("slug");
   if (!slug) return new Response(JSON.stringify({ error: "Missing slug" }), { status: 400 });
 
-  const cookieValue = getCookie(request, "paywall_session");
-  const session = await verifySessionCookie(cookieValue, env.COOKIE_SECRET);
-  if (!session) return new Response(JSON.stringify({ error: "Not subscribed" }), { status: 401 });
-
-  const subscriberRaw = await env.SUBSCRIBERS.get(session.email);
-  const subscriber = subscriberRaw ? JSON.parse(subscriberRaw) : null;
-  if (!subscriber || subscriber.status !== "active") {
-    return new Response(JSON.stringify({ error: "Subscription inactive" }), { status: 403 });
-  }
+  const subscriber = await getActiveSubscriber(request, env);
+  if (!subscriber) return new Response(JSON.stringify({ error: "Not subscribed" }), { status: 401 });
 
   const articleHtml = await env.ARTICLES.get(slug);
   if (!articleHtml) return new Response(JSON.stringify({ error: "Not found" }), { status: 404 });
@@ -151,4 +211,146 @@ async function articleContent(request, env) {
   return new Response(JSON.stringify({ html: articleHtml }), {
     headers: { "Content-Type": "application/json" },
   });
+}
+
+// ---------------------------------------------------------------------
+// Human-facing pages
+// ---------------------------------------------------------------------
+
+// Looks up the visitor's session cookie and checks SUBSCRIBERS in KV.
+// Returns the subscriber record if they have an active subscription,
+// otherwise null. This is the one place "are they allowed in" is decided.
+async function getActiveSubscriber(request, env) {
+  const cookieValue = getCookie(request, "paywall_session");
+  const session = await verifySessionCookie(cookieValue, env.COOKIE_SECRET);
+  if (!session) return null;
+
+  const raw = await env.SUBSCRIBERS.get(session.email);
+  const subscriber = raw ? JSON.parse(raw) : null;
+  if (!subscriber || subscriber.status !== "active") return null;
+  return subscriber;
+}
+
+async function renderPlusRoute(request, env) {
+  const url = new URL(request.url);
+  const parts = url.pathname.split("/").filter(Boolean); // e.g. ["plus", "some-slug"]
+  if (parts[0] === "plus") parts.shift();
+  const slug = parts.join("/");
+
+  if (!slug) {
+    return renderIndexPage(env);
+  }
+  return renderArticlePage(request, env, slug);
+}
+
+async function renderIndexPage(env) {
+  const list = await env.ARTICLES.list();
+  const items = list.keys
+    .map((k) => `<li><a href="/plus/${encodeURIComponent(k.name)}">${escapeHtml(k.name)}</a></li>`)
+    .join("\n");
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plus Articles — LinguaDivina</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #222; }
+  h1 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  ul { list-style: none; padding: 0; }
+  li { padding: 12px 0; border-bottom: 1px solid #eee; }
+  a { color: #7a4b2e; text-decoration: none; font-size: 1.05rem; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <h1>Plus Articles</h1>
+  <ul>${items || "<li>No articles yet.</li>"}</ul>
+</body>
+</html>`;
+
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+}
+
+async function renderArticlePage(request, env, slug) {
+  const subscriber = await getActiveSubscriber(request, env);
+
+  if (!subscriber) {
+    return new Response(renderPaywallHtml(slug), {
+      status: 402,
+      headers: { "Content-Type": "text/html; charset=UTF-8" },
+    });
+  }
+
+  const articleHtml = await env.ARTICLES.get(slug);
+  if (!articleHtml) {
+    return new Response("Article not found", { status: 404 });
+  }
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtml(slug)} — LinguaDivina Plus</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 680px; margin: 60px auto; padding: 0 20px; color: #222; line-height: 1.6; }
+  a { color: #7a4b2e; }
+</style>
+</head>
+<body>
+  <p><a href="/plus">&larr; All articles</a></p>
+  ${articleHtml}
+</body>
+</html>`;
+
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=UTF-8" } });
+}
+
+function renderPaywallHtml(slug) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscribe — LinguaDivina Plus</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 480px; margin: 100px auto; padding: 0 20px; color: #222; text-align: center; }
+  h1 { font-size: 1.4rem; }
+  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: #7a4b2e; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #603a22; }
+  #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+  <h1>This article is for Plus subscribers</h1>
+  <p>Subscribe to read this and every other Plus article.</p>
+  <button id="subscribe-btn">Subscribe</button>
+  <p id="error"></p>
+  <script>
+    document.getElementById('subscribe-btn').addEventListener('click', async () => {
+      const res = await fetch('/plus/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ redirectSlug: '/plus/${slug}' }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        document.getElementById('error').textContent = data.error || 'Something went wrong.';
+      }
+    });
+  </script>
+</body>
+</html>`;
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
