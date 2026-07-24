@@ -1,4 +1,3 @@
-
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
@@ -29,11 +28,6 @@ const PAYWALL_STYLE = `
   button:hover { background: ${BRAND_COLOR_DARK}; }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
 `;
-
-// Shared site chrome — mirrors the header/footer used on the main
-// linguadivina.uk pages (see creation-amnon-tamar.html), simplified to not
-// depend on the main site's external stylesheets/scripts (dark-light
-// toggle, sidebar nav, etc.), which this Worker doesn't have access to.
 
 const SITE_HOME_URL = "https://linguadivina.uk";
 
@@ -76,10 +70,10 @@ export default {
     if (path.endsWith("/api/article-content") && request.method === "GET") {
       return articleContent(request, env);
     }
+    if (path.endsWith("/api/customer-portal") && request.method === "POST") {
+      return createCustomerPortalSession(request, env);
+    }
 
-    // Anything else under /plus/* that isn't an /api/ call is a page a
-    // human is trying to visit in their browser — e.g. /plus itself, or
-    // /plus/my-article-slug. Serve real HTML for those.
     if (request.method === "GET" && !path.includes("/api/")) {
       return renderPlusRoute(request, env);
     }
@@ -89,7 +83,7 @@ export default {
 };
 
 // ---------------------------------------------------------------------
-// Cookie / signature helpers (formerly cookie.js — now inlined here)
+// Cookie / signature helpers
 // ---------------------------------------------------------------------
 
 function toBase64Url(str) {
@@ -136,13 +130,6 @@ function getCookie(request, name) {
   return match ? match[1] : null;
 }
 
-// Browsers cap how long a cookie can live (Chrome enforces a hard ~400 day
-// ceiling on Set-Cookie Max-Age no matter what value is sent), so there's
-// no such thing as a literal "forever" cookie. Access itself is lifetime
-// (subscriber records have no expiresAt — see checkoutWebhook below), and
-// we slide this cookie's expiry forward on every authenticated page view
-// (see withRefreshedSession), so a subscriber who visits at least once
-// within any 400-day window never actually gets logged out.
 const SESSION_MAX_AGE = 400 * 24 * 60 * 60; // ~400 days, in seconds
 
 async function buildSessionCookie(email, env) {
@@ -151,9 +138,6 @@ async function buildSessionCookie(email, env) {
   return `paywall_session=${cookieValue}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
 }
 
-// Attaches a freshly-dated session cookie to an outgoing Response when the
-// visitor has an active subscription, so the sliding window above actually
-// keeps sliding. No-op if there's no active subscriber to refresh.
 async function withRefreshedSession(response, subscriber, env) {
   if (!subscriber) return response;
   response.headers.append("Set-Cookie", await buildSessionCookie(subscriber.email, env));
@@ -224,28 +208,26 @@ async function checkoutWebhook(request, env) {
 
   const event = JSON.parse(payload);
 
-  // First-time subscribe — grants access.
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
-    const email = session.customer_details?.email;
+    let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+    if (!email && session.customer) {
+      email = await getStripeCustomerEmail(session.customer, env);
+    }
     if (email) {
       await env.SUBSCRIBERS.put(
-        email.toLowerCase(),
+        email,
         JSON.stringify({
           status: "active",
           customerId: session.customer,
           subscriptionId: session.subscription,
           purchasedAt: Math.floor(Date.now() / 1000),
-          expiresAt: null, // gated by live subscription status below, not a fixed date
+          expiresAt: null,
         })
       );
     }
   }
 
-  // Ongoing subscription lifecycle — keeps SUBSCRIBERS in sync as billing
-  // status changes (renewed, past due, canceled, etc). These events don't
-  // include the email directly, only the Stripe customer ID, so we look it
-  // up via the API.
   if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
     const subscription = event.data.object;
     const email = await getStripeCustomerEmail(subscription.customer, env);
@@ -288,11 +270,14 @@ async function verifyCheckout(request, env) {
   });
   const session = await res.json();
 
-  if (!res.ok || session.payment_status !== "paid" || !session.customer_details?.email) {
-    return new Response("Payment not confirmed", { status: 402 });
+  let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  if (!email && session.customer) {
+    email = await getStripeCustomerEmail(session.customer, env);
   }
 
-  const email = session.customer_details.email.toLowerCase();
+  if (!res.ok || session.payment_status !== "paid" || !email) {
+    return new Response("Payment not confirmed", { status: 402 });
+  }
 
   return new Response(null, {
     status: 302,
@@ -303,15 +288,7 @@ async function verifyCheckout(request, env) {
   });
 }
 
-// Handles Stripe's "customer already has a subscription" redirect (set up
-// via Dashboard → Checkout and Payment Links settings → "Limit customers to
-// one subscription" → redirect to your website). When someone who lost
-// their cookie clicks Subscribe again, Stripe recognizes their email
-// already has an active subscription and sends them here instead of
-// charging them twice, with a real Checkout Session ID. We verify that
-// session ID against Stripe's API — so this can't be spoofed just by typing
-// an email into the URL — then cross-check our own subscriber record before
-// granting a session cookie.
+// FIXES "Session verified but no email was found on it"
 async function restoreExistingSubscriber(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
@@ -326,7 +303,12 @@ async function restoreExistingSubscriber(request, env) {
     return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
   }
 
-  const email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  // Look for email in session details; if empty, fetch directly from Customer ID
+  let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  if (!email && session.customer) {
+    email = await getStripeCustomerEmail(session.customer, env);
+  }
+
   if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
 
   const raw = await env.SUBSCRIBERS.get(email);
@@ -341,6 +323,50 @@ async function restoreExistingSubscriber(request, env) {
       Location: "/plus",
       "Set-Cookie": await buildSessionCookie(email, env),
     },
+  });
+}
+
+// Customer Management Portal Endpoint
+async function createCustomerPortalSession(request, env) {
+  const subscriber = await getActiveSubscriber(request, env);
+  if (!subscriber) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { "Content-Type": "application/json" } });
+  }
+
+  let customerId = subscriber.customerId;
+  if (!customerId) {
+    const res = await fetch(`https://api.stripe.com/v1/customers?email=${encodeURIComponent(subscriber.email)}`, {
+      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      customerId = data.data?.[0]?.id;
+    }
+  }
+
+  if (!customerId) {
+    return new Response(JSON.stringify({ error: "Customer not found in Stripe" }), { status: 404, headers: { "Content-Type": "application/json" } });
+  }
+
+  const portalRes = await fetch("https://api.stripe.com/v1/billing_portal/sessions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      customer: customerId,
+      return_url: `${env.SITE_URL}/plus`,
+    }).toString(),
+  });
+
+  const portalSession = await portalRes.json();
+  if (!portalRes.ok) {
+    return new Response(JSON.stringify({ error: portalSession.error?.message || "Stripe error" }), { status: 500, headers: { "Content-Type": "application/json" } });
+  }
+
+  return new Response(JSON.stringify({ url: portalSession.url }), {
+    headers: { "Content-Type": "application/json" },
   });
 }
 
@@ -362,15 +388,7 @@ async function articleContent(request, env) {
 }
 
 // ---------------------------------------------------------------------
-// Article storage — now a folder of static files (env.ARTICLES asset
-// binding, see wrangler.toml) instead of a KV namespace.
-//
-//   /articles/manifest.json      -> [{ "slug": "...", "title": "..." }, ...]
-//   /articles/<slug>.html        -> the article body HTML
-//
-// To add a new article: drop `<slug>.html` into the articles/ folder,
-// add a line for it in manifest.json, and push to GitHub — the
-// Cloudflare Workers Build will redeploy automatically.
+// Article storage & rendering
 // ---------------------------------------------------------------------
 
 async function getArticleHtml(request, env, slug) {
@@ -391,13 +409,6 @@ async function getArticleManifest(request, env) {
   }
 }
 
-// ---------------------------------------------------------------------
-// Human-facing pages
-// ---------------------------------------------------------------------
-
-// Looks up the visitor's session cookie and checks SUBSCRIBERS in KV.
-// Returns the subscriber record if they have an active subscription,
-// otherwise null. This is the one place "are they allowed in" is decided.
 async function getActiveSubscriber(request, env) {
   const cookieValue = getCookie(request, "paywall_session");
   const session = await verifySessionCookie(cookieValue, env.COOKIE_SECRET);
@@ -412,7 +423,7 @@ async function getActiveSubscriber(request, env) {
 
 async function renderPlusRoute(request, env) {
   const url = new URL(request.url);
-  const parts = url.pathname.split("/").filter(Boolean); // e.g. ["plus", "some-slug"]
+  const parts = url.pathname.split("/").filter(Boolean);
   if (parts[0] === "plus") parts.shift();
   const slug = parts.join("/");
 
@@ -465,8 +476,6 @@ async function renderArticlePage(request, env, slug) {
     return new Response("Article not found", { status: 404 });
   }
 
-  // Your articles/<slug>.html file only needs to be the article body —
-  // this wraps it in the shared page template below (see ARTICLE_STYLE).
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
