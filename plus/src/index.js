@@ -5,13 +5,14 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#445bad";
 const BRAND_COLOR_DARK = "#10214e";
+const BRAND_COLOR_WHITE = "#FFFFFF";
 const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 680px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; line-height: 1.6; }
   a { color: ${BRAND_COLOR}; }
-  h1 { background: ${BRAND_COLOR_DARK}; font-size: 2rem; margin-bottom: 1.5rem; line-height:1; }
-  blockquote { font-weight:500;background: ${BRAND_COLOR_DARK};}
+  h1 { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border-radius:20px;padding:1.2em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1; }
+  blockquote { padding:1em; border-radius:20px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
 const INDEX_STYLE = `
