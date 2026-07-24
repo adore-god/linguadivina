@@ -315,14 +315,19 @@ async function verifyCheckout(request, env) {
 async function restoreExistingSubscriber(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
-  if (!sessionId) return new Response("Missing session_id", { status: 400 });
+  if (!sessionId) return new Response("Missing session_id in redirect URL", { status: 400 });
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
     headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
   });
   const session = await res.json();
-  const email = res.ok && session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
-  if (!email) return new Response("Could not verify session", { status: 400 });
+
+  if (!res.ok) {
+    return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
+  }
+
+  const email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
 
   const raw = await env.SUBSCRIBERS.get(email);
   const subscriber = raw ? JSON.parse(raw) : null;
