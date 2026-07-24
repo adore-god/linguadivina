@@ -18,6 +18,7 @@ const ARTICLE_STYLE = `
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
+  p { width:90%; padding: 0; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; border-bottom: 1px solid #eee; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; font-size: 1.05rem; }
@@ -43,7 +44,7 @@ const SITE_HOME_URL = "https://plus.linguadivina.uk";
 const HEADER_FOOTER_STYLE = `
   .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid #eee; }
   .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
-  .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #777; font-size: 1rem; }
+  .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8rem; }
   .site-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
   .site-footer img { display: block; margin: 16px auto 0; max-width: 200px; height: auto; }
