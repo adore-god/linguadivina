@@ -315,31 +315,47 @@ async function verifyCheckout(request, env) {
 async function restoreExistingSubscriber(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
-  if (!sessionId) return new Response("Missing session_id in redirect URL", { status: 400 });
+  if (!sessionId) {
+    return new Response("Missing session_id in redirect URL", { status: 400 });
+  }
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
-    headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+    headers: {
+      Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+    },
   });
+
   const session = await res.json();
 
   if (!res.ok) {
-    return new Response(`Could not verify session: ${session.error?.message || "unknown Stripe error"}`, { status: 400 });
+    return new Response(
+      `Could not verify session: ${session.error?.message || "unknown Stripe error"}`,
+      { status: 400 }
+    );
   }
 
-  // 1. Try customer_details.email first
-  let email = session.customer_details?.email ? session.customer_details.email.toLowerCase() : null;
+  // Try every place Stripe may store the email
+  let email =
+    session.customer_details?.email?.toLowerCase() ||
+    session.customer_email?.toLowerCase() ||
+    null;
 
-  // 2. Fallback: If Stripe didn't attach customer_details, retrieve the email via customer ID
+  // Fall back to looking up the Stripe customer
   if (!email && session.customer) {
     email = await getStripeCustomerEmail(session.customer, env);
   }
 
-  if (!email) return new Response("Session verified but no email was found on it", { status: 400 });
+  if (!email) {
+    return new Response("Could not determine subscriber email", { status: 400 });
+  }
 
   const raw = await env.SUBSCRIBERS.get(email);
   const subscriber = raw ? JSON.parse(raw) : null;
+
   if (!subscriber || subscriber.status !== "active") {
-    return new Response("No active subscription found for this account", { status: 402 });
+    return new Response("No active subscription found for this account", {
+      status: 402,
+    });
   }
 
   return new Response(null, {
@@ -350,6 +366,9 @@ async function restoreExistingSubscriber(request, env) {
     },
   });
 }
+
+
+
 
 
 async function articleContent(request, env) {
