@@ -1,6 +1,6 @@
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script src="https://linguadivina.uk/script-new-blb.js" defer></script>`;
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">`;
 
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#445bad";
@@ -547,6 +547,7 @@ async function renderArticlePage(request, env, slug) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://linguadivina.uk/script-new-blb.js" defer></script>
 <title>${escapeHtml(slug)} — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
