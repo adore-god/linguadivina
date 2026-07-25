@@ -26,6 +26,7 @@ const INDEX_STYLE = `
   li { padding: 12px 0; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; font-size: 1.05rem; }
   a:hover { text-decoration: underline; }
+  .site-footer a { font-weight:400;}
 `;
 
 const PAYWALL_STYLE = `
