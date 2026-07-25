@@ -9,7 +9,7 @@ const BRAND_COLOR_WHITE = "#FFFFFF";
 const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; line-height: 1.6; }
+  body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 { text-align-left;  padding-left:0.8em; padding-right:3em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   
@@ -48,6 +48,7 @@ const SITE_HOME_URL = "https://plus.linguadivina.uk";
 const HEADER_FOOTER_STYLE = `
   .site-header { font-size: 1.4rem; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
   .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-plus-label { font-size: 1.5em; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8rem; text-align: center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
@@ -56,7 +57,7 @@ const HEADER_FOOTER_STYLE = `
 const HEADER_HTML = `<header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
-  <div style="font-size:1.5em;">Plus</div>
+  <div class="site-plus-label">Plus</div>Plus</div>
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
