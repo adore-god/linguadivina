@@ -24,9 +24,9 @@ const INDEX_STYLE = `
   h1 { font-size: 3.6rem; margin-bottom: 1.5rem; }
   ul { list-style: none; padding: 0; }
   li { padding: 12px 0; }
-  a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; font-size: 1.05rem; }
+  a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .site-footer a { font-weight:400;}
+  .site-footer a { font-weight:400; }
 `;
 
 const PAYWALL_STYLE = `
