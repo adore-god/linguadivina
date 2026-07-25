@@ -24,6 +24,18 @@ const ARTICLE_STYLE = `
   p { width:90%; padding: 0;  margin: 3em auto}
 `;
 
+const CODE_STYLE = `
+  .code-container { position: relative; width: 90%; margin: 2.5em auto; }
+  .code-container pre { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding: 1.5em; border-radius: 10px; overflow-x: auto; margin: 0; }
+  .code-container code { font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .button2 { display: inline-block; margin-top: 14px; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
+  .button2:hover { background: ${BRAND_COLOR}; }
+  .bold700 { font-weight: 700; }
+  .bold600 { font-weight: 600; }
+  .noTag { font-style: normal; }
+  dfn { font-style: italic; font-weight: 600; }
+`;
+
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
@@ -563,7 +575,7 @@ async function renderArticlePage(request, env, slug) {
 <script src="https://linguadivina.uk/script-new-blb.js" defer></script>
 <title>${escapeHtml(slug)} — Lingua Divina Plus</title>
 ${FONT_LINK}
-<style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
+<style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
   ${HEADER_HTML}
