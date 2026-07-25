@@ -59,7 +59,7 @@ const HEADER_HTML = `<header class="site-header">
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
-  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a></p>
+  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p>
 
 </footer>`;
 
@@ -455,88 +455,6 @@ async function articleContent(request, env) {
 }
 
 // ---------------------------------------------------------------------
-// Googlebot verification (for serving paywalled content to the crawler)
-// ---------------------------------------------------------------------
-//
-// We only ever grant the "Googlebot view" based on a match against Google's
-// own published IP ranges below — never on User-Agent alone, since that
-// header is trivially spoofable and would otherwise let anyone read paid
-// articles for free by pretending to be Googlebot.
-
-const GOOGLEBOT_RANGES_URL = "https://developers.google.com/static/search/apis/ipranges/googlebot.json";
-
-function ipv4ToLong(ip) {
-  const parts = ip.split(".").map(Number);
-  if (parts.length !== 4 || parts.some((n) => Number.isNaN(n) || n < 0 || n > 255)) return null;
-  return ((parts[0] << 24) | (parts[1] << 16) | (parts[2] << 8) | parts[3]) >>> 0;
-}
-
-function isIPv4InCidr(ip, cidr) {
-  const [range, bitsStr] = cidr.split("/");
-  const bits = parseInt(bitsStr, 10);
-  const ipLong = ipv4ToLong(ip);
-  const rangeLong = ipv4ToLong(range);
-  if (ipLong === null || rangeLong === null) return false;
-  const mask = bits === 0 ? 0 : (~0 << (32 - bits)) >>> 0;
-  return (ipLong & mask) === (rangeLong & mask);
-}
-
-function ipv6ToBigInt(ip) {
-  const [headPart, tailPart] = ip.split("::");
-  const head = headPart ? headPart.split(":") : [];
-  const tail = tailPart ? tailPart.split(":") : [];
-  const missing = 8 - head.length - tail.length;
-  if (missing < 0) return null;
-  const groups = [...head, ...Array(missing).fill("0"), ...tail];
-  let result = 0n;
-  for (const g of groups) {
-    const val = parseInt(g || "0", 16);
-    if (Number.isNaN(val)) return null;
-    result = (result << 16n) + BigInt(val);
-  }
-  return result;
-}
-
-function isIPv6InCidr(ip, cidr) {
-  const [range, bitsStr] = cidr.split("/");
-  const bits = BigInt(parseInt(bitsStr, 10));
-  const ipInt = ipv6ToBigInt(ip);
-  const rangeInt = ipv6ToBigInt(range);
-  if (ipInt === null || rangeInt === null) return false;
-  const fullMask = (1n << 128n) - 1n;
-  const mask = bits === 0n ? 0n : (fullMask << (128n - bits)) & fullMask;
-  return (ipInt & mask) === (rangeInt & mask);
-}
-
-async function isVerifiedGooglebot(request) {
-  const ua = request.headers.get("User-Agent") || "";
-  if (!/googlebot/i.test(ua)) return false;
-
-  const clientIp = request.headers.get("CF-Connecting-IP");
-  if (!clientIp) return false;
-
-  try {
-    // cf.cacheTtl/cacheEverything cache this subrequest at Cloudflare's edge,
-    // so we're not re-fetching Google's IP list on every single request.
-    const res = await fetch(GOOGLEBOT_RANGES_URL, {
-      cf: { cacheTtl: 86400, cacheEverything: true },
-    });
-    if (!res.ok) return false;
-    const data = await res.json();
-    const prefixes = data.prefixes || [];
-    const isIPv6 = clientIp.includes(":");
-
-    for (const p of prefixes) {
-      if (!isIPv6 && p.ipv4Prefix && isIPv4InCidr(clientIp, p.ipv4Prefix)) return true;
-      if (isIPv6 && p.ipv6Prefix && isIPv6InCidr(clientIp, p.ipv6Prefix)) return true;
-    }
-    return false;
-  } catch {
-    return false;
-  }
-}
-
-// ---------------------------------------------------------------------
 // Article storage helpers
 // ---------------------------------------------------------------------
 
@@ -618,9 +536,6 @@ async function renderArticlePage(request, env, slug) {
   const subscriber = await getActiveSubscriber(request, env);
 
   if (!subscriber) {
-    if (await isVerifiedGooglebot(request)) {
-      return renderArticlePageForGooglebot(request, env, slug);
-    }
     return new Response(renderPaywallHtml(slug), {
       status: 402,
       headers: { "Content-Type": "text/html; charset=UTF-8" },
@@ -654,54 +569,6 @@ ${FONT_LINK}
     headers: { "Content-Type": "text/html; charset=UTF-8", "Cache-Control": "no-store" },
   });
   return withRefreshedSession(response, subscriber, env);
-}
-
-async function renderArticlePageForGooglebot(request, env, slug) {
-  const articleHtml = await getArticleHtml(request, env, slug);
-  if (!articleHtml) {
-    return new Response("Article not found", { status: 404 });
-  }
-
-  const manifest = await getArticleManifest(request, env);
-  const entry = manifest.find((a) => a.slug === slug);
-  const title = entry?.title || slug;
-
-  // Tells Google this content is genuinely gated (not cloaking) and which
-  // part of the page is the paywalled portion, per Google's structured
-  // data guidelines for subscription/paywalled content.
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    isAccessibleForFree: false,
-    hasPart: {
-      "@type": "WebPageElement",
-      isAccessibleForFree: false,
-      cssSelector: ".article-body",
-    },
-  };
-
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="application/ld+json">${JSON.stringify(schema)}</script>
-<title>${escapeHtml(title)} — Lingua Divina Plus</title>
-${FONT_LINK}
-<style>${ARTICLE_STYLE}${HEADER_FOOTER_STYLE}</style>
-</head>
-<body>
-  ${HEADER_HTML}
-  <p><a href="/">&larr; All articles</a></p>
-  <div class="article-body">${articleHtml}</div>
-  ${FOOTER_HTML}
-</body>
-</html>`;
-
-  return new Response(html, {
-    headers: { "Content-Type": "text/html; charset=UTF-8", "Cache-Control": "public, max-age=3600" },
-  });
 }
 
 function renderPaywallHtml(slug) {
