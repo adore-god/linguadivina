@@ -216,7 +216,8 @@ async function sendMagicLink(request, env) {
         html: `<p>Hello,</p>
                <p>Click the link below to sign in to your Lingua Divina Plus account:</p>
                <p><a href="${magicLink}"><strong>Sign in to Lingua Divina Plus</strong></a></p>
-               <p>This link will expire in 15 minutes.</p>`,
+               <p>This link will expire in 15 minutes.</p>
+<p>To manage your subscription click <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">here.</a></p>`,
       }),
     });
 
