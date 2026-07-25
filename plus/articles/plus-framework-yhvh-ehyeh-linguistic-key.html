@@ -225,6 +225,28 @@ END OF KEY
 <button class="button2" onclick="copyToClipboard()">Copy Key</button>
 </div>
 
+<script>
+function copyToClipboard() {
+  const codeText = document.getElementById("codeSnippet").textContent;
+
+  navigator.clipboard.writeText(codeText).then(() => {
+    alert("Code copied to clipboard!");
+
+    if (typeof gtag === "function") {
+      gtag("event", "copy_bible_key", {
+        event_category: "Button",
+        event_label: "copy_bible_key",
+      });
+    }
+
+  }).catch(err => {
+    console.error('Could not copy text: ', err);
+  });
+}
+
+
+</script>
+
 <p style="text-align:center; font-size:0.85em;"><dfn>Lingua Divina</dfn> Version 1.8 &copy; 2026 HNNH | Lingua Divina. All rights reserved. This content is for personal, non-commercial use only. See <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a></p>
 
 <h2 id="limits">Limitations</h2>
