@@ -28,7 +28,7 @@ const CODE_STYLE = `
   .code-container { overflow: hidden;max-height:150px;position: relative; width: 90%; margin: 2.5em auto; }
   .code-container pre { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding: 1.5em; border-radius: 10px; overflow-x: auto; margin: 0; }
   .code-container code { font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
-  .button2 { display: inline-block; margin-top: 14px; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
+  .button2 { display: inline-block; margin-top: 14px; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer;position: absolute; top: 10px;right: 10px; }
   .button2:hover { background: ${BRAND_COLOR}; }
   .bold700 { font-weight: 700; }
   .bold600 { font-weight: 600; }
