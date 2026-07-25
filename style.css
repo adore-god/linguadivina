@@ -1282,10 +1282,14 @@ border: 0.2px solid var(--button);
 }
 
 :root.dark .breadcrumb a,
-:root.dark .breadcrumb a:link,
+:root.dark .breadcrumb a:link
+{
+	color: var(--link);
+	}
+	
 :root.dark .breadcrumb a:visited 
 {
-	color: var(--text);
+	color: var(--link);
 	}
 	
 :root.dark .breadcrumb a:hover {
