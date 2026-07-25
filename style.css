@@ -931,9 +931,10 @@ width: 50% !important
 }
 
 :root.dark .site-title,
-:root.dark .site-title a {
+:root.dark .site-title a,
+:root.dark .site-title a:link,
+:root.dark .site-title a:visited {
 	color: var(--text);
-	border-left-color: var(--text);
 	}
 
 :root.dark .hero-description {
