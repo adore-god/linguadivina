@@ -988,8 +988,6 @@ width: 50% !important
 	}
 
 :root.dark img {
-    filter: var(--img-filter);
-    mix-blend-mode: var(--img-blend);
   }
 
 :root.dark .toc-jump-nav {

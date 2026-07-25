@@ -1133,7 +1133,7 @@ a:visited {
 
   border: 0;
 
-  background-color: var(--dark-navy) !important; 
+  background-color: var(--dark-navy); 
 
   font-size: 0.8em; 
 
@@ -1165,7 +1165,6 @@ font-weight:800;
 
 .book img {
 
-   filter: invert(0);
 
    mix-blend-mode: normal;
 
