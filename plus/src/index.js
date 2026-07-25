@@ -57,7 +57,7 @@ const HEADER_FOOTER_STYLE = `
 const HEADER_HTML = `<header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
-  <div class="site-plus-label">Plus</div>Plus</div>
+  <div class="site-plus-label">Plus</div>
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
