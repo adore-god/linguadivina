@@ -1267,9 +1267,8 @@ border: 0.2px solid var(--button);
 	}
 
 .badge {
- 
-  background: var(--text-on-dark);
-  color: var(---dark-navy);
+  background-color: var(--text) !important;
+  color: var(--dark-navy) !important;
   }
   
   } /*Don't delete  */

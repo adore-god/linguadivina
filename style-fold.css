@@ -1785,8 +1785,8 @@ a.paywall-btn:visited {
 .badge {
   font-size: 0.65rem;
   font-weight: 700;
-  background: var(--dark-navy);
-  color: var(---text-on-dark);
+  background: var(--dark-navy) !important;
+  color: #fff !important;
   padding: 2px 6px;
   border-radius: 4px;
   margin-left: 6px;
