@@ -1097,7 +1097,17 @@ background-color: var(--white);
 :root.dark .sidebar h2 a {
 	color: var(--text);
 	}
+:root.dark .sidebar a,
+:root.dark .sidebar a:link,
+:root.dark .sidebar a:visited {
+  font-weight: 500;
+  color: var(--text);
+}
 
+:root.dark .sidebar a:hover {
+	color: var(--bright-navy);
+	}
+	
 :root.dark .sidebar .nav li:nth-of-type(n+0):nth-of-type(-n+2),
 :root.dark .sidebar .nav li:nth-child(16) {
 
@@ -1271,6 +1281,13 @@ border: 0.2px solid var(--button);
   color: var(--bright-navy);
 }
 
+:root.dark .breadcrumb a,
+:root.dark .breadcrumb a:link,
+:root.dark .breadcrumb a:visited 
+{
+	color: var(--text);
+	}
+	
 :root.dark .breadcrumb a:hover {
 	color: var(--bright-navy);
 	}
