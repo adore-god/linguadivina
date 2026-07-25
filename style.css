@@ -1276,8 +1276,17 @@ border: 0.2px solid var(--button);
 	}
 
 :root.dark .badge {
-  background-color: var(--text) !important;
-  color: var(--dark-navy) !important;
+  background-color: var(--text);
+  color: var(--dark-navy);
+  }
+ 
+:root.dark .badge a,
+:root.dark .badge a:link,
+:root.dark .badge a:visited {
+
+  background: var(--text);
+  color: var(--dark-navy);
+  
   }
 
  /*Don't delete  */
