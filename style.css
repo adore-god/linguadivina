@@ -224,12 +224,7 @@ strong {
 .b7 {
   font-weight: 600;
 	}
-
-.red,
-.red a,
-.red a:visited {
-     color: var(--red) !important;
-   }
+	
 .center {
   text-align: center;
 }
@@ -237,12 +232,7 @@ strong {
   text-align: center !important;
   margin:0 auto;
 }
-.aforce {
-  text-decoration: underline dotted !important;
-  text-decoration-color: rgba(0, 0, 0, 1) !important;
-  text-decoration-thickness: 0.7px !important;
-  font-style: normal !important;  
-}
+
 .normal-headings {
   margin-left: 0 !important;
   padding-left:0 !important;
@@ -947,7 +937,9 @@ width: 50% !important
   color: var(--button);
 }
 
-:root.dark .btn-outline a {
+:root.dark .btn-outline a,
+:root.dark .btn-outline a:link,
+:root.dark .btn-outline a:visited {
   color: var(--button);
 }
 
