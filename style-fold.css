@@ -1326,9 +1326,7 @@ background:#f3f3f3;
 
 .breadcrumb-current,
 
-.breadcrumb a:link,
-
-.breadcrumb a:visited {
+.breadcrumb a:link {
 
   font-size: 1em;     
 
@@ -1344,7 +1342,7 @@ background:#f3f3f3;
 
   hyphens: auto;   
 
-  color: var(--text); 
+  color: var(--link); 
   
   padding:2px 0;
 
@@ -1360,7 +1358,9 @@ background:#f3f3f3;
 
 	}
 
-	
+.breadcrumb a:visited {
+color: var(--link); 
+	}
 
 .breadcrumb a:hover {
 
