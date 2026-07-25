@@ -278,7 +278,7 @@ pre code {
 
 .button2:hover {
   background: var(--dark-navy);
-  color: var(--bright-navy);
+  color: var(--light-on-dark);
 }
   
 .spec-undline {
@@ -1278,7 +1278,7 @@ border: 0.2px solid var(--button);
 
 :root.dark .button2:hover {
   background: var(--light-on-darker);
-  color: var(--bright-navy);
+  color: var(--light-on-dark);
 }
 
 :root.dark .breadcrumb a,
