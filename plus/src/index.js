@@ -16,7 +16,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 { text-align-left;  padding-left:0.8em; padding-right:1em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
+  h1 { text-align-left;  padding-left:0.8em; padding-right:1em; margin-bottom:1em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
