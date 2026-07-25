@@ -17,7 +17,6 @@ const ARTICLE_STYLE = `
   
   blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
   p { width:90%; padding: 0;  margin: 3em auto}
-  ${FOOTER_HTML}
 `;
 
 const INDEX_STYLE = `
@@ -60,7 +59,7 @@ const HEADER_HTML = `<header class="site-header">
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
-  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>.</p>
+  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p>
 
 </footer>`;
 
