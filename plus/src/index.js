@@ -15,7 +15,7 @@ const BRAND_COLOR_WHITE = "#FFFFFF";
 const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 40px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
+  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {position: absolute; padding: 1.3em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
   
@@ -38,7 +38,7 @@ const CODE_STYLE = `
 `;
 
 const INDEX_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 40px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
+  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   h1 { padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 2em; margin-bottom: 1.5rem; }
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
