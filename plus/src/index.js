@@ -17,7 +17,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 { text-align-left;  padding-left:0.8em; padding-right:1em; margin-bottom:1em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
+  h1 { background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};text-align-left;  padding-left:0.8em; padding-right:1em; margin-bottom:1em; font-size: 2rem; margin-bottom: 1.5rem; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
@@ -39,8 +39,8 @@ const CODE_STYLE = `
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
-  h1 { line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
-  .free-link {opacity:0.7;font-size:0.6em; text-transform:uppercase;}
+  h1 { background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
+  .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
     .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:300px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
