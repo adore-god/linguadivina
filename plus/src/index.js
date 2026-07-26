@@ -71,7 +71,7 @@ const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
   .site-header {font-size: 1.5em; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 0; }
-  .site-header .site-title { font-size: 1em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-header .site-title { font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8em; text-align: center;}
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
