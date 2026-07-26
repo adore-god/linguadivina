@@ -4,6 +4,8 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 
 const BASE_STYLE = `
   body { line-height: 1.6; }
+  .art-list {height:300px;overflow-x: hidden;
+  overflow-y: auto;}
 `;
 
 
@@ -536,7 +538,7 @@ async function renderIndexPage(request, env) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plus Articles — LinguaDivina</title>
+<title>Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
@@ -544,8 +546,9 @@ ${FONT_LINK}
   ${HEADER_HTML}
   <h1>Welcome</h1>
   <p>Full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation</p>
-  <h1>Lingua Divina Articles</h1>
-  <ul>${items || "<li>No articles yet.</li>"}</ul>
+  <h2>Lingua Divina Articles</h2>
+  <div class="art-list">
+  <ul>${items || "<li>No articles yet.</li>"}</ul></div>
   ${FOOTER_HTML}
 </body>
 </html>`;
