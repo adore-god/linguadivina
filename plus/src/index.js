@@ -21,7 +21,7 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.2; }
+  margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
@@ -77,9 +77,7 @@ const HEADER_FOOTER_STYLE = `
   .site-plus-label { font-size: 1.5em; }
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
 .site-plus-label {
-  display: inline-block;
-  font-weight: 700;
-
+  
   background: linear-gradient(
     90deg,
     #b5b5b5 0%,
