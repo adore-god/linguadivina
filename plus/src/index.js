@@ -43,7 +43,7 @@ h1 {
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
-  a { color: ${BRAND_COLOR}; font-weight:500;}
+  a { color: ${BRAND_COLOR_DARK}; font-weight:600;}
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
