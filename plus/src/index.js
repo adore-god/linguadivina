@@ -78,6 +78,7 @@ const HEADER_HTML = `<header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
+  <img alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
