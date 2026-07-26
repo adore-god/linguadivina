@@ -537,7 +537,7 @@ async function renderIndexPage(request, env) {
   .map((a) => `
     <li>
       <a href="/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a>
-      ${a.freeSlug ? `<div class="free-link"><a href="${a.freeSlug}">Free version</a></div>` : ""}
+      ${a.freeSlug ? `<div class="free-link"><a href="https://linguadivina.uk/${a.freeSlug}">Free version</a></div>` : ""}
     </li>
   `)
   .join("\n");
