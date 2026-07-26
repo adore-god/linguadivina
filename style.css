@@ -886,7 +886,7 @@ width: 50% !important
   --bright-navy: #5477f0;          /* vivid periwinkle-blue — hover states & accents */
   --light-on-dark: #e3e8fb;        /* off-white text for use on --dark-navy surfaces */
   --light-on-dark-link: #b6c6fa;   /* links on --dark-navy surfaces */
-  --link: #98B5D9;                 /* soft periwinkle for primary links */
+  --link: #7DAAE3;                 /* soft periwinkle for primary links */
   --visited: #D2C3EB;              /* light purple, distinct from --text but same tonal band */
   --white: #0a1024;                /* page background — near-black, navy-tinted */
   --grey-bg: #232c47;              /* dark navy-grey box background */
