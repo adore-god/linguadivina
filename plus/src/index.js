@@ -17,7 +17,20 @@ const BASE_STYLE = `
 
   100% {opacity: 1;}
 }
-h1 {animation: h1FadeIn 0.6s ease both;}
+h1 {
+    animation: h1FadeIn 0.6s ease both;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    box-sizing: border-box;
+    padding: 1.3em 2em 1.3em 0.5em;
+    background: ${BRAND_COLOR_DARK};
+    color: ${BRAND_COLOR_WHITE};
+    text-align: left;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    line-height: 1.4;
+  }
 
   h2 {margin: 2.3em 0 1.5em 0 ;}
   blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
@@ -27,9 +40,6 @@ h1 {animation: h1FadeIn 0.6s ease both;}
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 {width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
@@ -50,7 +60,6 @@ const CODE_STYLE = `
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
-  h1 { padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 1.5em; margin-bottom: 1.5rem; }
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
@@ -698,6 +707,15 @@ async function renderArticlePage(request, env, slug) {
     return new Response("Article not found", { status: 404 });
   }
 
+  // Pull the leading H1 out of the injected article HTML so it renders as a
+  // direct sibling of .article-body (full-width parent) rather than nested
+  // inside it — nested inside a 90%-width container, the width:100vw /
+  // calc(50% - 50vw) breakout math is relative to that narrower box, not
+  // the viewport, so it no longer lines up.
+  const h1Match = articleHtml.match(/<h1[^>]*>[\s\S]*?<\/h1>/i);
+  const h1Html = h1Match ? h1Match[0] : "";
+  const remainderHtml = h1Match ? articleHtml.replace(h1Match[0], "") : articleHtml;
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -711,7 +729,8 @@ ${FONT_LINK}
 <body>
   ${HEADER_HTML}
   <p style="position: absolute"><a href="/">&larr; All articles</a></p>
-  <div class="article-body">${articleHtml}</div>
+  ${h1Html}
+  <div class="article-body">${remainderHtml}</div>
   ${FOOTER_HTML}
 </body>
 </html>`;
