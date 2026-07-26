@@ -20,7 +20,7 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw); padding: 1.3em 1.3em 1.3em 1em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 1.5em; line-height:1.2; }
+  margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 1em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 1.5em; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
@@ -702,8 +702,8 @@ ${FONT_LINK}
 <style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
-<p><a href="/">&larr; All articles</a></p>
   ${HEADER_HTML}
+  <p><a href="/">&larr; All articles</a></p>
   <div class="article-body">${articleHtml}</div>
   ${FOOTER_HTML}
 </body>
