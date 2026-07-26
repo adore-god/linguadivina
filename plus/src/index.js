@@ -4,6 +4,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 
 const BASE_STYLE = `
   body { font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
+  .container {overflow:hidden;}
   h2 {margin: 1.5em 0 0.5em 0 }
 `;
 
@@ -81,14 +82,14 @@ const HEADER_FOOTER_STYLE = `
   .site-footer a { color: ${BRAND_COLOR}; }
 `;
 
-const HEADER_HTML = `<header class="site-header">
+const HEADER_HTML = `<div class="container"><header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
   <img class="logo"  alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
 </header>`;
 
-const FOOTER_HTML = `<footer class="site-footer">
+const FOOTER_HTML = `</div><footer class="site-footer">
   <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p>
 
 </footer>`;
