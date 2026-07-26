@@ -79,19 +79,18 @@ const HEADER_FOOTER_STYLE = `
 
 .site-plus-label {
   color: #111;
-  animation: colourPulse 18s ease-in-out infinite;
+  animation: slowColourShift 60s linear infinite alternate;
 }
 
-@keyframes colourPulse {
-  0%,
-  100% {
+@keyframes slowColourShift {
+  from {
     color: #111;
   }
-
-  50% {
+  to {
     color: #10214e;
   }
 }
+
 
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
