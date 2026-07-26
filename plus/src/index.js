@@ -42,7 +42,7 @@ const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
   ul { list-style: none; padding: 0; }
-  li { padding: 0 0 12px 0; }
+  li { padding: 0 12px 12px 0; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .site-footer a { font-weight:400; }
