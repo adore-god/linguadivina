@@ -883,7 +883,7 @@ width: 50% !important
 :root.dark {
   --text: #dbe1f7;                 /* soft pale lavender-blue for primary text */
   --dark-navy: #16223f;            /* card surfaces — a shade lighter than the page bg for depth */
-  --bright-navy: #5477f0;          /* vivid periwinkle-blue — hover states & accents */
+  --bright-navy: #3D8DF2;          /* vivid periwinkle-blue — hover states & accents */
   --light-on-dark: #e3e8fb;        /* off-white text for use on --dark-navy surfaces */
   --light-on-dark-link: #b6c6fa;   /* links on --dark-navy surfaces */
   --link: #7DAAE3;                 /* soft periwinkle for primary links */
