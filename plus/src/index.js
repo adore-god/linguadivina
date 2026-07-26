@@ -27,7 +27,7 @@ h1 {animation: h1FadeIn 0.6s ease both;}
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 {position:absolute: width:100%;padding: 1.3em 80% 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
+  h1 {position:absolute: width:100%;padding: 1.3em 10% 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
