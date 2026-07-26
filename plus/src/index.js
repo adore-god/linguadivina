@@ -17,7 +17,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 {padding: 1.2em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
+  h1 {padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
@@ -40,7 +40,7 @@ const CODE_STYLE = `
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0; color: ${TEXT_COLOR}; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
-  h1 { padding: 1.2em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 2em; margin-bottom: 1.5rem; }
+  h1 { padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 2em; margin-bottom: 1.5rem; }
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
@@ -70,7 +70,7 @@ const PAYWALL_STYLE = `
 const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
-  .site-header { font-size: 1.5em; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
+  .site-header { border :1px solid red;font-size: 1.5em; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
   .site-header .site-title { font-size: 1em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8em; text-align: center;}
