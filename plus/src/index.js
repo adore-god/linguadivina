@@ -5,7 +5,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 const BASE_STYLE = `
   body { font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
   .container {overflow:hidden;}
-  h2 {margin: 1.5em 0 0.5em 0 }
+  h2 {margin: 2em 0 1.5em 0 ;}
 `;
 
 
