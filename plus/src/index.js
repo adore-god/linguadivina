@@ -710,7 +710,11 @@ async function dohQuery(name, type) {
 
 async function isVerifiedGooglebot(request) {
   const ua = request.headers.get("User-Agent") || "";
-  if (!/googlebot|adsbot-google|mediapartners-google/i.test(ua)) return false;
+  // Covers regular indexing Googlebot AND Google-InspectionTool, the crawler
+  // used by Rich Results Test and Search Console's URL Inspection / Live Test.
+  if (!/googlebot|google-inspectiontool|adsbot-google|mediapartners-google/i.test(ua)) {
+    return false;
+  }
 
   const ip = request.headers.get("CF-Connecting-IP");
   if (!ip || ip.includes(":")) return false; // keep this simple: IPv4 only
@@ -719,7 +723,7 @@ async function isVerifiedGooglebot(request) {
     const reversed = `${ip.split(".").reverse().join(".")}.in-addr.arpa`;
     const ptrData = await dohQuery(reversed, "PTR");
     const ptrName = ptrData?.Answer?.find((a) => a.type === 12)?.data;
-    if (!ptrName || !/\.googlebot\.com\.?$|\.google\.com\.?$/i.test(ptrName)) {
+    if (!ptrName || !/\.googlebot\.com\.?$|\.google\.com\.?$|\.googleusercontent\.com\.?$/i.test(ptrName)) {
       return false;
     }
 
