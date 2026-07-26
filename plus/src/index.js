@@ -4,8 +4,8 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 
 const BASE_STYLE = `
   body { line-height: 1.6; }
-  .art-list {height:300px;overflow-x: hidden;
-  overflow-y: auto;}
+  .art-list {margin:0 auto;width:80%;height:300px;overflow-x: hidden;overflow-y: auto;}
+  h2 {margin: 1.5em 0 1.5em 0 }
 `;
 
 
