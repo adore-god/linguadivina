@@ -7,6 +7,8 @@ const BASE_STYLE = `
   h2 {margin: 1.5em 0 0.5em 0 }
 `;
 
+const articleTitle = data.title;
+const articleHtml = data.html;
 
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#445bad";
@@ -15,7 +17,7 @@ const BRAND_COLOR_WHITE = "#FFFFFF";
 const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 20px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
+  body { font-family: ${BRAND_FONT}; margin: 40px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {padding: 1.3em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
   
@@ -38,7 +40,7 @@ const CODE_STYLE = `
 `;
 
 const INDEX_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 20px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
+  body { font-family: ${BRAND_FONT}; margin: 40px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   h1 { padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 2em; margin-bottom: 1.5rem; }
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
@@ -699,9 +701,14 @@ ${FONT_LINK}
 <style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
+
+
   ${HEADER_HTML}
   <p><a href="/">&larr; All articles</a></p>
-  <div class="article-body">${articleHtml}</div>
+  
+  ${articleTitle}
+<div class="article-body">${articleHtml}</div>
+  
   ${FOOTER_HTML}
 </body>
 </html>`;
