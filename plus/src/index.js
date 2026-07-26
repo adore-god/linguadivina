@@ -17,9 +17,6 @@ const BASE_STYLE = `
 
   100% {opacity: 1;}
 }
-
-
-
 h1 {animation: h1FadeIn 0.6s ease both;}
 
   h2 {margin: 2.3em 0 1.5em 0 ;}
@@ -32,7 +29,7 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
+  margin-right: calc(50% - 50vw); padding: 1.3em 29% 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.4; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
