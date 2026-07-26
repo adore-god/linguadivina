@@ -769,11 +769,30 @@ async function renderArticlePage(request, env, slug) {
         "@id": `${articleUrl}#article`,
         "headline": h1Text,
         "url": articleUrl,
+        "image": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
         "isAccessibleForFree": false,
         "isPartOf": { "@id": "https://plus.linguadivina.uk/#website" },
-        "publisher": { "@id": "https://linguadivina.uk/#org" },
-        "author": { "@id": "https://linguadivina.uk/about-author.html#person" },
-        "mainEntityOfPage": articleUrl,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": articleUrl,
+          "isPartOf": { "@id": "https://plus.linguadivina.uk/#website" },
+        },
+        "author": {
+          "@type": "Person",
+          "@id": "https://linguadivina.uk/about-author.html#person",
+          "name": "HNNH",
+          "url": "https://linguadivina.uk/about-author.html",
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://linguadivina.uk/#org",
+          "name": "Lingua Divina",
+          "url": "https://linguadivina.uk/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp",
+          },
+        },
         "hasPart": {
           "@type": "WebPageElement",
           "isAccessibleForFree": false,
