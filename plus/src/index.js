@@ -4,9 +4,8 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 
 const BASE_STYLE = `
   body { line-height: 1.6; }
-  .art-list {background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; margin:0 auto;width:80%;height:300px;overflow-x: hidden;overflow-y: auto;}
+  .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;width:80%;height:300px;overflow-x: hidden;overflow-y: auto;}
   h2 {margin: 1.5em 0 0.5em 0 }
-  blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
 
@@ -23,7 +22,7 @@ const ARTICLE_STYLE = `
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
-  
+  blockquote { padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
   p { width:90%; padding: 0;  margin: 3em auto}
 `;
 
