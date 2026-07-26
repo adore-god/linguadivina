@@ -6,6 +6,7 @@ const BASE_STYLE = `
   body { font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
   .container {overflow:hidden;}
   h2 {margin: 2em 0 1.5em 0 ;}
+  blockquote { line-height:1.7;margin:1.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
 
@@ -21,12 +22,10 @@ const ARTICLE_STYLE = `
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.2; }
-  
-  
-  
-  blockquote { line-height:1.7;margin-top:1em; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
+
+
 
 const CODE_STYLE = `
   .code-container { overflow: hidden;max-height:150px;position: relative; width: 90%; margin: 2.5em auto; }
