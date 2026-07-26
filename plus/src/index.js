@@ -74,7 +74,8 @@ const INDEX_STYLE = `
 
 const PAYWALL_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 480px; margin: 100px auto; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
-  h1 { font-size: 1.4rem; background: ${BRAND_COLOR_WHITE};
+  h1 { font-size: 1.4rem;}
+  h1.plain {background: ${BRAND_COLOR_WHITE};
     color: ${TEXT_COLOR};}
   button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
   button:hover { background: ${BRAND_COLOR}; }
@@ -750,7 +751,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <h1>This article is for Lingua Divina Plus subscribers</h1>
+  <h1 class="plain" >This article is for Lingua Divina Plus subscribers</h1>
   <p>Subscribe to read this and every other Plus article.</p>
   <button id="subscribe-btn">Subscribe</button>
   <p id="error"></p>
