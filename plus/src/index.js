@@ -103,7 +103,7 @@ const HEADER_FOOTER_STYLE = `
 const HEADER_HTML = `<div class="container"><header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
-  <div class="site-plus-label">Plus</div>
+  <div class="site-plus-label">Plus &#11089;</div>
   <img class="logo"  alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
 </header>`;
 
