@@ -754,13 +754,39 @@ async function renderArticlePage(request, env, slug) {
   const h1Html = h1Match ? h1Match[0] : "";
   const remainderHtml = h1Match ? articleHtml.replace(h1Match[0], "") : articleHtml;
 
+  const h1Text = h1Html.replace(/<[^>]+>/g, "").trim() || slug;
+  const articleUrl = `${SITE_HOME_URL}/${encodeURIComponent(slug)}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${articleUrl}#article`,
+        "headline": h1Text,
+        "url": articleUrl,
+        "isAccessibleForFree": false,
+        "isPartOf": { "@id": "https://plus.linguadivina.uk/#website" },
+        "publisher": { "@id": "https://linguadivina.uk/#org" },
+        "author": { "@id": "https://linguadivina.uk/about-author.html#person" },
+        "mainEntityOfPage": articleUrl,
+        "hasPart": {
+          "@type": "WebPageElement",
+          "isAccessibleForFree": false,
+          "cssSelector": ".article-body",
+        },
+      },
+    ],
+  };
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="application/ld+json" id="plus-article-schema">${JSON.stringify(articleSchema)}</script>
 <script src="https://linguadivina.uk/script-new-blb.js" defer></script>
-<title>${escapeHtml(slug)} — Lingua Divina Plus</title>
+<title>${escapeHtml(h1Text)} — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
