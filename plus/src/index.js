@@ -543,6 +543,7 @@ ${FONT_LINK}
 <body>
   ${HEADER_HTML}
   <h1>Lingua Divina Articles</h1>
+  <p>Full-length articles, deep dives, and exclusive resources for dedicated readers</p>
   <ul>${items || "<li>No articles yet.</li>"}</ul>
   ${FOOTER_HTML}
 </body>
