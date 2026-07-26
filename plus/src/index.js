@@ -73,7 +73,7 @@ const INDEX_STYLE = `
 `;
 
 const PAYWALL_STYLE = `
-  body { font-family: ${BRAND_FONT}; max-width: 480px; margin: 50px auto 100px; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
+  body { font-family: ${BRAND_FONT};  margin: 50px auto 100px; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
   h1 { font-size: 1.4rem;}
  .plain {margin:0 auto;text-align: center;background: ${BRAND_COLOR_WHITE};
     color: ${TEXT_COLOR};}
