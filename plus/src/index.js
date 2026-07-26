@@ -17,7 +17,7 @@ const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
-  a { color: ${BRAND_COLOR}; font-weight:500;}
+  a { color: ${BRAND_COLOR}; font-weight:400;}
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw); padding: 1.3em 2em 1.3em 0.5em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align:left;  margin-bottom:1em; font-size: 1.5em; line-height:1.2; }
@@ -51,7 +51,7 @@ const INDEX_STYLE = `
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 12px 0; }
   .art-list ul li a { color: ${BRAND_COLOR_WHITE}; }
-  a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
+  a { color: ${BRAND_COLOR}; font-weight:400; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .site-footer a { font-weight:400; }
 `;
