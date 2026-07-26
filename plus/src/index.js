@@ -22,7 +22,7 @@ const ARTICLE_STYLE = `
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
   blockquote { line-height:1.7;margin-top:1em; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
-  p { width:90%; padding: 0;  margin: 3em auto}
+  .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
 const CODE_STYLE = `
@@ -39,6 +39,7 @@ const CODE_STYLE = `
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto; padding: 0; color: ${TEXT_COLOR}; }
+  .article-body { width:90%; padding: 0;  margin: 3em auto;}
   h1 { padding: 2em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
@@ -656,12 +657,14 @@ ${FONT_LINK}
 <body>
   ${HEADER_HTML}
   <h1>Welcome</h1>
+    <div class="article-body">
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
   <p>Lots of full introductory articles are available for free at <a href="https://linguadivina.uk">linguadivina.uk</a>.
   <p>🔒 Subscribe for full access. Cancel anytime.</p>
   <h2>Lingua Divina PLUS Articles</h2>
   <div class="art-list">
   <ul>${items || "<li>No articles yet.</li>"}</ul></div>
+  </div>
   ${FOOTER_HTML}
 </body>
 </html>`;
