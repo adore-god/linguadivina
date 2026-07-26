@@ -7,8 +7,6 @@ const BASE_STYLE = `
   h2 {margin: 1.5em 0 0.5em 0 }
 `;
 
-const articleTitle = data.title;
-const articleHtml = data.html;
 
 const BRAND_FONT = "'Inter', serif";
 const BRAND_COLOR = "#445bad";
@@ -19,7 +17,7 @@ const TEXT_COLOR = "#111";
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 40px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
   a { color: ${BRAND_COLOR}; font-weight:500;}
-  h1 {padding: 1.3em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
+  h1 {position: absolute; padding: 1.3em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
@@ -701,14 +699,9 @@ ${FONT_LINK}
 <style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
-
-
   ${HEADER_HTML}
   <p><a href="/">&larr; All articles</a></p>
-  
-  ${articleTitle}
-<div class="article-body">${articleHtml}</div>
-  
+  <div class="article-body">${articleHtml}</div>
   ${FOOTER_HTML}
 </body>
 </html>`;
