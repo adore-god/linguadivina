@@ -533,8 +533,13 @@ async function renderIndexPage(request, env) {
   const subscriber = await getActiveSubscriber(request, env);
   const manifest = await getArticleManifest(request, env);
   const items = manifest
-    .map((a) => `<li><a href="/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a></li>`)
-    .join("\n");
+  .map((a) => `
+    <li>
+      <a href="/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a>
+      ${a.freeSlug ? `<div class="free-link"><a href="https://linguadivina.uk/${a.freeSlug}">Free version</a></div>` : ""}
+    </li>
+  `)
+  .join("\n");
 
   const html = `<!DOCTYPE html>
 <html lang="en">
