@@ -19,7 +19,7 @@ const ARTICLE_STYLE = `
   a { color: ${BRAND_COLOR}; font-weight:500;}
   h1 {width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw); padding: 1.3em 0; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
+  margin-right: calc(50% - 50vw); padding: 1.3em; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE};text-align-left;  margin-bottom:1em; font-size: 2em; line-height:1.2; }
   
   h2 { text-align-left;  padding-left:1.2em; padding-right:1.5em; font-size: 1.6rem; margin-top: 0.5rem;margin-bottom: 1.5rem; line-height:1.4; }
   
@@ -75,7 +75,7 @@ const HEADER_FOOTER_STYLE = `
   .site-header {font-size: 1.5em; text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 0; }
   .site-header .site-title { font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
-  .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8em; text-align: center;}
+  .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8em; text-align: center;}
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
   .site-footer a { color: ${BRAND_COLOR}; }
