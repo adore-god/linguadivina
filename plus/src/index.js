@@ -71,7 +71,7 @@ const INDEX_STYLE = `
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 19px 0; }
   .art-list ul li a { color: ${BRAND_COLOR_WHITE}; }
-  a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
+  a { color: ${BRAND_COLOR_DARK}; font-weight:600; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .site-footer a { font-weight:400; }
 `;
