@@ -11,7 +11,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 const BASE_STYLE = `
   body { font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
   .container {overflow:hidden;}
-  h2 {margin: 2em 0 1.5em 0 ;}
+  h2 {margin: 2.3em 0 1.5em 0 ;}
   blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
@@ -48,7 +48,7 @@ const INDEX_STYLE = `
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
     .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:300px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
-  li { padding: 0 12px 12px 0; }
+  li { padding: 0 12px 16px 0; }
   .art-list ul li a { color: ${BRAND_COLOR_WHITE}; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -75,7 +75,7 @@ const HEADER_FOOTER_STYLE = `
   .site-header {text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 0; }
   .site-header .site-title {font-size: 1.5em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
-  .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8em; text-align: center;}
+  .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
   .site-footer a { color: ${BRAND_COLOR}; }
