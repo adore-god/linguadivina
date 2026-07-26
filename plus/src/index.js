@@ -646,6 +646,7 @@ ${FONT_LINK}
   ${HEADER_HTML}
   <h1>Welcome</h1>
   <p>Full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation</p>
+  <p>🔒 Please subscribe for full access</p>
   <h2>Lingua Divina Articles</h2>
   <div class="art-list">
   <ul>${items || "<li>No articles yet.</li>"}</ul></div>
