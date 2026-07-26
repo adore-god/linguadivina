@@ -78,32 +78,31 @@ const HEADER_FOOTER_STYLE = `
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
 .site-plus-label {
   
+
   background: linear-gradient(
     90deg,
     #b5b5b5 0%,
-    #b5b5b5 46%,
+    #b5b5b5 47%,
     #ffffff 50%,
-    #b5b5b5 54%,
+    #b5b5b5 53%,
     #b5b5b5 100%
   );
 
-  background-size: 350% 100%;
+  background-size: 400% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  animation: luxuryShine 10s ease-in-out infinite;
+  animation: luxuryShine 18s linear infinite;
 }
 
 @keyframes luxuryShine {
-  /* Sit still for most of the animation */
-  0%, 70% {
-    background-position: 350% 0;
+  0%, 85% {
+    background-position: 400% 0;
   }
 
-  /* Slow sweep */
   100% {
-    background-position: -350% 0;
+    background-position: -400% 0;
   }
 }
 
