@@ -684,7 +684,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <h1 class="centet">Welcome</h1>
+  <h1 class="center">Welcome to Plus</h1>
     <div class="article-body">
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
   <p>Lots of full introductory articles are available for free at <a href="https://linguadivina.uk">linguadivina.uk</a>.
