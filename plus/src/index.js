@@ -12,7 +12,7 @@ const BASE_STYLE = `
   body { font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
   .container {overflow:hidden;}
   h2 {margin: 2em 0 1.5em 0 ;}
-  blockquote { line-height:1.7;margin:1.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
+  blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
 
