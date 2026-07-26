@@ -139,6 +139,10 @@ export default {
       return verifyMagicLink(request, env);
     }
 
+    if (request.method === "GET" && (path === "/sitemap.xml" || path === "/robots.txt")) {
+      return env.ARTICLES.fetch(request);
+    }
+
     if (request.method === "GET" && !path.includes("/api/")) {
       return renderPlusRoute(request, env);
     }
