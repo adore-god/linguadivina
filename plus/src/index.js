@@ -76,33 +76,20 @@ const HEADER_FOOTER_STYLE = `
   .site-header .site-title {font-size: 1.5em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
+
 .site-plus-label {
-  
-
-  background: linear-gradient(
-    90deg,
-    #b5b5b5 0%,
-    #b5b5b5 47%,
-    #ffffff 50%,
-    #b5b5b5 53%,
-    #b5b5b5 100%
-  );
-
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-
-  animation: luxuryShine 18s linear infinite;
+  color: #111;
+  animation: colourPulse 18s ease-in-out infinite;
 }
 
-@keyframes luxuryShine {
-  0%, 85% {
-    background-position: 400% 0;
+@keyframes colourPulse {
+  0%,
+  100% {
+    color: #111;
   }
 
-  100% {
-    background-position: -400% 0;
+  50% {
+    color: #10214e;
   }
 }
 
