@@ -703,7 +703,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <p><a href="/">&larr; All articles</a></p>
+  <p style="position: absolute"><a href="/">&larr; All articles</a></p>
   <div class="article-body">${articleHtml}</div>
   ${FOOTER_HTML}
 </body>
