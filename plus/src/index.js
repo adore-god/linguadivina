@@ -538,6 +538,103 @@ async function renderIndexPage(request, env) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="application/ld+json" id="plus-index-schema">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lingua Divina",
+      "@id": "https://linguadivina.uk/#org",
+      "url": "https://linguadivina.uk/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://linguadivina.uk/images/wp/lingua-divina-uk.webp"
+      },
+      "description": "Original linguistic framework — Lingua Divina — developed by HNNH, expanding foundational insights into Biblical text as symbolic consciousness mechanics. All interpretations are psychological and non-theological.",
+      "founder": {
+        "@id": "https://linguadivina.uk/about-author.html#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://linguadivina.uk/about-author.html#person",
+      "name": "HNNH",
+      "url": "https://linguadivina.uk/about-author.html",
+      "sameAs": [
+        "https://www.reddit.com/user/GoldStudio2653/",
+        "https://www.reddit.com/r/BibleNevilleGoddard/",
+        "https://amazon.com/author/hnnhbible",
+        "https://www.whatsapp.com/channel/0029VbDVjNH7T8bYBJr3yg1a"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://plus.linguadivina.uk/#website",
+      "url": "https://plus.linguadivina.uk/",
+      "name": "Lingua Divina Plus",
+      "description": "Full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation.",
+      "publisher": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "isPartOf": {
+        "@id": "https://linguadivina.uk/"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://plus.linguadivina.uk/#collectionpage",
+      "url": "https://plus.linguadivina.uk/",
+      "name": "Lingua Divina Plus — Welcome",
+      "description": "Full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation.",
+      "isPartOf": {
+        "@id": "https://plus.linguadivina.uk/#website"
+      },
+      "about": {
+        "@id": "https://linguadivina.uk/#org"
+      },
+      "mainEntity": {
+        "@id": "https://plus.linguadivina.uk/#articlelist"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://plus.linguadivina.uk/#articlelist",
+      "name": "Lingua Divina Plus Articles",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://plus.linguadivina.uk/plus-framework-yhvh-ehyeh-linguistic-key",
+          "name": "Bible Key to Interpret Any Bible Book, Passage and Verse"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://plus.linguadivina.uk/plus-jacob-esau-reunion",
+          "name": "Genesis 33:1 — Jacob and Esau — The Face Confirms the Verdict"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://plus.linguadivina.uk/plus-1-john-4-7-21",
+          "name": "1 John 4:7-21 — Love Is Of God"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://plus.linguadivina.uk/plus-1-john-5-6-12",
+          "name": "1 John 5:6-12 — The Court Runs Its Witness Statute Through Water, Blood, and Spirit"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://plus.linguadivina.uk/plus-urim-thummim",
+          "name": "Urim and Thummim — Lights and Perfections on the Breastplate of Judgment"
+        }
+      ]
+    }
+  ]
+}</script>
 <title>Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
