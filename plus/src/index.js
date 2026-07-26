@@ -694,10 +694,50 @@ ${FONT_LINK}
   return withRefreshedSession(response, subscriber, env);
 }
 
+// ---------------------------------------------------------------------
+// Googlebot verification (reverse DNS + forward-confirm, per Google's
+// own guidance: https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot)
+// ---------------------------------------------------------------------
+
+async function dohQuery(name, type) {
+  const res = await fetch(
+    `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`,
+    { headers: { Accept: "application/dns-json" } }
+  );
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function isVerifiedGooglebot(request) {
+  const ua = request.headers.get("User-Agent") || "";
+  if (!/googlebot|adsbot-google|mediapartners-google/i.test(ua)) return false;
+
+  const ip = request.headers.get("CF-Connecting-IP");
+  if (!ip || ip.includes(":")) return false; // keep this simple: IPv4 only
+
+  try {
+    const reversed = `${ip.split(".").reverse().join(".")}.in-addr.arpa`;
+    const ptrData = await dohQuery(reversed, "PTR");
+    const ptrName = ptrData?.Answer?.find((a) => a.type === 12)?.data;
+    if (!ptrName || !/\.googlebot\.com\.?$|\.google\.com\.?$/i.test(ptrName)) {
+      return false;
+    }
+
+    const fwdData = await dohQuery(ptrName, "A");
+    const forwardIps = (fwdData?.Answer || [])
+      .filter((a) => a.type === 1)
+      .map((a) => a.data);
+    return forwardIps.includes(ip);
+  } catch {
+    return false;
+  }
+}
+
 async function renderArticlePage(request, env, slug) {
   const subscriber = await getActiveSubscriber(request, env);
+  const bypassForGooglebot = !subscriber && (await isVerifiedGooglebot(request));
 
-  if (!subscriber) {
+  if (!subscriber && !bypassForGooglebot) {
     return new Response(renderPaywallHtml(slug), {
       status: 402,
       headers: { "Content-Type": "text/html; charset=UTF-8" },
