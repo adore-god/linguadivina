@@ -646,7 +646,7 @@ ${FONT_LINK}
   ${HEADER_HTML}
   <h1>Welcome</h1>
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
-  <p>Lots of free full and introductory articles are available on <a href="https://linguadivina.uk">https://linguadivina.uk</a>.
+  <p>Lots of full introductory articles are available for free at <a href="https://linguadivina.uk">https://linguadivina.uk</a>.
   <p>🔒 Subscribe for full access. Cancel anytime.</p>
   <h2>Lingua Divina PLUS Articles</h2>
   <div class="art-list">
