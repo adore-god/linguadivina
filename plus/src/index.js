@@ -70,6 +70,7 @@ const HEADER_FOOTER_STYLE = `
   .site-header .site-title { font-size: 1rem; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-header .site-tagline { text-transform: uppercase; margin: 4px 0 0; color: #111; font-size: 0.8rem; text-align: center;}
+  .logo {width: 160px; height: 119px; margin:0 auto; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85rem; }
   .site-footer a { color: ${BRAND_COLOR}; }
 `;
@@ -78,7 +79,7 @@ const HEADER_HTML = `<header class="site-header">
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
-  <img alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
+  <img class="logo"  alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
 </header>`;
 
 const FOOTER_HTML = `<footer class="site-footer">
