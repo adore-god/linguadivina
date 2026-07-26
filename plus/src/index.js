@@ -46,9 +46,9 @@ const INDEX_STYLE = `
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
-    .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:300px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
+    .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:380px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
-  li { padding: 0 12px 16px 0; }
+  li { padding: 0 12px 19px 0; }
   .art-list ul li a { color: ${BRAND_COLOR_WHITE}; }
   a { color: ${BRAND_COLOR}; font-weight:600; text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -76,6 +76,34 @@ const HEADER_FOOTER_STYLE = `
   .site-header .site-title {font-size: 1.5em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
+  
+  .site-tagline {
+  background: linear-gradient(
+    90deg,
+    #b0b0b0 0%,
+    #b0b0b0 45%,
+    #ffffff 50%,
+    #b0b0b0 55%,
+    #b0b0b0 100%
+  );
+
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  animation: shine 4s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -300% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
   .site-footer a { color: ${BRAND_COLOR}; }
