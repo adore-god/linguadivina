@@ -936,9 +936,9 @@ a:hover {
 
   color: var(--bright-navy);
 
-  text-decoration: underline dotted;
+  text-decoration: underline solid;
 
-  text-decoration-thickness: 0.9px;
+  text-decoration-thickness: 0.8px;
   
    text-decoration-color: currentColor !important;
 }
