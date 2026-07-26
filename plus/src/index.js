@@ -76,31 +76,36 @@ const HEADER_FOOTER_STYLE = `
   .site-header .site-title {font-size: 1.5em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
-  
-  .site-tagline {
+.site-plus-label {
+  display: inline-block;
+  font-weight: 700;
+
   background: linear-gradient(
     90deg,
-    #b0b0b0 0%,
-    #b0b0b0 45%,
+    #b5b5b5 0%,
+    #b5b5b5 46%,
     #ffffff 50%,
-    #b0b0b0 55%,
-    #b0b0b0 100%
+    #b5b5b5 54%,
+    #b5b5b5 100%
   );
 
-  background-size: 300% 100%;
+  background-size: 350% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  animation: shine 4s ease-in-out infinite;
+  animation: luxuryShine 10s ease-in-out infinite;
 }
 
-@keyframes shine {
-  0% {
-    background-position: -300% 0;
+@keyframes luxuryShine {
+  /* Sit still for most of the animation */
+  0%, 70% {
+    background-position: 350% 0;
   }
+
+  /* Slow sweep */
   100% {
-    background-position: 300% 0;
+    background-position: -350% 0;
   }
 }
 
