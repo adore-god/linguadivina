@@ -77,7 +77,7 @@ const PAYWALL_STYLE = `
   h1 { font-size: 1.4rem;}
  .plain {margin:0 auto;text-align: center;background: ${BRAND_COLOR_WHITE};
     color: ${TEXT_COLOR};}
-  button { margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
+  button { font-weight:700;margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
   button:hover { background: ${BRAND_COLOR}; }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
   .login-box { margin-top: 40px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; }
