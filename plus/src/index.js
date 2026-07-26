@@ -5,7 +5,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 const BASE_STYLE = `
   body { line-height: 1.6; }
   .art-list {margin:0 auto;width:80%;height:300px;overflow-x: hidden;overflow-y: auto;}
-  h2 {margin: 1.5em 0 1.5em 0 }
+  h2 {margin: 1.5em 0 0.5em 0 }
 `;
 
 
@@ -584,6 +584,7 @@ async function renderIndexPage(request, env) {
       "@type": "CollectionPage",
       "@id": "https://plus.linguadivina.uk/#collectionpage",
       "url": "https://plus.linguadivina.uk/",
+      "isAccessibleForFree": false,
       "name": "Lingua Divina Plus — Welcome",
       "description": "Full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation.",
       "isPartOf": {
@@ -636,6 +637,8 @@ async function renderIndexPage(request, env) {
   ]
 }</script>
 <title>Lingua Divina Plus</title>
+<meta content="2026-07-26T08:56:00Z" name="date-modified">
+<meta name="date" content="2026-07-24">
 ${FONT_LINK}
 <style>${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
