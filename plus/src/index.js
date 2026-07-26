@@ -61,6 +61,7 @@ const CODE_STYLE = `
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
+  h1 {text-align:center;}
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
