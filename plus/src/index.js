@@ -33,6 +33,7 @@ h1 {
     font-size: 1.5em;
     line-height: 1.4;
   }
+.center {text-align: center}
 
   h2 {margin: 2.3em 0 1.5em 0 ;}
   blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
@@ -61,7 +62,6 @@ const CODE_STYLE = `
 
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
-  h1 {text-align:center;}
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
@@ -684,7 +684,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <h1>Welcome</h1>
+  <h1 class="centet">Welcome</h1>
     <div class="article-body">
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
   <p>Lots of full introductory articles are available for free at <a href="https://linguadivina.uk">linguadivina.uk</a>.
