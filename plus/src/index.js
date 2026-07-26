@@ -33,7 +33,8 @@ h1 {
     font-size: 1.5em;
     line-height: 1.4;
   }
-.center {text-align: center}
+.center {text-align: center;padding: 1.3em 0.5em 1.3em 0.5em;}
+
 
   h2 {margin: 2.3em 0 1.5em 0 ;}
   blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
