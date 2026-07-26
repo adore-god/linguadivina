@@ -702,8 +702,8 @@ ${FONT_LINK}
 <style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
+<p><a href="/">&larr; All articles</a></p>
   ${HEADER_HTML}
-  <p><a href="/">&larr; All articles</a></p>
   <div class="article-body">${articleHtml}</div>
   ${FOOTER_HTML}
 </body>
