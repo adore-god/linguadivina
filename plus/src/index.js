@@ -707,11 +707,7 @@ async function renderArticlePage(request, env, slug) {
     return new Response("Article not found", { status: 404 });
   }
 
-  // Pull the leading H1 out of the injected article HTML so it renders as a
-  // direct sibling of .article-body (full-width parent) rather than nested
-  // inside it — nested inside a 90%-width container, the width:100vw /
-  // calc(50% - 50vw) breakout math is relative to that narrower box, not
-  // the viewport, so it no longer lines up.
+  
   const h1Match = articleHtml.match(/<h1[^>]*>[\s\S]*?<\/h1>/i);
   const h1Html = h1Match ? h1Match[0] : "";
   const remainderHtml = h1Match ? articleHtml.replace(h1Match[0], "") : articleHtml;
@@ -728,7 +724,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <p style="position: absolute"><a href="/">&larr; All articles</a></p>
+  <p><a href="/">&larr; All articles</a></p>
   ${h1Html}
   <div class="article-body">${remainderHtml}</div>
   ${FOOTER_HTML}
