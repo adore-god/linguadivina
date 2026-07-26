@@ -40,6 +40,7 @@ const CODE_STYLE = `
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
+  .free-link {display:inline; font-size:0.8px;}
     .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:300px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 12px 0; }
@@ -536,7 +537,7 @@ async function renderIndexPage(request, env) {
   .map((a) => `
     <li>
       <a href="/${encodeURIComponent(a.slug)}">${escapeHtml(a.title || a.slug)}</a>
-      ${a.freeSlug ? `<div class="free-link"><a href="https://linguadivina.uk/${a.freeSlug}">Free version</a></div>` : ""}
+      ${a.freeSlug ? `<div class="free-link"><a href="${a.freeSlug}">Free version</a></div>` : ""}
     </li>
   `)
   .join("\n");
