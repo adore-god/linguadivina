@@ -40,7 +40,7 @@ const CODE_STYLE = `
 const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; max-width: 640px; margin: 60px auto; padding: 0 20px; color: ${TEXT_COLOR}; }
   h1 { line-height:1;font-size: 3.6rem; margin-bottom: 1.5rem; }
-  .free-link {font-size:0.6em; text-transform:uppercase;}
+  .free-link {opacity:0.7;font-size:0.6em; text-transform:uppercase;}
   .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
     .free-link a:visited {color: ${BRAND_COLOR_DARK};}
     .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:300px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
