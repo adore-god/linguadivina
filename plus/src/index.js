@@ -1,3 +1,9 @@
+const BRAND_FONT = "'Inter', serif";
+const BRAND_COLOR = "#445bad";
+const BRAND_COLOR_DARK = "#10214e";
+const BRAND_COLOR_WHITE = "#FFFFFF";
+const TEXT_COLOR = "#111";
+
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="https://linguadivina.uk/script-ga.js" async></script>`;
@@ -9,12 +15,6 @@ const BASE_STYLE = `
   blockquote { line-height:1.7;margin:1.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
 `;
 
-
-const BRAND_FONT = "'Inter', serif";
-const BRAND_COLOR = "#445bad";
-const BRAND_COLOR_DARK = "#10214e";
-const BRAND_COLOR_WHITE = "#FFFFFF";
-const TEXT_COLOR = "#111";
 
 const ARTICLE_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
