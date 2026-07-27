@@ -100,6 +100,7 @@ const INDEX_STYLE = `
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 19px 0; }
   .art-list ul li a { color: var(--light-on-dark); }
+  .art-list ul li a:visited { color: var(--visited); }
   a, a:link { color: var(--link); font-weight:600; text-decoration: none; }
   a:visited { color: var(--visited); }
   a:hover { color: var(--bright-navy); text-decoration: underline; }
