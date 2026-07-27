@@ -95,6 +95,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     background: #16171a;
+    transition: background 4s ease;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 
@@ -112,6 +113,7 @@
     position: fixed;
     inset: 0;
     z-index: 0;
+    transition: background 4s ease;
     background:
       radial-gradient(
         circle at 50% 20%,
@@ -126,6 +128,21 @@
         #16171a 100%
       );
   }
+  body.is-night .backdrop {
+    background:
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(255, 255, 255, 0.025) 0%,
+        rgba(255, 255, 255, 0.01) 35%,
+        transparent 70%
+      ),
+      linear-gradient(
+        180deg,
+        #202224 0%,
+        #17181a 55%,
+        #08090b 100%
+      );
+  }
 
   .candlelight-ambient {
     position: fixed;
@@ -137,14 +154,19 @@
     transition: opacity 3s ease;
     background: radial-gradient(ellipse at 50% 90%, rgba(255,150,70,0.55) 0%, rgba(255,120,40,0.16) 32%, transparent 65%);
   }
-  body.is-night .candlelight-ambient { opacity: 0.6; }
+  body.is-night { background: #08090b; }
+  body.is-night .candlelight-ambient { opacity: 0.72; }
 
   .vignette {
     position: fixed;
     inset: 0;
     z-index: 5;
     pointer-events: none;
+    transition: background 4s ease;
     background: radial-gradient(ellipse at 50% 55%, transparent 38%, rgba(0,0,0,0.6) 100%);
+  }
+  body.is-night .vignette {
+    background: radial-gradient(ellipse at 50% 50%, transparent 28%, rgba(0,0,0,0.82) 100%);
   }
 
   /* ---------- sanctuary layout ---------- */
@@ -501,8 +523,12 @@
     margin-left: -50vw;
     height: 96px;
     z-index: 1;
+    transition: background 4s ease;
     background: linear-gradient(to bottom, #46484a 0%, #1e2022 100%);
     box-shadow: inset 0 8px 16px rgba(0,0,0,0.55);
+  }
+  body.is-night .altar-ledge {
+    background: linear-gradient(to bottom, #2c2e30 0%, #121315 100%);
   }
   .altar-ledge::before {
     content: "";
