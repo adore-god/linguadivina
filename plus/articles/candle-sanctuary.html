@@ -687,6 +687,43 @@
   }
   .votive-left .votive-flame,  .votive-left .votive-glow  { animation-delay: 0.4s; }
   .votive-right .votive-flame, .votive-right .votive-glow { animation-delay: 1.1s; }
+
+  /* ---------- dove (Genesis 8:11 — sent from the ark, returning with an olive leaf) ---------- */
+  .dove-wrap {
+    position: absolute;
+    width: 17%;
+    aspect-ratio: 2.2 / 1;
+    left: -22%;
+    top: 24%;
+    opacity: 0;
+    pointer-events: none;
+    animation: doveGlide 210s ease-in-out infinite;
+    animation-delay: 9s;
+  }
+  .dove-wrap svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .dove-body, .dove-tail { fill: rgba(253,250,242,0.94); }
+  .dove-beak { fill: rgba(214,182,120,0.9); }
+  .dove-wing {
+    fill: rgba(235,228,210,0.88);
+    transform-box: fill-box;
+    transform-origin: 95% 75%;
+    animation: doveWingFlap 1s ease-in-out infinite;
+  }
+  .dove-twig-leaf { fill: rgba(150,168,108,0.8); }
+  .dove-twig-stem { stroke: rgba(150,168,108,0.65); stroke-width: 1; fill: none; }
+
+  @keyframes doveGlide {
+    0%   { left: -22%; top: 27%; opacity: 0; }
+    5%   { opacity: 0.92; }
+    18%  { left: 36%;  top: 14%; }
+    32%  { left: 92%;  top: 21%; opacity: 0.92; }
+    36%  { opacity: 0; }
+    100% { opacity: 0; left: 92%; top: 21%; }
+  }
+  @keyframes doveWingFlap {
+    0%, 100% { transform: scaleY(1) rotate(0deg); }
+    50%      { transform: scaleY(0.72) rotate(-8deg); }
+  }
 </style>
 </head>
 <body>
@@ -722,6 +759,17 @@
           <div class="celestial-moon" id="moonEl">
             <div class="moon-lit"></div>
             <div class="moon-shadow" id="moonShadow"></div>
+          </div>
+          <div class="dove-wrap" id="doveEl" aria-hidden="true">
+            <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+              <polygon class="dove-tail" points="4,30 22,25 22,35"/>
+              <path class="dove-wing" d="M42,27 C34,10 16,4 4,9 C18,17 30,24 40,33 C43,32 44,30 42,27 Z"/>
+              <ellipse class="dove-body" cx="46" cy="29" rx="26" ry="9" transform="rotate(-8 46 29)"/>
+              <polygon class="dove-beak" points="75,25 90,23 76,29"/>
+              <line class="dove-twig-stem" x1="90" y1="23" x2="100" y2="19"/>
+              <ellipse class="dove-twig-leaf" cx="99" cy="17" rx="3" ry="1.3" transform="rotate(-30 99 17)"/>
+              <ellipse class="dove-twig-leaf" cx="103" cy="20.5" rx="3" ry="1.3" transform="rotate(15 103 20.5)"/>
+            </svg>
           </div>
           <div class="tracery"></div>
         </div>
