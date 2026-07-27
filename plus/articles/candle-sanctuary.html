@@ -311,24 +311,41 @@
 }
 
   .celestial-moon {
-    width: 11%;
-    overflow: hidden;
-    background: #cfcdc0;
-    box-shadow: 0 0 26px 8px rgba(255,255,240,0.18);
-  }
-  .moon-lit {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #fdfdf5 0%, #e8e6d8 60%, #cfcdc0 100%);
-  }
-  .moon-shadow {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: #05070f;
-    transition: transform 1s ease;
-  }
+  position: relative;
+  width: 11%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  /* Multi-layered halo and ambient atmosphere glow */
+  box-shadow: 
+    0 0 12px 2px rgba(255, 255, 240, 0.25),
+    0 0 35px 10px rgba(232, 230, 216, 0.12),
+    inset -2px -2px 8px 1px rgba(0, 0, 0, 0.2);
+  will-change: transform;
+}
+
+.moon-lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Base gradient combined with procedural crater textures */
+  background: 
+    radial-gradient(circle at 25% 30%, rgba(200, 195, 180, 0.35) 0%, transparent 20%),
+    radial-gradient(circle at 65% 55%, rgba(180, 175, 160, 0.4) 0%, transparent 25%),
+    radial-gradient(circle at 45% 75%, rgba(190, 185, 170, 0.3) 0%, transparent 18%),
+    radial-gradient(circle at 35% 35%, #ffffff 0%, #e8e6d8 55%, #b5b3a3 100%);
+  background-blend-mode: multiply, multiply, multiply, normal;
+}
+
+.moon-shadow {
+  position: absolute;
+  inset: -1px; /* Slightly overextended to prevent thin boundary light leaks */
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #05070f 80%, rgba(5, 7, 15, 0.85) 100%);
+  /* Softens the terminator line separating night and day */
+  filter: blur(1.5px);
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
   /* ---------- liturgical hour label ---------- */
   .hour-label {
@@ -562,6 +579,22 @@
 </style>
 </head>
 <body>
+<button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background: transparent;position: fixed; top: 16px; right: 16px; z-index: 10;opacity:0.5;">
+   Sound
+</button>
+
+<script>
+  function toggleAudio() {
+    if (!audioCtx) {
+      initAmbience();
+    } else if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    } else if (audioCtx.state === 'running') {
+      audioCtx.suspend();
+    }
+  }
+</script>
+
   <div class="backdrop"></div>
   <div class="candlelight-ambient"></div>
   <div class="vignette"></div>
@@ -793,5 +826,40 @@
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
+<script>
+let audioCtx;
+let noiseNode;
+
+function initAmbience() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Create buffer for pink/brown noise (soft wind)
+  const bufferSize = audioCtx.sampleRate * 2;
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const output = buffer.getChannelData(0);
+  
+  let b0 = 0, b1 = 0, b2 = 0;
+  for (let i = 0; i < bufferSize; i++) {
+    const white = Math.random() * 2 - 1;
+    b0 = 0.99886 * b0 + white * 0.0555179;
+    b1 = 0.99332 * b1 + white * 0.0750759;
+    b2 = 0.96900 * b2 + white * 0.1538520;
+    output[i] = (b0 + b1 + b2) * 0.04; // low gain brown noise
+  }
+
+  noiseNode = audioCtx.createBufferSource();
+  noiseNode.buffer = buffer;
+  noiseNode.loop = true;
+
+  // Lowpass filter to keep it warm and muffled
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 350; 
+
+  noiseNode.connect(filter);
+  filter.connect(audioCtx.destination);
+  noiseNode.start();
+}
+</script>
 </body>
 </html>
