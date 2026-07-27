@@ -894,7 +894,7 @@ width: 50% !important
   --link: #ffffff;                 /* soft periwinkle for primary links */
   --visited: #979597;              /* light purple, distinct from --text but same tonal band */
   --white: #0D0D0D;                /* page background — near-black, navy-tinted */
-  --grey-bg: #232c47;              /* dark navy-grey box background */
+  --grey-bg: #C5C4C5;              /* dark navy-grey box background */
   --light-on-darker: #6d8bf5;
   --text-dim-on-light: #a9b4d6;
   --text-dim-on-dark: #cdb8ef;     /* matches light theme — always sits on a --dark-navy surface */
@@ -1016,15 +1016,15 @@ background-color: var(--white);
 
 :root.dark .amazon-promo {
   background-color:  var(--grey-bg);
-  color: var(--light-on-dark);
+  color: var(--dark-navy);
 }
 
 :root.dark .amazon-promo__btn {
-  color: var(--light-on-dark);
+  color: var(--dark-navy);
 }
 
 :root.dark .amazon-promo__label {
-  color: var(--light-on-dark);
+  color: var(--dark-navy);
 }
 
 :root.dark .book {
