@@ -92,8 +92,8 @@ const INDEX_STYLE = `
   body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
-  .free-link a:link {padding:2px;border-radius:6px;background: var(--white); color: var(--dark-navy);}
-    .free-link a:visited {color: var(--dark-navy);}
+  .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: var(--dark-navy);}
+    .free-link a:visited {color: ${BRAND_COLOR_DARK};}
     .art-list {background: var(--dark-navy);margin:0 auto;height:380px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 19px 0; }
