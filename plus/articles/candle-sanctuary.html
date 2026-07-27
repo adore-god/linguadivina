@@ -92,7 +92,7 @@
     overflow: hidden;
     position: relative;
     background: #17181a;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Inter', serif;
   }
 
   /* ---------- stone wall backdrop ---------- */
@@ -279,7 +279,7 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     font-size: clamp(13px, 2vw, 16px);
-    color: #cdb27e;
+    color: #999;
     text-transform: uppercase;
     text-shadow: 0 1px 2px rgba(0,0,0,0.85);
     text-align: center;
@@ -288,7 +288,7 @@
     margin-top: 3px;
     font-style: italic;
     font-size: clamp(12px, 1.6vw, 14px);
-    color: #a3937a;
+    color: #999;
     opacity: 0.85;
     text-align: center;
   }
@@ -350,7 +350,7 @@
     width: 78px;
     height: 24px;
     border-radius: 50%;
-    background: radial-gradient(ellipse at 50% 30%, #e3c589 0%, #a3813f 55%, #5c4322 100%);
+    background: radial-gradient(ellipse at 50% 30%, #f2f2f2 0%, #a3a3a3 55%, #5e5e5e 100%);
     box-shadow: 0 4px 10px rgba(0,0,0,0.55);
   }
 
@@ -400,7 +400,14 @@
   .flame-core {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 70%, #fff7d6 0%, #ffd34d 25%, #ff9d1f 55%, #ff5e1a 80%, rgba(255,94,26,0) 100%);
+    background: radial-gradient(
+    ellipse at 50% 70%,
+    #ffffff 0%,
+    #fffdf5 25%,
+    #ffe7a8 55%,
+    #ffb347 80%,
+    rgba(255,179,71,0) 100%
+);
     clip-path: polygon(50% 0%, 80% 35%, 90% 65%, 50% 100%, 10% 65%, 20% 35%);
     filter: blur(0.3px);
   }
@@ -412,7 +419,12 @@
     width: 170px;
     height: 170px;
     transform: translate(-50%, 0);
-    background: radial-gradient(circle, rgba(255,176,87,0.32) 0%, rgba(255,140,20,0.11) 42%, rgba(255,140,20,0) 70%);
+    background: radial-gradient(
+    circle,
+    rgba(255,255,245,0.32) 0%,
+    rgba(255,250,235,0.11) 42%,
+    rgba(255,250,235,0) 70%
+);
     border-radius: 50%;
     animation: glowPulse 2.2s infinite ease-in-out;
     pointer-events: none;
@@ -449,7 +461,7 @@
     transform: translateX(-50%);
     width: 20px;
     height: 24px;
-    background: linear-gradient(to right, #5c4a30, #9a7b45, #5c4a30);
+    background: linear-gradient(to right, #e8e8e8, #ffffff, #e8e8e8);
     border-radius: 3px 3px 8px 8px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.5);
   }
@@ -460,7 +472,14 @@
     width: 11px;
     height: 22px;
     transform-origin: bottom center;
-    background: radial-gradient(ellipse at 50% 70%, #fff2c4 0%, #ffcf6b 35%, #ff8a3d 70%, rgba(255,138,61,0) 100%);
+    background: radial-gradient(
+    ellipse at 50% 70%,
+    #ffffff 0%,
+    #fffdf5 25%,
+    #ffe7a8 55%,
+    #ffb347 80%,
+    rgba(255,179,71,0) 100%
+);
     clip-path: polygon(50% 0%, 80% 35%, 90% 65%, 50% 100%, 10% 65%, 20% 35%);
     animation: flicker 2.4s infinite ease-in-out;
   }
@@ -471,7 +490,12 @@
     width: 70px;
     height: 70px;
     transform: translate(-50%, 0);
-    background: radial-gradient(circle, rgba(255,180,90,0.28) 0%, rgba(255,140,40,0.09) 45%, transparent 75%);
+    background: radial-gradient(
+    circle,
+    rgba(255,255,245,0.32) 0%,
+    rgba(255,250,235,0.11) 42%,
+    rgba(255,250,235,0) 70%
+);
     border-radius: 50%;
     animation: glowPulse 2.4s infinite ease-in-out;
   }
