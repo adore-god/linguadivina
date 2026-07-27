@@ -788,7 +788,13 @@ padding: 5px 0;
   margin-bottom: 0;
 }
 
-
+.footer-auth {
+  margin: 4em auto 30px;
+  text-align: center;
+  font-size: 0.8em; 
+  display: block;
+  font-weight:500;
+}
 
 @media (max-width: 640px) {
   .card-grid .card {
@@ -1249,12 +1255,7 @@ color: var(--text);
   }
 
 :root.dark .footer-auth {
-  background-color:  var(--text);
-  margin: 4em auto 30px;
-  text-align: center;
-  font-size: 0.8em; 
-  display: block;
-  font-weight:500;
+color: var(--text);
 }
 
 :root.dark .footer-auth img {
