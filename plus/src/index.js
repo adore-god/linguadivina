@@ -16,6 +16,7 @@ const THEME_STYLE = `
     --light-on-dark: ${BRAND_COLOR_WHITE};
     --link: ${BRAND_COLOR};
     --visited: #111111;
+    --red: red;
   }
   :root.dark {
     --text: #DCDBDC;
@@ -25,6 +26,7 @@ const THEME_STYLE = `
     --light-on-dark: #DCDBDC;
     --link: #ffffff;
     --visited: #E2E1E2;
+    --red:red;
   }
   body { background: var(--white); color: var(--text); }
 `;
@@ -117,7 +119,7 @@ const PAYWALL_STYLE = `
   .login-box p { font-size: 0.9rem; color: #666; margin-bottom: 16px; }
   .login-box input { padding: 10px 14px; font-size: 0.95rem; width: 100%; max-width: 280px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
   .login-box button { margin-top: 10px; font-size: 0.9rem; padding: 10px 20px; }
-  #msg { margin-top: 12px; font-size: 0.9rem; color: var(--text); }
+  #msg { margin-top: 12px; font-size: 0.9rem; color: var(--red); }
 `;
 
 const SITE_HOME_URL = "https://plus.linguadivina.uk";
