@@ -1,8 +1,8 @@
 const BRAND_FONT = "'Inter', serif";
-const BRAND_COLOR = "#445bad";
-const BRAND_COLOR_DARK = "#10214e";
-const BRAND_COLOR_WHITE = "#FFFFFF";
-const TEXT_COLOR = "#111";
+const BRAND_COLOR = "#000000";
+const BRAND_COLOR_DARK = "#302F30";
+const BRAND_COLOR_WHITE = "#F2F2F2";
+const TEXT_COLOR = "#151415";
 
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
