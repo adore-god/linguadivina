@@ -40,7 +40,7 @@
       "url": "https://linguadivina.uk/candle-sanctuary.html",
       "name": "Sanctuary Candle — A Vigil Light",
       "headline": "Sanctuary Candle — A Vigil Light",
-      "description": "A living vigil candle that tracks real time against a moving sky, sun, moon and stars, and names the canonical hour of prayer as it passes. A quiet, wordless space on Lingua Divina.",
+      "description": "A living vigil candle that tracks real time against a moving sky, sun, moon and stars, and names the canonical hour of prayer as it passes. A quiet, space on Lingua Divina.",
       "isPartOf": {
         "@id": "https://linguadivina.uk/"
       },
@@ -87,16 +87,17 @@
   * { box-sizing: border-box; }
 
   body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-    background: #17181a;
-    font-family: 'EB Garamond', serif;
-  }
+  margin: 3em 0 0;
+  min-height: 100vh;
+  min-height: 100dvh; /* accounts for mobile browser address bars */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents hard top-clipping on very short screens */
+  background: #16171a;
+  font-family: 'EB Garamond', serif;
+}
 
   /* ---------- stone wall backdrop ---------- */
   .backdrop {
@@ -140,31 +141,51 @@
 
   /* ---------- sanctuary layout ---------- */
   .sanctuary {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 96px;
-    padding-top: 30px; /* Space for finial tip */
-  }
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: min(96px, 10vh);
+  padding-top: max(16px, 2vh);
+  width: 100%;
+}
 
   /* ---------- gothic window ---------- */
-  .window-frame {
-    position: relative;
-    width: clamp(200px, 40vw, 300px);
-    height: clamp(240px, 44vh, 380px);
-    padding: 14px;
-    box-sizing: border-box;
-    display: flex;
-    clip-path: var(--arch-clip);
-    background: linear-gradient(135deg, #6a6e72 0%, #494d51 45%, #2a2d30 100%);
-    box-shadow:
-      inset 0 2px 1px rgba(255,255,255,0.08),
-      inset 0 -4px 8px rgba(0,0,0,0.55),
-      0 18px 42px rgba(0,0,0,0.65),
-      0 0 60px 8px rgba(140,160,195,0.06);
+.window-frame {
+  position: relative;
+  width: clamp(180px, 40vw, 300px);
+  height: clamp(200px, 38vh, 380px);
+  padding: 14px;
+  box-sizing: border-box;
+  display: flex;
+  clip-path: var(--arch-clip);
+  background: linear-gradient(135deg, #6a6e72 0%, #494d51 45%, #2a2d30 100%);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,0.08),
+    inset 0 -4px 8px rgba(0,0,0,0.55),
+    0 18px 42px rgba(0,0,0,0.65),
+    0 0 60px 8px rgba(140,160,195,0.06);
+}
+
+@media (max-height: 700px) {
+  .sanctuary {
+    padding-top: 10px;
+    padding-bottom: 40px;
   }
+  .altar-candles {
+    margin-top: 10px;
+    height: 240px;
+  }
+  .candle-wrap {
+    height: 240px;
+    transform: scale(0.85);
+    transform-origin: bottom center;
+  }
+  .hour-label {
+    margin-top: 8px;
+  }
+}
 
   .finial {
     position: absolute;
@@ -513,6 +534,8 @@
   }
   .votive-left .votive-flame,  .votive-left .votive-glow  { animation-delay: 0.4s; }
   .votive-right .votive-flame, .votive-right .votive-glow { animation-delay: 1.1s; }
+  
+  
 </style>
 </head>
 <body>
