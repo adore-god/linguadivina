@@ -622,8 +622,49 @@ async function renderPlusRoute(request, env) {
   if (!slug) {
     return renderIndexPage(request, env);
   }
+
+  // Handle candle-sanctuary as a standalone full page
+  if (slug === "candle-sanctuary") {
+    return renderCandleSanctuaryPage(request, env, slug);
+  }
+
   return renderArticlePage(request, env, slug);
 }
+
+
+
+async function renderCandleSanctuaryPage(request, env, slug) {
+  // 1. Authenticate user or verify crawler
+  const subscriber = await getActiveSubscriber(request, env);
+  const bypassForGooglebot = !subscriber && (await isVerifiedGooglebot(request));
+
+  if (!subscriber && !bypassForGooglebot) {
+    return new Response(renderPaywallHtml(slug), {
+      status: 402,
+      headers: { "Content-Type": "text/html; charset=UTF-8" },
+    });
+  }
+
+  // 2. Retrieve raw full HTML from ARTICLES KV / R2
+  const fullHtml = await getArticleHtml(request, env, slug);
+  if (!fullHtml) {
+    return new Response("Sanctuary candle page not found", { status: 404 });
+  }
+
+  // 3. Return the entire file directly without wrapping in site header/footer/template
+  const response = new Response(fullHtml, {
+    headers: {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Cache-Control": "no-store",
+    },
+  });
+
+  return withRefreshedSession(response, subscriber, env);
+}
+
+
+
+
 
 async function renderIndexPage(request, env) {
   const subscriber = await getActiveSubscriber(request, env);
