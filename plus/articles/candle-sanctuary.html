@@ -95,8 +95,16 @@
     overflow-x: hidden;
     overflow-y: auto;
     background: #16171a;
-    font-family: 'Inter', serif;
-    
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+
+  -webkit-text-size-adjust: 100%;
+
+  -moz-text-size-adjust: 100%;
+
+  -ms-text-size-adjust: 100%;
+
+  text-size-adjust: 100%;
   }
 
   /* ---------- stone wall backdrop ---------- */
@@ -410,6 +418,7 @@
     cursor: pointer;
     line-height: 1;
     padding: 0;
+    
   }
   .close-btn:hover { color: #fff; }
 
@@ -447,6 +456,7 @@
     letter-spacing: 0.08em;
     border-radius: 4px;
     cursor: pointer;
+    
   }
   .drawer-btn:hover { background: rgba(205, 178, 126, 0.15); }
 
@@ -744,7 +754,7 @@
   </div>
 
   <!-- Re-open Toggle -->
-  <button class="drawer-open-toggle" onclick="toggleDrawer(true)">📖 Biblical Insight</button>
+  <button class="drawer-open-toggle" onclick="toggleDrawer(true)">📖</button>
 
   <!-- Closeable Floating Neville Goddard Article -->
   <article class="dictionary-drawer" id="dictionaryDrawer">
