@@ -2,19 +2,19 @@
 
 :root, :root.light {
 
-  --text: #121a2e;                 /* near-black with a navy undertone, softer than pure black */
+  --text: #151415;                 /* near-black with a navy undertone, softer than pure black */
 
-  --dark-navy: #10214e;            /* deep navy — h1, blockquote, code & card backgrounds */
+  --dark-navy: #302F30;            /* deep navy — h1, blockquote, code & card backgrounds */
 
   --bright-navy: #2b4fd6;          /* vivid navy-blue — hover states & accents */
 
-  --light-on-dark: #e9edfb;        /* off-white text for use on --dark-navy surfaces */
+  --light-on-dark: #F2F2F2;        /* off-white text for use on --dark-navy surfaces */
 
   --light-on-dark-link: #aec0f7;   /* links on --dark-navy surfaces */
 
-  --link: #24408f;                 /* primary link colour on light backgrounds */
+  --link: #000000;                 /* primary link colour on light backgrounds */
 
-  --visited: #6b4e9e;              /* muted violet, same tonal band as --link */
+  --visited: #302F30;              /* muted violet, same tonal band as --link */
 
   --light-on-darker: #1b2c5e;      /* slightly lighter navy, for layering on --dark-navy */
 
@@ -22,7 +22,7 @@
 
   --text-dim-on-dark: #cdb8ef;     /* light violet for visited links on dark-navy surfaces */
 
-  --white: #fbfcfe;                /* page background — soft, cool-toned white */
+  --white: #F2F2F2;                /* page background — soft, cool-toned white */
 
   --grey-bg: #eef1f8;              /* pale navy-tinted grey for boxes */
 
@@ -231,7 +231,7 @@ header img {
 
     font-size: 0.9em;
 
-    color: var(--grey-dim);
+    color: var(--text);
 
     text-align: center;
 

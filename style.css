@@ -881,14 +881,14 @@ width: 50% !important
    ======================= */
 
 :root.dark {
-  --text: #e6e6e9;                 /* soft pale lavender-blue for primary text */
-  --dark-navy: #1b1c35;            /* card surfaces — a shade lighter than the page bg for depth */
+  --text: #DCDBDC;                 /* soft pale lavender-blue for primary text */
+  --dark-navy: #242324;            /* card surfaces — a shade lighter than the page bg for depth */
   --bright-navy: #3D8DF2;          /* vivid periwinkle-blue — hover states & accents */
-  --light-on-dark: #e3e8fb;        /* off-white text for use on --dark-navy surfaces */
+  --light-on-dark: #DCDBDC;        /* off-white text for use on --dark-navy surfaces */
   --light-on-dark-link: #b6c6fa;   /* links on --dark-navy surfaces */
-  --link: #6e7fb0;                 /* soft periwinkle for primary links */
-  --visited: #3e4367;              /* light purple, distinct from --text but same tonal band */
-  --white: #111;                /* page background — near-black, navy-tinted */
+  --link: #ffffff;                 /* soft periwinkle for primary links */
+  --visited: #E2E1E2;              /* light purple, distinct from --text but same tonal band */
+  --white: #0D0D0D;                /* page background — near-black, navy-tinted */
   --grey-bg: #232c47;              /* dark navy-grey box background */
   --light-on-darker: #6d8bf5;
   --text-dim-on-light: #a9b4d6;
