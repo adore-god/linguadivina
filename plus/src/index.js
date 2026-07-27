@@ -624,7 +624,7 @@ async function renderPlusRoute(request, env) {
   }
 
   // Handle candle-sanctuary as a standalone full page
-  if (slug === "candle-sanctuary") {
+  if (slug === "plus-candle-sanctuary") {
     return renderCandleSanctuaryPage(request, env, slug);
   }
 
