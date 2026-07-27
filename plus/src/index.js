@@ -15,7 +15,7 @@ const THEME_STYLE = `
     --white: ${BRAND_COLOR_WHITE};
     --light-on-dark: ${BRAND_COLOR_WHITE};
     --link: ${BRAND_COLOR};
-    --visited: #111111;
+    --visited: #979597;
     --red: red;
   }
   :root.dark {
@@ -25,7 +25,7 @@ const THEME_STYLE = `
     --white: #0D0D0D;
     --light-on-dark: #DCDBDC;
     --link: #ffffff;
-    --visited: #E2E1E2;
+    --visited: #979597;
     --red:red;
   }
   body { background: var(--white); color: var(--text); }
