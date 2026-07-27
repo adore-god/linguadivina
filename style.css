@@ -151,7 +151,8 @@ input[type="text"]:focus {
    margin-left: 1.2em;
 	}
 	
-.sclPage li a {
+.sclPage li a,
+.sclPage li a:link {
    text-decoration: none;
    font-weight: 500;
 	}
@@ -891,7 +892,7 @@ width: 50% !important
   --light-on-dark: #DCDBDC;        /* off-white text for use on --dark-navy surfaces */
   --light-on-dark-link: #b6c6fa;   /* links on --dark-navy surfaces */
   --link: #ffffff;                 /* soft periwinkle for primary links */
-  --visited: #E2E1E2;              /* light purple, distinct from --text but same tonal band */
+  --visited: #979597;              /* light purple, distinct from --text but same tonal band */
   --white: #0D0D0D;                /* page background — near-black, navy-tinted */
   --grey-bg: #232c47;              /* dark navy-grey box background */
   --light-on-darker: #6d8bf5;
