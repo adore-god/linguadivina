@@ -1371,7 +1371,7 @@ color: var(--link);
 
 	font-weight:800;
 
-	text-decoration: underline dotted;
+	text-decoration: underline solid;
 
     text-decoration-thickness: 0.9px;
 

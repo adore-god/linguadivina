@@ -383,7 +383,7 @@ list-style-type: "- ";
 }
 .sidebar a:hover {
 	font-weight: 800;
-	text-decoration: underline dotted;
+	text-decoration: underline solid;
     text-decoration-thickness: 0.9px;
 	}
 	
