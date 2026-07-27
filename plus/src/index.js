@@ -168,8 +168,8 @@ const HEADER_FOOTER_STYLE = `
 
 const HEADER_HTML = `<div class="container"><header class="site-header">
 <button onclick="gtag('event', 'toggle_theme_click');" id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
-<link href="candle.css?v=1.0" rel="stylesheet">
-<script src="candle.js"></script>
+<link href="https://plus.linguadivina.uk/candle.css?v=1.0" rel="stylesheet">
+<script src="https://plus.linguadivina.uk/candle.js"></script>
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
