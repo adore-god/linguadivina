@@ -144,6 +144,36 @@
       );
   }
 
+  /* ---------- wall cracks ---------- */
+  .wall-cracks {
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 4s ease;
+  }
+  .wall-cracks svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .crack {
+    fill: none;
+    stroke: rgba(0,0,0,0.75);
+    stroke-width: 0.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .crack-highlight {
+    fill: none;
+    stroke: rgba(255,255,255,0.2);
+    stroke-width: 0.14;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  body.is-night .wall-cracks { opacity: 0.85; }
+
   .candlelight-ambient {
     position: fixed;
     inset: 0;
@@ -176,7 +206,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: min(96px, 10vh);
+    padding-bottom: min(56px, 6vh);
     padding-top: max(16px, 2vh);
     width: 100%;
   }
@@ -185,7 +215,7 @@
   .window-frame {
     position: relative;
     width: clamp(180px, 40vw, 300px);
-    height: clamp(200px, 38vh, 380px);
+    height: clamp(200px, min(48vh, calc(100dvh - 420px)), 460px);
     padding: 14px;
     box-sizing: border-box;
     display: flex;
@@ -512,7 +542,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 8px;
   }
 
   .altar-ledge {
@@ -770,6 +800,14 @@
 </script>
 
   <div class="backdrop"></div>
+  <div class="wall-cracks" aria-hidden="true">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="crack-highlight" d="M100.4,62.4 L95.4,59.4 L90.4,64.4 L85.4,60.4 L80.4,65.4 L75.4,61.4 L71.4,66.4 L66.4,62.4" />
+      <path class="crack" d="M100,62 L95,59 L90,64 L85,60 L80,65 L75,61 L71,66 L66,62" />
+      <path class="crack-highlight" d="M85.4,60.4 L82.4,66.4 L79.4,71.4" />
+      <path class="crack" d="M85,60 L82,66 L79,71" />
+    </svg>
+  </div>
   <div class="candlelight-ambient"></div>
   <div class="vignette"></div>
 
