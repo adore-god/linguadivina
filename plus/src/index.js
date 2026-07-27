@@ -4,6 +4,31 @@ const BRAND_COLOR_DARK = "#302F30";
 const BRAND_COLOR_WHITE = "#F2F2F2";
 const TEXT_COLOR = "#151415";
 
+// --- Theme variables: mirrors :root / :root.dark in style.css / style-fold.css
+// so pages rendered by this Worker respond to the "dark"/"light" class that
+// script-dark-light.js toggles on <html>.
+const THEME_STYLE = `
+  :root, :root.light {
+    --text: ${TEXT_COLOR};
+    --dark-navy: ${BRAND_COLOR_DARK};
+    --bright-navy: #2b4fd6;
+    --white: ${BRAND_COLOR_WHITE};
+    --light-on-dark: ${BRAND_COLOR_WHITE};
+    --link: ${BRAND_COLOR};
+    --visited: #111111;
+  }
+  :root.dark {
+    --text: #DCDBDC;
+    --dark-navy: #242324;
+    --bright-navy: #3D8DF2;
+    --white: #0D0D0D;
+    --light-on-dark: #DCDBDC;
+    --link: #ffffff;
+    --visited: #E2E1E2;
+  }
+  body { background: var(--white); color: var(--text); }
+`;
+
 const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="https://linguadivina.uk/script-ga.js" async></script><link href="https://linguadivina.uk/favicon.ico" rel="icon" type="image/png">
@@ -26,8 +51,8 @@ h1 {
     margin-right: calc(50% - 50vw);
     box-sizing: border-box;
     padding: 1.3em 2em 1.3em 0.5em;
-    background: ${BRAND_COLOR_DARK};
-    color: ${BRAND_COLOR_WHITE};
+    background: var(--dark-navy);
+    color: var(--light-on-dark);
     text-align: left;
     margin-bottom: 1em;
     font-size: 1.5em;
@@ -37,13 +62,15 @@ h1 {
 
 
   h2 {margin: 2.3em 0 1.5em 0 ;}
-  blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; }
+  blockquote { line-height:1.7;margin:2.5em auto; max-width:60%;padding:1.3em; border-radius: 10px; font-weight:500;background: var(--dark-navy); color: var(--light-on-dark); }
 `;
 
 
 const ARTICLE_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; color: ${TEXT_COLOR}; }
-  a { color: ${BRAND_COLOR_DARK}; font-weight:600; text-decoration:none;}
+  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0 0; }
+  a, a:link { color: var(--link); font-weight:600; text-decoration:none;}
+  a:visited { color: var(--visited); }
+  a:hover { color: var(--bright-navy); }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
 `;
 
@@ -51,10 +78,10 @@ const ARTICLE_STYLE = `
 
 const CODE_STYLE = `
   .code-container { overflow: hidden;max-height:150px;position: relative; width: 90%; margin: 2.5em auto; }
-  .code-container pre { background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; padding: 1.5em; border-radius: 10px; overflow-x: auto; margin: 0; }
+  .code-container pre { background: var(--dark-navy); color: var(--light-on-dark); padding: 1.5em; border-radius: 10px; overflow-x: auto; margin: 0; }
   .code-container code { font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
-  .button2 { display: inline-block; margin-top: 14px; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer;position: absolute; top: 10px;right: 10px; }
-  .button2:hover { background: ${BRAND_COLOR}; }
+  .button2 { display: inline-block; margin-top: 14px; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; background: var(--dark-navy); color: var(--light-on-dark); border: none; border-radius: 4px; cursor: pointer;position: absolute; top: 10px;right: 10px; }
+  .button2:hover { background: var(--bright-navy); }
   .bold700 { font-weight: 700; }
   .bold600 { font-weight: 600; }
   .noTag { font-style: normal; }
@@ -62,27 +89,28 @@ const CODE_STYLE = `
 `;
 
 const INDEX_STYLE = `
-  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; color: ${TEXT_COLOR}; }
+  body { font-family: ${BRAND_FONT}; margin: 60px auto 60px; padding: 0; }
   .article-body { width:90%; padding: 0;  margin: 3em auto;}
   .free-link {margin-top:2px;opacity:0.5;font-size:0.6em; text-transform:uppercase;}
-  .free-link a:link {padding:2px;border-radius:6px;background: ${BRAND_COLOR_WHITE}; color: ${BRAND_COLOR_DARK};}
-    .free-link a:visited {color: ${BRAND_COLOR_DARK};}
-    .art-list {background: ${BRAND_COLOR_DARK};margin:0 auto;height:380px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
+  .free-link a:link {padding:2px;border-radius:6px;background: var(--white); color: var(--dark-navy);}
+    .free-link a:visited {color: var(--dark-navy);}
+    .art-list {background: var(--dark-navy);margin:0 auto;height:380px;padding:1em; border-radius:15px;overflow-x: hidden;overflow-y: auto;}
   ul {margin:0 0 0 1em;width:80%; list-style: none; padding: 0; }
   li { padding: 0 12px 19px 0; }
-  .art-list ul li a { color: ${BRAND_COLOR_WHITE}; }
-  a { color: ${BRAND_COLOR_DARK}; font-weight:600; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  .art-list ul li a { color: var(--light-on-dark); }
+  a, a:link { color: var(--link); font-weight:600; text-decoration: none; }
+  a:visited { color: var(--visited); }
+  a:hover { color: var(--bright-navy); text-decoration: underline; }
   .site-footer a { font-weight:400; }
 `;
 
 const PAYWALL_STYLE = `
-  body { font-family: ${BRAND_FONT};  margin: 50px auto 100px; padding: 0 20px; color: ${TEXT_COLOR}; text-align: center; }
+  body { font-family: ${BRAND_FONT};  margin: 50px auto 100px; padding: 0 20px; text-align: center; }
   h1 { font-size: 1.4rem;}
- .plain {margin:0 auto;text-align: center;background: ${BRAND_COLOR_WHITE};
-    color: ${TEXT_COLOR};}
-  button { font-weight:700;margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: ${BRAND_COLOR_DARK}; color: ${BRAND_COLOR_WHITE}; border: none; border-radius: 4px; cursor: pointer; }
-  button:hover { background: ${BRAND_COLOR}; }
+ .plain {margin:0 auto;text-align: center;background: var(--white);
+    color: var(--text);}
+  button { font-weight:700;margin-top: 20px; padding: 12px 28px; font-size: 1rem; background: var(--dark-navy); color: var(--light-on-dark); border: none; border-radius: 4px; cursor: pointer; }
+  button:hover { background: var(--bright-navy); }
   #error { color: #b00020; margin-top: 14px; font-size: 0.9rem; }
   .login-box { margin-top: 40px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; }
   .login-box h2 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
@@ -96,12 +124,12 @@ const SITE_HOME_URL = "https://plus.linguadivina.uk";
 
 const HEADER_FOOTER_STYLE = `
   .site-header {text-transform: uppercase;text-align: center; padding-bottom: 24px; margin-bottom: 0; }
-  .site-header .site-title {font-size: 1.5em; font-weight: 700; color: ${BRAND_COLOR_DARK}; text-decoration: none; }
+  .site-header .site-title {font-size: 1.5em; font-weight: 700; color: var(--text); text-decoration: none; }
   .site-plus-label { font-size: 1.5em; }
-  .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: #111; font-size: 0.8em; text-align: center;}
+  .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: var(--text); font-size: 0.8em; text-align: center;}
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
-  .site-footer a { color: ${BRAND_COLOR}; }
+  .site-footer a { color: var(--link); }
   #theme-toggle {
 
 	position: absolute;
@@ -711,7 +739,7 @@ async function renderIndexPage(request, env) {
 <meta content="2026-07-26T08:56:00Z" name="date-modified">
 <meta name="date" content="2026-07-24">
 ${FONT_LINK}
-<style>${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
+<style>${THEME_STYLE}${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
   ${HEADER_HTML}
@@ -849,7 +877,7 @@ async function renderArticlePage(request, env, slug) {
 <script src="https://linguadivina.uk/script-new-blb.js" defer></script>
 <title>${escapeHtml(h1Text)} — Lingua Divina Plus</title>
 ${FONT_LINK}
-<style>${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
+<style>${THEME_STYLE}${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
   ${HEADER_HTML}
@@ -874,7 +902,7 @@ function renderPaywallHtml(slug) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subscribe — Lingua Divina Plus</title>
 ${FONT_LINK}
-<style>${PAYWALL_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
+<style>${THEME_STYLE}${PAYWALL_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
 <body>
   ${HEADER_HTML}
