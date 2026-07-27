@@ -33,7 +33,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="https://linguadivina.uk/script-ga.js" async></script><link href="https://linguadivina.uk/favicon.ico" rel="icon" type="image/png">
 <link href="https://linguadivina.uk/favicon.png" rel="icon" type="image/png">
-<link href="https://linguadivina.uk/manifest.json" rel="manifest"><script src="https://linguadivina.uk/script-dark-light.js"></script>`;
+<link href="https://linguadivina.uk/manifest.json" rel="manifest"><script src="https://plus.linguadivina.uk/js/script-dark-light.js"></script>`;
 
 const BASE_STYLE = `
   body { letter-spacing: 0.01em;font-family: Inter; font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
