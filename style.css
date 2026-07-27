@@ -156,6 +156,10 @@ input[type="text"]:focus {
    font-weight: 500;
 	}
 	
+	.sclPage li a:visited {
+   font-weight: 400;
+	}
+	
 .sclPage li a:hover {
 	font-weight:800;
 	}
