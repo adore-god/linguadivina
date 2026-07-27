@@ -8,7 +8,7 @@ const FONT_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script><script src="https://linguadivina.uk/script-ga.js" async></script><link href="https://linguadivina.uk/favicon.ico" rel="icon" type="image/png">
 <link href="https://linguadivina.uk/favicon.png" rel="icon" type="image/png">
-<link href="https://linguadivina.uk/manifest.json" rel="manifest">`;
+<link href="https://linguadivina.uk/manifest.json" rel="manifest"><script src="https://linguadivina.uk/script-dark-light.js"></script>`;
 
 const BASE_STYLE = `
   body { letter-spacing: 0.01em;font-family: Inter; font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
@@ -102,9 +102,39 @@ const HEADER_FOOTER_STYLE = `
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
   .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
   .site-footer a { color: ${BRAND_COLOR}; }
+  #theme-toggle {
+
+	position: absolute;
+
+    top: -15px; 
+
+    left: 3px;
+
+    display: inline;
+
+	background:transparent;
+
+	border:0;
+
+	padding:20px;
+
+	z-index:4000;
+
+	background:transparent;
+
+	border:0;
+
+	color: var(--text);
+
+	font-size: 2em;
+
+	vertical-align: baseline;
+
+	}
 `;
 
 const HEADER_HTML = `<div class="container"><header class="site-header">
+<button onclick="gtag('event', 'toggle_theme_click');" id="theme-toggle" aria-label="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
   <a class="site-title" href="${SITE_HOME_URL}">Lingua Divina </a>
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
