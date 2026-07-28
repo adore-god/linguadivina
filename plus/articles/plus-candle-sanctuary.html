@@ -150,7 +150,7 @@
     inset: 0;
     z-index: 6;
     pointer-events: none;
-    opacity: 1;
+    opacity: 0.4;
     transition: opacity 4s ease;
   }
   .wall-cracks svg {
@@ -406,15 +406,16 @@
 
   /* ---------- liturgical hour label ---------- */
   .hour-label {
-    margin-top: 18px;
+    margin-top: 15px;
     font-family: 'Inter', serif;
     font-weight: 600;
     letter-spacing: 0.35em;
     font-size: clamp(13px, 2vw, 16px);
     color: #999;
     text-transform: uppercase;
-    
     text-align: center;
+    position:relative;
+    z-index:-1;
   }
   .hour-gloss {
     margin-top: 3px;
@@ -640,12 +641,20 @@
     left: 50%;
     width: 26px;
     height: 55px;
+    
+    /* Center horizontal offset and set pivot at bottom */
+    transform: translateX(-50%); 
     transform-origin: bottom center;
-    animation: flicker 2.2s infinite ease-in-out;
-  }
-  .flame-core {
+    
+    /* Smooth flicker animation with natural swaying */
+    animation: organicFlicker 2.2s infinite ease-in-out;
+}
+
+.flame-core {
     position: absolute;
     inset: 0;
+    
+    /* Exact original color gradient */
     background: radial-gradient(
       ellipse at 50% 70%,
       #ffffff 0%,
@@ -654,9 +663,52 @@
       #ffb347 80%,
       rgba(255,179,71,0) 100%
     );
-    clip-path: polygon(50% 0%, 80% 35%, 90% 65%, 50% 100%, 10% 65%, 20% 35%);
-    filter: blur(0.3px);
-  }
+    
+    /* Smooth teardrop flame shape (replaces polygon clip-path) */
+    border-radius: 50% 50% 35% 35% / 80% 80% 35% 35%;
+    
+    /* Outer light bleed and soft glow */
+    filter: drop-shadow(0 -4px 10px rgba(255, 179, 71, 0.65)) blur(0.3px);
+}
+
+/* BLUE CORE: Keeps the flame base defined so it doesn't melt into the candle surface */
+.flame::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 12px;
+    background: radial-gradient(ellipse at 50% 80%, rgba(60, 130, 255, 0.85) 0%, rgba(40, 80, 220, 0) 100%);
+    border-radius: 50% 50% 40% 40%;
+    pointer-events: none;
+}
+
+/* Dynamic flicker keyframes */
+@keyframes organicFlicker {
+    0%, 100% {
+        transform: translateX(-50%) scale(1) rotate(0deg);
+        opacity: 0.95;
+    }
+    22% {
+        transform: translateX(-50%) scale(1.05, 0.95) rotate(-1.5deg);
+        opacity: 1;
+    }
+    45% {
+        transform: translateX(-50%) scale(0.96, 1.04) rotate(2deg);
+        opacity: 0.9;
+    }
+    68% {
+        transform: translateX(-50%) scale(1.03, 0.97) rotate(-1deg);
+        opacity: 1;
+    }
+    85% {
+        transform: translateX(-50%) scale(0.98, 1.02) rotate(1deg);
+        opacity: 0.93;
+    }
+}
+
 
   .glow {
     position: absolute;
@@ -713,11 +765,14 @@
   }
   .votive-flame {
     position: absolute;
-    bottom: 22px;
+    bottom: 24px; /* Lifted slightly to make room for the wick base */
     left: 50%;
     width: 11px;
     height: 22px;
+    
+    transform: translateX(-50%); 
     transform-origin: bottom center;
+    
     background: radial-gradient(
       ellipse at 50% 70%,
       #ffffff 0%,
@@ -726,9 +781,62 @@
       #ffb347 80%,
       rgba(255,179,71,0) 100%
     );
-    clip-path: polygon(50% 0%, 80% 35%, 90% 65%, 50% 100%, 10% 65%, 20% 35%);
-    animation: flicker 2.4s infinite ease-in-out;
-  }
+    
+    border-radius: 50% 50% 35% 35% / 80% 80% 35% 35%;
+    filter: drop-shadow(0 -2px 6px rgba(255, 179, 71, 0.6));
+    animation: organicFlicker 1.8s infinite ease-in-out;
+}
+
+/* WICK: Sits centered at the bottom of the flame */
+.votive-flame::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5px;
+    height: 7px;
+    background: linear-gradient(to top, #2b1f1d 0%, #523b36 70%, #ff8c00 100%);
+    border-radius: 1px 1px 0 0;
+    z-index: -1; /* Placed behind the flame glow */
+}
+
+/* BLUE CORE: Prevents flame from melting into the candle surface */
+.votive-flame::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 6px;
+    background: radial-gradient(ellipse at 50% 80%, rgba(60, 130, 255, 0.85) 0%, rgba(40, 80, 220, 0) 100%);
+    border-radius: 50% 50% 40% 40%;
+}
+
+@keyframes organicFlicker {
+    0%, 100% {
+        transform: translateX(-50%) scale(1) rotate(0deg);
+        opacity: 0.95;
+    }
+    22% {
+        transform: translateX(-50%) scale(1.06, 0.94) rotate(-1.5deg);
+        opacity: 1;
+    }
+    45% {
+        transform: translateX(-50%) scale(0.95, 1.05) rotate(2deg);
+        opacity: 0.9;
+    }
+    68% {
+        transform: translateX(-50%) scale(1.02, 0.97) rotate(-1deg);
+        opacity: 1;
+    }
+    85% {
+        transform: translateX(-50%) scale(0.98, 1.02) rotate(1deg);
+        opacity: 0.93;
+    }
+}
+
   .votive-glow {
     position: absolute;
     bottom: 16px;
@@ -751,7 +859,7 @@
   /* ---------- dove (Genesis 8:11 — sent from the ark, returning with an olive leaf) ---------- */
   .dove-wrap {
     position: absolute;
-    width: 40%; /* Increased from 17% to make it slightly bigger */
+    width: 28%; /* Increased from 17% to make it slightly bigger */
     aspect-ratio: 2.2 / 1;
     left: -22%;
     top: 65%; /* Shifted lower from 50% */
@@ -972,6 +1080,10 @@
       {
       verse: "John 8:47",
         quote: "Whoever is of God hears the words of God. The reason why you do not hear them is that you are not of God."
+      },
+      {
+      verse: "Deuteronomy 30:13-14",
+        quote: "Neither is it beyond the sea, that you should say, ‘Who will go over the sea for us and bring it to us, that we may hear it and do it?’ And they are not across the sea, for you to say, Who will go over the sea for us and give us news of them so that we may do them? But the word is very near you. It is in your mouth and in your heart, so that you can do it."
       },
       {
         verse: "John 7:19-20",
