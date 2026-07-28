@@ -1081,6 +1081,44 @@ body.is-night .flower-petal-inner { fill: #3d2229; }
 body.is-night .flower-center { fill: #5e4a21; stroke: #3a2d12; }
 body.is-night .flower-bud { fill: #3d2228; }
 
+
+/* ---------- Carved Wooden Bible Figure ---------- */
+.wooden-figure {
+  position: absolute;
+  bottom: 46px; /* Matches the bottom alignment of the dark wooden candle bases */
+  left: 22%;    /* Placed on the floor near the left candle */
+  z-index: 2;
+  width: 28px;
+  height: 75px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}
+
+.figure-body {
+  fill: #4a3324; /* Dark carved wood */
+  transition: fill 4s ease;
+}
+
+.figure-head {
+  fill: #5c3e2b; /* Slightly lighter carved wood accent */
+  transition: fill 4s ease;
+}
+
+.figure-detail {
+  fill: #332217; /* Deep carved groove shadows */
+  transition: fill 4s ease;
+}
+
+.figure-groove {
+  fill: none;
+  stroke: #332217;
+  stroke-width: 0.8;
+  transition: stroke 4s ease;
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -1157,7 +1195,7 @@ body.is-night .flower-bud { fill: #3d2228; }
 }
 
 .cross-center {
-  fill: #151922;
+  fill: #A30800;
   transition: fill 4s ease;
 }
 
@@ -1432,25 +1470,53 @@ body.is-night .cross-center {
     <div class="hour-gloss" id="hourGloss">Evening Prayer</div>
 
     <div class="altar-candles">
-      <div class="votive votive-left">
-        <div class="votive-glow"></div>
-        <div class="votive-flame"></div>
-        <div class="votive-cup"></div>
-      </div>
+  <!-- Left Dark Wood Candle -->
+  <div class="votive votive-left">
+    <div class="votive-glow"></div>
+    <div class="votive-flame"></div>
+    <div class="votive-cup"></div>
+  </div>
 
-      <div class="candle-wrap">
-        <div class="glow"></div>
-        <div class="flame"><div class="flame-core"></div></div>
-        <div class="wick"></div>
-        <div class="candle-holder"></div>
-        <div class="wax"></div>
-      </div>
+  <!-- Wooden Bible Figure (Placed on the floor next to the left candle) -->
+  <div class="wooden-figure" aria-label="Carved Wooden Figure">
+    <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Figure Base / Feet -->
+      <ellipse cx="15" cy="76" rx="8" ry="3" class="figure-grove" />
+      
+      <!-- Main Carved Robe Body -->
+      <path class="figure-body" d="M 15,22 C 10,22 8,35 6,55 C 5,65 4,72 8,75 L 22,75 C 26,72 25,65 24,55 C 22,35 20,22 15,22 Z" />
+      
+      <!-- Robe Fold Grooves / Wood Carvings -->
+      <path class="figure-detail" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74" stroke="#332217" stroke-width="0.8" fill="none" />
+      
+      <!-- Carved Head & Hood/Hair -->
+      <circle cx="15" cy="14" r="7" class="figure-head" />
+      <path class="figure-detail" d="M 9,14 C 9,8 21,8 21,14 C 21,18 18,22 15,22 C 12,22 9,18 9,14 Z" />
+      
+      <!-- Folded Arms / Book Gesture -->
+      <path class="figure-head" d="M 10,36 C 10,42 20,42 20,36 C 20,32 10,32 10,36 Z" />
+    </svg>
+  </div>
 
-      <div class="votive votive-right">
-        <div class="votive-glow"></div>
-        <div class="votive-flame"></div>
-        <div class="votive-cup"></div>
-      </div>
+  <!-- Center Main Candle -->
+  <div class="candle-wrap">
+    <div class="glow"></div>
+    <div class="flame"><div class="flame-core"></div></div>
+    <div class="wick"></div>
+    <div class="candle-holder"></div>
+    <div class="wax"></div>
+  </div>
+
+  <!-- Right Dark Wood Candle -->
+  <div class="votive votive-right">
+    <div class="votive-glow"></div>
+    <div class="votive-flame"></div>
+    <div class="votive-cup"></div>
+  </div>
+
+  <div class="altar-ledge"></div>
+</div>
+
 
       <div class="altar-ledge"></div>
     </div>
