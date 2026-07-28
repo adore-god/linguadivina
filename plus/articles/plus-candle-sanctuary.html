@@ -1130,6 +1130,29 @@ body.is-night .petal-vein { stroke: #6b3a44; }
   pointer-events: none;
 }
 
+body.is-night .wooden-figure{
+    animation: figureGlow 4s infinite ease-in-out;
+}
+
+@keyframes figureGlow{
+    0%,100%{
+        filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
+               brightness(.77);
+    }
+    22%{
+        filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
+               brightness(.57);
+    }
+    48%{
+        filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
+               brightness(.67);
+    }
+    71%{
+        filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
+               brightness(.57);
+    }
+}
+
 .figure-body {
   fill: url(#dayWoodGradient); /* Subtle top-half lift, fading down by day */
   transition: fill 4s ease;
@@ -1184,6 +1207,7 @@ body.is-night .figure-groove {
   opacity: 0.85;
   transition: stroke 4s ease;
 }
+
 
 
 </style>
