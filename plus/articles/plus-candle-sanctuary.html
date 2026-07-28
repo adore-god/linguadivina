@@ -1095,14 +1095,45 @@ body.is-night .flower-bud { fill: #3d2228; }
 }
 
 .figure-body {
-  fill: #4a3324; /* Dark carved wood */
+  fill: url(#dayWoodGradient); /* Subtle top-half lift, fading down by day */
   transition: fill 4s ease;
 }
 
 .figure-head {
-  fill: #5c3e2b; /* Slightly lighter carved wood accent */
+  fill: url(#dayHeadShade); /* Peaks at the exact same tone as the top of the body — never brighter */
   transition: fill 4s ease;
 }
+
+body.is-night .figure-head { 
+  fill: url(#nightHeadShade); /* Peaks at the exact same tone as the top of the body — never brighter */
+  transition: fill 4s ease;
+}
+
+body.is-night .figure-body { 
+  fill: url(#nightWoodGradient); /* Upper half warm, fading to shadow by the lower half */
+  transition: fill 4s ease;
+}
+
+.figure-neck-shadow {
+  fill: #000;
+  opacity: 0.14;
+  transition: opacity 4s ease;
+}
+
+body.is-night .figure-neck-shadow {
+  opacity: 0.32;
+}
+
+body.is-night .figure-detail { 
+  fill: #140a05; 
+  transition: fill 4s ease;
+}
+
+body.is-night .figure-groove { 
+  stroke: #4a2413; /* Lighter warm groove line down the body */
+  transition: stroke 4s ease;
+}
+
 
 .figure-detail {
   fill: #332217; /* Deep carved groove shadows */
@@ -1112,11 +1143,11 @@ body.is-night .flower-bud { fill: #3d2228; }
 .figure-groove {
   fill: none;
   stroke: #332217;
-  stroke-width: 0.8;
+  stroke-width: 0.55;
+  stroke-linecap: round;
+  opacity: 0.85;
   transition: stroke 4s ease;
 }
-
-
 
 
 </style>
@@ -1478,25 +1509,57 @@ body.is-night .cross-center {
   </div>
 
   <!-- Wooden Bible Figure (Placed on the floor next to the left candle) -->
-  <div class="wooden-figure" aria-label="Carved Wooden Figure">
-    <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- Figure Base / Feet -->
-      <ellipse cx="15" cy="76" rx="8" ry="3" class="figure-grove" />
-      
-      <!-- Main Carved Robe Body -->
-      <path class="figure-body" d="M 15,22 C 10,22 8,35 6,55 C 5,65 4,72 8,75 L 22,75 C 26,72 25,65 24,55 C 22,35 20,22 15,22 Z" />
-      
-      <!-- Robe Fold Grooves / Wood Carvings -->
-      <path class="figure-detail" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74" stroke="#332217" stroke-width="0.8" fill="none" />
-      
-      <!-- Carved Head & Hood/Hair -->
-      <circle cx="15" cy="14" r="7" class="figure-head" />
-      <path class="figure-detail" d="M 9,14 C 9,8 21,8 21,14 C 21,18 18,22 15,22 C 12,22 9,18 9,14 Z" />
-      
-      <!-- Folded Arms / Book Gesture -->
-      <path class="figure-head" d="M 10,36 C 10,42 20,42 20,36 C 20,32 10,32 10,36 Z" />
-    </svg>
-  </div>
+<div class="wooden-figure" aria-label="Carved Wooden Figure">
+  <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Night gradient: Warm amber lit through the upper half, fading into deep shadow lower down. Angled for a single consistent light direction. -->
+      <linearGradient id="nightWoodGradient" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" stop-color="#8c4722" />    <!-- Warm top -->
+        <stop offset="50%" stop-color="#6b3518" />   <!-- Still warm through the upper half -->
+        <stop offset="100%" stop-color="#140a05" />  <!-- Dark shadow at floor -->
+      </linearGradient>
+
+      <!-- Day gradient: same top-half/bottom-half shape and angle as night, but much subtler contrast -->
+      <linearGradient id="dayWoodGradient" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" stop-color="#5c4530" />    <!-- Slightly lifted top -->
+        <stop offset="50%" stop-color="#4a3324" />   <!-- Base wood tone through the upper half -->
+        <stop offset="100%" stop-color="#362717" />  <!-- Slightly deeper shadow at the floor -->
+      </linearGradient>
+
+      <!-- Head shading: same angle and starting tone as the body's peak, easing to a slightly deeper tone — gives the hood roundness without ever exceeding the body's brightness -->
+      <linearGradient id="nightHeadShade" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" stop-color="#8c4722" />
+        <stop offset="100%" stop-color="#6b3518" />
+      </linearGradient>
+      <linearGradient id="dayHeadShade" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" stop-color="#5c4530" />
+        <stop offset="100%" stop-color="#4a3324" />
+      </linearGradient>
+
+      <!-- Softens the head's outer silhouette so it isn't a hard-edged circle -->
+      <filter id="softHeadEdge" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="0.3" />
+      </filter>
+    </defs>
+
+    <!-- Figure Base / Feet -->
+    <ellipse cx="15" cy="76" rx="8" ry="3" class="figure-detail" />
+    
+    <!-- Main Carved Robe Body -->
+    <path class="figure-body" d="M 15,22 C 10,22 8,35 6,55 C 5,65 4,72 8,75 L 22,75 C 26,72 25,65 24,55 C 22,35 20,22 15,22 Z" />
+    
+    <!-- Robe Fold Grooves -->
+    <path class="figure-groove" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74 M 15,54 C 14.6,61 14.6,68 15,74" fill="none" />
+    
+    <!-- Head: a slightly irregular hand-carved hood shape rather than a perfect circle -->
+    <path class="figure-head" filter="url(#softHeadEdge)" d="M 15,7 C 18.6,7.2 21.6,9.9 21.8,13.6 C 22,17.6 18.9,21.1 15.2,21.6 C 11.2,21.9 8.1,18.3 7.9,14.2 C 7.7,10 11,7.3 15,7 Z" />
+
+    <!-- Neckline shadow: separates the hood from the shoulders -->
+    <path class="figure-neck-shadow" d="M 10,19 C 12,22.5 18,22.5 20,19 C 19,21.8 16,23.8 15,23.8 C 14,23.8 11,21.8 10,19 Z" />
+  </svg>
+</div>
+
+
 
   <!-- Center Main Candle -->
   <div class="candle-wrap">
