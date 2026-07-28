@@ -751,39 +751,69 @@
   /* ---------- dove (Genesis 8:11 — sent from the ark, returning with an olive leaf) ---------- */
   .dove-wrap {
     position: absolute;
-    width: 17%;
+    width: 22%; /* Increased from 17% to make it slightly bigger */
     aspect-ratio: 2.2 / 1;
     left: -22%;
-    top: 24%;
+    top: 65%; /* Shifted lower from 50% */
     opacity: 0;
     pointer-events: none;
-    animation: doveGlide 210s ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08)); 
+    animation: doveGlide 150s ease-in-out infinite; /* Reduced from 210s for faster flight */
     animation-delay: 9s;
-  }
-  .dove-wrap svg { width: 100%; height: 100%; display: block; overflow: visible; }
-  .dove-body, .dove-tail { fill: rgba(253,250,242,0.94); }
-  .dove-beak { fill: rgba(214,182,120,0.9); }
-  .dove-wing {
-    fill: rgba(235,228,210,0.88);
-    transform-box: fill-box;
-    transform-origin: 95% 75%;
-    animation: doveWingFlap 1s ease-in-out infinite;
-  }
-  .dove-twig-leaf { fill: rgba(150,168,108,0.8); }
-  .dove-twig-stem { stroke: rgba(150,168,108,0.65); stroke-width: 1; fill: none; }
+}
 
-  @keyframes doveGlide {
-    0%   { left: -22%; top: 27%; opacity: 0; }
+
+
+.dove-wrap svg { 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+    overflow: visible; 
+}
+
+/* Color tweaks */
+.dove-body, .dove-tail { 
+    fill: rgba(255, 253, 248, 0.96); 
+}
+.dove-beak { 
+    fill: rgba(214, 182, 120, 0.95); 
+}
+
+.dove-wing {
+    fill: rgba(238, 231, 215, 0.9);
+    transform-box: fill-box;
+    transform-origin: 90% 80%;
+    animation: doveWingFlap 0.85s ease-in-out infinite alternate; /* Reduced from 1.2s for faster flap */
+}
+
+.dove-twig-leaf { 
+  fill: rgba(56, 161, 105, 0.95); /* #38A169: Rich Emerald/Forest Green */
+}
+
+.dove-twig-stem { 
+  stroke: rgba(40, 125, 80, 0.85); /* Darker complementary green for stem definition */
+  stroke-width: 1.2; 
+  fill: none; 
+}
+
+
+/* LOWER FLIGHT PATH */
+@keyframes doveGlide {
+    0%   { left: -22%; top: 68%; opacity: 0; }
     5%   { opacity: 0.92; }
-    18%  { left: 36%;  top: 14%; }
-    32%  { left: 92%;  top: 21%; opacity: 0.92; }
+    18%  { left: 36%;  top: 68%; } 
+    32%  { left: 92%;  top: 62%; opacity: 0.92; }
     36%  { opacity: 0; }
-    100% { opacity: 0; left: 92%; top: 21%; }
-  }
-  @keyframes doveWingFlap {
-    0%, 100% { transform: scaleY(1) rotate(0deg); }
-    50%      { transform: scaleY(0.72) rotate(-8deg); }
-  }
+    100% { opacity: 0; left: 92%; top: 62%; }
+}
+
+/* WING FLAP */
+@keyframes doveWingFlap {
+    0%   { transform: rotate(0deg) scaleY(1); }
+    100% { transform: rotate(-18deg) scaleY(0.55) skewX(4deg); }
+}
+
+
 </style>
 </head>
 <body>
