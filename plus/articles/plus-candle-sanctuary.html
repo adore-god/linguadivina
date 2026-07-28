@@ -74,15 +74,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --arch-clip: polygon(0% 100%, 0% 42%, 3% 33%, 7% 25%, 12% 18%, 18% 12%, 25% 8%, 33% 4.5%, 41% 2%, 50% 0%, 59% 2%, 67% 4.5%, 75% 8%, 82% 12%, 88% 18%, 93% 25%, 97% 33%, 100% 42%, 100% 100%);
-    --c-top: rgb(6,9,26);
-    --c-mid: rgb(10,14,36);
-    --c-bot: rgb(4,6,15);
-  }
+  --arch-clip: polygon(0% 100%, 0% 42%, 3% 33%, 7% 25%, 12% 18%, 18% 12%, 25% 8%, 33% 4.5%, 41% 2%, 50% 0%, 59% 2%, 67% 4.5%, 75% 8%, 82% 12%, 88% 18%, 93% 25%, 97% 33%, 100% 42%, 100% 100%);
+  
+  /* Updated to Midnight Obsidian theme */
+  --c-top: #05070d;
+  --c-mid: #0d1322;
+  --c-bot: #182238;
+}
 
-  @property --c-top { syntax: '<color>'; inherits: true; initial-value: rgb(6,9,26); }
-  @property --c-mid { syntax: '<color>'; inherits: true; initial-value: rgb(10,14,36); }
-  @property --c-bot { syntax: '<color>'; inherits: true; initial-value: rgb(4,6,15); }
+@property --c-top { syntax: '<color>'; inherits: true; initial-value: #05070d; }
+@property --c-mid { syntax: '<color>'; inherits: true; initial-value: #0d1322; }
+@property --c-bot { syntax: '<color>'; inherits: true; initial-value: #182238; }
+
 
   * { box-sizing: border-box; }
 
