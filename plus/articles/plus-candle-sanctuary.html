@@ -1065,19 +1065,19 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
 }
 
 .cross-center {
-  fill: #cdb27e;
+  fill: #151922;
   transition: fill 4s ease;
 }
 
 /* Waves at base */
 .cross-wave {
-  fill: rgba(20, 35, 55, 0.75);
+  fill: #3E5F91;
   animation: waveSway 4s ease-in-out infinite alternate;
 }
 
 .cross-wave-front {
   fill: rgba(10, 20, 35, 0.85);
-  animation: waveSway 3s ease-in-out infinite alternate-reverse;
+  animation: waveSway 2s ease-in-out infinite alternate-reverse;
 }
 
 /* Night theme adjust */
@@ -1184,8 +1184,12 @@ body.is-night .cross-center {
     <circle cx="50" cy="55" r="3.5" class="cross-center" />
 
     <!-- Water Waves (Rendered over the base to submerge it) -->
-    <path class="cross-wave" d="M0,126 Q25,122 50,126 T100,126 V140 H0 Z" />
-    <path class="cross-wave-front" d="M0,130 Q20,126 45,130 T85,127 T100,130 V140 H0 Z" />
+    <!-- Back Wave -->
+<path class="cross-wave" d="M0,126 C 25,122 35,128 50,125 C 65,122 75,128 100,125 V140 H0 Z" />
+
+<!-- Front Wave -->
+<path class="cross-wave-front" d="M0,129 C 20,126 35,132 50,128 C 65,124 80,131 100,128 V140 H0 Z" />
+
   </svg>
 </div>
 
