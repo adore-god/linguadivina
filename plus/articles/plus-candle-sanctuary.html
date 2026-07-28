@@ -1055,6 +1055,7 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
 
 /* Detailed Flower Petals & Center */
 .flower-petal {
+opacity: 1;
   fill: #d69da9;
   stroke: #b57b88;
   stroke-width: 0.4;
@@ -1089,20 +1090,20 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
 
 /* Animation to make the vine sway gently */
 .trailing-vine {
+transform: rotate(-10deg) scale(1);
   transform-origin: top right; /* Keeps the vine anchored at the top right of the window */
-  animation: vineSway 14s ease-in-out infinite alternate;
+  animation: vineSway 10s ease-in-out infinite alternate;
+
+  
 }
 
 @keyframes vineSway {
-  0% {
-    transform: rotate(-9deg) scale(1);
-  }
-  20% {
-    transform: rotate(-7deg) scale(1.01);
-  }
-  100% {
-    transform: rotate(-9deg) scale(0.99);
-  }
+  0%   { transform: rotate(-10deg) scale(1); }
+  20%  { transform: rotate(-9.2deg) scale(1.004); }
+  40%  { transform: rotate(-7.8deg) scale(1.008); }
+  60%  { transform: rotate(-8.9deg) scale(1.002); }
+  80%  { transform: rotate(-10.8deg) scale(.998); }
+  100% { transform: rotate(-12deg) scale(.995); }
 }
 
 /* Night mode transitions */
@@ -1355,7 +1356,135 @@ body.is-night .sea-cross-wrap{
 }
 
 
+body.is-night .vine-stem,
+body.is-night .vine-tendril{
+    animation: stemCandleLight 3.3s infinite ease-in-out;
+}
 
+@keyframes stemCandleLight{
+
+    0%,100%{
+        filter:brightness(1);
+    }
+
+    25%{
+        filter:brightness(1.08);
+    }
+
+    55%{
+        filter:brightness(.97);
+    }
+
+    78%{
+        filter:brightness(1.05);
+    }
+}
+
+body.is-night .flower-petal,
+body.is-night .flower-petal-inner,
+body.is-night .flower-center,
+body.is-night .flower-bud{
+    animation: flowerCandleLight 3.3s infinite ease-in-out;
+}
+
+@keyframes flowerCandleLight {
+
+    /* Starts dark */
+    0% {
+        filter: brightness(.62);
+    }
+
+    8% {
+        filter: brightness(.68);
+    }
+
+    16% {
+        filter: brightness(.77);
+    }
+
+    24% {
+        filter: brightness(.88);
+    }
+
+    34% {
+        filter: brightness(.98);
+    }
+
+    /* Bright glint */
+    40% {
+        filter: brightness(1.04);
+    }
+
+    41% {
+        filter: brightness(1.24);
+    }
+
+    42% {
+        filter: brightness(1.02);
+    }
+
+    54% {
+        filter: brightness(.94);
+    }
+
+    66% {
+        filter: brightness(1.08);
+    }
+
+    76% {
+        filter: brightness(.96);
+    }
+
+    /* Softer glint */
+    84% {
+        filter: brightness(1.02);
+    }
+
+    85% {
+        filter: brightness(1.18);
+    }
+
+    86% {
+        filter: brightness(1.00);
+    }
+
+    94% {
+        filter: brightness(.89);
+    }
+
+    /* Ends dark so the loop is seamless */
+    100% {
+        filter: brightness(.62);
+    }
+}
+
+body.is-night .vine-leaf-base,
+body.is-night .vine-leaf-dark{
+    animation: leafCandleLight 3.3s infinite ease-in-out;
+}
+
+@keyframes leafCandleLight{
+
+    0%,100%{
+        filter:brightness(1);
+    }
+
+    22%{
+        filter:brightness(1.14);
+    }
+
+    48%{
+        filter:brightness(.96);
+    }
+
+    70%{
+        filter:brightness(1.10);
+    }
+
+    88%{
+        filter:brightness(1.03);
+    }
+}
 
   </style>
 
