@@ -654,7 +654,7 @@
     transform-origin: bottom center;
     
     /* Smooth flicker animation with natural swaying */
-    animation: organicFlicker 2.2s infinite ease-in-out;
+    animation: organicFlicker 2.3s infinite ease-in-out;
 }
 
 .flame-core {
@@ -866,10 +866,10 @@
   /* ---------- dove (Genesis 8:11 — sent from the ark, returning with an olive leaf) ---------- */
   .dove-wrap {
     position: absolute;
-    width: 20%; /* Increased from 17% to make it slightly bigger */
+    width: 20%; 
     aspect-ratio: 2.2 / 1;
     left: -22%;
-    top: 65%; /* Shifted lower from 50% */
+    top: 65%; 
     opacity: 0;
     pointer-events: none;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08)); 
@@ -878,8 +878,6 @@
     animation-delay: 9s;
 }
 
-
-
 .dove-wrap svg { 
     width: 100%; 
     height: 100%; 
@@ -887,36 +885,41 @@
     overflow: visible; 
 }
 
-/* Color tweaks */
-.dove-body, .dove-tail { 
-    fill: rgba(255, 253, 248, 0.96); 
-}
-.dove-beak { 
-    fill: rgba(214, 182, 120, 0.95); 
-}
-
-/* Base Wing Properties */
+/* Base Wing & Body Properties */
 .dove-wing {
     transform-box: fill-box;
     will-change: transform;
 }
 
-/* Front Wing - Fixed hinge at SVG coordinate (42px, 27px) */
+/* Default Fallback (Prevents disappearing if time class is missing/failing) */
+.dove-body, .dove-tail      { fill: rgba(140, 135, 130, 0.9); }
+.dove-wing-front            { fill: rgba(150, 145, 140, 0.9); }
+.dove-wing-back             { fill: rgba(110, 105, 100, 0.85); }
+.dove-beak                  { fill: rgba(160, 130, 80, 0.9); }
+.dove-twig-leaf             { fill: rgba(56, 125, 80, 0.85); }
+.dove-twig-stem             { stroke: rgba(40, 95, 60, 0.80); stroke-width: 1.2; fill: none; }
+
+.dove-body, 
+.dove-tail, 
+.dove-wing, 
+.dove-beak,
+.dove-twig-leaf,
+.dove-twig-stem {
+    transition: fill 3s ease-in-out, stroke 3s ease-in-out;
+}
+
+/* Wing Movements */
 .dove-wing-front {
-    fill: rgba(248, 243, 232, 0.96);
     transform-origin: 42px 27px; 
     animation: doveWingFlapFront 0.7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
-/* Back Wing - Fixed hinge slightly offset for depth */
 .dove-wing-back {
-    fill: rgba(215, 206, 188, 0.85);
     transform-origin: 42px 27px; 
     animation: doveWingFlapBack 0.7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
     animation-delay: -0.09s;
 }
 
-/* Front Wing Movement */
 @keyframes doveWingFlapFront {
     0%   { transform: rotate(-24deg) scaleY(0.9) skewX(-4deg); }
     35%  { transform: rotate(20deg) scaleY(1.05) skewX(5deg); }
@@ -925,7 +928,6 @@
     100% { transform: rotate(-24deg) scaleY(0.9) skewX(-4deg); }
 }
 
-/* Back Wing Movement */
 @keyframes doveWingFlapBack {
     0%   { transform: translate(1px, -1px) rotate(-22deg) scaleY(0.88) skewX(-4deg); }
     35%  { transform: translate(0px, 0px) rotate(18deg) scaleY(1.02) skewX(5deg); }
@@ -934,15 +936,46 @@
     100% { transform: translate(1px, -1px) rotate(-22deg) scaleY(0.88) skewX(-4deg); }
 }
 
-.dove-twig-leaf { 
-  fill: rgba(56, 161, 105, 0.95); 
-}
+/* ===================================================
+   TIME OF DAY COLOR ADAPTATIONS
+   =================================================== */
 
-.dove-twig-stem { 
-  stroke: rgba(40, 125, 80, 0.85); 
-  stroke-width: 1.2; 
-  fill: none; 
-}
+/* 1. MORNING / DAWN */
+body.is-dawn .dove-body,
+body.is-dawn .dove-tail      { fill: rgba(185, 150, 140, 0.9); }
+body.is-dawn .dove-wing-front { fill: rgba(200, 165, 150, 0.9); }
+body.is-dawn .dove-wing-back  { fill: rgba(150, 120, 115, 0.85); }
+body.is-dawn .dove-beak       { fill: rgba(210, 140, 90, 0.95); }
+body.is-dawn .dove-twig-leaf  { fill: rgba(100, 150, 90, 0.9); }
+body.is-dawn .dove-twig-stem  { stroke: rgba(80, 110, 60, 0.85); }
+
+/* 2. DAY (Solid opaque muted colors — mix-blend-mode removed to prevent disappearing) */
+body.is-day .dove-body,
+body.is-day .dove-tail       { fill: rgba(165, 160, 155, 0.95); }
+body.is-day .dove-wing-front { fill: rgba(180, 175, 170, 0.95); }
+body.is-day .dove-wing-back  { fill: rgba(135, 130, 125, 0.9); }
+body.is-day .dove-beak       { fill: rgba(175, 145, 95, 0.95); }
+body.is-day .dove-twig-leaf  { fill: rgba(56, 125, 80, 0.9); }
+body.is-day .dove-twig-stem  { stroke: rgba(40, 95, 60, 0.85); }
+
+/* 3. DUSK / SUNSET */
+body.is-dusk .dove-body,
+body.is-dusk .dove-tail      { fill: rgba(110, 80, 85, 0.9); }
+body.is-dusk .dove-wing-front{ fill: rgba(135, 95, 90, 0.9); }
+body.is-dusk .dove-wing-back { fill: rgba(80, 55, 65, 0.85); }
+body.is-dusk .dove-beak      { fill: rgba(170, 90, 50, 0.95); }
+body.is-dusk .dove-twig-leaf { fill: rgba(120, 100, 60, 0.9); }
+body.is-dusk .dove-twig-stem { stroke: rgba(90, 70, 40, 0.85); }
+
+/* 4. NIGHT */
+body.is-night .dove-body,
+body.is-night .dove-tail,
+body.is-night .dove-wing-front { fill: rgba(45, 52, 62, 0.9); }
+body.is-night .dove-wing-back  { fill: rgba(28, 34, 42, 0.9); }
+body.is-night .dove-beak       { fill: rgba(80, 70, 55, 0.8); }
+body.is-night .dove-twig-leaf  { fill: rgba(40, 70, 60, 0.8); }
+body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
+
 
 /* LOWER FLIGHT PATH */
 @keyframes doveGlide {
@@ -995,6 +1028,79 @@
     .shadow {
       stroke: #111111;
     }
+    
+    /* ---------- Sea Cross Styling ---------- */
+.sea-cross-wrap {
+  position: absolute;
+  bottom: -12%;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 50%;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
+}
+
+.sea-cross-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Cross Materials & Night Transition */
+.cross-body, 
+.cross-base-lower, 
+.cross-base-upper, 
+.cross-ornament {
+  fill: #3b3d42;
+  transition: fill 4s ease;
+}
+
+.cross-ring {
+  fill: none;
+  stroke: #3b3d42;
+  stroke-width: 2;
+  transition: stroke 4s ease;
+}
+
+.cross-center {
+  fill: #cdb27e;
+  transition: fill 4s ease;
+}
+
+/* Waves at base */
+.cross-wave {
+  fill: rgba(20, 35, 55, 0.75);
+  animation: waveSway 4s ease-in-out infinite alternate;
+}
+
+.cross-wave-front {
+  fill: rgba(10, 20, 35, 0.85);
+  animation: waveSway 3s ease-in-out infinite alternate-reverse;
+}
+
+/* Night theme adjust */
+body.is-night .cross-body,
+body.is-night .cross-base-lower,
+body.is-night .cross-base-upper,
+body.is-night .cross-ornament {
+  fill: #15171c;
+}
+
+body.is-night .cross-ring {
+  stroke: #15171c;
+}
+
+body.is-night .cross-center {
+  fill: #7a6843;
+}
+
+@keyframes waveSway {
+  0% { transform: translateX(-2px); }
+  100% { transform: translateX(2px); }
+}
+
   </style>
 
   <g class="crack-group">
@@ -1056,6 +1162,35 @@
 </div>
 
           <div class="tracery"></div>
+          
+  <!-- Ornamental Standing Sea Cross -->
+<div class="sea-cross-wrap" aria-hidden="true">
+  <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main Cross Body & Pedestal (Rendered behind water) -->
+    <rect x="38" y="122" width="24" height="18" rx="1" class="cross-base-lower" />
+    <rect x="42" y="115" width="16" height="10" rx="1" class="cross-base-upper" />
+    
+    <!-- Vertical Shaft & Horizontal Bar -->
+    <rect x="47" y="35" width="6" height="85" class="cross-body" />
+    <rect x="25" y="52" width="50" height="6" class="cross-body" />
+
+    <!-- Ornamental Circle (Celtic Style) -->
+    <circle cx="50" cy="55" r="14" class="cross-ring" />
+
+    <!-- Ornamental Finials -->
+    <path d="M50,27 L55,35 L45,35 Z" class="cross-ornament" />
+    <path d="M20,55 L25,50 L25,60 Z" class="cross-ornament" />
+    <path d="M80,55 L75,50 L75,60 Z" class="cross-ornament" />
+    <circle cx="50" cy="55" r="3.5" class="cross-center" />
+
+    <!-- Water Waves (Rendered over the base to submerge it) -->
+    <path class="cross-wave" d="M0,126 Q25,122 50,126 T100,126 V140 H0 Z" />
+    <path class="cross-wave-front" d="M0,130 Q20,126 45,130 T85,127 T100,130 V140 H0 Z" />
+  </svg>
+</div>
+
+
+
         </div>
       </div>
     </div>
