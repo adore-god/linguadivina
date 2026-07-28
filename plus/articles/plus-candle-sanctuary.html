@@ -866,7 +866,7 @@
   /* ---------- dove (Genesis 8:11 — sent from the ark, returning with an olive leaf) ---------- */
   .dove-wrap {
     position: absolute;
-    width: 28%; /* Increased from 17% to make it slightly bigger */
+    width: 20%; /* Increased from 17% to make it slightly bigger */
     aspect-ratio: 2.2 / 1;
     left: -22%;
     top: 65%; /* Shifted lower from 50% */
@@ -875,7 +875,7 @@
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08)); 
     will-change: opacity;
     animation: doveGlide 150s linear infinite;
-    animation-delay: 9s;
+    animation-delay: 1s;
 }
 
 
@@ -895,42 +895,64 @@
     fill: rgba(214, 182, 120, 0.95); 
 }
 
+/* Base Wing Properties */
 .dove-wing {
-    fill: rgba(238, 231, 215, 0.9);
     transform-box: fill-box;
-    transform-origin: 90% 80%;
-    animation: doveWingFlap 0.85s ease-in-out infinite alternate; /* Reduced from 1.2s for faster flap */
+    will-change: transform;
+}
+
+/* Front Wing - Fixed hinge at SVG coordinate (42px, 27px) */
+.dove-wing-front {
+    fill: rgba(248, 243, 232, 0.96);
+    transform-origin: 42px 27px; 
+    animation: doveWingFlapFront 0.7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+/* Back Wing - Fixed hinge slightly offset for depth */
+.dove-wing-back {
+    fill: rgba(215, 206, 188, 0.85);
+    transform-origin: 42px 27px; 
+    animation: doveWingFlapBack 0.7s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+    animation-delay: -0.09s;
+}
+
+/* Front Wing Movement */
+@keyframes doveWingFlapFront {
+    0%   { transform: rotate(-24deg) scaleY(0.9) skewX(-4deg); }
+    35%  { transform: rotate(20deg) scaleY(1.05) skewX(5deg); }
+    55%  { transform: rotate(24deg) scaleY(0.85) skewX(8deg); }
+    85%  { transform: rotate(-12deg) scaleY(0.65) skewX(-2deg); }
+    100% { transform: rotate(-24deg) scaleY(0.9) skewX(-4deg); }
+}
+
+/* Back Wing Movement */
+@keyframes doveWingFlapBack {
+    0%   { transform: translate(1px, -1px) rotate(-22deg) scaleY(0.88) skewX(-4deg); }
+    35%  { transform: translate(0px, 0px) rotate(18deg) scaleY(1.02) skewX(5deg); }
+    55%  { transform: translate(0px, 0px) rotate(22deg) scaleY(0.85) skewX(8deg); }
+    85%  { transform: translate(1px, -1px) rotate(-10deg) scaleY(0.65) skewX(-2deg); }
+    100% { transform: translate(1px, -1px) rotate(-22deg) scaleY(0.88) skewX(-4deg); }
 }
 
 .dove-twig-leaf { 
-  fill: rgba(56, 161, 105, 0.95); /* #38A169: Rich Emerald/Forest Green */
+  fill: rgba(56, 161, 105, 0.95); 
 }
 
 .dove-twig-stem { 
-  stroke: rgba(40, 125, 80, 0.85); /* Darker complementary green for stem definition */
+  stroke: rgba(40, 125, 80, 0.85); 
   stroke-width: 1.2; 
   fill: none; 
 }
 
-
 /* LOWER FLIGHT PATH */
 @keyframes doveGlide {
     0%    { left: -22%; top: 65%; opacity: 0; }
-    0.5%  { opacity: 0.92; }                  /* Fade in */
-    3.35% { left: 39%;  top: 68%; }          /* Dip in center */
-    6.7%  { left: 100%; top: 65%; opacity: 0.92; } /* Exit right */
-    7%    { opacity: 0; left: 100%; top: 65%; }    /* Fully hidden on right */
-    7.1%  { opacity: 0; left: -22%; top: 65%; }    /* Reset to left off-screen */
-    100%  { opacity: 0; left: -22%; top: 65%; }    /* Wait off-screen until cycle restarts */
-}
-
-
-
-
-/* WING FLAP */
-@keyframes doveWingFlap {
-    0%   { transform: rotate(0deg) scaleY(1); }
-    100% { transform: rotate(-18deg) scaleY(0.55) skewX(4deg); }
+    0.5%  { opacity: 0.92; }                  
+    3.35% { left: 39%;  top: 68%; }          
+    6.7%  { left: 100%; top: 65%; opacity: 0.92; } 
+    7%    { opacity: 0; left: 100%; top: 65%; }    
+    7.1%  { opacity: 0; left: -22%; top: 65%; }    
+    100%  { opacity: 0; left: -22%; top: 65%; }    
 }
 
 
@@ -1013,17 +1035,26 @@
             <div class="moon-lit"></div>
             <div class="moon-shadow" id="moonShadow"></div>
           </div>
-          <div class="dove-wrap" id="doveEl" aria-hidden="true">
-            <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
-              <polygon class="dove-tail" points="4,30 22,25 22,35"/>
-              <path class="dove-wing" d="M42,27 C34,10 16,4 4,9 C18,17 30,24 40,33 C43,32 44,30 42,27 Z"/>
-              <ellipse class="dove-body" cx="46" cy="29" rx="26" ry="9" transform="rotate(-8 46 29)"/>
-              <polygon class="dove-beak" points="75,25 90,23 76,29"/>
-              <line class="dove-twig-stem" x1="90" y1="23" x2="100" y2="19"/>
-              <ellipse class="dove-twig-leaf" cx="99" cy="17" rx="3" ry="1.3" transform="rotate(-30 99 17)"/>
-              <ellipse class="dove-twig-leaf" cx="103" cy="20.5" rx="3" ry="1.3" transform="rotate(15 103 20.5)"/>
-            </svg>
-          </div>
+    <div class="dove-wrap" id="doveEl" aria-hidden="true">
+  <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+    <!-- Back Wing (renders behind body) -->
+    <path class="dove-wing dove-wing-back" d="M42,27 C34,10 16,4 4,9 C18,17 30,24 40,33 C43,32 44,30 42,27 Z"/>
+    
+    <!-- Tail & Body -->
+    <polygon class="dove-tail" points="4,30 22,25 22,35"/>
+    <ellipse class="dove-body" cx="46" cy="29" rx="26" ry="9" transform="rotate(-8 46 29)"/>
+    
+    <!-- Beak & Olive Branch -->
+    <polygon class="dove-beak" points="75,25 90,23 76,29"/>
+    <line class="dove-twig-stem" x1="90" y1="23" x2="100" y2="19"/>
+    <ellipse class="dove-twig-leaf" cx="99" cy="17" rx="3" ry="1.3" transform="rotate(-30 99 17)"/>
+    <ellipse class="dove-twig-leaf" cx="103" cy="20.5" rx="3" ry="1.3" transform="rotate(15 103 20.5)"/>
+
+    <!-- Front Wing (renders over body) -->
+    <path class="dove-wing dove-wing-front" d="M42,27 C34,10 16,4 4,9 C18,17 30,24 40,33 C43,32 44,30 42,27 Z"/>
+  </svg>
+</div>
+
           <div class="tracery"></div>
         </div>
       </div>
