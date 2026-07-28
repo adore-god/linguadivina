@@ -1214,19 +1214,19 @@ body.is-night .figure-groove {
 .cross-base-lower, 
 .cross-base-upper, 
 .cross-ornament {
-  fill: #3b3d42;
+  fill: #6a4228; /* Rich timber brown */
   transition: fill 4s ease;
 }
 
 .cross-ring {
   fill: none;
-  stroke: #3b3d42;
+  stroke: #4e301c; /* Darker carved wood accent */
   stroke-width: 2;
   transition: stroke 4s ease;
 }
 
 .cross-center {
-  fill: #A30800;
+  fill: #A30800; /* Inlaid crimson stone/ruby accent */
   transition: fill 4s ease;
 }
 
@@ -1241,26 +1241,27 @@ body.is-night .figure-groove {
   animation: waveSway 2s ease-in-out infinite alternate-reverse;
 }
 
-/* Night theme adjust */
+/* Night theme adjust - Aged / Dimmed Timber */
 body.is-night .cross-body,
 body.is-night .cross-base-lower,
 body.is-night .cross-base-upper,
 body.is-night .cross-ornament {
-  fill: #15171c;
+  fill: #2c1a10; /* Deep shadowed wood */
 }
 
 body.is-night .cross-ring {
-  stroke: #15171c;
+  stroke: #1e110a;
 }
 
 body.is-night .cross-center {
-  fill: #7a6843;
+  fill: #5c140a;
 }
 
 @keyframes waveSway {
   0% { transform: translateX(-2px); }
   100% { transform: translateX(2px); }
 }
+
 
   </style>
 
@@ -1473,20 +1474,16 @@ body.is-night .cross-center {
     <rect x="25" y="52" width="50" height="6" class="cross-body" />
 
     <!-- Ornamental Circle (Celtic Style) -->
-    <circle cx="50" cy="55" r="14" class="cross-ring" />
+    
 
     <!-- Ornamental Finials -->
     <path d="M50,27 L55,35 L45,35 Z" class="cross-ornament" />
     <path d="M20,55 L25,50 L25,60 Z" class="cross-ornament" />
     <path d="M80,55 L75,50 L75,60 Z" class="cross-ornament" />
-    <circle cx="50" cy="55" r="3.5" class="cross-center" />
+    
 
     <!-- Water Waves (Rendered over the base to submerge it) -->
     <!-- Back Wave -->
-<path class="cross-wave" d="M0,126 C 25,122 35,128 50,125 C 65,122 75,128 100,125 V140 H0 Z" />
-
-<!-- Front Wave -->
-<path class="cross-wave-front" d="M0,129 C 20,126 35,132 50,128 C 65,124 80,131 100,128 V140 H0 Z" />
 
   </svg>
 </div>
