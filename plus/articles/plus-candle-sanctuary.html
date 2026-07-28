@@ -1091,6 +1091,24 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
   transition: fill 4s ease;
 }
 
+/* Animation to make the vine sway gently */
+.trailing-vine {
+  transform-origin: top right; /* Keeps the vine anchored at the top right of the window */
+  animation: vineSway 14s ease-in-out infinite alternate;
+}
+
+@keyframes vineSway {
+  0% {
+    transform: rotate(-9deg) scale(1);
+  }
+  20% {
+    transform: rotate(-7deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(-9deg) scale(0.99);
+  }
+}
+
 /* Night mode transitions */
 body.is-night .vine-stem { stroke: #111810; }
 body.is-night .vine-tendril { stroke: #172115; }
