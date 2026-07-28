@@ -1730,25 +1730,6 @@ function initAmbience() {
 }
 
 
-Notification.requestPermission().then(permission => {
-  if (permission === 'granted') {
-    console.log('Notification permission granted.');
-  }
-});
-
-
-function sendHourlyChime() {
-  if (Notification.permission === 'granted') {
-    new Notification('Hourly Chime', {
-      body: 'It is now ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-      icon: '/path-to-icon.png' // optional
-    });
-  }
-
-  // Play audio if the tab is still active/accessible
-  const chimeAudio = new Audio('chime.mp3');
-  chimeAudio.play().catch(e => console.log('Audio playback blocked in background'));
-}
 
 </script>
 </body>
