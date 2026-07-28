@@ -232,12 +232,17 @@
   display: flex;
   clip-path: var(--arch-clip);
   background: linear-gradient(135deg, #6a6e72 0%, #494d51 45%, #2a2d30 100%);
+  transition: background 4s ease;
   box-shadow:
     inset 0 2px 1px rgba(255,255,255,0.08),
     inset 0 -4px 8px rgba(0,0,0,0.55),
     0 18px 42px rgba(0,0,0,0.65),
     0 0 60px 8px rgba(140,160,195,0.06);
 }
+
+  body.is-night .window-frame {
+    background: linear-gradient(135deg, #35373a 0%, #232527 45%, #101214 100%);
+  }
 
   @media (max-height: 700px) {
     .sanctuary {
@@ -286,16 +291,30 @@
     box-sizing: border-box;
     clip-path: var(--arch-clip);
     background: conic-gradient(
-      from 0deg, 
-      #f3e5ab, 
-      #e8b4b8, 
-      #a3c1ad, 
-      #6c5b7b, 
-      #99b8d1, 
-      #f7d070, 
-      #f3e5ab  
+      from 0deg,
+      #8a8d90,
+      #d9dce0,
+      #8a8d90,
+      #5a5d60,
+      #3a3c3e,
+      #5a5d60,
+      #8a8d90
     );
+    transition: background 4s ease;
     display: flex;
+  }
+
+  body.is-night .window-leading {
+    background: conic-gradient(
+      from 0deg,
+      #35373a,
+      #a67c4a,
+      #35373a,
+      #202224,
+      #08090b,
+      #202224,
+      #35373a
+    );
   }
 
   .window-glass {
