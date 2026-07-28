@@ -758,7 +758,8 @@
     opacity: 0;
     pointer-events: none;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08)); 
-    animation: doveGlide 150s ease-in-out infinite; /* Reduced from 210s for faster flight */
+    will-change: opacity;
+    animation: doveGlide 150s linear infinite;
     animation-delay: 9s;
 }
 
@@ -799,13 +800,17 @@
 
 /* LOWER FLIGHT PATH */
 @keyframes doveGlide {
-    0%   { left: -22%; top: 68%; opacity: 0; }
-    5%   { opacity: 0.92; }
-    18%  { left: 36%;  top: 68%; } 
-    32%  { left: 92%;  top: 62%; opacity: 0.92; }
-    36%  { opacity: 0; }
-    100% { opacity: 0; left: 92%; top: 62%; }
+    0%    { left: -22%; top: 65%; opacity: 0; }
+    0.5%  { opacity: 0.92; }                  /* Fade in */
+    3.35% { left: 39%;  top: 68%; }          /* Dip in center */
+    6.7%  { left: 100%; top: 65%; opacity: 0.92; } /* Exit right */
+    7%    { opacity: 0; left: 100%; top: 65%; }    /* Fully hidden on right */
+    7.1%  { opacity: 0; left: -22%; top: 65%; }    /* Reset to left off-screen */
+    100%  { opacity: 0; left: -22%; top: 65%; }    /* Wait off-screen until cycle restarts */
 }
+
+
+
 
 /* WING FLAP */
 @keyframes doveWingFlap {
