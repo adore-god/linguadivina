@@ -1317,10 +1317,44 @@ body.is-night .cross-center {
   fill: #5c140a;
 }
 
-@keyframes waveSway {
-  0% { transform: translateX(-2px); }
-  100% { transform: translateX(2px); }
+body.is-night .sea-cross-wrap{
+    animation: crossCandleGlow 3.3s infinite ease-in-out;
 }
+
+@keyframes crossCandleGlow{
+
+    0%,100%{
+        filter:
+            drop-shadow(0 2px 8px rgba(0,0,0,.7))
+            brightness(1);
+    }
+
+    18%{
+        filter:
+            drop-shadow(0 2px 8px rgba(0,0,0,.7))
+            brightness(1.08);
+    }
+
+    43%{
+        filter:
+            drop-shadow(0 2px 8px rgba(0,0,0,.7))
+            brightness(.96);
+    }
+
+    67%{
+        filter:
+            drop-shadow(0 2px 8px rgba(0,0,0,.7))
+            brightness(1.10);
+    }
+
+    84%{
+        filter:
+            drop-shadow(0 2px 8px rgba(0,0,0,.7))
+            brightness(1.02);
+    }
+}
+
+
 
 
   </style>
