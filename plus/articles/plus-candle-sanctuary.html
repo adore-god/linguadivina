@@ -802,11 +802,46 @@
   <div class="backdrop"></div>
   <div class="wall-cracks" aria-hidden="true">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="crack-highlight" d="M100.4,62.4 L95.4,59.4 L90.4,64.4 L85.4,60.4 L80.4,65.4 L75.4,61.4 L71.4,66.4 L66.4,62.4" />
-      <path class="crack" d="M100,62 L95,59 L90,64 L85,60 L80,65 L75,61 L71,66 L66,62" />
-      <path class="crack-highlight" d="M85.4,60.4 L82.4,66.4 L79.4,71.4" />
-      <path class="crack" d="M85,60 L82,66 L79,71" />
-    </svg>
+  <style>
+    .crack-group path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Subdued, low-opacity highlight */
+    .highlight {
+      stroke: #ffffff;
+      stroke-opacity: 0.2; /* Toned down for a subtle glow */
+    }
+
+    /* Core crack shadow */
+    .shadow {
+      stroke: #111111;
+    }
+  </style>
+
+  <g class="crack-group">
+    <!-- HIGHLIGHT LAYER (Thinner, subtle depth offset) -->
+    <g class="highlight">
+      <path stroke-width="0.4" d="M100.3,62.3 L97.1,61.1 L94.3,62.8 L91.8,59.3 L88.2,60.1 L85.5,58.3 L81.2,61.7 L77.8,60.9 L74.1,64.2 L70.3,63.1 L66.3,65.3 L63.1,62.3" />
+      <path stroke-width="0.4" d="M91.8,59.3 L90.1,54.8 L87.3,53.2" />
+      <path stroke-width="0.4" d="M85.5,58.3 L83.8,63.9 L80.1,67.3 L77.3,71.8" />
+      <path stroke-width="0.3" d="M80.1,67.3 L76.3,68.1" />
+      <path stroke-width="0.3" d="M74.1,64.2 L72.3,68.7 L69.1,70.3" />
+    </g>
+
+    <!-- MAIN CRACK LAYER -->
+    <g class="shadow">
+      <path stroke-width="0.9" d="M100,62 L96.8,60.8 L94,62.5 L91.5,59 L87.9,59.8 L85.2,58 L80.9,61.4 L77.5,60.6 L73.8,63.9 L70,62.8 L66,65 L62.8,62" />
+      <path stroke-width="0.6" d="M91.5,59 L89.8,54.5 L87,52.9" />
+      <path stroke-width="0.6" d="M85.2,58 L83.5,63.6 L79.8,67 L77,71.5" />
+      <path stroke-width="0.4" d="M79.8,67 L76,67.8" />
+      <path stroke-width="0.5" d="M73.8,63.9 L72,68.4 L68.8,70" />
+    </g>
+  </g>
+</svg>
+
   </div>
   <div class="candlelight-ambient"></div>
   <div class="vignette"></div>
