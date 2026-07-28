@@ -762,7 +762,7 @@
   .votive-cup {
     position: absolute;
     bottom: 0;
-    left: 130%;
+    left: 130%; 
     transform: translateX(-50%);
     width: 20px;
     height: 24px;
@@ -988,6 +988,60 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     100%  { opacity: 0; left: -22%; top: 65%; }    
 }
 
+/* ---------- Trailing Vine & Flower ---------- */
+.trailing-vine {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 9; /* Sits over the arch bevel, framing the glass */
+  opacity: 0.85;
+  transition: opacity 4s ease;
+}
+
+.trailing-vine svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.vine-stem {
+  fill: none;
+  stroke: #2e3b2b;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 4s ease;
+}
+
+.vine-leaf {
+  fill: #43593e;
+  transition: fill 4s ease;
+}
+
+.vine-leaf-alt {
+  fill: #344730;
+  transition: fill 4s ease;
+}
+
+.vine-flower {
+  fill: #d1a8b0; /* Soft muted rose/grape blossom */
+  transition: fill 4s ease;
+}
+
+.flower-center {
+  fill: #edd798;
+  transition: fill 4s ease;
+}
+
+/* Night time lighting transitions */
+body.is-night .vine-stem { stroke: #121811; }
+body.is-night .vine-leaf { fill: #1a2418; }
+body.is-night .vine-leaf-alt { fill: #141b13; }
+body.is-night .vine-flower { fill: #4a343c; }
+body.is-night .flower-center { fill: #5e5238; }
 
 </style>
 </head>
@@ -1131,6 +1185,47 @@ body.is-night .cross-center {
   <div class="sanctuary">
     <div class="window-frame">
       <div class="finial"></div>
+      <!-- Delicate Trailing Vine -->
+<div class="trailing-vine" aria-hidden="true">
+  <svg viewBox="0 0 100 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main Vine Path draped from top-right arch -->
+    <path class="vine-stem" d="M 95,0 C 85,20 70,30 65,48 C 60,65 68,80 58,95 C 53,103 45,108 40,115" />
+    <!-- Tendril Offshoots -->
+    <path class="vine-stem" d="M 72,27 C 62,32 55,30 52,25" />
+    <path class="vine-stem" d="M 64,55 C 50,60 42,55 38,50" />
+    <path class="vine-stem" d="M 60,82 C 70,88 72,96 68,102" />
+
+    <!-- Delicate Leaves -->
+    <path class="vine-leaf" d="M 80,15 C 72,12 74,4 82,8 C 87,11 85,17 80,15 Z" />
+    <path class="vine-leaf-alt" d="M 72,27 C 66,22 60,25 65,30 C 69,34 75,31 72,27 Z" />
+    <path class="vine-leaf" d="M 52,25 C 46,20 42,26 47,29 C 51,31 55,28 52,25 Z" />
+    <path class="vine-leaf" d="M 65,48 C 58,45 56,52 62,55 C 67,57 70,51 65,48 Z" />
+    <path class="vine-leaf-alt" d="M 38,50 C 32,46 30,52 35,55 C 39,57 42,53 38,50 Z" />
+    <path class="vine-leaf" d="M 60,70 C 52,68 52,77 58,78 C 63,79 65,73 60,70 Z" />
+    <path class="vine-leaf-alt" d="M 68,102 C 73,106 78,100 73,97 C 69,95 66,99 68,102 Z" />
+    <path class="vine-leaf" d="M 40,115 C 34,112 33,120 39,120 C 43,120 44,116 40,115 Z" />
+
+    <!-- Small Trailing Blossoms / Grape Clusters -->
+    <!-- Blossom 1 -->
+    <g transform="translate(62, 53)">
+      <circle class="vine-flower" cx="-2" cy="-2" r="2.2" />
+      <circle class="vine-flower" cx="2" cy="-2" r="2.2" />
+      <circle class="vine-flower" cx="-2" cy="2" r="2.2" />
+      <circle class="vine-flower" cx="2" cy="2" r="2.2" />
+      <circle class="flower-center" cx="0" cy="0" r="1.5" />
+    </g>
+
+    <!-- Blossom 2 -->
+    <g transform="translate(58, 95)">
+      <circle class="vine-flower" cx="-1.8" cy="-1.8" r="2" />
+      <circle class="vine-flower" cx="1.8" cy="-1.8" r="2" />
+      <circle class="vine-flower" cx="-1.8" cy="1.8" r="2" />
+      <circle class="vine-flower" cx="1.8" cy="1.8" r="2" />
+      <circle class="flower-center" cx="0" cy="0" r="1.2" />
+    </g>
+  </svg>
+</div>
+
       <div class="window-leading">
         <div class="window-glass">
           <div class="sky" id="sky"></div>
