@@ -176,9 +176,9 @@ const HEADER_HTML = `<div class="container"><header class="site-header">
   <div class="site-tagline">The Court &amp; The Creation</div>
   <div class="site-plus-label">Plus</div>
   <img class="logo"  alt="Logo" src="https://linguadivina.uk/images/gavel-seed-reduced.webp">
-</header>`;
+</header><main>`;
 
-const FOOTER_HTML = `</div><footer class="site-footer">
+const FOOTER_HTML = `</main></div><footer class="site-footer">
   <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p>
 
 </footer>`;
@@ -824,7 +824,6 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
-  <main>
   <h1 class="center">Welcome to Plus</h1>
     <div class="article-body">
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
@@ -833,7 +832,7 @@ ${FONT_LINK}
   <h2>Lingua Divina PLUS Articles</h2>
   <div class="art-list">
   <ul>${items || "<li>No articles yet.</li>"}</ul></div>
-  </div></main>
+  </div>
   ${FOOTER_HTML}
 </body>
 </html>`;
