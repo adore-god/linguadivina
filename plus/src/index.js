@@ -41,6 +41,7 @@ const BASE_STYLE = `
   body { letter-spacing: 0.01em;font-family: Inter; font-size: 1rem;line-height: 1.5; -webkit-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%;}
   .container {overflow:hidden;}
   dfn {font-style:normal;font-weight:400;}
+  strong {font-style:normal;font-weight:400;}
   i {font-style: italic;font-weight:400;}
   b {font-weight:400;}
   
