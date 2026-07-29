@@ -1887,7 +1887,7 @@ body.is-night .vine-leaf-dark{
   </div>
 
   <!-- Wooden Bible Figure (Placed on the floor next to the left candle) -->
-<div class="wooden-figure" aria-label="Carved Wooden Figure">
+<div class="wooden-figure" aria-hidden="true">
   <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <!-- Night gradient: Warm amber lit through the upper half, fading into deep shadow lower down. Angled for a single consistent light direction. -->
@@ -1967,7 +1967,7 @@ body.is-night .vine-leaf-dark{
   <button class="drawer-open-toggle" onclick="toggleDrawer(true)">📖</button>
 
   <!-- Closeable Floating Neville Goddard Article -->
-  <article class="dictionary-drawer" id="dictionaryDrawer">
+  <div class="dictionary-drawer" id="dictionaryDrawer">
     <div class="drawer-header">
       <span class="drawer-title" id="saying-verse">John 8:18</span>
       <button class="close-btn" onclick="toggleDrawer(false)" aria-label="Close">&times;</button>
@@ -1981,7 +1981,7 @@ body.is-night .vine-leaf-dark{
         <button class="drawer-btn" onclick="nextSaying()">Next Passage</button>
       </div>
     </div>
-  </article>
+  </div>
 
   <script>
     // ---------- Dictionary Data ----------
