@@ -1422,25 +1422,18 @@ body.is-night .figure-groove {
 </style>
 </head>
 <body>
-<div id="debugPhasePanel" style="position: fixed; top: 16px; left: 16px; z-index: 10; display: flex; gap: 6px;">
-  <button onclick="setDebugPhase(5,30)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Dawn</button>
-  <button onclick="setDebugPhase(12,0)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Day</button>
-  <button onclick="setDebugPhase(19,30)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Dusk</button>
-  <button onclick="setDebugPhase(23,0)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Night</button>
-  <button onclick="clearDebugPhase()" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Live</button>
-</div>
 <button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background: transparent;position: fixed; top: 16px; right: 16px; z-index: 10;opacity:0.5;cursor:pointer;">
    Sound
 </button>
+<audio id="ambienceAudio" src="bird-song.mp3" loop preload="none"></audio>
 
 <script>
+  const ambienceAudio = document.getElementById('ambienceAudio');
   function toggleAudio() {
-    if (!audioCtx) {
-      initAmbience();
-    } else if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    } else if (audioCtx.state === 'running') {
-      audioCtx.suspend();
+    if (ambienceAudio.paused) {
+      ambienceAudio.play();
+    } else {
+      ambienceAudio.pause();
     }
   }
 </script>
@@ -2419,41 +2412,5 @@ body.is-night .cloud3 {
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
-<script>
-let audioCtx;
-let noiseNode;
-
-function initAmbience() {
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  
-  const bufferSize = audioCtx.sampleRate * 2;
-  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-  const output = buffer.getChannelData(0);
-  
-  let b0 = 0, b1 = 0, b2 = 0;
-  for (let i = 0; i < bufferSize; i++) {
-    const white = Math.random() * 2 - 1;
-    b0 = 0.99886 * b0 + white * 0.0555179;
-    b1 = 0.99332 * b1 + white * 0.0750759;
-    b2 = 0.96900 * b2 + white * 0.1538520;
-    output[i] = (b0 + b1 + b2) * 0.04;
-  }
-
-  noiseNode = audioCtx.createBufferSource();
-  noiseNode.buffer = buffer;
-  noiseNode.loop = true;
-
-  const filter = audioCtx.createBiquadFilter();
-  filter.type = 'lowpass';
-  filter.frequency.value = 350; 
-
-  noiseNode.connect(filter);
-  filter.connect(audioCtx.destination);
-  noiseNode.start();
-}
-
-
-
-</script>
 </body>
 </html>
