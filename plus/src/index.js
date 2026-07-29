@@ -635,15 +635,13 @@ async function renderPlusRoute(request, env) {
   return renderArticlePage(request, env, slug);
 }
 
-
-
 async function renderCandleSanctuaryPage(request, env, slug) {
   // 1. Authenticate user or verify crawler
   const subscriber = await getActiveSubscriber(request, env);
   const bypassForGooglebot = !subscriber && (await isVerifiedGooglebot(request));
 
   if (!subscriber && !bypassForGooglebot) {
-    return new Response(renderPaywallHtml(slug), {
+    return new Response(`<!DOCTYPE html>\n${renderPaywallHtml(slug)}`, {
       status: 402,
       headers: { "Content-Type": "text/html; charset=UTF-8" },
     });
@@ -656,12 +654,16 @@ async function renderCandleSanctuaryPage(request, env, slug) {
   }
 
   // 3. Return the entire file directly without wrapping in site header/footer/template
-  const response = new Response(fullHtml, {
+  return new Response(`<!DOCTYPE html>\n${fullHtml}`, {
     headers: {
       "Content-Type": "text/html; charset=UTF-8",
       "Cache-Control": "no-store",
     },
   });
+}
+
+
+
 
   return withRefreshedSession(response, subscriber, env);
 }
