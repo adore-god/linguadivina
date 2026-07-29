@@ -806,6 +806,7 @@ async function renderIndexPage(request, env) {
           "position": 10,
           "url": "https://plus.linguadivina.uk/plus-meaning-of-lord-god-elohim-yhvh",
           "name": "YHVH and Elohim — The Two Names Written Into the Creation Story"
+          }
       ]
     }
   ]
