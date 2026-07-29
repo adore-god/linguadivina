@@ -823,6 +823,7 @@ ${FONT_LINK}
 </head>
 <body>
   ${HEADER_HTML}
+  <main>
   <h1 class="center">Welcome to Plus</h1>
     <div class="article-body">
   <p>Lingua Divina Plus features full-length articles, deep dives, and exclusive resources for dedicated readers of The Court & The Creation series.</p>
@@ -831,7 +832,7 @@ ${FONT_LINK}
   <h2>Lingua Divina PLUS Articles</h2>
   <div class="art-list">
   <ul>${items || "<li>No articles yet.</li>"}</ul></div>
-  </div>
+  </div></main>
   ${FOOTER_HTML}
 </body>
 </html>`;
