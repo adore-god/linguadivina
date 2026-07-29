@@ -303,15 +303,30 @@ body.is-night .candlelight-ambient {
 .vignette {
     position: fixed;
     inset: 0;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
-    transition: background 4s ease;
+    opacity: 1;
+    transition: background 4s ease, opacity 4s ease;
     background: radial-gradient(ellipse at 50% 55%, transparent 38%, rgba(0,0,0,0.6) 100%);
   }
-  body.is-night .vignette {
-    background: radial-gradient(ellipse at 50% 50%, transparent 28%, rgba(0,0,0,0.52) 100%);
-  }
-
+  
+body.is-dawn .vignette {
+  background: radial-gradient(ellipse at 50% 50%, transparent 78%, rgba(255,183,153,0.28) 90%, rgba(197,143,181,0.4) 100%);
+  opacity: 0.5;
+}
+body.is-day .vignette {
+  background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(255,225,170,0.22) 100%);
+  opacity: 0.55;
+}
+body.is-dusk .vignette {
+  background: radial-gradient(ellipse at 50% 52%, transparent 40%, rgba(255,120,80,0.22) 62%, rgba(110,55,105,0.58) 100%);
+  opacity: 0.85;
+}
+body.is-night .vignette {
+  background: radial-gradient(ellipse at 50% 50%, transparent 26%, rgba(8,10,28,0.62) 100%);
+  opacity: 1;
+}
+ 
 body.is-night .candlelight-ambient::before {
   opacity:10;
 }
@@ -1197,7 +1212,7 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
   width: 53%;
   height: 70%;
   pointer-events: none;
-  z-index: 9;
+  z-index: 9; 
   opacity: 0.8;
   transition: opacity 4s ease;
 }
@@ -1407,6 +1422,13 @@ body.is-night .figure-groove {
 </style>
 </head>
 <body>
+<div id="debugPhasePanel" style="position: fixed; top: 16px; left: 16px; z-index: 10; display: flex; gap: 6px;">
+  <button onclick="setDebugPhase(5,30)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Dawn</button>
+  <button onclick="setDebugPhase(12,0)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Day</button>
+  <button onclick="setDebugPhase(19,30)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Dusk</button>
+  <button onclick="setDebugPhase(23,0)" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Night</button>
+  <button onclick="clearDebugPhase()" style="border:0;border-radius:4px;padding:4px 8px;font-size:11px;color:#f2f2f2;background:rgba(0,0,0,0.35);cursor:pointer;">Live</button>
+</div>
 <button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background: transparent;position: fixed; top: 16px; right: 16px; z-index: 10;opacity:0.5;cursor:pointer;">
    Sound
 </button>
@@ -1795,7 +1817,7 @@ body.is-night .cloud3 {
 
   </div>
   <div class="candlelight-ambient"></div>
-  <div class="vignette"></div>
+  <div class="vignette"></div> 
 
   <div class="sanctuary">
     <div class="window-frame">
@@ -2293,6 +2315,23 @@ body.is-night .cloud3 {
     }
     function fractionFor(m, start, end) { return clamp((m - start) / (end - start)); }
 
+    function timeOfDayPhase(m) {
+      // Mirrors the SUNRISE_/SUNSET_ thresholds above, so this stays in sync
+      // with the sun/star fades automatically.
+      if (m >= SUNRISE_START && m < SUNRISE_FULL) return 'dawn';
+      if (m >= SUNRISE_FULL && m < SUNSET_START)  return 'day';
+      if (m >= SUNSET_START && m < SUNSET_FULL)   return 'dusk';
+      return 'night';
+    }
+
+    const TIME_OF_DAY_CLASSES = ['is-dawn', 'is-day', 'is-dusk', 'is-night'];
+    function setTimeOfDayClass(phase) {
+      const targetClass = 'is-' + phase;
+      TIME_OF_DAY_CLASSES.forEach(cls => {
+        document.body.classList.toggle(cls, cls === targetClass);
+      });
+    }
+
     function canonicalHour(hh) {
       if (hh < 3)  return { name: 'Matins',   gloss: 'The Night Watch' };
       if (hh < 6)  return { name: 'Lauds',    gloss: 'Praise at Daybreak' };
@@ -2304,7 +2343,14 @@ body.is-night .cloud3 {
       return { name: 'Compline', gloss: 'Night Prayer' };
     }
 
+    let debugMinutesOverride = null;
+
     function getLondonMinutes() {
+      if (debugMinutesOverride !== null) {
+        const hh = Math.floor(debugMinutesOverride / 60);
+        const mm = debugMinutesOverride % 60;
+        return { hh, mm, minutes: debugMinutesOverride };
+      }
       const parts = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', hour12: false
       }).formatToParts(new Date());
@@ -2346,7 +2392,24 @@ body.is-night .cloud3 {
       hourLabelEl.textContent = hour.name;
       hourGlossEl.textContent = hour.gloss;
 
-      document.body.classList.toggle('is-night', starOp > 0.5);
+      setTimeOfDayClass(timeOfDayPhase(minutes));
+    }
+
+    function setDebugPhase(hh, mm) {
+      debugMinutesOverride = hh * 60 + mm;
+      updateScene();
+    }
+    function clearDebugPhase() {
+      debugMinutesOverride = null;
+      updateScene();
+    }
+    window.setDebugPhase = setDebugPhase;
+    window.clearDebugPhase = clearDebugPhase;
+
+    const timeParam = new URLSearchParams(window.location.search).get('time');
+    if (timeParam && /^\d{1,2}:\d{2}$/.test(timeParam)) {
+      const [oh, om] = timeParam.split(':').map(Number);
+      if (oh >= 0 && oh < 24 && om >= 0 && om < 60) debugMinutesOverride = oh * 60 + om;
     }
 
     updateMoonPhase();
