@@ -117,39 +117,40 @@
 
   /* ---------- stone wall backdrop ---------- */
   .backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    transition: background 4s ease;
-    background:
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.03) 35%,
-        transparent 70%
-      ),
-      linear-gradient(
-        180deg,
-        #3a3c3e 0%,
-        #26282a 55%,
-        #16171a 100%
-      );
-  }
-  body.is-night .backdrop {
-    background:
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(255, 255, 255, 0.025) 0%,
-        rgba(255, 255, 255, 0.01) 35%,
-        transparent 70%
-      ),
-      linear-gradient(
-        180deg,
-        #202224 0%,
-        #17181a 55%,
-        #08090b 100%
-      );
-  }
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  transition: background 4s ease;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.06) 35%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #5d6064 0%,
+      #474a4e 55%,
+      #313438 100%
+    );
+}
+
+body.is-night .backdrop {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 35%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #3a3d41 0%,
+      #2c2f33 55%,
+      #1f2226 100%
+    );
+}
 
   /* ---------- wall cracks ---------- */
   .wall-cracks {
@@ -223,26 +224,43 @@
   .window-frame {
   position: relative;
   width: clamp(180px, 40vw, 300px);
-  /* Changed 420px to 200px so the window smoothly scales above the 300px minimum */
   height: clamp(300px, min(48vh, calc(100dvh - 200px)), 460px);
-  /* Prevents the frame from ever exceeding available screen height */
-  max-height: calc(90dvh - 300px); 
+  max-height: calc(90dvh - 300px);
   padding: 14px;
   box-sizing: border-box;
   display: flex;
   clip-path: var(--arch-clip);
-  background: linear-gradient(135deg, #6a6e72 0%, #494d51 45%, #2a2d30 100%);
+
+  background: linear-gradient(
+    135deg,
+    #7b8085 0%,
+    #5e6368 45%,
+    #44484c 100%
+  );
+
   transition: background 4s ease;
+
   box-shadow:
-    inset 0 2px 1px rgba(255,255,255,0.08),
-    inset 0 -4px 8px rgba(0,0,0,0.55),
-    0 18px 42px rgba(0,0,0,0.65),
-    0 0 60px 8px rgba(140,160,195,0.06);
+    inset 0 2px 1px rgba(255,255,255,0.12),
+    inset 0 -4px 8px rgba(0,0,0,0.35),
+    0 18px 42px rgba(0,0,0,0.45),
+    0 0 60px 8px rgba(170,180,195,0.08);
 }
 
   body.is-night .window-frame {
-    background: linear-gradient(135deg, #35373a 0%, #232527 45%, #101214 100%);
-  }
+  background: linear-gradient(
+    135deg,
+    #666b70 0%,
+    #4f5459 45%,
+    #383c40 100%
+  );
+
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,0.08),
+    inset 0 -4px 8px rgba(0,0,0,0.45),
+    0 18px 42px rgba(0,0,0,0.55),
+    0 0 60px 8px rgba(140,160,195,0.05);
+}
 
   @media (max-height: 700px) {
     .sanctuary {
@@ -1563,7 +1581,7 @@ body.is-night .vine-leaf-dark{
 .cloud{
     position:absolute;
     height:90px;
-    opacity:.28;
+    opacity: 1;
 
     background:
         radial-gradient(circle at 15% 60%, rgba(255,255,255,.28) 0 18%, transparent 19%),
@@ -1582,7 +1600,7 @@ body.is-night .vine-leaf-dark{
     width:280px;
     top:24%;
     left:-320px;
-    animation:cloud1 60s linear infinite;
+    animation:cloud1 160s linear infinite;
 }
 
 /* Cloud 2 */
@@ -1591,8 +1609,8 @@ body.is-night .vine-leaf-dark{
     width: 120px;
     top: 48%;
     left:-920px;
-    opacity: 0.2;
-    animation:cloud2 200s linear infinite;
+    
+    animation:cloud2 400s linear infinite;
 }
 
 /* Cloud 3 */
@@ -1601,7 +1619,7 @@ body.is-night .vine-leaf-dark{
     width: 190px;
     top:65%;
     left:-2620px;
-    opacity: 0.35;
+    
     animation:cloud3 300s linear infinite;
 }
 
@@ -1622,24 +1640,20 @@ body.is-night .vine-leaf-dark{
     to{ transform:translateX(2400px); }
 }
 
-body.is-day .cloud {
-    opacity: 1;
+body.is-night .cloud {
+    opacity: .65;
+}
+
+body.is-night .cloud1 {
+    width: 120px;
+}
+
+body.is-night .cloud2 {
     
+}
+
+body.is-night .cloud3 {
     
-}
-
-body.is-day .cloud1 {
-    opacity: 1;
-    width: 90px;
-    filter: blur(0px) brightness(2.08);
-}
-
-body.is-day .cloud2 {
-    opacity: 0.95;
-}
-
-body.is-day .cloud3 {
-    opacity: 0.95;
 }
   </style>
 
