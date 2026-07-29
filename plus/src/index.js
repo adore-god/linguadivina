@@ -742,7 +742,7 @@ async function renderIndexPage(request, env) {
         "@id": "https://plus.linguadivina.uk/#articlelist"
       }
     },
-    {
+{
       "@type": "ItemList",
       "@id": "https://plus.linguadivina.uk/#articlelist",
       "name": "Lingua Divina Plus Articles",
@@ -750,33 +750,62 @@ async function renderIndexPage(request, env) {
         {
           "@type": "ListItem",
           "position": 1,
-          "url": "https://plus.linguadivina.uk/plus-framework-yhvh-ehyeh-linguistic-key",
-          "name": "Bible Key to Interpret Any Bible Book, Passage and Verse"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "url": "https://plus.linguadivina.uk/plus-jacob-esau-reunion",
-          "name": "Genesis 33:1 — Jacob and Esau — The Face Confirms the Verdict"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
           "url": "https://plus.linguadivina.uk/plus-1-john-4-7-21",
           "name": "1 John 4:7-21 — Love Is Of God"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 2,
           "url": "https://plus.linguadivina.uk/plus-1-john-5-6-12",
           "name": "1 John 5:6-12 — The Court Runs Its Witness Statute Through Water, Blood, and Spirit"
         },
         {
           "@type": "ListItem",
+          "position": 3,
+          "url": "https://plus.linguadivina.uk/plus-framework-yhvh-ehyeh-linguistic-key",
+          "name": "Bible Key to Interpret Any Bible Book, Passage and Verse"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://plus.linguadivina.uk/plus-candle-sanctuary",
+          "name": "Candle Sanctuary — Stillness"
+        },
+        {
+          "@type": "ListItem",
           "position": 5,
+          "url": "https://plus.linguadivina.uk/plus-genesis-1-11-seed",
+          "name": "Genesis 1:11 — The Statute Is the Seed"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "url": "https://plus.linguadivina.uk/plus-jacob-esau-reunion",
+          "name": "Genesis 33:1 — Jacob and Esau — The Face Confirms the Verdict"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "url": "https://plus.linguadivina.uk/plus-john-6-60-71",
+          "name": "John 6:60-71 — The Hard Saying — The Court Divides What It Has Spoken"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "url": "https://plus.linguadivina.uk/plus-john-8-12-38",
+          "name": "John 8:12-38 — The Light Testifies, the Court Weighs the Seed"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
           "url": "https://plus.linguadivina.uk/plus-urim-thummim",
           "name": "Urim and Thummim — Lights and Perfections on the Breastplate of Judgment"
-        }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "url": "https://plus.linguadivina.uk/plus-meaning-of-lord-god-elohim-yhvh",
+          "name": "YHVH and Elohim — The Two Names Written Into the Creation Story"
       ]
     }
   ]
