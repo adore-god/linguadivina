@@ -816,8 +816,9 @@ async function renderIndexPage(request, env) {
   ]
 }</script>
 <title>Lingua Divina Plus</title>
-<meta content="2026-07-26T08:56:00Z" name="date-modified">
-<meta name="date" content="2026-07-24">
+<meta content="2026-07-29T09:51:00Z" name="date-modified">
+<meta name="date" content="2026-07-29">
+<meta name="description" content="Lingua Divina Plus: full-length articles and deep dives into The Court &amp; The Creation — exclusive Bible interpretation for subscribers. Cancel anytime.">
 ${FONT_LINK}
 <style>${THEME_STYLE}${INDEX_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
 </head>
