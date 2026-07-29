@@ -338,17 +338,77 @@
     inset: 0;
     opacity: 0;
     transition: opacity 8s ease;
-  }
-  .star {
+    pointer-events: none;
+}
+
+.star {
     position: absolute;
-    background: #fff;
+    width: 2px;
+    height: 2px;
     border-radius: 50%;
-    animation: twinkle 3s ease-in-out infinite;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.25; transform: scale(1); }
-    50%      { opacity: 1;    transform: scale(1.4); }
-  }
+    background: #fff;
+
+    box-shadow:
+        0 0 3px rgba(255,255,255,.9),
+        0 0 7px rgba(255,255,255,.6),
+        0 0 14px rgba(255,255,255,.25);
+
+    animation: twinkle 6s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,100% {
+        opacity: .55;
+        transform: scale(1);
+    }
+
+    46% {
+        opacity: .75;
+    }
+
+    48% {
+        opacity: .95;
+    }
+
+    /* Tiny glint */
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    52% {
+        opacity: .82;
+    }
+
+    60% {
+        opacity: .65;
+    }
+}
+
+.star:nth-child(3n) {
+    animation-duration: 7.4s;
+}
+
+.star:nth-child(5n) {
+    animation-duration: 9.1s;
+}
+
+.star:nth-child(7n) {
+    animation-duration: 5.8s;
+}
+
+.star:nth-child(2n) {
+    animation-delay: -2.3s;
+}
+
+.star:nth-child(4n) {
+    animation-delay: -5.7s;
+}
+
+.star:nth-child(6n) {
+    animation-delay: -1.4s;
+}
 
   .horizon-glow {
     position: absolute;
@@ -1486,6 +1546,81 @@ body.is-night .vine-leaf-dark{
     }
 }
 
+
+
+/* ==========================
+   Clouds
+   ========================== */
+
+.clouds{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:3;
+}
+
+.cloud{
+    position:absolute;
+    height:90px;
+    opacity:.28;
+
+    background:
+        radial-gradient(circle at 15% 60%, rgba(255,255,255,.28) 0 18%, transparent 19%),
+        radial-gradient(circle at 30% 35%, rgba(255,255,255,.32) 0 23%, transparent 24%),
+        radial-gradient(circle at 48% 58%, rgba(255,255,255,.30) 0 21%, transparent 22%),
+        radial-gradient(circle at 66% 32%, rgba(255,255,255,.28) 0 24%, transparent 25%),
+        radial-gradient(circle at 84% 55%, rgba(255,255,255,.26) 0 19%, transparent 20%);
+
+    filter: blur(10px);
+    background-repeat:no-repeat;
+}
+
+/* Cloud 1 */
+
+.cloud1{
+    width:280px;
+    top:24%;
+    left:-320px;
+    animation:cloud1 60s linear infinite;
+}
+
+/* Cloud 2 */
+
+.cloud2{
+    width: 120px;
+    top: 48%;
+    left:-920px;
+    opacity: 0.2;
+    animation:cloud2 200s linear infinite;
+}
+
+/* Cloud 3 */
+
+.cloud3{
+    width: 190px;
+    top:65%;
+    left:-2620px;
+    opacity: 0.35;
+    animation:cloud3 300s linear infinite;
+}
+
+/* Animations */
+
+@keyframes cloud1{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(2200px); }
+}
+
+@keyframes cloud2{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(2600px); }
+}
+
+@keyframes cloud3{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(2400px); }
+}
   </style>
 
   <g class="crack-group">
@@ -1674,6 +1809,11 @@ body.is-night .vine-leaf-dark{
       <div class="window-leading">
         <div class="window-glass">
           <div class="sky" id="sky"></div>
+          <div class="clouds">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+</div>
           <div class="stars" id="stars"></div>
           <div class="horizon-glow" id="horizonGlow"></div>
           <div class="celestial-sun" id="sunEl"></div>
