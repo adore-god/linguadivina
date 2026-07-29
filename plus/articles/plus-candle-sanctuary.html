@@ -1429,11 +1429,25 @@ body.is-night .figure-groove {
 
 <script>
   const ambienceAudio = document.getElementById('ambienceAudio');
+  const DAY_TRACK = 'bird-song.mp3';
+  const NIGHT_TRACK = 'night.mp3';
+  let currentTrack = DAY_TRACK;
+
   function toggleAudio() {
     if (ambienceAudio.paused) {
       ambienceAudio.play();
     } else {
       ambienceAudio.pause();
+    }
+  }
+
+  function updateAmbienceTrack(phase) {
+    const wanted = (phase === 'night') ? NIGHT_TRACK : DAY_TRACK;
+    if (wanted !== currentTrack) {
+      currentTrack = wanted;
+      const wasPlaying = !ambienceAudio.paused;
+      ambienceAudio.src = wanted;
+      if (wasPlaying) ambienceAudio.play();
     }
   }
 </script>
@@ -2323,6 +2337,7 @@ body.is-night .cloud3 {
       TIME_OF_DAY_CLASSES.forEach(cls => {
         document.body.classList.toggle(cls, cls === targetClass);
       });
+      updateAmbienceTrack(phase);
     }
 
     function canonicalHour(hh) {
