@@ -102,6 +102,16 @@
 @property --frame-glow      { syntax: '<color>';  inherits: true; initial-value: rgba(140,160,195,0.05); }
 @property --ledge-top       { syntax: '<color>';  inherits: true; initial-value: #3a3d42; }
 @property --ledge-bot       { syntax: '<color>';  inherits: true; initial-value: #1c1e22; }
+@property --frame-top       { syntax: '<color>';  inherits: true; initial-value: #666b70; }
+@property --frame-mid       { syntax: '<color>';  inherits: true; initial-value: #4f5459; }
+@property --frame-bot       { syntax: '<color>';  inherits: true; initial-value: #383c40; }
+@property --frame-highlight     { syntax: '<color>'; inherits: true; initial-value: rgba(255,255,255,0.08); }
+@property --frame-inset-shadow  { syntax: '<color>'; inherits: true; initial-value: rgba(0,0,0,0.45); }
+@property --frame-outer-shadow  { syntax: '<color>'; inherits: true; initial-value: rgba(0,0,0,0.55); }
+@property --lead-base       { syntax: '<color>';  inherits: true; initial-value: #35373a; }
+@property --lead-dark1      { syntax: '<color>';  inherits: true; initial-value: #202224; }
+@property --lead-dark2      { syntax: '<color>';  inherits: true; initial-value: #08090b; }
+@property --lead-highlight  { syntax: '<color>';  inherits: true; initial-value: #a67c4a; }
 
 
   * { box-sizing: border-box; }
@@ -118,7 +128,11 @@
   transition: background 4s ease,
     --room-light 16s linear, --room-glow 16s linear, --room-edge 16s linear,
     --room-wash 16s linear, --room-brightness 16s linear,
-    --frame-glow 16s linear, --ledge-top 16s linear, --ledge-bot 16s linear;
+    --frame-glow 16s linear, --ledge-top 16s linear, --ledge-bot 16s linear,
+    --frame-top 16s linear, --frame-mid 16s linear, --frame-bot 16s linear,
+    --frame-highlight 16s linear, --frame-inset-shadow 16s linear, --frame-outer-shadow 16s linear,
+    --lead-base 16s linear, --lead-dark1 16s linear, --lead-dark2 16s linear,
+    --lead-highlight 16s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -370,33 +384,18 @@ body.is-night .candlelight-ambient::before {
 
   background: linear-gradient(
     135deg,
-    #7b8085 0%,
-    #5e6368 45%,
-    #44484c 100%
+    var(--frame-top) 0%,
+    var(--frame-mid) 45%,
+    var(--frame-bot) 100%
   );
 
   transition: background 4s ease;
 
   box-shadow:
-    inset 0 2px 1px rgba(255,255,255,0.12),
-    inset 0 -4px 8px rgba(0,0,0,0.35),
-    0 18px 42px rgba(0,0,0,0.45),
+    inset 0 2px 1px var(--frame-highlight),
+    inset 0 -4px 8px var(--frame-inset-shadow),
+    0 18px 42px var(--frame-outer-shadow),
     0 0 60px 10px var(--frame-glow);
-}
-
-  body.is-night .window-frame {
-  background: linear-gradient(
-    135deg,
-    #666b70 0%,
-    #4f5459 45%,
-    #383c40 100%
-  );
-
-  box-shadow:
-    inset 0 2px 1px rgba(255,255,255,0.08),
-    inset 0 -4px 8px rgba(0,0,0,0.45),
-    0 18px 42px rgba(0,0,0,0.55),
-    0 0 60px 8px var(--frame-glow);
 }
 
   @media (max-height: 700px) {
@@ -447,29 +446,16 @@ body.is-night .candlelight-ambient::before {
     clip-path: var(--arch-clip);
     background: conic-gradient(
       from 0deg,
-      #8a8d90,
-      #d9dce0,
-      #8a8d90,
-      #5a5d60,
-      #3a3c3e,
-      #5a5d60,
-      #8a8d90
+      var(--lead-base),
+      var(--lead-highlight),
+      var(--lead-base),
+      var(--lead-dark1),
+      var(--lead-dark2),
+      var(--lead-dark1),
+      var(--lead-base)
     );
     transition: background 4s ease;
     display: flex;
-  }
-
-  body.is-night .window-leading {
-    background: conic-gradient(
-      from 0deg,
-      #35373a,
-      #a67c4a,
-      #35373a,
-      #202224,
-      #08090b,
-      #202224,
-      #35373a
-    );
   }
 
   .window-glass {
@@ -2736,6 +2722,19 @@ body.is-night .cloud3 {
     const rgbaStr = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
     const STONE_LIGHT = [104,108,113], STONE_DARK = [26,28,32];
 
+    // Frame stone: blends its night/day grey anchors by intensity, then
+    // takes a light tint from the sky itself so it never looks neutral.
+    const FRAME_TOP_NIGHT = [102,107,112], FRAME_TOP_DAY = [123,128,133];
+    const FRAME_MID_NIGHT = [79,84,89],   FRAME_MID_DAY = [94,99,104];
+    const FRAME_BOT_NIGHT = [56,60,64],   FRAME_BOT_DAY = [68,72,76];
+
+    // Leaded tracery: the metal's mid/dark bands lighten with the sky,
+    // and its highlight shifts from candle-gold at night to sky-white by day.
+    const LEAD_BASE_NIGHT  = [53,55,58],  LEAD_BASE_DAY  = [138,141,144];
+    const LEAD_DARK1_NIGHT = [32,34,36],  LEAD_DARK1_DAY = [90,93,96];
+    const LEAD_DARK2_NIGHT = [8,9,11],    LEAD_DARK2_DAY = [58,60,62];
+    const LEAD_HL_NIGHT    = [166,124,74], LEAD_HL_DAY   = [217,220,224];
+
     function updateRoomLight(sky, glow) {
       // The window sits low relative to the room, so the horizon band (bot)
       // dominates what actually washes across the walls; mid contributes the
@@ -2752,6 +2751,20 @@ body.is-night .cloud3 {
       const ledgeTop = lerpColor(STONE_LIGHT, roomBase, 0.28);
       const ledgeBot = lerpColor(STONE_DARK, roomBase, 0.16);
 
+      const frameTop = lerpColor(lerpColor(FRAME_TOP_NIGHT, FRAME_TOP_DAY, intensity), roomBase, 0.4);
+      const frameMid = lerpColor(lerpColor(FRAME_MID_NIGHT, FRAME_MID_DAY, intensity), roomBase, 0.4);
+      const frameBot = lerpColor(lerpColor(FRAME_BOT_NIGHT, FRAME_BOT_DAY, intensity), roomBase, 0.4);
+
+      const frameHighlightColor = lerpColor([255,255,255], roomBase, 0.35);
+      const frameHighlightAlpha = 0.08 + intensity * 0.08;
+      const frameInsetAlpha = 0.45 - intensity * 0.10;
+      const frameOuterAlpha = 0.55 - intensity * 0.10;
+
+      const leadBase  = lerpColor(lerpColor(LEAD_BASE_NIGHT, LEAD_BASE_DAY, intensity), roomBase, 0.10);
+      const leadDark1 = lerpColor(LEAD_DARK1_NIGHT, LEAD_DARK1_DAY, intensity);
+      const leadDark2 = lerpColor(LEAD_DARK2_NIGHT, LEAD_DARK2_DAY, intensity);
+      const leadHighlight = lerpColor(lerpColor(LEAD_HL_NIGHT, LEAD_HL_DAY, intensity), roomBase, glow * 0.4);
+
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
       body.setProperty('--room-glow', rgbaStr(roomBase, glowAlpha));
@@ -2761,6 +2774,16 @@ body.is-night .cloud3 {
       body.setProperty('--frame-glow', rgbaStr(roomBase, frameAlpha));
       body.setProperty('--ledge-top', `rgb(${ledgeTop.join(',')})`);
       body.setProperty('--ledge-bot', `rgb(${ledgeBot.join(',')})`);
+      body.setProperty('--frame-top', `rgb(${frameTop.join(',')})`);
+      body.setProperty('--frame-mid', `rgb(${frameMid.join(',')})`);
+      body.setProperty('--frame-bot', `rgb(${frameBot.join(',')})`);
+      body.setProperty('--frame-highlight', rgbaStr(frameHighlightColor, frameHighlightAlpha));
+      body.setProperty('--frame-inset-shadow', `rgba(0,0,0,${frameInsetAlpha.toFixed(3)})`);
+      body.setProperty('--frame-outer-shadow', `rgba(0,0,0,${frameOuterAlpha.toFixed(3)})`);
+      body.setProperty('--lead-base', `rgb(${leadBase.join(',')})`);
+      body.setProperty('--lead-dark1', `rgb(${leadDark1.join(',')})`);
+      body.setProperty('--lead-dark2', `rgb(${leadDark2.join(',')})`);
+      body.setProperty('--lead-highlight', `rgb(${leadHighlight.join(',')})`);
     }
 
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
