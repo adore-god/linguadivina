@@ -2927,19 +2927,21 @@ body.is-night .cloud3 {
     
     
     const moth = document.querySelector(".moth-wrap");
+const front = moth.querySelector(".moth-wing-front");
+const back  = moth.querySelector(".moth-wing-back");
 
-moth.addEventListener("animationiteration", () => {
-    const front = moth.querySelector(".moth-wing-front");
-    const back  = moth.querySelector(".moth-wing-back");
-
+function startMothCycle() {
     front.style.animation = "mothFly .18s ease-in-out infinite";
     back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
 
     setTimeout(() => {
         front.style.animation = "mothRest 8s linear infinite";
         back.style.animation  = "mothRest 8s linear infinite";
-    }, 32000); // begins resting after it lands
-});
+    }, 32000);
+}
+
+startMothCycle();
+setInterval(startMothCycle, 100000);
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
