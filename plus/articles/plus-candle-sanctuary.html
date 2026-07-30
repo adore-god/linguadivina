@@ -303,7 +303,7 @@ body.is-night .candlelight-ambient {
 .vignette {
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
     opacity: 1;
     transition: background 4s ease, opacity 4s ease;
@@ -311,17 +311,45 @@ body.is-night .candlelight-ambient {
   }
   
 body.is-dawn .vignette {
-  background: radial-gradient(ellipse at 50% 50%, transparent 78%, rgba(255,183,153,0.28) 90%, rgba(197,143,181,0.4) 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 190, 170, 0.10) 20%,
+    rgba(255, 165, 185, 0.24) 35%,
+    rgba(255, 165, 185, 0.24) 65%,
+    rgba(255, 190, 170, 0.10) 80%,
+    transparent 100%
+  );
   opacity: 0.5;
 }
+
 body.is-day .vignette {
-  background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(255,225,170,0.22) 100%);
-  opacity: 0.54; 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 120, 180, 0.10) 20%,
+    rgba(255, 90, 170, 0.24) 35%,
+    rgba(255, 90, 170, 0.24) 65%,
+    rgba(255, 120, 180, 0.10) 80%,
+    transparent 100%
+  );
+  opacity: 1;
 }
+
 body.is-dusk .vignette {
-  background: radial-gradient(ellipse at 50% 52%, transparent 40%, rgba(255,120,80,0.22) 62%, rgba(110,55,105,0.58) 100%);
-  opacity: 0.55;
-}   
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 132, 80, 0.10) 20%,   /* sunset orange */
+    rgba(180, 82, 92, 0.24) 35%,    /* rose from the sky */
+    rgba(180, 82, 92, 0.24) 65%,
+    rgba(255, 132, 80, 0.10) 80%,
+    transparent 100%
+  );
+  opacity: 1;
+}
+
+
 body.is-night .vignette {
   background: radial-gradient(ellipse at 50% 50%, transparent 26%, rgba(8,10,28,0.62) 100%);
   opacity: 1;
@@ -759,7 +787,7 @@ body.is-night .candlelight-ambient::before {
     top: 10px;
     left: 10px;
     z-index: 19;
-    background: rgba(18, 20, 24, 0.8);
+    background: transparent;
     border: 0;
     color: #b8b6ac;
     padding: 8px 12px;
@@ -1543,20 +1571,30 @@ body.is-night .figure-groove {
 </style>
 </head>
 <body>
-<button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background: transparent;position: fixed; top: 16px; right: 16px; z-index: 10;opacity:0.5;cursor:pointer;">
-   Sound
+
+<button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background:transparent;position:fixed;top:16px;right:16px;z-index:10;opacity:0.5;cursor:pointer;">
+    Sound
 </button>
+
 <audio id="ambienceAudio" src="bird-song.mp3" loop preload="none"></audio>
 
 <script>
-    const ambienceAudio = document.getElementById('ambienceAudio');
+  const ambienceAudio = document.getElementById('ambienceAudio');
+
   const DAY_TRACK = 'bird-song.mp3';
   const NIGHT_TRACK = 'night.mp3';
+
+  // Set the volume for each track
+  const DAY_VOLUME = 0.5;
+  const NIGHT_VOLUME = 1;
+
   let currentTrack = DAY_TRACK;
+
+  // Set initial volume
+  ambienceAudio.volume = DAY_VOLUME;
 
   function toggleAudio() {
     if (ambienceAudio.paused) {
-      // Catch potential browser autoplay policy restrictions
       ambienceAudio.play().catch(error => {
         console.error("Audio playback failed or was blocked by browser:", error);
       });
@@ -1567,16 +1605,24 @@ body.is-night .figure-groove {
 
   function updateAmbienceTrack(phase) {
     const wanted = (phase === 'night') ? NIGHT_TRACK : DAY_TRACK;
+
     if (wanted !== currentTrack) {
       currentTrack = wanted;
       const wasPlaying = !ambienceAudio.paused;
+
       ambienceAudio.src = wanted;
+
+      // Set the correct volume for the current track
+      ambienceAudio.volume = (wanted === NIGHT_TRACK) ? NIGHT_VOLUME : DAY_VOLUME;
+
       if (wasPlaying) {
-        ambienceAudio.play().catch(error => console.error("Track switch error:", error));
+        ambienceAudio.play().catch(error => {
+          console.error("Track switch error:", error);
+        });
       }
     }
   }
-
+</script>
   
   
 </script>
