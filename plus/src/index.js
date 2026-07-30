@@ -184,6 +184,35 @@ const FOOTER_HTML = `</main></div><footer class="site-footer">
 </footer>`;
 
 export default {
+	
+	// 1. Intercept asset requests (.mp3, .png, etc.) before any HTML routing runs
+const url = new URL(request.url);
+const path = url.pathname;
+const STATIC_ASSET_RE = /\.(css|js|png|jpg|jpeg|gif|ico|svg|mp3|wav|ogg|json)$/i;
+
+if (request.method === "GET" && STATIC_ASSET_RE.test(path) && !path.endsWith(".html")) {
+  const githubRawUrl = `https://raw.githubusercontent.com/adore-god/linguadivina/main/plus/articles${path}`;
+const response = await fetch(githubRawUrl);
+
+if (response.ok) {
+  const contentType = path.endsWith(".mp3") 
+    ? "audio/mpeg" 
+    : (response.headers.get("content-type") || "application/octet-stream");
+
+  return new Response(response.body, {
+    status: 200,
+    headers: {
+      "Content-Type": contentType,
+      "Cache-Control": "public, max-age=86400",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
+}
+
+
+// ... rest of your index.js code remains untouched below ...
+
+
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
