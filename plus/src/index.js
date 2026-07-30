@@ -210,11 +210,28 @@ export default {
       return verifyMagicLink(request, env);
     }
 
-const STATIC_ASSET_RE = /\.(mp3|wav|ogg|png|jpe?g|webp|gif|svg|ico|css|js|json|woff2?|xml|txt)$/i;
 
-if (request.method === "GET" && STATIC_ASSET_RE.test(path)) {
-  return env.ARTICLES.fetch(request);
+const STATIC_ASSET_TYPES = {
+  mp3: "audio/mpeg", wav: "audio/wav", ogg: "audio/ogg",
+  png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg",
+  webp: "image/webp", gif: "image/gif", svg: "image/svg+xml", ico: "image/x-icon",
+  css: "text/css", js: "application/javascript", json: "application/json",
+  woff: "font/woff", woff2: "font/woff2", xml: "application/xml", txt: "text/plain",
+};
+const STATIC_ASSET_RE = /\.([a-z0-9]+)$/i;
+
+if (request.method === "GET" && STATIC_ASSET_RE.test(path) && !path.endsWith(".html")) {
+  const res = await env.ARTICLES.fetch(request);
+  const ext = path.split(".").pop().toLowerCase();
+  const mime = STATIC_ASSET_TYPES[ext];
+  if (mime) {
+    const headers = new Headers(res.headers);
+    headers.set("Content-Type", mime);
+    return new Response(res.body, { status: res.status, headers });
+  }
+  return res;
 }
+
 
     if (request.method === "GET" && (path === "/sitemap.xml" || path === "/robots.txt")) {
       return env.ARTICLES.fetch(request);
