@@ -93,6 +93,16 @@
 @property --c-mid { syntax: '<color>'; inherits: true; initial-value: #0d1322; }
 @property --c-bot { syntax: '<color>'; inherits: true; initial-value: #182238; }
 
+/* ---------- room-light: sky colour bleeding into the room ---------- */
+@property --room-light      { syntax: '<color>';  inherits: true; initial-value: #05070d; }
+@property --room-glow       { syntax: '<color>';  inherits: true; initial-value: rgba(5,7,13,0); }
+@property --room-edge       { syntax: '<color>';  inherits: true; initial-value: rgba(0,0,0,0.85); }
+@property --room-wash       { syntax: '<color>';  inherits: true; initial-value: rgba(5,7,13,0.12); }
+@property --room-brightness { syntax: '<number>'; inherits: true; initial-value: 0.72; }
+@property --frame-glow      { syntax: '<color>';  inherits: true; initial-value: rgba(140,160,195,0.05); }
+@property --ledge-top       { syntax: '<color>';  inherits: true; initial-value: #3a3d42; }
+@property --ledge-bot       { syntax: '<color>';  inherits: true; initial-value: #1c1e22; }
+
 
   * { box-sizing: border-box; }
 
@@ -105,7 +115,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   background: #16171a;
-  transition: background 4s ease;
+  transition: background 4s ease,
+    --room-light 16s linear, --room-glow 16s linear, --room-edge 16s linear,
+    --room-wash 16s linear, --room-brightness 16s linear,
+    --frame-glow 16s linear, --ledge-top 16s linear, --ledge-bot 16s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -134,24 +147,17 @@
       #474a4e 55%,
       #313438 100%
     );
+  filter: brightness(var(--room-brightness));
 }
 
-/* ---------- DAWN ---------- */
-body.is-dawn .backdrop {
-  filter: brightness(1)
+.backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--room-wash);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
-
-/* ---------- DAY ---------- */
-body.is-day .backdrop {
-  filter: brightness(1.1)
-}
-
-/* ---------- DUSK ---------- */
-body.is-dusk .backdrop {
- filter: brightness(0.7)
-}
-
-/
 
 body.is-night .backdrop {
   background:
@@ -322,70 +328,17 @@ body.is-night .candlelight-ambient {
     inset: 0;
     z-index: 0; 
     pointer-events: none;
-    opacity: 0;
-    transition: background 4s ease, opacity 4s ease;
-    background: radial-gradient(ellipse at 50% 55%, transparent 38%, rgba(0,0,0,0.6) 100%);
+    opacity: 1;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--room-glow) 20%,
+        var(--room-glow) 80%,
+        transparent 100%
+      ),
+      radial-gradient(ellipse at 50% 55%, transparent 38%, var(--room-edge) 100%);
   }
-  
-body.is-dawn .vignette {
-  background: linear-gradient(
-  90deg,
-  transparent 0%,
-  rgba(255, 170, 95, 0.12) 10%,
-  rgba(178, 112, 235, 0.30) 25%,
-  rgba(178, 112, 235, 0.30) 75%,
-  rgba(255, 170, 95, 0.12) 90%,
-  transparent 100%
-);
-  opacity: 0.3;
-  filter: saturate(1.2)
-}
-
-body.is-day .vignette {
-  background: linear-gradient(
-    90deg,
-    
-    transparent 0%,
-    rgb(210,236,249) 20%,   /* cool blue morning light */
-    rgb(210,236,249) 35%,
-    rgb(210,236,249) 65%,
-    rgb(210,236,249) 80%,
-    transparent 100%
-    
-  );
-  opacity: 0.2 ;
-  filter: saturate(1)
-}
-
-body.is-dusk .vignette {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(48,42,92) 20%,   /* soft reddish orange */
-    rgb(48,42,92) 35%,    /* deep burnt orange */
-    rgb(48,42,92)65%,
-    rgb(48,42,92) 80%,
-    transparent 100%
-  );
-  opacity: 0.2;
-}
-
-body.is-night .vignette {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.7) 12%,
-    rgba(0, 0, 0, 0.45) 24%,
-    rgba(0, 0, 0, 0.18) 36%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.18) 64%,
-    rgba(0, 0, 0, 0.45) 76%,
-    rgba(0, 0, 0, 0.7) 88%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
-
-  opacity: 1;
-}
 
 body.is-night .candlelight-ambient::before {
   opacity:1;
@@ -428,7 +381,7 @@ body.is-night .candlelight-ambient::before {
     inset 0 2px 1px rgba(255,255,255,0.12),
     inset 0 -4px 8px rgba(0,0,0,0.35),
     0 18px 42px rgba(0,0,0,0.45),
-    0 0 60px 8px rgba(170,180,195,0.08);
+    0 0 60px 10px var(--frame-glow);
 }
 
   body.is-night .window-frame {
@@ -443,7 +396,7 @@ body.is-night .candlelight-ambient::before {
     inset 0 2px 1px rgba(255,255,255,0.08),
     inset 0 -4px 8px rgba(0,0,0,0.45),
     0 18px 42px rgba(0,0,0,0.55),
-    0 0 60px 8px rgba(140,160,195,0.05);
+    0 0 60px 8px var(--frame-glow);
 }
 
   @media (max-height: 700px) {
@@ -853,11 +806,8 @@ body.is-night .candlelight-ambient::before {
     height: 96px;
     z-index: 1;
     transition: background 4s ease;
-    
+    background: linear-gradient(to bottom, var(--ledge-top) 0%, var(--ledge-bot) 100%);
     box-shadow: inset 0 8px 16px rgba(0,0,0,0.55);
-  }
-  body.is-night .altar-ledge {
-    
   }
   
 
@@ -2197,7 +2147,7 @@ body.is-night .vine-leaf-dark{
 }
 
 body.is-night .cloud {
-    opacity: .35;
+    opacity: .65;
 }
 
 body.is-night .cloud1 {
@@ -2781,6 +2731,38 @@ body.is-night .cloud3 {
 
     const clamp = x => Math.max(0, Math.min(1, x));
 
+    // ---------- room light: how the sky's colour spills through the window ----------
+    const luminance = c => (0.299*c[0] + 0.587*c[1] + 0.114*c[2]) / 255;
+    const rgbaStr = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
+    const STONE_LIGHT = [104,108,113], STONE_DARK = [26,28,32];
+
+    function updateRoomLight(sky, glow) {
+      // The window sits low relative to the room, so the horizon band (bot)
+      // dominates what actually washes across the walls; mid contributes the
+      // cooler overhead skylight.
+      const roomBase = lerpColor(sky.mid, sky.bot, 0.65);
+      const intensity = clamp(luminance(roomBase) * 1.05);
+
+      const glowAlpha = clamp(0.08 + intensity * 0.42 + glow * 0.15);
+      const edgeAlpha = clamp(0.85 - intensity * 0.55);
+      const washAlpha = clamp(0.10 + glow * 0.20 + intensity * 0.06);
+      const frameAlpha = clamp(0.05 + glow * 0.16 + intensity * 0.06);
+      const brightness = (0.72 + intensity * 0.4).toFixed(3);
+
+      const ledgeTop = lerpColor(STONE_LIGHT, roomBase, 0.28);
+      const ledgeBot = lerpColor(STONE_DARK, roomBase, 0.16);
+
+      const body = document.body.style;
+      body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
+      body.setProperty('--room-glow', rgbaStr(roomBase, glowAlpha));
+      body.setProperty('--room-edge', `rgba(0,0,0,${edgeAlpha.toFixed(3)})`);
+      body.setProperty('--room-wash', rgbaStr(roomBase, washAlpha));
+      body.setProperty('--room-brightness', brightness);
+      body.setProperty('--frame-glow', rgbaStr(roomBase, frameAlpha));
+      body.setProperty('--ledge-top', `rgb(${ledgeTop.join(',')})`);
+      body.setProperty('--ledge-bot', `rgb(${ledgeBot.join(',')})`);
+    }
+
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
     function sunOpacity(m) {
       if (m < SUNRISE_START) return 0;
@@ -2879,6 +2861,7 @@ body.is-night .cloud3 {
       const mOp = moonOpacity(minutes);
       const starOp = starOpacity(minutes);
       const glow = horizonGlowAmount(minutes);
+      updateRoomLight(sky, glow);
 
       sunEl.style.opacity = sOp;
       moonEl.style.opacity = mOp;
