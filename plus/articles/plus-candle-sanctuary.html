@@ -2735,27 +2735,58 @@ body.is-night .cloud3 {
     const LEAD_DARK2_NIGHT = [8,9,11],    LEAD_DARK2_DAY = [58,60,62];
     const LEAD_HL_NIGHT    = [166,124,74], LEAD_HL_DAY   = [217,220,224];
 
-    function updateRoomLight(sky, glow) {
+    // Boosts a dark colour's brightness (preserving its hue) so it still reads
+    // as a colour, not just "dark grey", when used to tint brighter surfaces.
+    function normalizeLuminance(c, minLum) {
+      const l = luminance(c);
+      if (l <= 0 || l >= minLum) return c;
+      const scale = minLum / l;
+      return c.map(v => Math.min(255, v * scale));
+    }
+
+    function updateRoomLight(sky, glow, phase) {
+      // The candle's own warm colour, used to push the arch stone visibly
+      // orange. Night gets a darker, more desaturated amber (embers, not
+      // flame) — dusk/day keep the brighter tone.
+      const CANDLE_WARM = phase === 'night' ? [95, 55, 35] : [255, 140, 55];
+
       // The window sits low relative to the room, so the horizon band (bot)
       // dominates what actually washes across the walls; mid contributes the
       // cooler overhead skylight.
       const roomBase = lerpColor(sky.mid, sky.bot, 0.65);
       const intensity = clamp(luminance(roomBase) * 1.05);
+      // Used specifically for tinting the frame/tracery: at night roomBase is
+      // near-black, so blending it in at low weight barely shifts hue away
+      // from grey. Brightening it (hue preserved) keeps the frame reading as
+      // "night blue" instead of plain grey, matching how it tints at other
+      // times of day when roomBase is naturally brighter.
+      const roomTint = normalizeLuminance(roomBase, 0.26);
+
+      // Strong at night, present at dusk, faint by day — matches
+      // .candlelight-ambient's own opacity swing (0.18 day / 0.72 night).
+      const candleFactor = phase === 'night' ? 1 : (phase === 'dusk' ? 0.45 : 0.1);
 
       const glowAlpha = clamp(0.08 + intensity * 0.42 + glow * 0.15);
       const edgeAlpha = clamp(0.85 - intensity * 0.55);
       const washAlpha = clamp(0.10 + glow * 0.20 + intensity * 0.06);
-      const frameAlpha = clamp(0.05 + glow * 0.16 + intensity * 0.06);
+      const frameGlowColor = lerpColor(roomBase, CANDLE_WARM, candleFactor * 0.7);
+      const frameAlpha = clamp(0.05 + glow * 0.16 + intensity * 0.06 + candleFactor * 0.08);
       const brightness = (0.72 + intensity * 0.4).toFixed(3);
 
       const ledgeTop = lerpColor(STONE_LIGHT, roomBase, 0.28);
       const ledgeBot = lerpColor(STONE_DARK, roomBase, 0.16);
 
-      const frameTop = lerpColor(lerpColor(FRAME_TOP_NIGHT, FRAME_TOP_DAY, intensity), roomBase, 0.4);
-      const frameMid = lerpColor(lerpColor(FRAME_MID_NIGHT, FRAME_MID_DAY, intensity), roomBase, 0.4);
-      const frameBot = lerpColor(lerpColor(FRAME_BOT_NIGHT, FRAME_BOT_DAY, intensity), roomBase, 0.4);
+      const frameTop = lerpColor(
+        lerpColor(lerpColor(FRAME_TOP_NIGHT, FRAME_TOP_DAY, intensity), roomTint, 0.4),
+        CANDLE_WARM, candleFactor * 0.35);
+      const frameMid = lerpColor(
+        lerpColor(lerpColor(FRAME_MID_NIGHT, FRAME_MID_DAY, intensity), roomTint, 0.4),
+        CANDLE_WARM, candleFactor * 0.55);
+      const frameBot = lerpColor(
+        lerpColor(lerpColor(FRAME_BOT_NIGHT, FRAME_BOT_DAY, intensity), roomTint, 0.4),
+        CANDLE_WARM, candleFactor * 0.75);
 
-      const frameHighlightColor = lerpColor([255,255,255], roomBase, 0.35);
+      const frameHighlightColor = lerpColor(lerpColor([255,255,255], roomTint, 0.35), CANDLE_WARM, candleFactor * 0.4);
       const frameHighlightAlpha = 0.08 + intensity * 0.08;
       const frameInsetAlpha = 0.45 - intensity * 0.10;
       const frameOuterAlpha = 0.55 - intensity * 0.10;
@@ -2763,7 +2794,7 @@ body.is-night .cloud3 {
       const leadBase  = lerpColor(lerpColor(LEAD_BASE_NIGHT, LEAD_BASE_DAY, intensity), roomBase, 0.10);
       const leadDark1 = lerpColor(LEAD_DARK1_NIGHT, LEAD_DARK1_DAY, intensity);
       const leadDark2 = lerpColor(LEAD_DARK2_NIGHT, LEAD_DARK2_DAY, intensity);
-      const leadHighlight = lerpColor(lerpColor(LEAD_HL_NIGHT, LEAD_HL_DAY, intensity), roomBase, glow * 0.4);
+      const leadHighlight = lerpColor(lerpColor(lerpColor(LEAD_HL_NIGHT, LEAD_HL_DAY, intensity), roomTint, glow * 0.4), CANDLE_WARM, candleFactor * 0.3);
 
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
@@ -2771,7 +2802,7 @@ body.is-night .cloud3 {
       body.setProperty('--room-edge', `rgba(0,0,0,${edgeAlpha.toFixed(3)})`);
       body.setProperty('--room-wash', rgbaStr(roomBase, washAlpha));
       body.setProperty('--room-brightness', brightness);
-      body.setProperty('--frame-glow', rgbaStr(roomBase, frameAlpha));
+      body.setProperty('--frame-glow', rgbaStr(frameGlowColor, frameAlpha));
       body.setProperty('--ledge-top', `rgb(${ledgeTop.join(',')})`);
       body.setProperty('--ledge-bot', `rgb(${ledgeBot.join(',')})`);
       body.setProperty('--frame-top', `rgb(${frameTop.join(',')})`);
@@ -2884,7 +2915,8 @@ body.is-night .cloud3 {
       const mOp = moonOpacity(minutes);
       const starOp = starOpacity(minutes);
       const glow = horizonGlowAmount(minutes);
-      updateRoomLight(sky, glow);
+      const phase = timeOfDayPhase(minutes);
+      updateRoomLight(sky, glow, phase);
 
       sunEl.style.opacity = sOp;
       moonEl.style.opacity = mOp;
