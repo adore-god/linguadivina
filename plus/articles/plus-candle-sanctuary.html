@@ -1546,12 +1546,12 @@ body.is-night .figure-groove {
 <button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background: transparent;position: fixed; top: 16px; right: 16px; z-index: 10;opacity:0.5;cursor:pointer;">
    Sound
 </button>
-<audio id="ambienceAudio" src="/bird-song.mp3" loop preload="none"></audio>
+<audio id="ambienceAudio" src="bird-song.mp3" loop preload="none"></audio>
 
 <script>
     const ambienceAudio = document.getElementById('ambienceAudio');
-  const DAY_TRACK = '/bird-song.mp3';
-  const NIGHT_TRACK = '/night.mp3';
+  const DAY_TRACK = 'bird-song.mp3';
+  const NIGHT_TRACK = 'night.mp3';
   let currentTrack = DAY_TRACK;
 
   function toggleAudio() {
@@ -2341,6 +2341,10 @@ body.is-night .cloud3 {
       {
         verse: "John 7:29",
         quote: "I know him, for I come from him, and he sent me."
+      },
+      {
+        verse: "John 5:39-40",
+        quote: "You make search in the holy Writings, in the belief that through them you get eternal life; and it is those Writings which give witness about me. And still you have no desire to come to me so that you may have life."
       },
       {
       verse: "John 8:47",
