@@ -1213,12 +1213,12 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     right -10%;
     top: 38%;
     opacity: 0;
-    rotate:-30deg;
+    rotate: -68deg;
     pointer-events: none;
-    filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.12));
+    
     will-change: opacity, transform;
-    animation: butterflyFlutter 55s ease-in-out infinite;
-    animation-delay: 0s;
+    animation: butterflyFlutter 30s ease-in-out infinite;
+    animation-delay: 42s;
 }
 
 .butterfly-wrap svg {
@@ -1292,19 +1292,37 @@ body.is-night .butterfly-vein        { stroke: rgba(90, 85, 90, 0.25); }
 body.is-night .butterfly-body        { fill: rgba(60, 56, 54, 0.70); }
 body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 
-/* Wandering, fluttering flight path */
+/* Wandering, fluttering flight path — heading follows the true direction of travel,
+   so the head pitches down into dips and up into rises rather than staying upright */
+
 @keyframes butterflyFlutter {
-    0%    { right: -10%; top: 80%; opacity: 0; transform: scale(1); }
-    2%    { opacity: 0.9; }
-    12%   { right: 18%;  top: 70%; }
-    24%   { right: 34%;  top: 96%; }
-    30%   { right: 35%;  top: 96%; }
-    36%   { right: 52%;  top: 68%; }
-    48%   { right: 68%;  top: 82%; }
-    58%   { right: 84%;  top: 64%; opacity: 0.9; }
-    62%   { right: 100%; top: 70%; opacity: 0; }
-    62.1% { right: -10%; top: 80%; opacity: 0; }
-    100%  { right: -10%; top: 80%; opacity: 0; }
+    0.00%  { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; transform: scale(1); }
+    0.48%  { right: -4.50%;  top: 79.00%; opacity: 0.9; rotate: -80deg; }
+    0.95%  { right: 1.00%;   top: 78.00%; rotate: -80deg; }
+    1.43%  { right: 6.50%;   top: 77.00%; rotate: -80deg; }
+    1.90%  { right: 12.00%;  top: 76.00%; rotate: -85deg; }
+    2.62%  { right: 17.75%;  top: 76.00%; rotate: -90deg; }
+    3.33%  { right: 23.50%;  top: 76.00%; rotate: -90deg; }
+    4.05%  { right: 29.25%;  top: 76.00%; rotate: -90deg; }
+    4.76%  { right: 35.00%;  top: 76.00%; rotate: -96deg; }
+    5.24%  { right: 38.75%;  top: 77.00%; rotate: -105deg; }
+    5.71%  { right: 42.50%;  top: 78.00%; rotate: -105deg; }
+    6.19%  { right: 46.25%;  top: 79.00%; rotate: -105deg; }
+    6.67%  { right: 50.00%;  top: 80.00%; rotate: -96deg; }
+    7.38%  { right: 55.50%;  top: 80.00%; rotate: -90deg; }
+    8.10%  { right: 61.00%;  top: 80.00%; rotate: -90deg; }
+    8.81%  { right: 66.50%;  top: 80.00%; rotate: -90deg; }
+    9.52%  { right: 72.00%;  top: 80.00%; rotate: -84deg; }
+    10.00% { right: 75.25%;  top: 79.00%; rotate: -73deg; }
+    10.48% { right: 78.50%;  top: 78.00%; opacity: 0.9; rotate: -73deg; }
+    10.95% { right: 81.75%;  top: 77.00%; rotate: -73deg; }
+    11.43% { right: 85.00%;  top: 76.00%; rotate: -78deg; }
+    11.90% { right: 88.75%;  top: 75.50%; rotate: -82deg; }
+    12.38% { right: 92.50%;  top: 75.00%; rotate: -82deg; }
+    12.86% { right: 96.25%;  top: 74.50%; opacity: 0.4; rotate: -82deg; }
+    13.33% { right: 100.00%; top: 74.00%; opacity: 0;   rotate: -82deg; }
+    13.43% { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; }
+    100%   { right: -10.00%; top: 80.00%; opacity: 0; }
 }
 
 /* ---------- Trailing Vine & Wild Rose ---------- */
