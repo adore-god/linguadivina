@@ -157,17 +157,16 @@ body.is-night .backdrop {
   background:
     radial-gradient(
       circle at 50% 20%,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.03) 35%,
-      transparent 70%
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.015) 30%,
+      transparent 65%
     ),
     linear-gradient(
       180deg,
-      #3a3d41 0%,
-      #2c2f33 55%,
-      #1f2226 100%
+      #1b1d20 0%,
+      #111316 55%,
+      #07080a 100%
     );
-    filter: brightness(0.1)
 }
 
   /* ---------- wall cracks ---------- */
@@ -372,18 +371,24 @@ body.is-dusk .vignette {
 }
 
 body.is-night .vignette {
-  background: radial-gradient(
-    ellipse at 50% 50%,
-    transparent 25%,
-    rgba(4, 6, 18, 0.88) 100%
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 12%,
+    rgba(0, 0, 0, 0.45) 24%,
+    rgba(0, 0, 0, 0.18) 36%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.18) 64%,
+    rgba(0, 0, 0, 0.45) 76%,
+    rgba(0, 0, 0, 0.7) 88%,
+    rgba(0, 0, 0, 0.9) 100%
   );
+
   opacity: 1;
-  filter: brightness(0)
 }
 
- 
 body.is-night .candlelight-ambient::before {
-  opacity:10;
+  opacity:1;
 }
   /* ---------- sanctuary layout ---------- */
   .sanctuary {
