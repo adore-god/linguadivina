@@ -1549,14 +1549,17 @@ body.is-night .figure-groove {
 <audio id="ambienceAudio" src="bird-song.mp3" loop preload="none"></audio>
 
 <script>
-  const ambienceAudio = document.getElementById('ambienceAudio');
+    const ambienceAudio = document.getElementById('ambienceAudio');
   const DAY_TRACK = 'bird-song.mp3';
   const NIGHT_TRACK = 'night.mp3';
   let currentTrack = DAY_TRACK;
 
   function toggleAudio() {
     if (ambienceAudio.paused) {
-      ambienceAudio.play();
+      // Catch potential browser autoplay policy restrictions
+      ambienceAudio.play().catch(error => {
+        console.error("Audio playback failed or was blocked by browser:", error);
+      });
     } else {
       ambienceAudio.pause();
     }
@@ -1568,9 +1571,12 @@ body.is-night .figure-groove {
       currentTrack = wanted;
       const wasPlaying = !ambienceAudio.paused;
       ambienceAudio.src = wanted;
-      if (wasPlaying) ambienceAudio.play();
+      if (wasPlaying) {
+        ambienceAudio.play().catch(error => console.error("Track switch error:", error));
+      }
     }
   }
+
   
   
 </script>
