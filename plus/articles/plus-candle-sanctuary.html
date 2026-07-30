@@ -1204,6 +1204,103 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     100%  { opacity: 0; left: -22%; top: 65%; }    
 }
 
+/* ---------- butterfly (a small, wandering visitor at the window) ---------- */
+.butterfly-wrap {
+    position: absolute;
+    z-index: 4;
+    width: 5%;
+    aspect-ratio: 1 / 1;
+    left: -10%;
+    top: 38%;
+    opacity: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.10));
+    will-change: opacity, transform;
+    animation: butterflyFlutter 55s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.butterfly-wrap svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+ 
+.butterfly-wing {
+    transform-box: fill-box;
+    will-change: transform;
+} 
+
+/* Default fallback colors (monarch-ish) */
+.butterfly-wing-left  { fill: rgba(214, 120, 40, 0.92); }
+.butterfly-wing-right { fill: rgba(214, 120, 40, 0.92); }
+.butterfly-wing-spot  { fill: rgba(20, 16, 12, 0.55); }
+.butterfly-body       { fill: rgba(40, 30, 22, 0.9); }
+.butterfly-antenna    { stroke: rgba(40, 30, 22, 0.8); stroke-width: 0.5; fill: none; stroke-linecap: round; }
+
+.butterfly-wing-left,
+.butterfly-wing-right,
+.butterfly-wing-spot,
+.butterfly-body,
+.butterfly-antenna {
+    transition: fill 3s ease-in-out, stroke 3s ease-in-out;
+}
+
+.butterfly-flap-left {
+    transform-origin: 20px 20px;
+    animation: butterflyFlapLeft 0.42s ease-in-out infinite;
+}
+.butterfly-flap-right {
+    transform-origin: 20px 20px;
+    animation: butterflyFlapRight 0.42s ease-in-out infinite;
+    animation-delay: -0.05s;
+}
+
+@keyframes butterflyFlapLeft {
+    0%   { transform: scaleX(1); }
+    50%  { transform: scaleX(0.32); }
+    100% { transform: scaleX(1); }
+}
+@keyframes butterflyFlapRight {
+    0%   { transform: scaleX(1); }
+    50%  { transform: scaleX(0.32); }
+    100% { transform: scaleX(1); }
+}
+
+/* Time-of-day coloring */
+body.is-dawn .butterfly-wing-left,
+body.is-dawn .butterfly-wing-right { fill: rgba(228, 150, 95, 0.92); }
+body.is-dawn .butterfly-body        { fill: rgba(70, 45, 30, 0.9); }
+
+body.is-day .butterfly-wing-left,
+body.is-day .butterfly-wing-right  { fill: rgba(224, 130, 40, 0.95); }
+body.is-day .butterfly-body         { fill: rgba(40, 30, 22, 0.92); }
+
+body.is-dusk .butterfly-wing-left,
+body.is-dusk .butterfly-wing-right { fill: rgba(180, 90, 70, 0.9); }
+body.is-dusk .butterfly-body        { fill: rgba(55, 30, 28, 0.9); }
+
+body.is-night .butterfly-wing-left,
+body.is-night .butterfly-wing-right { fill: rgba(90, 100, 120, 0.55); }
+body.is-night .butterfly-wing-spot   { fill: rgba(30, 34, 44, 0.5); }
+body.is-night .butterfly-body        { fill: rgba(50, 56, 68, 0.7); }
+body.is-night .butterfly-antenna     { stroke: rgba(50, 56, 68, 0.6); }
+
+/* Wandering, fluttering flight path */
+@keyframes butterflyFlutter {
+    0%    { left: -10%; top: 40%; opacity: 0; transform: scale(1); }
+    2%    { opacity: 0.9; }
+    12%   { left: 18%;  top: 30%; }
+    24%   { left: 34%;  top: 46%; }
+    36%   { left: 52%;  top: 26%; }
+    48%   { left: 68%;  top: 42%; }
+    58%   { left: 84%;  top: 24%; opacity: 0.9; }
+    62%   { left: 100%; top: 30%; opacity: 0; }
+    62.1% { left: -10%; top: 40%; opacity: 0; }
+    100%  { left: -10%; top: 40%; opacity: 0; }
+}
+
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
@@ -2016,6 +2113,33 @@ body.is-night .cloud3 {
 
     <!-- Front Wing (renders over body) -->
     <path class="dove-wing dove-wing-front" d="M42,27 C34,10 16,4 4,9 C18,17 30,24 40,33 C43,32 44,30 42,27 Z"/>
+  </svg>
+</div>
+
+    <div class="butterfly-wrap" id="butterflyEl" aria-hidden="true">
+  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Antennae -->
+    <path class="butterfly-antenna" d="M19,14 C18,10 16.5,8.5 15,8" />
+    <path class="butterfly-antenna" d="M21,14 C22,10 23.5,8.5 25,8" />
+
+    <!-- Left Wings -->
+    <g class="butterfly-wing butterfly-flap-left">
+      <path class="butterfly-wing-left" d="M20,17 C13,8 4,7 3,13 C2,18 9,21 20,20 Z" />
+      <path class="butterfly-wing-left" d="M20,20 C11,21 5,26 7,31 C9,35 16,32 20,23 Z" />
+      <circle class="butterfly-wing-spot" cx="10" cy="14.5" r="1.4" />
+      <circle class="butterfly-wing-spot" cx="11.5" cy="26" r="1.1" />
+    </g>
+
+    <!-- Right Wings -->
+    <g class="butterfly-wing butterfly-flap-right">
+      <path class="butterfly-wing-right" d="M20,17 C27,8 36,7 37,13 C38,18 31,21 20,20 Z" />
+      <path class="butterfly-wing-right" d="M20,20 C29,21 35,26 33,31 C31,35 24,32 20,23 Z" />
+      <circle class="butterfly-wing-spot" cx="30" cy="14.5" r="1.4" />
+      <circle class="butterfly-wing-spot" cx="28.5" cy="26" r="1.1" />
+    </g>
+
+    <!-- Body (drawn over wings so the flap pivots read correctly) -->
+    <ellipse class="butterfly-body" cx="20" cy="20" rx="1.3" ry="8" />
   </svg>
 </div>
 
