@@ -1594,7 +1594,184 @@ body.is-night .figure-groove {
 }
 
 
+/* ---------------- NIGHT MOTH ---------------- */
 
+.moth-wrap{
+
+    position:absolute;
+    z-index:5;
+
+    width:18px;
+    aspect-ratio:1;
+
+    left:-30%;
+    top:98%;
+
+    opacity:0;
+    pointer-events:none;
+
+    animation:mothJourney 160s linear infinite;
+    animation-delay: 35s;
+
+}
+
+body:not(.is-night) .moth-wrap{
+    display:none;
+}
+
+.moth-wrap svg{
+    width:100%;
+    height:100%;
+    overflow:visible;
+    
+}
+
+.moth-body{
+    fill:#615a54;
+    
+}
+
+.moth-wing{
+    fill:#777066;
+    opacity:.82;
+    
+}
+
+.moth-antenna{
+    stroke:#68615a;
+    stroke-width:.45;
+    fill:none;
+    stroke-linecap:round;
+}
+
+/* flying */
+
+.moth-wing-front{
+
+    transform-origin:20px 20px;
+    animation:mothFly .18s ease-in-out infinite;
+
+}
+
+.moth-wing-back{
+
+    transform-origin:20px 20px;
+    animation:mothFly .18s ease-in-out infinite reverse;
+
+}
+
+/* flying flap */
+
+@keyframes mothFly{
+
+    0%,100%{
+        transform:scaleY(1);
+    }
+
+    50%{
+        transform:scaleY(.15);
+    }
+
+}
+
+/* once landed */
+
+@keyframes mothRest{
+
+    0%,88%,100%{
+        transform:scaleY(1);
+    }
+
+    90%{
+        transform:scaleY(.55);
+    }
+
+    92%{
+        transform:scaleY(1);
+    }
+
+    94%{
+        transform:scaleY(.55);
+    }
+
+    96%{
+        transform:scaleY(1);
+    }
+
+}
+
+@keyframes mothJourney{
+
+/* enter */
+
+0%{
+left:-10%;
+top:32%;
+opacity:0;
+transform:rotate(-12deg);
+}
+
+2%{
+opacity:.85;
+}
+
+6%{
+left:18%;
+top:26%;
+transform:rotate(5deg);
+}
+
+11%{
+left:41%;
+top:31%;
+transform:rotate(-7deg);
+}
+
+16%{
+left:63%;
+top:24%;
+transform:rotate(2deg);
+}
+
+/* land */
+
+20%{
+left:74%;
+top:49%;
+opacity:.9;
+transform:rotate(45deg) scale(1);
+box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+21%,83%{
+left:74%;
+top:49%;
+opacity:.9;
+transform:rotate(45deg) scale(1);
+
+}
+
+/* depart */
+
+87%{
+left:78%;
+top:16%;
+opacity:.9;
+}
+
+94%{
+left:105%;
+top:2%;
+opacity:0;
+}
+
+100%{
+left:-10%;
+top:32%;
+opacity:0;
+}
+
+}
 </style>
 </head>
 <body>
@@ -1649,6 +1826,8 @@ body.is-night .figure-groove {
       }
     }
   }
+  
+  
 </script>
   
   
@@ -1936,7 +2115,7 @@ body.is-night .vine-leaf-dark{
         radial-gradient(circle at 66% 32%, rgba(255,255,255,.28) 0 24%, transparent 25%),
         radial-gradient(circle at 84% 55%, rgba(255,255,255,.26) 0 19%, transparent 20%);
 
-    filter: blur(10px);
+    filter: blur(14px);
     background-repeat:no-repeat;
 }
 
@@ -2262,6 +2441,7 @@ body.is-night .cloud3 {
   </svg>
 </div>
 
+
           <div class="tracery"></div>
           
   <!-- Ornamental Standing Sea Cross -->
@@ -2358,7 +2538,49 @@ body.is-night .cloud3 {
   </svg>
 </div>
 
+<!-- ---------- Night Moth ---------- -->
+<div class="moth-wrap" aria-hidden="true">
+<svg viewBox="0 0 40 40">
 
+    <!-- rear wings -->
+    <g class="moth-wing-back">
+        <path class="moth-wing"
+              d="M20 20
+                 C10 16 8 8 12 4
+                 C18 6 20 12 20 20Z"/>
+        <path class="moth-wing"
+              d="M20 20
+                 C30 16 32 8 28 4
+                 C22 6 20 12 20 20Z"/>
+    </g>
+
+    <!-- front wings -->
+    <g class="moth-wing-front">
+        <path class="moth-wing"
+              d="M20 20
+                 C8 22 6 30 11 36
+                 C17 33 20 28 20 20Z"/>
+        <path class="moth-wing"
+              d="M20 20
+                 C32 22 34 30 29 36
+                 C23 33 20 28 20 20Z"/>
+    </g>
+
+    <!-- body -->
+    <ellipse class="moth-body"
+             cx="20"
+             cy="20"
+             rx="1.7"
+             ry="8"/>
+
+    <!-- antennae -->
+    <path class="moth-antenna"
+          d="M19 13 Q15 8 13 9"/>
+    <path class="moth-antenna"
+          d="M21 13 Q25 8 27 9"/>
+
+</svg>
+</div>
 
   <!-- Center Main Candle -->
   <div class="candle-wrap">
@@ -2671,6 +2893,22 @@ body.is-night .cloud3 {
     updateScene();
     setInterval(updateScene, 15000);
     setInterval(updateMoonPhase, 60 * 60 * 1000);
+    
+    
+    const moth = document.querySelector(".moth-wrap");
+
+moth.addEventListener("animationiteration", () => {
+    const front = moth.querySelector(".moth-wing-front");
+    const back  = moth.querySelector(".moth-wing-back");
+
+    front.style.animation = "mothFly .18s ease-in-out infinite";
+    back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
+
+    setTimeout(() => {
+        front.style.animation = "mothRest 8s linear infinite";
+        back.style.animation  = "mothRest 8s linear infinite";
+    }, 32000); // begins resting after it lands
+});
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
