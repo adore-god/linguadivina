@@ -1615,7 +1615,7 @@ body.is-night .figure-groove {
 
 }
 
-body:not(.is-night) .moth-wrap{
+body:not(.is-night):not(.is-dusk) .moth-wrap{
     display:none;
 }
 
@@ -1771,6 +1771,32 @@ top:32%;
 opacity:0;
 }
 
+}
+
+/* ---------- NIGHT ---------- */
+body.is-night .moth-wing{
+    fill:#666d76;   /* cool blue-grey */
+}
+
+body.is-night .moth-body{
+    fill:#40464d;
+}
+
+body.is-night .moth-antenna{
+    stroke:#4b5158;
+}
+
+/* ---------- DUSK ---------- */
+body.is-dusk .moth-wing{
+    fill:#9b8068;   /* warm taupe */
+}
+
+body.is-dusk .moth-body{
+    fill:#5f473a;
+}
+
+body.is-dusk .moth-antenna{
+    stroke:#705446;
 }
 </style>
 </head>
