@@ -2197,7 +2197,7 @@ body.is-night .vine-leaf-dark{
 }
 
 body.is-night .cloud {
-    opacity: .65;
+    opacity: .35;
 }
 
 body.is-night .cloud1 {
@@ -2927,21 +2927,19 @@ body.is-night .cloud3 {
     
     
     const moth = document.querySelector(".moth-wrap");
-const front = moth.querySelector(".moth-wing-front");
-const back  = moth.querySelector(".moth-wing-back");
 
-function startMothCycle() {
+moth.addEventListener("animationiteration", () => {
+    const front = moth.querySelector(".moth-wing-front");
+    const back  = moth.querySelector(".moth-wing-back");
+
     front.style.animation = "mothFly .18s ease-in-out infinite";
     back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
 
     setTimeout(() => {
         front.style.animation = "mothRest 8s linear infinite";
         back.style.animation  = "mothRest 8s linear infinite";
-    }, 32000);
-}
-
-startMothCycle();
-setInterval(startMothCycle, 100000);
+    }, 32000); // begins resting after it lands
+});
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
