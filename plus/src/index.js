@@ -210,6 +210,12 @@ export default {
       return verifyMagicLink(request, env);
     }
 
+const STATIC_ASSET_RE = /\.(mp3|wav|ogg|png|jpe?g|webp|gif|svg|ico|css|js|json|woff2?|xml|txt)$/i;
+
+if (request.method === "GET" && STATIC_ASSET_RE.test(path)) {
+  return env.ARTICLES.fetch(request);
+}
+
     if (request.method === "GET" && (path === "/sitemap.xml" || path === "/robots.txt")) {
       return env.ARTICLES.fetch(request);
     }
