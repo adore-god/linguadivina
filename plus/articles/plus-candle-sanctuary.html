@@ -136,6 +136,23 @@
     );
 }
 
+/* ---------- DAWN ---------- */
+body.is-dawn .backdrop {
+  filter: brightness(1)
+}
+
+/* ---------- DAY ---------- */
+body.is-day .backdrop {
+  filter: brightness(1.1)
+}
+
+/* ---------- DUSK ---------- */
+body.is-dusk .backdrop {
+ filter: brightness(0.7)
+}
+
+/
+
 body.is-night .backdrop {
   background:
     radial-gradient(
@@ -150,6 +167,7 @@ body.is-night .backdrop {
       #2c2f33 55%,
       #1f2226 100%
     );
+    filter: brightness(0.1)
 }
 
   /* ---------- wall cracks ---------- */
@@ -305,7 +323,7 @@ body.is-night .candlelight-ambient {
     inset: 0;
     z-index: 0; 
     pointer-events: none;
-    opacity: 1;
+    opacity: 0;
     transition: background 4s ease, opacity 4s ease;
     background: radial-gradient(ellipse at 50% 55%, transparent 38%, rgba(0,0,0,0.6) 100%);
   }
@@ -329,14 +347,14 @@ body.is-day .vignette {
     90deg,
     
     transparent 0%,
-    rgba(150, 190, 230, 0.10) 10%,   /* cool blue morning light */
-    rgba(110, 165, 220, 0.26) 25%,
-    rgba(110, 165, 220, 0.26) 75%,
-    rgba(150, 190, 230, 0.10) 90%,
+    rgb(210,236,249) 20%,   /* cool blue morning light */
+    rgb(210,236,249) 35%,
+    rgb(210,236,249) 65%,
+    rgb(210,236,249) 80%,
     transparent 100%
     
   );
-  opacity: 1 ;
+  opacity: 0.2 ;
   filter: saturate(1.2)
 }
 
@@ -344,20 +362,25 @@ body.is-dusk .vignette {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 160, 90, 0.12) 20%,   /* sunset orange */
-    rgba(255, 110, 55, 0.28) 35%,
-    rgba(255, 110, 55, 0.28) 65%,
-    rgba(255, 160, 90, 0.12) 80%,
+    rgb(48,42,92) 20%,   /* soft reddish orange */
+    rgb(48,42,92) 35%,    /* deep burnt orange */
+    rgb(48,42,92)65%,
+    rgb(48,42,92) 80%,
     transparent 100%
   );
-  opacity: 0.3;
+  opacity: 0.105;
 }
-
 
 body.is-night .vignette {
-  background: radial-gradient(ellipse at 50% 50%, transparent 26%, rgba(8,10,28,0.62) 100%);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 25%,
+    rgba(4, 6, 18, 0.88) 100%
+  );
   opacity: 1;
+  filter: brightness(0)
 }
+
  
 body.is-night .candlelight-ambient::before {
   opacity:10;
@@ -676,19 +699,20 @@ body.is-night .candlelight-ambient::before {
     font-weight: 600;
     letter-spacing: 0.35em;
     font-size: clamp(13px, 2vw, 16px);
-    color: #777;
+    color: #fff;
     text-transform: uppercase;
     text-align: center;
     position:relative;
     z-index:-1;
-    opacity: 0.85;
+    opacity: 0.25;
+    mix-blend-mode: luminosity;
   }
   .hour-gloss {
     margin-top: 3px;
     font-style: italic;
     font-size: clamp(12px, 1.6vw, 14px);
-    color: #777;
-    opacity: 0.85;
+    color: #fff;
+    opacity: 0.2;
     text-align: center;
   }
 
@@ -800,7 +824,6 @@ body.is-night .candlelight-ambient::before {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     opacity:0.4
   }
 
@@ -1576,8 +1599,8 @@ body.is-night .figure-groove {
 </head>
 <body>
 
-<button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background:transparent;position:fixed;top:16px;right:16px;z-index:10;opacity:0.5;cursor:pointer;">
-    Sound
+<button id="audioToggle" onclick="toggleAudio()" style="border:0;color:#f2f2f2;background:transparent;position:fixed;top:16px;right:16px;z-index:10;opacity:0.2;cursor:pointer;">
+    🔊
 </button>
 
 <audio id="ambienceAudio" src="bird-song.mp3" loop preload="none"></audio>
