@@ -184,35 +184,6 @@ const FOOTER_HTML = `</main></div><footer class="site-footer">
 </footer>`;
 
 export default {
-	
-	// 1. Intercept asset requests (.mp3, .png, etc.) before any HTML routing runs
-const url = new URL(request.url);
-const path = url.pathname;
-const STATIC_ASSET_RE = /\.(css|js|png|jpg|jpeg|gif|ico|svg|mp3|wav|ogg|json)$/i;
-
-if (request.method === "GET" && STATIC_ASSET_RE.test(path) && !path.endsWith(".html")) {
-  const githubRawUrl = `https://raw.githubusercontent.com/adore-god/linguadivina/main/plus/articles${path}`;
-const response = await fetch(githubRawUrl);
-
-if (response.ok) {
-  const contentType = path.endsWith(".mp3") 
-    ? "audio/mpeg" 
-    : (response.headers.get("content-type") || "application/octet-stream");
-
-  return new Response(response.body, {
-    status: 200,
-    headers: {
-      "Content-Type": contentType,
-      "Cache-Control": "public, max-age=86400",
-      "Access-Control-Allow-Origin": "*"
-    }
-  });
-}
-
-
-// ... rest of your index.js code remains untouched below ...
-
-
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
@@ -260,8 +231,6 @@ if (request.method === "GET" && STATIC_ASSET_RE.test(path) && !path.endsWith(".h
   }
   return res;
 }
-
-
     if (request.method === "GET" && (path === "/sitemap.xml" || path === "/robots.txt")) {
       return env.ARTICLES.fetch(request);
     }
@@ -675,17 +644,41 @@ async function renderPlusRoute(request, env) {
   if (parts[0] === "plus") parts.shift();
   const slug = parts.join("/");
 
+  // 1. CATCH AUDIO & MEDIA ASSETS FIRST
+  if (/\.(mp3|wav|ogg|png|jpg|jpeg|gif|svg|css|js)$/i.test(slug)) {
+    const githubRawUrl = `https://raw.githubusercontent.com/adore-god/linguadivina/main/plus/articles/${slug}`;
+    const response = await fetch(githubRawUrl);
+
+    if (response.ok) {
+      const contentType = slug.endsWith(".mp3") 
+        ? "audio/mpeg" 
+        : (response.headers.get("content-type") || "application/octet-stream");
+
+      return new Response(response.body, {
+        status: 200,
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": "public, max-age=86400",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+    }
+  }
+
+  // 2. Default homepage/index
   if (!slug) {
     return renderIndexPage(request, env);
   }
 
-  // Handle candle-sanctuary as a standalone full page
+  // 3. Handle candle-sanctuary as a standalone full page
   if (slug === "plus-candle-sanctuary") {
     return renderCandleSanctuaryPage(request, env, slug);
   }
 
+  // 4. Handle regular articles
   return renderArticlePage(request, env, slug);
 }
+
 
 
 
