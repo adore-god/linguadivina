@@ -359,14 +359,12 @@ body.is-night .candlelight-ambient::before {
 }
   /* ---------- sanctuary layout ---------- */
   .sanctuary {
-  position: relative;
+  position: fixed;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0px; /* Reduced from min(56px, 6vh) */
-  padding-top: 10px;  /* Reduced from max(16px, 2vh) */
-  width: 100%;
+ 
 }
 
 
@@ -1904,10 +1902,10 @@ body.is-night .robin-wrap{
 @media (min-width: 400px) and (max-width: 1024px) {
 
 .sanctuary {
-        transform: scale(1.105);
+        transform: scale(1.2);
         transform-origin: center top;
         overflow: hidden;
-        position: fixed;
+        
     }
     
 .wooden-figure {
