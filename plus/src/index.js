@@ -61,8 +61,8 @@ h1 {
     color: var(--light-on-dark);
     text-align: left;
     margin-bottom: 1em;
-    font-size: 1.5em;
-    line-height: 1.4;
+    font-size: 1.7em;
+    line-height: 1.5;
   }
 .center {text-align: center;padding: 1.3em 0.5em 1.3em 0.5em;}
 
