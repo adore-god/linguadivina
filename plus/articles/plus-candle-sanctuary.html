@@ -789,7 +789,7 @@ body.is-night .candlelight-ambient::before {
     left: 50%;
     width: 100vw;
     margin-left: -50vw;
-    height: 96px;
+    height: 50%;
     z-index: 1;
     pointer-events: none;
     transition: background 4s ease;
@@ -805,6 +805,7 @@ body.is-night .candlelight-ambient::before {
   .candle-wrap {
     position: relative;
     z-index: 3;
+    bottom:66px;
     width: 120px;
     height: 320px;
     margin-bottom: 40px;
@@ -967,12 +968,12 @@ body.is-night .candlelight-ambient::before {
   /* ---------- flanking votives ---------- */
   .votive {
     position: absolute;
-    bottom: 46px;
+    bottom: 106px;
     z-index: 2;
     width: 26px;
     height: 60px;
   }
-  .votive-left  { left: 7%; }
+  .votive-left  { left: 0%; }
   .votive-right { right: 12%; }
 
   .votive-cup {
@@ -1452,8 +1453,8 @@ body.is-night .petal-vein { stroke: #6b3a44; }
 /* ---------- Carved Wooden Bible Figure ---------- */
 .wooden-figure {
   position: absolute;
-  bottom: 46px; /* Matches the bottom alignment of the dark wooden candle bases */
-  left: 22%;    /* Placed on the floor near the left candle */
+  bottom: 116px; /* Matches the bottom alignment of the dark wooden candle bases */
+  left: 16%;    /* Placed on the floor near the left candle */
   z-index: 2;
   width: 28px;
   height: 75px;
