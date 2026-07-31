@@ -791,9 +791,14 @@ body.is-night .candlelight-ambient::before {
     margin-left: -50vw;
     height: 96px;
     z-index: 1;
+    pointer-events: none;
     transition: background 4s ease;
-    background: linear-gradient(to bottom, var(--ledge-top) 0%, var(--ledge-bot) 100%);
-    box-shadow: inset 0 8px 16px rgba(0,0,0,0.55);
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.5) 0%,
+      rgba(0,0,0,0.18) 18%,
+      rgba(0,0,0,0) 42%
+    );
   }
   
 
@@ -2720,13 +2725,22 @@ body.is-night .cloud3 {
     // ---------- room light: how the sky's colour spills through the window ----------
     const luminance = c => (0.299*c[0] + 0.587*c[1] + 0.114*c[2]) / 255;
     const rgbaStr = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
-    const STONE_LIGHT = [104,108,113], STONE_DARK = [26,28,32];
 
     // Frame stone: blends its night/day grey anchors by intensity, then
     // takes a light tint from the sky itself so it never looks neutral.
-    const FRAME_TOP_NIGHT = [102,107,112], FRAME_TOP_DAY = [123,128,133];
-    const FRAME_MID_NIGHT = [79,84,89],   FRAME_MID_DAY = [94,99,104];
-    const FRAME_BOT_NIGHT = [56,60,64],   FRAME_BOT_DAY = [68,72,76];
+    const FRAME_TOP_NIGHT = [26,27,30],  FRAME_TOP_DAY = [123,128,133];
+    const FRAME_MID_NIGHT = [48,45,44],  FRAME_MID_DAY = [94,99,104];
+    const FRAME_BOT_NIGHT = [56,52,48],  FRAME_BOT_DAY = [68,72,76];
+
+    // Floor ledge: same night/day-anchor + sky-tint approach as the frame.
+    // The old formula blended a fixed stone-grey at ~75% weight regardless
+    // of time of day, so the floor barely moved — this is why swapping in
+    // a literal "red" was the only way to prove the rule was even live.
+    // Anchored dark at night (then warmed by candleFactor below) and pale
+    // stone by day, so it now visibly tracks the sky and walls.
+    const LEDGE_TOP_NIGHT = [20,20,22],  LEDGE_TOP_DAY = [150,148,140];
+    const LEDGE_BOT_NIGHT = [6,6,7],     LEDGE_BOT_DAY = [90,86,78];
+
 
     // Leaded tracery: the metal's mid/dark bands lighten with the sky,
     // and its highlight shifts from candle-gold at night to sky-white by day.
@@ -2744,12 +2758,12 @@ body.is-night .cloud3 {
       return c.map(v => Math.min(255, v * scale));
     }
 
-    function updateRoomLight(sky, glow, phase) {
-      // The candle's own warm colour, used to push the arch stone visibly
-      // orange. Night gets a darker, more desaturated amber (embers, not
-      // flame) — dusk/day keep the brighter tone.
-      const CANDLE_WARM = phase === 'night' ? [95, 55, 35] : [255, 140, 55];
+    // The candle's own warm colour — a dim burnt-orange ember tone, not a
+    // bright flame — used to push the arch stone orange as candlelight
+    // becomes the dominant light source.
+    const CANDLE_WARM = [95, 55, 35];
 
+    function updateRoomLight(sky, glow, phase) {
       // The window sits low relative to the room, so the horizon band (bot)
       // dominates what actually washes across the walls; mid contributes the
       // cooler overhead skylight.
@@ -2762,9 +2776,16 @@ body.is-night .cloud3 {
       // times of day when roomBase is naturally brighter.
       const roomTint = normalizeLuminance(roomBase, 0.26);
 
-      // Strong at night, present at dusk, faint by day — matches
-      // .candlelight-ambient's own opacity swing (0.18 day / 0.72 night).
-      const candleFactor = phase === 'night' ? 1 : (phase === 'dusk' ? 0.45 : 0.1);
+      // Driven off the same continuous `intensity` value as everything else
+      // (not the discrete day/dusk/night class), so it ramps in smoothly as
+      // the sky darkens instead of snapping at a phase boundary. Curved so
+      // it stays low through most of the day and rises quickly once the sky
+      // actually starts to dim.
+      const candleFactor = clamp(Math.pow(1 - intensity, 1.8));
+      // As candlelight takes over, the sky's own colour should stop
+      // fighting it for the frame's hue — fade the sky-tint weight down as
+      // candle weight fades up, instead of blending both at fixed strength.
+      const skyTintWeight = 0.4 * (1 - candleFactor * 0.85);
 
       const glowAlpha = clamp(0.08 + intensity * 0.42 + glow * 0.15);
       const edgeAlpha = clamp(0.85 - intensity * 0.55);
@@ -2773,20 +2794,28 @@ body.is-night .cloud3 {
       const frameAlpha = clamp(0.05 + glow * 0.16 + intensity * 0.06 + candleFactor * 0.08);
       const brightness = (0.72 + intensity * 0.4).toFixed(3);
 
-      const ledgeTop = lerpColor(STONE_LIGHT, roomBase, 0.28);
-      const ledgeBot = lerpColor(STONE_DARK, roomBase, 0.16);
+      // Directly tracks the sky, the same way the frame does: blend the
+      // night/day stone anchors by the sky's own intensity, tint with the
+      // sky's hue at dawn/dusk, then warm toward candlelight as the room's
+      // own light source takes over at night.
+      const ledgeTop = lerpColor(
+        lerpColor(lerpColor(LEDGE_TOP_NIGHT, LEDGE_TOP_DAY, intensity), roomTint, skyTintWeight * 0.5),
+        CANDLE_WARM, candleFactor * 0.35);
+      const ledgeBot = lerpColor(
+        lerpColor(lerpColor(LEDGE_BOT_NIGHT, LEDGE_BOT_DAY, intensity), roomTint, skyTintWeight * 0.3),
+        CANDLE_WARM, candleFactor * 0.55);
 
       const frameTop = lerpColor(
-        lerpColor(lerpColor(FRAME_TOP_NIGHT, FRAME_TOP_DAY, intensity), roomTint, 0.4),
-        CANDLE_WARM, candleFactor * 0.35);
+        lerpColor(lerpColor(FRAME_TOP_NIGHT, FRAME_TOP_DAY, intensity), roomTint, skyTintWeight * 0.4),
+        CANDLE_WARM, candleFactor * 0.12);
       const frameMid = lerpColor(
-        lerpColor(lerpColor(FRAME_MID_NIGHT, FRAME_MID_DAY, intensity), roomTint, 0.4),
-        CANDLE_WARM, candleFactor * 0.55);
+        lerpColor(lerpColor(FRAME_MID_NIGHT, FRAME_MID_DAY, intensity), roomTint, skyTintWeight * 0.7),
+        CANDLE_WARM, candleFactor * 0.45);
       const frameBot = lerpColor(
-        lerpColor(lerpColor(FRAME_BOT_NIGHT, FRAME_BOT_DAY, intensity), roomTint, 0.4),
-        CANDLE_WARM, candleFactor * 0.75);
+        lerpColor(lerpColor(FRAME_BOT_NIGHT, FRAME_BOT_DAY, intensity), roomTint, skyTintWeight),
+        CANDLE_WARM, candleFactor * 0.8);
 
-      const frameHighlightColor = lerpColor(lerpColor([255,255,255], roomTint, 0.35), CANDLE_WARM, candleFactor * 0.4);
+      const frameHighlightColor = lerpColor(lerpColor([255,255,255], roomTint, 0.35 * (1 - candleFactor * 0.6)), CANDLE_WARM, candleFactor * 0.4);
       const frameHighlightAlpha = 0.08 + intensity * 0.08;
       const frameInsetAlpha = 0.45 - intensity * 0.10;
       const frameOuterAlpha = 0.55 - intensity * 0.10;
