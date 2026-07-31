@@ -1284,8 +1284,8 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     pointer-events: none;
     
     will-change: opacity, transform;
-    animation: butterflyFlutter 30s ease-in-out infinite;
-    animation-delay: 42s;
+    animation: butterflyFlutter 40s ease-in-out infinite;
+    animation-delay: 5s;
 }
 
 .butterfly-wrap svg {
@@ -1363,35 +1363,40 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
    so the head pitches down into dips and up into rises rather than staying upright */
 
 @keyframes butterflyFlutter {
-    0.00%  { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; transform: scale(1); }
-    0.48%  { right: -4.50%;  top: 79.00%; opacity: 0.9; rotate: -80deg; }
-    0.95%  { right: 1.00%;   top: 78.00%; rotate: -80deg; }
-    1.43%  { right: 6.50%;   top: 77.00%; rotate: -80deg; }
-    1.90%  { right: 12.00%;  top: 76.00%; rotate: -85deg; }
-    2.62%  { right: 17.75%;  top: 76.00%; rotate: -90deg; }
-    3.33%  { right: 23.50%;  top: 76.00%; rotate: -90deg; }
-    4.05%  { right: 29.25%;  top: 76.00%; rotate: -90deg; }
-    4.76%  { right: 35.00%;  top: 76.00%; rotate: -96deg; }
-    5.24%  { right: 38.75%;  top: 77.00%; rotate: -105deg; }
-    5.71%  { right: 42.50%;  top: 78.00%; rotate: -105deg; }
-    6.19%  { right: 46.25%;  top: 79.00%; rotate: -105deg; }
-    6.67%  { right: 50.00%;  top: 80.00%; rotate: -96deg; }
-    7.38%  { right: 55.50%;  top: 80.00%; rotate: -90deg; }
-    8.10%  { right: 61.00%;  top: 80.00%; rotate: -90deg; }
-    8.81%  { right: 66.50%;  top: 80.00%; rotate: -90deg; }
-    9.52%  { right: 72.00%;  top: 80.00%; rotate: -84deg; }
-    10.00% { right: 75.25%;  top: 79.00%; rotate: -73deg; }
-    10.48% { right: 78.50%;  top: 78.00%; opacity: 0.9; rotate: -73deg; }
-    10.95% { right: 81.75%;  top: 77.00%; rotate: -73deg; }
-    11.43% { right: 85.00%;  top: 76.00%; rotate: -78deg; }
-    11.90% { right: 88.75%;  top: 75.50%; rotate: -82deg; }
-    12.38% { right: 92.50%;  top: 75.00%; rotate: -82deg; }
-    12.86% { right: 96.25%;  top: 74.50%; opacity: 0.4; rotate: -82deg; }
-    13.33% { right: 100.00%; top: 74.00%; opacity: 0;   rotate: -82deg; }
-    13.43% { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; }
-    100%   { right: -10.00%; top: 80.00%; opacity: 0; }
-}
+    0.00%  { right: -10%; top: 80%; opacity: 0; rotate: -80deg; transform: scale(1); }
+    0.48%  { right: -4.5%; top: 76%; opacity: .9; rotate: -80deg; }
+    0.95%  { right: 1%; top: 82%; rotate: -78deg; }
+    1.43%  { right: 6.5%; top: 74%; rotate: -82deg; }
+    1.90%  { right: 12%; top: 81%; rotate: -88deg; }
 
+    2.62%  { right: 17.75%; top: 71%; rotate: -92deg; }
+    3.33%  { right: 23.5%; top: 79%; rotate: -90deg; }
+    4.05%  { right: 29.25%; top: 69%; rotate: -94deg; }
+    4.76%  { right: 35%; top: 77%; rotate: -100deg; }
+
+    5.24%  { right: 38.75%; top: 73%; rotate: -108deg; }
+    5.71%  { right: 42.5%; top: 81%; rotate: -106deg; }
+    6.19%  { right: 46.25%; top: 72%; rotate: -102deg; }
+    6.67%  { right: 50%; top: 79%; rotate: -96deg; }
+
+    7.38%  { right: 55.5%; top: 70%; rotate: -90deg; }
+    8.10%  { right: 61%; top: 78%; rotate: -88deg; }
+    8.81%  { right: 66.5%; top: 72%; rotate: -86deg; }
+    9.52%  { right: 72%; top: 80%; rotate: -82deg; }
+
+    10.00% { right: 75.25%; top: 75%; rotate: -75deg; }
+    10.48% { right: 78.5%; top: 83%; opacity: .9; rotate: -72deg; }
+    10.95% { right: 81.75%; top: 74%; rotate: -70deg; }
+    11.43% { right: 85%; top: 81%; rotate: -75deg; }
+
+    11.90% { right: 88.75%; top: 73%; rotate: -80deg; }
+    12.38% { right: 92.5%; top: 78%; rotate: -82deg; }
+    12.86% { right: 96.25%; top: 72%; opacity: .4; rotate: -82deg; }
+    13.33% { right: 100%; top: 76%; opacity: 0; rotate: -82deg; }
+
+    13.43% { right: -10%; top: 80%; opacity: 0; rotate: -80deg; }
+    100%   { right: -10%; top: 80%; opacity: 0; }
+}
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
