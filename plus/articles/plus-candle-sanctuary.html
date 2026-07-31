@@ -1372,17 +1372,17 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
-  rotate: 160deg;
-  transform: scaleY(-1);  
-  transform: scaleX(-1);  
-  top:39%;
-  left: -5%;
+  top: 39%;
+  left: -3%;
   width: 30%;
   height: 22%;
   pointer-events: none;
-  z-index: 2; 
+  z-index: 2;
   opacity: 0.9;
   transition: opacity 4s ease;
+  transform: scaleY(-1) rotate(-10deg) scale(1);
+  transform-origin: top right;
+  animation: vineSway 10s ease-in-out infinite alternate;
 }
 
 .trailing-vine svg {
@@ -1431,7 +1431,7 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 
 /* Detailed Flower Petals & Center */
 .flower-petal {
-opacity: 1;
+  opacity: 1;
   fill: #d69da9;
   stroke: #b57b88;
   stroke-width: 0.4;
@@ -1465,23 +1465,14 @@ opacity: 1;
 }
 
 /* Animation to make the vine sway gently */
-.trailing-vine {
-transform: rotate(-150deg) scale(1);
-  transform-origin: top right; /* Keeps the vine anchored at the top right of the window */
-  animation: vineSway 10s ease-in-out infinite alternate;
-
-  
-}
-
 @keyframes vineSway {
-  0%   { transform: rotate(-10deg) scale(1); }
-  20%  { transform: rotate(-9.2deg) scale(1.004); }
-  40%  { transform: rotate(-7.8deg) scale(1.008); }
-  60%  { transform: rotate(-8.9deg) scale(1.002); }
-  80%  { transform: rotate(-10.8deg) scale(.998); }
-  100% { transform: rotate(-12deg) scale(.995); }
+  0%   { transform: scaleY(-1) rotate(-28deg) scale(1); }
+  20%  { transform: scaleY(-1) rotate(-27.2deg) scale(1.004); }
+  40%  { transform: scaleY(-1) rotate(-25.8deg) scale(1.008); }
+  60%  { transform: scaleY(-1) rotate(-25.9deg) scale(1.002); }
+  80%  { transform: scaleY(-1) rotate(-27.8deg) scale(.998); }
+  100% { transform: scaleY(-1) rotate(-29deg) scale(.995); }
 }
-
 /* Night mode transitions */
 body.is-night .vine-stem { stroke: #111810; }
 body.is-night .vine-tendril { stroke: #172115; }
