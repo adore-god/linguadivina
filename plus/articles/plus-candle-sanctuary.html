@@ -829,8 +829,8 @@ body.is-night .candlelight-ambient::before {
     bottom: 14px;
     left: 130%;
     transform: translateX(-50%);
-    width: 30px;
-    height: 150px;
+    width: 20px;
+    height: 120px;
     aspect-ratio: 2.2 / 1;
     background: linear-gradient(to right, #b8ad98 0%, #efe8d6 45%, #fbf7ea 75%, #d8cdb4 100%);
     border-radius: 6px 6px 10px 10px;
@@ -850,7 +850,7 @@ body.is-night .candlelight-ambient::before {
 
   .wick {
     position: absolute;
-    bottom: 170px;
+    bottom: 140px;
     left: 130%;
     transform: translateX(-50%);
     width: 3px;
@@ -861,7 +861,7 @@ body.is-night .candlelight-ambient::before {
 
   .flame {
     position: absolute;
-    bottom: 170px;
+    bottom: 140px;
     left: 130%;
     aspect-ratio: 2.2 / 1;
     width: 12px;
@@ -971,12 +971,18 @@ body.is-night .candlelight-ambient::before {
     position: absolute;
     bottom: 106px;
     z-index: 2;
-    width: 26px;
-    height: 60px;
+    transform: scale(0.8);
+    transform-origin: bottom center;
   }
-  .votive-left  { left: 0%; }
-  .votive-left-two { left: 25%; bottom:48%}
-  .votive-right { right: 12%; }
+  .votive-left  { left: 10%; }
+  
+.votive-left-two {
+    left: 35%;
+    bottom: 48%;
+    transform: scale(0.7);
+    transform-origin: bottom center;
+}
+  .votive-right { right: 8%; }
   
 .votive-left-two .votive-cup {
     background: linear-gradient(
