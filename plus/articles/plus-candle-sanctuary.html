@@ -1372,12 +1372,14 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 53%;
-  height: 70%;
+  top: 40px;
+  right: 90px;
+  width: 28%;
+  height: 25%;
+  rotate: -14deg;
+  transform: scaleY(-1);
   pointer-events: none;
-  z-index: 9; 
+  z-index: 9;  
   opacity: 0.8;
   transition: opacity 4s ease;
 }
@@ -2355,10 +2357,8 @@ body.is-night .cloud3 {
   <div class="vignette"></div> 
 
   <div class="sanctuary">
-    <div class="window-frame">
-      <div class="finial"></div>
-<!-- Lush Trailing Wild Rose Vine -->
-<div class="trailing-vine" aria-hidden="true">
+  
+  <div class="trailing-vine" aria-hidden="true">
   <svg viewBox="0 0 100 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     
     <!-- Main Stem Drape -->
@@ -2509,6 +2509,11 @@ body.is-night .cloud3 {
 
   </svg>
 </div>
+
+    <div class="window-frame">
+      <div class="finial"></div>
+<!-- Lush Trailing Wild Rose Vine -->
+
 
 
 
