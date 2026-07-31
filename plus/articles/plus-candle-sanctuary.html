@@ -142,9 +142,20 @@
 }
 
 
+  /* ---------- stage: locks the whole scene to one centered, capped unit ---------- */
+  .stage {
+  position: relative;
+  width: min(100vw, 900px);
+  height: min(100dvh, 950px);
+  container-type: size;
+  container-name: stage;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
   /* ---------- stone wall backdrop ---------- */
   .backdrop {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   transition: background 4s ease;
@@ -191,7 +202,7 @@ body.is-night .backdrop {
 
   /* ---------- wall cracks ---------- */
   .wall-cracks {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
@@ -221,7 +232,7 @@ body.is-night .backdrop {
   body.is-night .wall-cracks { opacity: 0.25; }
 
 .candlelight-ambient {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
@@ -338,7 +349,7 @@ body.is-night .candlelight-ambient {
 }
 
 .vignette {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 0; 
     pointer-events: none;
@@ -359,11 +370,12 @@ body.is-night .candlelight-ambient::before {
 }
   /* ---------- sanctuary layout ---------- */
   .sanctuary {
-  position: fixed;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
  transform: scale(1.1);
@@ -378,10 +390,10 @@ body.is-night .candlelight-ambient::before {
   position: relative;
   z-index: 1;
  margin-top:5%;
-  width: min(48vw, calc(56dvh * 0.62), 480px);
+  width: min(48cqw, calc(56cqh * 0.62), 480px);
   aspect-ratio: 0.62;
   height: auto;
-  max-height: 56dvh;
+  max-height: 56cqh;
   padding: 2%;
   box-sizing: border-box;
   display: flex;
@@ -627,7 +639,7 @@ body.is-night .candlelight-ambient::before {
     font-family: 'Inter', serif;
     font-weight: 600;
     letter-spacing: 0.35em;
-    font-size: clamp(13px, 2vw, 16px);
+    font-size: clamp(13px, 2cqw, 16px);
     color: #fff;
     text-transform: uppercase;
     text-align: center;
@@ -639,7 +651,7 @@ body.is-night .candlelight-ambient::before {
   .hour-gloss {
     margin-top: 3px;
     font-style: italic;
-    font-size: clamp(12px, 1.6vw, 14px);
+    font-size: clamp(12px, 1.6cqw, 14px);
     color: #fff;
     opacity: 0.2;
     text-align: center;
@@ -760,7 +772,7 @@ body.is-night .candlelight-ambient::before {
   .altar-candles {
     position: relative;
     z-index: 2;
-    width: min(92vw, 520px);
+    width: min(92cqw, 520px);
     height: 280px;
     display: flex;
     align-items: flex-end;
@@ -772,8 +784,8 @@ body.is-night .candlelight-ambient::before {
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 100vw;
-    margin-left: -50vw;
+    width: 100cqw;
+    margin-left: -50cqw;
     height: 60%;
     z-index: 1;
     pointer-events: none;
@@ -1974,6 +1986,7 @@ body.is-night .robin-wrap{
   
 </script>
 
+  <div class="stage">
   <div class="backdrop"></div>
   <div class="wall-cracks" aria-hidden="true">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -2828,6 +2841,7 @@ body.is-night .cloud3 {
 
       
     </div>
+  </div>
   </div>
 
   <!-- Re-open Toggle -->
