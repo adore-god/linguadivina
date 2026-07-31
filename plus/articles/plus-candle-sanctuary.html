@@ -364,7 +364,9 @@ body.is-night .candlelight-ambient::before {
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+ transform: scale(1.2);
+        transform-origin: center top;
+        overflow: hidden;
 }
 
 
@@ -395,26 +397,6 @@ body.is-night .candlelight-ambient::before {
     0 18px 42px var(--frame-outer-shadow),
     0 0 60px 10px var(--frame-glow);
 }
-
-  @media (max-height: 700px) {
-    .sanctuary {
-      padding-top: 10px;
-      padding-bottom: 0px;
-    }
-    .altar-candles {
-      margin-top: 10px;
-      height: 240px;
-    }
-    .candle-wrap {
-      height: 240px;
-      transform: scale(0.85);
-      transform-origin: bottom center;
-    }
-    .hour-label {
-      margin-top: 8px;
-    }
-  }
-
 
 
   .finial {
@@ -805,7 +787,8 @@ body.is-night .candlelight-ambient::before {
   .candle-wrap {
     position: relative;
     z-index: 3;
-    bottom:66px;
+    bottom:70px;
+    left: -20px;
     width: 120px;
     height: 320px;
     margin-bottom: 40px;
@@ -974,15 +957,15 @@ body.is-night .candlelight-ambient::before {
     transform: scale(0.8);
     transform-origin: bottom center;
   }
-  .votive-left  { left: 10%; }
+  .votive-left  { left: 19%; bottom: 43%; }
   
 .votive-left-two {
-    left: 35%;
-    bottom: 48%;
+    left: 45%;
+    bottom: 49%;
     transform: scale(0.7);
     transform-origin: bottom center;
 }
-  .votive-right { right: 8%; }
+  .votive-right { right: 15%; bottom: 47%;}
   
 .votive-left-two .votive-cup {
     background: linear-gradient(
@@ -1479,8 +1462,8 @@ body.is-night .petal-vein { stroke: #6b3a44; }
 /* ---------- Carved Wooden Bible Figure ---------- */
 .wooden-figure {
   position: absolute;
-  bottom: 116px; /* Matches the bottom alignment of the dark wooden candle bases */
-  left: 16%;    /* Placed on the floor near the left candle */
+  bottom: 126px; /* Matches the bottom alignment of the dark wooden candle bases */
+  left: 24%;    /* Placed on the floor near the left candle */
   z-index: 2;
   width: 28px;
   height: 75px;
@@ -1901,31 +1884,7 @@ body.is-night .robin-wrap{
 
 @media (min-width: 400px) and (max-width: 1024px) {
 
-.sanctuary {
-        transform: scale(1.2);
-        transform-origin: center top;
-        overflow: hidden;
-        
-    }
-    
-.wooden-figure {
-left: 30%;
-}
 
-    /* Bring side decorations slightly inward */
-    .votive-left {
-        left: 27%;
-    }
-
-    .votive-left-two {
-        left: 49%;
-    }
-
-    .votive-right {
-        right: 19%;
-    }
-
-}
 
 </style>
 </head>
