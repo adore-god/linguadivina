@@ -974,7 +974,26 @@ body.is-night .candlelight-ambient::before {
     height: 60px;
   }
   .votive-left  { left: 0%; }
+  .votive-left-two { left: 25%; bottom:48%}
   .votive-right { right: 12%; }
+  
+.votive-left-two .votive-cup {
+    background: linear-gradient(
+        to right,
+        #9d9484 0%,
+        #ddd5c4 45%,
+        #f4efe3 75%,
+        #c2b7a0 100%
+    );
+}
+
+.votive-left .votive-cup {
+    background: linear-gradient(to right,
+        #8a8477 0%,
+        #d8d2c4 45%,
+        #f7f4ea 75%,
+        #bcb39d 100%);
+}
 
   .votive-cup {
     position: absolute;
@@ -985,7 +1004,7 @@ body.is-night .candlelight-ambient::before {
     height: 24px;
     background: linear-gradient(to right, #b8ad98 0%, #efe8d6 45%, #fbf7ea 75%, #d8cdb4 100%);
     border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    box-shadow: -5px -10px 18px rgba(0,0,0,0.30);
   }
   .votive-flame {
     position: absolute;
@@ -2660,6 +2679,12 @@ body.is-night .cloud3 {
     <div class="altar-candles">
   <!-- Left Dark Wood Candle -->
   <div class="votive votive-left">
+    <div class="votive-glow"></div>
+    <div class="votive-flame"></div>
+    <div class="votive-cup"></div>
+  </div>
+  
+  <div class="votive votive-left-two">
     <div class="votive-glow"></div>
     <div class="votive-flame"></div>
     <div class="votive-cup"></div>
