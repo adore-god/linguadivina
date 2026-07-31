@@ -1755,11 +1755,10 @@ body.is-dusk .moth-antenna{
     aspect-ratio:1.25/1;
 
     left:34%;
-    top:93%;
+    top:90.5%;
 
     opacity:0;
     pointer-events:none;
-
     transform-origin:center bottom;
 
     animation: robinVisit 180s linear infinite;
@@ -1775,14 +1774,17 @@ body.is-dusk .moth-antenna{
 
 /* Tiny breathing motion */
 .robin-body{
-    transform-origin:50% 70%;
     animation: robinBreath 5s ease-in-out infinite;
 }
 
 /* Occasional head tilt */
 .robin-head{
     transform-origin:58% 48%;
-    animation: robinHead 8s ease-in-out infinite;
+    animation: robinHead 2s ease-in-out infinite;
+}
+
+.robin-wing, .robin-breast {
+filter:blur(1px);
 }
 
 /* Blink */
@@ -1798,14 +1800,14 @@ body.is-night .robin-wrap{
 @keyframes robinVisit{
 
     0%{
-        opacity:0;
-        transform:translateY(8px) scale(.94);
-    }
+    opacity:0;
+    transform:scale(.94);
+}
 
-    2%{
-        opacity:.92;
-        transform:translateY(0) scale(1);
-    }
+2%{
+    opacity:.92;
+    transform:scale(1);
+}
 
     12%{
         opacity:.92;
@@ -1855,6 +1857,21 @@ body.is-night .robin-wrap{
     }
 }
 
+@keyframes robinHop{
+
+    0%,45%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
+    55%{
+        transform:translateY(0);
+    }
+
+}
 
 </style>
 </head>
@@ -2534,10 +2551,14 @@ body.is-night .cloud3 {
 <svg viewBox="0 0 100 80">
 
     <!-- Tail -->
-    <path fill="#6b594b"
-          d="M18 45
-             L2 35
-             L16 56 Z"/>
+<!-- Tail -->
+<path fill="#6b594b"
+      d="M30 43
+         L10 33
+         L12 39
+         L10 50
+         L28 55
+         Z"/>
 
     <!-- Body -->
     <ellipse class="robin-body"
@@ -2548,7 +2569,7 @@ body.is-night .cloud3 {
              fill="#7a6758"/>
 
     <!-- Orange breast -->
-    <ellipse
+    <ellipse class="robin-breast"
         cx="53"
         cy="47"
         rx="13"
@@ -2556,7 +2577,7 @@ body.is-night .cloud3 {
         fill="#c66a3b"/>
 
     <!-- Wing -->
-    <ellipse
+    <ellipse class="robin-wing"
         cx="42"
         cy="42"
         rx="12"
@@ -2586,13 +2607,13 @@ body.is-night .cloud3 {
         fill="#111"/>
 
     <!-- Legs -->
-    <line x1="42" y1="58" x2="40" y2="67"
-          stroke="#6e5b4f"
-          stroke-width="1"/>
+<line x1="42" y1="58" x2="40" y2="72"
+      stroke="#6e5b4f"
+      stroke-width="1"/>
 
-    <line x1="49" y1="58" x2="49" y2="67"
-          stroke="#6e5b4f"
-          stroke-width="1"/>
+<line x1="49" y1="58" x2="49" y2="72"
+      stroke="#6e5b4f"
+      stroke-width="1"/>
 
 </svg>
 
