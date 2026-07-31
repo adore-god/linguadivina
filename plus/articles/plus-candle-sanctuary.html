@@ -417,11 +417,24 @@ body.is-night .candlelight-ambient::before {
     }
   }
 
-@media (max-width: 1024px) {
+@media (min-width: 800px) and (max-width: 1024px) {
 
-    .sanctuary {
-        transform: scale(0.9);
-        transform-origin: center top;
+    /* Bring side decorations slightly inward */
+    .votive-left {
+        left: 4%;
+    }
+
+    .votive-left-two {
+        left: 21%;
+    }
+
+    .votive-right {
+        right: 9%;
+    }
+
+    /* Make the window a touch wider on tablets */
+    .window-frame {
+        width: clamp(220px, 46vw, 320px);
     }
 
 }
