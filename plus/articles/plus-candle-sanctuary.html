@@ -362,6 +362,8 @@ body.is-night .candlelight-ambient::before {
   position: fixed;
   z-index: 1;
   display: flex;
+  width: 100vw;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
  transform: scale(1.2);
@@ -371,13 +373,14 @@ body.is-night .candlelight-ambient::before {
 
 
   /* ---------- gothic window (ORIGINAL STYLES) ---------- */
-  .window-frame {
-  position: relative;
-  z-index:1;
-  width: 180px;
-  height: 300px;
   
-  padding: 14px;
+.window-frame {
+  position: relative;
+  z-index: 1;
+ margin-top:5%;
+  width: 55%;
+  height: 63%;
+  padding: 2%;
   box-sizing: border-box;
   display: flex;
   clip-path: var(--arch-clip);
@@ -397,8 +400,6 @@ body.is-night .candlelight-ambient::before {
     0 18px 42px var(--frame-outer-shadow),
     0 0 60px 10px var(--frame-glow);
 }
-
-
   .finial {
     position: absolute;
     top: -24px;
@@ -771,7 +772,7 @@ body.is-night .candlelight-ambient::before {
     left: 50%;
     width: 100vw;
     margin-left: -50vw;
-    height: 50%;
+    height: 60%;
     z-index: 1;
     pointer-events: none;
     transition: background 4s ease;
