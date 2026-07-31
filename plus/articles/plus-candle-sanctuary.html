@@ -417,31 +417,7 @@ body.is-night .candlelight-ambient::before {
     }
   }
 
-@media (min-width: 600px) and (max-width: 1024px) {
 
-.wooden-figure {
-left: 54%;
-}
-
-    /* Bring side decorations slightly inward */
-    .votive-left {
-        left: 14%;
-    }
-
-    .votive-left-two {
-        left: 21%;
-    }
-
-    .votive-right {
-        right: 19%;
-    }
-
-    /* Make the window a touch wider on tablets */
-    .window-frame {
-        width: clamp(220px, 48vw, 320px);
-    }
-
-}
 
   .finial {
     position: absolute;
@@ -1921,6 +1897,32 @@ body.is-night .robin-wrap{
 
     55%{
         transform:translateY(0);
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+
+.wooden-figure {
+left: 54%;
+}
+
+    /* Bring side decorations slightly inward */
+    .votive-left {
+        left: 14%;
+    }
+
+    .votive-left-two {
+        left: 21%;
+    }
+
+    .votive-right {
+        right: 19%;
+    }
+
+    /* Make the window a touch wider on tablets */
+    .window-frame {
+        width: clamp(220px, 48vw, 320px);
     }
 
 }
