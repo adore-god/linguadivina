@@ -386,14 +386,20 @@ body.is-night .candlelight-ambient::before {
 
   /* ---------- gothic window (ORIGINAL STYLES) ---------- */
   
-.window-frame {
+.window-wrap {
   position: relative;
   z-index: 1;
  margin-top:5%;
-  width: min(70cqw, calc(56cqh * 0.62), 480px);
+  width: min(70cqw, calc(56cqh * 0.42), 480px);
   aspect-ratio: 0.42;
   height: auto;
   max-height: 56cqh;
+}
+
+.window-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
   padding: 2%;
   box-sizing: border-box;
   display: flex;
@@ -1387,15 +1393,14 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
-  top: 39%;
-  left: 0%;
-  width: 27%;
-  height: 19%;
+  top: 100%;
+  left: -45%;
+  width: 50%;
+  height: auto;
   pointer-events: none;
-  z-index: 2;
+  z-index: 2000;
   opacity: 1;
   transition: opacity 4s ease;
-  
   transform-origin: top right; 
   animation: vineSway 10s ease-in-out infinite alternate;
 }
@@ -2364,7 +2369,7 @@ body.is-night .cloud3 {
   <div class="sanctuary">
   
   
-    <div class="window-frame">
+    <div class="window-wrap">
 <!-- Lush Trailing Wild Rose Vine -->
 <div class="trailing-vine" aria-hidden="true">
   <svg viewBox="0 0 100 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -2519,6 +2524,7 @@ body.is-night .cloud3 {
 </div>
 
 
+    <div class="window-frame">
       <div class="window-leading">
         <div class="window-glass">
           <div class="sky" id="sky"></div>
@@ -2705,6 +2711,7 @@ body.is-night .cloud3 {
 
         </div>
       </div>
+    </div>
     </div>
 
     <div class="hour-label" id="hourLabel">Vespers</div>
