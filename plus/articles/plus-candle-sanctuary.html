@@ -1374,6 +1374,7 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
   position: absolute;
   rotate: 160deg;
   transform: scaleY(-1);  
+  transform: scaleX(-1);  
   top:39%;
   left: -5%;
   width: 30%;
@@ -1465,7 +1466,7 @@ opacity: 1;
 
 /* Animation to make the vine sway gently */
 .trailing-vine {
-transform: rotate(-10deg) scale(1);
+transform: rotate(-160deg) scale(1);
   transform-origin: top right; /* Keeps the vine anchored at the top right of the window */
   animation: vineSway 10s ease-in-out infinite alternate;
 
