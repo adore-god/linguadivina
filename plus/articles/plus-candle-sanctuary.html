@@ -787,12 +787,13 @@ body.is-night .candlelight-ambient::before {
   .candle-wrap {
     position: relative;
     z-index: 3;
-    bottom:70px;
+    bottom:82px;
     left: -20px;
     width: 120px;
     height: 320px;
     margin-bottom: 40px;
-    
+    transform: scale(0.95);
+    transform-origin: bottom center;
   }
 
   .candle-holder {
@@ -801,24 +802,51 @@ body.is-night .candlelight-ambient::before {
     left: 130%;
     transform: translateX(-50%);
     width: 78px;
-    height: 24px;
+    height: 12px;
     border-radius: 50%;
     background: radial-gradient(ellipse at 50% 30%, #a8b0b8 0%, #636b73 50%, #30353b 100%);
     box-shadow: -5px -10px 18px rgba(0,0,0,0.30);
   }
-
+.candle-holder::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: -3px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom,
+        rgba(255,255,255,0.12),
+        rgba(30,35,40,0.75));
+}
   .wax {
     position: absolute;
-    bottom: 14px;
+    bottom: 9px;
     left: 130%;
     transform: translateX(-50%);
     width: 20px;
     height: 120px;
     aspect-ratio: 2.2 / 1;
     background: linear-gradient(to right, #b8ad98 0%, #efe8d6 45%, #fbf7ea 75%, #d8cdb4 100%);
-    border-radius: 6px 6px 10px 10px;
+    border-radius: 6px 6px 2px 2px;
     box-shadow: -5px -10px 18px rgba(0,0,0,0.30);
   }
+  
+  ..wax::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(
+        to bottom,
+        #d8cdb4 0%,
+        #b8ad98 100%
+    );
+}
+
   .wax::after {
     content: "";
     position: absolute;
@@ -957,7 +985,8 @@ body.is-night .candlelight-ambient::before {
     transform: scale(0.8);
     transform-origin: bottom center;
   }
-  .votive-left  { left: 19%; bottom: 43%; }
+  .votive-left  { left: 19%; bottom: 43%; transform: scale(0.9);
+    transform-origin: bottom center; }
   
 .votive-left-two {
     left: 45%;
@@ -965,7 +994,7 @@ body.is-night .candlelight-ambient::before {
     transform: scale(0.7);
     transform-origin: bottom center;
 }
-  .votive-right { right: 15%; bottom: 47%;}
+  .votive-right { z-index:3;right: 45%; bottom: 48%;}
   
 .votive-left-two .votive-cup {
     background: linear-gradient(
