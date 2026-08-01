@@ -164,7 +164,7 @@
       circle at 50% 20%,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(255, 255, 255, 0.06) 35%,
-      transparent 70% 
+      transparent 70%
     ),
     linear-gradient(
       180deg,
@@ -1458,7 +1458,7 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 .flower-petal {
   opacity: 1;
   fill: #d69da9;
-  stroke: #d69da9;
+  stroke: #b57b88;
   stroke-width: 0.4;
   transition: fill 4s ease, stroke 4s ease;
 }
@@ -1470,7 +1470,7 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
 
 .flower-center {
   fill: #eac668;
-  stroke: #eac668;
+  stroke: #8c6a28;
   stroke-width: 0.3;
   transition: fill 4s ease, stroke 4s ease;
 }
@@ -1779,6 +1779,20 @@ body.is-dusk .moth-antenna{
 
 .robin-wing, .robin-breast {
 filter:blur(1.5px);
+}
+
+.robin-wing {
+  transform-origin: bottom right;
+  animation: robinWingFlap 0.2s ease-in-out infinite;
+}
+
+@keyframes robinWingFlap {
+  0%   { transform: rotate(-8deg) }
+    35%  { transform: rotate(-8deg) }
+    55%  { transform: rotate(10deg)  }
+    65%  { transform: rotate(10deg)  }
+    85%  { transform: rotate(-8deg)  }
+    100% { transform: rotate(-8deg) }
 }
 
 /* Blink */
