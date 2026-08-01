@@ -1283,7 +1283,7 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     
     will-change: opacity, transform;
     animation: butterflyFlutter 30s ease-in-out infinite;
-    animation-delay: 42s;
+    animation-delay: 10s;
 }
 
 .butterfly-wrap svg {
@@ -1361,35 +1361,39 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
    so the head pitches down into dips and up into rises rather than staying upright */
 
 @keyframes butterflyFlutter {
-    0.00%  { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; transform: scale(1); }
-    0.48%  { right: -4.50%;  top: 79.00%; opacity: 0.9; rotate: -80deg; }
-    0.95%  { right: 1.00%;   top: 78.00%; rotate: -80deg; }
-    1.43%  { right: 6.50%;   top: 77.00%; rotate: -80deg; }
-    1.90%  { right: 12.00%;  top: 76.00%; rotate: -85deg; }
-    2.62%  { right: 17.75%;  top: 76.00%; rotate: -90deg; }
-    3.33%  { right: 23.50%;  top: 76.00%; rotate: -90deg; }
-    4.05%  { right: 29.25%;  top: 76.00%; rotate: -90deg; }
-    4.76%  { right: 35.00%;  top: 76.00%; rotate: -96deg; }
-    5.24%  { right: 38.75%;  top: 77.00%; rotate: -105deg; }
-    5.71%  { right: 42.50%;  top: 78.00%; rotate: -105deg; }
-    6.19%  { right: 46.25%;  top: 79.00%; rotate: -105deg; }
-    6.67%  { right: 50.00%;  top: 80.00%; rotate: -96deg; }
-    7.38%  { right: 55.50%;  top: 80.00%; rotate: -90deg; }
-    8.10%  { right: 61.00%;  top: 80.00%; rotate: -90deg; }
-    8.81%  { right: 66.50%;  top: 80.00%; rotate: -90deg; }
-    9.52%  { right: 72.00%;  top: 80.00%; rotate: -84deg; }
-    10.00% { right: 75.25%;  top: 79.00%; rotate: -73deg; }
-    10.48% { right: 78.50%;  top: 78.00%; opacity: 0.9; rotate: -73deg; }
-    10.95% { right: 81.75%;  top: 77.00%; rotate: -73deg; }
-    11.43% { right: 85.00%;  top: 76.00%; rotate: -78deg; }
-    11.90% { right: 88.75%;  top: 75.50%; rotate: -82deg; }
-    12.38% { right: 92.50%;  top: 75.00%; rotate: -82deg; }
-    12.86% { right: 96.25%;  top: 74.50%; opacity: 0.4; rotate: -82deg; }
-    13.33% { right: 100.00%; top: 74.00%; opacity: 0;   rotate: -82deg; }
-    13.43% { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; }
-    100%   { right: -10.00%; top: 80.00%; opacity: 0; }
-}
+    0.00%  { right:-10%;   top:82%; opacity:0;   rotate:-80deg; transform:scale(1); }
+    0.35%  { right:-6%;    top:77%; opacity:.8;  rotate:-82deg; }
+    0.70%  { right:-2%;    top:84%; opacity:1;   rotate:-78deg; }
+    1.05%  { right:2%;     top:75%; rotate:-84deg; }
+    1.40%  { right:6%;     top:83%; rotate:-88deg; }
+    1.75%  { right:10%;    top:73%; rotate:-92deg; }
+    2.10%  { right:14%;    top:81%; rotate:-96deg; }
+    2.45%  { right:18%;    top:71%; rotate:-94deg; }
+    2.80%  { right:22%;    top:80%; rotate:-90deg; }
+    3.15%  { right:26%;    top:69%; rotate:-95deg; }
+    3.50%  { right:30%;    top:79%; rotate:-100deg; }
+    3.85%  { right:34%;    top:68%; rotate:-104deg; }
+    4.20%  { right:38%;    top:77%; rotate:-108deg; }
+    4.55%  { right:42%;    top:66%; rotate:-105deg; }
+    4.90%  { right:46%;    top:76%; rotate:-101deg; }
+    5.25%  { right:50%;    top:64%; rotate:-97deg; }
+    5.60%  { right:54%;    top:75%; rotate:-92deg; }
+    5.95%  { right:58%;    top:63%; rotate:-88deg; }
+    6.30%  { right:62%;    top:74%; rotate:-84deg; }
+    6.65%  { right:66%;    top:61%; rotate:-80deg; }
+    7.00%  { right:70%;    top:73%; rotate:-76deg; }
+    7.35%  { right:74%;    top:60%; rotate:-72deg; }
+    7.70%  { right:78%;    top:72%; rotate:-70deg; }
+    8.05%  { right:82%;    top:58%; rotate:-74deg; }
+    8.40%  { right:86%;    top:71%; rotate:-78deg; }
+    8.75%  { right:90%;    top:57%; rotate:-82deg; }
+    9.10%  { right:94%;    top:69%; rotate:-84deg; }
+    9.45%  { right:97%;    top:55%; opacity:.6; rotate:-82deg; }
+    9.80%  { right:100%;   top:68%; opacity:0;  rotate:-80deg; }
 
+    9.90%  { right:-10%;   top:82%; opacity:0;  rotate:-80deg; }
+    100%   { right:-10%;   top:82%; opacity:0; }
+}
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
@@ -2967,19 +2971,23 @@ body.is-night .cloud3 {
 
     // ---------- sky color keyframes (minute-of-day -> RGB) ----------
     const KEYFRAMES = [
-      { t: 0,    top:[6,9,26],    mid:[10,14,36],  bot:[4,6,15]   },
-      { t: 270,  top:[6,9,26],    mid:[16,20,45],  bot:[30,22,40] },
-      { t: 330,  top:[40,35,85],  mid:[130,85,120],bot:[235,145,120] },
-      { t: 390,  top:[95,130,190],mid:[235,155,110],bot:[255,195,130] },
-      { t: 480,  top:[75,155,218],mid:[150,205,235],bot:[205,232,246] },
-      { t: 720,  top:[60,150,222],mid:[150,207,236],bot:[210,236,249] },
-      { t: 1050, top:[80,140,195],mid:[205,175,145],bot:[250,205,155] },
-      { t: 1140, top:[70,90,150], mid:[230,130,90], bot:[255,150,90] },
-      { t: 1185, top:[48,42,92],  mid:[180,82,92],  bot:[255,132,80] },
-      { t: 1230, top:[16,16,46],  mid:[42,32,72],   bot:[68,42,72] },
-      { t: 1290, top:[6,9,26],    mid:[10,14,36],   bot:[4,6,15] },
-      { t: 1440, top:[6,9,26],    mid:[10,14,36],   bot:[4,6,15] }
-    ];
+  { t: 0,    top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
+  { t: 270,  top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
+
+  { t: 330,  top:[40,35,85],   mid:[130,85,120], bot:[235,145,120] },
+  { t: 390,  top:[95,130,190], mid:[235,155,110],bot:[255,195,130] },
+
+  { t: 480,  top:[75,155,218], mid:[150,205,235],bot:[205,232,246] },
+  { t: 720,  top:[60,150,222], mid:[150,207,236],bot:[210,236,249] },
+
+  { t: 1050, top:[80,140,195], mid:[205,175,145],bot:[250,205,155] },
+  { t: 1140, top:[70,90,150],  mid:[230,130,90], bot:[255,150,90] },
+  { t: 1185, top:[48,42,92],   mid:[180,82,92],  bot:[255,132,80] },
+
+  { t: 1230, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
+  { t: 1290, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
+  { t: 1440, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   }
+];
     const lerp = (a,b,f) => a + (b-a)*f;
     const lerpColor = (c1,c2,f) => [0,1,2].map(i => Math.round(lerp(c1[i],c2[i],f)));
     function getSkyColors(minutes) {
