@@ -127,6 +127,16 @@
 @property --robin-beak       { syntax: '<color>'; inherits: true; initial-value: #2c2420; }
 @property --robin-leg        { syntax: '<color>'; inherits: true; initial-value: #7a6256; }
 
+/* ---------- carved wooden figure: catches daylight instead of sitting flat/lightless, then warms toward candle amber as the room dims ---------- */
+@property --figure-wood-top  { syntax: '<color>';  inherits: true; initial-value: #5c4530; }
+@property --figure-wood-mid  { syntax: '<color>';  inherits: true; initial-value: #4a3324; }
+@property --figure-wood-bot  { syntax: '<color>';  inherits: true; initial-value: #362717; }
+@property --figure-head-top  { syntax: '<color>';  inherits: true; initial-value: #5c4530; }
+@property --figure-head-bot  { syntax: '<color>';  inherits: true; initial-value: #4a3324; }
+@property --figure-detail    { syntax: '<color>';  inherits: true; initial-value: #332217; }
+@property --figure-groove    { syntax: '<color>';  inherits: true; initial-value: #332217; }
+@property --figure-neck-alpha { syntax: '<number>'; inherits: true; initial-value: 0.14; }
+
 
   * { box-sizing: border-box; }
 
@@ -150,7 +160,10 @@
     --robin-crown 14s linear, --robin-back 14s linear, --robin-breast 14s linear,
     --robin-breast-dk 14s linear, --robin-bib-edge 14s linear, --robin-belly 14s linear,
     --robin-wing 14s linear, --robin-wing-dk 14s linear, --robin-wing-edge 14s linear,
-    --robin-tail 14s linear, --robin-beak 14s linear, --robin-leg 14s linear;
+    --robin-tail 14s linear, --robin-beak 14s linear, --robin-leg 14s linear,
+    --figure-wood-top 14s linear, --figure-wood-mid 14s linear, --figure-wood-bot 14s linear,
+    --figure-head-top 14s linear, --figure-head-bot 14s linear, --figure-detail 14s linear,
+    --figure-groove 14s linear, --figure-neck-alpha 14s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -1582,59 +1595,35 @@ body.is-night .wooden-figure{
 }
 
 .figure-body {
-  fill: url(#dayWoodGradient); /* Subtle top-half lift, fading down by day */
-  transition: fill 4s ease;
+  fill: url(#figureWoodGradient);
 }
 
 .figure-head {
-  fill: url(#dayHeadShade); /* Peaks at the exact same tone as the top of the body — never brighter */
-  transition: fill 4s ease;
-}
-
-body.is-night .figure-head { 
-  fill: url(#nightHeadShade); /* Peaks at the exact same tone as the top of the body — never brighter */
-  transition: fill 4s ease;
-}
-
-body.is-night .figure-body { 
-  fill: url(#nightWoodGradient); /* Upper half warm, fading to shadow by the lower half */
-  transition: fill 4s ease;
+  fill: url(#figureHeadShade);
 }
 
 .figure-neck-shadow {
   fill: #000;
-  opacity: 0.14;
-  transition: opacity 4s ease;
+  opacity: var(--figure-neck-alpha);
 }
-
-body.is-night .figure-neck-shadow {
-  opacity: 0.32;
-}
-
-body.is-night .figure-detail { 
-  fill: #140a05; 
-  transition: fill 4s ease;
-}
-
-body.is-night .figure-groove { 
-  stroke: #4a2413; /* Lighter warm groove line down the body */
-  transition: stroke 4s ease;
-}
-
 
 .figure-detail {
-  fill: #332217; /* Deep carved groove shadows */
-  transition: fill 4s ease;
+  fill: var(--figure-detail); /* Deep carved groove shadows */
 }
 
 .figure-groove {
   fill: none;
-  stroke: #332217;
+  stroke: var(--figure-groove);
   stroke-width: 0.55;
   stroke-linecap: round;
   opacity: 0.85;
-  transition: stroke 4s ease;
 }
+
+.figure-wood-stop-top { stop-color: var(--figure-wood-top); }
+.figure-wood-stop-mid { stop-color: var(--figure-wood-mid); }
+.figure-wood-stop-bot { stop-color: var(--figure-wood-bot); }
+.figure-head-stop-top { stop-color: var(--figure-head-top); }
+.figure-head-stop-bot { stop-color: var(--figure-head-bot); }
 
 
 /* ---------------- NIGHT MOTH (circles the candle flame) ---------------- */
@@ -2729,28 +2718,20 @@ body.is-night .cloud3 {
 <div class="wooden-figure" aria-hidden="true">
   <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Night gradient: Warm amber lit through the upper half, fading into deep shadow lower down. Angled for a single consistent light direction. -->
-      <linearGradient id="nightWoodGradient" x1="15%" y1="0%" x2="65%" y2="100%">
-        <stop offset="0%" stop-color="#8c4722" />    <!-- Warm top -->
-        <stop offset="50%" stop-color="#6b3518" />   <!-- Still warm through the upper half -->
-        <stop offset="100%" stop-color="#140a05" />  <!-- Dark shadow at floor -->
-      </linearGradient>
-
-      <!-- Day gradient: same top-half/bottom-half shape and angle as night, but much subtler contrast -->
-      <linearGradient id="dayWoodGradient" x1="15%" y1="0%" x2="65%" y2="100%">
-        <stop offset="0%" stop-color="#5c4530" />    <!-- Slightly lifted top -->
-        <stop offset="50%" stop-color="#4a3324" />   <!-- Base wood tone through the upper half -->
-        <stop offset="100%" stop-color="#362717" />  <!-- Slightly deeper shadow at the floor -->
+      <!-- Wood shading: colours come from the figure-wood custom properties, which
+           JS updates every tick from the same sky intensity/candle-glow signals
+           driving the rest of the room, so the figure catches real daylight
+           instead of sitting flat and dark through the day. -->
+      <linearGradient id="figureWoodGradient" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" class="figure-wood-stop-top" />
+        <stop offset="50%" class="figure-wood-stop-mid" />
+        <stop offset="100%" class="figure-wood-stop-bot" />
       </linearGradient>
 
       <!-- Head shading: same angle and starting tone as the body's peak, easing to a slightly deeper tone — gives the hood roundness without ever exceeding the body's brightness -->
-      <linearGradient id="nightHeadShade" x1="15%" y1="0%" x2="65%" y2="100%">
-        <stop offset="0%" stop-color="#8c4722" />
-        <stop offset="100%" stop-color="#6b3518" />
-      </linearGradient>
-      <linearGradient id="dayHeadShade" x1="15%" y1="0%" x2="65%" y2="100%">
-        <stop offset="0%" stop-color="#5c4530" />
-        <stop offset="100%" stop-color="#4a3324" />
+      <linearGradient id="figureHeadShade" x1="15%" y1="0%" x2="65%" y2="100%">
+        <stop offset="0%" class="figure-head-stop-top" />
+        <stop offset="100%" class="figure-head-stop-bot" />
       </linearGradient>
 
       <!-- Softens the head's outer silhouette so it isn't a hard-edged circle -->
@@ -3039,6 +3020,18 @@ body.is-night .cloud3 {
     const ROBIN_LEG_NIGHT      = [48,38,32],  ROBIN_LEG_DAY      = [162,124,100];
     const GOLDEN_LIGHT = [255,176,96];
 
+    // Carved wooden figure: day anchors are a properly sunlit warm wood tone
+    // (not the old flat/muted brown that read as "lightless" through the
+    // day), night anchors stay dim and are then warmed toward the actual
+    // candle colour by candleFactor, so the amber glow comes from the same
+    // flame lighting everything else instead of a hardcoded night palette.
+    const FIGURE_WOOD_TOP_NIGHT = [40,24,14],  FIGURE_WOOD_TOP_DAY = [176,132,86];
+    const FIGURE_WOOD_MID_NIGHT = [26,16,9],   FIGURE_WOOD_MID_DAY = [132,94,60];
+    const FIGURE_WOOD_BOT_NIGHT = [10,6,4],    FIGURE_WOOD_BOT_DAY = [80,58,38];
+    const FIGURE_HEAD_BOT_NIGHT = [26,16,9],   FIGURE_HEAD_BOT_DAY = [132,94,60];
+    const FIGURE_DETAIL_NIGHT   = [20,10,5],   FIGURE_DETAIL_DAY   = [51,34,23];
+    const FIGURE_GROOVE_NIGHT   = [74,36,19],  FIGURE_GROOVE_DAY   = [51,34,23];
+
     // Boosts a dark colour's brightness (preserving its hue) so it still reads
     // as a colour, not just "dark grey", when used to tint brighter surfaces.
     function normalizeLuminance(c, minLum) {
@@ -3132,6 +3125,19 @@ body.is-night .cloud3 {
       const robinBeak      = lerpColor(ROBIN_BEAK_NIGHT, ROBIN_BEAK_DAY, intensity);
       const robinLeg       = lerpColor(ROBIN_LEG_NIGHT, ROBIN_LEG_DAY, intensity);
 
+      // Figure wood: sunlit by day (intensity), warmed toward the candle's
+      // own colour as candleFactor rises at dusk/night. The lower body/edge
+      // of the head stay closer to their base tone since they're less
+      // exposed to either light source.
+      const figureWoodTop = lerpColor(lerpColor(FIGURE_WOOD_TOP_NIGHT, FIGURE_WOOD_TOP_DAY, intensity), CANDLE_WARM, candleFactor * 0.55);
+      const figureWoodMid = lerpColor(lerpColor(FIGURE_WOOD_MID_NIGHT, FIGURE_WOOD_MID_DAY, intensity), CANDLE_WARM, candleFactor * 0.35);
+      const figureWoodBot = lerpColor(lerpColor(FIGURE_WOOD_BOT_NIGHT, FIGURE_WOOD_BOT_DAY, intensity), CANDLE_WARM, candleFactor * 0.15);
+      const figureHeadTop = figureWoodTop;
+      const figureHeadBot = lerpColor(lerpColor(FIGURE_HEAD_BOT_NIGHT, FIGURE_HEAD_BOT_DAY, intensity), CANDLE_WARM, candleFactor * 0.35);
+      const figureDetail  = lerpColor(FIGURE_DETAIL_NIGHT, FIGURE_DETAIL_DAY, intensity);
+      const figureGroove  = lerpColor(FIGURE_GROOVE_NIGHT, FIGURE_GROOVE_DAY, intensity);
+      const figureNeckAlpha = (0.32 + (0.14 - 0.32) * intensity).toFixed(3);
+
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
       body.setProperty('--room-glow', rgbaStr(roomBase, glowAlpha));
@@ -3164,6 +3170,15 @@ body.is-night .cloud3 {
       body.setProperty('--robin-tail', `rgb(${robinTail.join(',')})`);
       body.setProperty('--robin-beak', `rgb(${robinBeak.join(',')})`);
       body.setProperty('--robin-leg', `rgb(${robinLeg.join(',')})`);
+
+      body.setProperty('--figure-wood-top', `rgb(${figureWoodTop.join(',')})`);
+      body.setProperty('--figure-wood-mid', `rgb(${figureWoodMid.join(',')})`);
+      body.setProperty('--figure-wood-bot', `rgb(${figureWoodBot.join(',')})`);
+      body.setProperty('--figure-head-top', `rgb(${figureHeadTop.join(',')})`);
+      body.setProperty('--figure-head-bot', `rgb(${figureHeadBot.join(',')})`);
+      body.setProperty('--figure-detail', `rgb(${figureDetail.join(',')})`);
+      body.setProperty('--figure-groove', `rgb(${figureGroove.join(',')})`);
+      body.setProperty('--figure-neck-alpha', figureNeckAlpha);
     }
 
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
