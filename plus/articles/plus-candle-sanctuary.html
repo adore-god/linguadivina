@@ -238,7 +238,7 @@ body.is-night .backdrop {
   pointer-events: none;
   mix-blend-mode: screen;
 
-  opacity: 0.01;
+  opacity: 0.18;
   transition: opacity 3s ease;
 
   background:
@@ -390,10 +390,10 @@ body.is-night .candlelight-ambient::before {
   position: relative;
   z-index: 1;
  margin-top:5%;
-  width: min(70cqw, calc(50cqh * 0.55), 480px);
-  aspect-ratio: 0.55;
+  width: min(70cqw, calc(56cqh * 0.50), 480px);
+  aspect-ratio: 0.50;
   height: auto; 
-  max-height: 47cqh;
+  max-height: 50cqh;
 }
 
 .window-frame {
@@ -668,7 +668,6 @@ body.is-night .candlelight-ambient::before {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    display:none;
     z-index: 20;
     width: min(90vw, 320px);
     background: rgba(18, 20, 24, 0.85);
@@ -793,7 +792,7 @@ body.is-night .candlelight-ambient::before {
     left: 50%;
     width: 100cqw;
     margin-left: -50cqw;
-    height: 60%;
+    height: 50%;
     z-index: 1;
     pointer-events: none;
     transition: background 4s ease;
@@ -808,7 +807,7 @@ body.is-night .candlelight-ambient::before {
 
   .candle-wrap {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     bottom:35%;
     left: 15px;
     width: 120px;
@@ -898,7 +897,7 @@ body.is-night .candlelight-ambient::before {
 
   .flame {
     position: absolute;
-    bottom: 42%;
+    bottom: 140px;
     left: 130%;
     aspect-ratio: 2.2 / 1;
     width: 6px;
@@ -974,10 +973,10 @@ body.is-night .candlelight-ambient::before {
 
   .glow {
     position: absolute;
-    bottom:  35%;
+    bottom: 130px;
     left: 130%;
-    width: 70px;
-    height: 70px;
+    width: 170px;
+    height: 170px;
     transform: translate(-50%, 0);
     background: radial-gradient(
       circle,
@@ -1038,20 +1037,6 @@ body.is-night .candlelight-ambient::before {
         #d8d2c4 45%,
         #f7f4ea 75%,
         #bcb39d 100%);
-}
-
-.votive-left-two .votive-flame {
-    filter: brightness(0.7);
-}
-.votive-left-two .votive-glow {
-    filter: brightness(0.5);
-}
-
-.votive-right .votive-flame {
-    filter: brightness(0.8);
-}
-.votive-right .votive-glow {
-    filter: brightness(0.7);
 }
 
   .votive-cup {
@@ -1141,11 +1126,10 @@ body.is-night .candlelight-ambient::before {
 
   .votive-glow {
     position: absolute;
-    bottom: 9%;
+    bottom: 16px;
     left: 130%;
     width: 70px;
     height: 70px;
-    filter:brightness(2.8);
     transform: translate(-50%, 0);
     background: radial-gradient(
       circle,
@@ -1298,7 +1282,7 @@ body.is-night .dove-twig-stem  { stroke: rgba(30, 50, 45, 0.8); }
     pointer-events: none;
     
     will-change: opacity, transform;
-    animation: butterflyFlutter 40s ease-in-out infinite;
+    animation: butterflyFlutter 30s ease-in-out infinite;
     animation-delay: 42s;
 }
 
@@ -1377,40 +1361,35 @@ body.is-night .butterfly-antenna     { stroke: rgba(70, 65, 68, 0.65); }
    so the head pitches down into dips and up into rises rather than staying upright */
 
 @keyframes butterflyFlutter {
-    0.00%  { right: -10%; top: 80%; opacity: 0; rotate: -80deg; transform: scale(1); }
-    0.48%  { right: -4.5%; top: 76%; opacity: .9; rotate: -80deg; }
-    0.95%  { right: 1%; top: 82%; rotate: -78deg; }
-    1.43%  { right: 6.5%; top: 74%; rotate: -82deg; }
-    1.90%  { right: 12%; top: 81%; rotate: -88deg; }
-
-    2.62%  { right: 17.75%; top: 71%; rotate: -92deg; }
-    3.33%  { right: 23.5%; top: 79%; rotate: -90deg; }
-    4.05%  { right: 29.25%; top: 69%; rotate: -94deg; }
-    4.76%  { right: 35%; top: 77%; rotate: -100deg; }
-
-    5.24%  { right: 38.75%; top: 73%; rotate: -108deg; }
-    5.71%  { right: 42.5%; top: 81%; rotate: -106deg; }
-    6.19%  { right: 46.25%; top: 72%; rotate: -102deg; }
-    6.67%  { right: 50%; top: 79%; rotate: -96deg; }
-
-    7.38%  { right: 55.5%; top: 70%; rotate: -90deg; }
-    8.10%  { right: 61%; top: 78%; rotate: -88deg; }
-    8.81%  { right: 66.5%; top: 72%; rotate: -86deg; }
-    9.52%  { right: 72%; top: 80%; rotate: -82deg; }
-
-    10.00% { right: 75.25%; top: 75%; rotate: -75deg; }
-    10.48% { right: 78.5%; top: 83%; opacity: .9; rotate: -72deg; }
-    10.95% { right: 81.75%; top: 74%; rotate: -70deg; }
-    11.43% { right: 85%; top: 81%; rotate: -75deg; }
-
-    11.90% { right: 88.75%; top: 73%; rotate: -80deg; }
-    12.38% { right: 92.5%; top: 78%; rotate: -82deg; }
-    12.86% { right: 96.25%; top: 72%; opacity: .4; rotate: -82deg; }
-    13.33% { right: 100%; top: 76%; opacity: 0; rotate: -82deg; }
-
-    13.43% { right: -10%; top: 80%; opacity: 0; rotate: -80deg; }
-    100%   { right: -10%; top: 80%; opacity: 0; }
+    0.00%  { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; transform: scale(1); }
+    0.48%  { right: -4.50%;  top: 79.00%; opacity: 0.9; rotate: -80deg; }
+    0.95%  { right: 1.00%;   top: 78.00%; rotate: -80deg; }
+    1.43%  { right: 6.50%;   top: 77.00%; rotate: -80deg; }
+    1.90%  { right: 12.00%;  top: 76.00%; rotate: -85deg; }
+    2.62%  { right: 17.75%;  top: 76.00%; rotate: -90deg; }
+    3.33%  { right: 23.50%;  top: 76.00%; rotate: -90deg; }
+    4.05%  { right: 29.25%;  top: 76.00%; rotate: -90deg; }
+    4.76%  { right: 35.00%;  top: 76.00%; rotate: -96deg; }
+    5.24%  { right: 38.75%;  top: 77.00%; rotate: -105deg; }
+    5.71%  { right: 42.50%;  top: 78.00%; rotate: -105deg; }
+    6.19%  { right: 46.25%;  top: 79.00%; rotate: -105deg; }
+    6.67%  { right: 50.00%;  top: 80.00%; rotate: -96deg; }
+    7.38%  { right: 55.50%;  top: 80.00%; rotate: -90deg; }
+    8.10%  { right: 61.00%;  top: 80.00%; rotate: -90deg; }
+    8.81%  { right: 66.50%;  top: 80.00%; rotate: -90deg; }
+    9.52%  { right: 72.00%;  top: 80.00%; rotate: -84deg; }
+    10.00% { right: 75.25%;  top: 79.00%; rotate: -73deg; }
+    10.48% { right: 78.50%;  top: 78.00%; opacity: 0.9; rotate: -73deg; }
+    10.95% { right: 81.75%;  top: 77.00%; rotate: -73deg; }
+    11.43% { right: 85.00%;  top: 76.00%; rotate: -78deg; }
+    11.90% { right: 88.75%;  top: 75.50%; rotate: -82deg; }
+    12.38% { right: 92.50%;  top: 75.00%; rotate: -82deg; }
+    12.86% { right: 96.25%;  top: 74.50%; opacity: 0.4; rotate: -82deg; }
+    13.33% { right: 100.00%; top: 74.00%; opacity: 0;   rotate: -82deg; }
+    13.43% { right: -10.00%; top: 80.00%; opacity: 0;   rotate: -80deg; }
+    100%   { right: -10.00%; top: 80.00%; opacity: 0; }
 }
+
 /* ---------- Trailing Vine & Wild Rose ---------- */
 .trailing-vine {
   position: absolute;
@@ -1628,8 +1607,8 @@ body.is-night .figure-groove {
     width:18px;
     aspect-ratio:1;
 
-    left:-30cqw;
-    bottom:38cqh;
+    left:-30%;
+    top:98%;
 
     opacity:0;
     pointer-events:none;
@@ -1673,74 +1652,52 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 .moth-wing-front{
 
     transform-origin:20px 20px;
-    animation:mothFly .16s cubic-bezier(.4,0,.2,1) infinite;
+    animation:mothFly .18s ease-in-out infinite;
 
 }
 
 .moth-wing-back{
 
     transform-origin:20px 20px;
-    animation:mothFly .16s cubic-bezier(.4,0,.2,1) infinite reverse;
+    animation:mothFly .18s ease-in-out infinite reverse;
 
 }
 
-/* flying flap - real wingbeats are asymmetric: a quick, powered
-   downstroke followed by a slower recovery upstroke */
+/* flying flap */
 
 @keyframes mothFly{
 
-    0%{
-        transform:scaleY(1) rotate(0deg);
+    0%,100%{
+        transform:scaleY(1);
     }
 
-    32%{
-        transform:scaleY(.12) rotate(2deg);
-    }
-
-    46%{
-        transform:scaleY(.05) rotate(-1deg);
-    }
-
-    72%{
-        transform:scaleY(.5) rotate(-2deg);
-    }
-
-    100%{
-        transform:scaleY(1) rotate(0deg);
+    50%{
+        transform:scaleY(.15);
     }
 
 }
 
-/* once landed - wings fold and only twitch occasionally, at
-   irregular intervals rather than a steady metronome */
+/* once landed */
 
 @keyframes mothRest{
 
-    0%,41%,100%{
+    0%,88%,100%{
         transform:scaleY(1);
     }
 
-    43%{
-        transform:scaleY(.6);
+    90%{
+        transform:scaleY(.55);
     }
 
-    45.5%{
+    92%{
         transform:scaleY(1);
     }
 
-    83%{
-        transform:scaleY(1);
+    94%{
+        transform:scaleY(.55);
     }
 
-    84.5%{
-        transform:scaleY(.5);
-    }
-
-    86%{
-        transform:scaleY(.85);
-    }
-
-    87%{
+    96%{
         transform:scaleY(1);
     }
 
@@ -1748,183 +1705,72 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 
 @keyframes mothJourney{
 
-/* enter - a moth doesn't glide in on rails, it darts in short
-   bursts, overshoots, and corrects, banking hard into each turn */
+/* enter */
 
 0%{
-left:-10cqw;
-top:19cqh;
+left:-10%;
+top:32%;
 opacity:0;
-transform:rotate(-25deg) scale(.92);
-animation-timing-function: ease-out;
+transform:rotate(-12deg);
 }
 
-1.5%{
+2%{
 opacity:.85;
 }
 
-3%{
-left:1cqw;
-top:26cqh;
-transform:rotate(18deg) scale(1);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
+6%{
+left:18%;
+top:26%;
+transform:rotate(5deg);
 }
 
-4.5%{
-left:7cqw;
-top:14cqh;
-transform:rotate(-28deg) scale(1.04);
-animation-timing-function: ease-in-out;
+11%{
+left:41%;
+top:31%;
+transform:rotate(-7deg);
 }
 
-6.5%{
-left:10cqw;
-top:22cqh;
-transform:rotate(10deg) scale(.96);
-animation-timing-function: ease-in-out;
+16%{
+left:63%;
+top:24%;
+transform:rotate(2deg);
 }
 
-8.5%{
-left:20cqw;
-top:11cqh;
-transform:rotate(-30deg) scale(1.05);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
-}
-
-10%{
-left:24cqw;
-top:20cqh;
-transform:rotate(16deg) scale(.95);
-animation-timing-function: ease-in-out;
-}
-
-12%{
-left:35cqw;
-top:9cqh;
-transform:rotate(-24deg) scale(1.04);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
-}
-
-13.5%{
-left:39cqw;
-top:19cqh;
-transform:rotate(20deg) scale(.97);
-animation-timing-function: ease-in-out;
-}
-
-15.5%{
-left:52cqw;
-top:8cqh;
-transform:rotate(-16deg) scale(1.04);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
-}
-
-/* circling the flame - the classic moth orbit, tightening in
-   before it finally commits to landing */
-
-17%{
-left:66cqw;
-top:6cqh;
-transform:rotate(35deg) scale(1);
-animation-timing-function: ease-in-out;
-}
-
-18.3%{
-left:75cqw;
-top:11cqh;
-transform:rotate(85deg) scale(1);
-animation-timing-function: ease-in-out;
-}
-
-19.3%{
-left:78cqw;
-top:20cqh;
-transform:rotate(140deg) scale(1);
-animation-timing-function: ease-in-out;
-}
-
-19.8%{
-left:76.5cqw;
-top:18cqh;
-transform:rotate(165deg) scale(1);
-animation-timing-function: ease-out;
-}
-
-/* land - a soft overshoot and settle, not an abrupt stop */
+/* land */
 
 20%{
-left:80cqw;
-top:13.5cqh;
-opacity:.9;
-transform:rotate(52deg) scale(1.06);
-animation-timing-function: ease-out;
-}
-
-20.6%{
-left:80cqw;
-top:15.3cqh;
-opacity:.9;
-transform:rotate(43deg) scale(.98);
-}
-
-21%,83%{
-left:80cqw;
-top:15cqh;
+left:74%;
+top:49%;
 opacity:.9;
 transform:rotate(45deg) scale(1);
 
 }
 
-/* depart - insects launch abruptly, then flutter away erratically
-   rather than cruising off in a straight line */
-
-84%{
-left:79cqw;
-top:12.5cqh;
+21%,83%{
+left:74%;
+top:49%;
 opacity:.9;
-transform:rotate(15deg) scale(1.05);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
+transform:rotate(45deg) scale(1);
+
 }
 
-85.5%{
-left:83cqw;
-top:7cqh;
-transform:rotate(-35deg) scale(1);
-animation-timing-function: ease-in-out;
-}
+/* depart */
 
 87%{
-left:87cqw;
-top:14cqh;
+left:78%;
+top:16%;
 opacity:.9;
-transform:rotate(22deg) scale(1.03);
-animation-timing-function: ease-in-out;
-}
-
-89.5%{
-left:93cqw;
-top:4cqh;
-transform:rotate(-25deg) scale(1);
-animation-timing-function: cubic-bezier(.3,.7,.4,1);
-}
-
-92%{
-left:98cqw;
-top:11cqh;
-opacity:.6;
-transform:rotate(12deg) scale(.97);
 }
 
 94%{
-left:106cqw;
-top:2cqh;
+left:105%;
+top:2%;
 opacity:0;
-transform:rotate(-8deg);
 }
 
 100%{
-left:-10cqw;
-top:32cqh;
+left:-10%;
+top:32%;
 opacity:0;
 }
 
@@ -3121,23 +2967,19 @@ body.is-night .cloud3 {
 
     // ---------- sky color keyframes (minute-of-day -> RGB) ----------
     const KEYFRAMES = [
-  { t: 0,    top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
-  { t: 270,  top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
-
-  { t: 330,  top:[40,35,85],   mid:[130,85,120], bot:[235,145,120] },
-  { t: 390,  top:[95,130,190], mid:[235,155,110],bot:[255,195,130] },
-
-  { t: 480,  top:[75,155,218], mid:[150,205,235],bot:[205,232,246] },
-  { t: 720,  top:[60,150,222], mid:[150,207,236],bot:[210,236,249] },
-
-  { t: 1050, top:[80,140,195], mid:[205,175,145],bot:[250,205,155] },
-  { t: 1140, top:[70,90,150],  mid:[230,130,90], bot:[255,150,90] },
-  { t: 1185, top:[48,42,92],   mid:[180,82,92],  bot:[255,132,80] },
-
-  { t: 1230, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
-  { t: 1290, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   },
-  { t: 1440, top:[10,14,28],   mid:[16,22,42],   bot:[22,28,48]   }
-];
+      { t: 0,    top:[6,9,26],    mid:[10,14,36],  bot:[4,6,15]   },
+      { t: 270,  top:[6,9,26],    mid:[16,20,45],  bot:[30,22,40] },
+      { t: 330,  top:[40,35,85],  mid:[130,85,120],bot:[235,145,120] },
+      { t: 390,  top:[95,130,190],mid:[235,155,110],bot:[255,195,130] },
+      { t: 480,  top:[75,155,218],mid:[150,205,235],bot:[205,232,246] },
+      { t: 720,  top:[60,150,222],mid:[150,207,236],bot:[210,236,249] },
+      { t: 1050, top:[80,140,195],mid:[205,175,145],bot:[250,205,155] },
+      { t: 1140, top:[70,90,150], mid:[230,130,90], bot:[255,150,90] },
+      { t: 1185, top:[48,42,92],  mid:[180,82,92],  bot:[255,132,80] },
+      { t: 1230, top:[16,16,46],  mid:[42,32,72],   bot:[68,42,72] },
+      { t: 1290, top:[6,9,26],    mid:[10,14,36],   bot:[4,6,15] },
+      { t: 1440, top:[6,9,26],    mid:[10,14,36],   bot:[4,6,15] }
+    ];
     const lerp = (a,b,f) => a + (b-a)*f;
     const lerpColor = (c1,c2,f) => [0,1,2].map(i => Math.round(lerp(c1[i],c2[i],f)));
     function getSkyColors(minutes) {
@@ -3426,45 +3268,18 @@ body.is-night .cloud3 {
     
     const moth = document.querySelector(".moth-wrap");
 
-// Wing state is tied to the actual mothJourney flight phases (a 100s
-// cycle) rather than a single hardcoded delay, so the wings flap for
-// every second the moth is genuinely airborne - including the erratic
-// flutter-away at the end - and only fold to a resting twitch while
-// it's actually sitting still between ~20.6s and ~83s of each cycle.
-const MOTH_LAND_MS    = 20600;   // matches the 20.6% settle keyframe
-const MOTH_DEPART_MS  = 83000;   // matches the 83% depart keyframe
-const MOTH_DELAY_MS   = 5000;    // matches .moth-wrap's animation-delay
-let mothTimers = [];
-
-function setMothFlying(front, back) {
-    front.style.animation = "mothFly .16s cubic-bezier(.4,0,.2,1) infinite";
-    back.style.animation  = "mothFly .16s cubic-bezier(.4,0,.2,1) infinite reverse";
-}
-function setMothResting(front, back) {
-    front.style.animation = "mothRest 9s ease-in-out infinite";
-    back.style.animation  = "mothRest 9s ease-in-out infinite";
-}
-
 moth.addEventListener("animationiteration", () => {
     const front = moth.querySelector(".moth-wing-front");
     const back  = moth.querySelector(".moth-wing-back");
 
-    mothTimers.forEach(clearTimeout);
-    mothTimers = [];
+    front.style.animation = "mothFly .18s ease-in-out infinite";
+    back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
 
-    setMothFlying(front, back);
-    mothTimers.push(setTimeout(() => setMothResting(front, back), MOTH_LAND_MS));
-    mothTimers.push(setTimeout(() => setMothFlying(front, back), MOTH_DEPART_MS));
+    setTimeout(() => {
+        front.style.animation = "mothRest 8s linear infinite";
+        back.style.animation  = "mothRest 8s linear infinite";
+    }, 32000); // begins resting after it lands
 });
-
-// Prime the very first cycle too (animationiteration only fires on
-// repeats, not on the initial run).
-(() => {
-    const front = moth.querySelector(".moth-wing-front");
-    const back  = moth.querySelector(".moth-wing-back");
-    mothTimers.push(setTimeout(() => setMothResting(front, back), MOTH_DELAY_MS + MOTH_LAND_MS));
-    mothTimers.push(setTimeout(() => setMothFlying(front, back), MOTH_DELAY_MS + MOTH_DEPART_MS));
-})();
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
