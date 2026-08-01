@@ -1612,13 +1612,13 @@ body.is-night .figure-groove {
     width:18px;
     aspect-ratio:1;
 
-    left:-30%;
-    top:98%;
+    left:40%;
+    top:0%;
 
     opacity:0;
     pointer-events:none;
 
-    animation:mothJourney 100s linear infinite;
+    animation:mothJourney 30s linear infinite;
     animation-delay: 5s;
 
 }
@@ -1657,16 +1657,17 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 .moth-wing-front{
 
     transform-origin:20px 20px;
-    animation:mothFly .18s ease-in-out infinite;
+    animation:mothFly .15s ease-in-out infinite;
 
 }
 
 .moth-wing-back{
 
     transform-origin:20px 20px;
-    animation:mothFly .18s ease-in-out infinite reverse;
+    animation:mothFly .15s ease-in-out infinite reverse;
 
 }
+
 
 /* flying flap */
 
@@ -1676,9 +1677,14 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
         transform:scaleY(1);
     }
 
-    50%{
-        transform:scaleY(.15);
-    }
+    18%{ transform:scaleY(.25); }
+    24%{ transform:scaleY(1); }
+
+    48%{ transform:scaleY(.25); }
+    54%{ transform:scaleY(1); }
+
+    78%{ transform:scaleY(.25); }
+    84%{ transform:scaleY(1); }
 
 }
 
@@ -1714,7 +1720,7 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 
 0%{
 left:-10%;
-top:32%;
+top:0%;
 opacity:0;
 transform:rotate(-12deg);
 }
@@ -1723,59 +1729,75 @@ transform:rotate(-12deg);
 opacity:.85;
 }
 
+4%{
+left:8%;
+top:16%;
+transform:rotate(10deg);
+}
+
 6%{
 left:18%;
-top:26%;
-transform:rotate(5deg);
+top:34%;
+transform:rotate(6deg);
+}
+
+9%{
+left:30%;
+top:8%;
+transform:rotate(-9deg);
 }
 
 11%{
 left:41%;
-top:31%;
-transform:rotate(-7deg);
+top:2%;
+transform:rotate(-12deg);
+}
+
+14%{
+left:53%;
+top:30%;
+transform:rotate(8deg);
 }
 
 16%{
 left:63%;
-top:24%;
-transform:rotate(2deg);
+top:44%;
+transform:rotate(4deg);
 }
 
 /* land */
 
 20%{
-left:74%;
-top:49%;
+left:84%;
+top:19%;   /* unchanged */
 opacity:.9;
 transform:rotate(45deg) scale(1);
-
 }
 
 21%,83%{
-left:74%;
-top:49%;
+left:84%;
+top:19%;   /* unchanged */
 opacity:.9;
 transform:rotate(45deg) scale(1);
-
 }
 
 /* depart */
 
 87%{
 left:78%;
-top:16%;
+top:8%;    /* higher */
 opacity:.9;
 }
 
 94%{
 left:105%;
-top:2%;
+top:28%;   /* lower */
 opacity:0;
 }
 
 100%{
 left:-10%;
-top:32%;
+top:32%;   /* unchanged */
 opacity:0;
 }
 
