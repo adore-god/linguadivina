@@ -126,13 +126,13 @@
   overflow-y: auto;
   background: #16171a;
   transition: background 4s ease,
-    --room-light 16s linear, --room-glow 16s linear, --room-edge 16s linear,
-    --room-wash 16s linear, --room-brightness 16s linear,
-    --frame-glow 16s linear, --ledge-top 16s linear, --ledge-bot 16s linear,
-    --frame-top 16s linear, --frame-mid 16s linear, --frame-bot 16s linear,
-    --frame-highlight 16s linear, --frame-inset-shadow 16s linear, --frame-outer-shadow 16s linear,
-    --lead-base 16s linear, --lead-dark1 16s linear, --lead-dark2 16s linear,
-    --lead-highlight 16s linear;
+    --room-light 14s linear, --room-glow 14s linear, --room-edge 14s linear,
+    --room-wash 14s linear, --room-brightness 14s linear,
+    --frame-glow 14s linear, --ledge-top 14s linear, --ledge-bot 14s linear,
+    --frame-top 14s linear, --frame-mid 14s linear, --frame-bot 14s linear,
+    --frame-highlight 14s linear, --frame-inset-shadow 14s linear, --frame-outer-shadow 14s linear,
+    --lead-base 14s linear, --lead-dark1 14s linear, --lead-dark2 14s linear,
+    --lead-highlight 14s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -158,7 +158,6 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  transition: background 4s ease;
   background:
     radial-gradient(
       circle at 50% 20%,
@@ -175,16 +174,20 @@
   filter: brightness(var(--room-brightness));
 }
 
-.backdrop::before {
+/* Night version lives on its own layer that fades in via opacity.
+   (Two different gradient values can't be smoothly cross-faded by
+   transitioning "background" directly — that property change is
+   discrete, so the browser snaps to the new gradient partway through
+   the transition instead of blending, which read as a flashed-in
+   grey patch whenever the day/night class toggled.) */
+.backdrop::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--room-wash);
-  mix-blend-mode: soft-light;
+  z-index: 1;
+  opacity: 0;
   pointer-events: none;
-}
-
-body.is-night .backdrop {
+  transition: opacity 6s ease;
   background:
     radial-gradient(
       circle at 50% 20%,
@@ -198,6 +201,20 @@ body.is-night .backdrop {
       #111316 55%,
       #07080a 100%
     );
+}
+
+body.is-night .backdrop::after {
+  opacity: 1;
+}
+
+.backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--room-wash);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
 
   /* ---------- wall cracks ---------- */
@@ -475,7 +492,7 @@ body.is-night .candlelight-ambient::before {
     z-index:1;
     inset: 0;
     background: linear-gradient(to bottom, var(--c-top) 0%, var(--c-mid) 55%, var(--c-bot) 100%);
-    transition: --c-top 16s linear, --c-mid 16s linear, --c-bot 16s linear;
+    transition: --c-top 14s linear, --c-mid 14s linear, --c-bot 14s linear;
   }
 
   .stars {
@@ -586,7 +603,7 @@ body.is-night .candlelight-ambient::before {
     left: 50%;
     top: 50%;
     opacity: 0;
-    transition: left 16s linear, top 16s linear, opacity 6s ease;
+    transition: left 14s linear, top 14s linear, opacity 6s ease;
   }
   .celestial-sun {
     width: 15%;
@@ -1873,6 +1890,7 @@ body.is-night .robin-wrap{
     }
 
 }
+
 
 
 </style>
