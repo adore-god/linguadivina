@@ -846,7 +846,7 @@ body.is-night .candlelight-ambient::before {
     bottom: 0;
     left: 50%;
     width: 100cqw;
-    margin-left: -50cqw;
+    transform: translateX(-50%);
     height: 50%;
     z-index: 1;
     pointer-events: none;
@@ -861,7 +861,7 @@ body.is-night .candlelight-ambient::before {
   
 
   .candle-wrap {
-    position: absolute;
+    position: relative;
     z-index: 3;
     bottom:25%;
     left: 2.9%;
