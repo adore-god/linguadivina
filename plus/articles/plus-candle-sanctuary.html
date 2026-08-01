@@ -113,6 +113,20 @@
 @property --lead-dark2      { syntax: '<color>';  inherits: true; initial-value: #08090b; }
 @property --lead-highlight  { syntax: '<color>';  inherits: true; initial-value: #a67c4a; }
 
+/* ---------- robin plumage: tracks the same sky light as the room ---------- */
+@property --robin-crown      { syntax: '<color>'; inherits: true; initial-value: #6e6155; }
+@property --robin-back       { syntax: '<color>'; inherits: true; initial-value: #6b5d45; }
+@property --robin-breast     { syntax: '<color>'; inherits: true; initial-value: #de6c39; }
+@property --robin-breast-dk  { syntax: '<color>'; inherits: true; initial-value: #b8502a; }
+@property --robin-bib-edge   { syntax: '<color>'; inherits: true; initial-value: #b7b6ac; }
+@property --robin-belly      { syntax: '<color>'; inherits: true; initial-value: #e8e2d2; }
+@property --robin-wing       { syntax: '<color>'; inherits: true; initial-value: #5c4f3c; }
+@property --robin-wing-dk    { syntax: '<color>'; inherits: true; initial-value: #443a2c; }
+@property --robin-wing-edge  { syntax: '<color>'; inherits: true; initial-value: #8a7856; }
+@property --robin-tail       { syntax: '<color>'; inherits: true; initial-value: #574a38; }
+@property --robin-beak       { syntax: '<color>'; inherits: true; initial-value: #2c2420; }
+@property --robin-leg        { syntax: '<color>'; inherits: true; initial-value: #7a6256; }
+
 
   * { box-sizing: border-box; }
 
@@ -132,7 +146,11 @@
     --frame-top 14s linear, --frame-mid 14s linear, --frame-bot 14s linear,
     --frame-highlight 14s linear, --frame-inset-shadow 14s linear, --frame-outer-shadow 14s linear,
     --lead-base 14s linear, --lead-dark1 14s linear, --lead-dark2 14s linear,
-    --lead-highlight 14s linear;
+    --lead-highlight 14s linear,
+    --robin-crown 14s linear, --robin-back 14s linear, --robin-breast 14s linear,
+    --robin-breast-dk 14s linear, --robin-bib-edge 14s linear, --robin-belly 14s linear,
+    --robin-wing 14s linear, --robin-wing-dk 14s linear, --robin-wing-edge 14s linear,
+    --robin-tail 14s linear, --robin-beak 14s linear, --robin-leg 14s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -1790,14 +1808,29 @@ body.is-dusk .moth-antenna{
     animation: robinHead 2s ease-in-out infinite;
 }
 
-.robin-wing, .robin-breast {
+.robin-wing, .robin-wing-covert, .robin-breast {
 filter:blur(1.5px);
 }
 
-.robin-wing {
+.robin-wing, .robin-wing-covert {
   transform-origin: bottom right;
   animation: robinWingFlap 0.2s ease-in-out infinite;
 }
+
+/* Plumage colour: the same light that washes the room reaches the bird */
+.robin-crown        { fill: var(--robin-crown); }
+.robin-back         { fill: var(--robin-back); }
+.robin-breast       { fill: var(--robin-breast); }
+.robin-breast-shade { fill: var(--robin-breast-dk); }
+.robin-bib-edge     { stroke: var(--robin-bib-edge); }
+.robin-belly        { fill: var(--robin-belly); }
+.robin-wing         { fill: var(--robin-wing-dk); }
+.robin-wing-covert  { fill: var(--robin-wing); }
+.robin-wing-bar     { stroke: var(--robin-wing-edge); }
+.robin-tail         { fill: var(--robin-tail); }
+.robin-beak-upper   { fill: var(--robin-beak); }
+.robin-beak-lower   { fill: var(--robin-wing-edge); }
+.robin-leg          { stroke: var(--robin-leg); }
 
 @keyframes robinWingFlap {
   0%   { transform: rotate(-8deg) }
@@ -2572,70 +2605,68 @@ body.is-night .cloud3 {
 
 <svg viewBox="0 0 100 80">
 
-    <!-- Tail -->
-<!-- Tail -->
-<path fill="#6b594b"
-      d="M30 43
-         L10 33
-         L12 39
-         L10 50
-         L28 55
-         Z"/>
+    <!-- Tail: two overlapping feather shapes read as separated tail feathers -->
+    <path class="robin-tail"
+          d="M30 41
+             L9 31 L14 38 L9 44
+             L15 49 L10 55
+             L29 52
+             Z"/>
+    <path class="robin-tail" opacity="0.6"
+          d="M29 44 L13 40 L17 46 L14 51 L28 50 Z"/>
 
-    <!-- Body -->
-    <ellipse class="robin-body"
-             cx="46"
-             cy="43"
-             rx="24"
-             ry="18"
-             fill="#7a6758"/>
+    <!-- Belly: pale underside, peeks out beneath the body -->
+    <ellipse class="robin-belly"
+             cx="44" cy="53" rx="17" ry="9"/>
 
-    <!-- Orange breast -->
-    <ellipse class="robin-breast"
-        cx="53"
-        cy="47"
-        rx="13"
-        ry="12"
-        fill="red"/>
+    <!-- Back / body -->
+    <ellipse class="robin-body robin-back"
+             cx="46" cy="42" rx="24" ry="18"/>
 
-    <!-- Wing -->
+    <!-- Soft top-light highlight and underside shadow, for roundness -->
+    <ellipse cx="41" cy="34" rx="14" ry="8" fill="#fff" opacity="0.10"/>
+    <ellipse cx="49" cy="53" rx="18" ry="6" fill="#000" opacity="0.12"/>
+
+    <!-- Wing: darker flight feathers behind lighter covert feathers -->
     <ellipse class="robin-wing"
-        cx="42"
-        cy="42"
-        rx="12"
-        ry="8"
-        fill="#5d4c41"
-        transform="rotate(-18 42 42)"/>
+        cx="40" cy="45" rx="13" ry="8.5"
+        transform="rotate(-14 40 45)"/>
+    <ellipse class="robin-wing-covert"
+        cx="42" cy="41" rx="11" ry="7"
+        transform="rotate(-16 42 41)"/>
+    <path class="robin-wing-bar" fill="none" stroke-width="1" opacity="0.7"
+          d="M33 42 Q42 46 50 43"/>
 
-    <!-- Head -->
-    <circle
-        class="robin-head"
-        cx="67"
-        cy="31"
-        r="10"
-        fill="#756354"/>
+    <!-- Bib: orange face/throat/breast patch, edged by a pale grey border -->
+    <path class="robin-bib-edge" fill="none" stroke-width="1.6" opacity="0.55"
+          d="M60 22
+             C 50 24, 43 33, 44 44
+             C 44.5 52, 50 58, 59 59"/>
+    <path class="robin-breast"
+          d="M61 23
+             C 51 25, 44.5 33.5, 45.5 44
+             C 46 52, 51.5 58, 60 59
+             C 66 55, 68 46, 67 38
+             C 66 31, 64.5 26, 61 23 Z"/>
+    <ellipse class="robin-breast-shade" cx="59" cy="50" rx="8" ry="7" opacity="0.35"/>
 
-    <!-- Beak -->
-    <polygon
-        points="75,31 84,34 75,36"
-        fill="#9a7a42"/>
+    <!-- Head: grey-brown crown/nape, orange face is part of the bib path above -->
+    <circle class="robin-head robin-crown"
+        cx="66" cy="29" r="10.5"/>
 
-    <!-- Eye -->
-    <circle
-        class="robin-eye"
-        cx="69"
-        cy="29"
-        r="1.4"
-        fill="#111"/>
+    <!-- Beak: slender, dark, two-tone -->
+    <polygon class="robin-beak-upper" points="74,28.5 85,31 74,32.3"/>
+    <polygon class="robin-beak-lower" points="74,32.3 85,31 74,33.6" opacity="0.8"/>
 
-    <!-- Legs -->
-<line x1="42" y1="58" x2="40" y2="75"
-      stroke="#4b3d35"
-      stroke-width="1"/>
+    <!-- Eye, with a tiny catchlight for realism -->
+    <circle class="robin-eye" cx="68" cy="26.5" r="1.5" fill="#0c0a08"/>
+    <circle cx="68.5" cy="25.9" r="0.5" fill="#fff" opacity="0.85"/>
 
-<line x1="49" y1="58" x2="49" y2="75"
-      stroke="#4b3d35"
-      stroke-width="1"/>
+    <!-- Legs: pale, thin, with a hint of toes -->
+    <path class="robin-leg" fill="none" stroke-width="1.1" stroke-linecap="round"
+          d="M42 58 L40 72 M40 72 L37 75 M40 72 L40.5 76 M40 72 L43 75"/>
+    <path class="robin-leg" fill="none" stroke-width="1.1" stroke-linecap="round"
+          d="M50 58 L50 72 M50 72 L47 75 M50 72 L50.5 76 M50 72 L53 75"/>
 
 </svg>
 
@@ -2989,6 +3020,25 @@ body.is-night .cloud3 {
     const LEAD_DARK2_NIGHT = [8,9,11],    LEAD_DARK2_DAY = [58,60,62];
     const LEAD_HL_NIGHT    = [166,124,74], LEAD_HL_DAY   = [217,220,224];
 
+    // Robin plumage: night/day anchors like everything else above, plus a
+    // warm "golden hour" kiss (weighted by the same horizon-glow value that
+    // drives the arch's glow) since the bird sits in actual outdoor light,
+    // not candlelight. Bird is hidden at night anyway, so the night anchors
+    // just need to read as believable dusk/dawn shadow, not true darkness.
+    const ROBIN_CROWN_NIGHT    = [46,42,38],  ROBIN_CROWN_DAY    = [110,99,84];
+    const ROBIN_BACK_NIGHT     = [34,30,22],  ROBIN_BACK_DAY     = [107,92,64];
+    const ROBIN_BREAST_NIGHT   = [92,44,30],  ROBIN_BREAST_DAY   = [226,108,58];
+    const ROBIN_BREAST_DK_NIGHT= [62,28,20],  ROBIN_BREAST_DK_DAY= [176,80,42];
+    const ROBIN_BIB_EDGE_NIGHT = [70,68,64],  ROBIN_BIB_EDGE_DAY = [196,196,186];
+    const ROBIN_BELLY_NIGHT    = [58,54,46],  ROBIN_BELLY_DAY    = [238,231,214];
+    const ROBIN_WING_NIGHT     = [26,23,17],  ROBIN_WING_DAY     = [70,58,42];
+    const ROBIN_WINGCOV_NIGHT  = [36,32,24],  ROBIN_WINGCOV_DAY  = [96,82,58];
+    const ROBIN_WINGEDGE_NIGHT = [54,48,36],  ROBIN_WINGEDGE_DAY = [150,130,92];
+    const ROBIN_TAIL_NIGHT     = [28,25,19],  ROBIN_TAIL_DAY     = [90,74,54];
+    const ROBIN_BEAK_NIGHT     = [14,12,10],  ROBIN_BEAK_DAY     = [40,32,26];
+    const ROBIN_LEG_NIGHT      = [48,38,32],  ROBIN_LEG_DAY      = [162,124,100];
+    const GOLDEN_LIGHT = [255,176,96];
+
     // Boosts a dark colour's brightness (preserving its hue) so it still reads
     // as a colour, not just "dark grey", when used to tint brighter surfaces.
     function normalizeLuminance(c, minLum) {
@@ -3065,6 +3115,23 @@ body.is-night .cloud3 {
       const leadDark2 = lerpColor(LEAD_DARK2_NIGHT, LEAD_DARK2_DAY, intensity);
       const leadHighlight = lerpColor(lerpColor(lerpColor(LEAD_HL_NIGHT, LEAD_HL_DAY, intensity), roomTint, glow * 0.4), CANDLE_WARM, candleFactor * 0.3);
 
+      // Robin: same night->day ramp as the room, plus a golden-hour kiss on
+      // the sunlit parts (crown, back, breast) that peaks with the horizon
+      // glow at dawn/dusk and disappears at flat midday and full night.
+      const robinGold      = glow * 0.5;
+      const robinCrown     = lerpColor(lerpColor(ROBIN_CROWN_NIGHT, ROBIN_CROWN_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.25);
+      const robinBack      = lerpColor(lerpColor(ROBIN_BACK_NIGHT, ROBIN_BACK_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.30);
+      const robinBreast    = lerpColor(lerpColor(ROBIN_BREAST_NIGHT, ROBIN_BREAST_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.45);
+      const robinBreastDk  = lerpColor(lerpColor(ROBIN_BREAST_DK_NIGHT, ROBIN_BREAST_DK_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.20);
+      const robinBibEdge   = lerpColor(ROBIN_BIB_EDGE_NIGHT, ROBIN_BIB_EDGE_DAY, intensity);
+      const robinBelly     = lerpColor(lerpColor(ROBIN_BELLY_NIGHT, ROBIN_BELLY_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.20);
+      const robinWing      = lerpColor(lerpColor(ROBIN_WING_NIGHT, ROBIN_WING_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.15);
+      const robinWingCov   = lerpColor(lerpColor(ROBIN_WINGCOV_NIGHT, ROBIN_WINGCOV_DAY, intensity), GOLDEN_LIGHT, robinGold * 0.20);
+      const robinWingEdge  = lerpColor(ROBIN_WINGEDGE_NIGHT, ROBIN_WINGEDGE_DAY, intensity);
+      const robinTail      = lerpColor(ROBIN_TAIL_NIGHT, ROBIN_TAIL_DAY, intensity);
+      const robinBeak      = lerpColor(ROBIN_BEAK_NIGHT, ROBIN_BEAK_DAY, intensity);
+      const robinLeg       = lerpColor(ROBIN_LEG_NIGHT, ROBIN_LEG_DAY, intensity);
+
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
       body.setProperty('--room-glow', rgbaStr(roomBase, glowAlpha));
@@ -3084,6 +3151,19 @@ body.is-night .cloud3 {
       body.setProperty('--lead-dark1', `rgb(${leadDark1.join(',')})`);
       body.setProperty('--lead-dark2', `rgb(${leadDark2.join(',')})`);
       body.setProperty('--lead-highlight', `rgb(${leadHighlight.join(',')})`);
+
+      body.setProperty('--robin-crown', `rgb(${robinCrown.join(',')})`);
+      body.setProperty('--robin-back', `rgb(${robinBack.join(',')})`);
+      body.setProperty('--robin-breast', `rgb(${robinBreast.join(',')})`);
+      body.setProperty('--robin-breast-dk', `rgb(${robinBreastDk.join(',')})`);
+      body.setProperty('--robin-bib-edge', `rgb(${robinBibEdge.join(',')})`);
+      body.setProperty('--robin-belly', `rgb(${robinBelly.join(',')})`);
+      body.setProperty('--robin-wing', `rgb(${robinWing.join(',')})`);
+      body.setProperty('--robin-wing-dk', `rgb(${robinWingCov.join(',')})`);
+      body.setProperty('--robin-wing-edge', `rgb(${robinWingEdge.join(',')})`);
+      body.setProperty('--robin-tail', `rgb(${robinTail.join(',')})`);
+      body.setProperty('--robin-beak', `rgb(${robinBeak.join(',')})`);
+      body.setProperty('--robin-leg', `rgb(${robinLeg.join(',')})`);
     }
 
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
