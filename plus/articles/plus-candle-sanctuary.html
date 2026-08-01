@@ -861,14 +861,15 @@ body.is-night .candlelight-ambient::before {
   
 
   .candle-wrap {
-    position: relative;
+    position: absolute;
     z-index: 3;
     bottom:25%;
     left: 2.9%;
     width: 120px;
     height: 320px;
     margin-bottom: 40px;
-    
+    transform: scale(1);
+    transform-origin: bottom center;
   }
 
 .candle-holder {
