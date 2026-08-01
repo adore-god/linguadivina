@@ -1602,24 +1602,24 @@ body.is-night .figure-groove {
 }
 
 
-/* ---------------- NIGHT MOTH ---------------- */
+/* ---------------- NIGHT MOTH (circles the candle flame) ---------------- */
 
 .moth-wrap{
 
     position:absolute;
     z-index:5;
 
-    width:18px;
+    width:16px;
     aspect-ratio:1;
 
-    left:40%;
-    top:0%;
+    left:132%;
+    top:48%;
 
-    opacity:0;
+    opacity:.9;
     pointer-events:none;
 
-    animation:mothJourney 30s linear infinite;
-    animation-delay: 5s;
+    animation:mothCandleFlutter 14s ease-in-out infinite;
+    animation-delay: 2s;
 
 }
 
@@ -1688,119 +1688,30 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 
 }
 
-/* once landed */
+/* wandering loop around the candle flame — an irregular, wobbling
+   ellipse so the moth reads as circling the light rather than
+   tracing a perfect ring; rotate follows the direction of travel */
 
-@keyframes mothRest{
-
-    0%,88%,100%{
-        transform:scaleY(1);
-    }
-
-    90%{
-        transform:scaleY(.55);
-    }
-
-    92%{
-        transform:scaleY(1);
-    }
-
-    94%{
-        transform:scaleY(.55);
-    }
-
-    96%{
-        transform:scaleY(1);
-    }
-
-}
-
-@keyframes mothJourney{
-
-/* enter */
-
-0%{
-left:-10%;
-top:0%;
-opacity:0;
-transform:rotate(-12deg);
-}
-
-2%{
-opacity:.85;
-}
-
-4%{
-left:8%;
-top:16%;
-transform:rotate(10deg);
-}
-
-6%{
-left:18%;
-top:34%;
-transform:rotate(6deg);
-}
-
-9%{
-left:30%;
-top:8%;
-transform:rotate(-9deg);
-}
-
-11%{
-left:41%;
-top:2%;
-transform:rotate(-12deg);
-}
-
-14%{
-left:53%;
-top:30%;
-transform:rotate(8deg);
-}
-
-16%{
-left:63%;
-top:44%;
-transform:rotate(4deg);
-}
-
-/* land */
-
-20%{
-left:84%;
-top:19%;   /* unchanged */
-opacity:.9;
-transform:rotate(45deg) scale(1);
-}
-
-21%,83%{
-left:84%;
-top:19%;   /* unchanged */
-opacity:.9;
-transform:rotate(45deg) scale(1);
-}
-
-/* depart */
-
-87%{
-left:78%;
-top:8%;    /* higher */
-opacity:.9;
-}
-
-94%{
-left:105%;
-top:28%;   /* lower */
-opacity:0;
-}
-
-100%{
-left:-10%;
-top:32%;   /* unchanged */
-opacity:0;
-}
-
+@keyframes mothCandleFlutter{
+     0.00%  { left:172.00%; top:48.00%; opacity:.9; rotate:180deg; }
+     5.56%  { left:172.84%; top:58.14%; rotate:-146.6deg; }
+    11.11%  { left:165.30%; top:66.38%; rotate:-123.4deg; }
+    16.67%  { left:152.00%; top:71.38%; rotate:-109.1deg; }
+    22.22%  { left:138.34%; top:72.66%; opacity:.75; rotate:-96.6deg; }
+    27.78%  { left:125.66%; top:70.61%; rotate:-83.4deg; }
+    33.33%  { left:112.00%; top:66.19%; rotate:-70.9deg; }
+    38.89%  { left:98.70%;  top:60.47%; opacity:.9; rotate:-56.7deg; }
+    44.44%  { left:91.16%;  top:54.28%; rotate:-33.4deg; }
+    50.00%  { left:92.00%;  top:48.00%; rotate:0deg; }
+    55.56%  { left:97.67%;  top:41.72%; opacity:.8; rotate:29deg; }
+    61.11%  { left:104.01%; top:35.53%; rotate:51.9deg; }
+    66.67%  { left:112.00%; top:29.81%; rotate:70.9deg; }
+    72.22%  { left:124.45%; top:25.39%; opacity:.9; rotate:84.4deg; }
+    77.78%  { left:139.55%; top:23.34%; rotate:95.6deg; }
+    83.33%  { left:152.00%; top:24.62%; rotate:109.1deg; }
+    88.89%  { left:159.99%; top:29.62%; opacity:.85; rotate:128.1deg; }
+    94.44%  { left:166.33%; top:37.86%; rotate:151deg; }
+   100.00%  { left:172.00%; top:48.00%; opacity:.9; rotate:180deg; }
 }
 
 /* ---------- NIGHT ---------- */
@@ -2809,50 +2720,6 @@ body.is-night .cloud3 {
   </svg>
 </div>
 
-<!-- ---------- Night Moth ---------- -->
-<div class="moth-wrap" aria-hidden="true">
-<svg viewBox="0 0 40 40">
-
-    <!-- rear wings -->
-    <g class="moth-wing-back">
-        <path class="moth-wing"
-              d="M20 20
-                 C10 16 8 8 12 4
-                 C18 6 20 12 20 20Z"/>
-        <path class="moth-wing"
-              d="M20 20
-                 C30 16 32 8 28 4
-                 C22 6 20 12 20 20Z"/>
-    </g>
-
-    <!-- front wings -->
-    <g class="moth-wing-front">
-        <path class="moth-wing"
-              d="M20 20
-                 C8 22 6 30 11 36
-                 C17 33 20 28 20 20Z"/>
-        <path class="moth-wing"
-              d="M20 20
-                 C32 22 34 30 29 36
-                 C23 33 20 28 20 20Z"/>
-    </g>
-
-    <!-- body -->
-    <ellipse class="moth-body"
-             cx="20"
-             cy="20"
-             rx="1.7"
-             ry="8"/>
-
-    <!-- antennae -->
-    <path class="moth-antenna"
-          d="M19 13 Q15 8 13 9"/>
-    <path class="moth-antenna"
-          d="M21 13 Q25 8 27 9"/>
-
-</svg>
-</div>
-
   <!-- Center Main Candle -->
   <div class="candle-wrap">
     <div class="glow"></div>
@@ -2860,6 +2727,50 @@ body.is-night .cloud3 {
     <div class="wick"></div>
     <div class="candle-holder"></div>
     <div class="wax"></div>
+
+    <!-- ---------- Night Moth (circles the flame) ---------- -->
+    <div class="moth-wrap" aria-hidden="true">
+    <svg viewBox="0 0 40 40">
+
+        <!-- rear wings -->
+        <g class="moth-wing-back">
+            <path class="moth-wing"
+                  d="M20 20
+                     C10 16 8 8 12 4
+                     C18 6 20 12 20 20Z"/>
+            <path class="moth-wing"
+                  d="M20 20
+                     C30 16 32 8 28 4
+                     C22 6 20 12 20 20Z"/>
+        </g>
+
+        <!-- front wings -->
+        <g class="moth-wing-front">
+            <path class="moth-wing"
+                  d="M20 20
+                     C8 22 6 30 11 36
+                     C17 33 20 28 20 20Z"/>
+            <path class="moth-wing"
+                  d="M20 20
+                     C32 22 34 30 29 36
+                     C23 33 20 28 20 20Z"/>
+        </g>
+
+        <!-- body -->
+        <ellipse class="moth-body"
+                 cx="20"
+                 cy="20"
+                 rx="1.7"
+                 ry="8"/>
+
+        <!-- antennae -->
+        <path class="moth-antenna"
+              d="M19 13 Q15 8 13 9"/>
+        <path class="moth-antenna"
+              d="M21 13 Q25 8 27 9"/>
+
+    </svg>
+    </div>
   </div>
 
   <!-- Right Dark Wood Candle -->
@@ -3295,22 +3206,6 @@ body.is-night .cloud3 {
     updateScene();
     setInterval(updateScene, 15000);
     setInterval(updateMoonPhase, 60 * 60 * 1000);
-    
-    
-    const moth = document.querySelector(".moth-wrap");
-
-moth.addEventListener("animationiteration", () => {
-    const front = moth.querySelector(".moth-wing-front");
-    const back  = moth.querySelector(".moth-wing-back");
-
-    front.style.animation = "mothFly .18s ease-in-out infinite";
-    back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
-
-    setTimeout(() => {
-        front.style.animation = "mothRest 8s linear infinite";
-        back.style.animation  = "mothRest 8s linear infinite";
-    }, 32000); // begins resting after it lands
-});
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
