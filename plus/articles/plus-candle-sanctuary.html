@@ -390,10 +390,10 @@ body.is-night .candlelight-ambient::before {
   position: relative;
   z-index: 1;
  margin-top:5%;
-  width: min(70cqw, calc(56cqh * 0.50), 480px);
-  aspect-ratio: 0.50;
+  width: min(70cqw, calc(56cqh * 0.60), 480px);
+  aspect-ratio: 0.60;
   height: auto; 
-  max-height: 46cqh;
+  max-height: 56cqh;
 }
 
 .window-frame {
@@ -1673,52 +1673,74 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 .moth-wing-front{
 
     transform-origin:20px 20px;
-    animation:mothFly .18s ease-in-out infinite;
+    animation:mothFly .16s cubic-bezier(.4,0,.2,1) infinite;
 
 }
 
 .moth-wing-back{
 
     transform-origin:20px 20px;
-    animation:mothFly .18s ease-in-out infinite reverse;
+    animation:mothFly .16s cubic-bezier(.4,0,.2,1) infinite reverse;
 
 }
 
-/* flying flap */
+/* flying flap - real wingbeats are asymmetric: a quick, powered
+   downstroke followed by a slower recovery upstroke */
 
 @keyframes mothFly{
 
-    0%,100%{
-        transform:scaleY(1);
+    0%{
+        transform:scaleY(1) rotate(0deg);
     }
 
-    50%{
-        transform:scaleY(.15);
+    32%{
+        transform:scaleY(.12) rotate(2deg);
+    }
+
+    46%{
+        transform:scaleY(.05) rotate(-1deg);
+    }
+
+    72%{
+        transform:scaleY(.5) rotate(-2deg);
+    }
+
+    100%{
+        transform:scaleY(1) rotate(0deg);
     }
 
 }
 
-/* once landed */
+/* once landed - wings fold and only twitch occasionally, at
+   irregular intervals rather than a steady metronome */
 
 @keyframes mothRest{
 
-    0%,88%,100%{
+    0%,41%,100%{
         transform:scaleY(1);
     }
 
-    90%{
-        transform:scaleY(.55);
+    43%{
+        transform:scaleY(.6);
     }
 
-    92%{
+    45.5%{
         transform:scaleY(1);
     }
 
-    94%{
-        transform:scaleY(.55);
+    83%{
+        transform:scaleY(1);
     }
 
-    96%{
+    84.5%{
+        transform:scaleY(.5);
+    }
+
+    86%{
+        transform:scaleY(.85);
+    }
+
+    87%{
         transform:scaleY(1);
     }
 
@@ -1726,45 +1748,123 @@ body:not(.is-night):not(.is-dusk) .moth-wrap{
 
 @keyframes mothJourney{
 
-/* enter */
+/* enter - a moth doesn't glide in on rails, it darts in short
+   bursts, overshoots, and corrects, banking hard into each turn */
 
 0%{
 left:-10%;
-top:15%;
+top:19%;
 opacity:0;
-transform:rotate(-12deg);
+transform:rotate(-25deg) scale(.92);
+animation-timing-function: ease-out;
 }
 
-2%{
+1.5%{
 opacity:.85;
 }
 
-6%{
-left:18%;
+3%{
+left:1%;
 top:26%;
-transform:rotate(5deg);
+transform:rotate(18deg) scale(1);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
 }
 
-11%{
-left:41%;
-top:31%;
-transform:rotate(-7deg);
+4.5%{
+left:7%;
+top:14%;
+transform:rotate(-28deg) scale(1.04);
+animation-timing-function: ease-in-out;
 }
 
-16%{
-left:63%;
-top:24%;
-transform:rotate(2deg);
+6.5%{
+left:10%;
+top:22%;
+transform:rotate(10deg) scale(.96);
+animation-timing-function: ease-in-out;
 }
 
-/* land */
+8.5%{
+left:20%;
+top:11%;
+transform:rotate(-30deg) scale(1.05);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
+}
+
+10%{
+left:24%;
+top:20%;
+transform:rotate(16deg) scale(.95);
+animation-timing-function: ease-in-out;
+}
+
+12%{
+left:35%;
+top:9%;
+transform:rotate(-24deg) scale(1.04);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
+}
+
+13.5%{
+left:39%;
+top:19%;
+transform:rotate(20deg) scale(.97);
+animation-timing-function: ease-in-out;
+}
+
+15.5%{
+left:52%;
+top:8%;
+transform:rotate(-16deg) scale(1.04);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
+}
+
+/* circling the flame - the classic moth orbit, tightening in
+   before it finally commits to landing */
+
+17%{
+left:66%;
+top:6%;
+transform:rotate(35deg) scale(1);
+animation-timing-function: ease-in-out;
+}
+
+18.3%{
+left:75%;
+top:11%;
+transform:rotate(85deg) scale(1);
+animation-timing-function: ease-in-out;
+}
+
+19.3%{
+left:78%;
+top:20%;
+transform:rotate(140deg) scale(1);
+animation-timing-function: ease-in-out;
+}
+
+19.8%{
+left:76.5%;
+top:18%;
+transform:rotate(165deg) scale(1);
+animation-timing-function: ease-out;
+}
+
+/* land - a soft overshoot and settle, not an abrupt stop */
 
 20%{
 left:80%;
-top:15%;
+top:13.5%;
 opacity:.9;
-transform:rotate(45deg) scale(1);
+transform:rotate(52deg) scale(1.06);
+animation-timing-function: ease-out;
+}
 
+20.6%{
+left:80%;
+top:15.3%;
+opacity:.9;
+transform:rotate(43deg) scale(.98);
 }
 
 21%,83%{
@@ -1775,18 +1875,51 @@ transform:rotate(45deg) scale(1);
 
 }
 
-/* depart */
+/* depart - insects launch abruptly, then flutter away erratically
+   rather than cruising off in a straight line */
+
+84%{
+left:79%;
+top:12.5%;
+opacity:.9;
+transform:rotate(15deg) scale(1.05);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
+}
+
+85.5%{
+left:83%;
+top:7%;
+transform:rotate(-35deg) scale(1);
+animation-timing-function: ease-in-out;
+}
 
 87%{
-left:78%;
-top:16%;
+left:87%;
+top:14%;
 opacity:.9;
+transform:rotate(22deg) scale(1.03);
+animation-timing-function: ease-in-out;
+}
+
+89.5%{
+left:93%;
+top:4%;
+transform:rotate(-25deg) scale(1);
+animation-timing-function: cubic-bezier(.3,.7,.4,1);
+}
+
+92%{
+left:98%;
+top:11%;
+opacity:.6;
+transform:rotate(12deg) scale(.97);
 }
 
 94%{
-left:105%;
+left:106%;
 top:2%;
 opacity:0;
+transform:rotate(-8deg);
 }
 
 100%{
@@ -3293,18 +3426,45 @@ body.is-night .cloud3 {
     
     const moth = document.querySelector(".moth-wrap");
 
+// Wing state is tied to the actual mothJourney flight phases (a 100s
+// cycle) rather than a single hardcoded delay, so the wings flap for
+// every second the moth is genuinely airborne - including the erratic
+// flutter-away at the end - and only fold to a resting twitch while
+// it's actually sitting still between ~20.6s and ~83s of each cycle.
+const MOTH_LAND_MS    = 20600;   // matches the 20.6% settle keyframe
+const MOTH_DEPART_MS  = 83000;   // matches the 83% depart keyframe
+const MOTH_DELAY_MS   = 5000;    // matches .moth-wrap's animation-delay
+let mothTimers = [];
+
+function setMothFlying(front, back) {
+    front.style.animation = "mothFly .16s cubic-bezier(.4,0,.2,1) infinite";
+    back.style.animation  = "mothFly .16s cubic-bezier(.4,0,.2,1) infinite reverse";
+}
+function setMothResting(front, back) {
+    front.style.animation = "mothRest 9s ease-in-out infinite";
+    back.style.animation  = "mothRest 9s ease-in-out infinite";
+}
+
 moth.addEventListener("animationiteration", () => {
     const front = moth.querySelector(".moth-wing-front");
     const back  = moth.querySelector(".moth-wing-back");
 
-    front.style.animation = "mothFly .18s ease-in-out infinite";
-    back.style.animation  = "mothFly .18s ease-in-out infinite reverse";
+    mothTimers.forEach(clearTimeout);
+    mothTimers = [];
 
-    setTimeout(() => {
-        front.style.animation = "mothRest 8s linear infinite";
-        back.style.animation  = "mothRest 8s linear infinite";
-    }, 32000); // begins resting after it lands
+    setMothFlying(front, back);
+    mothTimers.push(setTimeout(() => setMothResting(front, back), MOTH_LAND_MS));
+    mothTimers.push(setTimeout(() => setMothFlying(front, back), MOTH_DEPART_MS));
 });
+
+// Prime the very first cycle too (animationiteration only fires on
+// repeats, not on the initial run).
+(() => {
+    const front = moth.querySelector(".moth-wing-front");
+    const back  = moth.querySelector(".moth-wing-back");
+    mothTimers.push(setTimeout(() => setMothResting(front, back), MOTH_DELAY_MS + MOTH_LAND_MS));
+    mothTimers.push(setTimeout(() => setMothFlying(front, back), MOTH_DELAY_MS + MOTH_DEPART_MS));
+})();
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
