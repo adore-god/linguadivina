@@ -734,7 +734,6 @@ body.is-night .candlelight-ambient::before {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    display:none;
     z-index: 20;
     width: min(90vw, 320px);
     background:
@@ -877,11 +876,11 @@ body.is-night .candlelight-ambient::before {
   .candle-wrap {
     position: relative;
     z-index: 3;
-    bottom: 45%;
-    right: -5%;
+    bottom:25%;
+    left: 15px;
     width: 120px;
     height: 320px;
-    
+    margin-bottom: 40px;
     transform: scale(1);
     transform-origin: bottom center;
   }
@@ -1250,13 +1249,13 @@ body.is-night .candlelight-ambient::before {
     transform-origin: bottom center;
   }
   .tea-light-one {
-    left: 35%;
+    left: 28%;
     bottom: 42%;
     transform: scale(0.72);
   }
   .tea-light-two {
-    right: 34%;
-    bottom: 45%;
+    right: 33%;
+    bottom: 48%;
     transform: scale(0.60);
   }
 
@@ -1723,11 +1722,11 @@ body.is-night .petal-vein { stroke: #6b3a44; }
 /* ---------- Carved Wooden Bible Figure ---------- */
 .wooden-figure {
   position: absolute;
-  bottom: 49%; 
-  left: 24%;  
+  bottom: 48%; /* Matches the bottom alignment of the dark wooden candle bases */
+  left: 24%;    /* Placed on the floor near the left candle */
   z-index: 2;
-  width: 30px;
-  height: 77px;
+  width: 28px;
+  height: 75px;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
   pointer-events: none;
 }
@@ -1794,11 +1793,14 @@ body.is-night .wooden-figure{
 /* ---------- Statue of Mary ---------- */
 .mary-statue {
   position: absolute;
-  bottom: 48%;   
-  right: 24%;    
-  z-index: 6;
-  width: 29px;
-  height: 76px;
+  bottom: 48%;      /* Matches the bottom alignment of the dark wooden candle bases */
+  right: min(24%, 95px); /* Placed on the floor near the right candle, mirroring the wooden figure.
+                             Capped in px because the large candle is fixed-size and flex-centered
+                             (doesn't grow with the container), so beyond phone width a pure %
+                             offset closes the gap and pulls Mary in behind the candle. */
+  z-index: 2;
+  width: 28px;
+  height: 75px;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
   pointer-events: none;
 }
