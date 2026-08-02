@@ -137,6 +137,16 @@
 @property --figure-groove    { syntax: '<color>';  inherits: true; initial-value: #332217; }
 @property --figure-neck-alpha { syntax: '<number>'; inherits: true; initial-value: 0.14; }
 
+/* ---------- statue of Mary: same continuous night/day + candle warmth ramp as the wooden figure, instead of a hard day/night swap ---------- */
+@property --mary-base        { syntax: '<color>';  inherits: true; initial-value: #6e6558; }
+@property --mary-robe        { syntax: '<color>';  inherits: true; initial-value: #e9e2d2; }
+@property --mary-robe-fold   { syntax: '<color>';  inherits: true; initial-value: #c9bfa8; }
+@property --mary-hands       { syntax: '<color>';  inherits: true; initial-value: #d9c7ae; }
+@property --mary-veil        { syntax: '<color>';  inherits: true; initial-value: #3e5a86; }
+@property --mary-veil-shadow { syntax: '<color>';  inherits: true; initial-value: #17233b; }
+@property --mary-face        { syntax: '<color>';  inherits: true; initial-value: #e3c6ab; }
+@property --mary-halo-opacity { syntax: '<number>'; inherits: true; initial-value: 0.5; }
+
 
   * { box-sizing: border-box; }
 
@@ -163,7 +173,10 @@
     --robin-tail 14s linear, --robin-beak 14s linear, --robin-leg 14s linear,
     --figure-wood-top 14s linear, --figure-wood-mid 14s linear, --figure-wood-bot 14s linear,
     --figure-head-top 14s linear, --figure-head-bot 14s linear, --figure-detail 14s linear,
-    --figure-groove 14s linear, --figure-neck-alpha 14s linear;
+    --figure-groove 14s linear, --figure-neck-alpha 14s linear,
+    --mary-base 14s linear, --mary-robe 14s linear, --mary-robe-fold 14s linear,
+    --mary-hands 14s linear, --mary-veil 14s linear, --mary-veil-shadow 14s linear,
+    --mary-face 14s linear, --mary-halo-opacity 14s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -846,7 +859,7 @@ body.is-night .candlelight-ambient::before {
     bottom: 0;
     left: 50%;
     width: 100cqw;
-    transform: translateX(-50%);
+    margin-left: -50cqw;
     height: 50%;
     z-index: 1;
     pointer-events: none;
@@ -864,7 +877,7 @@ body.is-night .candlelight-ambient::before {
     position: relative;
     z-index: 3;
     bottom:25%;
-    left: 2.9%;
+    left: 15px;
     width: 120px;
     height: 320px;
     margin-bottom: 40px;
@@ -1236,13 +1249,13 @@ body.is-night .candlelight-ambient::before {
     transform-origin: bottom center;
   }
   .tea-light-one {
-    left: 28%;
+    left: 35%;
     bottom: 42%;
     transform: scale(0.72);
   }
   .tea-light-two {
-    right: 33%;
-    bottom: 48%;
+    right: 35%;
+    bottom: 46%;
     transform: scale(0.60);
   }
 
@@ -1709,7 +1722,7 @@ body.is-night .petal-vein { stroke: #6b3a44; }
 /* ---------- Carved Wooden Bible Figure ---------- */
 .wooden-figure {
   position: absolute;
-  bottom: 48%; /* Matches the bottom alignment of the dark wooden candle bases */
+  bottom: 47%; /* Matches the bottom alignment of the dark wooden candle bases */
   left: 24%;    /* Placed on the floor near the left candle */
   z-index: 2;
   width: 28px;
@@ -1766,11 +1779,73 @@ body.is-night .wooden-figure{
   opacity: 0.85;
 }
 
+.figure-face {
+  fill: var(--figure-wood-top); /* lighter wood tone than the hood, so the face reads distinctly */
+}
+
 .figure-wood-stop-top { stop-color: var(--figure-wood-top); }
 .figure-wood-stop-mid { stop-color: var(--figure-wood-mid); }
 .figure-wood-stop-bot { stop-color: var(--figure-wood-bot); }
 .figure-head-stop-top { stop-color: var(--figure-head-top); }
 .figure-head-stop-bot { stop-color: var(--figure-head-bot); }
+
+
+/* ---------- Statue of Mary ---------- */
+.mary-statue {
+  position: absolute;
+  bottom: 46%;      /* Matches the bottom alignment of the dark wooden candle bases */
+  right: 24%;       /* Placed on the floor near the right candle, mirroring the wooden figure */
+  z-index: 2;
+  width: 28px;
+  height: 75px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}
+
+body.is-night .mary-statue {
+  animation: figureGlow 4s infinite ease-in-out;
+  animation-delay: -2s; /* offsets her flicker from the wooden figure's */
+}
+
+.mary-base {
+  fill: var(--mary-base);
+}
+
+.mary-robe {
+  fill: var(--mary-robe); /* ivory/plaster robe, catches daylight */
+}
+
+.mary-robe-fold {
+  fill: none;
+  stroke: var(--mary-robe-fold);
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.mary-hands {
+  fill: var(--mary-hands);
+}
+
+.mary-veil {
+  fill: var(--mary-veil); /* traditional blue mantle, muted toward a natural weathered pigment rather than a flat saturated blue */
+}
+
+.mary-veil-shadow {
+  fill: var(--mary-veil-shadow);
+  opacity: 0.35;
+}
+
+.mary-face {
+  fill: var(--mary-face);
+}
+
+.mary-halo {
+  opacity: var(--mary-halo-opacity);
+}
+
+.mary-halo-stop-in { stop-color: rgba(255, 227, 163, 0.65); }
+.mary-halo-stop-out { stop-color: rgba(255, 227, 163, 0); }
 
 
 /* ---------------- NIGHT MOTH (circles the candle flame) ---------------- */
@@ -2899,12 +2974,36 @@ body.is-night .cloud3 {
     
     <!-- Robe Fold Grooves -->
     <path class="figure-groove" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74 M 15,54 C 14.6,61 14.6,68 15,74" fill="none" />
+
+    <!-- Arms, reaching in from the shoulders to hold the book -->
+    <path class="figure-body" d="M 20,26 C 22,30 22,35 20,39 C 19,40.5 18,41.5 17,42 C 17.5,38 17,33 18,28 C 18.5,27 19.2,26.4 20,26 Z" />
+    <path class="figure-body" d="M 10,26 C 8,30 8,35 10,39 C 11,40.5 12,41.5 13,42 C 12.5,38 13,33 12,28 C 11.5,27 10.8,26.4 10,26 Z" />
+    <path class="figure-groove" d="M 19.5,28 C 20,32 19.5,36 18,40" fill="none" />
+    <path class="figure-groove" d="M 10.5,28 C 10,32 10.5,36 12,40" fill="none" />
     
     <!-- Head: a slightly irregular hand-carved hood shape rather than a perfect circle -->
     <path class="figure-head" filter="url(#softHeadEdge)" d="M 15,7 C 18.6,7.2 21.6,9.9 21.8,13.6 C 22,17.6 18.9,21.1 15.2,21.6 C 11.2,21.9 8.1,18.3 7.9,14.2 C 7.7,10 11,7.3 15,7 Z" />
 
+    <!-- Hood drapes: lengthen the cowl so it falls further down past the neckline and over the shoulders, rather than stopping abruptly at the head -->
+    <path class="figure-head" filter="url(#softHeadEdge)" d="M 9.3,16.8 C 8.1,19.8 7.3,23.2 7.7,26.5 C 8.1,27.6 8.8,28.4 9.6,29 C 9.1,25.9 9.4,21.6 10.7,17.7 C 10.2,17.4 9.7,17.1 9.3,16.8 Z" />
+    <path class="figure-head" filter="url(#softHeadEdge)" d="M 20.7,16.8 C 21.9,19.8 22.7,23.2 22.3,26.5 C 21.9,27.6 21.2,28.4 20.4,29 C 20.9,25.9 20.6,21.6 19.3,17.7 C 19.8,17.4 20.3,17.1 20.7,16.8 Z" />
+
     <!-- Neckline shadow: separates the hood from the shoulders -->
     <path class="figure-neck-shadow" d="M 10,19 C 12,22.5 18,22.5 20,19 C 19,21.8 16,23.8 15,23.8 C 14,23.8 11,21.8 10,19 Z" />
+
+    <!-- Face, framed by the hood -->
+    <ellipse cx="15" cy="15.5" rx="3.8" ry="4.6" class="figure-face" />
+
+    <!-- Beard -->
+    <path class="figure-detail" d="M 11.5,17 C 12,20 13.5,23 15,23.5 C 16.5,23 18,20 18.5,17 C 17,19.5 13,19.5 11.5,17 Z" />
+
+    <!-- Book, held closed at the chest -->
+    <path class="figure-detail" d="M 11,37.5 L 19,37.5 L 19,44.5 L 11,44.5 Z" />
+    <path class="figure-groove" fill="none" d="M 15,37.5 L 15,44.5" />
+
+    <!-- Hands, gripping the book -->
+    <ellipse class="figure-detail" cx="10.3" cy="41" rx="1.6" ry="2.6" transform="rotate(10 10.3 41)" />
+    <ellipse class="figure-detail" cx="19.7" cy="41" rx="1.6" ry="2.6" transform="rotate(-10 19.7 41)" />
   </svg>
 </div>
 
@@ -2980,6 +3079,65 @@ body.is-night .cloud3 {
     <div class="votive-flame"></div>
     <div class="votive-cup"></div>
   </div>
+
+  <!-- Statue of Mary (Placed on the floor near the right candle, mirroring the wooden figure) -->
+<div class="mary-statue" aria-hidden="true">
+  <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="maryHaloGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" class="mary-halo-stop-in" />
+        <stop offset="100%" class="mary-halo-stop-out" />
+      </radialGradient>
+      <filter id="softMaryEdge" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="0.3" />
+      </filter>
+    </defs>
+
+    <!-- Soft halo glow behind the head -->
+    <circle class="mary-halo" cx="15" cy="13" r="9.5" fill="url(#maryHaloGlow)" />
+
+    <!-- Statue Base / Pedestal -->
+    <ellipse cx="15" cy="76" rx="8" ry="3" class="mary-base" />
+
+    <!-- Main Robe Body -->
+    <path class="mary-robe" d="M 15,22 C 10,22 8,35 6,55 C 5,65 4,72 8,75 L 22,75 C 26,72 25,65 24,55 C 22,35 20,22 15,22 Z" />
+
+    <!-- Robe Fold Lines -->
+    <path class="mary-robe-fold" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74 M 15,54 C 14.6,61 14.6,68 15,74" fill="none" />
+
+    <!-- Head veil: a cap over the crown, draping down both shoulders past the arms -->
+    <path class="mary-veil" filter="url(#softMaryEdge)" d="M 15,5
+       C 19,5.2 22,8 23,13
+       C 23.8,16 24,19.5 23.5,22
+       C 23,30 22,38 20.5,46
+       C 19.5,45.7 18.7,44.8 18.3,43.5
+       C 19.3,36 19.8,28 19,20
+       C 18.6,15.5 18,12 17,10.5
+       C 15.6,11.6 14.4,11.6 13,10.5
+       C 12,12 11.4,15.5 11,20
+       C 10.2,28 10.7,36 11.7,43.5
+       C 11.3,44.8 10.5,45.7 9,46
+       C 8,38 7,30 6.5,22
+       C 6,19.5 6.2,16 7,13
+       C 8,8 11,5.2 15,5 Z" />
+
+    <!-- Shadow where the veil meets the forehead -->
+    <path class="mary-veil-shadow" d="M 11.5,11.8 C 13,13.6 17,13.6 18.5,11.8 C 17,13.2 13,13.2 11.5,11.8 Z" />
+
+    <!-- Arms, drawn in from the shoulders to clasp the hands at the chest -->
+    <path class="mary-robe" d="M 20,26 C 22,30 22,35 20,39 C 19,40.5 18,41.5 17,42 C 17.5,38 17,33 18,28 C 18.5,27 19.2,26.4 20,26 Z" />
+    <path class="mary-robe" d="M 10,26 C 8,30 8,35 10,39 C 11,40.5 12,41.5 13,42 C 12.5,38 13,33 12,28 C 11.5,27 10.8,26.4 10,26 Z" />
+    <path class="mary-robe-fold" d="M 19.5,28 C 20,32 19.5,36 18,40" fill="none" />
+    <path class="mary-robe-fold" d="M 10.5,28 C 10,32 10.5,36 12,40" fill="none" />
+
+    <!-- Hands, pressed together in prayer -->
+    <ellipse class="mary-hands" cx="13.6" cy="40" rx="1.8" ry="4.2" transform="rotate(-12 13.6 40)" />
+    <ellipse class="mary-hands" cx="16.4" cy="40" rx="1.8" ry="4.2" transform="rotate(12 16.4 40)" />
+
+    <!-- Face, framed by the veil -->
+    <ellipse cx="15" cy="15.5" rx="3.8" ry="4.6" class="mary-face" />
+  </svg>
+</div>
 
   <div class="altar-ledge"></div>
 </div>
@@ -3229,6 +3387,21 @@ body.is-night .cloud3 {
     const FIGURE_DETAIL_NIGHT   = [20,10,5],   FIGURE_DETAIL_DAY   = [51,34,23];
     const FIGURE_GROOVE_NIGHT   = [74,36,19],  FIGURE_GROOVE_DAY   = [51,34,23];
 
+    // Statue of Mary: same night/day-anchor + candle-warmth approach as the
+    // wooden figure, plus a soft golden-hour kiss on skin/robe like the
+    // robin, so she catches real daylight and firelight instead of only
+    // ever showing two hardcoded states. Anchors are pulled slightly
+    // toward warmer, less saturated tones (plaster ivory, muted indigo
+    // mantle, warm stone skin) so she reads as carved/painted stone
+    // rather than flat vector colour.
+    const MARY_BASE_NIGHT        = [24,21,16],  MARY_BASE_DAY        = [126,116,98];
+    const MARY_ROBE_NIGHT        = [46,42,36],  MARY_ROBE_DAY        = [221,211,190];
+    const MARY_ROBE_FOLD_NIGHT   = [34,31,26],  MARY_ROBE_FOLD_DAY   = [187,174,148];
+    const MARY_HANDS_NIGHT       = [42,35,28],  MARY_HANDS_DAY       = [206,180,148];
+    const MARY_VEIL_NIGHT        = [8,13,24],   MARY_VEIL_DAY        = [61,83,114];
+    const MARY_VEIL_SHADOW_NIGHT = [3,5,10],    MARY_VEIL_SHADOW_DAY = [22,32,50];
+    const MARY_FACE_NIGHT        = [46,37,29],  MARY_FACE_DAY        = [217,182,148];
+
     // Boosts a dark colour's brightness (preserving its hue) so it still reads
     // as a colour, not just "dark grey", when used to tint brighter surfaces.
     function normalizeLuminance(c, minLum) {
@@ -3335,6 +3508,20 @@ body.is-night .cloud3 {
       const figureGroove  = lerpColor(FIGURE_GROOVE_NIGHT, FIGURE_GROOVE_DAY, intensity);
       const figureNeckAlpha = (0.32 + (0.14 - 0.32) * intensity).toFixed(3);
 
+      // Mary: same night->day ramp as the wooden figure, warmed toward
+      // candlelight at dusk/night, with a light golden-hour kiss on the
+      // skin and robe (like the robin) so she reads as lit by the same
+      // real light as everything else in the room.
+      const maryGold       = glow * 0.35;
+      const maryBase       = lerpColor(lerpColor(MARY_BASE_NIGHT, MARY_BASE_DAY, intensity), CANDLE_WARM, candleFactor * 0.45);
+      const maryRobe       = lerpColor(lerpColor(lerpColor(MARY_ROBE_NIGHT, MARY_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.18), CANDLE_WARM, candleFactor * 0.30);
+      const maryRobeFold   = lerpColor(lerpColor(MARY_ROBE_FOLD_NIGHT, MARY_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.25);
+      const maryHands      = lerpColor(lerpColor(lerpColor(MARY_HANDS_NIGHT, MARY_HANDS_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.20), CANDLE_WARM, candleFactor * 0.35);
+      const maryVeil       = lerpColor(lerpColor(lerpColor(MARY_VEIL_NIGHT, MARY_VEIL_DAY, intensity), roomTint, skyTintWeight * 0.3), CANDLE_WARM, candleFactor * 0.20);
+      const maryVeilShadow = lerpColor(MARY_VEIL_SHADOW_NIGHT, MARY_VEIL_SHADOW_DAY, intensity);
+      const maryFace       = lerpColor(lerpColor(lerpColor(MARY_FACE_NIGHT, MARY_FACE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.22), CANDLE_WARM, candleFactor * 0.35);
+      const maryHaloOpacity = (0.45 + candleFactor * 0.35).toFixed(3);
+
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
       body.setProperty('--room-glow', rgbaStr(roomBase, glowAlpha));
@@ -3376,6 +3563,15 @@ body.is-night .cloud3 {
       body.setProperty('--figure-detail', `rgb(${figureDetail.join(',')})`);
       body.setProperty('--figure-groove', `rgb(${figureGroove.join(',')})`);
       body.setProperty('--figure-neck-alpha', figureNeckAlpha);
+
+      body.setProperty('--mary-base', `rgb(${maryBase.join(',')})`);
+      body.setProperty('--mary-robe', `rgb(${maryRobe.join(',')})`);
+      body.setProperty('--mary-robe-fold', `rgb(${maryRobeFold.join(',')})`);
+      body.setProperty('--mary-hands', `rgb(${maryHands.join(',')})`);
+      body.setProperty('--mary-veil', `rgb(${maryVeil.join(',')})`);
+      body.setProperty('--mary-veil-shadow', `rgb(${maryVeilShadow.join(',')})`);
+      body.setProperty('--mary-face', `rgb(${maryFace.join(',')})`);
+      body.setProperty('--mary-halo-opacity', maryHaloOpacity);
     }
 
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
