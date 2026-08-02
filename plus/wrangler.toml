@@ -10,10 +10,11 @@ routes = [
   { pattern = "plus.linguadivina.uk/*", zone_name = "linguadivina.uk" }
 ]
 
-# KV namespaces — create these first (wrangler kv namespace create SUBSCRIBERS),
+# KV namespaces — create these first (e.g. wrangler kv namespace create SUBSCRIBERS),
 # then paste the id below.
 kv_namespaces = [
-  { binding = "SUBSCRIBERS", id = "88b400a875094751afac46cfd28272f8" }
+  { binding = "SUBSCRIBERS", id = "88b400a875094751afac46cfd28272f8" },
+  { binding = "RATE_LIMITS", id = "b232b517c3d0405a84ffb3060d3fc498" }
 ]
 
 # Articles now live as plain files in the articles/ folder of this repo
