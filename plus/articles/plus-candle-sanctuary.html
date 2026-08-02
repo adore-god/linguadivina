@@ -1794,10 +1794,17 @@ body.is-night .wooden-figure{
 .mary-statue {
   position: absolute;
   bottom: 48%;      /* Matches the bottom alignment of the dark wooden candle bases */
-  right: min(24%, 95px); /* Placed on the floor near the right candle, mirroring the wooden figure.
-                             Capped in px because the large candle is fixed-size and flex-centered
-                             (doesn't grow with the container), so beyond phone width a pure %
-                             offset closes the gap and pulls Mary in behind the candle. */
+  left: min(calc(50% + 150px), calc(100% - 34px)); /* Placed near the right candle, mirroring the wooden figure.
+                               The calc(100% - 34px) ceiling keeps her fully inside the altar
+                               container (and off the .stage's clipped edge) on very narrow phones.
+                               The large candle is fixed-size and centered in this container
+                               (its rendered center always sits at 50% + a constant offset,
+                               never scaling with container width), so anchoring Mary the same
+                               way -- from center, with a fixed px offset -- keeps her locked
+                               a constant distance to its right at every screen size, instead
+                               of a %-of-width offset that put her on the candle's left on
+                               narrow screens and behind it on wide ones. */
+  right: auto;
   z-index: 2;
   width: 28px;
   height: 75px;
