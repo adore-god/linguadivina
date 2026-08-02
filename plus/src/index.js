@@ -302,6 +302,26 @@ async function verifyStripeSignature(payload, sigHeader, secret) {
 }
 
 // ---------------------------------------------------------------------
+// Rate limiting (backed by env.RATE_LIMITS KV namespace)
+// ---------------------------------------------------------------------
+
+// Returns { allowed } and increments the counter when allowed.
+// Uses a fixed window keyed by the current window index, so old entries
+// simply expire via KV's expirationTtl — no cleanup needed.
+async function checkRateLimit(env, key, limit, windowSeconds) {
+  const windowIndex = Math.floor(Date.now() / 1000 / windowSeconds);
+  const kvKey = `${key}:${windowIndex}`;
+
+  const current = parseInt((await env.RATE_LIMITS.get(kvKey)) || "0", 10);
+  if (current >= limit) {
+    return { allowed: false };
+  }
+
+  await env.RATE_LIMITS.put(kvKey, String(current + 1), { expirationTtl: windowSeconds + 60 });
+  return { allowed: true };
+}
+
+// ---------------------------------------------------------------------
 // Magic Link Handlers
 // ---------------------------------------------------------------------
 
@@ -313,6 +333,26 @@ async function sendMagicLink(request, env) {
     }
 
     const cleanEmail = email.toLowerCase().trim();
+
+    // Per-email limit: 5 requests per hour.
+    const emailLimit = await checkRateLimit(env, `magiclink:email:${cleanEmail}`, 5, 60 * 60);
+    if (!emailLimit.allowed) {
+      return new Response(
+        JSON.stringify({ error: "Too many sign-in requests for this email. Please try again later." }),
+        { status: 429, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Per-IP limit: 15 requests per hour, to slow down anyone cycling through many emails.
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    const ipLimit = await checkRateLimit(env, `magiclink:ip:${ip}`, 15, 60 * 60);
+    if (!ipLimit.allowed) {
+      return new Response(
+        JSON.stringify({ error: "Too many sign-in requests. Please try again later." }),
+        { status: 429, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const raw = await env.SUBSCRIBERS.get(cleanEmail);
     const subscriber = raw ? JSON.parse(raw) : null;
 
@@ -1036,7 +1076,11 @@ ${FONT_LINK}
           body: JSON.stringify({ email, redirectSlug: '/${slug}' }),
         });
         const data = await res.json();
-        msg.textContent = data.message || data.error || 'Something went wrong.';
+        if (res.status === 429) {
+          msg.textContent = data.error || 'Too many requests. Please try again later.';
+        } else {
+          msg.textContent = data.message || data.error || 'Something went wrong.';
+        }
       } catch (err) {
         msg.textContent = 'Error sending request.';
       }
