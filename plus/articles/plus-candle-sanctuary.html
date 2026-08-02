@@ -1780,7 +1780,7 @@ fill: #D9A066;
 
 .figure-face {
   fill: #D9A066;
-}
+} 
 
 .figure-wood-stop-top { stop-color: var(--figure-wood-top); }
 .figure-wood-stop-mid { stop-color: var(--figure-wood-mid); }
@@ -1812,7 +1812,7 @@ body.is-night .mary-statue {
 }
 
 .mary-robe {
-  fill: var(--mary-robe); /* ivory/plaster robe, catches daylight */
+  fill: url(#maryRobeGradient); /* ivory/plaster robe, catches daylight, shaded top-to-hem instead of flat */
 }
 
 .mary-robe-fold {
@@ -1828,7 +1828,7 @@ body.is-night .mary-statue {
 }
 
 .mary-veil {
-  fill: var(--mary-veil); /* traditional blue mantle, muted toward a natural weathered pigment rather than a flat saturated blue */
+  fill: url(#maryVeilGradient); /* traditional blue mantle, shaded top-to-hem instead of flat */
 }
 
 .mary-veil-shadow {
@@ -1839,6 +1839,11 @@ body.is-night .mary-statue {
 .mary-face {
   fill: var(--mary-face);
 }
+
+.mary-robe-stop-top { stop-color: var(--mary-robe); }
+.mary-robe-stop-bot { stop-color: var(--mary-robe-fold); }
+.mary-veil-stop-top { stop-color: var(--mary-veil); }
+.mary-veil-stop-bot { stop-color: var(--mary-veil-shadow); }
 
 .mary-halo {
   opacity: var(--mary-halo-opacity);
@@ -2149,6 +2154,7 @@ body.is-night .robin-wrap{
   left: min(calc(50% + 100px), calc(100% - 34px)); 
     
   }
+}
 
 </style>
 </head>
@@ -2559,6 +2565,153 @@ body.is-night .cloud2 {
 body.is-night .cloud3 {
     
 }
+
+
+
+.angel-spirit{
+
+position:absolute;
+
+left:27%;
+
+top:31%;
+
+width:42px;
+
+opacity: 1;
+
+pointer-events:none;
+
+z-index:5;
+
+filter:
+drop-shadow(0 0 5px rgba(255,235,185,.25));
+
+animation:
+angelFloat 18s ease-in-out infinite,
+angelGlow 9s ease-in-out infinite;
+
+transition:opacity 8s linear;
+
+}
+
+body.is-night .angel-spirit{
+
+opacity:.55;
+
+}
+
+.angel-spirit svg{
+
+width:100%;
+height:auto;
+
+}
+
+.angel-wing{
+
+    transform-origin:70px 70px;
+
+    animation:wingFlap 3.6s ease-in-out infinite;
+
+    transform-box:fill-box;
+
+}
+
+@keyframes wingFlap {
+
+    0% {
+        transform: rotate(-4deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(-7deg) scale(1.02);
+    }
+
+    50% {
+        transform: rotate(-10deg) scale(1.04);
+    }
+
+    75% {
+        transform: rotate(-7deg) scale(1.02);
+    }
+
+    100% {
+        transform: rotate(-4deg) scale(1);
+    }
+
+}
+
+@keyframes angelFloat{
+
+0%,100%{
+
+transform:
+translateY(0px)
+translateX(0px);
+
+}
+
+25%{
+
+transform:
+translateY(-5px)
+translateX(2px);
+
+}
+
+50%{
+
+transform:
+translateY(-9px)
+translateX(-2px);
+
+}
+
+75%{
+
+transform:
+translateY(-3px)
+translateX(3px);
+
+}
+
+}
+
+@keyframes wingBreath{
+
+0%,100%{
+
+transform:rotate(0deg);
+
+}
+
+50%{
+
+transform:rotate(-7deg);
+
+}
+
+}
+
+@keyframes angelGlow{
+
+0%,100%{
+
+filter:
+drop-shadow(0 0 4px rgba(255,230,180,.2));
+
+}
+
+50%{
+
+filter:
+drop-shadow(0 0 10px rgba(255,235,190,.55))
+drop-shadow(0 0 22px rgba(255,215,160,.25));
+
+}
+
+}
   </style>
 
   <g class="crack-group">
@@ -2588,7 +2741,129 @@ body.is-night .cloud3 {
 
   <div class="sanctuary">
   
-  
+  <div class="angel-spirit">
+
+<svg viewBox="0 0 120 180">
+
+<defs>
+
+<linearGradient id="angelRobe" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="var(--mary-robe)"/>
+<stop offset="100%" stop-color="var(--mary-robe-fold)"/>
+</linearGradient>
+
+<linearGradient id="angelWing" x1="0" x2="1">
+<stop offset="0%" stop-color="#faf8f2"/>
+<stop offset="100%" stop-color="#d8d0c0"/>
+</linearGradient>
+
+</defs>
+
+<!-- Halo Rings -->
+
+<ellipse
+cx="66"
+cy="24"
+rx="16"
+ry="4"
+fill="none"
+stroke="#d8b66c"
+stroke-width="1.4"/>
+
+<ellipse
+cx="66"
+cy="24"
+rx="22"
+ry="6"
+fill="none"
+stroke="rgba(216,182,108,.45)"
+stroke-width="0.9"/>
+
+<!-- Wing -->
+
+<path
+class="angel-wing"
+d="
+M60 60
+
+C5 20 -8 95 36 130
+
+C12 120 10 155 48 170
+
+C22 150 26 120 58 95
+
+C35 110 45 78 72 62
+
+C70 82 66 104 64 148
+
+C92 122 100 78 82 48
+
+C92 54 98 42 88 26
+
+C82 34 74 42 60 60
+Z"
+fill="url(#angelWing)"/>
+
+<!-- Head -->
+
+<circle
+cx="66"
+cy="40"
+r="8"
+fill="var(--mary-face)"/>
+
+<!-- Nose profile -->
+
+<path
+d="
+M72 40
+L76 43
+L72 45"
+fill="none"
+stroke="rgba(80,55,40,.35)"
+stroke-width="1"
+stroke-linecap="round"/>
+
+<!-- Veil -->
+
+<path
+d="
+M61 34
+C56 42 55 54 58 72
+L76 72
+C79 55 76 42 70 33
+Z"
+fill="var(--mary-veil)"/>
+
+<!-- Body -->
+
+<path
+d="
+M60 54
+C48 74 46 118 44 170
+L84 170
+C82 118 80 74 68 54
+Z"
+fill="url(#angelRobe)"/>
+
+<!-- Fold -->
+
+<path
+d="
+M64 64
+C62 94 63 126 66 166"
+fill="none"
+stroke="rgba(120,120,120,.18)"
+stroke-width="2"/>
+
+<!-- Hands -->
+
+<circle cx="64" cy="78" r="2.2" fill="var(--mary-hands)"/>
+<circle cx="68" cy="82" r="2.2" fill="var(--mary-hands)"/>
+
+</svg>
+
+</div>
     <div class="window-wrap">
 <!-- Lush Trailing Wild Rose Vine -->
 <div class="trailing-vine" aria-hidden="true">
@@ -2973,7 +3248,7 @@ body.is-night .cloud3 {
   <path class="figure-body" d="M 17.581 26.453 C 20.929 26.576 32.542 50.803 26.719 52.733 C 25.366 54.228 24.998 49.598 23.644 50.096 C 27.37 44.861 17.992 32.678 16.296 29.523 C 16.972 28.527 16.499 26.851 17.581 26.453 Z" style="stroke-width: 1.447;"/>
   <path class="figure-head" filter="url(#softHeadEdge)" d="M 13.795 16.8 C 10.821 19.8 8.839 23.2 9.83 26.5 C 10.821 27.6 12.556 28.4 14.538 29 C 13.3 25.9 14.043 21.6 17.264 17.7 C 16.025 17.4 14.787 17.1 13.795 16.8 Z" style="stroke-width: 2.478;"/>
   <path class="figure-head" filter="url(#softHeadEdge)" d="M 14.873 5.477 C 21.403 7.283 23.999 11.248 23.143 17.479 C 22.18 24.492 18.886 30.956 15.2 31.802 C 11.2 32.312 7.001 26.44 6.801 19.475 C 6.601 12.34 8.431 6.964 14.873 5.477 Z" style="stroke-width: 1.699;"/>
-  <rect x="13.447" y="22.018" width="3.368" height="5.427" rx="1.176" ry="1.518" style="stroke: rgb(0, 0, 0); stroke-width: 0.345;" class="neck"/>
+  <rect x="13.447" y="22.018" width="3.368" height="5.427" rx="1.176" ry="1.518" style="stroke: rgb(0, 0, 0); stroke-width: 0.345;" class="figure-neck-shadow"/>
   <ellipse cx="15.102" cy="16.247" rx="5.294" ry="7.215" class="figure-face" style="stroke-width: 1.532;"/>
   <ellipse cx="15" cy="76" rx="8" ry="3" class="figure-detail"/>
   <path class="figure-groove" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74 M 15,54 C 14.6,61 14.6,68 15,74" fill="none"/>
@@ -3071,6 +3346,14 @@ body.is-night .cloud3 {
       <filter id="softMaryEdge" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="0.3" />
       </filter>
+      <linearGradient id="maryRobeGradient" x1="30%" y1="0%" x2="60%" y2="100%">
+        <stop offset="0" class="mary-robe-stop-top"/>
+        <stop offset="1" class="mary-robe-stop-bot"/>
+      </linearGradient>
+      <linearGradient id="maryVeilGradient" x1="30%" y1="0%" x2="60%" y2="100%">
+        <stop offset="0" class="mary-veil-stop-top"/>
+        <stop offset="1" class="mary-veil-stop-bot"/>
+      </linearGradient>
     </defs>
 
     <!-- Soft halo glow behind the head -->
@@ -3360,10 +3643,10 @@ body.is-night .cloud3 {
     // day), night anchors stay dim and are then warmed toward the actual
     // candle colour by candleFactor, so the amber glow comes from the same
     // flame lighting everything else instead of a hardcoded night palette.
-    const FIGURE_WOOD_TOP_NIGHT = [40,24,14],  FIGURE_WOOD_TOP_DAY = [176,132,86];
-    const FIGURE_WOOD_MID_NIGHT = [26,16,9],   FIGURE_WOOD_MID_DAY = [132,94,60];
-    const FIGURE_WOOD_BOT_NIGHT = [10,6,4],    FIGURE_WOOD_BOT_DAY = [80,58,38];
-    const FIGURE_HEAD_BOT_NIGHT = [26,16,9],   FIGURE_HEAD_BOT_DAY = [132,94,60];
+    const FIGURE_WOOD_TOP_NIGHT = [40,24,14],  FIGURE_WOOD_TOP_DAY = [128,90,55];
+    const FIGURE_WOOD_MID_NIGHT = [26,16,9],   FIGURE_WOOD_MID_DAY = [92,62,36];
+    const FIGURE_WOOD_BOT_NIGHT = [10,6,4],    FIGURE_WOOD_BOT_DAY = [54,36,22];
+    const FIGURE_HEAD_BOT_NIGHT = [26,16,9],   FIGURE_HEAD_BOT_DAY = [92,62,36];
     const FIGURE_DETAIL_NIGHT   = [20,10,5],   FIGURE_DETAIL_DAY   = [51,34,23];
     const FIGURE_GROOVE_NIGHT   = [74,36,19],  FIGURE_GROOVE_DAY   = [51,34,23];
 
@@ -3376,7 +3659,7 @@ body.is-night .cloud3 {
     // rather than flat vector colour.
     const MARY_BASE_NIGHT        = [24,21,16],  MARY_BASE_DAY        = [126,116,98];
     const MARY_ROBE_NIGHT        = [46,42,36],  MARY_ROBE_DAY        = [221,211,190];
-    const MARY_ROBE_FOLD_NIGHT   = [34,31,26],  MARY_ROBE_FOLD_DAY   = [187,174,148];
+    const MARY_ROBE_FOLD_NIGHT   = [34,31,26],  MARY_ROBE_FOLD_DAY   = [168,152,122];
     const MARY_HANDS_NIGHT       = [42,35,28],  MARY_HANDS_DAY       = [206,180,148];
     const MARY_VEIL_NIGHT        = [8,13,24],   MARY_VEIL_DAY        = [61,83,114];
     const MARY_VEIL_SHADOW_NIGHT = [3,5,10],    MARY_VEIL_SHADOW_DAY = [22,32,50];
