@@ -136,6 +136,8 @@
 @property --figure-detail    { syntax: '<color>';  inherits: true; initial-value: #332217; }
 @property --figure-groove    { syntax: '<color>';  inherits: true; initial-value: #332217; }
 @property --figure-neck-alpha { syntax: '<number>'; inherits: true; initial-value: 0.14; }
+@property --figure-skin       { syntax: '<color>';  inherits: true; initial-value: #D9A066; }
+@property --mary-skin         { syntax: '<color>';  inherits: true; initial-value: #D9A066; }
 
 /* ---------- statue of Mary: same continuous night/day + candle warmth ramp as the wooden figure, instead of a hard day/night swap ---------- */
 @property --mary-base        { syntax: '<color>';  inherits: true; initial-value: #6e6558; }
@@ -180,10 +182,10 @@
     --robin-tail 14s linear, --robin-beak 14s linear, --robin-leg 14s linear,
     --figure-wood-top 14s linear, --figure-wood-mid 14s linear, --figure-wood-bot 14s linear,
     --figure-head-top 14s linear, --figure-head-bot 14s linear, --figure-detail 14s linear,
-    --figure-groove 14s linear, --figure-neck-alpha 14s linear,
+    --figure-groove 14s linear, --figure-neck-alpha 14s linear, --figure-skin 14s linear,
     --mary-base 14s linear, --mary-robe 14s linear, --mary-robe-fold 14s linear,
     --mary-hands 14s linear, --mary-veil 14s linear, --mary-veil-shadow 14s linear,
-    --mary-face 14s linear, --mary-halo-opacity 14s linear,
+    --mary-face 14s linear, --mary-halo-opacity 14s linear, --mary-skin 14s linear,
     --angel-wing-top 14s linear, --angel-wing-bot 14s linear, --angel-halo 14s linear,
     --angel-halo-soft 14s linear, --angel-glow 14s linear;
   font-family: 'Inter', sans-serif;
@@ -1763,7 +1765,7 @@ body.is-night .wooden-figure{
   fill: url(#figureWoodGradient);
 }
 .hands {
-fill: #D9A066;
+fill: var(--figure-skin);
 }
 
 .figure-head {
@@ -1788,7 +1790,7 @@ fill: #D9A066;
 }
 
 .figure-face {
-  fill: #D9A066;
+  fill: var(--figure-skin);
 } 
 
 .figure-wood-stop-top { stop-color: var(--figure-wood-top); }
@@ -1833,7 +1835,7 @@ body.is-night .mary-statue {
 }
 
 .mary-hands {
-  fill: var(--mary-hands);
+  fill: var(--mary-skin);
 }
 
 .mary-veil {
@@ -1846,7 +1848,7 @@ body.is-night .mary-statue {
 }
 
 .mary-face {
-  fill: var(--mary-face);
+  fill: var(--mary-skin);
 }
 
 .mary-robe-stop-top { stop-color: var(--mary-robe); }
@@ -3666,13 +3668,13 @@ stroke-width="2"/>
     // toward warmer, less saturated tones (plaster ivory, muted indigo
     // mantle, warm stone skin) so she reads as carved/painted stone
     // rather than flat vector colour.
-    const MARY_BASE_NIGHT        = [28,23,17],  MARY_BASE_DAY        = [140,112,82];
-    const MARY_ROBE_NIGHT        = [44,36,28],  MARY_ROBE_DAY        = [228,203,164];
-    const MARY_ROBE_FOLD_NIGHT   = [32,26,20],  MARY_ROBE_FOLD_DAY   = [176,146,104];
-    const MARY_HANDS_NIGHT       = [42,35,28],  MARY_HANDS_DAY       = [206,180,148];
-    const MARY_VEIL_NIGHT        = [8,13,24],   MARY_VEIL_DAY        = [61,83,114];
-    const MARY_VEIL_SHADOW_NIGHT = [3,5,10],    MARY_VEIL_SHADOW_DAY = [22,32,50];
-    const MARY_FACE_NIGHT        = [46,37,29],  MARY_FACE_DAY        = [217,182,148];
+    const MARY_BASE_NIGHT        = [46,39,31],  MARY_BASE_DAY        = [140,112,82];
+    const MARY_ROBE_NIGHT        = [96,84,68],  MARY_ROBE_DAY        = [228,203,164];
+    const MARY_ROBE_FOLD_NIGHT   = [70,60,48],  MARY_ROBE_FOLD_DAY   = [176,146,104];
+    const MARY_HANDS_NIGHT       = [80,67,53],  MARY_HANDS_DAY       = [206,180,148];
+    const MARY_VEIL_NIGHT        = [24,32,52],  MARY_VEIL_DAY        = [61,83,114];
+    const MARY_VEIL_SHADOW_NIGHT = [11,16,28],  MARY_VEIL_SHADOW_DAY = [22,32,50];
+    const MARY_FACE_NIGHT        = [88,71,56],  MARY_FACE_DAY        = [217,182,148];
 
     // Angel wing/halo: same night/day-anchor + candle-warmth approach as
     // Mary and the wooden figure. Wings read as cool moonlit white-grey at
@@ -3697,6 +3699,19 @@ stroke-width="2"/>
     // bright flame — used to push the arch stone orange as candlelight
     // becomes the dominant light source.
     const CANDLE_WARM = [95, 55, 35];
+
+    // Shared "skin" tone for the wooden figure's carved face/hands and Mary's
+    // painted face/hands: naturally brighter and warmer than the wood/robe
+    // tones around them (like painted or varnished skin catching light more
+    // readily), so it stays pleasantly lit at night instead of sinking into
+    // shadow with everything else, while still responding to the day/night
+    // cycle and warming further as the candle becomes the dominant light.
+    const SKIN_NIGHT = [130, 90, 58], SKIN_DAY = [222, 166, 106];
+    const CANDLE_SKIN_GLOW = [255, 205, 140];
+    function computeSkinTone(intensity, candleFactor) {
+      const base = lerpColor(SKIN_NIGHT, SKIN_DAY, intensity);
+      return lerpColor(base, CANDLE_SKIN_GLOW, candleFactor * 0.25);
+    }
 
     function updateRoomLight(sky, glow, phase) {
       // The window sits low relative to the room, so the horizon band (bot)
@@ -3789,20 +3804,22 @@ stroke-width="2"/>
       const figureDetail  = lerpColor(FIGURE_DETAIL_NIGHT, FIGURE_DETAIL_DAY, intensity);
       const figureGroove  = lerpColor(FIGURE_GROOVE_NIGHT, FIGURE_GROOVE_DAY, intensity);
       const figureNeckAlpha = (0.32 + (0.14 - 0.32) * intensity).toFixed(3);
+      const figureSkin = computeSkinTone(intensity, candleFactor);
 
       // Mary: same night->day ramp as the wooden figure, warmed toward
       // candlelight at dusk/night, with a light golden-hour kiss on the
       // skin and robe (like the robin) so she reads as lit by the same
       // real light as everything else in the room.
       const maryGold       = glow * 0.35;
-      const maryBase       = lerpColor(lerpColor(MARY_BASE_NIGHT, MARY_BASE_DAY, intensity), CANDLE_WARM, candleFactor * 0.55);
-      const maryRobe       = lerpColor(lerpColor(lerpColor(MARY_ROBE_NIGHT, MARY_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.35), CANDLE_WARM, candleFactor * 0.55);
-      const maryRobeFold   = lerpColor(lerpColor(MARY_ROBE_FOLD_NIGHT, MARY_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.48);
-      const maryHands      = lerpColor(lerpColor(lerpColor(MARY_HANDS_NIGHT, MARY_HANDS_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.25), CANDLE_WARM, candleFactor * 0.40);
+      const maryBase       = lerpColor(lerpColor(MARY_BASE_NIGHT, MARY_BASE_DAY, intensity), CANDLE_WARM, candleFactor * 0.60);
+      const maryRobe       = lerpColor(lerpColor(lerpColor(MARY_ROBE_NIGHT, MARY_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.35), CANDLE_WARM, candleFactor * 0.65);
+      const maryRobeFold   = lerpColor(lerpColor(MARY_ROBE_FOLD_NIGHT, MARY_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.55);
+      const maryHands      = lerpColor(lerpColor(lerpColor(MARY_HANDS_NIGHT, MARY_HANDS_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.25), CANDLE_WARM, candleFactor * 0.50);
       const maryVeil       = lerpColor(lerpColor(lerpColor(MARY_VEIL_NIGHT, MARY_VEIL_DAY, intensity), roomTint, skyTintWeight * 0.3), CANDLE_WARM, candleFactor * 0.35);
       const maryVeilShadow = lerpColor(MARY_VEIL_SHADOW_NIGHT, MARY_VEIL_SHADOW_DAY, intensity);
-      const maryFace       = lerpColor(lerpColor(lerpColor(MARY_FACE_NIGHT, MARY_FACE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.22), CANDLE_WARM, candleFactor * 0.35);
-      const maryHaloOpacity = (0.45 + candleFactor * 0.35).toFixed(3);
+      const maryFace       = lerpColor(lerpColor(lerpColor(MARY_FACE_NIGHT, MARY_FACE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.22), CANDLE_WARM, candleFactor * 0.45);
+      const maryHaloOpacity = (0.55 + candleFactor * 0.35).toFixed(3);
+      const marySkin = computeSkinTone(intensity, candleFactor);
 
       // Angel: wing catches the same golden-hour kiss as Mary's skin/robe,
       // then warms toward candlelight at night; halo ember brightens with
@@ -3854,6 +3871,7 @@ stroke-width="2"/>
       body.setProperty('--figure-detail', `rgb(${figureDetail.join(',')})`);
       body.setProperty('--figure-groove', `rgb(${figureGroove.join(',')})`);
       body.setProperty('--figure-neck-alpha', figureNeckAlpha);
+      body.setProperty('--figure-skin', `rgb(${figureSkin.join(',')})`);
 
       body.setProperty('--mary-base', `rgb(${maryBase.join(',')})`);
       body.setProperty('--mary-robe', `rgb(${maryRobe.join(',')})`);
@@ -3863,6 +3881,7 @@ stroke-width="2"/>
       body.setProperty('--mary-veil-shadow', `rgb(${maryVeilShadow.join(',')})`);
       body.setProperty('--mary-face', `rgb(${maryFace.join(',')})`);
       body.setProperty('--mary-halo-opacity', maryHaloOpacity);
+      body.setProperty('--mary-skin', `rgb(${marySkin.join(',')})`);
 
       body.setProperty('--angel-wing-top', `rgb(${angelWingTop.join(',')})`);
       body.setProperty('--angel-wing-bot', `rgb(${angelWingBot.join(',')})`);
