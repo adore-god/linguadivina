@@ -147,6 +147,13 @@
 @property --mary-face        { syntax: '<color>';  inherits: true; initial-value: #e3c6ab; }
 @property --mary-halo-opacity { syntax: '<number>'; inherits: true; initial-value: 0.5; }
 
+/* ---------- angel-spirit: wing and halo track the same sky/candle ramp as Mary and the wooden figure ---------- */
+@property --angel-wing-top   { syntax: '<color>';  inherits: true; initial-value: #faf8f2; }
+@property --angel-wing-bot   { syntax: '<color>';  inherits: true; initial-value: #d8d0c0; }
+@property --angel-halo       { syntax: '<color>';  inherits: true; initial-value: #d8b66c; }
+@property --angel-halo-soft  { syntax: '<color>';  inherits: true; initial-value: rgba(216,182,108,.45); }
+@property --angel-glow       { syntax: '<color>';  inherits: true; initial-value: rgba(255,235,185,.25); }
+
 
   * { box-sizing: border-box; }
 
@@ -176,7 +183,9 @@
     --figure-groove 14s linear, --figure-neck-alpha 14s linear,
     --mary-base 14s linear, --mary-robe 14s linear, --mary-robe-fold 14s linear,
     --mary-hands 14s linear, --mary-veil 14s linear, --mary-veil-shadow 14s linear,
-    --mary-face 14s linear, --mary-halo-opacity 14s linear;
+    --mary-face 14s linear, --mary-halo-opacity 14s linear,
+    --angel-wing-top 14s linear, --angel-wing-bot 14s linear, --angel-halo 14s linear,
+    --angel-halo-soft 14s linear, --angel-glow 14s linear;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
@@ -1734,19 +1743,19 @@ body.is-night .wooden-figure{
 @keyframes figureGlow{
     0%,100%{
         filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
-               brightness(.77);
+               brightness(1);
     }
     22%{
         filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
-               brightness(.57);
+               brightness(.9);
     }
     48%{
         filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
-               brightness(.67);
+               brightness(.95);
     }
     71%{
         filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))
-               brightness(.57);
+               brightness(.9);
     }
 }
 
@@ -2574,18 +2583,18 @@ position:absolute;
 
 left:15%;
 
-top: 18%;
+top: 58%;
 
 width:12%;
 
-opacity: 1;
+opacity: 0;
 
 pointer-events:none;
 
 z-index:5;
 
 filter:
-drop-shadow(0 0 5px rgba(255,235,185,.25));
+drop-shadow(0 0 5px var(--angel-glow));
 
 animation:
 angelFloat 18s ease-in-out infinite,
@@ -2753,8 +2762,8 @@ drop-shadow(0 0 22px rgba(255,215,160,.25));
 </linearGradient>
 
 <linearGradient id="angelWing" x1="0" x2="1">
-<stop offset="0%" stop-color="#faf8f2"/>
-<stop offset="100%" stop-color="#d8d0c0"/>
+<stop offset="0%" stop-color="var(--angel-wing-top)"/>
+<stop offset="100%" stop-color="var(--angel-wing-bot)"/>
 </linearGradient>
 
 </defs>
@@ -2767,7 +2776,7 @@ cy="24"
 rx="16"
 ry="4"
 fill="none"
-stroke="#d8b66c"
+stroke="var(--angel-halo)"
 stroke-width="1.4"/>
 
 <ellipse
@@ -2776,7 +2785,7 @@ cy="24"
 rx="22"
 ry="6"
 fill="none"
-stroke="rgba(216,182,108,.45)"
+stroke="var(--angel-halo-soft)"
 stroke-width="0.9"/>
 
 <!-- Wing -->
@@ -3657,13 +3666,23 @@ stroke-width="2"/>
     // toward warmer, less saturated tones (plaster ivory, muted indigo
     // mantle, warm stone skin) so she reads as carved/painted stone
     // rather than flat vector colour.
-    const MARY_BASE_NIGHT        = [24,21,16],  MARY_BASE_DAY        = [126,116,98];
-    const MARY_ROBE_NIGHT        = [46,42,36],  MARY_ROBE_DAY        = [221,211,190];
-    const MARY_ROBE_FOLD_NIGHT   = [34,31,26],  MARY_ROBE_FOLD_DAY   = [168,152,122];
+    const MARY_BASE_NIGHT        = [28,23,17],  MARY_BASE_DAY        = [140,112,82];
+    const MARY_ROBE_NIGHT        = [44,36,28],  MARY_ROBE_DAY        = [228,203,164];
+    const MARY_ROBE_FOLD_NIGHT   = [32,26,20],  MARY_ROBE_FOLD_DAY   = [176,146,104];
     const MARY_HANDS_NIGHT       = [42,35,28],  MARY_HANDS_DAY       = [206,180,148];
     const MARY_VEIL_NIGHT        = [8,13,24],   MARY_VEIL_DAY        = [61,83,114];
     const MARY_VEIL_SHADOW_NIGHT = [3,5,10],    MARY_VEIL_SHADOW_DAY = [22,32,50];
     const MARY_FACE_NIGHT        = [46,37,29],  MARY_FACE_DAY        = [217,182,148];
+
+    // Angel wing/halo: same night/day-anchor + candle-warmth approach as
+    // Mary and the wooden figure. Wings read as cool moonlit white-grey at
+    // night, warm toward candlelight as the flame becomes the dominant
+    // light source, and go pale sky-white by day. The halo shifts from a
+    // dim candle-gold ember at night to a brighter warm gold in daylight,
+    // matching the lead tracery's highlight treatment.
+    const ANGEL_WING_TOP_NIGHT = [150,150,160], ANGEL_WING_TOP_DAY = [250,248,242];
+    const ANGEL_WING_BOT_NIGHT = [90,88,98],    ANGEL_WING_BOT_DAY = [216,208,192];
+    const ANGEL_HALO_NIGHT     = [130,102,58],  ANGEL_HALO_DAY     = [216,182,108];
 
     // Boosts a dark colour's brightness (preserving its hue) so it still reads
     // as a colour, not just "dark grey", when used to tint brighter surfaces.
@@ -3776,14 +3795,23 @@ stroke-width="2"/>
       // skin and robe (like the robin) so she reads as lit by the same
       // real light as everything else in the room.
       const maryGold       = glow * 0.35;
-      const maryBase       = lerpColor(lerpColor(MARY_BASE_NIGHT, MARY_BASE_DAY, intensity), CANDLE_WARM, candleFactor * 0.45);
-      const maryRobe       = lerpColor(lerpColor(lerpColor(MARY_ROBE_NIGHT, MARY_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.18), CANDLE_WARM, candleFactor * 0.30);
-      const maryRobeFold   = lerpColor(lerpColor(MARY_ROBE_FOLD_NIGHT, MARY_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.25);
-      const maryHands      = lerpColor(lerpColor(lerpColor(MARY_HANDS_NIGHT, MARY_HANDS_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.20), CANDLE_WARM, candleFactor * 0.35);
-      const maryVeil       = lerpColor(lerpColor(lerpColor(MARY_VEIL_NIGHT, MARY_VEIL_DAY, intensity), roomTint, skyTintWeight * 0.3), CANDLE_WARM, candleFactor * 0.20);
+      const maryBase       = lerpColor(lerpColor(MARY_BASE_NIGHT, MARY_BASE_DAY, intensity), CANDLE_WARM, candleFactor * 0.55);
+      const maryRobe       = lerpColor(lerpColor(lerpColor(MARY_ROBE_NIGHT, MARY_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.35), CANDLE_WARM, candleFactor * 0.55);
+      const maryRobeFold   = lerpColor(lerpColor(MARY_ROBE_FOLD_NIGHT, MARY_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.48);
+      const maryHands      = lerpColor(lerpColor(lerpColor(MARY_HANDS_NIGHT, MARY_HANDS_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.25), CANDLE_WARM, candleFactor * 0.40);
+      const maryVeil       = lerpColor(lerpColor(lerpColor(MARY_VEIL_NIGHT, MARY_VEIL_DAY, intensity), roomTint, skyTintWeight * 0.3), CANDLE_WARM, candleFactor * 0.35);
       const maryVeilShadow = lerpColor(MARY_VEIL_SHADOW_NIGHT, MARY_VEIL_SHADOW_DAY, intensity);
       const maryFace       = lerpColor(lerpColor(lerpColor(MARY_FACE_NIGHT, MARY_FACE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.22), CANDLE_WARM, candleFactor * 0.35);
       const maryHaloOpacity = (0.45 + candleFactor * 0.35).toFixed(3);
+
+      // Angel: wing catches the same golden-hour kiss as Mary's skin/robe,
+      // then warms toward candlelight at night; halo ember brightens with
+      // the same candle glow used elsewhere.
+      const angelWingTop = lerpColor(lerpColor(lerpColor(ANGEL_WING_TOP_NIGHT, ANGEL_WING_TOP_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.15), CANDLE_WARM, candleFactor * 0.25);
+      const angelWingBot = lerpColor(lerpColor(lerpColor(ANGEL_WING_BOT_NIGHT, ANGEL_WING_BOT_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.15), CANDLE_WARM, candleFactor * 0.30);
+      const angelHalo     = lerpColor(lerpColor(ANGEL_HALO_NIGHT, ANGEL_HALO_DAY, intensity), CANDLE_WARM, candleFactor * 0.15);
+      const angelHaloSoftAlpha = 0.30 + intensity * 0.20;
+      const angelGlowAlpha = 0.18 + candleFactor * 0.20;
 
       const body = document.body.style;
       body.setProperty('--room-light', `rgb(${roomBase.join(',')})`);
@@ -3835,6 +3863,12 @@ stroke-width="2"/>
       body.setProperty('--mary-veil-shadow', `rgb(${maryVeilShadow.join(',')})`);
       body.setProperty('--mary-face', `rgb(${maryFace.join(',')})`);
       body.setProperty('--mary-halo-opacity', maryHaloOpacity);
+
+      body.setProperty('--angel-wing-top', `rgb(${angelWingTop.join(',')})`);
+      body.setProperty('--angel-wing-bot', `rgb(${angelWingBot.join(',')})`);
+      body.setProperty('--angel-halo', `rgb(${angelHalo.join(',')})`);
+      body.setProperty('--angel-halo-soft', rgbaStr(angelHalo, angelHaloSoftAlpha));
+      body.setProperty('--angel-glow', rgbaStr([255,235,185], angelGlowAlpha));
     }
 
     const SUNRISE_START = 300, SUNRISE_FULL = 420, SUNSET_START = 1140, SUNSET_FULL = 1260;
@@ -3982,6 +4016,42 @@ stroke-width="2"/>
     updateScene();
     setInterval(updateScene, 15000);
     setInterval(updateMoonPhase, 60 * 60 * 1000);
+
+    // ---------- angel-spirit: appears rarely, on an unpredictable schedule ----------
+    (function angelPresenceScheduler(){
+      const angel = document.querySelector('.angel-spirit');
+      if (!angel) return;
+
+      const NIGHT_OPACITY = 0.65;
+      const DAY_OPACITY = 1;
+
+      const FIRST_APPEARANCE_MIN = 90 * 1000;   // don't show her for at least 90s
+      const FIRST_APPEARANCE_MAX = 180 * 1000;  // ...and at most 3 minutes
+      const VISIBLE_MIN = 15 * 1000;            // once shown, stay 15-30s
+      const VISIBLE_MAX = 30 * 1000;
+      const HIDDEN_MIN = 3 * 60 * 1000;         // then vanish for 3-7 minutes
+      const HIDDEN_MAX = 7 * 60 * 1000;
+
+      function randBetween(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function currentTargetOpacity() {
+        return document.body.classList.contains('is-night') ? NIGHT_OPACITY : DAY_OPACITY;
+      }
+
+      function showAngel() {
+        angel.style.opacity = String(currentTargetOpacity());
+        setTimeout(hideAngel, randBetween(VISIBLE_MIN, VISIBLE_MAX));
+      }
+
+      function hideAngel() {
+        angel.style.opacity = '0';
+        setTimeout(showAngel, randBetween(HIDDEN_MIN, HIDDEN_MAX));
+      }
+
+      setTimeout(showAngel, randBetween(FIRST_APPEARANCE_MIN, FIRST_APPEARANCE_MAX));
+    })();
   </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XQ05KGVMN"></script>
 <script src="script-ga.js" async></script>
