@@ -149,6 +149,11 @@
 @property --mary-face        { syntax: '<color>';  inherits: true; initial-value: #e3c6ab; }
 @property --mary-halo-opacity { syntax: '<number>'; inherits: true; initial-value: 0.5; }
 
+/* ---------- statue of Paul: shares Mary's pedestal stone and skin tone, same night/day + candle warmth ramp ---------- */
+@property --paul-robe        { syntax: '<color>';  inherits: true; initial-value: #4a1512; }
+@property --paul-robe-fold   { syntax: '<color>';  inherits: true; initial-value: #34100e; }
+@property --paul-hair        { syntax: '<color>';  inherits: true; initial-value: #3c3833; }
+
 /* ---------- angel-spirit: wing and halo track the same sky/candle ramp as Mary and the wooden figure ---------- */
 @property --angel-wing-top   { syntax: '<color>';  inherits: true; initial-value: #faf8f2; }
 @property --angel-wing-bot   { syntax: '<color>';  inherits: true; initial-value: #d8d0c0; }
@@ -186,6 +191,7 @@
     --mary-base 14s linear, --mary-robe 14s linear, --mary-robe-fold 14s linear,
     --mary-hands 14s linear, --mary-veil 14s linear, --mary-veil-shadow 14s linear,
     --mary-face 14s linear, --mary-halo-opacity 14s linear, --mary-skin 14s linear,
+    --paul-robe 14s linear, --paul-robe-fold 14s linear, --paul-hair 14s linear,
     --angel-wing-top 14s linear, --angel-wing-bot 14s linear, --angel-halo 14s linear,
     --angel-halo-soft 14s linear, --angel-glow 14s linear;
   font-family: 'Inter', sans-serif;
@@ -1729,8 +1735,8 @@ body.is-night .petal-vein { stroke: #6b3a44; }
 /* ---------- Carved Wooden Bible Figure ---------- */
 .wooden-figure {
   position: absolute;
-  bottom: 48%; /* Matches the bottom alignment of the dark wooden candle bases */
-  left: 24%;    /* Placed on the floor near the left candle */
+  bottom: 48%; 
+  left: 60%;    
   z-index: 2;
   width: 28px;
   height: 75px;
@@ -1862,6 +1868,89 @@ body.is-night .mary-statue {
 
 .mary-halo-stop-in { stop-color: rgba(255, 227, 163, 0.65); }
 .mary-halo-stop-out { stop-color: rgba(255, 227, 163, 0); }
+
+
+/* ---------- Statue of Paul ---------- */
+.paul-statue {
+  position: absolute;
+  bottom: 48%;
+  left: 28%;   
+  z-index: 2;
+  width: 32px;
+  height: 79px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}
+
+body.is-night .paul-statue {
+  animation: figureGlow 4s infinite ease-in-out;
+  animation-delay: -3s; /* offsets his flicker from Joseph's and Mary's */
+}
+
+.paul-base {
+  fill: var(--mary-base); /* same pedestal stone as Mary */
+}
+
+.paul-robe {
+  fill: url(#paulRobeGradient);
+}
+
+.paul-robe-fold {
+  fill: none;
+  stroke: var(--paul-robe-fold);
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.paul-hands {
+  fill: var(--mary-skin); /* shared painted-skin tone */
+}
+
+.paul-face {
+  fill: var(--mary-skin);
+}
+
+.paul-hair {
+  fill: var(--paul-hair);
+}
+
+.paul-robe-stop-top { stop-color: var(--paul-robe); }
+.paul-robe-stop-bot { stop-color: var(--paul-robe-fold); }
+
+.paul-halo {
+  opacity: var(--mary-halo-opacity);
+}
+
+.paul-halo-stop-in { stop-color: rgba(255, 214, 150, 0.6); }
+.paul-halo-stop-out { stop-color: rgba(255, 214, 150, 0); }
+
+.paul-book {
+  fill: #e7dcc0;
+}
+
+.paul-book-spine {
+  stroke: #9c8354;
+  stroke-width: 0.4;
+}
+
+.paul-sword-blade {
+  fill: none;
+  stroke: #aab4bc;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+
+.paul-sword-crossguard {
+  fill: none;
+  stroke: #3a2c1d;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+
+.paul-sword-hilt {
+  fill: #3a2c1d;
+}
 
 
 /* ---------------- NIGHT MOTH (circles the candle flame) ---------------- */
@@ -3273,6 +3362,63 @@ stroke-width="2"/>
 </svg>
 </div>
 
+  <!-- Statue of Paul (Placed on the floor at the far left, beside Joseph) -->
+<div class="paul-statue" aria-hidden="true">
+  <svg viewBox="0 0 30 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="paulHaloGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" class="paul-halo-stop-in" />
+        <stop offset="100%" class="paul-halo-stop-out" />
+      </radialGradient>
+      <linearGradient id="paulRobeGradient" x1="30%" y1="0%" x2="60%" y2="100%">
+        <stop offset="0" class="paul-robe-stop-top"/>
+        <stop offset="1" class="paul-robe-stop-bot"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Soft halo glow behind the head -->
+    <circle class="paul-halo" cx="15" cy="13" r="9.5" fill="url(#paulHaloGlow)" />
+
+    <!-- Statue Base / Pedestal -->
+    <ellipse cx="15" cy="76" rx="8" ry="3" class="paul-base" />
+
+    <!-- Main Robe Body -->
+    <path class="paul-robe" d="M 15,22 C 10,22 8,35 6,55 C 5,65 4,72 8,75 L 22,75 C 26,72 25,65 24,55 C 22,35 20,22 15,22 Z" />
+
+    <!-- Robe Fold Lines -->
+    <path class="paul-robe-fold" d="M 12,30 C 11,45 10,60 11,74 M 18,30 C 19,45 20,60 19,74 M 15,54 C 14.6,61 14.6,68 15,74" fill="none" />
+
+    <!-- Arms, drawn in from the shoulders to hold the book at the chest -->
+    <path class="paul-robe" d="M 20,26 C 22,30 22,35 20,39 C 19,40.5 18,41.5 17,42 C 17.5,38 17,33 18,28 C 18.5,27 19.2,26.4 20,26 Z" />
+    <path class="paul-robe" d="M 10,26 C 8,30 8,35 10,39 C 11,40.5 12,41.5 13,42 C 12.5,38 13,33 12,28 C 11.5,27 10.8,26.4 10,26 Z" />
+    <path class="paul-robe-fold" d="M 19.5,28 C 20,32 19.5,36 18,40" fill="none" />
+    <path class="paul-robe-fold" d="M 10.5,28 C 10,32 10.5,36 12,40" fill="none" />
+
+    <!-- Hands, resting on the book -->
+    <ellipse class="paul-hands" cx="13.6" cy="40" rx="1.8" ry="4.2" transform="rotate(-12 13.6 40)" />
+    <ellipse class="paul-hands" cx="16.4" cy="40" rx="1.8" ry="4.2" transform="rotate(12 16.4 40)" />
+
+    <!-- Book of epistles, held at the chest -->
+    <rect class="paul-book" x="12.2" y="41.6" width="5.6" height="3.4" rx="0.4" />
+    <line class="paul-book-spine" x1="15" y1="41.6" x2="15" y2="45" />
+
+    <!-- Sword, resting against the robe -- his traditional emblem -->
+    <line class="paul-sword-blade" x1="24.4" y1="27" x2="24.4" y2="68" />
+    <line class="paul-sword-crossguard" x1="22.2" y1="29.5" x2="26.6" y2="29.5" />
+    <rect class="paul-sword-hilt" x="23.7" y="24.5" width="1.4" height="5.5" rx="0.5" />
+
+    <!-- Balding head with a fringe of hair at the temples -->
+    <path class="paul-hair" d="M 10.2,9 C 8.5,12 8.3,16.5 9.7,20.5 C 10.6,20.8 11.5,20.6 12,20 C 10.8,17 10.6,12.5 11.8,9.3 C 11.2,9 10.7,8.9 10.2,9 Z" />
+    <path class="paul-hair" d="M 19.8,9 C 21.5,12 21.7,16.5 20.3,20.5 C 19.4,20.8 18.5,20.6 18,20 C 19.2,17 19.4,12.5 18.2,9.3 C 18.8,9 19.3,8.9 19.8,9 Z" />
+
+    <!-- Face -->
+    <ellipse cx="15" cy="15.5" rx="3.8" ry="4.6" class="paul-face" />
+
+    <!-- Beard -->
+    <path class="paul-hair" d="M 11.5,17 C 11.2,20.5 12,24.5 15,26 C 18,24.5 18.8,20.5 18.5,17 C 17,19.3 13,19.3 11.5,17 Z" />
+  </svg>
+</div>
+
   <!-- Small Tea Lights (foreground, flanking the main candle) -->
   <div class="tea-light tea-light-one">
     <div class="tea-light-glow"></div>
@@ -3676,6 +3822,14 @@ stroke-width="2"/>
     const MARY_VEIL_SHADOW_NIGHT = [11,16,28],  MARY_VEIL_SHADOW_DAY = [22,32,50];
     const MARY_FACE_NIGHT        = [88,71,56],  MARY_FACE_DAY        = [217,182,148];
 
+    // Statue of Paul: shares Mary's pedestal-stone and painted-skin tones,
+    // same night/day + candle-warmth ramp, distinguished by a deep
+    // maroon/burgundy robe and ash-grey hair/beard instead of Mary's
+    // ivory robe and blue veil.
+    const PAUL_ROBE_NIGHT        = [50,18,16],  PAUL_ROBE_DAY        = [148,48,42];
+    const PAUL_ROBE_FOLD_NIGHT   = [34,12,11],  PAUL_ROBE_FOLD_DAY   = [98,30,26];
+    const PAUL_HAIR_NIGHT        = [30,28,26],  PAUL_HAIR_DAY        = [120,112,102];
+
     // Angel wing/halo: same night/day-anchor + candle-warmth approach as
     // Mary and the wooden figure. Wings read as cool moonlit white-grey at
     // night, warm toward candlelight as the flame becomes the dominant
@@ -3821,6 +3975,13 @@ stroke-width="2"/>
       const maryHaloOpacity = (0.55 + candleFactor * 0.35).toFixed(3);
       const marySkin = computeSkinTone(intensity, candleFactor);
 
+      // Paul: same ramp approach as Mary, reusing her golden-hour weight;
+      // his halo, pedestal, and skin reuse Mary's own computed values
+      // directly rather than duplicating the math.
+      const paulRobe     = lerpColor(lerpColor(lerpColor(PAUL_ROBE_NIGHT, PAUL_ROBE_DAY, intensity), GOLDEN_LIGHT, maryGold * 0.30), CANDLE_WARM, candleFactor * 0.60);
+      const paulRobeFold = lerpColor(lerpColor(PAUL_ROBE_FOLD_NIGHT, PAUL_ROBE_FOLD_DAY, intensity), CANDLE_WARM, candleFactor * 0.55);
+      const paulHair      = lerpColor(lerpColor(PAUL_HAIR_NIGHT, PAUL_HAIR_DAY, intensity), CANDLE_WARM, candleFactor * 0.35);
+
       // Angel: wing catches the same golden-hour kiss as Mary's skin/robe,
       // then warms toward candlelight at night; halo ember brightens with
       // the same candle glow used elsewhere.
@@ -3882,6 +4043,10 @@ stroke-width="2"/>
       body.setProperty('--mary-face', `rgb(${maryFace.join(',')})`);
       body.setProperty('--mary-halo-opacity', maryHaloOpacity);
       body.setProperty('--mary-skin', `rgb(${marySkin.join(',')})`);
+
+      body.setProperty('--paul-robe', `rgb(${paulRobe.join(',')})`);
+      body.setProperty('--paul-robe-fold', `rgb(${paulRobeFold.join(',')})`);
+      body.setProperty('--paul-hair', `rgb(${paulHair.join(',')})`);
 
       body.setProperty('--angel-wing-top', `rgb(${angelWingTop.join(',')})`);
       body.setProperty('--angel-wing-bot', `rgb(${angelWingBot.join(',')})`);
