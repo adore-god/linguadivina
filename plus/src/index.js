@@ -137,7 +137,7 @@ const HEADER_FOOTER_STYLE = `
   .site-plus-label { font-size: 1.5em; }
   .site-tagline { text-transform: uppercase; margin: 6px 0 6px; color: var(--text); font-size: 0.8em; text-align: center;}
   .logo {width: 160px; height: 119px; margin: 1em auto 0; text-align:center;}
-  .site-footer { font-weight:600; margin-top: 48px; padding-top: 20px;  text-align: center; color: #888; font-size: 0.85em; }
+  .site-footer { font-weight:600; margin:48px auto 0; padding: 20px;  text-align: center; color: #888; font-size: 0.85em; }
   .site-footer a { color: var(--link); }
   #theme-toggle {
 
