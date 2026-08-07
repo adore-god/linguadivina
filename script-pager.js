@@ -182,8 +182,8 @@
   const STOPWORDS = new Set([
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
     "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
-    "it", "its", "his", "her", "their", "they", "than", "our", "your", "my", "or", "but",
-    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "after", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls", "holds", "gives", "mechanism", "different", "story", "enforce", "enforces", "same", "current", "prior", "form", "under", "over", "instrument", "began", "each", "different", "cannot", "other", "goes", "removes", "that the"
+    "it", "its", "his", "her", "their", "they", "those", "than", "our", "your", "my", "or", "but",
+    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "after", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls", "holds", "gives", "mechanism", "different", "story", "enforce", "enforces", "same", "current", "prior", "form", "under", "over", "instrument", "began", "each", "different", "cannot", "other", "goes", "removes", "that the", "running", "over", "under"
   ]);
 
   // Matches sequences of capitalized words — allows the phrase to continue
