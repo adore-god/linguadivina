@@ -156,11 +156,11 @@
 (function () {
   const INDEX_URL = "https://linguadivina.uk/searchIndex.json";           // adjust path if served elsewhere
   const CONTENT_SELECTOR = "article, .post-content, main, .container";
-  const SKIP_TAGS = new Set(["A", "SCRIPT", "STYLE", "H1", "NOSCRIPT", "TEXTAREA"]);
+  const SKIP_TAGS = new Set(["A", "SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"]);
 
-  // Any element matching one of these (or nested inside one) is left alone —
-  // add more as needed, e.g. ".sidebar", ".related-posts", "nav".
-  const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h3", "h2","h1",  "blockquote", "nav"];
+// Any element matching one of these (or nested inside one) is left alone —
+// add more as needed, e.g. ".sidebar", ".related-posts", "nav".
+const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3", "blockquote", "nav"];
 
   const MIN_TITLE_LENGTH = 3;                       // skip too-short/noisy titles
   const MIN_WORD_LENGTH = 4;                        // skip short/generic single words
@@ -169,7 +169,7 @@
   // their own, even though they're common inside titles.
   const STOPWORDS = new Set([
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
-    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
+    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose", "already",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
     "not", "no", "so", "into", "about", "when", "who", "what", "how"
   ]);
