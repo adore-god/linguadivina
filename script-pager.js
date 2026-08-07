@@ -146,7 +146,6 @@
 
 
 
-
 // script-crossref.js
 // On article load: fetch searchIndex.json, then scan the page's content for
 // any words/phrases that match another page's title (e.g. "Babel") and turn
@@ -154,6 +153,15 @@
 // a term pops up a small list of every page whose title matched that term
 // (there can be more than one — e.g. "Babel" might match both "Tower of
 // Babel" and "Babel (Confusion of Tongues)").
+//
+// Terms come from two sources per page:
+//   1. The page's title (full title + individual significant words) — as before.
+//   2. Proper-noun words/phrases that repeat 2+ times in the page's `content`
+//      field — these are treated as "significant" to that page, on the
+//      theory that a term mentioned only once is incidental, but one
+//      repeated several times is actually about something. This is what
+//      lets two articles get cross-linked because they both meaningfully
+//      discuss the same term, not just because one mentions the other's title.
 
 (function () {
   const INDEX_URL = "https://linguadivina.uk/searchIndex.json";           // adjust path if served elsewhere
@@ -162,19 +170,26 @@
 
   // Any element matching one of these (or nested inside one) is left alone —
   // add more as needed, e.g. ".sidebar", ".related-posts", "nav".
-  const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3", "blockquote", "nav"];
+  const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3", "blockquote", "noTag", "nav"];
 
   const MIN_TITLE_LENGTH = 3;                       // skip too-short/noisy titles
   const MIN_WORD_LENGTH = 4;                        // skip short/generic single words
+  const MIN_CONTENT_REPEATS = 2;                    // a content term must repeat at least this many times to count
+  const MAX_TERM_PAGES = 10;                        // a term used on more pages than this is treated as generic site vocabulary, not a real connection, and excluded
 
   // Small connector words that shouldn't become standalone link terms on
-  // their own, even though they're common inside titles.
+  // their own, even though they're common inside titles/phrases.
   const STOPWORDS = new Set([
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
     "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
-    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls"
+    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls", "holds", "gives", "mechanism"
   ]);
+
+  // Matches sequences of capitalized words — allows the phrase to continue
+  // through a lowercase connector ("of", "the") or a chapter:verse number
+  // (e.g. "Genesis 1:1"), so multi-word proper nouns stay intact.
+  const CONTENT_TERM_PATTERN = /\b([A-Z][a-zA-Z']*(?:\s+(?:[A-Z][a-zA-Z']*|[0-9]+:[0-9]+|of|the))*)/g;
 
   // Filled in by buildTerms(); looked up by index when a popup opens.
   let allTerms = [];
@@ -194,10 +209,37 @@
     return res.json();
   }
 
+  // Extracts capitalized words/phrases from a page's content field and
+  // returns only the ones that repeat at least MIN_CONTENT_REPEATS times —
+  // these are treated as "significant" to that page.
+  function significantContentTerms(content) {
+    if (!content) return [];
+    const counts = new Map();
+    const matches = content.match(CONTENT_TERM_PATTERN) || [];
+    for (const raw of matches) {
+      const term = raw.trim();
+      if (!term) continue;
+      counts.set(term, (counts.get(term) || 0) + 1);
+    }
+
+    const out = [];
+    for (const [term, count] of counts) {
+      if (count < MIN_CONTENT_REPEATS) continue;
+      if (!term.includes(" ")) {
+        // Single word: apply the same length/stopword filter used for title words.
+        if (term.length < MIN_WORD_LENGTH) continue;
+        if (STOPWORDS.has(term.toLowerCase())) continue;
+      } else if (term.length < MIN_TITLE_LENGTH) {
+        continue;
+      }
+      out.push(term);
+    }
+    return out;
+  }
+
   // Builds a de-duplicated list of { text, matches: [{ url, title }] }.
-  // Unlike before, terms that match more than one page keep ALL of those
-  // pages (rather than only the first page encountered), so the popup can
-  // list every match.
+  // Terms that match more than one page keep ALL of those pages (rather
+  // than only the first page encountered), so the popup can list every match.
   function buildTerms(pages) {
     const here = currentPagePath();
     const termMap = new Map(); // key: lowercase term -> { text, matches: [] }
@@ -234,13 +276,24 @@
         if (word[0] !== word[0].toUpperCase()) continue; // skip lowercase words
         addTerm(word, page);
       }
+
+      // Terms that repeat 2+ times in this page's content — treated as
+      // "significant" to the page even if they never appear in its title.
+      for (const term of significantContentTerms(page.content)) {
+        addTerm(term, page);
+      }
     }
+
+    // Drop terms that appear on more pages than MAX_TERM_PAGES — these are
+    // generic vocabulary for the site as a whole (e.g. a recurring theme
+    // word used almost everywhere) rather than a meaningful connection
+    // between two specific articles.
+    const filtered = Array.from(termMap.values()).filter(t => t.matches.length <= MAX_TERM_PAGES);
 
     // Longest terms first, so full phrases are tried before their component
     // words (e.g. "Tower of Babel" the phrase before lone "Tower").
-    const terms = Array.from(termMap.values());
-    terms.sort((a, b) => b.text.length - a.text.length);
-    return terms;
+    filtered.sort((a, b) => b.text.length - a.text.length);
+    return filtered;
   }
 
   function linkFirstMatch(root, term, termIdx) {
@@ -445,4 +498,4 @@
 
   document.addEventListener("DOMContentLoaded", init);
 })();
- 
+
