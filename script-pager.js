@@ -151,12 +151,17 @@
 // On article load: fetch searchIndex.json, then scan the page's content for
 // any words/phrases that match another page's title (e.g. "Babel") and turn
 // the first occurrence into a link to that page — a lightweight, automatic
-// "see also" cross-reference system built from the same index used by search. 
+// "see also" cross-reference system built from the same index used by search.
 
 (function () {
   const INDEX_URL = "https://linguadivina.uk/searchIndex.json";           // adjust path if served elsewhere
   const CONTENT_SELECTOR = "article, .post-content, main, .container";
   const SKIP_TAGS = new Set(["A", "SCRIPT", "STYLE", "H1", "NOSCRIPT", "TEXTAREA"]);
+
+  // Any element matching one of these (or nested inside one) is left alone —
+  // add more as needed, e.g. ".sidebar", ".related-posts", "nav".
+  const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h3", "h2","h1",  "blockquote", "nav"];
+
   const MIN_TITLE_LENGTH = 3;                       // skip too-short/noisy titles
   const MIN_WORD_LENGTH = 4;                        // skip short/generic single words
 
@@ -164,7 +169,7 @@
   // their own, even though they're common inside titles.
   const STOPWORDS = new Set([
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
-    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this",
+    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
     "not", "no", "so", "into", "about", "when", "who", "what", "how"
   ]);
@@ -205,10 +210,13 @@
       // Individual significant words from the title, e.g. "Tower", "Babel" —
       // so body text mentioning just "Babel" can still link to the
       // "Tower of Babel" page even though it never spells out the full title.
+      // Only capitalized words are used (proper-noun heuristic) so generic
+      // words like "great" or "water" don't get pulled in as link terms.
       const words = title.split(/[^A-Za-z0-9']+/).filter(Boolean);
       for (const word of words) {
         if (word.length < MIN_WORD_LENGTH) continue;
         if (STOPWORDS.has(word.toLowerCase())) continue;
+        if (word[0] !== word[0].toUpperCase()) continue; // skip lowercase words
         const wordKey = word.toLowerCase();
         if (seenPhrases.has(wordKey)) continue;
         terms.push({ text: word, url: page.url });
@@ -231,6 +239,7 @@
         let el = node.parentElement;
         while (el && el !== root) {
           if (SKIP_TAGS.has(el.tagName)) return NodeFilter.FILTER_REJECT;
+          if (EXCLUDE_SELECTORS.some(sel => el.matches(sel))) return NodeFilter.FILTER_REJECT;
           el = el.parentElement;
         }
         return NodeFilter.FILTER_ACCEPT;

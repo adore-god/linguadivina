@@ -130,7 +130,12 @@ body{
 
    ======================= */
 
-.cross-ref { border-bottom: 4px dotted; text-decoration: none; }.
+.cross-ref { 
+border-bottom: 0.7px dotted; 
+text-decoration: none; 
+font-weight:400 !important;
+color: var(--text) !important;
+}
 
 .header {
 
