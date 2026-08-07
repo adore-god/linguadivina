@@ -150,17 +150,19 @@
 // script-crossref.js
 // On article load: fetch searchIndex.json, then scan the page's content for
 // any words/phrases that match another page's title (e.g. "Babel") and turn
-// the first occurrence into a link to that page — a lightweight, automatic
-// "see also" cross-reference system built from the same index used by search.
+// the first occurrence into a clickable/hoverable term. Hovering or clicking
+// a term pops up a small list of every page whose title matched that term
+// (there can be more than one — e.g. "Babel" might match both "Tower of
+// Babel" and "Babel (Confusion of Tongues)").
 
 (function () {
   const INDEX_URL = "https://linguadivina.uk/searchIndex.json";           // adjust path if served elsewhere
   const CONTENT_SELECTOR = "article, .post-content, main, .container";
   const SKIP_TAGS = new Set(["A", "SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"]);
 
-// Any element matching one of these (or nested inside one) is left alone —
-// add more as needed, e.g. ".sidebar", ".related-posts", "nav".
-const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3", "blockquote", "nav"];
+  // Any element matching one of these (or nested inside one) is left alone —
+  // add more as needed, e.g. ".sidebar", ".related-posts", "nav".
+  const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3", "blockquote", "nav"];
 
   const MIN_TITLE_LENGTH = 3;                       // skip too-short/noisy titles
   const MIN_WORD_LENGTH = 4;                        // skip short/generic single words
@@ -169,10 +171,13 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
   // their own, even though they're common inside titles.
   const STOPWORDS = new Set([
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
-    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose", "already",
+    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
-    "not", "no", "so", "into", "about", "when", "who", "what", "how"
+    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded"
   ]);
+
+  // Filled in by buildTerms(); looked up by index when a popup opens.
+  let allTerms = [];
 
   function escapeRegex(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -189,10 +194,24 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
     return res.json();
   }
 
+  // Builds a de-duplicated list of { text, matches: [{ url, title }] }.
+  // Unlike before, terms that match more than one page keep ALL of those
+  // pages (rather than only the first page encountered), so the popup can
+  // list every match.
   function buildTerms(pages) {
     const here = currentPagePath();
-    const terms = [];
-    const seenPhrases = new Set(); // avoid duplicate terms across pages
+    const termMap = new Map(); // key: lowercase term -> { text, matches: [] }
+
+    function addTerm(text, page) {
+      const key = text.toLowerCase();
+      if (!termMap.has(key)) {
+        termMap.set(key, { text, matches: [] });
+      }
+      const entry = termMap.get(key);
+      if (!entry.matches.some(m => m.url === page.url)) {
+        entry.matches.push({ url: page.url, title: page.title });
+      }
+    }
 
     for (const page of pages) {
       if (!page.title || !page.url) continue;
@@ -201,14 +220,10 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
       if (title.length < MIN_TITLE_LENGTH) continue;
 
       // Full title as one phrase, e.g. "Tower of Babel"
-      const phraseKey = title.toLowerCase();
-      if (!seenPhrases.has(phraseKey)) {
-        terms.push({ text: title, url: page.url });
-        seenPhrases.add(phraseKey);
-      }
+      addTerm(title, page);
 
       // Individual significant words from the title, e.g. "Tower", "Babel" —
-      // so body text mentioning just "Babel" can still link to the
+      // so body text mentioning just "Babel" can still surface the
       // "Tower of Babel" page even though it never spells out the full title.
       // Only capitalized words are used (proper-noun heuristic) so generic
       // words like "great" or "water" don't get pulled in as link terms.
@@ -217,21 +232,19 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
         if (word.length < MIN_WORD_LENGTH) continue;
         if (STOPWORDS.has(word.toLowerCase())) continue;
         if (word[0] !== word[0].toUpperCase()) continue; // skip lowercase words
-        const wordKey = word.toLowerCase();
-        if (seenPhrases.has(wordKey)) continue;
-        terms.push({ text: word, url: page.url });
-        seenPhrases.add(wordKey);
+        addTerm(word, page);
       }
     }
 
     // Longest terms first, so full phrases are tried before their component
     // words (e.g. "Tower of Babel" the phrase before lone "Tower").
+    const terms = Array.from(termMap.values());
     terms.sort((a, b) => b.text.length - a.text.length);
     return terms;
   }
 
-  function linkFirstMatch(root, text, url) {
-    const pattern = new RegExp(`\\b(${escapeRegex(text)})\\b`, "i");
+  function linkFirstMatch(root, term, termIdx) {
+    const pattern = new RegExp(`\\b(${escapeRegex(term.text)})\\b`, "i");
 
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
@@ -254,14 +267,17 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
     const matchedText = match[0];
     const after = node.nodeValue.slice(match.index + matchedText.length);
 
-    const link = document.createElement("a");
-    link.href = "/" + url;
-    link.className = "cross-ref";
-    link.textContent = matchedText;
+    const span = document.createElement("span");
+    span.className = "cross-ref";
+    span.textContent = matchedText;
+    span.tabIndex = 0;
+    span.setAttribute("role", "button");
+    span.setAttribute("aria-haspopup", "true");
+    span.dataset.termIdx = String(termIdx);
 
     const frag = document.createDocumentFragment();
     if (before) frag.appendChild(document.createTextNode(before));
-    frag.appendChild(link);
+    frag.appendChild(span);
     if (after) frag.appendChild(document.createTextNode(after));
 
     node.parentNode.replaceChild(frag, node);
@@ -269,18 +285,159 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
   }
 
   function highlightAll(root, terms) {
-    for (const { text, url } of terms) {
-      linkFirstMatch(root, text, url);
-    }
+    terms.forEach((term, idx) => {
+      linkFirstMatch(root, term, idx);
+    });
+  }
+
+  // ---- Popup ----
+
+  let popupEl = null;
+
+  function injectStyles() {
+    const style = document.createElement("style");
+    style.textContent = `
+      .cross-ref {
+        cursor: pointer;
+        border-bottom: 1px dotted currentColor;
+      }
+      .cross-ref-popup {
+        position: absolute;
+        z-index: 1000;
+        background: #fff;
+        color: #111;
+        border: 1px solid rgba(0,0,0,0.15);
+        border-radius: 6px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        padding: 4px 0;
+        max-width: 200px;
+        box-sizing: border-box;
+        font-size: 0.75rem;
+        line-height: 1.3;
+        display: none;
+      }
+      .cross-ref-popup.open { display: block; }
+      .cross-ref-popup ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .cross-ref-popup li a {
+        display: block;
+        padding: 4px 10px;
+        text-decoration: none;
+        color: inherit;
+        white-space: normal;
+        word-break: break-word;
+      }
+      .cross-ref-popup li a:hover,
+      .cross-ref-popup li a:focus {
+        background: rgba(0,0,0,0.06);
+      }
+      /* Dark mode — matches the html.dark / html.light classes set by
+         script-dark-light.js. If your site's dark theme uses different
+         colors, tweak these two values to match. */
+      html.dark .cross-ref-popup {
+        background: #1e1e1e;
+        color: #eee;
+        border-color: rgba(255,255,255,0.15);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+      }
+      html.dark .cross-ref-popup li a:hover,
+      html.dark .cross-ref-popup li a:focus {
+        background: rgba(255,255,255,0.1);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function ensurePopup() {
+    if (popupEl) return popupEl;
+    popupEl = document.createElement("div");
+    popupEl.className = "cross-ref-popup";
+    document.body.appendChild(popupEl);
+    return popupEl;
+  }
+
+  function closePopup() {
+    if (popupEl) popupEl.classList.remove("open");
+  }
+
+  function openPopupFor(span, term) {
+    const popup = ensurePopup();
+    popup.innerHTML = "";
+
+    const list = document.createElement("ul");
+    term.matches.forEach(m => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "/" + m.url;
+      a.textContent = m.title;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    popup.appendChild(list);
+
+    // Open (but stay invisible) first so we can measure its real width
+    // before positioning it — avoids a flash at the wrong spot.
+    popup.style.visibility = "hidden";
+    popup.classList.add("open");
+
+    const rect = span.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth;
+    const margin = 8; // keep clear of the viewport edge
+
+    let left = rect.left + window.scrollX;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - margin;
+    const minLeft = window.scrollX + margin;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+
+    popup.style.left = left + "px";
+    popup.style.top = (rect.bottom + window.scrollY + 4) + "px";
+    popup.style.visibility = "visible";
+  }
+
+  function setupPopupHandlers() {
+    document.addEventListener("click", (e) => {
+      const span = e.target.closest(".cross-ref");
+      if (span) {
+        e.stopPropagation();
+        const idx = Number(span.dataset.termIdx);
+        const term = allTerms[idx];
+        if (term) openPopupFor(span, term);
+        return;
+      }
+      if (popupEl && !popupEl.contains(e.target)) closePopup();
+    });
+
+    document.addEventListener("mouseover", (e) => {
+      const span = e.target.closest(".cross-ref");
+      if (!span) return;
+      const idx = Number(span.dataset.termIdx);
+      const term = allTerms[idx];
+      if (term) openPopupFor(span, term);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePopup();
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("cross-ref")) {
+        e.preventDefault();
+        const idx = Number(e.target.dataset.termIdx);
+        const term = allTerms[idx];
+        if (term) openPopupFor(e.target, term);
+      }
+    });
   }
 
   async function init() {
     const container = document.querySelector(CONTENT_SELECTOR);
     if (!container) return;
     try {
+      injectStyles();
+      setupPopupHandlers();
       const pages = await loadIndex();
-      const terms = buildTerms(pages);
-      highlightAll(container, terms);
+      allTerms = buildTerms(pages);
+      highlightAll(container, allTerms);
     } catch (err) {
       console.warn("Cross-reference linking skipped:", err);
     }
@@ -288,3 +445,4 @@ const EXCLUDE_SELECTORS = [".breadcrumb", ".footer", ".header", "h1", "h2", "h3"
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+ 
