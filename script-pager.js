@@ -173,7 +173,7 @@
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
     "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
-    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded"
+    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls"
   ]);
 
   // Filled in by buildTerms(); looked up by index when a popup opens.
