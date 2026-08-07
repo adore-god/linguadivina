@@ -374,6 +374,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        z-index: 4000;
       }
       .cross-ref-popup li a {
         display: block;
