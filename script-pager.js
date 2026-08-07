@@ -183,7 +183,7 @@
     "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
     "are", "was", "were", "be", "with", "by", "as", "at", "that", "this", "every", "named", "first", "only", "already", "assume", "through", "whose",
     "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
-    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls", "holds", "gives", "mechanism", "different", "story", "enforce", "enforces
+    "not", "no", "so", "into", "about", "when", "who", "what", "how", "receives", "does", "already", "before", "identity", "divided", "runs", "assumed", "encoded", "itself", "sets", "fully", "calls", "holds", "gives", "mechanism", "different", "story", "enforce", "enforces", "same"
   ]);
 
   // Matches sequences of capitalized words — allows the phrase to continue
