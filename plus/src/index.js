@@ -179,9 +179,8 @@ const HEADER_HTML = `<div class="container"><header class="site-header">
 </header><main>`;
 
 const FOOTER_HTML = `</main></div><footer class="site-footer">
-  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p>
-
-</footer>`;
+  <p>&copy; 2025&ndash;2026 <a href="${SITE_HOME_URL}">Lingua Divina</a>. All rights reserved. &middot; <a href="https://linguadivina.uk/terms-of-use.html">Terms of Use</a>. <a href="https://billing.stripe.com/p/login/8x27sDeEX0CpdeEcJr0sU00">Manage Your Subscription.</a></p></footer>
+<script src="https://linguadivina.uk/script-new-blb.js" defer></script>`;
 
 export default {
   async fetch(request, env) {
@@ -999,7 +998,6 @@ async function renderArticlePage(request, env, slug) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="application/ld+json" id="plus-article-schema">${JSON.stringify(articleSchema)}</script>
-<script src="https://linguadivina.uk/script-new-blb.js" defer></script>
 <title>${escapeHtml(h1Text)} — Lingua Divina Plus</title>
 ${FONT_LINK}
 <style>${THEME_STYLE}${ARTICLE_STYLE}${CODE_STYLE}${HEADER_FOOTER_STYLE}${BASE_STYLE}</style>
