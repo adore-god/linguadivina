@@ -151,13 +151,23 @@
 // On article load: fetch searchIndex.json, then scan the page's content for
 // any words/phrases that match another page's title (e.g. "Babel") and turn
 // the first occurrence into a link to that page — a lightweight, automatic
-// "see also" cross-reference system built from the same index used by search.
+// "see also" cross-reference system built from the same index used by search. 
 
 (function () {
   const INDEX_URL = "https://linguadivina.uk/searchIndex.json";           // adjust path if served elsewhere
   const CONTENT_SELECTOR = "article, .post-content, main, .container";
   const SKIP_TAGS = new Set(["A", "SCRIPT", "STYLE", "H1", "NOSCRIPT", "TEXTAREA"]);
   const MIN_TITLE_LENGTH = 3;                       // skip too-short/noisy titles
+  const MIN_WORD_LENGTH = 4;                        // skip short/generic single words
+
+  // Small connector words that shouldn't become standalone link terms on
+  // their own, even though they're common inside titles.
+  const STOPWORDS = new Set([
+    "the", "a", "an", "of", "in", "on", "and", "to", "for", "from", "is",
+    "are", "was", "were", "be", "with", "by", "as", "at", "that", "this",
+    "it", "its", "his", "her", "their", "our", "your", "my", "or", "but",
+    "not", "no", "so", "into", "about", "when", "who", "what", "how"
+  ]);
 
   function escapeRegex(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -177,20 +187,43 @@
   function buildTerms(pages) {
     const here = currentPagePath();
     const terms = [];
+    const seenPhrases = new Set(); // avoid duplicate terms across pages
+
     for (const page of pages) {
       if (!page.title || !page.url) continue;
       if (page.url === here) continue;              // don't link a page to itself
       const title = page.title.trim();
       if (title.length < MIN_TITLE_LENGTH) continue;
-      terms.push({ title, url: page.url });
+
+      // Full title as one phrase, e.g. "Tower of Babel"
+      const phraseKey = title.toLowerCase();
+      if (!seenPhrases.has(phraseKey)) {
+        terms.push({ text: title, url: page.url });
+        seenPhrases.add(phraseKey);
+      }
+
+      // Individual significant words from the title, e.g. "Tower", "Babel" —
+      // so body text mentioning just "Babel" can still link to the
+      // "Tower of Babel" page even though it never spells out the full title.
+      const words = title.split(/[^A-Za-z0-9']+/).filter(Boolean);
+      for (const word of words) {
+        if (word.length < MIN_WORD_LENGTH) continue;
+        if (STOPWORDS.has(word.toLowerCase())) continue;
+        const wordKey = word.toLowerCase();
+        if (seenPhrases.has(wordKey)) continue;
+        terms.push({ text: word, url: page.url });
+        seenPhrases.add(wordKey);
+      }
     }
-    // Longest titles first, so e.g. "Tower of Babel" is tried before "Babel"
-    terms.sort((a, b) => b.title.length - a.title.length);
+
+    // Longest terms first, so full phrases are tried before their component
+    // words (e.g. "Tower of Babel" the phrase before lone "Tower").
+    terms.sort((a, b) => b.text.length - a.text.length);
     return terms;
   }
 
-  function linkFirstMatch(root, title, url) {
-    const pattern = new RegExp(`\\b(${escapeRegex(title)})\\b`, "i");
+  function linkFirstMatch(root, text, url) {
+    const pattern = new RegExp(`\\b(${escapeRegex(text)})\\b`, "i");
 
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
@@ -227,8 +260,8 @@
   }
 
   function highlightAll(root, terms) {
-    for (const { title, url } of terms) {
-      linkFirstMatch(root, title, url);
+    for (const { text, url } of terms) {
+      linkFirstMatch(root, text, url);
     }
   }
 
