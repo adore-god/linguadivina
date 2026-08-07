@@ -130,19 +130,6 @@ body{
 
    ======================= */
 
-.cross-ref { 
-border-bottom: 0.7px dotted; 
-text-decoration: none; 
-font-weight:400 !important;
-color: var(--text) !important;
-}
-
-.header {
-
-	}
-
-	
-
 .hero-description::after {
 
   content: "";
