@@ -2,6 +2,7 @@
   // 1. Setup DataLayer & Google Consent Mode v2 Default State
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag; 
 
   // Set default consent state to 'denied' BEFORE GA loads
   gtag('consent', 'default', {
