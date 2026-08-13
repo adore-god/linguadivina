@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://plus.linguadivina.uk/sitemap.xml
