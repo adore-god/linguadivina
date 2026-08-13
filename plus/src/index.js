@@ -246,6 +246,38 @@ async function hmac(secret, data) {
   return toBase64Url(String.fromCharCode(...new Uint8Array(sigBuffer)));
 }
 
+// Constant-time string comparison. Used anywhere a locally-computed HMAC is
+// checked against a caller-supplied signature (session cookies, magic-link
+// tokens, Stripe webhook signatures) so response timing can't be used to
+// recover the correct signature byte-by-byte.
+function timingSafeEqual(a, b) {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const enc = new TextEncoder();
+  const aBytes = enc.encode(a);
+  const bBytes = enc.encode(b);
+  // Always compare a fixed-length buffer so the loop time doesn't leak
+  // the length of the correct value either.
+  const len = Math.max(aBytes.length, bBytes.length);
+  let diff = aBytes.length ^ bBytes.length;
+  for (let i = 0; i < len; i++) {
+    const x = i < aBytes.length ? aBytes[i] : 0;
+    const y = i < bBytes.length ? bBytes[i] : 0;
+    diff |= x ^ y;
+  }
+  return diff === 0;
+}
+
+// Rejects anything that isn't a same-site, root-relative path: blocks
+// absolute URLs ("https://evil.com/x") and, importantly, protocol-relative
+// URLs ("//evil.com/x") which browsers resolve to an external host even
+// though the string "starts with /". Used for every post-auth redirect
+// target that originates from client input.
+function safeRedirectPath(value) {
+  if (typeof value !== "string") return "/";
+  if (!value.startsWith("/") || value.startsWith("//")) return "/";
+  return value;
+}
+
 async function createSessionCookie(email, expiresAt, secret) {
   const encodedPayload = toBase64Url(JSON.stringify({ email, exp: expiresAt }));
   const sig = await hmac(secret, encodedPayload);
@@ -257,7 +289,7 @@ async function verifySessionCookie(cookieValue, secret) {
   const [encodedPayload, sig] = cookieValue.split(".");
   if (!encodedPayload || !sig) return null;
   const expectedSig = await hmac(secret, encodedPayload);
-  if (expectedSig !== sig) return null;
+  if (!timingSafeEqual(expectedSig, sig)) return null;
   try {
     const payload = JSON.parse(fromBase64Url(encodedPayload));
     if (payload.exp < Math.floor(Date.now() / 1000)) return null;
@@ -279,7 +311,10 @@ async function buildSessionCookie(email, env) {
   const expiresAt = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE;
   const cookieValue = await createSessionCookie(email, expiresAt, env.COOKIE_SECRET);
   
-  return `paywall_session=${cookieValue}; Path=/; Domain=linguadivina.uk; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
+  // Scoped to plus.linguadivina.uk only (not the apex/Domain=linguadivina.uk)
+  // so the session cookie isn't sent to, or readable as ambient auth by,
+  // other subdomains on linguadivina.uk that don't need it.
+  return `paywall_session=${cookieValue}; Path=/; Domain=plus.linguadivina.uk; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}`;
 }
 
 async function withRefreshedSession(response, subscriber, env) {
@@ -288,8 +323,20 @@ async function withRefreshedSession(response, subscriber, env) {
   return response;
 }
 
+// 5 minute tolerance, matching Stripe's own recommendation, so a captured
+// webhook request (payload + valid signature) can't be replayed later.
+const STRIPE_WEBHOOK_TOLERANCE_SECONDS = 5 * 60;
+
 async function verifyStripeSignature(payload, sigHeader, secret) {
+  if (!sigHeader) return false;
   const parts = Object.fromEntries(sigHeader.split(",").map((p) => p.split("=")));
+  if (!parts.t || !parts.v1) return false;
+
+  const timestamp = parseInt(parts.t, 10);
+  if (!Number.isFinite(timestamp)) return false;
+  const age = Math.abs(Math.floor(Date.now() / 1000) - timestamp);
+  if (age > STRIPE_WEBHOOK_TOLERANCE_SECONDS) return false;
+
   const signedPayload = `${parts.t}.${payload}`;
   const enc = new TextEncoder();
   const key = await crypto.subtle.importKey(
@@ -297,7 +344,7 @@ async function verifyStripeSignature(payload, sigHeader, secret) {
   );
   const sigBuffer = await crypto.subtle.sign("HMAC", key, enc.encode(signedPayload));
   const expectedSig = [...new Uint8Array(sigBuffer)].map((b) => b.toString(16).padStart(2, "0")).join("");
-  return expectedSig === parts.v1;
+  return timingSafeEqual(expectedSig, parts.v1);
 }
 
 // ---------------------------------------------------------------------
@@ -367,7 +414,7 @@ async function sendMagicLink(request, env) {
     const sig = await hmac(env.COOKIE_SECRET, tokenPayload);
     const magicToken = `${tokenPayload}.${sig}`;
 
-    const safeRedirect = typeof redirectSlug === "string" && redirectSlug.startsWith("/") ? redirectSlug : "/";
+    const safeRedirect = safeRedirectPath(redirectSlug);
     const magicLink = `${env.SITE_URL}/api/verify-magic-link?token=${magicToken}&redirect=${encodeURIComponent(safeRedirect)}`;
 
     const emailRes = await fetch("https://api.resend.com/emails", {
@@ -389,8 +436,14 @@ async function sendMagicLink(request, env) {
     });
 
 if (!emailRes.ok) {
+  // Log full details server-side only — don't echo the upstream Resend
+  // response body (which can include internal error metadata) to the client.
   const errDetails = await emailRes.text();
-  return new Response(JSON.stringify({ error: `Resend error: ${errDetails}` }), { status: 500 });
+  console.error("Resend error:", errDetails);
+  return new Response(JSON.stringify({ error: "Could not send sign-in email. Please try again shortly." }), {
+    status: 500,
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 
@@ -407,8 +460,7 @@ async function verifyMagicLink(request, env) {
   const token = url.searchParams.get("token");
   if (!token) return new Response("Missing token", { status: 400 });
 
-  const requestedRedirect = url.searchParams.get("redirect") || "/";
-  const redirectPath = requestedRedirect.startsWith("/") ? requestedRedirect : "/";
+  const redirectPath = safeRedirectPath(url.searchParams.get("redirect"));
 
   const payload = await verifySessionCookie(token, env.COOKIE_SECRET);
   if (!payload || !payload.email) {
@@ -440,6 +492,7 @@ async function createCheckoutSession(request, env) {
     const body = await request.json();
     if (body?.redirectSlug) redirectSlug = body.redirectSlug;
   } catch (_) {}
+  redirectSlug = safeRedirectPath(redirectSlug);
 
   const params = new URLSearchParams();
   params.append("mode", "subscription");
@@ -457,7 +510,7 @@ async function createCheckoutSession(request, env) {
     headers: {
       Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
       "Content-Type": "application/x-www-form-urlencoded",
-      "Stripe-Version": "2026-02-25.preview",
+      "Stripe-Version": "2026-07-29.dahlia",
     },
     body: params.toString(),
   });
@@ -533,8 +586,12 @@ async function getStripeCustomerEmail(customerId, env) {
 async function verifyCheckout(request, env) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get("session_id");
-  const redirectPath = url.searchParams.get("redirect") || "/";
+  const redirectPath = safeRedirectPath(url.searchParams.get("redirect"));
   if (!sessionId) return new Response("Missing session_id", { status: 400 });
+
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipLimit = await checkRateLimit(env, `verify-checkout:ip:${ip}`, 20, 60 * 60);
+  if (!ipLimit.allowed) return new Response("Too many requests. Please try again later.", { status: 429 });
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
     headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
@@ -562,6 +619,10 @@ async function restoreExistingSubscriber(request, env) {
   if (!sessionId) {
     return new Response("Missing session_id in redirect URL", { status: 400 });
   }
+
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipLimit = await checkRateLimit(env, `login:ip:${ip}`, 20, 60 * 60);
+  if (!ipLimit.allowed) return new Response("Too many requests. Please try again later.", { status: 429 });
 
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
     headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
