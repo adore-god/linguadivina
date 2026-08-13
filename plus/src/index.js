@@ -213,7 +213,7 @@ export default {
       return env.ARTICLES.fetch(request);
     }
 
-    if (request.method === "GET" && /\.(mp3|wav|ogg|m4a|png|jpe?g|webp|gif|svg|css|js|json|ico|woff2?|ttf)$/i.test(path)) {
+    if (request.method === "GET" && /\.(mp3|wav|ogg|m4a|png|jpe?g|webp|gif|svg|css|js|json|xml|ico|woff2?|ttf)$/i.test(path)) {
       return env.ARTICLES.fetch(request);
     }
 
@@ -683,9 +683,9 @@ async function renderPlusRoute(request, env) {
 async function renderCandleSanctuaryPage(request, env, slug) {
   // 1. Authenticate user or verify crawler
   const subscriber = await getActiveSubscriber(request, env);
-  const bypassForGooglebot = !subscriber && (await isVerifiedGooglebot(request));
+  const bypassForCrawler = !subscriber && (await isVerifiedSearchCrawler(request));
 
-  if (!subscriber && !bypassForGooglebot) {
+  if (!subscriber && !bypassForCrawler) {
     return new Response(renderPaywallHtml(slug), {
       status: 402,
       headers: { "Content-Type": "text/html; charset=UTF-8" },
@@ -898,13 +898,27 @@ async function dohQuery(name, type) {
   return res.json();
 }
 
-async function isVerifiedGooglebot(request) {
+// Legitimate search crawlers get a paywall bypass (free view) via reverse-DNS
+// verification: PTR lookup on the request IP must resolve to that crawler's
+// domain, and a forward A lookup on that hostname must resolve back to the
+// same IP. This can't be spoofed by a fake User-Agent header alone.
+const CRAWLER_VERIFICATION = [
+  {
+    name: "googlebot",
+    uaPattern: /googlebot|google-inspectiontool|adsbot-google|mediapartners-google/i,
+    ptrPattern: /\.googlebot\.com\.?$|\.google\.com\.?$|\.googleusercontent\.com\.?$/i,
+  },
+  {
+    name: "bingbot",
+    uaPattern: /bingbot|adidxbot|bingpreview/i,
+    ptrPattern: /\.search\.msn\.com\.?$/i,
+  },
+];
+
+async function isVerifiedSearchCrawler(request) {
   const ua = request.headers.get("User-Agent") || "";
-  // Covers regular indexing Googlebot AND Google-InspectionTool, the crawler
-  // used by Rich Results Test and Search Console's URL Inspection / Live Test.
-  if (!/googlebot|google-inspectiontool|adsbot-google|mediapartners-google/i.test(ua)) {
-    return false;
-  }
+  const matched = CRAWLER_VERIFICATION.find((c) => c.uaPattern.test(ua));
+  if (!matched) return false;
 
   const ip = request.headers.get("CF-Connecting-IP");
   if (!ip || ip.includes(":")) return false; // keep this simple: IPv4 only
@@ -913,7 +927,7 @@ async function isVerifiedGooglebot(request) {
     const reversed = `${ip.split(".").reverse().join(".")}.in-addr.arpa`;
     const ptrData = await dohQuery(reversed, "PTR");
     const ptrName = ptrData?.Answer?.find((a) => a.type === 12)?.data;
-    if (!ptrName || !/\.googlebot\.com\.?$|\.google\.com\.?$|\.googleusercontent\.com\.?$/i.test(ptrName)) {
+    if (!ptrName || !matched.ptrPattern.test(ptrName)) {
       return false;
     }
 
@@ -929,9 +943,9 @@ async function isVerifiedGooglebot(request) {
 
 async function renderArticlePage(request, env, slug) {
   const subscriber = await getActiveSubscriber(request, env);
-  const bypassForGooglebot = !subscriber && (await isVerifiedGooglebot(request));
+  const bypassForCrawler = !subscriber && (await isVerifiedSearchCrawler(request));
 
-  if (!subscriber && !bypassForGooglebot) {
+  if (!subscriber && !bypassForCrawler) {
     return new Response(renderPaywallHtml(slug), {
       status: 402,
       headers: { "Content-Type": "text/html; charset=UTF-8" },
