@@ -944,14 +944,14 @@ width: 50% !important
     }
 
 :root.dark .btn-outline {
-  border: 1.7px solid var(--button);
-  color: var(--button);
+  border: 1.7px solid var(--text);
+  color: var(--text);
 }
 
 :root.dark .btn-outline a,
 :root.dark .btn-outline a:link,
 :root.dark .btn-outline a:visited {
-  color: var(--button);
+  color: var(--text);
 }
 
 :root.dark .btn-outline:hover {
