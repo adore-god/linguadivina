@@ -233,6 +233,9 @@ strong {
 .center {
   text-align: center;
 }
+.f-center {
+  text-align: center !important;
+}
 .center, .center-marg-auto {
   text-align: center !important;
   margin:0 auto;
